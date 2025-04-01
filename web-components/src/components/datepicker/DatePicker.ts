@@ -12,7 +12,17 @@ import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { addDays, addWeeks, dateStringToDateTime, DayFilters, isDayDisabled, now, sqlDateToSlashes, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import {
+  addDays,
+  addWeeks,
+  dateStringToDateTime,
+  DayFilters,
+  isDayDisabled,
+  now,
+  sqlDateToSlashes,
+  subtractDays,
+  subtractWeeks
+} from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query, TemplateResult } from "lit-element";
@@ -58,7 +68,7 @@ export namespace DatePicker {
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
-    @property({ attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
+    @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();

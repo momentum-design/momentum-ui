@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.20.0",
+  "version": "2.21.0",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -51,7 +51,6 @@
     "@interactjs/utils": "1.10.3",
     "@momentum-design/brand-visuals": "0.5.1",
     "@momentum-design/icons": "0.13.0",
-    "@momentum-design/tokens": "0.5.1",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",
     "country-flags-svg": "1.1.4",
@@ -61,11 +60,12 @@
     "libphonenumber-js": "^1.7.57",
     "lit-virtualizer": "0.4.2",
     "luxon": "^3.5.0",
-    "mobx": "^5.15.4",
+    "mobx": "^6.13.7",
     "papaparse": "^5.5.2",
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
+    "@momentum-design/tokens": "0.5.1",    
     "@adobe/lit-mobx": "^1.0.1",
     "@babel/core": "^7.26.9",
     "@babel/preset-env": "^7.26.9",

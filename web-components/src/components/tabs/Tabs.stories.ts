@@ -22,7 +22,7 @@ const tabs = (args: Args) => {
       @selected-changed=${action("changed")}
       ?draggable=${args.draggable}
       direction="${args.alignment}"
-      .justified=${args.justified}
+      ?justified=${args.justified}
     >
       <md-tab slot="tab" closable="${args.closable}">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -158,10 +158,11 @@ export default {
     tabsCopyHiddenListElements: { table: { disable: true } },
     tabsListElement: { table: { disable: true } },
     slotItem: { table: { disable: true } },
-    draggable: { control: "boolean", defaultValue: false },
-    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"], defaultValue: "horizontal" },
+    more: { control: "boolean" },
+    draggable: { control: "boolean" },
+    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] },
     closable: { control: { type: "select" }, options: closeOptions },
-    settings: { control: "boolean", defaultValue: false }
+    settings: { control: "boolean" }
   },
   parameters: {
     a11y: {

@@ -41,7 +41,8 @@
     height: 100%;
     margin-left: auto;
     width: auto;
-    max-width: 128.5px;
+    max-width: 128.5px;    
+
     .md-menu-overlay__overflow-label {
       display: inline-block;
       max-width: 80px;
@@ -82,11 +83,10 @@
   .md-menu-overlay__more_list {
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-width: 100%;
     padding: 0;
-    padding-bottom: calc(#{$tab-base-indent} / 2);
-    padding-top: calc(#{$tab-base-indent} / 2);
+    margin: 8px;
+    height: auto;
+    max-width: 100%;    
     width: 100%;
     overflow-x: hidden;
 
@@ -96,6 +96,7 @@
         padding-left: 16px;
         padding-right: 16px;
         box-shadow: none;
+        justify-content: flex-start;
       }
       &[selected]::part(tab) {
         background-color: var(--md-menu-active-background-color);

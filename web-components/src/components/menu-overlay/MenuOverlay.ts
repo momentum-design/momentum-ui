@@ -173,6 +173,16 @@ export namespace MenuOverlay {
       return false;
     }
 
+    private updateTriggerElementAriaExpanded() {
+      if (this.triggerElement) {
+        if (this.isOpen) {
+          this.triggerElement.setAttribute("aria-expanded", "true");
+        } else {
+          this.triggerElement.removeAttribute("aria-expanded");
+        }
+      }
+    }
+
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       await new Promise((resolve) => setTimeout(resolve, 0));
@@ -206,15 +216,7 @@ export namespace MenuOverlay {
       }
 
       if (changedProperties.has("isOpen")) {
-        if (this.isOpen) {
-          if (this.triggerElement) {
-            this.triggerElement.setAttribute("aria-expanded", "true");
-          }
-        } else {
-          if (this.triggerElement) {
-            this.triggerElement.setAttribute("aria-expanded", "false");
-          }
-        }
+        this.updateTriggerElementAriaExpanded();
       }
     }
 

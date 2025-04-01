@@ -16,9 +16,9 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
+import { brandVisualIconsMap } from "./brand-visual-icons";
 import designMapping from "./momentum-ui-to-design-icons.json";
 import styles from "./scss/module.scss";
-
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
 export const iconType = ["", "white"] as const;
 export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals"] as const;
@@ -179,7 +179,10 @@ export namespace Icon {
     @internalProperty()
     private svgIcon: HTMLElement | null = null;
 
-    isPath(importedIcon: string) {
+    isPath(importedIcon: string | object) {
+      if (typeof importedIcon === "object") {
+        return false;
+      }
       return importedIcon.endsWith(".svg");
     }
 
@@ -201,8 +204,13 @@ export namespace Icon {
       return this.getSvgContentFromInline(responseText);
     }
 
-    getSvgContentFromInline(importedIcon: string) {
-      const svgContent = this.decodeIfBase64EncodedSvg(importedIcon);
+    getSvgContentFromInline(importedIcon: string | { data: string }) {
+      let svgContent = "";
+      if (typeof importedIcon === "object" && "data" in importedIcon) {
+        svgContent = importedIcon.data;
+      } else {
+        svgContent = this.decodeIfBase64EncodedSvg(importedIcon);
+      }
       return this.parseSvgContent(svgContent);
     }
 
@@ -236,8 +244,13 @@ export namespace Icon {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
         this.iconSet === "momentumBrandVisuals"
-          ? require(`@momentum-design/brand-visuals/dist/logos/svg/${iconName}.svg`)
+          ? brandVisualIconsMap[iconName]
           : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+
+      if (!importedIcon) {
+        console.error(`Icon: ${iconName} does not exist in the design system.`);
+        return;
+      }
 
       if (this.isPath(importedIcon)) {
         this.svgIcon = await this.getSvgContentFromFile(importedIcon);

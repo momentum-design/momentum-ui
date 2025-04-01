@@ -144,7 +144,11 @@ export function closestElement(selector: string, base: HTMLElement) {
     if (!el || el === document || el === window) return null;
 
     const found = el.closest(selector);
-    return found ? found : __closestFrom(el.getRootNode().host);
+    return found ?? __closestFrom(el.getRootNode().host);
   }
   return __closestFrom(base);
+}
+
+export function getElementSafe<T>(elements: T[], index: number): T | undefined {
+  return index >= 0 && index < elements.length ? elements[index] : undefined;
 }

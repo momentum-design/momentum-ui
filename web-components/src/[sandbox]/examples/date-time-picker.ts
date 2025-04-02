@@ -26,11 +26,4 @@ export const dateTimePickerTemplate = html`
   <md-date-time-picker value="2021-02-14T12:00:00-08:00" disabled></md-date-time-picker>
   <h3>Call Date</h3>
   <md-date-time-picker value="2021-02-14T12:00:00-08:00" ariaLabel="Call Date"></md-date-time-picker>
-  <h3>date time picker with accept and cancel buttons</h3>
-  <md-date-time-picker
-    .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
-    .shouldCloseOnSelect=${true}
-    value="2021-01-31"
-    newMomentum
-  ></md-date-time-picker>
 `;

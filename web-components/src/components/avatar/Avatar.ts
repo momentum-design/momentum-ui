@@ -284,7 +284,7 @@ export namespace Avatar {
       if (!this.clickable) {
         return;
       }
-      this.clickFunction && this.clickFunction();
+      this.clickFunction?.();
       this.dispatchEvent(
         new CustomEvent("button-click", {
           composed: true,

@@ -18,16 +18,16 @@ describe("DatePickerDay Component", () => {
   });
   test("should apply selected attribute class modifier", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day selected></md-datepicker-day> `);
-    expect(el.selected).toBeTruthy;
+    expect(el.selected).toBeTruthy();
   });
   test("should apply disabled attribute class modifier", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day disabled></md-datepicker-day> `);
-    expect(el.disabled).toBeTruthy;
-    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--disabled")).toBeTruthy;
+    expect(el.disabled).toBeTruthy();
+    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--disabled")).toBeTruthy();
   });
   test("should apply focused attribute class modifier", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day focused></md-datepicker-day> `);
-    expect(el.focused).toBeTruthy;
+    expect(el.focused).toBeTruthy();
   });
   test("should apply a modifier when the date is today`s date", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day></md-datepicker-day> `);
@@ -41,7 +41,7 @@ describe("DatePickerDay Component", () => {
     const event = new MouseEvent("click");
     el.dispatchEvent(event);
     await el.updateComplete;
-    expect(userEvent).toHaveBeenCalled;
+    expect(userEvent).toHaveBeenCalled();
   });
   test("onkeydown of Day should handle action", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day></md-datepicker-day> `);
@@ -49,6 +49,6 @@ describe("DatePickerDay Component", () => {
     const event = new KeyboardEvent("keydown", { code: "Space" });
     el.dispatchEvent(event);
     await el.updateComplete;
-    expect(userEvent).toHaveBeenCalled;
+    expect(userEvent).toHaveBeenCalled();
   });
 });

@@ -26,20 +26,20 @@ describe("Button Component", () => {
       <md-button tag="input"><span slot="text">Test</span></md-button>
     `);
     const input = element.shadowRoot!.querySelectorAll("input");
-    expect(input).toBeDefined;
+    expect(input).toBeDefined();
   });
 
   test("should render link if passed tag a", async () => {
     const element: Button.ELEMENT = await fixture(html` <md-button tag="a"><span slot="text">Test</span></md-button> `);
     const link = element.shadowRoot!.querySelectorAll("a");
-    expect(link).toBeDefined;
+    expect(link).toBeDefined();
   });
 
   test("should render Loading component is pass loading props", async () => {
     const element: Button.ELEMENT = await fixture(html` <md-button loading></md-button> `);
-    expect(element.loading).toBeTruthy;
+    expect(element.loading).toBeTruthy();
     const spinner = element.shadowRoot!.querySelector(".md-button md-spinner");
-    expect(spinner).toBeDefined;
+    expect(spinner).toBeDefined();
     expect(spinner?.getAttribute("size")).toEqual("16");
   });
 
@@ -232,7 +232,7 @@ describe("Button Component", () => {
     `);
     const link = element.shadowRoot!.querySelector("a");
     expect(link!.getAttribute("tabindex")).toContain("1");
-    expect(link).toBeDefined;
+    expect(link).toBeDefined();
   });
 
   test("should render link if passed tag input with custom tabIndex of 1", async () => {
@@ -241,7 +241,7 @@ describe("Button Component", () => {
     `);
     const input = element.shadowRoot!.querySelector("input");
     expect(input!.getAttribute("tabindex")).toContain("1");
-    expect(input).toBeDefined;
+    expect(input).toBeDefined();
   });
 
   test("Button variants", async () => {

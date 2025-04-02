@@ -227,7 +227,7 @@ describe("TaskItem", () => {
       true
     );
 
-    expect(element.selected).toBeTruthy;
+    expect(element.selected).toBeTruthy();
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
     expect(type?.getAttribute("name")).toEqual("email-filled");
@@ -324,8 +324,8 @@ describe("TaskItem", () => {
     expect(element.lastmessage).toEqual("Test message");
     const chat = element.shadowRoot?.querySelector(".md-taskitem__content_chat");
     expect(status?.getAttribute("name")).toEqual("task-status");
-    expect(quantity).toBeUndefined;
-    expect(chat).toBeUndefined;
+    expect(quantity).toBeUndefined();
+    expect(chat).toBeUndefined();
   });
 
   test("should upadte type and status", async () => {
@@ -342,7 +342,7 @@ describe("TaskItem", () => {
     );
     expect(element).not.toBeNull();
     const quantity = element.shadowRoot?.querySelector(".new-chat-quantity span");
-    expect(quantity).toBeUndefined;
+    expect(quantity).toBeUndefined();
   });
 
   test("should render slot quele", async () => {
@@ -359,7 +359,7 @@ describe("TaskItem", () => {
     );
     expect(element).not.toBeNull();
     const quelle = element.shadowRoot?.querySelector(".md-taskitem__content_queue slot[name='queue']");
-    expect(quelle).toBeUndefined;
+    expect(quelle).toBeUndefined();
   });
 
   test("should upadte type and status", async () => {

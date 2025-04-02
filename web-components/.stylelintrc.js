@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   plugins: ["stylelint-prettier"],
   extends: ["stylelint-config-sass-guidelines"],

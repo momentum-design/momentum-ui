@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /**
  * Copyright (c) Cisco Systems, Inc. and its affiliates.
  *

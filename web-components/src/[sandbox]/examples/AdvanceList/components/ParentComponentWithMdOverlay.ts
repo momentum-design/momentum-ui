@@ -84,7 +84,7 @@ export namespace ParentComponentWithMdOverlay {
         this.page += 1;
         this.value.push(this.items[1].id);
         this.loadedRecords = this.items.length;
-      } catch (err) {
+      } catch (_err) {
         this.isError = true;
       } finally {
         this.isLoading = false;

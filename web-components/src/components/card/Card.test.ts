@@ -42,19 +42,19 @@ describe("Card component", () => {
     element.menuOptions = [];
     await elementUpdated(element);
 
-    expect(menuIcon).not.toBeDefined;
+    expect(menuIcon).not.toBeDefined();
 
     element.menuOptions = ["Edit", "Test"];
     await elementUpdated(element);
 
-    expect(menuIcon).toBeDefined;
+    expect(menuIcon).toBeDefined();
   });
 
   test("should dispatch events on card click", async () => {
     const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
 
     const card = element.shadowRoot?.querySelector(".md-card");
-    expect(card).not.toBeDefined;
+    expect(card).not.toBeDefined();
     const clickEvent = new MouseEvent("click");
     const spyClick = jest.spyOn(element, "handleCardClick");
     card?.dispatchEvent(clickEvent);

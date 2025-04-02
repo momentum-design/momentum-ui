@@ -181,13 +181,13 @@ describe("MenuOverlay", () => {
 
     const clickPromise = oneEvent(triggerElement, "click");
 
-    expect(triggerElement.getAttribute("aria-expanded")).toBeUndefined;
+    expect(triggerElement.getAttribute("aria-expanded")).toBeUndefined();
     triggerElement.dispatchEvent(new MouseEvent("click"));
 
     await clickPromise;
     jest.advanceTimersByTime(100);
 
-    expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy;
+    expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
     expect(element.isOpen).toBeTruthy();
   });
 

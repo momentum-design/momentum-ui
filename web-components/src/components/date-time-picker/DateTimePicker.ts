@@ -7,7 +7,7 @@ import { html, internalProperty, LitElement, property, PropertyValues, query } f
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
-import { DatePicker } from "../datepicker/DatePicker";
+import { DatePicker, type DatePickerControlButtons } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
@@ -31,6 +31,8 @@ export namespace DateTimePicker {
 
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean }) disabled = false;
+
+    @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
     @internalProperty()
     private fullDateTime: DateTime | undefined = undefined;
@@ -176,7 +178,8 @@ export namespace DateTimePicker {
           value=${ifDefined(this.value)}
           weekStart=${this.weekStart}
           placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
-          locale=${ifDefined(this.locale)}>
+          locale=${ifDefined(this.locale)}
+          .controlButtons=${this.controlButtons}>
           <div slot="time-picker" class="included-timepicker-wrapper">
             <div class="time-picker-separator"></div>
             <md-timepicker

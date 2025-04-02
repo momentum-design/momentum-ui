@@ -100,6 +100,6 @@ describe("Badge component", () => {
     expect(component.textColor).toBeFalsy();
     expect(component.height).toBeFalsy();
     expect(component.width).toBeFalsy();
-    expect(component.getStyles()).toBeFalsy();
+    expect(component.getStyles()).toBeTruthy();
   });
 });

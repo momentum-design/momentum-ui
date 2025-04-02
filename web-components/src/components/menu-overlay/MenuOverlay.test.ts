@@ -181,7 +181,7 @@ describe("MenuOverlay", () => {
 
     const clickPromise = oneEvent(triggerElement, "click");
 
-    expect(triggerElement.getAttribute("aria-expanded")).toBeUndefined();
+    expect(triggerElement.getAttribute("aria-expanded")).toBeFalsy();
     triggerElement.dispatchEvent(new MouseEvent("click"));
 
     await clickPromise;

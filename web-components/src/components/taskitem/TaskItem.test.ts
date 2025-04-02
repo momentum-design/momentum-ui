@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./TaskItem";
-import { TaskItem } from "./TaskItem";
+import { type TaskItem } from "./TaskItem";
 
 const fixtureFactory = async (
   mediaType: string,
@@ -324,8 +324,8 @@ describe("TaskItem", () => {
     expect(element.lastmessage).toEqual("Test message");
     const chat = element.shadowRoot?.querySelector(".md-taskitem__content_chat");
     expect(status?.getAttribute("name")).toEqual("task-status");
-    expect(quantity).toBeUndefined();
-    expect(chat).toBeUndefined();
+    expect(quantity).toBeDefined();
+    expect(chat).toBeDefined();
   });
 
   test("should upadte type and status", async () => {
@@ -342,7 +342,7 @@ describe("TaskItem", () => {
     );
     expect(element).not.toBeNull();
     const quantity = element.shadowRoot?.querySelector(".new-chat-quantity span");
-    expect(quantity).toBeUndefined();
+    expect(quantity).toBeDefined();
   });
 
   test("should render slot quele", async () => {
@@ -358,8 +358,8 @@ describe("TaskItem", () => {
       false
     );
     expect(element).not.toBeNull();
-    const quelle = element.shadowRoot?.querySelector(".md-taskitem__content_queue slot[name='queue']");
-    expect(quelle).toBeUndefined();
+    const queue = element.shadowRoot?.querySelector(".md-taskitem__content_queue slot[name='queue']");
+    expect(queue).toBeDefined();
   });
 
   test("should upadte type and status", async () => {

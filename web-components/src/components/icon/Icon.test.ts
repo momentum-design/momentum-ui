@@ -4,6 +4,13 @@ import "./Icon";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>'),
+  })
+) as jest.Mock;
+
 describe("Momentum Icon Component", () => {
   afterEach(fixtureCleanup);
 

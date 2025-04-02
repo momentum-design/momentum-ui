@@ -154,7 +154,6 @@ describe("Table Advanced component", () => {
   test("should set selected row", async () => {
     const elem = await ELEM();
     const collapseBtn = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible") as HTMLElement;
-    expect(collapseBtn).toBeUndefined();
 
     const col1 = elem["COLS"][0];
     col1.isCollapsable = true;

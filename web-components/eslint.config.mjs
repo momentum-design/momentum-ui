@@ -37,7 +37,7 @@ export default defineConfig([
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" }],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-namespace": "off",
-      "@typescript-eslint/no-empty-function": "error"     
+      "@typescript-eslint/no-empty-function": "error"
     }
   }
 ]);

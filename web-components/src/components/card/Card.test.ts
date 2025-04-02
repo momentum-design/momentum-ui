@@ -5,9 +5,9 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./Card";
 import { type Card } from "./Card";
 
-const fixtureFactory = async (id: string, title: string, subtitle: string, info: string): Promise<Card.ELEMENT> => {
+const fixtureFactory = async (id: string, title: string, subtitle: string, info: string, includeMenu:boolean): Promise<Card.ELEMENT> => {
   return await fixture(html`
-    <md-card .menuOption=${cardMenuItems} id=${id} title=${title} subtitle=${subtitle} info=${info}>
+    <md-card .menuOption=${includeMenu ? cardMenuItems : []} id=${id} title=${title} subtitle=${subtitle} info=${info}>
       <div slot="content">
         <img
           src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
@@ -21,28 +21,22 @@ const fixtureFactory = async (id: string, title: string, subtitle: string, info:
 };
 
 describe("Card component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
+  afterEach(() => {    
     fixtureCleanup();
   });
 
   test("should render correctly", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
     expect(element).not.toBeNull();
   });
 
   test("should render card without menu", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", true);
     const menuIcon = element.shadowRoot?.querySelector(".md-card-menu");
     element.menuOptions = [];
     await elementUpdated(element);
 
-    expect(menuIcon).not.toBeDefined();
+    expect(menuIcon).toBeNull();
 
     element.menuOptions = ["Edit", "Test"];
     await elementUpdated(element);
@@ -51,10 +45,10 @@ describe("Card component", () => {
   });
 
   test("should dispatch events on card click", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
 
     const card = element.shadowRoot?.querySelector(".md-card");
-    expect(card).not.toBeDefined();
+    expect(card).toBeDefined();
     const clickEvent = new MouseEvent("click");
     const spyClick = jest.spyOn(element, "handleCardClick");
     card?.dispatchEvent(clickEvent);
@@ -69,7 +63,7 @@ describe("Card component", () => {
   });
 
   test("should dispatch events on menu item click", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", true);
 
     const spyMenuClick = jest.spyOn(element, "handleCardMenuEvent");
     element.handleCardMenuEvent(new MouseEvent("click"), "1234");

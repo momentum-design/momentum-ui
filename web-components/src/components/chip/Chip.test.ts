@@ -52,7 +52,14 @@ describe("Chip component", () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content that is way tooooooo long"></md-chip>
     `);
-    expect(component.truncStringPortion).toHaveBeenCalled();
+
+    const spy = jest.spyOn(component, "truncStringPortion");
+
+    component.requestUpdate();
+    await elementUpdated(component);
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
   });
   test("should render determinate progress bar", async () => {
     const component: Chip.ELEMENT = await fixture(html`

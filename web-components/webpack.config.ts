@@ -80,7 +80,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       { loader: "lit1-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
-      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
+      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
         loader: "sass-loader",

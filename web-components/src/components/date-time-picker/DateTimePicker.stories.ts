@@ -13,6 +13,7 @@ export default {
     weekStart: { control: { type: "select" }, options: DatePicker.weekStartDays },
     locale: { control: "text", defaultValue: "en-US" },
     disabled: { control: "boolean" },
+    controlButtons: { control: "boolean" },
     minDate: { control: { type: "text" } },
     maxDate: { control: { type: "text" } },
     value: { control: { type: "text" } },
@@ -36,12 +37,15 @@ export const DateTimePicker: StoryObj = {
     timeSpecificity: TIME_UNIT.SECOND
   },
   render: (args: Args) => {
+    const controlButtons = args.controlButtons ? { apply: { value: "Apply" }, cancel: { value: "Cancel" } } : undefined;
+
     return html`
       <md-date-time-picker
         ?disabled=${args.disabled}
         value=${args.value}
         minDate=${args.minDate}
         maxDate=${args.maxDate}
+        .controlButtons=${controlButtons}
         locale=${args.locale}
         weekStart=${args.weekStart}
         ?two-digit-auto-tab=${args.twoDigitAutoTab}

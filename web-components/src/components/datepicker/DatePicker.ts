@@ -177,14 +177,6 @@ export namespace DatePicker {
       }
     };
 
-    private getLocaleDateString(date: DateTime): string {
-      if (this.includesTime) {
-        return date.toLocaleString(DateTime.DATETIME_SHORT);
-      }
-
-      return date.toLocaleString();
-    }
-
     private getISODateTime(date: DateTime): string | null {
       return this.includesTime ? date.startOf("second").toISO({ suppressMilliseconds: true }) : date.toISODate();
     }

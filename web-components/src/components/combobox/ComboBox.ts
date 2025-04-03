@@ -13,7 +13,8 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { virtualize, virtualizerRef } from "@lit-labs/virtualizer/virtualize.js";
+import "@lit-labs/virtualizer";
+import { LitVirtualizer } from "@lit-labs/virtualizer";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, queryAll, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
@@ -161,14 +162,16 @@ export namespace ComboBox {
           newList?.toggleAttribute("focused", true);
         }
 
-        const element = this.virtualizer?.[virtualizerRef]?.element?.(index);
-        if (element) {
-          try {
-            element.scrollIntoView({
-              block: index === -1 ? "start" : "center"
+        const virtualizer = this.shadowRoot?.querySelector<LitVirtualizer>("<lit-virtualizer>");
+        if (virtualizer) {
+          if (index === -1) {
+            virtualizer.element(index)?.scrollIntoView({
+              block: "start"
             });
-          } catch (e) {
-            console.warn("Error while calling scrollIntoView");
+          } else {
+            virtualizer.element(index)?.scrollIntoView({
+              block: "center"
+            });
           }
         }
       } else {
@@ -1654,7 +1657,7 @@ export namespace ComboBox {
       }
     }
 
-    renderItem(option: OptionMember | string, index: number) {
+    readonly renderItem = (option: OptionMember | string, index: number): TemplateResult => {
       const count = this.allowSelectAll ? index + 2 : index + 1;
       const total = this.allowSelectAll ? this.options.length + 1 : this.options.length;
       const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : "";
@@ -1686,7 +1689,7 @@ export namespace ComboBox {
           </span>
         </div>
       `;
-    }
+    };
 
     inputTitle() {
       if (this.isMulti) {
@@ -1759,6 +1762,17 @@ export namespace ComboBox {
       return html`${showClearButton ? this.clearButtonTemplate() : this.arrowButtonTemplate()}`;
     }
 
+    private get renderVirtualScroll(): TemplateResult {
+      return html`
+        <div class="virtual-scroll" @rangeChanged=${this.rangeChanged}>
+          <lit-virtualizer
+            .items=${this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)}
+            .renderItem=${(item: string | OptionMember, index: number) => this.renderItem(item, index)}
+          ></lit-virtualizer>
+        </div>
+      `;
+    }
+
     render() {
       return html`
         <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
@@ -1825,18 +1839,7 @@ export namespace ComboBox {
                     : this.options.length !== 0 &&
                         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                           .length > 0
-                      ? html`
-                          <div class="virtual-scroll" @rangeChanged=${this.rangeChanged}>
-                            ${virtualize({
-                              scroller: true,
-                              items: this.filterOptions(
-                                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                              ),
-                              renderItem: (item: string | OptionMember, index?: number) =>
-                                this.renderItem(item, index || 0)
-                            })}
-                          </div>
-                        `
+                      ? this.renderVirtualScroll
                       : nothing}
                   ${this.options.length &&
                   this.filteredOptions.length === 0 &&

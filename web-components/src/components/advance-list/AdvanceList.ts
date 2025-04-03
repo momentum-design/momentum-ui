@@ -2,8 +2,8 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
-import { virtualize } from "@lit-labs/virtualizer/virtualize.js";
-import { LitElement, PropertyValues, html } from "lit";
+import "@lit-labs/virtualizer";
+import { LitElement, PropertyValues, TemplateResult, html } from "lit";
 import { property, query, queryAll, state } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
@@ -299,7 +299,7 @@ export namespace AdvanceList {
       );
     }
 
-    renderItem(item: any, index: number) {
+    readonly renderItem = (item: any, index: number) : TemplateResult => {
       if (item.id === "status-indicator") {
         return html`
           <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
@@ -343,13 +343,10 @@ export namespace AdvanceList {
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}
         >
-          ${virtualize({
-            items: this.items,
-            renderItem: (item: any, index: number) => this.renderItem(item, index),
-            layout: {
-              direction: "vertical"
-            }
-          })}
+          <lit-virtualizer
+            .items=${this.items}
+            .renderItem=${(item: any, index: number) => this.renderItem(item, index)}
+          ></lit-virtualizer>
         </div>
       `;
     }

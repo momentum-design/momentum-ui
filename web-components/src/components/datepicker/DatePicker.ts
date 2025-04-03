@@ -12,16 +12,38 @@ import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import {
+  addDays,
+  addWeeks,
+  dateStringToDateTime,
+  DayFilters,
+  isDayDisabled,
+  now,
+  reformatDateString,
+  subtractDays,
+  subtractWeeks
+} from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
-import { html, LitElement, PropertyValues } from "lit";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import styles from "./scss/module.scss";
+
+export interface DatePickerControlButton {
+  value: string;
+  ariaLabel?: string;
+  disabled?: boolean;
+}
+
+export interface DatePickerControlButtons {
+  apply?: DatePickerControlButton;
+  cancel?: DatePickerControlButton;
+}
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -47,6 +69,7 @@ export namespace DatePicker {
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
+    @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
     @state() selectedDate: DateTime = now();
     @state() focusedDate: DateTime = now();
@@ -64,14 +87,20 @@ export namespace DatePicker {
       return themeManager.isMomentumV2Enabled;
     }
 
+    static get styles() {
+      return styles;
+    }
+
     connectedCallback() {
       super.connectedCallback();
       if (this.minDate) {
-        this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+        this.minDateData = dateStringToDateTime(this.minDate);
       }
       if (this.maxDate) {
-        this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
+        this.maxDateData = dateStringToDateTime(this.maxDate);
       }
+
+      this.value = reformatDateString(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
@@ -79,8 +108,8 @@ export namespace DatePicker {
 
       if (this.value === EMPTY_STRING) {
         this.value = this.includesTime
-          ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
-          : this.selectedDate?.toISODate();
+          ? reformatDateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
+          : reformatDateString(this.selectedDate?.toISODate());
       }
     }
 
@@ -90,22 +119,22 @@ export namespace DatePicker {
         if (closestElement("md-date-range-picker", this)) {
           return;
         }
-        this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale });
+        this.selectedDate = dateStringToDateTime(this.value);
         this.setPreSelection(this.selectedDate);
       }
       if (changedProperties.has("locale")) {
         this.render();
       }
       if (this.minDate && changedProperties.has("minDate")) {
-        this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+        this.minDateData = dateStringToDateTime(this.minDate);
       }
       if (this.maxDate && changedProperties.has("maxDate")) {
-        this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
+        this.maxDateData = dateStringToDateTime(this.maxDate);
       }
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      this.value = event?.detail?.value;
+      this.value = reformatDateString(event?.detail?.value);
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,
@@ -123,34 +152,42 @@ export namespace DatePicker {
       this.isMenuOverlayOpen = open;
     };
 
-    handleSelect = (e: CustomEvent) => {
+    handleSelect(e: CustomEvent) {
       const date = e.detail.date;
       const event = e.detail.sourceEvent;
       this.setPreSelection(date);
+
+      this.dispatchEvent(
+        new CustomEvent("date-pre-selection-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            sourceEvent: event,
+            data: date
+          }
+        })
+      );
+
+      if (this.controlButtons?.apply && event?.type !== "apply-button-clicked") {
+        return;
+      }
+
       this.setSelected(date, event);
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
     };
 
-    private getLocaleDateString(date: DateTime): string {
-      if (this.includesTime) {
-        return date.toLocaleString(DateTime.DATETIME_SHORT);
-      }
-
-      return date.toLocaleString();
-    }
-
     private getISODateTime(date: DateTime): string | null {
       return this.includesTime ? date.startOf("second").toISO({ suppressMilliseconds: true }) : date.toISODate();
     }
 
-    setSelected = (date: DateTime, event: Event) => {
+    protected setSelected(date: DateTime, event: Event) {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = dateString;
+        this.value = reformatDateString(dateString);
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {
@@ -162,7 +199,7 @@ export namespace DatePicker {
           }
         })
       );
-    };
+    }
 
     setPreSelection = (date: DateTime) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
@@ -246,9 +283,7 @@ export namespace DatePicker {
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       const isValid =
-        !!this.value &&
-        regex.test(this.value) &&
-        !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
+        !!this.value && regex.test(this.value) && !isDayDisabled(dateStringToDateTime(this.value), filters);
 
       return isValid;
     };
@@ -261,6 +296,55 @@ export namespace DatePicker {
       } else {
         return [];
       }
+    }
+
+    private onCancelClick() {
+      this.setOpen(false);
+    }
+
+    protected onApplyClick() {
+      this.handleSelect(
+        new CustomEvent("day-select", {
+          detail: { date: this.focusedDate, sourceEvent: new Event("apply-button-clicked") }
+        })
+      );
+    }
+
+    private renderControlButtons(): TemplateResult | typeof nothing {
+      if (!this.controlButtons) {
+        return nothing;
+      }
+
+      return html`
+        <div class="control-buttons">
+          ${this.controlButtons.cancel
+            ? html`
+                <md-button
+                  class="cancel-button"
+                  aria-label=${ifDefined(this.controlButtons.cancel?.ariaLabel)}
+                  ?disabled=${this.controlButtons.cancel?.disabled ?? false}
+                  @click=${this.onCancelClick}
+                  variant="secondary"
+                >
+                  ${this.controlButtons.cancel.value}
+                </md-button>
+              `
+            : null}
+          ${this.controlButtons.apply
+            ? html`
+                <md-button
+                  class="apply-button"
+                  aria-label=${ifDefined(this.controlButtons.apply?.ariaLabel)}
+                  ?disabled=${this.controlButtons.apply?.disabled ?? false}
+                  @click=${this.onApplyClick}
+                  variant="primary"
+                >
+                  ${this.controlButtons.apply.value}
+                </md-button>
+              `
+            : null}
+        </div>
+      `;
     }
 
     render() {
@@ -313,6 +397,7 @@ export namespace DatePicker {
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>
+            ${this.renderControlButtons()}
           </div>
         </md-menu-overlay>
       `;

@@ -32,7 +32,7 @@ describe("DatePicker Component", () => {
   });
 
   test.each([[false], [true]])(
-    "should handle date selection and value update autoamtically unless Apply button present (%s)",
+    "should handle date selection and value update automatically unless Apply button present (%s)",
     async (includeApplyButton: boolean) => {
       const firstDate = DateTime.fromObject({ year: 2025, month: 11, day: 15 });
       const secondDate = firstDate.plus({ days: 5 });

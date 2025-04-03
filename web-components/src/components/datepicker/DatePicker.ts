@@ -19,7 +19,7 @@ import {
   DayFilters,
   isDayDisabled,
   now,
-  sqlDateToSlashes,
+  reformatDateString,
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
@@ -99,7 +99,7 @@ export namespace DatePicker {
         this.maxDateData = dateStringToDateTime(this.maxDate);
       }
 
-      this.value = sqlDateToSlashes(this.value);
+      this.value = reformatDateString(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
@@ -107,8 +107,8 @@ export namespace DatePicker {
 
       if (this.value === EMPTY_STRING) {
         this.value = this.includesTime
-          ? sqlDateToSlashes(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-          : sqlDateToSlashes(this.selectedDate?.toISODate());
+          ? reformatDateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
+          : reformatDateString(this.selectedDate?.toISODate());
       }
     }
 
@@ -133,7 +133,7 @@ export namespace DatePicker {
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      this.value = sqlDateToSlashes(event?.detail?.value);
+      this.value = reformatDateString(event?.detail?.value);
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,
@@ -192,7 +192,7 @@ export namespace DatePicker {
       if (!isDayDisabled(date, filters)) {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = sqlDateToSlashes(dateString);
+        this.value = reformatDateString(dateString);
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {

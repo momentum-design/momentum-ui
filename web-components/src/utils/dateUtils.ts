@@ -130,6 +130,13 @@ export function dateStringToDateTime(date: string): DateTime {
   return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
 }
 
-export function sqlDateToSlashes(date: string | null | undefined): string {
-  return date ? date.replace(DATE_HYPHENS_REGEX, "/") : "";
+export function reformatDateString(date: string | null | undefined): string {
+  if (!date) {
+    return "";
+  }
+
+  const splitString = date.split("T"); // need to make sure we don't modify the time offset part!
+  splitString[0] = splitString[0].replace(DATE_HYPHENS_REGEX, "/");
+
+  return splitString.join("T");
 }

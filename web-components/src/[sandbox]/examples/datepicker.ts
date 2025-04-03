@@ -41,4 +41,11 @@ export const datePickerTemplate = html`
   <md-datepicker ariaLabel="Call Date" weekStart="Monday" value="2021-01-31"></md-datepicker>
   <h3>datepicker with initial value compact newMomentum</h3>
   <md-datepicker weekStart="Monday" value="2021-01-31" compact-input newMomentum></md-datepicker>
+  <h3>date picker with accept and cancel buttons</h3>
+  <md-datepicker
+    .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
+    .shouldCloseOnSelect=${true}
+    value="2021-01-31"
+    newMomentum
+  ></md-datepicker>
 `;

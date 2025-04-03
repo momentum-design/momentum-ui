@@ -1,5 +1,8 @@
 import { DateTime } from "luxon";
 
+const DATE_HYPHENS_REGEX = /(?<!\s)-+(?!\s)/g; // Matches hyphens that are *not* surrounded by spaces
+const DATE_SLASHES_REGEX = /\//g; // Matches slashes
+
 export interface DayFilters {
   minDate: DateTime | undefined;
   maxDate: DateTime | undefined;
@@ -121,4 +124,19 @@ export function shouldPrevMonthDisable(day: DateTime, minDate: DateTime): boolea
 export function shouldNextMonthDisable(day: DateTime, maxDate: DateTime) {
   const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth, year: day.year });
   return maxDate && maxDate <= lastDayOfCurrMonth;
+}
+
+export function dateStringToDateTime(date: string): DateTime {
+  return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
+}
+
+export function reformatDateString(date: string | null | undefined): string {
+  if (!date) {
+    return "";
+  }
+
+  const splitString = date.split("T"); // need to make sure we don't modify the time offset part!
+  splitString[0] = splitString[0].replace(DATE_HYPHENS_REGEX, "/");
+
+  return splitString.join("T");
 }

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import "@/components/button/Button";
 import "@/components/editable-textfield/EditableTextfield";
 import { Input } from "@/components/input/Input";
@@ -26,29 +25,28 @@ export class EditableFieldTemplateSandbox extends LitElement {
   @property({ type: Boolean, reflect: true }) error = false;
   @property({ type: String }) textChanged = "";
 
-
   connectedCallback() {
-    super.connectedCallback()
-    this.addEventListener("invalid", this.setErrorMessage)
+    super.connectedCallback();
+    this.addEventListener("invalid", this.setErrorMessage);
   }
   disconnectedCallback() {
-    super.disconnectedCallback()
-    this.removeEventListener("invalid", this.setErrorMessage)
+    super.disconnectedCallback();
+    this.removeEventListener("invalid", this.setErrorMessage);
   }
 
   setErrorMessage = () => {
-    console.log("Validation Error Occurred")
-    this.error = true
-  }
+    console.log("Validation Error Occurred");
+    this.error = true;
+  };
 
   resetErrorMessage = () => {
-    this.error = false
-  }
+    this.error = false;
+  };
 
   renderErrorMessage() {
-    return (this.error ? html`
-      <div style="padding: 1rem; background:red">THERE IS A VALIDATION ERROR ON THIS PAGE!!</div>
-    ` : nothing)
+    return this.error
+      ? html` <div style="padding: 1rem; background:red">THERE IS A VALIDATION ERROR ON THIS PAGE!!</div> `
+      : nothing;
   }
 
   render() {
@@ -110,6 +108,4 @@ export class EditableFieldTemplateSandbox extends LitElement {
   }
 }
 
-export const editableField = html`
-  <editable-field-template-sandbox></editable-field-template-sandbox>
-`;
+export const editableField = html` <editable-field-template-sandbox></editable-field-template-sandbox> `;

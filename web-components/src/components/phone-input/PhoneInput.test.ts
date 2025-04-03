@@ -30,7 +30,7 @@ describe("PhoneInput Component", () => {
       value: "{countryCallingCode}",
       code: "{countryCode}"
     });
-    expect(codeList).not.toBeNull;
+    expect(codeList).not.toBeNull();
   });
 
   test("should render phone input", async () => {

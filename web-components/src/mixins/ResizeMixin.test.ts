@@ -35,12 +35,12 @@ describe("Resize Mixin", () => {
     }
 
     customUnobserveAll() {
-      super.unobserveAll && super.unobserveAll();
+      super.unobserveAll?.();
     }
 
     customResize() {
       const fakeDOMRect = this.getBoundingClientRect();
-      super.handleResize && super.handleResize(fakeDOMRect);
+      super.handleResize?.(fakeDOMRect);
     }
 
     render() {

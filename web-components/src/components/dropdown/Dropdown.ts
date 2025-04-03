@@ -292,7 +292,7 @@ export namespace Dropdown {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled || !this.readOnly) {
-        super.handleFocusIn && super.handleFocusIn(event);
+        super.handleFocusIn?.(event);
       }
 
       this.dispatchEvent(
@@ -304,7 +304,7 @@ export namespace Dropdown {
     }
 
     protected handleFocusOut(event: Event) {
-      super.handleFocusOut && super.handleFocusOut(event);
+      super.handleFocusOut?.(event);
 
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
@@ -459,7 +459,11 @@ export namespace Dropdown {
     }
 
     toggle() {
-      !this.expanded ? this.expand() : this.collapse();
+      if (!this.expanded) {
+        this.expand();
+      } else {
+        this.collapse();
+      }
     }
 
     select() {
@@ -816,10 +820,13 @@ export namespace Dropdown {
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"
+                >
+                  ${this.leftIcon
+                    ? html`<span class="md-dropdown-label--left-icon">${this.iconTemplate()}</span>`
+                    : nothing}
+                  <span
+                    class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
                   >
-                  ${this.leftIcon ? html`<span class="md-dropdown-label--left-icon">${this.iconTemplate()}</span>` : nothing}
-                  <span class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
-                  > 
                     ${this.labelTitle}</span
                   >
                   <span class="md-dropdown-label--icon">

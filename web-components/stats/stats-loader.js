@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const { getNormalizedPlatformPath } = require("./utils");
 const writeFileSyncRecursive = require("./writeFileSyncRecursive");
 const analyzeCSS = require("./cssStats.js");
 
-const isWin = process.platform === "win32";
-
-module.exports = async function(source) {
+module.exports = async function (source) {
   const location = this.resourcePath;
 
   const components_base = getNormalizedPlatformPath("src/components/");

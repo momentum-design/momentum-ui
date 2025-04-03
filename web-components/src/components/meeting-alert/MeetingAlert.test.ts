@@ -1,19 +1,19 @@
 import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./MeetingAlert";
-import { MeetingAlert } from "./MeetingAlert";
+import { type MeetingAlert } from "./MeetingAlert";
 
 describe("MeetingAlert", () => {
   afterEach(fixtureCleanup);
 
   test("Meeting-Alert component is not null", async () => {
     const ma = await fixture("<md-meeting-alert></md-meeting-alert>");
-    expect(ma).not.toBeNull;
+    expect(ma).not.toBeNull();
   });
 
   test("should render one MeetingAlert", async () => {
     const el = await fixture(html` <md-meeting-alert title="Test Name"></md-meeting-alert> `);
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
 
   test("should handle default className prop", async () => {

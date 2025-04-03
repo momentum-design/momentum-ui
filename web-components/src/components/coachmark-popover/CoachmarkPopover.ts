@@ -244,7 +244,11 @@ export namespace CoachmarkPopover {
       super.updated(changedProperties);
 
       if (changedProperties.has("show")) {
-        this.show ? this.notifyCoachCreate() : this.notifyCoachClose();
+        if (this.show) {
+          this.notifyCoachCreate();
+        } else {
+          this.notifyCoachClose();
+        }
       }
     }
 

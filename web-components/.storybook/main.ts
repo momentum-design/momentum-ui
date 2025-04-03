@@ -12,10 +12,7 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
   mergee ? merger.concat(mergee.filter((item: any) => merger.indexOf(item) === -1)) : merger;
 
 module.exports = {
-  stories: [
-    "../src/components/**/*.stories.ts",    
-    "../src/internal-components/color-table/ColorTable.stories.ts"
-  ],
+  stories: ["../src/components/**/*.stories.ts", "../src/internal-components/color-table/ColorTable.stories.ts"],
 
   addons: [
     "@storybook/addon-docs",

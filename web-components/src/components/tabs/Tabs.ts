@@ -199,7 +199,9 @@ export namespace Tabs {
         })
         .filter((promise) => promise !== null);
 
-      tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
+      if (tabUpdatesCompletesPromises.length) {
+        await Promise.all(tabUpdatesCompletesPromises);
+      }
     }
 
     // This operation may affect render performance when using frequently. Use careful!
@@ -563,7 +565,9 @@ export namespace Tabs {
         // Setting up focus for tab copy (hidden menu)
         {
           const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-          tabCopy && this.makeTabCopyFocus(tabCopy);
+          if (tabCopy) {
+            this.makeTabCopyFocus(tabCopy);
+          }
           this.updateHiddenIdPositiveTabIndex(tab);
         }
       }
@@ -715,7 +719,9 @@ export namespace Tabs {
           const selectedHiddenTab = this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement;
           this.moveFocusToTab(selectedHiddenTab);
           const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
-          !newHiddenTab?.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
+          if (!newHiddenTab?.disabled) {
+            this.updateHiddenIdPositiveTabIndex(newHiddenTab);
+          }
         }
       });
       this.updateIsMoreTabMenuSelected();
@@ -1036,7 +1042,9 @@ export namespace Tabs {
             : this.selected;
       }
 
-      this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
+      if (this.compUniqueId) {
+        this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || [];
+      }
     }
 
     private selectTabFromStorage() {

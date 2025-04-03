@@ -7,7 +7,7 @@
  */
 
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const rimraf = require("rimraf");
 const fsx = require("fs-extra");

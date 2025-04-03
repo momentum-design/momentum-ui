@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const scanner = require("sonarqube-scanner");
 const propertiesReader = require("properties-reader");
 const properties = propertiesReader("./sonar-project.properties");

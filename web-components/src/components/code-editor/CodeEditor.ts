@@ -71,7 +71,6 @@ export namespace CodeEditor {
 
     copyClipboard() {
       if (!this.disableCopyButton) {
-        this.codeUrl.innerText;
         this.selectTarget(this.codeUrl);
       }
     }
@@ -80,7 +79,7 @@ export namespace CodeEditor {
       try {
         document.execCommand("copy");
         this.copied = true;
-      } catch (err) {
+      } catch (_err) {
         console.warn("Copy text failed");
         this.copied = false;
       }

@@ -2,7 +2,7 @@ function parseSvgContent(svgContent: string): HTMLElement | null {
   try {
     const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
     return doc.documentElement;
-  } catch (error) {
+  } catch (_error) {
     try {
       return new DOMParser().parseFromString(svgContent, "text/html").body.children[0] as HTMLElement;
     } catch (error) {
@@ -64,7 +64,7 @@ function getSvgContentFromInline(importedIcon: string | { data: string }) {
 }
 
 async function getMomentumDesignIconContent(iconName: string) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
   if (!importedIcon) {

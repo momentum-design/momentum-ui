@@ -43,7 +43,7 @@ export namespace ParentComponentGeneric {
         this.page += 1;
         this.isLoading = false;
         this.value = this.items[1].id;
-      } catch (err) {
+      } catch (_err) {
         this.isLoading = false;
         this.isError = true;
       } finally {

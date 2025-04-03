@@ -100,7 +100,7 @@ export namespace Menu {
       if (this.items) {
         [oldSelectedIndex, newSelectedIndex].forEach((index) => {
           const item = this.items[index];
-          item && item.toggleAttribute("selected");
+          item?.toggleAttribute("selected");
         });
       }
 

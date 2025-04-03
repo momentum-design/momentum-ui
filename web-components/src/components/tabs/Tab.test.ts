@@ -1,34 +1,18 @@
 import { Key } from "@/constants";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit";
-import { Tab } from "./Tab";
+import { elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
+import { html } from "lit";
+import { type Tab } from "./Tab";
 
 describe("Tab", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 
-  test("should (un)register event listeners", async () => {
-    const tag = defineCE(
-      class extends Tab.ELEMENT {
-        protected firstUpdated(changedProperties: PropertyValues) {
-          super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
-        }
-      }
-    );
-
-    const el = fixtureSync<Tab.ELEMENT>(`<${tag}></${tag}>`);
-    const firstUpdatedEvent = await oneEvent(el, "first-updated");
-    expect(el.hasAttribute("role")).toBeTruthy();
-    expect(firstUpdatedEvent).toBeDefined();
+  test("should have tab role", async () => {
+    const el = fixtureSync<Tab.ELEMENT>(`<md-tab></md-tab>`);
+    await elementUpdated(el);
+    expect(el.role).toBe("tab");
   });
 
   test("should reflect `disabled` attribute", async () => {
@@ -43,9 +27,13 @@ describe("Tab", () => {
 
     el.disabled = false;
     await elementUpdated(el);
-    expect(el.hasAttribute("aria-disabled")).toBeTruthy();
-    expect(el.getAttribute("aria-disabled")).toBe("false");
+    expect(el.hasAttribute("aria-disabled")).toBeFalsy();
     expect(el.hasAttribute("disabled")).toBeFalsy();
+    expect(el.getAttribute("tabindex")).toBe("-1");
+
+    el.selected = true;
+    el.disabled = false;
+    await elementUpdated(el);
     expect(el.getAttribute("tabindex")).toBe("0");
   });
 
@@ -70,7 +58,7 @@ describe("Tab", () => {
       new KeyboardEvent("keydown", {
         code
       });
-    (el as Tab.ELEMENT).handleCrossKeydown(createEvent(Key.Enter));
+    el.handleCrossKeydown(createEvent(Key.Enter));
 
     const { detail: click } = await tabCloseClickPromise;
     expect(click).toBeDefined();

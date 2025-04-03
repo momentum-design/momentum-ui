@@ -110,7 +110,11 @@ export namespace AdvanceList {
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
-      this.isMulti ? this.setCheckboxAttributes(isSelected, wrapper) : wrapper.classList.toggle("selected", isSelected);
+      if (this.isMulti) {
+        this.setCheckboxAttributes(isSelected, wrapper);
+      } else {
+        wrapper.classList.toggle("selected", isSelected);
+      }
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
       wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");
@@ -250,7 +254,11 @@ export namespace AdvanceList {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      this.isMulti ? this.updateItemForMultiSelect(this.activeId) : (this.selectedItemsIds = [this.activeId]);
+      if (this.isMulti) {
+        this.updateItemForMultiSelect(this.activeId);
+      } else {
+        this.selectedItemsIds = [this.activeId];
+      }
       this.updateSelectedState();
       this.notifySelectedChange();
     }

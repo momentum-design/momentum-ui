@@ -34,7 +34,7 @@ export namespace DatePickerCalendar {
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) monthFormat = "MMMM yyyy";
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
     @property({ type: Boolean, reflect: true, attribute: "short-day" }) shortDay = false;
@@ -68,10 +68,10 @@ export namespace DatePickerCalendar {
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     setDate = (date: DateTime, cb?: Function) => {
       this.viewAnchorDate = date;
-      cb && cb();
+      cb?.();
     };
 
     increaseMonth = (event: MouseEvent) => {

@@ -24,9 +24,13 @@ export namespace TabPanel {
       return [reset, styles];
     }
 
+    connectedCallback(): void {
+      super.connectedCallback();
+      this.setAttribute("role", "tabpanel");
+    }
+
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      this.setAttribute("role", "tabpanel");
       if (this.focusablePanel === "true") {
         this.setAttribute("tabindex", "0");
       }

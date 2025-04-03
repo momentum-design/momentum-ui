@@ -11,8 +11,11 @@ let isMeetingAlertOpenProp = false;
 function toggleMeetingAlertAttr() {
   const meetingAlert = querySelectorDeep("#triggered-meeting-alert");
   isMeetingAlertOpenAttr = !isMeetingAlertOpenAttr;
-  isMeetingAlertOpenAttr && meetingAlert?.setAttribute("show", "");
-  !isMeetingAlertOpenAttr && meetingAlert?.removeAttribute("show");
+  if (isMeetingAlertOpenAttr) {
+    meetingAlert?.setAttribute("show", "");
+  } else {
+    meetingAlert?.removeAttribute("show");
+  }
 }
 
 function toggleMeetingAlertProp() {

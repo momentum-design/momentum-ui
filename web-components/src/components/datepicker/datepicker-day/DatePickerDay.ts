@@ -55,8 +55,14 @@ export namespace DatePickerDay {
       this.isToday = isSameDay(this.day, now());
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
-      this.focused && this.button && this.button.shadowRoot?.querySelector("button")?.focus();
-      this.parentRangePicker && (this.dateIsInRange = this.isDateInRange());
+
+      if (this.focused && this.button) {
+        this.button.shadowRoot?.querySelector("button")?.focus();
+      }
+
+      if (this.parentRangePicker) {
+        this.dateIsInRange = this.isDateInRange();
+      }
     }
 
     handleClick = (e: MouseEvent) => {

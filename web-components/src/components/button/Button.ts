@@ -228,7 +228,7 @@ export namespace Button {
       if (this.disabled) {
         return;
       }
-      this.clickFunction && this.clickFunction();
+      this.clickFunction?.();
       this.dispatchEvent(
         new CustomEvent("button-click", {
           composed: true,

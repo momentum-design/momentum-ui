@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 export interface DayFilters {
   minDate: DateTime | undefined;
   maxDate: DateTime | undefined;
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   filterDate: Function | undefined;
 }
 export interface DatePickerProps {

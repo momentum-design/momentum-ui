@@ -35,29 +35,29 @@ const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].
   `
 );
 
+const tabMenuStyle = css`
+  .menu-trigger-button {
+    height: 100%;
+    background-color: white;
+    border: none;
+  }
+
+  .menu-trigger-button:focus {
+    box-shadow: 0 0 0 1.5px var(--md-blue-60);
+    outline: none;
+    border-radius: 4px;
+  }
+
+  .menu-trigger-button:hover {
+    background-color: #dcdcdc;
+    border-radius: 4px;
+  }
+`;
+
 @customElement("tabs-order-prefs-example")
 export class TabsOrderPrefsExample extends LitElement {
   static get styles() {
-    return [
-      css`
-        .menu-trigger-button {
-          height: 100%;
-          background-color: white;
-          border: none;
-        }
-
-        .menu-trigger-button:focus {
-          box-shadow: 0 0 0 1.5px var(--md-blue-60);
-          outline: none;
-          border-radius: 4px;
-        }
-
-        .menu-trigger-button:hover {
-          background-color: #dcdcdc;
-          border-radius: 4px;
-        }
-      `
-    ];
+    return [tabMenuStyle];
   }
 
   handleResetTabs() {
@@ -275,26 +275,7 @@ export class TabsTemplateSandbox extends LitElement {
   }
 
   static get styles() {
-    return [
-      css`
-        .menu-trigger-button {
-          height: 100%;
-          background-color: white;
-          border: none;
-        }
-
-        .menu-trigger-button:focus {
-          box-shadow: 0 0 0 1.5px var(--md-blue-60);
-          outline: none;
-          border-radius: 4px;
-        }
-
-        .menu-trigger-button:hover {
-          background-color: #dcdcdc;
-          border-radius: 4px;
-        }
-      `
-    ];
+    return [tabMenuStyle];
   }
 
   private handleTabClick(event: any) {
@@ -693,6 +674,75 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
   }
 }
 
+@customElement("adding-and-removing-tabs-sandbox-example")
+export class AddingAndRemovingTabsTemplate extends LitElement {
+  @state() private showSecondTab = true;
+  selectedTab = "tab1";
+
+  private readonly allTabs = ["tab1", "tab2", "tab3"];
+
+  get filteredTabs() {
+    return this.showSecondTab ? this.allTabs : this.allTabs.filter((tab) => tab !== "tab2");
+  }
+
+  private get checkboxTemplate(): TemplateResult {
+    return html`
+      <md-checkbox
+        @checkbox-change=${(e: Event) => {
+          this.showSecondTab = (e.target as HTMLInputElement).checked;
+        }}
+        slot="checkbox"
+        ?checked=${this.showSecondTab}
+      >
+        Show Second Tab
+      </md-checkbox>
+    `;
+  }
+
+  private selectedTabChanged(event: CustomEvent) {
+    const path = event.composedPath();
+    const originalTarget = path[0] as HTMLElement;
+    if (!originalTarget.classList.contains("adding-and-removing-tabs")) {
+      return;
+    }
+
+    const { value, tabsOrder } = event.detail;
+    const tab = tabsOrder[value];
+    this.selectedTab = tab;
+  }
+
+  private get selectedTabIndex(): number {
+    return this.filteredTabs.indexOf(this.selectedTab) ?? 0;
+  }
+
+  render(): TemplateResult {
+    return html`
+      ${this.checkboxTemplate}
+      <md-tabs
+        class="adding-and-removing-tabs"
+        newMomentum
+        type="rounded"
+        variant="primary"
+        selected-index=${this.selectedTabIndex}
+        @selected-changed=${(e: CustomEvent) => this.selectedTabChanged(e)}
+      >
+        ${repeat(
+          this.filteredTabs,
+          (tab) => tab,
+          (tab) => html`
+            <md-tab slot="tab" name=${tab} ?selected=${this.selectedTab === tab}>
+              <span>${tab}</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <span>Content for "${tab}"</span>
+            </md-tab-panel>
+          `
+        )}
+      </md-tabs>
+    `;
+  }
+}
+
 export const tabsTemplate = html`
   <default-tabs-sandbox></default-tabs-sandbox>
   <tabs-order-prefs-example></tabs-order-prefs-example>
@@ -945,4 +995,5 @@ export const tabsTemplate = html`
       </md-tab-panel>
     </md-tabs>
   </div>
+  <adding-and-removing-tabs-sandbox-example></adding-and-removing-tabs-sandbox-example>
 `;

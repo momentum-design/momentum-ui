@@ -240,7 +240,9 @@ describe("Dropdown Component", () => {
         " non-trimmed-with-spaces   "
       ];
 
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+      const consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {
+        /* no-op */
+      });
 
       dropdown = await fixture<Dropdown.ELEMENT>(html`
         <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>

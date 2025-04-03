@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Compiler, sources } from "webpack";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const webpack = require("webpack");
 const { RawSource } = sources;
 

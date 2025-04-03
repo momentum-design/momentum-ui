@@ -97,10 +97,10 @@ export const findHighlight = (text: string, query: string) => {
   return chunks;
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   let timeout: ReturnType<typeof setTimeout> | null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   return function (this: T, ...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const context = this;
@@ -144,7 +144,11 @@ export function closestElement(selector: string, base: HTMLElement) {
     if (!el || el === document || el === window) return null;
 
     const found = el.closest(selector);
-    return found ? found : __closestFrom(el.getRootNode().host);
+    return found ?? __closestFrom(el.getRootNode().host);
   }
   return __closestFrom(base);
+}
+
+export function getElementSafe<T>(elements: T[], index: number): T | undefined {
+  return index >= 0 && index < elements.length ? elements[index] : undefined;
 }

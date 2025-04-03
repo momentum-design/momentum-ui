@@ -17,12 +17,12 @@ describe("MenuItem component", () => {
 
   test("should create component", async () => {
     const component: MenuItem.ELEMENT = await fixture(`<md-menu-item ><span>Test</span></md-menu-item>`);
-    expect(component).toBeDefined;
+    expect(component).toBeDefined();
   });
 
   test("component should be disabled", async () => {
     const component: MenuItem.ELEMENT = await fixture(`<md-menu-item disabled><span>Test</span></md-menu-item>`);
-    expect(component.disabled).toBeTruthy;
+    expect(component.disabled).toBeTruthy();
     expect(component.getAttribute("tabindex")).toBe("-1");
   });
 

@@ -17,6 +17,7 @@ const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
+const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg");
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
@@ -56,10 +57,7 @@ const common: webpack.Configuration = {
           loader: "url-loader",
           options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
         },
-        include: [
-          path.resolve("node_modules/@momentum-design/icons/dist/svg"),
-          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg")
-        ]
+        include: [path.resolve("node_modules/@momentum-design/icons/dist/svg")]
       }
     ]
   }
@@ -82,7 +80,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       { loader: "lit-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
-      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
+      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
         loader: "sass-loader",
@@ -121,6 +119,7 @@ export const commonDev = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
+        { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
         { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
         { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
@@ -234,6 +233,7 @@ const commonDist = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
+        { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "assets/styles/[name][ext]" }
       ]
     }),

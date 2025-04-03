@@ -50,7 +50,7 @@ export namespace DatePicker {
 
     @state() selectedDate: DateTime = now();
     @state() focusedDate: DateTime = now();
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     @state() filterDate: Function | undefined = undefined;
     @state() maxDateData: DateTime | undefined = undefined;
     @state() minDateData: DateTime | undefined = undefined;
@@ -128,7 +128,9 @@ export namespace DatePicker {
       const event = e.detail.sourceEvent;
       this.setPreSelection(date);
       this.setSelected(date, event);
-      this.shouldCloseOnSelect && this.setOpen(false);
+      if (this.shouldCloseOnSelect) {
+        this.setOpen(false);
+      }
     };
 
     private getLocaleDateString(date: DateTime): string {

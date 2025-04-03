@@ -170,7 +170,7 @@ export namespace EditableTextfield {
     handleBlur = () => {
       this.isEditing = false;
       if (this.maxLines.length > 0) {
-        this.editableField && this.editableField.scrollTo(0, 0);
+        this.editableField?.scrollTo(0, 0);
       }
       this.content = this.editableField?.innerText.trim() || "";
       this.alert = false;
@@ -179,7 +179,7 @@ export namespace EditableTextfield {
 
     handleValidation() {
       if (this.type || this.pattern) {
-        const valid = this.checkValidity && this.checkValidity(this.content);
+        const valid = this.checkValidity?.(this.content);
         if (!valid) {
           this.reportValidity();
           this.showAlert();

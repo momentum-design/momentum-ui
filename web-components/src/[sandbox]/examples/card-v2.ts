@@ -30,8 +30,8 @@ export class CardV2TemplateSandbox extends LitElement {
     this.removeEventListener("expand-card-toggled", this.handleExpandCardToggled as EventListener);
   }
 
-  private handleExpandCardToggled(e: MouseEvent) {
-    const { identifier, active } = e.detail as any;
+  private handleExpandCardToggled(e: CustomEvent) {
+    const { identifier, active } = e.detail;
 
     this.value = "Card (" + identifier + ") active: " + active;
   }

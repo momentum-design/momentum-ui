@@ -317,7 +317,7 @@ export namespace ComboBox {
             this.input!.select();
           }
         }
-        super.handleFocusIn && super.handleFocusIn(event);
+        super.handleFocusIn?.(event);
       }
       this.dispatchEvent(
         new CustomEvent("combobox-focus-in", {
@@ -328,7 +328,7 @@ export namespace ComboBox {
     }
 
     protected handleFocusOut(event: Event) {
-      super.handleFocusOut && super.handleFocusOut(event);
+      super.handleFocusOut?.(event);
       this.dispatchEvent(
         new CustomEvent("combobox-focus-out", {
           composed: true,

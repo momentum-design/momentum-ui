@@ -69,7 +69,11 @@ export namespace MeetingAlert {
     };
 
     handleSnooze = (e: Event) => {
-      this.onSnooze ? this.onSnooze(e) : this._onSnooze(e);
+      if (this.onSnooze) {
+        this.onSnooze(e);
+      } else {
+        this._onSnooze(e);
+      }
       e.stopPropagation();
     };
 

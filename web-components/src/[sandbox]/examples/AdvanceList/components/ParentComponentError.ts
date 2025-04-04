@@ -51,7 +51,7 @@ export namespace ParentComponentError {
         this.page += 1;
         this.isLoading = false;
         this.isError = false;
-      } catch (err) {
+      } catch (_err) {
         this.isLoading = false;
         this.isError = true;
       } finally {

@@ -4,6 +4,7 @@ import {
   addDays,
   addMonths,
   addWeeks,
+  dateStringToDateTime,
   DayFilters,
   getDate,
   getLocaleData,
@@ -16,6 +17,7 @@ import {
   isSameMonth,
   localizeDate,
   now,
+  reformatDateString,
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractDays,
@@ -101,27 +103,21 @@ describe("DateTime Module", () => {
   });
   test("isSameDay function returns a correct boolean", async () => {
     const date1 = DateTime.fromSQL("2020-10-10");
-    setTimeout(() => {
-      () => ({});
-    }, 2200);
     const date2 = DateTime.fromSQL("2020-10-10");
     const date3 = DateTime.fromSQL("2020-10-10").plus({ days: 2 });
     const utilFuncReturn1 = isSameDay(date1, date2);
-    expect(utilFuncReturn1).toBeTruthy;
+    expect(utilFuncReturn1).toBeTruthy();
     const utilFuncReturn2 = isSameDay(date1, date3);
-    expect(utilFuncReturn2).toBeFalsy;
+    expect(utilFuncReturn2).toBeFalsy();
   });
   test("isSameMonth function returns a correct boolean", async () => {
     const date1 = DateTime.fromSQL("2020-10-10");
-    setTimeout(() => {
-      () => ({});
-    }, 2200);
     const date2 = DateTime.fromSQL("2020-10-10");
     const date3 = DateTime.fromSQL("2020-10-10").plus({ months: 2 });
     const utilFuncReturn1 = isSameMonth(date1, date2);
-    expect(utilFuncReturn1).toBeTruthy;
+    expect(utilFuncReturn1).toBeTruthy();
     const utilFuncReturn2 = isSameMonth(date1, date3);
-    expect(utilFuncReturn2).toBeFalsy;
+    expect(utilFuncReturn2).toBeFalsy();
   });
 
   test("isDayDisabled returns correct boolean", async () => {
@@ -143,14 +139,14 @@ describe("DateTime Module", () => {
     const utilFuncReturn4 = isDayDisabled(validDate, filters);
 
     if (date1.weekdayShort?.startsWith("M")) {
-      expect(utilFuncReturn1).toBeTruthy;
+      expect(utilFuncReturn1).toBeTruthy();
     } else {
-      expect(utilFuncReturn1).toBeFalsy;
+      expect(utilFuncReturn1).toBeFalsy();
     }
 
-    expect(utilFuncReturn2).toBeTruthy;
-    expect(utilFuncReturn3).toBeTruthy;
-    expect(utilFuncReturn4).toBeFalsy;
+    expect(utilFuncReturn2).toBeTruthy();
+    expect(utilFuncReturn3).toBeTruthy();
+    expect(utilFuncReturn4).toBeFalsy();
   });
 
   test("shouldPrevMonthDisable returns correct boolean", async () => {
@@ -159,8 +155,8 @@ describe("DateTime Module", () => {
     const minDateOutsideMonth = date.minus({ month: 1 });
     const utilFuncReturn1 = shouldPrevMonthDisable(date, minDateInMonth);
     const utilFuncReturn2 = shouldPrevMonthDisable(date, minDateOutsideMonth);
-    expect(utilFuncReturn1).toBeTruthy;
-    expect(utilFuncReturn2).toBeFalsy;
+    expect(utilFuncReturn1).toBeTruthy();
+    expect(utilFuncReturn2).toBeFalsy();
   });
   test("shouldNextMonthDisable returns correct boolean", async () => {
     const date = DateTime.fromSQL("2020-10-10");
@@ -168,7 +164,19 @@ describe("DateTime Module", () => {
     const minDateOutsideMonth = date.plus({ month: 1 });
     const utilFuncReturn1 = shouldNextMonthDisable(date, minDateInMonth);
     const utilFuncReturn2 = shouldNextMonthDisable(date, minDateOutsideMonth);
-    expect(utilFuncReturn1).toBeTruthy;
-    expect(utilFuncReturn2).toBeFalsy;
+    expect(utilFuncReturn1).toBeTruthy();
+    expect(utilFuncReturn2).toBeFalsy();
+  });
+
+  test("reformatDateString should format a SQL date string with slashes instead of dashes", async () => {
+    expect(reformatDateString("2021-12-12")).toEqual("2021/12/12");
+    expect(reformatDateString("2021-12-12T09:01:01-8:00")).toEqual("2021/12/12T09:01:01-8:00");
+    expect(reformatDateString("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
+  });
+
+  test("dateStringToDateTime should get valid DateTime from SQL date string with slashes instead of dashes", async () => {
+    const dateTime = dateStringToDateTime("2023-03-15");
+    expect(dateTime).toBeInstanceOf(DateTime);
+    expect(dateTime.toISODate()).toEqual("2023-03-15");
   });
 });

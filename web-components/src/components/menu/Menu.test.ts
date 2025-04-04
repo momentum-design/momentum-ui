@@ -40,7 +40,7 @@ describe("Menu component", () => {
 
   test("should create component", async () => {
     const component = await fixtureFactory();
-    expect(component).toBeDefined;
+    expect(component).toBeDefined();
   });
 
   test("should setup menu items", async () => {

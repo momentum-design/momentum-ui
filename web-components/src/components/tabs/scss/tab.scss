@@ -121,6 +121,10 @@
   }
 }
 
+.test-compatibility-button {
+  display: none;
+}
+
 .tab-content.primary {
   color: var(--tabs-default-text-color);
   font-family: var(--brand-font-medium);

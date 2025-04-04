@@ -242,6 +242,14 @@ export namespace Tab {
           ${this.isCrossVisible && this.closable ? this.renderCrossButton() : ""}
         </div>
         <div part="indicator"></div>
+        <!-- Invisible button for legacy third party test compatibility -->
+        <button
+          type="button"
+          class="test-compatibility-button"
+          aria-hidden="true"          
+          @click=${(e: MouseEvent) => this.handleClick(e)}
+          @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
+        ></button>
       `;
     }
   }

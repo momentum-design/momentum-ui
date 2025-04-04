@@ -297,8 +297,7 @@ export namespace Icon {
       };
     }
 
-    consoleHandler = (message: string, data: string) => {
-      /* eslint-disable no-console */
+    consoleHandler = (message: string, data: string) => {      
       switch (message) {
         case "color-warn":
           console.warn(

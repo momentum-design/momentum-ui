@@ -1,6 +1,7 @@
-const path = require("path");
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const cssstats = require("cssstats");
-const writeFileSyncRecursive = require('./writeFileSyncRecursive')
+const writeFileSyncRecursive = require("./writeFileSyncRecursive");
 
 module.exports = function analyzeCSS(module, data) {
   try {

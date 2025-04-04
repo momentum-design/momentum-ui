@@ -7,7 +7,9 @@ export const withThemeDecorator = (story, context) => {
   const theme = context.globals.theme;
 
   themeManager.setDarkMode(isDark);
-  themeManager.setThemeName(theme);  
+  themeManager.setThemeName(theme);
 
-  return html` <md-theme class="theme-toggle" ?darkTheme=${themeManager.isDarkMode} theme=${themeManager.themeName}> ${story()} </md-theme>`;
+  return html` <md-theme class="theme-toggle" ?darkTheme=${themeManager.isDarkMode} theme=${themeManager.themeName}>
+    ${story()}
+  </md-theme>`;
 };

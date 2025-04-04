@@ -58,7 +58,6 @@ export const MeetingAlert: StoryObj = {
   },
   render: (args: Args) => {
     if (args.withAttendees) {
-      /* eslint-disable @typescript-eslint/no-explicit-any */
       return html`
         <md-meeting-alert
           show

@@ -29,7 +29,16 @@ const tabs = {
       common: "$mds-color-theme-outline-theme-normal"
     },
     "focus-shadow": {
-      common: "0 0 4px 0px $mds-color-theme-outline-theme-normal"
+      common: "0 0 4px 0px $mds-color-theme-outline-theme-normal",
+      inner: {
+        common: "0 0 0 2px $mds-color-theme-focus-default-0"
+      },
+      middle: {
+        common: "0 0 0 4px $mds-color-theme-focus-default-1"
+      },
+      outer: {
+        common: "0 0 0 5px $mds-color-theme-focus-default-2"
+      }
     },
     "hover-border": {
       common: "transparent"

@@ -409,6 +409,9 @@ export namespace Tabs {
       });
 
       let selectedIndex = this.selected;
+      if (selectedIndex === -1) {
+        selectedIndex = 0;
+      }
       while (selectedIndex < tabs.length && tabs[selectedIndex].disabled) {
         selectedIndex++;
       }
@@ -1278,7 +1281,9 @@ export namespace Tabs {
         name="tab"
         class="${classMap({
           "visible-tabs-slot": this.direction === "horizontal"
-        })}"
+        })}
+        "
+        @slotchange=${this.initializeTabs}
       ></slot> `;
     }
 
@@ -1335,7 +1340,7 @@ export namespace Tabs {
         >
           ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
           <div class="md-tabs__settings" part="md-tabs__settings">
-            <slot name="settings"></slot>
+            <slot name="settings" @slotchange=${this.initializeTabs}></slot>
           </div>
         </div>
         <div
@@ -1344,7 +1349,7 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
         >
-          <slot name="panel"></slot>
+          <slot name="panel" @slotchange=${this.initializeTabs}></slot>
         </div>
       `;
     }

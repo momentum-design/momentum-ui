@@ -43,5 +43,6 @@ module.exports = {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@css/(.*)$": "<rootDir>/src/assets/styles/$1",
     "^@img/(.*)$": "<rootDir>/src/assets/images/$1"
-  }
+  },
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
 };

@@ -12,7 +12,7 @@ import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";
 import { SlottedMixin } from "@/mixins/SlottedMixin";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, PropertyValues } from "lit";
+import { html, LitElement } from "lit";
 import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { MenuItem } from "./MenuItem";
@@ -179,18 +179,15 @@ export namespace Menu {
       this.addEventListener("menu-item-keydown", this.handleItemKeydown as EventListener);
     }
 
-    protected async updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
-      if (changedProperties.has("slotted")) {
-        this.setupMenuItems();
-        this.linkMenuItems();
-      }
-    }
-
     disconnectedCallback() {
       super.connectedCallback();
       this.removeEventListener("menu-item-click", this.handleItemClick as EventListener);
       this.removeEventListener("menu-item-keydown", this.handleItemKeydown as EventListener);
+    }
+
+    private onSlotChange() {
+      this.setupMenuItems();
+      this.linkMenuItems();
     }
 
     get menuClassMap() {
@@ -204,7 +201,7 @@ export namespace Menu {
       return html`
         <nav class="md-menu ${classMap(this.menuClassMap)}">
           <ul class="md-menu-list">
-            <slot></slot>
+            <slot @slotchange=${this.onSlotChange}></slot>
           </ul>
         </nav>
       `;

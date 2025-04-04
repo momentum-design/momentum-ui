@@ -2,6 +2,7 @@ import { Key } from "@/constants";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import { elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit";
+import "./Tab";
 import { type Tab } from "./Tab";
 
 describe("Tab", () => {

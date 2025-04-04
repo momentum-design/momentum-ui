@@ -13,7 +13,6 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import "@lit-labs/virtualizer";
 import { LitVirtualizer } from "@lit-labs/virtualizer";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, queryAll, state } from "lit/decorators.js";
@@ -162,7 +161,7 @@ export namespace ComboBox {
           newList?.toggleAttribute("focused", true);
         }
 
-        const virtualizer = this.shadowRoot?.querySelector<LitVirtualizer>("<lit-virtualizer>");
+        const virtualizer = this.shadowRoot?.querySelector<LitVirtualizer>("lit-virtualizer");
         if (virtualizer) {
           if (index === -1) {
             virtualizer.element(index)?.scrollIntoView({

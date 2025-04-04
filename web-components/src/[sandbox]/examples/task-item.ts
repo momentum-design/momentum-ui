@@ -138,5 +138,24 @@ export const taskItemTemplate = html`
       </md-badge>
       <md-button variant="green" title="text title"><span slot="text">Ringing</span></md-button>
     </md-task-item>
+
+    <md-task-item mediaType="outbound-campaign" item-title="Campaign call" noMargin="true">
+      <md-button variant="secondary" loading maxWidth="150px" outline size="28">
+        <span slot="text">Connecting...</span>
+      </md-button>
+    </md-task-item>
+
+    <md-task-item
+      mediaType="outbound-campaign"
+      popovertitle="Campaign call"
+      queue="A Queue"
+      lastmessage="Time Left 00:29"
+    >
+      <div class=test-button" style="display: flex; flex-direction: column ;justify-content: space-evenly; height: 100%">
+        <md-button variant="secondary" size="24"> Answer </md-button>
+        <md-button variant="secondary" size="24"> Cancel </md-button>
+      </div>
+      
+    </md-task-item>
   </div>
 `;

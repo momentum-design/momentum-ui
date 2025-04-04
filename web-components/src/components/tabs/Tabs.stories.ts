@@ -35,7 +35,7 @@ const tabs = (args: Args) => {
       ?hug-tabs=${args.hugTabs}
       more-items-scroll-limit=${args.moreItemsScrollLimit}
       selected-index=${args.selectedIndex}
-      ?scroll-arrow="${args.scrollArrow}"
+      ?scroll-arrow=${args.scrollArrow}
     >
       <md-tab slot="tab" closable="${args.closable}">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -93,7 +93,7 @@ const moreTabs = (args: Args) => {
         ?hug-tabs=${args.hugTabs}
         more-items-scroll-limit=${args.moreItemsScrollLimit}
         selected-index=${args.selectedIndex}
-        ?scroll-arrow="${args.scrollArrow}"
+        ?scroll-arrow=${args.scrollArrow}
       >
         <md-tab slot="tab" closable="${args.closable}" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -167,76 +167,61 @@ const moreTabs = (args: Args) => {
 
 export const Default: StoryObj = {
   args: {
-    alignment: "horizontal"
+    alignment: "horizontal",
+    type: "line",
+    variant: "ghost"
   },
   render: (args: Args) => {
     return html` ${args.more ? moreTabs(args) : tabs(args)} `;
   }
 };
 
-export const VerticalTabs: StoryObj = {
-  args: {
-    alignment: "vertical"
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+export const HorizontalTab: StoryObj = {
+  render: () => {
+    return html`
+      <h3>Default Line Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "line" })}
+      <h3>Pill Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "pill" })}
+      <h3>Rounded Primary Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary" })}
+    `;
   }
 };
 
-export const MoreTabswithMenuOverlay: StoryObj = {
-  args: {
-    alignment: "horizontal",
-    more: true
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+export const HorizontalTabNewMomentum: StoryObj = {
+  render: () => {
+    return html`
+      <h3>Default Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "line", newMomentum: true })}
+      <h3>Pill Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "pill", newMomentum: true })}
+      <h3>Rounded Primary Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary", newMomentum: true })}
+      <h3>Rounded Primary Tab with Scroll Arrow (NewMomentum)</h3>
+      ${moreTabs({
+        alignment: "horizontal",
+        type: "rounded",
+        variant: "primary",
+        scrollArrow: true,
+        newMomentum: true
+      })}
+    `;
   }
 };
 
-export const DraggableCloseableTabs: StoryObj = {
-  args: {
-    alignment: "horizontal",
-    draggable: true,
-    closable: "auto"
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
-  }
-};
-
-export const NewTabs: StoryObj = {
-  args: {
-    alignment: "horizontal",
-    newMomentum: true
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
-  }
-};
-
-export const NewPrimaryRoundedTabs: StoryObj = {
-  args: {
-    alignment: "horizontal",
-    newMomentum: true,
-    variant: "primary",
-    type: "rounded",
-    more: true
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
-  }
-};
-export const NewScrollArrowTabs: StoryObj = {
-  args: {
-    alignment: "horizontal",
-    newMomentum: true,
-    variant: "primary",
-    type: "rounded",
-    more: true,
-    scrollArrow: true
-  },
-  render: (args: Args) => {
-    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+export const VerticalTab: StoryObj = {
+  render: () => {
+    return html`
+      <h3>Default Line Tab</h3>
+      ${moreTabs({ alignment: "vertical", type: "line" })}
+      <h3>Line Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "vertical", type: "line", newMomentum: true })}
+      <h3>Pill Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "vertical", type: "pill", newMomentum: true })}
+      <h3>Rounded Primary Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "vertical", type: "rounded", variant: "primary", newMomentum: true })}
+    `;
   }
 };
 

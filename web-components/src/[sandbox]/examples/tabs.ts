@@ -574,7 +574,8 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     hug: boolean,
     newMomentum: boolean,
     variant: Tabs.TabVariant,
-    type: Tabs.TabsType
+    type: Tabs.TabsType,
+    scrollArrow = false
   ): TemplateResult {
     return html`
       <md-tabs
@@ -584,6 +585,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         type=${type}
         ?newMomentum=${newMomentum}
         variant=${variant}
+        ?scroll-arrow=${scrollArrow}
       >
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <span>All</span>
@@ -658,6 +660,13 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     `;
   }
 
+  get tabsSrollArrowTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs newMomentum rounded primary with scroll arrow</h3>
+      ${this.getTabsTemplate(true, true, true, true, "primary", "rounded", true)}
+    `;
+  }
+
   get tabsJustifiedWithTooltipTemplate(): TemplateResult {
     return html`
       <h3>md-tabs justified with tooltip</h3>
@@ -686,7 +695,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     return html`
       <div style="max-width: 600px;">
         ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsLinePrimaryTemplate}
-        ${this.tabsJustifiedWithTooltipTemplate}
+        ${this.tabsSrollArrowTemplate} ${this.tabsJustifiedWithTooltipTemplate}
       </div>
     `;
   }

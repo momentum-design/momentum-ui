@@ -80,7 +80,7 @@ export namespace Tabs {
     @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: String }) variant: TabVariant = "ghost";
-    @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow: boolean = false;
+    @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -145,7 +145,7 @@ export namespace Tabs {
     private hiddenTabsSortableInstance: Sortable | null = null;
 
     private get currentTabsLayout(): Tab.ELEMENT[] {
-      return this.direction === "horizontal"
+      return this.direction === "horizontal" && !this.scrollArrow
         ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
         : this.tabs;
     }
@@ -235,7 +235,7 @@ export namespace Tabs {
     }
 
     private async manageOverflow() {
-      if (this.direction !== "vertical") {
+      if (this.direction !== "vertical" && !this.scrollArrow) {
         let tabList;
         if (this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0) {
           tabList = [...this.tabs];
@@ -269,26 +269,6 @@ export namespace Tabs {
           }, 0);
 
           if (tabsTotalOffsetWidth) {
-            if (this.newMomentum && this.scrollArrow) {
-              this.tabsViewportDataList = tabList.map((tab, idx) => ({
-                isTabInViewportHidden: false,
-                tabOffsetWidth: tabsOffsetsWidths[idx]
-              }));
-
-              this.tabsFilteredAsVisibleList = [...tabList];
-
-              this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce(
-                (acc, tab, idx) => {
-                  acc[tab.id] = idx;
-                  return acc;
-                },
-                {} as Record<TabId, number>
-              );
-
-              this.isMoreTabMenuVisible = false;
-              this.updateArrowsVisibility();
-              return;
-            }
             // more
             await this.setupMoreTab();
 
@@ -359,9 +339,12 @@ export namespace Tabs {
     private updateArrowsVisibility() {
       if (!this.tabsListElement) return;
 
-      const { scrollLeft, scrollWidth, clientWidth } = this.tabsListElement;
-      this.showLeftArrow = scrollLeft > 0;
-      this.showRightArrow = scrollLeft + clientWidth < scrollWidth;
+      requestAnimationFrame(() => {
+        const { scrollLeft, scrollWidth, clientWidth } = this.tabsListElement as HTMLDivElement;
+
+        this.showLeftArrow = scrollLeft > 0;
+        this.showRightArrow = scrollLeft + clientWidth < scrollWidth - 5;
+      });
     }
 
     private updateIsMoreTabMenuSelected() {
@@ -412,12 +395,19 @@ export namespace Tabs {
         tab.setAttribute("id", tabId);
         tab.setAttribute("aria-controls", panelId);
         tab.selected = this.selected === index;
+        tab.newMomentum = this.newMomentum;
+        tab.type = this.type;
+        tab.variant = this.variant;
+
+        if (this.scrollArrow) {
+          tab.visibleTab = true;
+        }
 
         if (tab.vertical !== isVertical) {
           tab.vertical = isVertical;
         }
 
-        if (tab.viewportHidden && isVertical) {
+        if (tab.viewportHidden && (isVertical || this.scrollArrow)) {
           tab.viewportHidden = false;
         }
 
@@ -759,6 +749,14 @@ export namespace Tabs {
     }
 
     private getCurrentIndex(tabId: string) {
+      if (this.scrollArrow) {
+        const arrayLength = this.tabs.length;
+        for (let i = 0; i < arrayLength; i++) {
+          if (this.tabs[i].id === tabId) {
+            return i;
+          }
+        }
+      }
       const arrayLength = this.visibleTabsContainerElement?.children.length ?? 0;
       for (let i = 0; i < arrayLength; i++) {
         if (this.visibleTabsContainerElement?.children[i].id === tabId) {
@@ -770,12 +768,27 @@ export namespace Tabs {
 
     private moveFocusToAdjacentTab(elementId: string, direction: "previous" | "next" | "fromMoreTabs") {
       const currentTabIndex = this.getCurrentIndex(elementId);
+      const tabs = this.slotItem.assignedElements() as Tab.ELEMENT[];
+      let newIndex = 0;
+
+      if (this.scrollArrow) {
+        if (direction === PREVIOUS) {
+          newIndex = currentTabIndex === 0 ? tabs.length - 1 : currentTabIndex - 1;
+        } else if (direction === NEXT) {
+          newIndex = currentTabIndex === tabs.length - 1 ? 0 : currentTabIndex + 1;
+        }
+        this.moveFocusToTab(tabs[newIndex]);
+        console.log("tab", currentTabIndex);
+
+        // tabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+        this.updateArrowsVisibility();
+        setTimeout(() => this.moveFocusToTab(tabs[newIndex]), 0);
+        return;
+      }
       const visibleTabs = this.visibleTabsContainerElement?.children;
       const visibleArrayLength = visibleTabs?.length ?? 0;
 
       if (!visibleTabs || visibleArrayLength === 0) return;
-
-      let newIndex = 0;
 
       if (direction === PREVIOUS) {
         newIndex = currentTabIndex === 0 ? visibleArrayLength - 1 : currentTabIndex - 1;
@@ -786,11 +799,6 @@ export namespace Tabs {
       }
 
       this.moveFocusToTab(visibleTabs[newIndex]);
-      if (this.newMomentum && this.scrollArrow) {
-        visibleTabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
-        this.updateArrowsVisibility();
-        setTimeout(() => this.moveFocusToTab(visibleTabs[newIndex]), 0);
-      }
     }
 
     moveFocusToTab(tabElement: Element | undefined) {
@@ -908,7 +916,7 @@ export namespace Tabs {
         case Key.ArrowLeft: {
           if (isMoreTriggerTab) {
             //
-          } else if (isVisibleTab) {
+          } else if (isVisibleTab || this.scrollArrow) {
             event.stopPropagation();
             this.moveFocusToAdjacentTab(elementId, PREVIOUS);
           } else if (isHiddenTab) {
@@ -919,7 +927,7 @@ export namespace Tabs {
         case Key.ArrowRight: {
           if (isMoreTriggerTab) {
             //
-          } else if (isVisibleTab) {
+          } else if (isVisibleTab || this.scrollArrow) {
             event.stopPropagation();
             this.moveFocusToAdjacentTab(elementId, NEXT);
           } else if (isHiddenTab) {
@@ -1107,6 +1115,9 @@ export namespace Tabs {
       this.setupPanelsAndTabs();
       this.linkPanelsAndTabs();
       this.selectTabFromStorage();
+      if (this.scrollArrow) {
+        this.updateArrowsVisibility();
+      }
     }
 
     private async onDirectionChanged() {
@@ -1123,8 +1134,10 @@ export namespace Tabs {
       if (this.direction === "horizontal") {
         await this.manageOverflow();
       }
-
       this.selectTabFromStorage();
+      if (this.scrollArrow) {
+        this.updateArrowsVisibility();
+      }
     }
 
     protected updated(changedProperties: PropertyValues) {
@@ -1204,6 +1217,20 @@ export namespace Tabs {
       if (changedProperties.has("overflowLabel")) {
         this.updateIsMoreTabTruncated();
       }
+
+      if (changedProperties.has("scrollArrow")) {
+        this.onDirectionChanged();
+      }
+    }
+
+    private scrollTabs(direction: "left" | "right") {
+      if (!this.tabsListElement || this.direction === "vertical") return;
+      const scrollAmount = 100;
+
+      const scrollDistance = direction === "left" ? -scrollAmount : scrollAmount;
+      this.tabsListElement.scrollBy({ left: scrollDistance, behavior: "smooth" });
+
+      setTimeout(() => this.updateArrowsVisibility(), 300);
     }
 
     private get moreMenuButtonTemplate() {
@@ -1221,6 +1248,7 @@ export namespace Tabs {
           })}"
           ?newMomentum=${this.newMomentum}
           type=${this.type}
+          visible-tab
         >
           <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
             <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
@@ -1253,6 +1281,7 @@ export namespace Tabs {
               tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
               role="menuitem"
               ?newMomentum=${this.newMomentum}
+              variant=${tab.variant}
               type=${tab.type}
               ?onlyIcon=${tab.onlyIcon}
             >
@@ -1300,16 +1329,6 @@ export namespace Tabs {
       `;
     }
 
-    private scrollTabs(direction: "left" | "right") {
-      if (!this.tabsListElement || this.direction === "vertical") return;
-      const scrollAmount = 100;
-
-      const scrollDistance = direction === "left" ? -scrollAmount : scrollAmount;
-      this.tabsListElement.scrollBy({ left: scrollDistance, behavior: "smooth" });
-
-      setTimeout(() => this.updateArrowsVisibility(), 300);
-    }
-
     private tabsButtonArrow(direction: "left" | "right") {
       return html`<md-button
         class="tabs-${direction}-arrow"
@@ -1323,12 +1342,14 @@ export namespace Tabs {
     }
 
     private get renderTabSlot() {
-      return html`<slot
-        name="tab"
-        class="${classMap({
-          "visible-tabs-slot": this.direction === "horizontal"
-        })}"
-      ></slot> `;
+      return html`
+        <slot
+          name="tab"
+          class="${classMap({
+            "visible-tabs-slot": this.direction === "horizontal" && !this.scrollArrow
+          })}"
+        ></slot>
+      `;
     }
 
     private get renderTabsWithMoreMenu() {
@@ -1359,20 +1380,21 @@ export namespace Tabs {
                 variant=${this.variant}
                 type=${this.type}
                 .onlyIcon="${tab.onlyIcon}"
+                visible-tab
               >
                 ${unsafeHTML(tab.innerHTML)}
               </md-tab>
             `
           )}
         </div>
-        ${!this.newMomentum || !this.scrollArrow ? this.moreMenuTemplate : nothing}
+        ${this.moreMenuTemplate}
       `;
     }
 
     render() {
       return html`
         <div class="md-tabs-wrapper" part="tabs-wrapper">
-          ${this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
+          ${this.scrollArrow && this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
           <div
             part="tabs-list"
             class="md-tab__list ${classMap({
@@ -1384,12 +1406,13 @@ export namespace Tabs {
             })}"
             role="tablist"
           >
-            ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
+            ${this.renderTabSlot}
+            ${this.direction === "horizontal" && !this.scrollArrow ? this.renderTabsWithMoreMenu : nothing}
             <div class="md-tabs__settings" part="md-tabs__settings">
               <slot name="settings"></slot>
             </div>
           </div>
-          ${this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
+          ${this.scrollArrow && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
         </div>
         <div
           part="tabs-content"

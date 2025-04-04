@@ -83,8 +83,7 @@
   .md-menu-overlay__more_list {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 8px;
+    padding: 8px;
     height: auto;
     max-width: 100%;
     width: 100%;
@@ -101,6 +100,12 @@
       &[selected]::part(tab) {
         background-color: var(--md-menu-active-background-color);
       }
+    }
+  }
+
+  &.tab-new-momentum {
+    .md-menu-overlay__more_tab {
+      min-height: 0;
     }
   }
 
@@ -218,7 +223,7 @@ md-menu-overlay {
   display: none !important;
 }
 
-:host([newMomentum][direction="horizontal"][scroll-arrow]) {
+:host([direction="horizontal"][scroll-arrow]) {
   .md-tabs-wrapper {
     display: flex;
     align-items: center;
@@ -238,10 +243,10 @@ md-menu-overlay {
       white-space: nowrap;
       scroll-behavior: smooth;
       position: relative;
-
-      .visible-tabs-container {
-        gap: rem-calc(8);
-      }
+      display: inline-flex;
+      gap: rem-calc(8);
+      height: rem-calc(39);
+      padding: rem-calc(5);
     }
   }
 }

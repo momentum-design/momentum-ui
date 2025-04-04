@@ -127,7 +127,7 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
     "lit1-scss-loader": "1.0.0",
-    "mobx": "^5.0.0",
+    "mobx": "^6.13.7",
     "postcss": "^8.4.47",
     "postcss-selector-parser": "^6.1.2",
     "prettier": "^3.5.3",

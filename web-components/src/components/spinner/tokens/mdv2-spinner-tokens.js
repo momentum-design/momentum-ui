@@ -11,7 +11,7 @@ const spinner = {
   },
   standalone: {
     "bg-color": {
-      common: "$transparent"
+      common: "transparent"
     },
     color: {
       common: "$mds-color-theme-control-active-normal"

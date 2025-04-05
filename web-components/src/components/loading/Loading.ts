@@ -17,8 +17,7 @@ export namespace Loading {
 
   @customElementWithCheck("md-loading")
   export class ELEMENT extends LitElement {
-    
-    @property({ type: String }) 
+    @property({ type: String })
     size: LoadingSize = "";
 
     private isAnimating = false;

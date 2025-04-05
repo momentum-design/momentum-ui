@@ -175,7 +175,7 @@ export namespace DatePicker {
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
-    };
+    }
 
     private getISODateTime(date: DateTime): string | null {
       return this.includesTime ? date.startOf("second").toISO({ suppressMilliseconds: true }) : date.toISODate();

@@ -8,7 +8,7 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
@@ -17,9 +17,10 @@ export namespace Loading {
 
   @customElementWithCheck("md-loading")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) size: LoadingSize = "";
+    
+    @property({ type: String }) 
+    size: LoadingSize = "";
 
-    @internalProperty()
     private isAnimating = false;
 
     private animationFrameId: number | null = null;

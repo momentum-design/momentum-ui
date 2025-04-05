@@ -16,11 +16,11 @@
     &::after {      
       border-radius: 50%;
       content: "";
-      height: calc(100% + 2px);
-      left: -1px;
+      height: calc(100% + 4px);
+      left: -2px;
       position: absolute;
-      top: -1px;
-      width: calc(100% + 2px);
+      top: -2px;
+      width: calc(100% + 4px);
     }
     
   }

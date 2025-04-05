@@ -21,7 +21,7 @@ describe("DatePickerDay Component", () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day selected></md-datepicker-day> `);
     expect(el.selected).toBeFalsy();
   });
-  
+
   test("should apply focused attribute class modifier", async () => {
     const el: DatePickerDay.ELEMENT = await fixture(html` <md-datepicker-day focused></md-datepicker-day> `);
     expect(el.focused).toBeFalsy();

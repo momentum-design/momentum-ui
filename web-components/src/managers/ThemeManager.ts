@@ -34,7 +34,7 @@ class ThemeManager {
   /**
    * Computed property to check if the current theme is Momentum V2.
    * @returns {boolean} True if the current theme is Momentum V2, otherwise false
-   */  
+   */
   get isMomentumV2Enabled() {
     return this.themeName === "momentumV2";
   }
@@ -109,7 +109,6 @@ class ThemeManager {
   setMomentumAvatar(value: boolean) {
     this.isMomentumAvatarEnabled = value;
   }
-  
 }
 
 const themeManager = new ThemeManager();

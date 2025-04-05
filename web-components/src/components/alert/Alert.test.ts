@@ -5,7 +5,7 @@ import { type Alert } from "./Alert";
 global.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
-    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>'),
+    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>')
   })
 ) as jest.Mock;
 

@@ -5,7 +5,13 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./Card";
 import { type Card } from "./Card";
 
-const fixtureFactory = async (id: string, title: string, subtitle: string, info: string, includeMenu:boolean): Promise<Card.ELEMENT> => {
+const fixtureFactory = async (
+  id: string,
+  title: string,
+  subtitle: string,
+  info: string,
+  includeMenu: boolean
+): Promise<Card.ELEMENT> => {
   return await fixture(html`
     <md-card .menuOption=${includeMenu ? cardMenuItems : []} id=${id} title=${title} subtitle=${subtitle} info=${info}>
       <div slot="content">
@@ -21,7 +27,7 @@ const fixtureFactory = async (id: string, title: string, subtitle: string, info:
 };
 
 describe("Card component", () => {
-  afterEach(() => {    
+  afterEach(() => {
     fixtureCleanup();
   });
 

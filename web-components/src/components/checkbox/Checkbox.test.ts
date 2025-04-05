@@ -7,15 +7,10 @@ describe("Checkbox component", () => {
   let element: Checkbox.ELEMENT;
 
   beforeEach(async () => {
-    jest.useFakeTimers();
-
     element = await fixture<Checkbox.ELEMENT>(`<md-checkbox label="text"></md-checkbox>`);
-    jest.runAllTimers();
   });
 
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 

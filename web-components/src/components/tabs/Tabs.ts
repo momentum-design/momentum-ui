@@ -338,7 +338,7 @@ export namespace Tabs {
       }
     }
 
-    private updateArrowsVisibility() {
+    private updateArrowsVisibility = () => {
       if (!this.tabsListElement) return;
 
       requestAnimationFrame(() => {
@@ -347,7 +347,7 @@ export namespace Tabs {
         this.showLeftArrow = scrollLeft > 0;
         this.showRightArrow = scrollLeft + clientWidth < scrollWidth - 5;
       });
-    }
+    };
 
     private updateIsMoreTabMenuSelected() {
       // More menu selected check
@@ -1124,6 +1124,7 @@ export namespace Tabs {
       this.selectTabFromStorage();
       if (this.scrollArrow) {
         this.updateArrowsVisibility();
+        this.tabsListElement?.addEventListener("scroll", this.updateArrowsVisibility);
       }
     }
 
@@ -1372,7 +1373,7 @@ export namespace Tabs {
         >
           ${repeat(
             this.tabsFilteredAsVisibleList,
-            () => generateSimpleUniqueId("tabs"),
+            (tab, index) => `${tab.id}-${index}`,
             (tab) => html`
               <md-tab
                 .closable="${tab.closable}"

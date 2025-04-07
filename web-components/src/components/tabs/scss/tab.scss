@@ -116,7 +116,7 @@
 
 :host([selected][type="line"][visible-tab]) {
   &::part(indicator) {
-    visibility: visible;
+    visibility: visible !important;
     background-color: var(--tabs-default-active);
   }
 }

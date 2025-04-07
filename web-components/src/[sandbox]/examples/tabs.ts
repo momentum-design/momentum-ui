@@ -600,7 +600,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
           <span>Content for "Messages"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
+          <span><img style="height: 16px; width: 16px;" src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>

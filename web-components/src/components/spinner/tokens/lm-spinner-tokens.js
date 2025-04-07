@@ -10,6 +10,14 @@ const spinner = {
   },
   color: {
     common: colors.black[100].name
+  },
+  standalone: {
+    "bg-color": {
+      common: "transparent"
+    },
+    color: {
+      common: "$mds-color-theme-control-active-normal"
+    }
   }
 };
 

@@ -246,7 +246,7 @@ export namespace Tab {
         <button
           type="button"
           class="test-compatibility-button"
-          aria-hidden="true"          
+          aria-hidden="true"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
         ></button>

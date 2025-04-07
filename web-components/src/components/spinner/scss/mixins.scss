@@ -5,13 +5,13 @@
   $border-progress-left: $spinner__color,
   $border-progress: transparent
 ) {
-  border: 1px solid $border;
+  border: 2px solid $border;
 
   &::after {
-    border-bottom: 1px solid $border-progress;
-    border-left: 1px solid $border-progress-left;
-    border-right: 1px solid $border-progress;
-    border-top: 1px solid $border-progress;
+    border-bottom: 2px solid $border-progress;
+    border-left: 2px solid $border-progress-left;
+    border-right: 2px solid $border-progress;
+    border-top: 2px solid $border-progress;
   }
 }
 

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import "@/components/input/Input";
 import { Key } from "@/constants";
-import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { PropertyValues, html } from "lit-element";
 import Sortable from "sortablejs";
@@ -11,28 +10,6 @@ import "./TabPanel";
 import { type TabPanel } from "./TabPanel";
 import "./Tabs";
 import { MORE_MENU_TAB_COPY_ID_PREFIX, Tabs } from "./Tabs";
-
-interface MyWindow extends Window {
-  ResizeObserver: typeof ResizeObserver;
-}
-
-const disconnectMock = jest.fn();
-const observeMock = jest.fn();
-const unobserveMock = jest.fn();
-const constructorMock = jest.fn();
-
-class MockObserver {
-  public observe = observeMock;
-  public unobserve = unobserveMock;
-  public disconnect = disconnectMock;
-  constructor() {
-    constructorMock();
-  }
-}
-
-(window as MyWindow & typeof globalThis).ResizeObserver = jest.fn().mockImplementation(() => {
-  return new MockObserver();
-});
 
 describe("Tabs", () => {
   let tabs: Tabs.ELEMENT;

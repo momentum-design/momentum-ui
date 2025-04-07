@@ -392,7 +392,7 @@ md-icon {
 
   :host([selected]) .tab-content {
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
-    color: HighlightText;
+    color: HighlightText !important;
     background-color: Highlight !important;
     forced-color-adjust: none;
 
@@ -402,7 +402,7 @@ md-icon {
   }
 
   :host(:focus) .tab-content {
-    outline: 2px solid Highlight;
+    outline: 2px solid Highlight !important;
     outline-offset: -2px;
     box-shadow: none;
     border: none;

@@ -785,7 +785,20 @@ export namespace Tabs {
         }
         this.moveFocusToTab(tabs[newIndex]);
 
-        tabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+        const newTab = tabs[newIndex];
+        const tabRect = newTab.getBoundingClientRect();
+        const containerRect = this.tabsListElement?.getBoundingClientRect();
+        if (containerRect) {
+          const isFullyVisible =
+            tabRect.left >= containerRect.left &&
+            tabRect.right <= containerRect.right &&
+            tabRect.top >= containerRect.top &&
+            tabRect.bottom <= containerRect.bottom;
+
+          if (!isFullyVisible) {
+            newTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+          }
+        }
         this.updateArrowsVisibility();
         setTimeout(() => this.moveFocusToTab(tabs[newIndex]), 0);
         return;

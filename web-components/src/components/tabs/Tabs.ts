@@ -784,9 +784,8 @@ export namespace Tabs {
           newIndex = currentTabIndex === tabs.length - 1 ? 0 : currentTabIndex + 1;
         }
         this.moveFocusToTab(tabs[newIndex]);
-        console.log("tab", currentTabIndex);
 
-        // tabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+        tabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
         this.updateArrowsVisibility();
         setTimeout(() => this.moveFocusToTab(tabs[newIndex]), 0);
         return;
@@ -1256,6 +1255,7 @@ export namespace Tabs {
           })}"
           ?newMomentum=${this.newMomentum}
           type=${this.type}
+          variant=${this.variant}
           visible-tab
         >
           <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>

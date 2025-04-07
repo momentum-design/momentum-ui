@@ -99,6 +99,7 @@
       }
       &[selected]::part(tab) {
         background-color: var(--md-menu-active-background-color);
+        color: var(--tabs-default-active);
       }
     }
   }
@@ -239,7 +240,7 @@ md-menu-overlay {
     }
 
     .md-tab__list {
-      overflow: hidden;
+      overflow-x: auto;
       white-space: nowrap;
       scroll-behavior: smooth;
       position: relative;
@@ -247,6 +248,11 @@ md-menu-overlay {
       gap: rem-calc(8);
       height: rem-calc(39);
       padding: rem-calc(5);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .md-tab__list::-webkit-scrollbar {
+      display: none;
     }
   }
 }

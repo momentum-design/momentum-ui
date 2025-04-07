@@ -240,6 +240,14 @@ export namespace Tab {
           <slot class="tab-slot"></slot>
           ${this.isCrossVisible && this.closable ? this.renderCrossButton() : ""}
         </div>
+        <!-- Invisible button for legacy third party test compatibility -->
+        <button
+          type="button"
+          class="test-compatibility-button"
+          aria-hidden="true"
+          @click=${(e: MouseEvent) => this.handleClick(e)}
+          @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
+        ></button>
       `;
     }
   }

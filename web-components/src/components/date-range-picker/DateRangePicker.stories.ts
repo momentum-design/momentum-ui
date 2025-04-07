@@ -11,11 +11,12 @@ const meta: Meta = {
   argTypes: {
     weekStart: { control: { type: "select" }, options: DP.weekStartDays },
     locale: { control: "text" },
+    controlButtons: { control: "boolean" },
     disabled: { control: "boolean" },
     minDate: { control: "text", defaultValue: now().minus({ day: 5 }).toISODate() },
     maxDate: { control: "text", defaultValue: now().plus({ day: 30 }).toISODate() },
-    value: { control: "text", defaultValue: now().toISODate() },
-    startDate: { control: "text", defaultValue: now().toISODate() },
+    value: { control: "text", defaultValue: `${now().minus({ day: 2 }).toISODate()} - ${now().toISODate()}` },
+    startDate: { control: "text", defaultValue: now().minus({ day: 2 }).toISODate() },
     endDate: { control: "text", defaultValue: now().toISODate() }
   },
   parameters: { a11y: { element: "md-date-range-picker" } }
@@ -24,6 +25,8 @@ const meta: Meta = {
 export default meta;
 
 const render = (args: Args) => {
+  const controlButtons = args.controlButtons ? { apply: { value: "Apply" }, cancel: { value: "Cancel" } } : undefined;
+
   return html`
     <md-date-range-picker
       ?disabled=${args.disabled}
@@ -34,6 +37,7 @@ const render = (args: Args) => {
       minDate=${args.minDate}
       maxDate=${args.maxDate}
       start-date=${args.startDate}
+      .controlButtons=${controlButtons}
       end-date=${args.endDate}
     >
     </md-date-range-picker>

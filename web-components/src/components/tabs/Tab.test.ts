@@ -100,4 +100,16 @@ describe("Tab", () => {
     expect(spySelected).toHaveBeenCalled();
     spySelected.mockRestore();
   });
+
+  test("add test compatibility button for legacy tests", async () => {
+    const el = await fixture<Tab.ELEMENT>(`<md-tab></md-tab>`);
+    const spyHandleClick = jest.spyOn(el, "handleClick");
+
+    const legacyButton = el.shadowRoot?.querySelector<HTMLElement>("button");
+    legacyButton?.click();
+
+    expect(spyHandleClick).toHaveBeenCalled();
+
+    spyHandleClick.mockRestore();
+  });
 });

@@ -165,7 +165,7 @@ const moreTabs = (args: Args) => {
   `;
 };
 
-export const Default: StoryObj = {
+export const Example: StoryObj = {
   args: {
     alignment: "horizontal",
     type: "line",

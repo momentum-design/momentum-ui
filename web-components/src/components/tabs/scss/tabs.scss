@@ -41,7 +41,7 @@
     height: 100%;
     margin-left: auto;
     width: auto;
-    max-width: 128.5px;    
+    max-width: 128.5px;
 
     .md-menu-overlay__overflow-label {
       display: inline-block;
@@ -83,10 +83,9 @@
   .md-menu-overlay__more_list {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 8px;
+    padding: 8px;
     height: auto;
-    max-width: 100%;    
+    max-width: 100%;
     width: 100%;
     overflow-x: hidden;
 
@@ -100,7 +99,14 @@
       }
       &[selected]::part(tab) {
         background-color: var(--md-menu-active-background-color);
+        color: var(--tabs-default-active);
       }
+    }
+  }
+
+  &.tab-new-momentum {
+    .md-menu-overlay__more_tab {
+      min-height: 0;
     }
   }
 
@@ -216,6 +222,39 @@ md-menu-overlay {
 
 .no-tabs-visible {
   display: none !important;
+}
+
+:host([direction="horizontal"][scroll-arrow]) {
+  .md-tabs-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .tabs-left-arrow {
+      margin-right: rem-calc(12);
+    }
+
+    .tabs-right-arrow {
+      margin-left: rem-calc(12);
+    }
+
+    .md-tab__list {
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      position: relative;
+      display: inline-flex;
+      gap: rem-calc(8);
+      height: rem-calc(39);
+      padding: rem-calc(5);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .md-tab__list::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 // Vertical Direction

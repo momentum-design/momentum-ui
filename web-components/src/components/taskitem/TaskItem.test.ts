@@ -125,6 +125,23 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("icon-icon-campaign_18");
   });
 
+  test("should render TaskItem Component with outbound-campaign", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "outbound-campaign",
+      "Mihael Varificantare",
+      "",
+      "Mihael Varificantare",
+      "quelle_1",
+      "consulting",
+      0,
+      "",
+      false
+    );
+    const type = element.shadowRoot?.querySelector("md-avatar");
+    expect(type?.getAttribute("type")).toEqual("channel-campaign");
+    expect(type?.getAttribute("title")).toEqual("Channel Campaign");
+  });
+
   test("should render correct type and status", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "chat",

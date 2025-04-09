@@ -6,6 +6,7 @@
  *
  */
 
+import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -109,7 +110,12 @@ export namespace TaskItem {
           `;
         case "outbound-campaign":
           return html`
-            <md-avatar title="Channel Campaign" type="channel-campaign" avatar-style="default" state="rest"></md-avatar>
+            <md-avatar
+              title="Channel Campaign"
+              type="channel-campaign"
+              avatar-style="default"
+              state=${this.selected ? "active" : "rest"}
+            ></md-avatar>
           `;
         case "chat":
           return html`
@@ -193,11 +199,13 @@ export namespace TaskItem {
     }
 
     renderChatCount() {
-      return this.quantity > 0
-        ? this.quantity > 99
-          ? html` <span class="new-chat-quantity">99+</span> `
-          : html` <span class="new-chat-quantity">${this.quantity}</span> `
-        : nothing;
+      if (this.quantity <= 0) {
+        return nothing;
+      }
+
+      return this.quantity > 99
+        ? html` <span class="new-chat-quantity">99+</span> `
+        : html` <span class="new-chat-quantity">${this.quantity}</span> `;
     }
 
     getAriaLabel() {
@@ -209,8 +217,9 @@ export namespace TaskItem {
       if (!queueContent) {
         const queueSlot = this.querySelector('[slot="queue"]') as HTMLElement;
         if (queueSlot) {
-          queueContent = queueSlot.textContent?.trim() || queueSlot.innerText.trim();
-          const timeMatch = queueContent.match(/(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)/);
+          queueContent = queueSlot.textContent?.trim() ?? queueSlot.innerText.trim();
+          const timeRegex = /(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)/;
+          const timeMatch = timeRegex.exec(queueContent);
 
           if (timeMatch) {
             const [, hours = 0, minutes, seconds] = timeMatch.map(Number);
@@ -263,7 +272,11 @@ export namespace TaskItem {
               : nothing}
             ${this.title
               ? html`
-                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle , 'display-only-title': this.displayOnlyTitle})}"
+                  <span
+                    class="md-taskitem__content_title ${classMap({
+                      mainTitle: !this.popovertitle,
+                      "display-only-title": this.displayOnlyTitle
+                    })}"
                     >${this.title}</span
                   >
                 `

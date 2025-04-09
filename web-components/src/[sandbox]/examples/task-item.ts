@@ -139,8 +139,8 @@ export const taskItemTemplate = html`
       <md-button variant="green" title="text title"><span slot="text">Ringing</span></md-button>
     </md-task-item>
 
-    <md-task-item mediaType="outbound-campaign" item-title="Campaign call" noMargin="true">
-      <md-button variant="secondary" loading maxWidth="150px" outline size="28">
+    <md-task-item mediaType="outbound-campaign" item-title="Campaign call" displayOnlyTitle="true">
+      <md-button variant="secondary" loading maxWidth="150px" disabled size="28">
         <span slot="text">Connecting...</span>
       </md-button>
     </md-task-item>

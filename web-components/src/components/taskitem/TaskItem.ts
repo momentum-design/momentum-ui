@@ -23,7 +23,7 @@ export namespace TaskItem {
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
-    @property({ type: Boolean }) noMargin = false;
+    @property({ type: Boolean }) displayOnlyTitle = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
@@ -263,7 +263,7 @@ export namespace TaskItem {
               : nothing}
             ${this.title
               ? html`
-                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle , 'no-margin': this.noMargin })}"
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle , 'display-only-title': this.displayOnlyTitle})}"
                     >${this.title}</span
                   >
                 `

@@ -23,6 +23,7 @@ export namespace TaskItem {
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
+    @property({ type: Boolean }) displayOnlyTitle = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
@@ -105,6 +106,10 @@ export namespace TaskItem {
             <md-badge color="green" circle>
               <md-icon name="icon-icon-campaign_18"></md-icon>
             </md-badge>
+          `;
+        case "outbound-campaign":
+          return html`
+            <md-avatar title="Channel Campaign" type="channel-campaign" avatar-style="default" state="rest"></md-avatar>
           `;
         case "chat":
           return html`
@@ -258,7 +263,7 @@ export namespace TaskItem {
               : nothing}
             ${this.title
               ? html`
-                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle , 'display-only-title': this.displayOnlyTitle})}"
                     >${this.title}</span
                   >
                 `

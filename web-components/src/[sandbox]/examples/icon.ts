@@ -69,5 +69,7 @@ export const iconTemplate = html`
   <md-icon name="twitter_16" iconSet="preferMomentumDesign" title="twitter_16"></md-icon>
   <md-icon name="facebook_16" iconSet="preferMomentumDesign" title="facebook_16"></md-icon>
   <md-icon name="whatsApp_16" iconSet="preferMomentumDesign" title="whatsApp_16"></md-icon>
+  <md-icon name="skip-bold" iconSet="preferMomentumDesign" title="skip" size="16"></md-icon>
+  <md-icon name="remove-bold" iconSet="preferMomentumDesign" title="Remove" size="16"></md-icon>
   <br />
 `;

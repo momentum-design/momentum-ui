@@ -138,5 +138,41 @@ export const taskItemTemplate = html`
       </md-badge>
       <md-button variant="green" title="text title"><span slot="text">Ringing</span></md-button>
     </md-task-item>
+
+    <md-task-item mediaType="outbound-campaign" item-title="Campaign call" displayOnlyTitle="true">
+      <md-button variant="secondary" loading maxWidth="150px" disabled size="28">
+        <span slot="text">Connecting...</span>
+      </md-button>
+    </md-task-item>
+
+    <md-task-item
+      mediaType="outbound-campaign"
+      popovertitle="Campaign call"
+      queue="A Queue"
+      lastmessage="Time Left 00:29"
+    >
+      <div style="display: flex; flex-direction: column ;justify-content: space-evenly; height: 100%;gap:4px;">
+        <md-button variant="green" size="28"> Answer </md-button>
+        <md-button variant="red" size="28"> Decline </md-button>
+      </div>
+    </md-task-item>
+    <md-task-item
+      mediaType="outbound-campaign"
+      popovertitle="Campaign call"
+      queue="A Queue"
+      lastmessage="Time Left 00:29"
+    >
+      <div style="display: flex; flex-direction: column ;justify-content: space-evenly; height: 100%;gap:4px;">
+        <md-button variant="green" size="28"> Accept </md-button>
+        <div style="display:flex; gap:4px; margin-left:auto;">
+          <md-button variant="secondary" circle size="28"
+            ><md-icon slot="icon" name="skip-bold" iconSet="preferMomentumDesign"></md-icon
+          ></md-button>
+          <md-button variant="secondary" circle size="28"
+            ><md-icon slot="icon" name="remove-bold" iconSet="preferMomentumDesign"></md-icon
+          ></md-button>
+        </div>
+      </div>
+    </md-task-item>
   </div>
 `;

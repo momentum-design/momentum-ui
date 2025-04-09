@@ -146,6 +146,10 @@
       color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
       font-family: $taskitem-title-font;
     }
+    &.display-only-title {
+      margin-bottom: 0;
+      width: $taskitem-additional-width;
+    }
   }
 
   &_inner {

@@ -33,6 +33,14 @@ export namespace DateRangePicker {
       this.removeEventListener("date-pre-selection-change", this.handleDateSelection);
     }
 
+    updated(changedProperties: Map<string | number | symbol, unknown>) {
+      super.updated(changedProperties);
+    
+      if (changedProperties.has("startDate") || changedProperties.has("endDate")) {
+        this.updateValue();
+      }
+    }
+
     updateValue = () => {
       if (this.startDate && this.endDate) {
         this.value = `${reformatDateString(this.startDate)} - ${reformatDateString(this.endDate)}`;

@@ -143,3 +143,5 @@ charts/es/
 charts/lib/
 charts/css/
 charts/yarn.lock
+.yarn/cache/
+web-components/.yarn/cache/

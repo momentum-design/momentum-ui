@@ -143,6 +143,29 @@ describe("DatePicker Component", () => {
     const date3 = date2.plus({ days: 10 });
     const date4 = date3.plus({ days: 10 });
 
+    test("changing start and/or endDates automatically updates value", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker
+          .startDate=${date1.toSQLDate()}
+          .endDate=${date2.toSQLDate()}
+        ></md-date-range-picker>
+      `);
+      await el.updateComplete;
+      expect(el.value).toEqual(`${date1.toSQLDate()?.replace(/-/g, "/")} - ${date2.toSQLDate()?.replace(/-/g, "/")}`);
+      
+      const newStartDate = date3.toSQLDate();
+      const newEndDate = date4.toSQLDate();
+      el.startDate = newStartDate;
+      el.endDate = newEndDate;
+      await el.updateComplete;
+      expect(el.value).toEqual(`${newStartDate?.replace(/-/g, "/")} - ${newEndDate?.replace(/-/g, "/")}`);
+
+      const newStartDate2 = date1.toSQLDate();
+      el.startDate = newStartDate2;
+      await el.updateComplete;
+      expect(el.value).toEqual(`${newStartDate2?.replace(/-/g, "/")} - ${newEndDate?.replace(/-/g, "/")}`);
+    });
+
     test.each([
       [date1, date2, date3, date4],
       [date4, date3, date2, date1],

@@ -148,9 +148,7 @@
     }
     &.display-only-title {
       margin-bottom: 0;
-      font-size: 15px;
-      width: 100px;
-      font-weight: 600;
+      width: $taskitem-additional-width;
     }
   }
 

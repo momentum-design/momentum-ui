@@ -354,13 +354,14 @@
   --icon-color-channel-email-inbound: var(--avatar-email-icon-color);
   --icon-color-channel-email-outbound: var(--avatar-email-icon-color);
   --icon-color-channel-call: var(--avatar-call-icon-color);
+  --icon-color-channel-call-inbound: var(--avatar-call-icon-color);
   --icon-color-channel-social: var(--avatar-presence-engaged);
   --icon-color-channel-callback: var(--avatar-call-icon-color);
   --icon-color-channel-headset: var(--avatar-headset-icon-color);
   --icon-color-channel-campaign: var(--avatar-campaign-icon-color);
   --icon-color-channel-chat: var(--avatar-chat-icon-color);
   --icon-color-channel-emoji:var(--avatar-emoji-icon-color);
-  --icon-color-channel-spam: var(--avatar-spam-icon-color);
+  --icon-color-channel-spam: var(--avatar-spam-icon-color);  
   --icon-color-white: var(--avatar-white-bg-color);
   --icon-color-dark-gray: var(--avatar-darkgray-bg-color);
 }

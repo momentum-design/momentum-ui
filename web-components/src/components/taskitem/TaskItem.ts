@@ -7,6 +7,7 @@
  */
 
 import "@/components/avatar/Avatar";
+import { Avatar } from "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -24,13 +25,16 @@ export namespace TaskItem {
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
-    @property({ type: Boolean }) displayOnlyTitle = false;
+    @property({ type: Boolean, attribute: "display-only-title" }) displayOnlyTitle = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
+
+    @property({ type: Boolean, attribute: "is-restyle" })
+    isRestyle = false;
 
     /**
      * @deprecated Use `itemTitle` instead.
@@ -68,7 +72,67 @@ export namespace TaskItem {
     private titleValue = "";
     private itemTitleValue = "";
 
-    renderTaskType = () => {
+    private getChannelAvatar(type: Avatar.ChannelType) {
+      return html`<md-avatar size="32" type=${type} state=${this.selected ? "active" : "rest"}></md-avatar>`;
+    }
+
+    private get taskTypeTemplate() {
+      return html`${this.isRestyle ? this.renderTaskType : this.renderLegacyTaskType()}`;
+    }
+
+    private get renderTaskType() {
+      switch (this.mediaType.toLowerCase()) {
+        case "telephony":
+          return this.getChannelAvatar("channel-call");
+        case "outbound telephony":
+          return this.getChannelAvatar("channel-callback");
+        case "inbound telephony":
+          return this.getChannelAvatar("channel-call-inbound");
+        case "applemessages":
+          return this.getChannelAvatar("channel-apple-chat");
+
+        case "outbound-campaign":
+          return this.getChannelAvatar("channel-campaign");
+        case "chat":
+          return this.getChannelAvatar("channel-chat");
+        case "email":
+          return this.getChannelAvatar("channel-email-inbound");
+        case "sms":
+          return this.getChannelAvatar("channel-sms-inbound");
+        case "facebook":
+          return this.getChannelAvatar("channel-fb-messenger");
+        case "whatsapp":
+          return this.getChannelAvatar("channel-whats-app");
+
+        case "messenger":
+          return this.getChannelAvatar("channel-facebook");
+
+        case "midcall telephony":
+        case "icon src":
+          return html`
+            <md-badge circle>
+              <img src="${this.iconSrc}" />
+            </md-badge>
+          `;
+        case "callback":
+          return html`
+            <md-badge color="lime" circle>
+              <md-icon name="icon-icon-callback_18"></md-icon>
+            </md-badge>
+          `;
+        case "progressive_campaign":
+          return html`
+            <md-badge color="green" circle>
+              <md-icon name="icon-icon-campaign_18"></md-icon>
+            </md-badge>
+          `;
+
+        default:
+          return html` <slot name="task-type"></slot> `;
+      }
+    }
+
+    renderLegacyTaskType = () => {
       switch (this.mediaType.toLowerCase()) {
         case "telephony":
           return html`
@@ -92,19 +156,19 @@ export namespace TaskItem {
         case "midcall telephony":
         case "icon src":
           return html`
-            <md-badge circle>
+            <md-badge class="avatar-badge" circle>
               <img src="${this.iconSrc}" />
             </md-badge>
           `;
         case "callback":
           return html`
-            <md-badge color="lime" circle>
+            <md-badge class="avatar-badge" color="lime" circle>
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
         case "progressive_campaign":
           return html`
-            <md-badge color="green" circle>
+            <md-badge class="avatar-badge" color="green" circle>
               <md-icon name="icon-icon-campaign_18"></md-icon>
             </md-badge>
           `;
@@ -203,9 +267,13 @@ export namespace TaskItem {
         return nothing;
       }
 
-      return this.quantity > 99
-        ? html` <span class="new-chat-quantity">99+</span> `
-        : html` <span class="new-chat-quantity">${this.quantity}</span> `;
+      const quantitiyLabel = this.quantity > 99 ? "99+" : this.quantity.toString();
+
+      if (this.isRestyle) {
+        return html` <md-badge color="unreadcount" outlined> ${quantitiyLabel} </md-badge>`;
+      }
+
+      return html` <span class="new-chat-quantity">${quantitiyLabel}</span> `;
     }
 
     getAriaLabel() {
@@ -253,7 +321,7 @@ export namespace TaskItem {
       return html`
         <div
           part="task-item-container"
-          class="md-taskitem ${classMap({ selected: this.selected })}"
+          class="md-taskitem ${classMap({ selected: this.selected, "is-restyle": this.isRestyle })}"
           tabindex=${this.sanitizedTabIndexForContainer}
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
@@ -261,7 +329,7 @@ export namespace TaskItem {
           aria-label=${this.getAriaLabel()}
         >
           <div class="md-taskitem__mediatype">
-            ${this.renderTaskType()}
+            ${this.taskTypeTemplate}
             ${this.status
               ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.renderStatus()} </span> `
               : nothing}

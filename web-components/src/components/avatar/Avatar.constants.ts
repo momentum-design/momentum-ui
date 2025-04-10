@@ -11,6 +11,7 @@ const AvatarChannelType = [
   "channel-email-inbound",
   "channel-email-outbound",
   "channel-call",
+  "channel-call-inbound",
   "channel-social",
   "channel-callback",
   "channel-headset",
@@ -18,6 +19,7 @@ const AvatarChannelType = [
   "channel-emoji",
   "channel-webex",
   "channel-fb-messenger",
+  "channel-facebook",
   "channel-apple-chat",
   "channel-line",
   "channel-twitter-x",
@@ -33,4 +35,3 @@ const AvatarType = ["bot", "group", "self", "typing", ""] as const;
 const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124];
 
 export { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType };
-

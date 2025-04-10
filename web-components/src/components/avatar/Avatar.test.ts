@@ -84,19 +84,19 @@ describe("Avatar", () => {
     expect(element.shadowRoot!.querySelector(".md-avatar__self")).not.toBeNull();
     expect(element.shadowRoot!.querySelector("md-icon")).not.toBeNull();
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("18");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("22");
 
     element.size = 44;
     await elementUpdated(element);
 
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("22");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("26");
 
     element.size = 28;
     await elementUpdated(element);
 
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("14");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("18");
   });
 
   test("should render notification bange", async () => {

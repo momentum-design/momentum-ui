@@ -361,6 +361,7 @@ export namespace TaskItem {
                   </span>
                 `
               : nothing}
+            ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
           <div class="md-taskitem__addition">
             <slot></slot>

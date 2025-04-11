@@ -32,7 +32,6 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
-
     @property({ type: Boolean, attribute: "is-restyle" })
     isRestyle = false;
 
@@ -110,19 +109,19 @@ export namespace TaskItem {
         case "midcall telephony":
         case "icon src":
           return html`
-            <md-badge circle>
+            <md-badge class="avatar-badge" circle>
               <img src="${this.iconSrc}" />
             </md-badge>
           `;
         case "callback":
           return html`
-            <md-badge color="lime" circle>
+            <md-badge class="avatar-badge" color="lime" circle>
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
         case "progressive_campaign":
           return html`
-            <md-badge color="green" circle>
+            <md-badge class="avatar-badge" color="green" circle>
               <md-icon name="icon-icon-campaign_18"></md-icon>
             </md-badge>
           `;
@@ -156,19 +155,19 @@ export namespace TaskItem {
         case "midcall telephony":
         case "icon src":
           return html`
-            <md-badge class="avatar-badge" circle>
+            <md-badge circle>
               <img src="${this.iconSrc}" />
             </md-badge>
           `;
         case "callback":
           return html`
-            <md-badge class="avatar-badge" color="lime" circle>
+            <md-badge color="lime" circle>
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
         case "progressive_campaign":
           return html`
-            <md-badge class="avatar-badge" color="green" circle>
+            <md-badge color="green" circle>
               <md-icon name="icon-icon-campaign_18"></md-icon>
             </md-badge>
           `;

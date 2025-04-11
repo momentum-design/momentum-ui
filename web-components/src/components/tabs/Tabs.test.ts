@@ -666,4 +666,37 @@ describe("Tabs", () => {
     expect(consoleSpy).toHaveBeenCalledWith("Unique tabs-id attribute is mandatory for persist the selection of tab");
     consoleSpy.mockRestore();
   });
+
+  test("if scroll arrow set, tabs should work as expected", async () => {
+    tabs.setAttribute("scroll-arrow", "true");
+    expect(tabs.hasAttribute("scroll-arrow")).toBeTruthy();
+
+    const tabsList = tabs.shadowRoot?.querySelector(".md-tab__list") as HTMLElement;
+    Object.defineProperty(tabsList, "scrollWidth", { configurable: true, value: 420 });
+    Object.defineProperty(tabsList, "clientWidth", { configurable: true, value: 260 });
+    Object.defineProperty(tabsList, "scrollLeft", { configurable: true, value: 0 });
+    tabs.updateArrowsVisibility();
+    await new Promise((r) => requestAnimationFrame(r));
+    await elementUpdated(tabs);
+
+    const getRightArrow = () => tabs.shadowRoot?.querySelector(".tabs-right-arrow");
+    const getLeftArrow = () => tabs.shadowRoot?.querySelector(".tabs-left-arrow");
+
+    expect(getLeftArrow()).toBeNull();
+    expect(getRightArrow()).not.toBeNull();
+
+    (tabsList as any).scrollBy = jest.fn();
+    getRightArrow()?.dispatchEvent(new Event("click"));
+    Object.defineProperty(tabsList, "scrollLeft", {
+      configurable: true,
+      get: () => 100
+    });
+
+    tabs.updateArrowsVisibility();
+    await new Promise((r) => requestAnimationFrame(r));
+    await elementUpdated(tabs);
+
+    expect(getLeftArrow()).not.toBeNull();
+    expect(getRightArrow()).not.toBeNull();
+  });
 });

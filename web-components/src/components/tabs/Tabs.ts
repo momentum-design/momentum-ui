@@ -81,6 +81,8 @@ export namespace Tabs {
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: String }) variant: TabVariant = "ghost";
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
+    @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Backward Button";
+    @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -338,7 +340,7 @@ export namespace Tabs {
       }
     }
 
-    private updateArrowsVisibility = () => {
+    public updateArrowsVisibility = () => {
       if (!this.tabsListElement) return;
 
       requestAnimationFrame(() => {
@@ -465,6 +467,9 @@ export namespace Tabs {
       super.handleResize?.(contentRect);
       this.manageOverflow();
       this.updateIsMoreTabTruncated();
+      if (this.scrollArrow) {
+        this.updateArrowsVisibility();
+      }
     }
 
     private getDragDirection(event: Sortable.SortableEvent) {
@@ -1352,12 +1357,14 @@ export namespace Tabs {
     }
 
     private tabsButtonArrow(direction: "left" | "right") {
+      const ariaLabel = direction === "left" ? this.leftArrowAriaLabel : this.rightArrowAriaLabel;
       return html`<md-button
         class="tabs-${direction}-arrow"
         @click=${() => this.scrollTabs(direction)}
         size="28"
         variant="ghost"
         circle
+        ariaLabel="${ariaLabel}"
       >
         <md-icon slot="icon" name="arrow-${direction}-regular" iconSet="momentumDesign"></md-icon>
       </md-button>`;

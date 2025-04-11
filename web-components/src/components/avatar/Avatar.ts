@@ -18,13 +18,14 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
+import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import { getPresenceIconColor, PresenceType } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type PresenceState = (typeof PresenceType)[number];
-  export type Type = (typeof AvatarType)[number] | PresenceState;
+  export type ChannelType = (typeof AvatarChannelType)[number];
+  export type Type = (typeof AvatarType)[number] | PresenceState | ChannelType;
   export type Size = (typeof AvatarSize)[number];
   export type State = (typeof AvatarState)[number];
   export type Style = (typeof AvatarStyle)[number];
@@ -173,12 +174,14 @@ export namespace Avatar {
       "channel-email-inbound": "email-filled",
       "channel-email-outbound": "email-outgoing-filled",
       "channel-call": "handset-filled",
+      "channel-call-inbound": "incoming-call-legacy-filled",
       "channel-callback": "outgoing-call-legacy-filled",
       "channel-headset": "headset-filled",
       "channel-campaign": "campaign-management-bold",
       "channel-emoji": "emoji-happy-filled",
       "channel-webex": "webex-app-icon-color-container",
       "channel-fb-messenger": "social-fbmessenger-color",
+      "channel-facebook": "social-facebook-color",
       "channel-apple-chat": "apple-business-chat-color",
       "channel-line": "social-line-color",
       "channel-twitter-x": "social-x",
@@ -197,7 +200,35 @@ export namespace Avatar {
     }
 
     private get iconSize() {
-      return (this.size / 2).toString();
+      if (this.size === 24) {
+        return "16";
+      }
+      if (this.size === 28) {
+        return "18";
+      }
+      if (this.size === 32) {
+        return "20";
+      }
+      if (this.size === 36) {
+        return "22";
+      }
+      if (this.size === 40) {
+        return "24";
+      }
+      if (this.size === 48) {
+        return "28";
+      }
+      if (this.size === 56) {
+        return "32";
+      }
+      if (this.size === 64) {
+        return "36";
+      }
+      if (this.size === 72) {
+        return "40";
+      }
+
+      return Math.round(this.size / 1.7).toString();
     }
 
     get renderIsTyping() {
@@ -300,6 +331,7 @@ export namespace Avatar {
       const brandIcons = new Set([
         "webex-app-icon-color-container",
         "social-fbmessenger-color",
+        "social-facebook-color",
         "apple-business-chat-color",
         "social-line-color",
         "social-viber-color",

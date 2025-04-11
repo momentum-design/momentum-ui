@@ -1,5 +1,5 @@
 :host {
-  width: 100%;  
+  width: 100%;
 }
 
 .md-taskitem {
@@ -84,6 +84,20 @@
     border-radius: $taskitem-border-radius;
     margin: -$taskitem-main-indent;
   }
+
+  &.is-restyle {
+    .avatar-badge::part(badge) {
+      height: 2rem;
+      width: 2rem;
+      background-color: var(--avatar-darkgray-bg-color);
+    }
+  }
+
+  &.is-restyle.selected {
+    .avatar-badge::part(badge) {
+      background-color: var(--avatar-white-bg-color);
+    }
+  }
 }
 
 .md-taskitem__mediatype {
@@ -110,7 +124,6 @@
     }
 
     md-icon::part(icon) {
-      
       vertical-align: top;
     }
 
@@ -123,7 +136,6 @@
 .md-taskitem__content {
   @include taskitem-content;
   width: calc(100% - calc(#{$taskitem-mediatype-width} + #{$taskitem-additional-width}));
-
 
   &_popover_title {
     @include text-dots;
@@ -145,6 +157,10 @@
     &.mainTitle {
       color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
       font-family: $taskitem-title-font;
+    }
+    &.display-only-title {
+      margin-bottom: 0;
+      width: $taskitem-additional-width;
     }
   }
 
@@ -199,7 +215,7 @@
   }
 }
 
-@media (forced-colors:active) {
+@media (forced-colors: active) {
   .md-taskitem {
     &:focus {
       outline: 1px solid Highlight;

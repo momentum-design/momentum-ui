@@ -28,6 +28,8 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
+    @property({ type: Boolean, reflect: true }) maximizable = true;
+    @property({ type: Boolean, reflect: true }) resizable = true;
     @property({ type: Boolean, reflect: true }) private minimize = false;
     @property({ type: Object }) position:
       | {
@@ -136,8 +138,18 @@ export namespace FloatingModal {
     private setInteractInstance() {
       requestAnimationFrame(() => {
         if (this.container) {
-          interact(this.container)
-            .resizable({
+          interact(this.container).draggable({
+            autoScroll: true,
+            allowFrom: this.header,
+            ignoreFrom: this.body,
+            listeners: {
+              move: this.dragMoveListener,
+              end: this.dragEndListener
+            }
+          });
+
+          if (this.resizable) {
+            interact(this.container).resizable({
               edges: { left: true, right: true, bottom: true, top: true },
               listeners: {
                 end: this.resizeEndListener,
@@ -152,16 +164,8 @@ export namespace FloatingModal {
                     })
                   ]
                 : undefined
-            })
-            .draggable({
-              autoScroll: true,
-              allowFrom: this.header,
-              ignoreFrom: this.body,
-              listeners: {
-                move: this.dragMoveListener,
-                end: this.dragEndListener
-              }
             });
+          }
         }
       });
     }
@@ -312,7 +316,7 @@ export namespace FloatingModal {
                         <md-icon name="minus-bold" size="16" iconSet="momentumDesign"></md-icon>
                       </md-button>`
                     : nothing}
-                  ${!this.minimize
+                  ${!this.minimize && this.maximizable
                     ? html` <md-button
                         color="color-none"
                         class="md-floating__resize"
@@ -350,6 +354,8 @@ export namespace FloatingModal {
                       heading=${this.heading}
                       .minimize=${this.minimize}
                       .minPosition=${this.minPosition}
+                      .maximizeIconAriaLabel="${this.maximizeScreenLabel}"
+                      .closeAriaLabel="${this.closeAriaLabel}"
                       @floating-min-modal-minimize=${() => this.handleMinimize()}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}

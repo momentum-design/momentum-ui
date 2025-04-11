@@ -24,6 +24,7 @@ export namespace FloatingMinimizedModal {
     @property({ type: Boolean, reflect: true }) show = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: Boolean, reflect: true }) minimize = false;
+    @property({ type: String, attribute: "maximize-icon-aria-label" }) maximizeIconAriaLabel = "Maximize Modal";
 
     @property({ type: Object }) minPosition:
       | {
@@ -175,6 +176,8 @@ export namespace FloatingMinimizedModal {
     }
 
     handleMinimize(event: Event) {
+      event.preventDefault();
+      event.stopPropagation();
       if (!this.dragOccured) {
         this.dispatchEvent(
           new CustomEvent("floating-min-modal-minimize", {
@@ -253,6 +256,16 @@ export namespace FloatingMinimizedModal {
                   <div class="md-floating__header-text">
                     ${this.heading ? html` ${this.heading} ` : html` <slot></slot> `}
                   </div>
+                  <md-button
+                    color="color-none"
+                    class="md-floating__resize"
+                    ariaLabel="${this.maximizeIconAriaLabel}"
+                    circle
+                    @click=${this.handleMinimize}
+                  >
+                    <md-icon name="maximize-bold" size="16" iconSet="momentumDesign"></md-icon>
+                  </md-button>
+
                   <md-button
                     color="color-none"
                     class="md-floating__close"

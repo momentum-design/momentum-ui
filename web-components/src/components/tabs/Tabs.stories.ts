@@ -36,6 +36,8 @@ const tabs = (args: Args) => {
       more-items-scroll-limit=${args.moreItemsScrollLimit}
       selected-index=${args.selectedIndex}
       ?scroll-arrow=${args.scrollArrow}
+      left-arrow-aria-label=${args.leftArrowAriaLabel}
+      right-arrow-aria-label=${args.rightArrowAriaLabel}
     >
       <md-tab slot="tab" closable="${args.closable}">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -169,7 +171,9 @@ export const Example: StoryObj = {
   args: {
     alignment: "horizontal",
     type: "line",
-    variant: "ghost"
+    variant: "ghost",
+    leftArrowAriaLabel: "Backward Button",
+    rightArrowAriaLabel: "Forward Button"
   },
   render: (args: Args) => {
     return html` ${args.more ? moreTabs(args) : tabs(args)} `;
@@ -249,6 +253,8 @@ export default {
     moreItemsScrollLimit: { control: "number" },
     selectedIndex: { control: "number" },
     scrollArrow: { control: "boolean" },
+    leftArrowAriaLabel: { control: "text" },
+    rightArrowAriaLabel: { control: "text" },
 
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },

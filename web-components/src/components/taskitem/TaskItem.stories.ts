@@ -23,6 +23,7 @@ export default {
     queue: { control: "text" },
     message: { control: "text" },
     time: { control: "text" },
+    isRestyle: { control: "boolean" },
     selected: { table: { disable: true } },
     renderTaskType: { table: { disable: true } },
     renderStatus: { table: { disable: true } },
@@ -46,6 +47,7 @@ const render = (args: Args) => {
       queue="${args.queue}"
       quantity="${args.quantity}"
       lastmessage="${args.message}"
+      ?is-restyle=${args.isRestyle}
       @taskitem-click=${action("click")}
       @taskitem-keydown=${action("keydown")}
     >
@@ -64,7 +66,8 @@ export const TaskItem: StoryObj = {
     mediaType: "voice",
     status: "conference",
     queue: "IRV_quelle_11",
-    time: "00:00"
+    time: "00:00",
+    isRestyle: false
   },
   render: render
 };

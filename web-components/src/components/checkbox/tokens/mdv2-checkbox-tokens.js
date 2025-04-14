@@ -4,7 +4,7 @@ const checkbox = {
   prefix: "mdv2",
   component: "checkbox",
   "bg-color": {
-    common: "$mds-color-theme-button-secondary-normal"
+    common: "$mds-color-theme-control-inactive-normal"
   },
   "text-color": {
     common: "$mds-color-theme-text-primary-normal"
@@ -17,7 +17,7 @@ const checkbox = {
   },
   hover: {
     "bg-color": {
-      common: "$mds-color-theme-inverted-button-secondary-hover"
+      common: "$mds-color-theme-control-inactive-hover"
     },
     "border-color": {
       common: "$mds-color-theme-outline-input-normal"
@@ -25,7 +25,7 @@ const checkbox = {
   },
   pressed: {
     "bg-color": {
-      common: "$mds-color-theme-inverted-button-secondary-pressed"
+      common: "$mds-color-theme-control-inactive-pressed"
     },
     "border-color": {
       common: "$mds-color-theme-outline-input-normal"
@@ -45,10 +45,10 @@ const checkbox = {
       common: "$mds-color-theme-control-active-hover"
     },
     "pressed-bg-color": {
-      common: "$mds-color-theme-control-active-hover"
+      common: "$mds-color-theme-control-active-pressed"
     },
     "pressed-border-color": {
-      common: "$mds-color-theme-control-active-hover"
+      common: "$mds-color-theme-control-active-pressed"
     }
   },
   focus: {

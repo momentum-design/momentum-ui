@@ -12,7 +12,7 @@
 }
 
 :host([alignment="vertical"]) div ::slotted(md-radio) {
-  margin-bottom: calc(#{$radio-main-indent} * 3);
+  margin-bottom: calc(#{$radio-main-indent} * 2);
 }
 
 :host([alignment="horizontal"]) div {

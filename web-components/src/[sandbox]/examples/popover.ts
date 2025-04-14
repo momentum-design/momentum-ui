@@ -2,6 +2,7 @@ import "@/components/avatar/Avatar";
 import "@/components/button/Button";
 import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
+import "@/components/popover/Popover";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 
 @customElement("popover-template-sandbox")
@@ -126,12 +127,14 @@ export class PopoverTemplateSandbox extends LitElement {
       <br />
       <br />
       <div class="popover-trigger-element-container">
-        <md-popover placement="bottom">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
-          <div class="popoverContent">
-            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
-          </div>
-        </md-popover>
+        <div style="width: 100px; overflow: hidden;">
+          <md-popover placement="bottom">
+            <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
+            <div class="popoverContent">
+              <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+            </div>
+          </md-popover>
+        </div>
 
         <md-popover placement="bottom" trigger="mouseenter">
           <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Hover</md-button>

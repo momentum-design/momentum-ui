@@ -347,6 +347,7 @@ export namespace CoachmarkPopover {
           ?show-close=${!this.hideCloseButton}
           interactive
           trigger="manual"
+          inverted
           placement=${this.placement}
           @popover-open-changed="${(e: CustomEvent) => {
             if (!e.detail.isOpen) {

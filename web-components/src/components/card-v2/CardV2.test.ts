@@ -128,12 +128,12 @@ describe("Card-v2 component", () => {
 
     const info = element.shadowRoot?.querySelector(".md-card-v2-footer md-icon") as HTMLButtonElement;
     expect(info).not.toBeNull();
-    expect(info?.name).toBe("arrow-circle-down-bold");
+    expect(info?.name).toBe("arrow-circle-up-bold");
 
     expandCardButton?.click();
     await elementUpdated(element);
 
     expect(eventSpy).toHaveBeenCalled();
-    expect(info?.name).toBe("arrow-circle-up-bold");
+    expect(info?.name).toBe("arrow-circle-down-bold");
   });
 });

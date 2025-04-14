@@ -118,4 +118,58 @@ describe("Floating Modal Component", () => {
     await elementUpdated(element);
     expect(element.show).toBeTruthy();
   });
+
+  test("maximize/restore button should be hidden when maximizable is false", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .maximizable=${false}></md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const maximizeButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
+    expect(maximizeButton).toBeNull();
+  });
+
+  test("maximize/restore button should be shown when maximizable is true", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .maximizable=${true}></md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const maximizeButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
+    expect(maximizeButton).toBeDefined();
+  });
+
+  test("Floating Modal should not be resizable if resizable is false", async () => {
+
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .resizable=${true}></md-floating-modal>
+    `);
+
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    const resizable = element.shadowRoot!.querySelector(".md-floating__resizable");
+    expect(resizable).toBeNull();
+  });
+
+  test("should minimize modal on click of minimize button", async () => {
+    element.show = true;
+    element.minimizable = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const minimizeButton = element.shadowRoot!.querySelector(".md-floating__minimize") as Button.ELEMENT;
+    const button = minimizeButton.shadowRoot!.querySelector("button");
+    button!.click();
+
+    await elementUpdated(element);
+    expect(element.show).toBeTruthy();
+
+    const minimizedModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as HTMLElement;
+
+    const mdButton = minimizedModal.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
+    expect(mdButton.getAttribute("arialabel")).toEqual("Maximize Modal");
+  }
+  );
 });

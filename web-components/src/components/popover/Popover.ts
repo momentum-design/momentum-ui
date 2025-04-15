@@ -21,8 +21,9 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined.js";
-import { ARROW_HEIGHT, PlacementType, PopoverRoleType } from "./Popover.types";
+import { ARROW_HEIGHT, PlacementType, PopoverRoleType, StrategyType } from "./Popover.types";
 import styles from "./scss/module.scss";
 
 type OffsetsFunction = ({
@@ -51,6 +52,21 @@ export namespace Popover {
      */
     @property({ type: String })
     placement: PlacementType = "bottom";
+
+    /**
+     * The positioning strategy for the popover.
+     *
+     * This property specifies how the popover is positioned relative to the trigger element.
+     * It accepts two values:
+     * - `"absolute"`: The popover is positioned relative to the nearest positioned ancestor.
+     * - `"fixed"`: The popover is positioned relative to the viewport, allowing it to escape parent containers with `overflow: hidden` or `overflow: auto`.
+     *
+     * By default, the positioning strategy is `"absolute"`. Use `"fixed"` if the popover needs to escape parent boundaries.
+     *
+     * @type {StrategyType}
+     */
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     /**
      * Indicates whether the popover is open.
@@ -175,6 +191,16 @@ export namespace Popover {
      */
     @property({ type: String })
     trigger?: string = "click";
+
+    /**
+     * Indicates whether the popover should use an inverted color scheme.
+     *
+     * When set to `true`, the popover will invert its background color and text color.
+     *
+     * @type {boolean}
+     */
+    @property({ type: Boolean })
+    inverted: boolean = false;
 
     /**
      * The trigger element for the popover.
@@ -435,6 +461,7 @@ export namespace Popover {
           }
         },
         placement: this.placement,
+        strategy: this.positioningStrategy,
         modifiers: [
           ...defaultModifiers,
           flip,
@@ -469,7 +496,7 @@ export namespace Popover {
           {
             name: "computeStyles",
             options: {
-              adaptive: true
+              adaptive: false
             }
           }
         ]
@@ -540,33 +567,44 @@ export namespace Popover {
       );
     }
 
+    private get popoverClassMap() {
+      return {
+        "md-popover": true,
+        inverted: this.inverted
+      };
+    }
+
+    private get renderPopoverTemplate() {
+      return html` <div
+        part="popover"
+        class="popover-container"
+        role=${this.role}
+        aria-modal=${ifDefined(this.interactive ? "true" : undefined)}
+        aria-label=${ifDefined(this.ariaLabel ?? undefined)}
+      >
+        ${this.showClose
+          ? html`<md-button
+              class="cancel-icon-button"
+              size="20"
+              hasRemoveStyle
+              circle
+              @button-click=${() => (this.isOpen = false)}
+            >
+              <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+            </md-button>`
+          : nothing}
+        ${this.showArrow ? html`<div id="arrow" class="popover-arrow"></div>` : nothing}
+        <div class="popover-content" part="popover-content">
+          <slot @slotchange=${this.onContentSlotChanged}></slot>
+        </div>
+      </div>`;
+    }
+
     render() {
       return html`
-        <div class="md-popover">
+        <div class=${classMap(this.popoverClassMap)}>
           <slot name="triggerElement" aria-expanded=${this.isOpen}></slot>
-          <div
-            part="popover"
-            class="popover-container"
-            role=${this.role}
-            aria-modal=${ifDefined(this.interactive ? "true" : undefined)}
-            aria-label=${ifDefined(this.ariaLabel ?? undefined)}
-          >
-            ${this.showClose
-              ? html`<md-button
-                  class="cancel-icon-button"
-                  size="20"
-                  hasRemoveStyle
-                  circle
-                  @button-click=${() => (this.isOpen = false)}
-                >
-                  <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
-                </md-button>`
-              : nothing}
-            ${this.showArrow ? html`<div id="arrow" class="popover-arrow"></div>` : nothing}
-            <div class="popover-content" part="popover-content">
-              <slot @slotchange=${this.onContentSlotChanged}></slot>
-            </div>
-          </div>
+          ${this.renderPopoverTemplate}
         </div>
       `;
     }

@@ -6,7 +6,7 @@
  *
  */
 
-import { Placement as PopoverPlacement } from "@/components/popover/Popover.types";
+import { Placement as PopoverPlacement, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
@@ -77,6 +77,8 @@ export namespace MenuOverlay {
     @property({ type: Boolean, attribute: "keep-open-on-window-blur" }) keepOpenOnWindowBlur = false;
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     @queryAssignedNodes("menu-trigger", true) trigger?: NodeListOf<HTMLElement>;
 
@@ -296,6 +298,7 @@ export namespace MenuOverlay {
             }
           },
           placement: this.placement,
+          strategy: this.positioningStrategy,
           modifiers: [
             ...defaultModifiers,
             flip,

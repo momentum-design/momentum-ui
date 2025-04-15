@@ -9,7 +9,14 @@
     position: relative;
     color: var(--popover-text-color);
 
-    
+    --popover-variant-border-color: var(--popover-border-color);
+    --popover-variant-bg-color: var(--popover-bg-color);
+
+    &.inverted {
+      color: var(--popover-inverted-text-color);
+      --popover-variant-border-color: var(--popover-inverted-border-color);
+      --popover-variant-bg-color: var(--popover-inverted-bg-color);
+    }
 
     * {
       box-sizing: inherit;
@@ -23,8 +30,8 @@
       display: none;
       position: absolute;
       z-index: 1000;
-      background-color: var(--popover-bg-color);
-      border: 1px solid var(--popover-border-color);
+      background-color: var(--popover-variant-bg-color);
+      border: 1px solid var(--popover-variant-border-color);
       border-radius: $container-border-radius;
       padding: $main-padding;
 
@@ -77,8 +84,8 @@
         position: absolute;
         width: 16px;
         height: 16px;
-        background: var(--popover-bg-color);
-        border: 1px solid var(--popover-border-color);
+        background: var(--popover-variant-bg-color);
+        border: 1px solid var(--popover-variant-border-color);
         transform: rotate(45deg);
         visibility: visible;
       }

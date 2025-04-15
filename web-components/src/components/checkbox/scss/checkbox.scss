@@ -40,7 +40,7 @@
     &::before,
     &::after {
       content: "";
-      left: calc(#{$checkbox__icon-size} * 1.25);
+      left: calc(#{$checkbox__size} * 0.75);
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);

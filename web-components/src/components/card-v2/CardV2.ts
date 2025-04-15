@@ -29,7 +29,7 @@ export namespace CardV2 {
     @property({ type: String }) header?: string = undefined;
     @property({ type: String }) info?: string = undefined;
     @property({ type: String }) data?: string = undefined;
-    @property({ type: Boolean }) expandable = false;
+    @property({ type: Boolean, reflect: true }) expandable = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -99,7 +99,7 @@ export namespace CardV2 {
             <md-icon
               slot="icon"
               iconSet="momentumDesign"
-              name=${this.isActive ? "arrow-circle-down-bold" : "arrow-circle-up-bold"}
+              name=${this.isActive ? "arrow-circle-up-bold" : "arrow-circle-down-bold"}
               size="18"
             >
             </md-icon>

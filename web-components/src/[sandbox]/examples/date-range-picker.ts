@@ -21,13 +21,17 @@ const datePickerValue = `${startDate} - ${endDate}`;
 
 export const dateRangePickerTemplate = html`
   <h2 class="sandbox-header">md-date-range-picker</h2>
-  <h3>datepicker with different locale</h3>
-  <md-date-range-picker locale="ru"></md-date-range-picker>
-  <h3>datepicker with min / max filters</h3>
+  <h3>date range picker with user's system locale</h3>
+  <md-date-range-picker .useISOFormat=${false}></md-date-range-picker>
+  <h3>date range picker with "ru" locale</h3>
+  <md-date-range-picker locale="ru" .useISOFormat=${false}></md-date-range-picker>
+  <h3>date range picker with "en-US" locale</h3>
+  <md-date-range-picker locale="en-US" .useISOFormat=${false}></md-date-range-picker>
+  <h3>date range picker with min / max filters</h3>
   <md-date-range-picker value=${datePickerValue} minDate=${minDate} maxDate=${maxDate}></md-date-range-picker>
-  <h3>datepicker with Monday start week start</h3>
+  <h3>date range picker with Monday start week start</h3>
   <md-date-range-picker value=${datePickerValue} weekStart="Monday"></md-date-range-picker>
-  <h3>datepicker with initial value</h3>
+  <h3>date range picker with initial value</h3>
   <md-date-range-picker weekStart="Monday" value=${datePickerValue}></md-date-range-picker>
   <h3>disabled datepicker</h3>
   <md-date-range-picker weekStart="Monday" value=${datePickerValue} disabled></md-date-range-picker>
@@ -35,6 +39,8 @@ export const dateRangePickerTemplate = html`
   <md-date-range-picker newMomentum></md-date-range-picker>
   <h3>date range picker with accept and cancel buttons</h3>
   <md-date-range-picker
+    .startDate=${"2025-04-10"}
+    .endDate=${"2025-04-15"}
     .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
     .shouldCloseOnSelect=${true}
     newMomentum

@@ -4,7 +4,7 @@
 }
 
 :host([alignment="vertical"]) div ::slotted(md-checkbox:not(:last-child)) {
-  margin-bottom: calc(#{$checkbox__main-indent} * 6);
+  margin-bottom: calc(#{$checkbox__main-indent} * 2);
 }
 
 :host([alignment="horizontal"]) div {

@@ -1,5 +1,3 @@
-import "@/components/icon/Icon";
-
 const AvatarState = ["active", "rest"] as const;
 
 const AvatarStyle = ["default", "table"] as const;

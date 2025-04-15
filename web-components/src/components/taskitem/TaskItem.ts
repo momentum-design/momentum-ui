@@ -13,15 +13,17 @@ import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
+import { nothing, TemplateResult } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { TaskItemStatus } from "./TaskItem.constants";
 import styles from "./scss/module.scss";
 
 export namespace TaskItem {
+  export type TaskItemStatus = (typeof TaskItemStatus)[number];
   @customElementWithCheck("md-task-item")
   export class ELEMENT extends LitElement {
     @property({ type: String }) mediaType = "call";
-    @property({ type: String }) status = "";
+    @property({ type: String }) status: TaskItemStatus | string = "";
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
@@ -71,8 +73,15 @@ export namespace TaskItem {
     private titleValue = "";
     private itemTitleValue = "";
 
-    private getChannelAvatar(type: Avatar.ChannelType) {
-      return html`<md-avatar size="32" type=${type} state=${this.selected ? "active" : "rest"}></md-avatar>`;
+    private getChannelAvatar(type: Avatar.ChannelType, slot?: TemplateResult) {
+      return html`<md-avatar
+        size="32"
+        type=${type}
+        state=${this.selected ? "active" : "rest"}
+        presence-type=${this.status ?? ""}
+        newMomentum
+        >${slot ?? nothing}</md-avatar
+      >`;
     }
 
     private get taskTypeTemplate() {
@@ -108,26 +117,18 @@ export namespace TaskItem {
 
         case "midcall telephony":
         case "icon src":
-          return html`
-            <md-badge class="avatar-badge" circle>
-              <img src="${this.iconSrc}" />
-            </md-badge>
-          `;
+          return this.getChannelAvatar(
+            "channel-custom",
+            html`<img height="16px" width="16px " src="${this.iconSrc}" />`
+          );
+
         case "callback":
-          return html`
-            <md-badge class="avatar-badge" color="lime" circle>
-              <md-icon name="icon-icon-callback_18"></md-icon>
-            </md-badge>
-          `;
+          return this.getChannelAvatar("channel-custom", html`<md-icon name="icon-icon-callback_18"></md-icon>`);
         case "progressive_campaign":
-          return html`
-            <md-badge class="avatar-badge" color="green" circle>
-              <md-icon name="icon-icon-campaign_18"></md-icon>
-            </md-badge>
-          `;
+          return this.getChannelAvatar("channel-custom", html`<md-icon name="icon-icon-campaign_18"></md-icon>`);
 
         default:
-          return html` <slot name="task-type"></slot> `;
+          return this.getChannelAvatar("channel-custom", html`<slot name="task-type"></slot>`);
       }
     }
 
@@ -263,13 +264,14 @@ export namespace TaskItem {
 
     renderChatCount() {
       if (this.quantity <= 0) {
+        this.removeAttribute("has-messages");
         return nothing;
       }
-
+      this.setAttribute("has-messages", "true");
       const quantitiyLabel = this.quantity > 99 ? "99+" : this.quantity.toString();
 
       if (this.isRestyle) {
-        return html` <md-badge color="unreadcount" outlined> ${quantitiyLabel} </md-badge>`;
+        return html` <md-badge color="unreadcount"> ${quantitiyLabel} </md-badge>`;
       }
 
       return html` <span class="new-chat-quantity">${quantitiyLabel}</span> `;
@@ -320,7 +322,7 @@ export namespace TaskItem {
       return html`
         <div
           part="task-item-container"
-          class="md-taskitem ${classMap({ selected: this.selected, "is-restyle": this.isRestyle })}"
+          class="md-taskitem ${classMap({ selected: this.selected })}"
           tabindex=${this.sanitizedTabIndexForContainer}
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
@@ -329,7 +331,7 @@ export namespace TaskItem {
         >
           <div class="md-taskitem__mediatype">
             ${this.taskTypeTemplate}
-            ${this.status
+            ${this.status && !this.isRestyle
               ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.renderStatus()} </span> `
               : nothing}
           </div>

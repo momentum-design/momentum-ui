@@ -51,6 +51,11 @@ const task_item = {
     "text-color": {
       common: "$mds-color-theme-text-success-normal"
     }
+  },
+  restyle: {
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    }
   }
 };
 

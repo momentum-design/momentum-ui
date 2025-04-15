@@ -27,7 +27,7 @@ export namespace DateTimePicker {
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
  
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
-    @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT - TODO why?
+    @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
     @property({ type: String }) locale: string | undefined = undefined;

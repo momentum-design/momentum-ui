@@ -3,7 +3,11 @@ import "@/components/button/Button";
 import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
 import "@/components/popover/Popover";
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/tooltip/Tooltip";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { repeat } from "lit-html/directives/repeat";
 
 @customElement("popover-template-sandbox")
 export class PopoverTemplateSandbox extends LitElement {
@@ -18,6 +22,9 @@ export class PopoverTemplateSandbox extends LitElement {
 
   @internalProperty()
   private fourthOpen = false;
+
+  @internalProperty()
+  private isButtonWithTooltipPopoverOpen = false;
 
   private openFirstCoach() {
     this.firstOpen = true;
@@ -34,6 +41,12 @@ export class PopoverTemplateSandbox extends LitElement {
   private openFourthCoach() {
     this.fourthOpen = true;
   }
+
+  private sortOptions = [
+    { sortLabel: "Sort by name", sortValue: "name" },
+    { sortLabel: "Sort by date", sortValue: "date" },
+    { sortLabel: "Sort by size", sortValue: "size" }
+  ];
 
   static get styles() {
     return [
@@ -158,12 +171,30 @@ export class PopoverTemplateSandbox extends LitElement {
 
       <h3>positioning-strategy "fixed" for when in a container with hidden overflow</h3>
       <div style="width: 100px; overflow: hidden; margin-top: 12px;">
-        <md-popover placement="bottom" positioning-strategy="fixed" trigger="click">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
-          <div class="popoverContent">
-            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
-          </div>
-        </md-popover>
+        <md-tooltip placement="bottom" message="Sort" ?disabled=${this.isButtonWithTooltipPopoverOpen}>
+          <md-popover
+            placement="bottom"
+            positioning-strategy="fixed"
+            trigger="click"
+            interactive
+            @popover-open-changed=${(e: CustomEvent) => {
+              this.isButtonWithTooltipPopoverOpen = e.detail.isOpen;
+            }}
+          >
+            <md-button circle variant="secondary" size="28" ariaLabel="Sort" slot="triggerElement">
+              <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+              <span slot="text">Sort</span>
+            </md-button>
+
+            <md-radiogroup checked="0">
+              ${repeat(
+                this.sortOptions,
+                (item) => item.sortValue,
+                (item) => html`<md-radio slot="radio" value=${item.sortValue}> ${item.sortLabel} </md-radio>`
+              )}
+            </md-radiogroup>
+          </md-popover>
+        </md-tooltip>
       </div>
     `;
   }

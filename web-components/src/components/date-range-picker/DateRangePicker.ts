@@ -7,10 +7,12 @@
  */
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { reformatDateString } from "@/utils/dateUtils";
+import { getLocaleDateFormat, reformatISODateString } from "@/utils/dateUtils";
 import { property } from "lit-element";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
+
+const DATE_RANGE_SEPARATOR = " - ";
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
@@ -35,26 +37,56 @@ export namespace DateRangePicker {
 
     updated(changedProperties: Map<string | number | symbol, unknown>) {
       super.updated(changedProperties);
-    
-      if (changedProperties.has("startDate") || changedProperties.has("endDate")) {
+
+      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !this.controlButtons?.apply) {
         this.updateValue();
       }
     }
 
     updateValue = () => {
       if (this.startDate && this.endDate) {
-        this.value = `${reformatDateString(this.startDate)} - ${reformatDateString(this.endDate)}`;
+        const formatDate = (dateString: string) =>
+          this.useISOFormat
+          ? reformatISODateString(dateString)
+          : DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+
+        const startDateString = formatDate(this.startDate);
+        const endDateString = formatDate(this.endDate);
+
+        this.value = `${startDateString}${DATE_RANGE_SEPARATOR}${endDateString}`;
       }
     };
 
+    // overload
+    protected getPlaceHolderString() : string {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
+      if (this.useISOFormat) {
+        return `YYYY/MM/DD${DATE_RANGE_SEPARATOR}YYYY/MM/DD`;
+      }
+      const placeholder = getLocaleDateFormat(this.locale).toUpperCase();
+      return `${placeholder}${DATE_RANGE_SEPARATOR}${placeholder}`;
+    };
+
+    // overload
+    isValueValid = (): boolean => {
+      if (!this.validateDate) {
+        return true;
+      }
+      const split = this.value?.split(DATE_RANGE_SEPARATOR) ?? [];
+      return (split.length === 2 && this.validateDateString(split[0]) && this.validateDateString(split[1]));
+    }
+
+    // empty overload to stop prevent super's value change
     setSelected() {
-      // empty overload to stop prevent super's value change
     }
 
     dateToSqlTranslate(date: DateTime) {
       return date.toSQLDate();
     }
 
+    // overload
     onApplyClick() {
       this.emitDateRange();
       this.updateValue();
@@ -64,7 +96,7 @@ export namespace DateRangePicker {
       }
     }
 
-    handleDateSelection = (e: any) => {
+    handleDateSelection(e: any): void {
       const selection: DateTime = e.detail.data;
       if (!selection) {
         return;

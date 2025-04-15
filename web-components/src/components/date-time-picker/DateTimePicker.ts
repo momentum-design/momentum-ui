@@ -1,7 +1,7 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { now, reformatDateString } from "@/utils/dateUtils";
+import { now, reformatISODateString } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -25,12 +25,13 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-
+ 
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
-    @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
+    @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT - TODO why?
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
-    @property({ type: String }) locale = "en-US";
+    @property({ type: String }) locale: string | undefined = undefined;
+    @property({ type: Boolean }) useISOFormat = true;
     @property({ type: Boolean }) disabled = false;
 
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
@@ -115,7 +116,7 @@ export namespace DateTimePicker {
     };
 
     handleDateTimeInputChange = (event: CustomEvent) => {
-      this.value = reformatDateString(event?.detail?.value);
+      this.value = reformatISODateString(event?.detail?.value);
     };
 
     parseValueForVisuals = (value: string) => {
@@ -149,9 +150,9 @@ export namespace DateTimePicker {
     combineDateAndTimeValues = (dateString: string | undefined | null, timeString: string | null) => {
       if (dateString) {
         if (timeString) {
-          this.value = reformatDateString(`${dateString}T${timeString}`);
+          this.value = reformatISODateString(`${dateString}T${timeString}`);
         } else {
-          this.value = reformatDateString(dateString);
+          this.value = reformatISODateString(dateString);
         }
       }
     };
@@ -190,7 +191,7 @@ export namespace DateTimePicker {
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
-              locale=${this.locale}
+              locale=${ifDefined(this.locale)}
               value=${ifDefined(this.timeValue ?? undefined)}>
             </md-timepicker>
           </div>

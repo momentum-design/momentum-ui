@@ -24,11 +24,16 @@ export const datePickerTemplate = html`
     .filterParams=${{ minDate: undefined, maxDate: undefined, filterDate: undefined }}
   ></md-datepicker-calendar>
   <h3>datepicker with custom trigger</h3>
+  <md-datepicker value=${"2025-04-10"}></md-datepicker>
   <md-datepicker custom-trigger>
     <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
   </md-datepicker>
-  <h3>datepicker with different locale</h3>
-  <md-datepicker locale="ru"></md-datepicker>
+  <h3>datepicker with user's system locale</h3>
+  <md-datepicker .useISOFormat=${false}></md-datepicker>
+  <h3>datepicker with "ru" locale</h3>
+  <md-datepicker locale="ru" .useISOFormat=${false}></md-datepicker>
+  <h3>datepicker with "en-US" locale</h3>
+  <md-datepicker locale="en-US" .useISOFormat=${false}></md-datepicker>
   <h3>datepicker with min / max filters</h3>
   <md-datepicker minDate=${ifDefined(minDate ?? undefined)} maxDate=${ifDefined(maxDate ?? undefined)}></md-datepicker>
   <h3>datepicker with Monday start week start</h3>

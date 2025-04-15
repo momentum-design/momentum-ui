@@ -17,9 +17,10 @@ import {
   addWeeks,
   dateStringToDateTime,
   DayFilters,
+  getLocaleDateFormat,
   isDayDisabled,
   now,
-  reformatDateString,
+  reformatISODateString,
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
@@ -28,7 +29,6 @@ import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query, TemplateResult } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
-import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
@@ -56,7 +56,9 @@ export namespace DatePicker {
     @property({ type: String, reflect: true }) value: string | null | undefined = undefined;
     @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
-    @property({ type: String }) locale = "en-US";
+    @property({ type: String }) locale: string | undefined = undefined;
+    @property({ type: Boolean }) useISOFormat = true;
+    @property({ type: Boolean }) validateDate = true;
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) htmlId = "";
@@ -99,16 +101,24 @@ export namespace DatePicker {
         this.maxDateData = dateStringToDateTime(this.maxDate);
       }
 
-      this.value = reformatDateString(this.value);
+      this.value = reformatISODateString(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
       if (this.value === EMPTY_STRING) {
-        this.value = this.includesTime
-          ? reformatDateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-          : reformatDateString(this.selectedDate?.toISODate());
+        if (this.useISOFormat) {
+          this.value = this.includesTime
+          ? reformatISODateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
+          : reformatISODateString(this.selectedDate?.toISODate());
+
+        }
+        else {
+          this.value = this.includesTime
+          ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
+          : this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+        }
       }
     }
 
@@ -133,7 +143,12 @@ export namespace DatePicker {
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      this.value = reformatDateString(event?.detail?.value);
+      if (this.useISOFormat) {
+        this.value = reformatISODateString(event?.detail?.value);
+      }
+      else {
+        this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+      }
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,
@@ -186,7 +201,12 @@ export namespace DatePicker {
       if (!isDayDisabled(date, filters)) {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = reformatDateString(dateString);
+        if (this.useISOFormat) {
+          this.value = reformatISODateString(dateString);
+        }
+        else {
+          this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+        }
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {
@@ -264,11 +284,6 @@ export namespace DatePicker {
     };
 
     private readonly getValidRegexString = (): string => {
-      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
-      if (dateRangePicker) {
-        return ValidationRegex.dateRangeString;
-      }
-
       if (this.includesTime) {
         return ValidationRegex.ISOString;
       }
@@ -276,15 +291,26 @@ export namespace DatePicker {
       return ValidationRegex.ISODateString;
     };
 
-    isValueValid = (): boolean => {
-      if (!this.value && this.value !== EMPTY_STRING) return true;
-      const regex = RegExp(this.getValidRegexString());
+    protected validateDateString(dateString: string | null | undefined): boolean {
+      if (!dateString && dateString !== EMPTY_STRING) return true;
 
-      const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-      const isValid =
-        !!this.value && regex.test(this.value) && !isDayDisabled(dateStringToDateTime(this.value), filters);
+      if (this.useISOFormat) {
+        const regex = RegExp(this.getValidRegexString());
+        const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
+        return !!dateString && regex.test(dateString) && !isDayDisabled(dateStringToDateTime(dateString), filters);
+      }
 
-      return isValid;
+      const format = getLocaleDateFormat(this.locale);
+      const parsedDate = DateTime.fromFormat(dateString, format, { locale: this.locale });
+
+      return parsedDate.isValid;
+    };
+
+    protected isValueValid(): boolean {
+      if (!this.validateDate) {
+        return true;
+      }
+      return this.validateDateString(this.value);
     };
 
     private get messageArray(): Input.Message[] {
@@ -346,6 +372,16 @@ export namespace DatePicker {
       `;
     }
 
+    protected getPlaceHolderString() : string {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
+      if (this.useISOFormat) {
+        return "YYYY/MM/DD";
+      }
+      return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
+    };
+
     render() {
       return html`
         <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
@@ -361,7 +397,7 @@ export namespace DatePicker {
                   slot="menu-trigger"
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
-                  placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
+                  placeholder=${this.getPlaceHolderString()}
                   value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}

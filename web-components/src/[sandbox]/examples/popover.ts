@@ -127,14 +127,12 @@ export class PopoverTemplateSandbox extends LitElement {
       <br />
       <br />
       <div class="popover-trigger-element-container">
-        <div style="width: 100px; overflow: hidden;">
-          <md-popover placement="bottom">
-            <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
-            <div class="popoverContent">
-              <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
-            </div>
-          </md-popover>
-        </div>
+        <md-popover placement="bottom">
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
+          <div class="popoverContent">
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+          </div>
+        </md-popover>
 
         <md-popover placement="bottom" trigger="mouseenter">
           <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Hover</md-button>
@@ -152,6 +150,16 @@ export class PopoverTemplateSandbox extends LitElement {
 
         <md-popover placement="bottom" trigger="focus mouseenter">
           <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
+          <div class="popoverContent">
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+          </div>
+        </md-popover>
+      </div>
+
+      <h3>positioning-strategy "fixed" for when in a container with hidden overflow</h3>
+      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+        <md-popover placement="bottom" positioning-strategy="fixed" trigger="click">
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>

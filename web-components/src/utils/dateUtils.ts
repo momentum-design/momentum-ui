@@ -130,7 +130,7 @@ export function dateStringToDateTime(date: string): DateTime {
   return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
 }
 
-export function reformatDateString(date: string | null | undefined): string {
+export function reformatISODateString(date: string | null | undefined): string {
   if (!date) {
     return "";
   }
@@ -139,4 +139,20 @@ export function reformatDateString(date: string | null | undefined): string {
   splitString[0] = splitString[0].replace(DATE_HYPHENS_REGEX, "/");
 
   return splitString.join("T");
+}
+
+export function getLocaleDateFormat(locale: string | undefined = undefined): string {
+  // luxon Datetime has no inbuilt way to get a locale's expected date format
+  // hence this awkward workaround
+
+  const sampleDate = DateTime.fromObject({ year: 2025, month: 1, day: 3 }).setLocale(locale ?? DateTime.local().locale);
+  const formattedDate = sampleDate.toFormat("D");
+
+  return formattedDate
+    .replace("2025", "yyyy")
+    .replace("25", "yy")
+    .replace("01", "MM")
+    .replace("1", "M")
+    .replace("03", "dd")
+    .replace("3", "d");
 }

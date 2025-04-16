@@ -65,5 +65,4 @@ export class DateRangePickerExample extends LitElement {
   }
 }
 
-// Export the template for external use
 export const dateRangePickerTemplate = html`<date-range-picker-example></date-range-picker-example>`;

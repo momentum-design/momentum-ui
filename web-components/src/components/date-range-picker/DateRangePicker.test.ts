@@ -86,12 +86,12 @@ describe("DatePicker Component", () => {
   );
 
   test.each([
-    { controlButtons: { apply: "APPLY" }, shouldUpdate: false },
-    { controlButtons: { apply: "APPLY", cancel: "CANCEL" }, shouldUpdate: false },
+    { controlButtons: { apply: "APPLY" }, shouldUpdate: true },
+    { controlButtons: { apply: "APPLY", cancel: "CANCEL" }, shouldUpdate: true },
     { controlButtons: { cancel: "CANCEL" }, shouldUpdate: true },
     { controlButtons: undefined, shouldUpdate: true }
   ])(
-  "updating props should update value, unless Accept button present (%s)",
+  "updating props externally should update value, even if Apply button present (%s)",
   async ({ controlButtons, shouldUpdate }) => {
     const el: DateRangePicker.ELEMENT = await fixture(html`
       <md-date-range-picker
@@ -106,6 +106,41 @@ describe("DatePicker Component", () => {
 
       el.startDate = DATE1.toSQLDate();
       el.endDate = DATE2.toSQLDate();
+
+      await el.updateComplete;
+      await el.updateComplete;
+
+      expect(updatedSpy).toHaveBeenCalled();
+
+      if (shouldUpdate) {  
+        expect(el.value).toEqual("2025/04/15 - 2025/04/25");
+      } else {
+        expect(el.value).toEqual("1970/01/01 - 1970/01/02");
+      }
+    }
+  );
+
+  test.each([
+    { controlButtons: { apply: "APPLY" }, shouldUpdate: false },
+    { controlButtons: { apply: "APPLY", cancel: "CANCEL" }, shouldUpdate: false },
+    { controlButtons: { cancel: "CANCEL" }, shouldUpdate: true },
+    { controlButtons: undefined, shouldUpdate: true }
+  ])(
+  "should not update value if new range selected and Apply button present",
+  async ({ controlButtons, shouldUpdate }) => {
+    const el: DateRangePicker.ELEMENT = await fixture(html`
+      <md-date-range-picker
+        .controlButtons=${controlButtons}
+        .startDate=${"1970-01-01"}
+        .endDate=${"1970-01-02"}
+      ></md-date-range-picker>
+    `);
+
+      await el.updateComplete;
+      const updatedSpy = jest.spyOn(el, "updated");
+
+      el.handleSelect(new CustomEvent("day-select", { detail: { date: DATE1 } }));
+      el.handleSelect(new CustomEvent("day-select", { detail: { date: DATE2 } }));
 
       await el.updateComplete;
       await el.updateComplete;

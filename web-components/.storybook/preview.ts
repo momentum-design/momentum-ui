@@ -63,5 +63,18 @@ export const globalTypes = {
       ],
       dynamicTitle: true
     }
+  },
+  isVisualRebrand: {
+    description: "Enable visual rebrand backgrounds",
+    defaultValue: false,
+    toolbar: {
+      title: "Visual Rebrand",
+      icon: "eye",
+      items: [
+        { value: false, title: "Off", icon: "eyeclose" },
+        { value: true, title: "On", icon: "eye" }
+      ],
+      dynamicTitle: true
+    }
   }
 };

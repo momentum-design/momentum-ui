@@ -38,7 +38,7 @@ export namespace DateRangePicker {
     updated(changedProperties: Map<string | number | symbol, unknown>) {
       super.updated(changedProperties);
 
-      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !this.controlButtons?.apply) {
+      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !changedProperties.has("focusedDate")) {
         this.updateValue();
       }
     }

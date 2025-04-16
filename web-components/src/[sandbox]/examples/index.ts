@@ -25,6 +25,7 @@ export { draggableTemplate } from "./draggable";
 export { dropdownTemplate } from "./dropdown";
 export { editableField } from "./editable-field";
 export { favoriteTemplate } from "./favorite";
+export { floatingButtonBarTemplate } from "./floating-button-bar";
 export { floatingModalTemplate } from "./floating-modal";
 export { formTemplate } from "./form";
 export { grabberTemplate } from "./grabber";

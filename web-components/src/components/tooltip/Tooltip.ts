@@ -190,6 +190,12 @@ export namespace Tooltip {
       if (changedProperties.has("message")) {
         this.changeMessage();
       }
+
+      if (changedProperties.has("disabled")) {
+        if (this.opened) {
+          this.opened = false;
+        }
+      }
     }
 
     private get tooltipClassMap() {

@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime, Settings } from "luxon";
 import "./dateUtils";
 import {
   addDays,
@@ -8,6 +8,7 @@ import {
   DayFilters,
   getDate,
   getLocaleData,
+  getLocaleDateFormat,
   getMonth,
   getStartOfMonth,
   getStartOfWeek,
@@ -17,7 +18,7 @@ import {
   isSameMonth,
   localizeDate,
   now,
-  reformatDateString,
+  reformatISODateString,
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractDays,
@@ -169,14 +170,37 @@ describe("DateTime Module", () => {
   });
 
   test("reformatDateString should format a SQL date string with slashes instead of dashes", async () => {
-    expect(reformatDateString("2021-12-12")).toEqual("2021/12/12");
-    expect(reformatDateString("2021-12-12T09:01:01-8:00")).toEqual("2021/12/12T09:01:01-8:00");
-    expect(reformatDateString("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
+    expect(reformatISODateString("2021-12-12")).toEqual("2021/12/12");
+    expect(reformatISODateString("2021-12-12T09:01:01-8:00")).toEqual("2021/12/12T09:01:01-8:00");
+    expect(reformatISODateString("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
   });
 
   test("dateStringToDateTime should get valid DateTime from SQL date string with slashes instead of dashes", async () => {
     const dateTime = dateStringToDateTime("2023-03-15");
     expect(dateTime).toBeInstanceOf(DateTime);
     expect(dateTime.toISODate()).toEqual("2023-03-15");
+  });
+
+  test("getLocaleDateFormat should return the correct format string for given locale", async () => {
+    expect(getLocaleDateFormat("en-US")).toEqual("M/d/yyyy"); // US
+    expect(getLocaleDateFormat("en-IE")).toEqual("d/M/yyyy"); // Ireland
+    expect(getLocaleDateFormat("en-IN")).toEqual("d/M/yyyy"); // India
+    expect(getLocaleDateFormat("en-AU")).toEqual("dd/MM/yyyy"); // Australia
+    expect(getLocaleDateFormat("en-NZ")).toEqual("d/MM/yyyy"); // New Zealand
+    expect(getLocaleDateFormat("en-GB")).toEqual("dd/MM/yyyy"); // UK
+    expect(getLocaleDateFormat("de-DE")).toEqual("d.M.yyyy"); // Germany
+    expect(getLocaleDateFormat("fr-FR")).toEqual("dd/MM/yyyy"); // France
+    expect(getLocaleDateFormat("en-CA")).toEqual("yyyy-MM-dd"); // Canada
+    expect(getLocaleDateFormat("he-IL")).toEqual("d.M.yyyy"); // Israel
+    expect(getLocaleDateFormat("ja-JP")).toEqual("yyyy/M/d"); // Japan
+    expect(getLocaleDateFormat("ko-KR")).toEqual("yyyy. M. d."); // Korea
+    expect(getLocaleDateFormat("zh-CN")).toEqual("yyyy/M/d"); // China
+
+    // should fall back to system locale if no locale arg provided
+    Settings.defaultLocale = "en-US";
+    expect(getLocaleDateFormat()).toEqual("M/d/yyyy");
+    Settings.defaultLocale = "en-IE";
+    expect(getLocaleDateFormat()).toEqual("d/M/yyyy");
+    expect(getLocaleDateFormat(undefined)).toEqual("d/M/yyyy");
   });
 });

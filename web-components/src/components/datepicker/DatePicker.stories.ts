@@ -10,6 +10,8 @@ export default {
     weekStart: { control: { type: "select" }, options: DP.weekStartDays },
     controlButtons: { control: "boolean" },
     locale: { control: { type: "text" } },
+    useISOFormat: { control: "boolean", defaultValue: true },
+    validateDate: { control: "boolean", defaultValue: true },
     disabled: { control: "boolean" },
     minDate: { control: { type: "text" } },
     maxDate: { control: { type: "text" } },
@@ -46,6 +48,8 @@ export const DatePicker: StoryObj = {
         value=${args.value}
         weekStart=${args.weekStart}
         locale=${args.locale}
+        .useISOFormat=${args.useISOFormat}
+        .validateDate=${args.validateDate}
         .controlButtons=${controlButtons}
         minDate=${args.minDate}
         maxDate=${args.maxDate}

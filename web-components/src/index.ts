@@ -43,7 +43,7 @@ export { DraggableItem } from "./components/draggable/DraggableItem";
 export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
-export { FloatingButtonBar } from "./components/floating-button-bar/FloatingButtonBar";
+export { FloatingButtonBar, FloatingButtonBarAction } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { Form } from "./components/form/Form";

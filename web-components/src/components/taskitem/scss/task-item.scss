@@ -267,10 +267,6 @@
       }
     }
 
-    &:focus {
-      background: var(--taskitem-pressed-bg-color);
-    }
-
     &::after {
       margin: 0;
     }

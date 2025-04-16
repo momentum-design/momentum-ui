@@ -35,7 +35,7 @@ const tabs = (args: Args) => {
       ?hug-tabs=${args.hugTabs}
       more-items-scroll-limit=${args.moreItemsScrollLimit}
       selected-index=${args.selectedIndex}
-      ?scroll-arrow=${args.scrollArrow}
+      ?scroll-arrow=${args["scroll-arrow"]}
       left-arrow-aria-label=${args.leftArrowAriaLabel}
       right-arrow-aria-label=${args.rightArrowAriaLabel}
     >
@@ -95,7 +95,7 @@ const moreTabs = (args: Args) => {
         ?hug-tabs=${args.hugTabs}
         more-items-scroll-limit=${args.moreItemsScrollLimit}
         selected-index=${args.selectedIndex}
-        ?scroll-arrow=${args.scrollArrow}
+        ?scroll-arrow=${args["scroll-arrow"]}
       >
         <md-tab slot="tab" closable="${args.closable}" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -207,7 +207,7 @@ export const HorizontalTabNewMomentum: StoryObj = {
         alignment: "horizontal",
         type: "rounded",
         variant: "primary",
-        scrollArrow: true,
+        "scroll-arrow": true,
         newMomentum: true
       })}
     `;
@@ -252,7 +252,7 @@ export default {
     hugTabs: { control: "boolean" },
     moreItemsScrollLimit: { control: "number" },
     selectedIndex: { control: "number" },
-    scrollArrow: { control: "boolean" },
+    "scroll-arrow": { control: "boolean" },
     leftArrowAriaLabel: { control: "text" },
     rightArrowAriaLabel: { control: "text" },
 
@@ -268,7 +268,8 @@ export default {
     menuOverlayElement: { table: { disable: true } },
     tabsSettingsElement: { table: { disable: true } },
     slotItem: { table: { disable: true } },
-    handleOnDragEnd: { table: { disable: true } }
+    handleOnDragEnd: { table: { disable: true } },
+    updateArrowsVisibility: { table: { disable: true } }
   },
   parameters: {
     a11y: {

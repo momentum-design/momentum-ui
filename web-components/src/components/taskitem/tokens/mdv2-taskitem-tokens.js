@@ -55,6 +55,9 @@ const task_item = {
   restyle: {
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
+    },
+    "error-text-color": {
+      common: "$mds-color-theme-text-error-normal"
     }
   }
 };

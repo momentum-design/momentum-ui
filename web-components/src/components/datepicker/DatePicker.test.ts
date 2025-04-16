@@ -223,8 +223,17 @@ describe("DatePicker Component", () => {
       })
     );
   });
-  
-  describe("Localised + ISO format testing", () => {   
+
+  test("should pass positioning strategy to menu overlay", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker positioning-strategy="fixed"></md-datepicker>
+    `);
+
+    const menuOverlay = el.shadowRoot!.querySelector("md-menu-overlay");
+    expect(menuOverlay?.getAttribute("positioning-strategy")).toBe("fixed");
+  });
+
+  describe("Localised + ISO format testing", () => {
     test.each([
       { useISOFormat: true},
       { useISOFormat: false }

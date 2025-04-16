@@ -34,6 +34,7 @@ import {
   dropdownTemplate,
   editableField,
   favoriteTemplate,
+  floatingButtonBarTemplate,
   floatingModalTemplate,
   formTemplate,
   grabberTemplate,
@@ -365,6 +366,12 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Draggable", "md-draggable", "draggable", draggableTemplate)}
           ${this.getTabTemplate("Editable Field", "md-editable-field", "editable-textfield", editableField)}
           ${this.getTabTemplate("Favorite", "md-favorite", "favorite", favoriteTemplate)}
+          ${this.getTabTemplate(
+            "Floating Button Bar",
+            "md-floating-button-bar",
+            "Floating Button Bar",
+            floatingButtonBarTemplate
+          )}
           ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}
           ${this.getTabTemplate("Form", "md-form", "", formTemplate)}
           ${this.getTabTemplate("Grabber", "md-grabber", "grabber", grabberTemplate)}

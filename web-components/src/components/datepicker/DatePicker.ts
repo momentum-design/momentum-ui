@@ -32,7 +32,7 @@ import { DateTime } from "luxon";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-
+import { StrategyType } from "../popover/Popover.types";
 export interface DatePickerControlButton {
   value: string;
   ariaLabel?: string;
@@ -71,6 +71,8 @@ export namespace DatePicker {
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -110,14 +112,12 @@ export namespace DatePicker {
       if (this.value === EMPTY_STRING) {
         if (this.useISOFormat) {
           this.value = this.includesTime
-          ? reformatISODateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-          : reformatISODateString(this.selectedDate?.toISODate());
-
-        }
-        else {
+            ? reformatISODateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
+            : reformatISODateString(this.selectedDate?.toISODate());
+        } else {
           this.value = this.includesTime
-          ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
-          : this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+            ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
+            : this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
         }
       }
     }
@@ -145,8 +145,7 @@ export namespace DatePicker {
     handleDateInputChange = (event: CustomEvent) => {
       if (this.useISOFormat) {
         this.value = reformatISODateString(event?.detail?.value);
-      }
-      else {
+      } else {
         this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
       }
       this.dispatchEvent(
@@ -203,8 +202,7 @@ export namespace DatePicker {
         this.selectedDate = date;
         if (this.useISOFormat) {
           this.value = reformatISODateString(dateString);
-        }
-        else {
+        } else {
           this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
         }
       }
@@ -296,7 +294,11 @@ export namespace DatePicker {
 
       if (this.useISOFormat) {
         const regex = RegExp(this.getValidRegexString());
-        const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
+        const filters: DayFilters = {
+          maxDate: this.maxDateData,
+          minDate: this.minDateData,
+          filterDate: this.filterDate
+        };
         return !!dateString && regex.test(dateString) && !isDayDisabled(dateStringToDateTime(dateString), filters);
       }
 
@@ -304,14 +306,14 @@ export namespace DatePicker {
       const parsedDate = DateTime.fromFormat(dateString, format, { locale: this.locale });
 
       return parsedDate.isValid;
-    };
+    }
 
     protected isValueValid(): boolean {
       if (!this.validateDate) {
         return true;
       }
       return this.validateDateString(this.value);
-    };
+    }
 
     private get messageArray(): Input.Message[] {
       if (this.errorMessage) {
@@ -372,7 +374,7 @@ export namespace DatePicker {
       `;
     }
 
-    protected getPlaceHolderString() : string {
+    protected getPlaceHolderString(): string {
       if (this.placeholder) {
         return this.placeholder;
       }
@@ -380,11 +382,16 @@ export namespace DatePicker {
         return "YYYY/MM/DD";
       }
       return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
-    };
+    }
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
+        <md-menu-overlay
+          is-date-picker
+          custom-width="272px"
+          ?disabled=${this.disabled}
+          positioning-strategy=${ifDefined(this.positioningStrategy)}
+        >
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">

@@ -231,8 +231,9 @@ describe("DatePicker Component", () => {
 
     const menuOverlay = el.shadowRoot!.querySelector("md-menu-overlay");
     expect(menuOverlay?.getAttribute("positioning-strategy")).toBe("fixed");
-  
-  describe("Localised + ISO format testing", () => {   
+  });
+
+  describe("Localised + ISO format testing", () => {
     test.each([
       { useISOFormat: true},
       { useISOFormat: false }

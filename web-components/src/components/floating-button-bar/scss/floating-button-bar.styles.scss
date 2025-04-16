@@ -1,17 +1,16 @@
 :host {
-  display: inline-flex;
-  flex-direction: row;
+  display: flex;
   align-items: center;
-  height: 28px;
+  height: 1.75rem;
 
   border-radius: 1.5625rem;
   background-color: var(--floating-button-bar-bg-color);
 
-  box-shadow: var(--md-elevation-1);
-  backdrop-filter: blur(10px);
+  box-shadow: var(--md-elevation-1);  
 
   padding: 0.25rem 0.5rem;
   gap: 0.5rem;
+  flex: 1;
 }
 
 .button {
@@ -21,14 +20,31 @@
 }
 
 .cancel {
-    color: var(--floating-button-bar-secondary-color);
-}
-
-.primary-label {
-  color: var(--floating-button-bar-primary-color);
-  font-weight: 500;
-}
-
-.secondary-label {
   color: var(--floating-button-bar-secondary-color);
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+
+  &.primary {
+    font-family: var(--brand-font-medium);
+    color: var(--floating-button-bar-primary-color);
+    flex: 1;
+    min-width: 0;
+    justify-content: center;    
+  }
+
+  &.secondary {
+    color: var(--floating-button-bar-secondary-color);
+    flex: 1;
+  }
+}
+
+.separator {
+  width: 1px;
+  height: 0.75rem;
+  background-color: var(--floating-button-bar-secondary-color);
 }

@@ -77,6 +77,9 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-highlight-text-color: #{$mds-color-theme-text-highlight};
   --md-white-text-color: #{$mds-color-theme-common-text-primary-normal};
 
+  --md-inverted-primary-text-color: #{$mds-color-theme-inverted-text-primary-normal};
+  --md-inverted-secondary-text-color: #{$mds-color-theme-inverted-text-secondary-normal};
+
   --md-hyperlink-text-color: #{$mds-color-theme-text-accent-normal};
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};

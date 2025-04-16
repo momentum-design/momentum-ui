@@ -32,7 +32,7 @@ import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-
+import { StrategyType } from "../popover/Popover.types";
 export interface DatePickerControlButton {
   value: string;
   ariaLabel?: string;
@@ -69,6 +69,8 @@ export namespace DatePicker {
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -348,7 +350,12 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
+        <md-menu-overlay
+          is-date-picker
+          custom-width="272px"
+          ?disabled=${this.disabled}
+          positioning-strategy=${ifDefined(this.positioningStrategy)}
+        >
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">

@@ -220,4 +220,13 @@ describe("DatePicker Component", () => {
       })
     );
   });
+
+  test("should pass positioning strategy to menu overlay", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker positioning-strategy="fixed"></md-datepicker>
+    `);
+
+    const menuOverlay = el.shadowRoot!.querySelector("md-menu-overlay");
+    expect(menuOverlay?.getAttribute("positioning-strategy")).toBe("fixed");
+  });
 });

@@ -1,3 +1,4 @@
+import { TaskItemStatus } from "../taskitem/TaskItem.constants";
 import { TaskItem } from "../taskitem/TaskItem";
 
 type ReturnType = {
@@ -102,7 +103,7 @@ export const getPresenceIconColor = (
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "on-hold":
-      case "hold":
+      case TaskItemStatus.HOLD:
         presenceIcon = "pause-badge-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
@@ -114,27 +115,27 @@ export const getPresenceIconColor = (
         presenceIcon = "dnd-presence-badge-filled";
         presenceColor = "var(--avatar-presence-rona)";
         break;
-      case "consulting":
+      case TaskItemStatus.CONSULTING:
         presenceIcon = "headset-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
-      case "play":
+      case TaskItemStatus.PLAY:
         presenceIcon = "play-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
-      case "conference":
+      case TaskItemStatus.CONFERENCE:
         presenceIcon = "meet-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
-      case "transfered":
+      case TaskItemStatus.TRANSFERED:
         presenceIcon = "assign-privilege-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
-      case "courtesy_callback":
+      case TaskItemStatus.COURTESY_CALLBACK:
         presenceIcon = "callrate-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
-      case "campaign":
+      case TaskItemStatus.CAMPAIGN:
         presenceIcon = "announcement-bold";
         presenceColor = "var(--avatar-presence-inactive)";
         break;

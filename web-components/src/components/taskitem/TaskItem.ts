@@ -7,22 +7,23 @@
  */
 
 import "@/components/avatar/Avatar";
-import { Avatar } from "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import { TaskItemStatus } from "./TaskItem.constants";
+import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
+import { TaskItemUtils } from "./TaskItem.utils";
 import styles from "./scss/module.scss";
 
 export namespace TaskItem {
-  export type TaskItemStatus = (typeof TaskItemStatus)[number];
+  export type TaskItemStatus = (typeof TaskItemStatus)[keyof typeof TaskItemStatus];
+  export type TaskItemMediaType = (typeof TaskItemMediaType)[keyof typeof TaskItemMediaType];
   @customElementWithCheck("md-task-item")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) mediaType = "call";
+    @property({ type: String }) mediaType: TaskItemMediaType | string = TaskItemMediaType.TELEPHONY;
     @property({ type: String }) status: TaskItemStatus | string = "";
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
@@ -72,170 +73,12 @@ export namespace TaskItem {
     private displayTitle = "";
     private titleValue = "";
     private itemTitleValue = "";
+    private utils: TaskItemUtils;
 
-    private getChannelAvatar(type: Avatar.ChannelType, slot?: TemplateResult) {
-      return html`<md-avatar
-        size="32"
-        type=${type}
-        state=${this.selected ? "active" : "rest"}
-        presence-type=${this.status ?? ""}
-        newMomentum
-        >${slot ?? nothing}</md-avatar
-      >`;
+    constructor() {
+      super();
+      this.utils = new TaskItemUtils(this);
     }
-
-    private get taskTypeTemplate() {
-      return html`${this.isRestyle ? this.renderTaskType : this.renderLegacyTaskType()}`;
-    }
-
-    private get renderTaskType() {
-      switch (this.mediaType.toLowerCase()) {
-        case "telephony":
-          return this.getChannelAvatar("channel-call");
-        case "outbound telephony":
-          return this.getChannelAvatar("channel-callback");
-        case "inbound telephony":
-          return this.getChannelAvatar("channel-call-inbound");
-        case "applemessages":
-          return this.getChannelAvatar("channel-apple-chat");
-
-        case "outbound-campaign":
-          return this.getChannelAvatar("channel-campaign");
-        case "chat":
-          return this.getChannelAvatar("channel-chat");
-        case "email":
-          return this.getChannelAvatar("channel-email-inbound");
-        case "sms":
-          return this.getChannelAvatar("channel-sms-inbound");
-        case "facebook":
-          return this.getChannelAvatar("channel-fb-messenger");
-        case "whatsapp":
-          return this.getChannelAvatar("channel-whats-app");
-
-        case "messenger":
-          return this.getChannelAvatar("channel-facebook");
-
-        case "midcall telephony":
-        case "icon src":
-          return this.getChannelAvatar(
-            "channel-custom",
-            html`<img height="16px" width="16px " src="${this.iconSrc}" />`
-          );
-
-        case "callback":
-          return this.getChannelAvatar("channel-custom", html`<md-icon name="icon-icon-callback_18"></md-icon>`);
-        case "progressive_campaign":
-          return this.getChannelAvatar("channel-custom", html`<md-icon name="icon-icon-campaign_18"></md-icon>`);
-
-        default:
-          return this.getChannelAvatar("channel-custom", html`<slot name="task-type"></slot>`);
-      }
-    }
-
-    renderLegacyTaskType = () => {
-      switch (this.mediaType.toLowerCase()) {
-        case "telephony":
-          return html`
-            <md-badge color="green" circle>
-              <md-icon name="handset-filled" size="20" iconSet="momentumDesign"></md-icon>
-            </md-badge>
-          `;
-        case "outbound telephony":
-          return html`
-            <md-badge color="green" circle>
-              <md-icon name="outgoing-call-legacy-filled" size="20" iconSet="momentumDesign"></md-icon>
-            </md-badge>
-          `;
-        case "inbound telephony":
-          return html`
-            <md-badge color="green" circle>
-              <md-icon name="incoming-call-legacy-filled" size="20" iconSet="momentumDesign"></md-icon>
-            </md-badge>
-          `;
-        case "applemessages":
-        case "midcall telephony":
-        case "icon src":
-          return html`
-            <md-badge circle>
-              <img src="${this.iconSrc}" />
-            </md-badge>
-          `;
-        case "callback":
-          return html`
-            <md-badge color="lime" circle>
-              <md-icon name="icon-icon-callback_18"></md-icon>
-            </md-badge>
-          `;
-        case "progressive_campaign":
-          return html`
-            <md-badge color="green" circle>
-              <md-icon name="icon-icon-campaign_18"></md-icon>
-            </md-badge>
-          `;
-        case "outbound-campaign":
-          return html`
-            <md-avatar
-              title="Channel Campaign"
-              type="channel-campaign"
-              avatar-style="default"
-              state=${this.selected ? "active" : "rest"}
-            ></md-avatar>
-          `;
-        case "chat":
-          return html`
-            <md-badge color="blue" circle>
-              <md-icon name="chat-filled" size="20" iconSet="momentumDesign"></md-icon>
-            </md-badge>
-          `;
-        case "email":
-          return html`
-            <md-badge color="violet" circle>
-              <md-icon name="email-filled" size="20" iconSet="momentumDesign"></md-icon>
-            </md-badge>
-          `;
-        case "sms":
-          return html`
-            <md-badge color="darkmint" circle>
-              <md-icon name="sms-filled" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
-            </md-badge>
-          `;
-        case "facebook":
-          return html`
-            <md-badge bgColor="#0078FF" circle>
-              <md-icon name="messenger_16" iconSet="momentumUI" color="white-100"></md-icon>
-            </md-badge>
-          `;
-        case "whatsapp":
-          return html`
-            <md-badge bgColor="#25D366" circle>
-              <md-icon name="whatsApp_16" iconSet="momentumUI" color="white-100"></md-icon>
-            </md-badge>
-          `;
-        default:
-          return html` <slot name="task-type"></slot> `;
-      }
-    };
-
-    renderStatus = () => {
-      switch (this.status) {
-        case "consulting":
-          return html` <md-icon name="headset-bold" size="12" iconSet="momentumDesign"></md-icon> `;
-        case "play":
-          return html` <md-icon name="play-bold" size="12" iconSet="momentumDesign"></md-icon> `;
-        case "hold":
-          return html` <md-icon name="pause-bold" size="12" iconSet="momentumDesign"></md-icon> `;
-        case "conference":
-          return html` <md-icon name="meet-bold" size="16" iconSet="momentumDesign"></md-icon> `;
-        case "transfered":
-          return html` <md-icon name="assign-privilege-bold" size="16" iconSet="momentumDesign"></md-icon> `;
-        case "courtesy_callback":
-          return html` <md-icon name="callrate-bold" size="12" iconSet="momentumDesign"></md-icon> `;
-        case "campaign":
-          return html` <md-icon name="announcement-bold" size="12" iconSet="momentumDesign"></md-icon> `;
-        default:
-          return html` <slot name="task-status"></slot> `;
-      }
-    };
 
     handleClick(event: MouseEvent) {
       this.dispatchEvent(
@@ -260,21 +103,6 @@ export namespace TaskItem {
           composed: true
         })
       );
-    }
-
-    renderChatCount() {
-      if (this.quantity <= 0) {
-        this.removeAttribute("has-messages");
-        return nothing;
-      }
-      this.setAttribute("has-messages", "true");
-      const quantitiyLabel = this.quantity > 99 ? "99+" : this.quantity.toString();
-
-      if (this.isRestyle) {
-        return html` <md-badge color="unreadcount"> ${quantitiyLabel} </md-badge>`;
-      }
-
-      return html` <span class="new-chat-quantity">${quantitiyLabel}</span> `;
     }
 
     getAriaLabel() {
@@ -330,9 +158,9 @@ export namespace TaskItem {
           aria-label=${this.getAriaLabel()}
         >
           <div class="md-taskitem__mediatype">
-            ${this.taskTypeTemplate}
+            ${this.utils.taskTypeTemplate}
             ${this.status && !this.isRestyle
-              ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.renderStatus()} </span> `
+              ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.utils.renderStatus()} </span> `
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
@@ -364,9 +192,10 @@ export namespace TaskItem {
               : nothing}
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
+
           <div class="md-taskitem__addition">
             <slot></slot>
-            ${this.renderChatCount()}
+            ${this.utils.renderChatCount()}
           </div>
         </div>
       `;

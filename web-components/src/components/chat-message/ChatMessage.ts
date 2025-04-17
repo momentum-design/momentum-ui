@@ -85,7 +85,7 @@ export namespace ChatMessage {
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>
               </div>
               ${this.clickableTimestamp 
-                ? html`<md-link href="#" class="md-chat-message_time" 
+                ? html`<md-link class="md-chat-message_time" 
                           @click=${(e: Event) => {
                             e.preventDefault();
                             this.timeStampClicked();

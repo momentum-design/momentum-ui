@@ -229,13 +229,21 @@
       &_queue {
         font-size: $taskitem-restyle-font-size;
         line-height: 20px;
-        color: var(--taskitem-restyle-text-color);
+        color: var(--taskitem-text-color);
+        &_dot {
+          background-color: var(--taskitem-restyle-dot-color);
+          border-radius: $taskitem-border-circle;
+          height: 4px;
+          width: 4px;
+          display: inline-flex;
+          margin: 3px 0px;
+        }
       }
       &_chat {
         margin: 0px;
         font-size: $taskitem-restyle-font-size;
         line-height: 20px;
-        color: var(--taskitem-restyle-text-color);
+        color: var(--taskitem-text-color);
 
         .new-chat_massages {
           padding: 0;
@@ -273,12 +281,31 @@
   }
 }
 
-:host([has-messages="true"]) {
+:host([is-restyle][disabled]) {
+  .md-taskitem {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .md-taskitem__content {
+      &_popover_title,
+      &_title,
+      &_queue,
+      &_chat {
+        color: var(--taskitem-restyle-text-disabled-color);
+      }
+    }
+  }
+}
+
+:host([is-restyle][has-messages="true"]) {
   .md-taskitem__content {
     &_popover_title,
     &_title {
       font-weight: 700 !important;
     }
+  }
+  .md-taskitem__addition {
+    margin-left: $taskitem-restyle-content-margin !important;
   }
 }
 @media (forced-colors: active) {

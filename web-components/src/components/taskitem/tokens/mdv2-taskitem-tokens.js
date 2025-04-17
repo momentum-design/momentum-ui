@@ -56,8 +56,14 @@ const task_item = {
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
     },
+    "text-disabled-color": {
+      common: "$mds-color-theme-text-primary-disabled"
+    },
     "error-text-color": {
       common: "$mds-color-theme-text-error-normal"
+    },
+    "dot-color": {
+      common: "$mds-color-theme-outline-secondary-normal"
     }
   }
 };

@@ -17,6 +17,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
 import { TaskItemUtils } from "./TaskItem.utils";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace TaskItem {
   export type TaskItemStatus = (typeof TaskItemStatus)[keyof typeof TaskItemStatus];
@@ -27,11 +28,13 @@ export namespace TaskItem {
     @property({ type: String }) status: TaskItemStatus | string = "";
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
+    @property({ type: String, attribute: "queue-time" }) queueTime = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Boolean, attribute: "display-only-title" }) displayOnlyTitle = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
+    @property({ type: Boolean }) disabled = false;
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
@@ -146,6 +149,17 @@ export namespace TaskItem {
       return parseInt(this.tabIndexForContainer) ?? 0;
     }
 
+    private handleAdditionSlotChange() {
+      const container = this.shadowRoot?.querySelector(".md-taskitem__addition") as HTMLDivElement;
+
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) {
+          container.style.margin = "0px";
+        }
+      }
+    }
+
     render() {
       return html`
         <div
@@ -156,6 +170,7 @@ export namespace TaskItem {
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           aria-label=${this.getAriaLabel()}
+          aria-disabled=${ifDefined(this.disabled || undefined)}
         >
           <div class="md-taskitem__mediatype">
             ${this.utils.taskTypeTemplate}
@@ -181,6 +196,10 @@ export namespace TaskItem {
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
+                ${this.queueTime
+                  ? html`<div class="md-taskitem__content_queue_dot"></div>
+                      ${this.queueTime}`
+                  : nothing}
               </span>
             </div>
             ${this.lastmessage
@@ -193,7 +212,7 @@ export namespace TaskItem {
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
           <div class="md-taskitem__addition">
-            <slot></slot>
+            <slot @slotchange="${this.handleAdditionSlotChange}"></slot>
             ${this.utils.renderChatCount()}
           </div>
         </div>

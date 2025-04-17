@@ -26,12 +26,14 @@ export default {
     mediaType: { control: "text" },
     status: { control: "text" },
     queue: { control: "text" },
+    "queue-time": { control: "text" },
     lastmessage: { control: "text" },
     "is-restyle": { control: "boolean" },
     "display-only-title": { control: "boolean" },
     selected: { control: "boolean" },
     iconSrc: { control: "text" },
     slot: { control: "text" },
+    disabled: { control: "boolean" },
 
     renderTaskType: { table: { disable: true } },
     renderStatus: { table: { disable: true } },
@@ -55,12 +57,14 @@ const render = (args: Args) => {
       title="${args.title}"
       item-title="${args["item-title"]}"
       queue="${args.queue}"
+      queue-time="${args["queue-time"]}"
       quantity="${args.quantity}"
       lastmessage="${args.lastmessage}"
       iconSrc="${args.iconSrc}"
       ?is-restyle=${args["is-restyle"]}
       ?display-only-title=${args["display-only-title"]}
       ?selected=${args.selected}
+      ?disabled=${args.disabled}
       @taskitem-click=${action("click")}
       @taskitem-keydown=${action("keydown")}
     >
@@ -148,8 +152,17 @@ export const RestyleTaskItem: StoryObj = {
           title: "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
+          "queue-time": "Handle Time: 00:00",
           lastmessage: "%Last Message%",
           "is-restyle": true
+        })}
+        ${render({
+          title: "%CustName/Email/GUID%",
+          mediaType: TaskItemMediaType.CHAT,
+          queue: "%Queue%",
+          lastmessage: "%Last Message%",
+          "is-restyle": true,
+          disabled: true
         })}
         ${render({
           mediaType: TaskItemMediaType.CHAT,
@@ -167,6 +180,7 @@ export const RestyleTaskItem: StoryObj = {
           quantity: 1,
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
+          "queue-time": "Handle Time: 00:00",
           lastmessage: "%Last Message%",
           "is-restyle": true
         })}

@@ -15,8 +15,6 @@ export namespace ChatMessage {
     @property({ type: String }) label = "Avatar";
     @property({ type: String }) status = "";
     @property({ type: Boolean }) clickableTimestamp = false;
-    @property({ type: Number }) messageStartTime = 0;
-    @property({ type: Number }) messageEndTime = 0;
 
     @property({ type: String, reflect: true, attribute: "self-label" })
     selfLabel?: string;
@@ -56,10 +54,7 @@ export namespace ChatMessage {
     private timeStampClicked() {
       this.dispatchEvent(new CustomEvent('timestamp-clicked', {
         bubbles: true,
-        composed: true,
-        detail: {
-          timeStamp: this.messageStartTime
-        }
+        composed: true
       }));
     }
 

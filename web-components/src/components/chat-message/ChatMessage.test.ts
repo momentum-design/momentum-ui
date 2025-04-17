@@ -95,7 +95,6 @@ describe("Chat Message Component", () => {
 
   test("should fire timestamp-clicked event when clickable timestamp is clicked", async () => {
     element.clickableTimestamp = true;
-    element.messageStartTime = 1612345678;
     await elementUpdated(element);
     const dispatchEventSpy = jest.spyOn(element, 'dispatchEvent');
     const timestampLink = element.shadowRoot!.querySelector('md-link.md-chat-message_time');
@@ -105,10 +104,7 @@ describe("Chat Message Component", () => {
 
     expect(dispatchEventSpy).toHaveBeenCalledWith(
       expect.objectContaining({
-        type: 'timestamp-clicked',
-        detail: {
-          timeStamp: 1612345678
-        }
+        type: 'timestamp-clicked'
       })
     );
   });

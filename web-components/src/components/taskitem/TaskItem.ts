@@ -177,7 +177,7 @@ export namespace TaskItem {
                     >${this.title}</span
                   >
                 `
-              : nothing}
+              : html` <span class="md-taskitem__content_popover_title"><slot name="title"></slot></span> `}
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
@@ -192,7 +192,6 @@ export namespace TaskItem {
               : nothing}
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
-
           <div class="md-taskitem__addition">
             <slot></slot>
             ${this.utils.renderChatCount()}

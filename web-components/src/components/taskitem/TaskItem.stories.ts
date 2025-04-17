@@ -152,6 +152,17 @@ export const RestyleTaskItem: StoryObj = {
           "is-restyle": true
         })}
         ${render({
+          mediaType: TaskItemMediaType.CHAT,
+          queue: "%Queue%",
+          lastmessage: "%Last Message%",
+          "is-restyle": true,
+          slot: `
+          <md-tooltip message="Click to call" placement="top" slot="title">
+            <md-link tag="a" inline inline-style="default">+01 32498 587</md-link>
+          </md-tooltip>
+          `
+        })}
+        ${render({
           title: "%CustName/Email/GUID%",
           quantity: 1,
           mediaType: TaskItemMediaType.CHAT,
@@ -246,6 +257,24 @@ export const RestyleTaskItem: StoryObj = {
         })}
         ${render({
           title: "%CustName/Email/GUID%",
+          mediaType: TaskItemMediaType.TELEPHONY,
+          lastmessage: "%Retry%",
+          "is-restyle": true,
+          slot: `
+          <div
+            slot="queue"
+            style="display:flex; justify-content-center; color: var(--taskitem-restyle-error-text-color);"
+          >
+            <md-icon name="error-legacy-badge-filled" iconSet="momentumDesign" style="margin-right: 5px"></md-icon>
+            %Error failed load%
+          </div>
+          <md-button variant="secondary" circle size="28"
+            ><md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon
+          ></md-button>
+        `
+        })}
+        ${render({
+          title: "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.OUTBOUND_CAMPAIGN,
           "is-restyle": true,
           slot: `
@@ -286,15 +315,18 @@ export const TaskItemMediaTypes: StoryObj = {
       <div style="width: 300px;">
         <h3>Task Item Avatar Status</h3>
 
-        ${MediaType.map((type) =>
-          render({
-            title: "%CustName/Email/GUID%",
-            mediaType: type,
-            queue: "%Queue%",
-            iconSrc: svgWxm,
-            lastmessage: "%Last Message%",
-            "is-restyle": true
-          })
+        ${MediaType.map(
+          (type) => html`
+            <div>Media Type: <b>${type}</b></div>
+            ${render({
+              title: "%CustName/Email/GUID%",
+              mediaType: type,
+              queue: "%Queue%",
+              iconSrc: svgWxm,
+              lastmessage: "%Last Message%",
+              "is-restyle": true
+            })}
+          `
         )}
       </div>
     `;
@@ -308,15 +340,19 @@ export const TaskItemAvatarStatus: StoryObj = {
       <div style="width: 300px;">
         <h3>Task Item Avatar Status</h3>
 
-        ${Avatarstatus.map((status) =>
-          render({
-            title: "%CustName/Email/GUID%",
-            mediaType: TaskItemMediaType.CHAT,
-            status: status,
-            queue: "%Queue%",
-            lastmessage: "%Last Message%",
-            "is-restyle": true
-          })
+        ${Avatarstatus.map(
+          (status) => html`
+            <div>status: <b>${status}</b></div>
+              ${render({
+                title: "%CustName/Email/GUID%",
+                mediaType: TaskItemMediaType.CHAT,
+                status: status,
+                queue: "%Queue%",
+                lastmessage: "%Last Message%",
+                "is-restyle": true
+              })}
+            </div>
+          `
         )}
       </div>
     `;

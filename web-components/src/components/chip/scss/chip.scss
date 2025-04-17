@@ -437,14 +437,6 @@
   line-height: normal;
 }
 
-// ::slotted([slot="custom-left-content"]) {
-//   margin-right: var(--left-content-right-margin);
-// }
-
-// ::slotted([slot="custom-right-content"]) {
-//   margin-left: $chip-inner-content-margin;
-// }
-
 @media (forced-colors: active) {
   .md-chip {
     outline: 1px solid CanvasText;

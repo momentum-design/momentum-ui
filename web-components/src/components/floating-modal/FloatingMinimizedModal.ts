@@ -160,7 +160,13 @@ export namespace FloatingMinimizedModal {
       }
     }
 
-    handleClose(event: MouseEvent) {
+    handleKeyDownClose(event: KeyboardEvent) {
+      if (event.code === Key.Enter || event.code === Key.Space) {
+        this.handleClose(event);
+      }
+    }
+
+    handleClose(event: MouseEvent | KeyboardEvent) {
       this.show = false;
 
       this.dispatchEvent(
@@ -272,6 +278,7 @@ export namespace FloatingMinimizedModal {
                     aria-label="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}
+                    @keydown="${this.handleKeyDownClose}"
                   >
                     <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </md-button>

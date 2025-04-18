@@ -60,6 +60,42 @@ export const BadgeWithIconAndText: StoryObj = {
   render: renderWithIconAndText
 };
 
+export const StatusBadges: StoryObj = {
+  render: () => {
+    return html`
+      <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+        <md-badge color="status-positive" small>
+          <md-icon name="participant-filled" size="16" iconSet="momentumDesign"></md-icon>
+          Agent name - 00:00
+        </md-badge>
+        <md-badge color="status-negative" small suppress-default-max-width>
+          <md-icon name="alert-active-filled" size="16" iconSet="momentumDesign"></md-icon>
+          %Wrap-up alert% - 00:00
+        </md-badge>
+        <md-badge color="status-accent" small>
+          <md-icon name="archive-filled" size="16" iconSet="momentumDesign"></md-icon>
+          Wrap-up - 00:00
+        </md-badge>
+        <md-badge color="status-warning" small>
+          <md-icon name="call-barge-filled" size="16" iconSet="momentumDesign"></md-icon>
+          Barged - 00:00
+        </md-badge>
+        <md-badge color="status-orange" small>
+          <md-icon name="call-hold-filled" size="16" iconSet="momentumDesign"></md-icon>
+          On hold - 00:00
+        </md-badge>
+      </div>
+    `;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Status badges display agent and call states with appropriate status colors and icons."
+      }
+    }
+  }
+};
+
 const meta: Meta = {
   title: "Components/Badge",
   component: "md-badge",

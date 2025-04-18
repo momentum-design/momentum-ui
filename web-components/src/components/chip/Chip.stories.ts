@@ -9,40 +9,12 @@
 import "@/components/chip/Chip";
 import "@/components/icon/Icon";
 import { BarType, chipColor, iconColorSample, iconSamples } from "@/utils/enums";
-import { Args, StoryObj } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-
-export default {
-  title: "Components/Chip",
-  component: "md-chip",
-  argTypes: {
-    color: { control: { type: "select" }, options: chipColor },
-    bgColor: { control: "text", defaultValue: "blue" },
-    textColor: { control: "text", defaultValue: "white" },
-    height: { control: "text", defaultValue: "" },
-    valueText: { control: "text", defaultValue: "replace this with long string" },
-    small: { control: "boolean", defaultValue: false },
-    disabled: { control: "boolean", defaultValue: false },
-    readonly: { control: "boolean", defaultValue: false },
-    isLoad: { control: "boolean", defaultValue: false },
-    slot: { control: "boolean", defaultValue: false },
-    iconSet: { control: "boolean", defaultValue: false },
-    type: { control: { type: "select" }, options: BarType, defaultValue: "indeterminate" },
-    value: { control: { type: "number" } },
-    icon: { control: { type: "select" }, options: iconSamples },
-    iconColor: { control: { type: "select" }, options: iconColorSample }
-  },
-  parameters: {
-    a11y: {
-      element: "md-chip"
-    }
-  }
-};
 
 export const Chip: StoryObj = {
   args: {
     color: "blue",
-    textColor: "white",
     valueText: "replace this with long string",
     type: "indeterminate"
   },
@@ -78,3 +50,91 @@ export const Chip: StoryObj = {
     }
   }
 };
+
+export const SentimentChips: StoryObj = {
+  render: () => {
+    return html`
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <md-chip value="Positive" color="positive" small>
+          <md-icon name="emoji-happy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+          <md-icon name="arrow-tail-up-bold" size="16" iconSet="momentumDesign" slot="custom-right-content"></md-icon>
+        </md-chip>
+        <md-chip value="Negative" color="negative" small>
+          <md-icon name="emoji-unhappy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+          <md-icon name="arrow-tail-up-bold" size="16" iconSet="momentumDesign" slot="custom-right-content"></md-icon>
+        </md-chip>
+        <md-chip value="Neutral" color="neutral" small>
+          <md-icon name="emoji-passive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+          <md-icon name="arrow-tail-up-bold" size="16" iconSet="momentumDesign" slot="custom-right-content"></md-icon>
+        </md-chip>
+      </div>
+    `;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Sentiment chips use color and icons to convey positive, negative or neutral feedback."
+      }
+    }
+  }
+};
+
+export const InteractionStatusChips: StoryObj = {
+  render: () => {
+    return html`
+      <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+        <md-chip value="Agent name - 00:00" color="status-positive" small>
+          <md-icon name="participant-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+        </md-chip>
+        <md-chip value="%Wrap-up alert% - 00:00" color="status-negative" small suppress-default-max-width>
+          <md-icon name="alert-active-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+        </md-chip>
+        <md-chip value="Wrap-up - 00:00" color="status-accent" small>
+          <md-icon name="archive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+        </md-chip>
+        <md-chip value="Barged - 00:00" color="status-warning" small>
+          <md-icon name="call-barge-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+        </md-chip>
+        <md-chip value="On hold - 00:00" color="status-orange" small>
+          <md-icon name="call-hold-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+        </md-chip>
+      </div>
+    `;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Status chips display agent and call states with appropriate status colors and icons."
+      }
+    }
+  }
+};
+
+const meta: Meta = {
+  title: "Components/Chip",
+  component: "md-chip",
+  argTypes: {
+    color: { control: { type: "select" }, options: chipColor },
+    bgColor: { control: "text" },
+    textColor: { control: "text" },
+    height: { control: "text" },
+    valueText: { control: "text" },
+    small: { control: "boolean" },
+    disabled: { control: "boolean" },
+    readonly: { control: "boolean" },
+    isLoad: { control: "boolean" },
+    slot: { control: "boolean" },
+    iconSet: { control: "boolean" },
+    type: { control: { type: "select" }, options: BarType },
+    value: { control: { type: "number" } },
+    icon: { control: { type: "select" }, options: iconSamples },
+    iconColor: { control: { type: "select" }, options: iconColorSample }
+  },
+  parameters: {
+    a11y: {
+      element: "md-chip"
+    }
+  }
+};
+
+export default meta;

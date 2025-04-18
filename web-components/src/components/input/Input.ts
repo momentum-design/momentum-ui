@@ -219,6 +219,10 @@ export namespace Input {
     }
 
     handleKeyDown(event: KeyboardEvent) {
+      console.log("input/keydown", event);
+      if (event.key === " " || event.key === "Enter" || event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.stopPropagation();
+      }
       this.dispatchEvent(
         new CustomEvent("input-keydown", {
           bubbles: true,

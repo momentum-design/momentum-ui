@@ -60,7 +60,7 @@
   $hover-bg-color,
   $active-bg-color
 ) {
-  --left-content-right-margin: 4px;
+  gap: rem-calc(4);
   padding: 0px 4px;
   font-weight: 500;
   font-family: var(--brand-font-regular);
@@ -79,7 +79,7 @@
 }
 
 @mixin chip-status-style($bg-color, $text-color) {
-  --left-content-right-margin: 4px;
+  gap: rem-calc(4);
   padding: 0px 4px;
   padding-right: 6px;
   font-weight: 400;

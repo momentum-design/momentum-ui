@@ -6,9 +6,7 @@
   @include badge-size;
   @include chip-base();
 
-  & {
-    --left-content-right-margin: #{$chip-inner-content-margin};
-  }
+  gap: $chip-inner-content-gap;
 
   &--small {
     @include badge-size($padding: rem-calc(3 12));
@@ -397,8 +395,6 @@
 
   .md-chip--clear {
     display: flow-root;
-    margin-left: $chip-inner-content-margin;
-    margin-right: 0;
 
     @include modal-close-button(
       $size: rem-calc(14),
@@ -422,7 +418,6 @@
 
   md-icon {
     display: flex;
-    margin-right: var(--left-content-right-margin);
   }
 
   &.md-chip--disabled {
@@ -440,14 +435,6 @@
 
 ::slotted(*) {
   line-height: normal;
-}
-
-::slotted([slot="custom-left-content"]) {
-  margin-right: var(--left-content-right-margin);
-}
-
-::slotted([slot="custom-right-content"]) {
-  margin-left: $chip-inner-content-margin;
 }
 
 @media (forced-colors: active) {

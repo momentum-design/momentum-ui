@@ -8,8 +8,8 @@
 
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, query } from "lit-element";
 import styles from "./scss/module.scss";
 
@@ -48,6 +48,7 @@ export namespace CheckboxGroup {
         case Key.ArrowUp:
         case Key.ArrowLeft:
           {
+            event.stopPropagation();
             if (this.selected === 0) {
               this.switchCheckboxOnArrowPress(this.slotted.length - 1, -1);
             } else {
@@ -58,6 +59,7 @@ export namespace CheckboxGroup {
         case Key.ArrowDown:
         case Key.ArrowRight:
           {
+            event.stopPropagation();
             if (this.selected === this.slotted.length - 1) {
               this.switchCheckboxOnArrowPress(0);
             } else {

@@ -20,10 +20,11 @@ import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import { getPresenceIconColor, PresenceType } from "./Presence.utils";
+import { TaskItem } from "../taskitem/TaskItem";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type PresenceState = (typeof PresenceType)[number];
+  export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
   export type ChannelType = (typeof AvatarChannelType)[number];
   export type Type = (typeof AvatarType)[number] | PresenceState | ChannelType;
   export type Size = (typeof AvatarSize)[number];

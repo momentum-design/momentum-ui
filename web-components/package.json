@@ -132,7 +132,7 @@
     "postcss-selector-parser": "^6.1.2",
     "prettier": "^3.5.3",
     "properties-reader": "^2.3.0",
-    "query-selector-shadow-dom": "^1.0.1",    
+    "query-selector-shadow-dom": "^1.0.1",
     "remove-files-webpack-plugin": "1.5.0",
     "sass": "^1.83.4",
     "sass-loader": "^10.5.2",

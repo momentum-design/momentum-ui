@@ -255,6 +255,10 @@
       white-space: nowrap;
       margin-left: $taskitem-restyle-content-margin;
       width: auto;
+
+      &.empty_addition {
+        margin: 0px;
+      }
     }
 
     .avatar-badge::part(badge) {

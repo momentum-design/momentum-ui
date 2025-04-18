@@ -13,7 +13,7 @@ import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
-import svgWxm from "@img/wxm.svg";
+import { iconUrlManager } from "@/managers/IconUrlManager";
 
 export default {
   title: "Components/Task Item",
@@ -336,7 +336,7 @@ export const TaskItemMediaTypes: StoryObj = {
               title: "%CustName/Email/GUID%",
               mediaType: type,
               queue: "%Queue%",
-              iconSrc: svgWxm,
+              iconSrc: `${iconUrlManager.svgIconUrl}/social-viber-color.svg`,
               lastmessage: "%Last Message%",
               "is-restyle": true
             })}

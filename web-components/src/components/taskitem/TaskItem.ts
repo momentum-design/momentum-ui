@@ -11,11 +11,11 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
+import { html, LitElement, property, internalProperty } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
-import { TaskItemUtils } from "./TaskItem.utils";
+import { getTaskTypeTemplate, renderChatCount, renderStatus } from "./TaskItem.utils";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 
@@ -76,12 +76,7 @@ export namespace TaskItem {
     private displayTitle = "";
     private titleValue = "";
     private itemTitleValue = "";
-    private utils: TaskItemUtils;
-
-    constructor() {
-      super();
-      this.utils = new TaskItemUtils(this);
-    }
+    @internalProperty() private additionEmptyMargin: boolean = false;
 
     handleClick(event: MouseEvent) {
       this.dispatchEvent(
@@ -151,13 +146,8 @@ export namespace TaskItem {
 
     private handleAdditionSlotChange() {
       const container = this.shadowRoot?.querySelector(".md-taskitem__addition") as HTMLDivElement;
-
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        if (rect.width === 0 && rect.height === 0) {
-          container.style.margin = "0px";
-        }
-      }
+      const rect = container.getBoundingClientRect();
+      this.additionEmptyMargin = rect.width === 0 && rect.height === 0;
     }
 
     render() {
@@ -173,9 +163,9 @@ export namespace TaskItem {
           aria-disabled=${ifDefined(this.disabled || undefined)}
         >
           <div class="md-taskitem__mediatype">
-            ${this.utils.taskTypeTemplate}
+            ${getTaskTypeTemplate(this.isRestyle, this.mediaType, this.selected, this.status, this.iconSrc)}
             ${this.status && !this.isRestyle
-              ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.utils.renderStatus()} </span> `
+              ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${renderStatus(this.status)} </span> `
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
@@ -211,9 +201,9 @@ export namespace TaskItem {
               : nothing}
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
-          <div class="md-taskitem__addition">
+          <div class="md-taskitem__addition ${classMap({ empty_addition: this.additionEmptyMargin })}">
             <slot @slotchange="${this.handleAdditionSlotChange}"></slot>
-            ${this.utils.renderChatCount()}
+            ${renderChatCount(this.quantity, this.isRestyle, this)}
           </div>
         </div>
       `;

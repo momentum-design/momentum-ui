@@ -177,6 +177,96 @@ export class AlertBannerTemplateSandbox extends LitElement {
     </div>`;
   }
 
+  private get renderBannerWithTitle1() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        closable
+        type="default"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        One line of text with small button and closable<br />
+        <md-button slot="right" variant="secondary" size="28">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle2() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        showRefreshButton
+        type="success"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        • Two lines of text<br />
+        • With small button, refresh button but not closable<br />
+        <md-button slot="right" variant="secondary" size="28">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle3() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        showRefreshButton
+        closable
+        type="warning"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        • Three lines of text and closable<br />
+        • With big button, refresh button<br />
+        • And closable<br />
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle4() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner show showBannerTypeIcon closable type="error" titleText="Title text">
+        Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap
+        Showing word wrap Showing word wrap
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle5() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner show closable type="promotional" alignment="leading" titleText="Title text">
+        • Three lines of text and closable<br />
+        Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap
+        Showing word wrap Showing word wrap<br />
+        • And closable<br />
+        <md-icon slot="left" name="sparkle-bold" iconSet="momentumDesign"></md-icon>
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
   render() {
     return html`
       <h2>Alert Banner</h2>
@@ -221,8 +311,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         @alertBanner-hide=${() => this.hideAlert("success")}
         message="success text from a message attribute"
       ></md-alert-banner>
-      ${this.renderAlertBannerWithIcons} ${this.renderWarningAlertBannerWithSlot} ${this.renderErrorWithExpandButton}
-      ${this.renderPromotionalBanner}
+      ${this.renderBannerWithTitle1} ${this.renderBannerWithTitle2} ${this.renderBannerWithTitle3}
+      ${this.renderBannerWithTitle4} ${this.renderBannerWithTitle5} ${this.renderAlertBannerWithIcons}
+      ${this.renderWarningAlertBannerWithSlot} ${this.renderErrorWithExpandButton} ${this.renderPromotionalBanner}
     `;
   }
 }

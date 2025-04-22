@@ -16,7 +16,8 @@ const fixtureFactory = async (
   selected: boolean,
   customAriaLabel = "",
   iconSrc = "",
-  isRestyle = false
+  isRestyle = false,
+  queueTime: string = ""
 ): Promise<TaskItem.ELEMENT> => {
   return await fixture(html`
     <md-task-item
@@ -26,6 +27,7 @@ const fixtureFactory = async (
       title="${title}"
       status="${status}"
       queue="${queue}"
+      queue-time="${queueTime}"
       quantity="${quantity}"
       lastmessage="${lastmessage}"
       .selected="${selected}"
@@ -61,6 +63,7 @@ describe("TaskItem", () => {
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
     expect(type?.getAttribute("name")).toEqual("handset-filled");
     expect(status?.getAttribute("name")).toEqual("headset-bold");
+    expect(element.itemTitle).toEqual("Mihael Varificantare");
   });
 
   test("should render TaskItem Component", async () => {
@@ -200,7 +203,7 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("src")).toEqual("/images/illustrations/Monitoring-regular-light.svg");
   });
 
-  test("should render caalback type ", async () => {
+  test("should render callback type ", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       TaskItemMediaType.CALLBACK,
       "Mihael Varificantare",
@@ -365,7 +368,7 @@ describe("TaskItem", () => {
     expect(quantity).toBeDefined();
   });
 
-  test("should render slot quele", async () => {
+  test("should render slot queue", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
@@ -457,7 +460,7 @@ describe("TaskItem", () => {
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
     expect(ariaLabel).toEqual(
-      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  "
+      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds   "
     );
   });
 
@@ -476,7 +479,7 @@ describe("TaskItem", () => {
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
     expect(ariaLabel).toEqual(
-      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  "
+      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds   "
     );
   });
 
@@ -558,5 +561,27 @@ describe("TaskItem", () => {
     expect(avatar).not.toBeNull();
     const icon = avatar?.querySelector("md-icon");
     expect(icon?.getAttribute("name")).toEqual("handset-filled");
+  });
+
+  it("should render queueTime when queueTime is set", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      TaskItemMediaType.TELEPHONY,
+      "Mihael Varificantare",
+      "Not Mihael Varificantare",
+      "",
+      "quelle_1",
+      TaskItemStatus.TRANSFERED,
+      0,
+      "",
+      false,
+      "",
+      "",
+      true,
+      "00:00"
+    );
+    await elementUpdated(element);
+
+    const queueTimeDot = element.shadowRoot?.querySelector(".md-taskitem__content_queue_dot");
+    expect(queueTimeDot).toBeDefined();
   });
 });

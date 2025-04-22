@@ -23,6 +23,7 @@ const AvatarChannelType = [
   "channel-twitter-x",
   "channel-viber",
   "channel-whats-app",
+  "channel-monitoring",
   "channel-we-chat",
   "channel-spam",
   "channel-custom"

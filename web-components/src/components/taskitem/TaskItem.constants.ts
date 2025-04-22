@@ -23,7 +23,14 @@ const TaskItemMediaType = {
   SMS: "sms",
   FACEBOOK: "facebook",
   WHATSAPP: "whatsapp",
-  MESSENGER: "messenger"
+  MESSENGER: "messenger",
+  OUTBOUND_EMAIL: "outboundemail",
+  OUTBOUND_SMS: "outboundsms",
+  SOCIAL_X: "socialx",
+  VIBER: "viber",
+  WECHAT: "wechat",
+  WEBEX: "webex",
+  GOOGLE_MESSAGES: "googlemessages"
 } as const;
 
 export { TaskItemStatus, TaskItemMediaType };

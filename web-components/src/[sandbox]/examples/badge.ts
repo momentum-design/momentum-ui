@@ -38,6 +38,33 @@ export const badgeTemplate = html`
     <md-icon name="sms-filled" size="16" iconSet="momentumDesign"></md-icon>
   </md-badge>
 
+  <h4 class="sandbox-header">Circle Badges with Different Sizes</h4>
+
+  <md-badge color="green" circle circle-size="24">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="16"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="32">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="20"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="40">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="24"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="48">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="28"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="64">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="36"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="72">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="40"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="88">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="52"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="124">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="73"></md-icon>
+  </md-badge>
+
   <h4 class="sandbox-header">Large Badges</h4>
 
   <md-badge color="green">

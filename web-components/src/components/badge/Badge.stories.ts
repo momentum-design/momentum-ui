@@ -96,6 +96,45 @@ export const StatusBadges: StoryObj = {
   }
 };
 
+export const CircleBadges: StoryObj = {
+  render: () => {
+    return html`
+      <md-badge color="blue" circle circle-size="24">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="16"></md-icon>
+      </md-badge>
+      <h3>24</h3>
+      <md-badge color="blue" circle circle-size="32">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="20"></md-icon>
+      </md-badge>
+      <h3>32</h3>
+      <md-badge color="blue" circle circle-size="40">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="24"></md-icon>
+      </md-badge>
+      <h3>40</h3>
+      <md-badge color="blue" circle circle-size="48">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="28"></md-icon>
+      </md-badge>
+      <h3>48</h3>
+      <md-badge color="blue" circle circle-size="64">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="36"></md-icon>
+      </md-badge>
+      <h3>64</h3>
+      <md-badge color="blue" circle circle-size="72">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="40"></md-icon>
+      </md-badge>
+      <h3>72</h3>
+      <md-badge color="blue" circle circle-size="88">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="52"></md-icon>
+      </md-badge>
+      <h3>88</h3>
+      <md-badge color="blue" circle circle-size="124">
+        <md-icon name="chat-filled" iconSet="momentumDesign" size="73"></md-icon>
+      </md-badge>
+      <h3>124</h3>
+    `;
+  }
+};
+
 const meta: Meta = {
   title: "Components/Badge",
   component: "md-badge",

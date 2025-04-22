@@ -131,7 +131,7 @@ export namespace TaskItem {
           }
         }
       }
-      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${
+      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.queueTime} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
       }`;
     }
@@ -186,7 +186,7 @@ export namespace TaskItem {
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
-                ${this.queueTime
+                ${this.queueTime.length > 0
                   ? html`<div class="md-taskitem__content_queue_dot"></div>
                       ${this.queueTime}`
                   : nothing}

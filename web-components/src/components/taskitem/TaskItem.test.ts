@@ -220,7 +220,7 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("icon-icon-callback_18");
   });
 
-  test("should render correct inbound type ", async () => {
+  test("should render correct inbound type icon", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       TaskItemMediaType.INBOUND_TELEPHONY,
       "Mihael Varificantare",

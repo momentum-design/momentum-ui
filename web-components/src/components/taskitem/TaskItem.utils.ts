@@ -56,13 +56,19 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
     case TaskItemMediaType.MESSENGER:
       return getChannelAvatar(selected, status, "channel-facebook");
     case TaskItemMediaType.MIDCALL_TELEPHONY:
-    case TaskItemMediaType.ICON_SRC:
-      return getChannelAvatar(
-        selected,
-        status,
-        "channel-custom",
-        html`<img height="16px" width="16px " src="${iconSrc}" />`
-      );
+      return getChannelAvatar(selected, status, "channel-monitoring");
+    case TaskItemMediaType.OUTBOUND_EMAIL:
+      return getChannelAvatar(selected, status, "channel-email-outbound");
+    case TaskItemMediaType.OUTBOUND_SMS:
+      return getChannelAvatar(selected, status, "channel-sms-outbound");
+    case TaskItemMediaType.SOCIAL_X:
+      return getChannelAvatar(selected, status, "channel-twitter-x");
+    case TaskItemMediaType.VIBER:
+      return getChannelAvatar(selected, status, "channel-viber");
+    case TaskItemMediaType.WECHAT:
+      return getChannelAvatar(selected, status, "channel-we-chat");
+    case TaskItemMediaType.WEBEX:
+      return getChannelAvatar(selected, status, "channel-webex");
     case TaskItemMediaType.CALLBACK:
       return getChannelAvatar(
         selected,
@@ -76,6 +82,20 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
         status,
         "channel-custom",
         html`<md-icon name="icon-icon-campaign_18"></md-icon>`
+      );
+    case TaskItemMediaType.GOOGLE_MESSAGES:
+      return getChannelAvatar(
+        selected,
+        status,
+        "channel-custom",
+        html`<img height="32px" width="32px" src="${iconSrc}" />`
+      );
+    case TaskItemMediaType.ICON_SRC:
+      return getChannelAvatar(
+        selected,
+        status,
+        "channel-custom",
+        html`<img height="20px" width="20px" src="${iconSrc}" />`
       );
     default:
       return getChannelAvatar(selected, status, "channel-custom", html`<slot name="task-type"></slot>`);

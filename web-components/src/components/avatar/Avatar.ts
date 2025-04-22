@@ -189,7 +189,8 @@ export namespace Avatar {
       "channel-viber": "social-viber-color",
       "channel-whats-app": "social-whatsapp-color",
       "channel-we-chat": "social-wechat-color",
-      "channel-spam": "participant-unknown-bold"
+      "channel-spam": "participant-unknown-bold",
+      "channel-monitoring": "monitoring-bold"
     };
 
     private getIconName(type: string): string {

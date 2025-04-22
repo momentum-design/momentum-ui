@@ -1,6 +1,5 @@
 import { DateTime } from "luxon";
 
-const DATE_HYPHENS_REGEX = /(?<!\s)-+(?!\s)/g; // Matches hyphens that are *not* surrounded by spaces
 const DATE_SLASHES_REGEX = /\//g; // Matches slashes
 
 export interface DayFilters {
@@ -128,17 +127,6 @@ export function shouldNextMonthDisable(day: DateTime, maxDate: DateTime) {
 
 export function dateStringToDateTime(date: string): DateTime {
   return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
-}
-
-export function reformatISODateString(date: string | null | undefined): string {
-  if (!date) {
-    return "";
-  }
-
-  const splitString = date.split("T"); // need to make sure we don't modify the time offset part!
-  splitString[0] = splitString[0].replace(DATE_HYPHENS_REGEX, "/");
-
-  return splitString.join("T");
 }
 
 export function getLocaleDateFormat(locale: string | undefined = undefined): string {

@@ -18,7 +18,6 @@ import {
   isSameMonth,
   localizeDate,
   now,
-  reformatISODateString,
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractDays,
@@ -167,12 +166,6 @@ describe("DateTime Module", () => {
     const utilFuncReturn2 = shouldNextMonthDisable(date, minDateOutsideMonth);
     expect(utilFuncReturn1).toBeTruthy();
     expect(utilFuncReturn2).toBeFalsy();
-  });
-
-  test("reformatDateString should format a SQL date string with slashes instead of dashes", async () => {
-    expect(reformatISODateString("2021-12-12")).toEqual("2021/12/12");
-    expect(reformatISODateString("2021-12-12T09:01:01-8:00")).toEqual("2021/12/12T09:01:01-8:00");
-    expect(reformatISODateString("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
   });
 
   test("dateStringToDateTime should get valid DateTime from SQL date string with slashes instead of dashes", async () => {

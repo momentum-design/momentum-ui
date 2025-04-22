@@ -57,7 +57,7 @@ describe("DatePicker Component", () => {
 
       await el.updateComplete;
 
-      const defaultValue = "1970/01/01 - 1970/01/02";
+      const defaultValue = "1970-01-01 - 1970-01-02";
 
       expect(el.value).toEqual(defaultValue);
 
@@ -72,7 +72,7 @@ describe("DatePicker Component", () => {
       expect(selectFunc).toHaveBeenCalledTimes(2);
       expect(updateFunc).toHaveBeenCalledTimes(includeApplyButton ? 0 : 2);
 
-      const newValue = "2025/04/15 - 2025/04/25";
+      const newValue = "2025-04-15 - 2025-04-25";
 
       if (includeApplyButton) {
         expect(el.value).toEqual(defaultValue);
@@ -113,9 +113,9 @@ describe("DatePicker Component", () => {
       expect(updatedSpy).toHaveBeenCalled();
 
       if (shouldUpdate) {  
-        expect(el.value).toEqual("2025/04/15 - 2025/04/25");
+        expect(el.value).toEqual("2025-04-15 - 2025-04-25");
       } else {
-        expect(el.value).toEqual("1970/01/01 - 1970/01/02");
+        expect(el.value).toEqual("1970-01-01 - 1970-01-02");
       }
     }
   );
@@ -148,9 +148,9 @@ describe("DatePicker Component", () => {
       expect(updatedSpy).toHaveBeenCalled();
 
       if (shouldUpdate) {  
-        expect(el.value).toEqual("2025/04/15 - 2025/04/25");
+        expect(el.value).toEqual("2025-04-15 - 2025-04-25");
       } else {
-        expect(el.value).toEqual("1970/01/01 - 1970/01/02");
+        expect(el.value).toEqual("1970-01-01 - 1970-01-02");
       }
     }
   );
@@ -216,19 +216,19 @@ describe("DatePicker Component", () => {
         ></md-date-range-picker>
       `);
       await el.updateComplete;
-      expect(el.value).toEqual(`${DATE1.toSQLDate()?.replace(/-/g, "/")} - ${DATE2.toSQLDate()?.replace(/-/g, "/")}`);
+      expect(el.value).toEqual(`${DATE1.toSQLDate()} - ${DATE2.toSQLDate()}`);
       
       const newStartDate = DATE3.toSQLDate();
       const newEndDate = DATE4.toSQLDate();
       el.startDate = newStartDate;
       el.endDate = newEndDate;
       await el.updateComplete;
-      expect(el.value).toEqual(`${newStartDate?.replace(/-/g, "/")} - ${newEndDate?.replace(/-/g, "/")}`);
+      expect(el.value).toEqual(`${newStartDate} - ${newEndDate}`);
 
       const newStartDate2 = DATE1.toSQLDate();
       el.startDate = newStartDate2;
       await el.updateComplete;
-      expect(el.value).toEqual(`${newStartDate2?.replace(/-/g, "/")} - ${newEndDate?.replace(/-/g, "/")}`);
+      expect(el.value).toEqual(`${newStartDate2} - ${newEndDate}`);
     });
 
     test.each([
@@ -300,7 +300,7 @@ describe("DatePicker Component", () => {
           `);
           
           if (useISOFormat) {
-            expect(el.value).toBe("2025/04/15 - 2025/04/25");
+            expect(el.value).toBe("2025-04-15 - 2025-04-25");
           }
           else {
             expect(el.value).toBe("4/15/2025 - 4/25/2025");

@@ -1,10 +1,14 @@
 @use "@/wc_scss/tools/functions/core";
 
 $alert-banner__font-size: core.rem-calc(14);
+$alert-banner__icon-padding: core.rem-calc(7);
+$alert-banner__icon-size: core.rem-calc(20);
 $alert-banner__line-height: core.rem-calc(20);
-$alert-banner__padding: core.rem-calc(12);
+$alert-banner__padding: core.rem-calc(11);
 $alert-banner-text__padding: 0 core.rem-calc(16);
+$alert-banner-right_slot_padding: core.rem-calc(11);
 $alert-banner-close__size: core.rem-calc(16);
-$alert-banner-close__padding: core.rem-calc(12);
+$alert-banner-close__padding: core.rem-calc(15);
 $alert-banner-column__border: 1px solid transparent;
 $alert-banner__flexbox-gap: 12px;
+$alert-banner__text-content-gap: 4px;

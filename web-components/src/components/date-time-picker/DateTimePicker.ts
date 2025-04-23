@@ -1,7 +1,7 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { now, reformatISODateString } from "@/utils/dateUtils";
+import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -116,7 +116,7 @@ export namespace DateTimePicker {
     };
 
     handleDateTimeInputChange = (event: CustomEvent) => {
-      this.value = reformatISODateString(event?.detail?.value);
+      this.value = event?.detail?.value;
     };
 
     parseValueForVisuals = (value: string) => {
@@ -150,9 +150,9 @@ export namespace DateTimePicker {
     combineDateAndTimeValues = (dateString: string | undefined | null, timeString: string | null) => {
       if (dateString) {
         if (timeString) {
-          this.value = reformatISODateString(`${dateString}T${timeString}`);
+          this.value = `${dateString}T${timeString}`;
         } else {
-          this.value = reformatISODateString(dateString);
+          this.value = dateString;
         }
       }
     };

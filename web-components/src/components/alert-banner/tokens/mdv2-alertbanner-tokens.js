@@ -8,7 +8,10 @@ const alertBanner = {
       common: "$mds-color-theme-background-alert-theme-normal"
     },
     "text-color": {
-      common: "$mds-color-theme-text-accent-normal"
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-theme-normal"
     }
   },
   error: {
@@ -16,7 +19,10 @@ const alertBanner = {
       common: "$mds-color-theme-background-alert-error-normal"
     },
     "text-color": {
-      common: "$mds-color-theme-text-error-normal"
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-cancel-normal"
     }
   },
   warning: {
@@ -24,7 +30,10 @@ const alertBanner = {
       common: "$mds-color-theme-background-alert-warning-normal"
     },
     "text-color": {
-      common: "$mds-color-theme-text-warning-normal"
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-warning-normal"
     }
   },
   success: {
@@ -32,7 +41,10 @@ const alertBanner = {
       common: "$mds-color-theme-background-alert-success-normal"
     },
     "text-color": {
-      common: "$mds-color-theme-text-success-normal"
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-join-normal"
     }
   },
   "default-momentum": {
@@ -48,6 +60,10 @@ const alertBanner = {
       common: "$mds-color-theme-common-button-promotion-normal"
     },
     "text-color": {
+      light: "$mds-color-theme-inverted-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
       common: "$mds-color-theme-common-text-primary-normal"
     }
   },

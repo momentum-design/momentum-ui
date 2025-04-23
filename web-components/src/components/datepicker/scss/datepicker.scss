@@ -233,6 +233,8 @@
       }
 
       &:focus {
+        color: var(--datepicker-selected-text-color);  // override setting dark text in dark theme
+        
         // overriding in range focus styling that turns focus end date grey!
         &::before {
           background: radial-gradient(

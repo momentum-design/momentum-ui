@@ -64,13 +64,13 @@ export namespace AlertBanner {
     getIconForType() {
       switch (this.type) {
         case "error":
-          return "error-legacy-regular";
+          return "error-legacy-bold";
         case "warning":
-          return "warning-regular";
+          return "warning-bold";
         case "success":
-          return "check-circle-regular";
+          return "check-circle-bold";
         default:
-          return "info-circle-regular";
+          return "info-circle-bold";
       }
     }
 

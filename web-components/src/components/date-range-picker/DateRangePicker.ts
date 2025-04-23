@@ -7,7 +7,7 @@
  */
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { getLocaleDateFormat, reformatISODateString } from "@/utils/dateUtils";
+import { getLocaleDateFormat } from "@/utils/dateUtils";
 import { property } from "lit-element";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
@@ -47,7 +47,7 @@ export namespace DateRangePicker {
       if (this.startDate && this.endDate) {
         const formatDate = (dateString: string) =>
           this.useISOFormat
-          ? reformatISODateString(dateString)
+          ? dateString
           : DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
 
         const startDateString = formatDate(this.startDate);

@@ -20,7 +20,6 @@ import {
   getLocaleDateFormat,
   isDayDisabled,
   now,
-  reformatISODateString,
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
@@ -102,18 +101,16 @@ export namespace DatePicker {
       if (this.maxDate) {
         this.maxDateData = dateStringToDateTime(this.maxDate);
       }
-
-      this.value = reformatISODateString(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (this.value === EMPTY_STRING) {
+      if (!this.value) {
         if (this.useISOFormat) {
           this.value = this.includesTime
-            ? reformatISODateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-            : reformatISODateString(this.selectedDate?.toISODate());
+            ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
+            : this.selectedDate?.toISODate();
         } else {
           this.value = this.includesTime
             ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
@@ -144,7 +141,7 @@ export namespace DatePicker {
 
     handleDateInputChange = (event: CustomEvent) => {
       if (this.useISOFormat) {
-        this.value = reformatISODateString(event?.detail?.value);
+        this.value = event?.detail?.value;
       } else {
         this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
       }
@@ -201,7 +198,7 @@ export namespace DatePicker {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
         if (this.useISOFormat) {
-          this.value = reformatISODateString(dateString);
+          this.value = dateString;
         } else {
           this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
         }

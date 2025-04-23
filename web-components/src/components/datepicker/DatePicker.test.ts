@@ -238,7 +238,7 @@ describe("DatePicker Component", () => {
       { useISOFormat: true},
       { useISOFormat: false }
     ])(
-      "should use ISO format unless useISOFormat (%s) is set to false",
+      "should use ISO format unless useISOFormat ($useISOFormat) is set to false",
       async ({ useISOFormat }) => {
         // set global locale to en-US
         Settings.defaultLocale = "en-US";
@@ -254,7 +254,7 @@ describe("DatePicker Component", () => {
         expect(el).not.toBeNull();
         
         if (useISOFormat) {
-          expect(el.value).toBe("2025/05/27");
+          expect(el.value).toBe("2025-05-27");
         }
         else {
           expect(el.value).toBe("5/27/2025");

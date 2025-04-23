@@ -5,6 +5,7 @@
 @include exports("md-alert-banner") {
   .md-alert-banner {
     display: flex;
+    border: 1px solid;
     padding: constants.$alert-banner__padding;
     position: relative;
     text-align: center;
@@ -18,6 +19,9 @@
       padding-right: calc(
         constants.$alert-banner-close__size + constants.$alert-banner__padding + constants.$alert-banner__flexbox-gap
       );
+      &.with-title{
+        padding-right: constants.$alert-banner-close__padding;
+      }
     }
 
     align-items: center;
@@ -27,13 +31,15 @@
       &--default {
         @include mixins.alert-banner-color(
           var(--alert-banner-default-bg-color),
-          var(--alert-banner-default-text-color)
+          var(--alert-banner-default-text-color),
+          var(--alert-banner-default-border-color)
         );
       }
 
       &--default-momentum {
         @include mixins.alert-banner-color(
           var(--alert-banner-default-momentum-bg-color),
+          var(--alert-banner-default-momentum-text-color),
           var(--alert-banner-default-momentum-text-color)
         );
       }
@@ -41,39 +47,85 @@
       &--accent {
         @include mixins.alert-banner-color(
           var(--alert-banner-default-bg-color),
-          var(--alert-banner-default-text-color)
+          var(--alert-banner-default-text-color),
+          var(--alert-banner-default-border-color)
         );
       }
 
       &--warning {
         @include mixins.alert-banner-color(
           var(--alert-banner-warning-bg-color),
-          var(--alert-banner-warning-text-color)
+          var(--alert-banner-warning-text-color),
+          var(--alert-banner-warning-border-color)
         );
       }
 
       &--error {
-        @include mixins.alert-banner-color(var(--alert-banner-error-bg-color), var(--alert-banner-error-text-color));
+        @include mixins.alert-banner-color(
+          var(--alert-banner-error-bg-color),
+          var(--alert-banner-error-text-color),
+          var(--alert-banner-error-border-color)
+        );
       }
 
       &--success {
         @include mixins.alert-banner-color(
           var(--alert-banner-success-bg-color),
-          var(--alert-banner-success-text-color)
+          var(--alert-banner-success-text-color),
+          var(--alert-banner-success-border-color)
         );
       }
 
       &--promotional {
         @include mixins.alert-banner-color-gradient(
           var(--alert-banner-promotional-bg),
-          var(--alert-banner-promotional-text-color)
+          var(--alert-banner-promotional-text-color),
+          var(--alert-banner-promotional-border-color)
         );
+      }
+    }
+
+    &__title {
+      font-weight: var(--brand-font-weight-bold);
+    }
+
+    &__text-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: constants.$alert-banner__text-content-gap;
+      margin-left: 0;
+
+      &.with-icon {
+        margin-left: constants.$alert-banner__icon-size + constants.$alert-banner__icon-padding;
+      }
+    }
+
+    &__icon {
+      &.with-title{
+        position: absolute;
+        top: constants.$alert-banner__padding;
+        left: constants.$alert-banner__padding;
+      }
+    }
+
+    &__with-title {
+      ::slotted([slot="left"]) {
+        position: absolute;
+        top: constants.$alert-banner__padding;
+        left: constants.$alert-banner__padding;
       }
     }
 
     &--leading {
       text-align: left;
       justify-content: space-between;
+    }
+
+    .refresh-button-with-title {
+      md-icon {
+        color: var(--alert-banner-default-text-color);
+      }
     }
 
     &__text {
@@ -117,12 +169,36 @@
       bottom: constants.$alert-banner-close__padding;
       width: constants.$alert-banner-close__size;
 
+      &.with-title {
+        position: relative;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+      }
+
+      md-icon {
+        color: var(--alert-banner-default-text-color);
+      }
+
       .md-alert-banner__close {
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
       }
+    }
+
+    &__top-right-centered {
+      display: flex;
+      align-self: flex-start;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    &__top-right-centered-content {
+      display: flex;
+      align-items: center;
+      gap: constants.$alert-banner__flexbox-gap;
     }
   }
 

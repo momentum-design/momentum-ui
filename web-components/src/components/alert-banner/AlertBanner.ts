@@ -26,6 +26,7 @@ export namespace AlertBanner {
   @customElementWithCheck("md-alert-banner")
   export class ELEMENT extends LitElement {
     @property({ type: String }) type: AlertBanner.Type = "";
+    @property({ type: String }) titleText = "";
     @property({ type: String }) message = "";
     @property({ type: Boolean }) closable = false;
     @property({ type: Boolean }) show = false;
@@ -63,13 +64,13 @@ export namespace AlertBanner {
     getIconForType() {
       switch (this.type) {
         case "error":
-          return "error-legacy-badge-filled";
+          return "error-legacy-bold";
         case "warning":
-          return "warning-filled";
+          return "warning-bold";
         case "success":
-          return "check-circle-badge-filled";
+          return "check-circle-bold";
         default:
-          return "info-badge-filled";
+          return "info-circle-bold";
       }
     }
 
@@ -77,27 +78,30 @@ export namespace AlertBanner {
       return {
         "md-alert-banner": true,
         [`md-alert-banner--${this.type}`]: this.type,
-        [`md-alert-banner--${this.alignment}`]: this.isLeadingAlignment,
-        closable: this.closable
+        [`md-alert-banner--leading`]: this.isLeadingAlignment || this.titleText,
+        closable: this.closable,
+        "with-title": !!this.titleText
       };
     }
 
     private get alertBannerTextClassMap() {
       return {
         "md-alert-banner__text": true,
-        leading: this.isLeadingAlignment
+        "md-alert-banner__with-title": !!this.titleText,
+        leading: this.isLeadingAlignment || this.titleText
       };
     }
 
     private get alertBannerRightClassMap() {
       return {
-        trailing: this.isLeadingAlignment
+        trailing: this.isLeadingAlignment || this.titleText
       };
     }
 
     private get closeButtonTemplate() {
+      const closeDivClass = this.titleText ? "close-div with-title" : "close-div";
       return html`
-        <div class="close-div">
+        <div class="${closeDivClass}">
           <md-button
             class="md-alert-banner__close"
             hasRemoveStyle
@@ -112,16 +116,32 @@ export namespace AlertBanner {
       `;
     }
 
+    private get titleTemplate() {
+      return this.titleText ? html`<div class="md-alert-banner__title">${this.titleText}</div>` : nothing;
+    }
+
     render() {
       const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : null;
-
+      const textContentStyle = this.showBannerTypeIcon || this.titleText ? "with-icon" : "";
       const leftOfTextSlot = this.showBannerTypeIcon
-        ? html` <md-icon name="${this.getIconForType()}" iconSet="momentumDesign" size="16"> </md-icon> `
+        ? html`
+            <md-icon
+              class=${classMap({
+                "md-alert-banner__icon": true,
+                "with-title": !!this.titleText
+              })}
+              name="${this.getIconForType()}"
+              iconSet="momentumDesign"
+              size="20"
+            >
+            </md-icon>
+          `
         : html`<slot name="left"></slot>`;
 
+      const refreshButtonClass = this.titleText ? "refresh-button-with-title" : "refresh-button";
       const rightOfTextSlot = this.showRefreshButton
         ? html` <md-button
-            class="refresh-button"
+            class="${refreshButtonClass}"
             @click="${() => this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"))}"
             variant="ghostInheritTextColor"
             circle
@@ -131,23 +151,49 @@ export namespace AlertBanner {
           </md-button>`
         : nothing;
 
-      return html`
-        ${this.show
-          ? html`
-              <div class="${classMap(this.alertBannerClassMap)}" role="alert">
-                <div class="${classMap(this.alertBannerTextClassMap)}">
-                  ${leftOfTextSlot}
-                  <slot><span>${this.message}</span></slot>
-                  ${rightOfTextSlot}
+      if (this.titleText) {
+        return html`
+          ${this.show
+            ? html`
+                <div class="${classMap(this.alertBannerClassMap)}" role="alert">
+                  <div class="${classMap(this.alertBannerTextClassMap)}">
+                    <div class="md-alert-banner__text-content ${textContentStyle}">
+                      ${leftOfTextSlot} ${this.titleTemplate}
+                      <slot><span>${this.message}</span></slot>
+                    </div>
+                  </div>
+                  <div class="md-alert-banner__top-right-centered">
+                    <div class="md-alert-banner__top-right-centered-content">
+                      ${rightOfTextSlot}
+                      <div class="md-alert-banner__right ${classMap(this.alertBannerRightClassMap)}">
+                        <slot name="right"></slot>
+                      </div>
+                      ${closeBtn}
+                    </div>
+                  </div>
                 </div>
-                <div class="md-alert-banner__right ${classMap(this.alertBannerRightClassMap)}">
-                  <slot name="right"></slot>
+              `
+            : null}
+        `;
+      } else {
+        return html`
+          ${this.show
+            ? html`
+                <div class="${classMap(this.alertBannerClassMap)}" role="alert">
+                  <div class="${classMap(this.alertBannerTextClassMap)}">
+                    ${leftOfTextSlot}
+                    <slot><span>${this.message}</span></slot>
+                    ${rightOfTextSlot}
+                  </div>
+                  <div class="md-alert-banner__right ${classMap(this.alertBannerRightClassMap)}">
+                    <slot name="right"></slot>
+                  </div>
+                  ${closeBtn}
                 </div>
-                ${closeBtn}
-              </div>
-            `
-          : null}
-      `;
+              `
+            : null}
+        `;
+      }
     }
   }
 }

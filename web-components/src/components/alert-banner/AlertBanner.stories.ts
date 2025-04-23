@@ -17,6 +17,7 @@ const render = (args: Args) => html`
     ?show=${args.show}
     type="${args.type}"
     ?closable=${args.closable}
+    titleText="${args.titleText}"
     message="${args.textContent}"
     ?showBannerTypeIcon=${args.showBannerTypeIcon}
     ?showRefreshButton=${args.showRefreshButton}
@@ -31,6 +32,7 @@ export const AlertBanner: StoryObj = {
     type: "default",
     closable: false,
     show: true,
+    titleText: "Test Title",
     textContent: "Test Alert Message",
     showBannerTypeIcon: true,
     showRefreshButton: true

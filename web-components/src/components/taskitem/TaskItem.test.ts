@@ -17,7 +17,7 @@ const fixtureFactory = async (
   customAriaLabel = "",
   iconSrc = "",
   isRestyle = false,
-  queueTime: string = ""
+  queueTimeLabel: string = ""
 ): Promise<TaskItem.ELEMENT> => {
   return await fixture(html`
     <md-task-item
@@ -27,7 +27,7 @@ const fixtureFactory = async (
       title="${title}"
       status="${status}"
       queue="${queue}"
-      queue-time="${queueTime}"
+      queue-time-label="${queueTimeLabel}"
       quantity="${quantity}"
       lastmessage="${lastmessage}"
       .selected="${selected}"
@@ -563,7 +563,7 @@ describe("TaskItem", () => {
     expect(icon?.getAttribute("name")).toEqual("handset-filled");
   });
 
-  it("should render queueTime when queueTime is set", async () => {
+  it("should render queueTimeLabel when queueTimeLabel is set", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       TaskItemMediaType.TELEPHONY,
       "Mihael Varificantare",

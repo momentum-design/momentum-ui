@@ -26,7 +26,7 @@ export default {
     mediaType: { control: "text" },
     status: { control: "text" },
     queue: { control: "text" },
-    "queue-time": { control: "text" },
+    "queue-time-label": { control: "text" },
     lastmessage: { control: "text" },
     "is-restyle": { control: "boolean" },
     "display-only-title": { control: "boolean" },
@@ -57,7 +57,7 @@ const render = (args: Args) => {
       title="${args.title}"
       item-title="${args["item-title"]}"
       queue="${args.queue}"
-      queue-time="${args["queue-time"]}"
+      queue-time-label="${args["queue-time-label"]}"
       quantity="${args.quantity}"
       lastmessage="${args.lastmessage}"
       iconSrc="${args.iconSrc}"
@@ -152,7 +152,7 @@ export const RestyleTaskItem: StoryObj = {
           title: "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
-          "queue-time": "Handle Time: 00:00",
+          "queue-time-label": "Handle Time: 00:00",
           lastmessage: "%Last Message%",
           "is-restyle": true
         })}
@@ -166,13 +166,16 @@ export const RestyleTaskItem: StoryObj = {
         })}
         ${render({
           mediaType: TaskItemMediaType.CHAT,
-          queue: "%Queue%",
+          queue: "%Queue%%Queue%%Queue%%Queue%%Queue%",
           lastmessage: "%Last Message%",
+          "queue-time-label": "Handle Time: ",
           "is-restyle": true,
+          quantity: 1,
           slot: `
           <md-tooltip message="Click to call" placement="top" slot="title">
             <md-link tag="a" inline inline-style="default">+01 32498 587</md-link>
           </md-tooltip>
+          <div slot="queue-time">26:55:59</div>
           `
         })}
         ${render({
@@ -180,7 +183,6 @@ export const RestyleTaskItem: StoryObj = {
           quantity: 1,
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
-          "queue-time": "Handle Time: 00:00",
           lastmessage: "%Last Message%",
           "is-restyle": true
         })}
@@ -192,6 +194,7 @@ export const RestyleTaskItem: StoryObj = {
           "is-restyle": true,
           slot: `
             <md-button variant="green" size="28"> Answer </md-button>
+            <div slot="queue-time">26:55:59</div>
           `
         })}
         ${render({
@@ -274,6 +277,7 @@ export const RestyleTaskItem: StoryObj = {
           mediaType: TaskItemMediaType.TELEPHONY,
           lastmessage: "%Retry%",
           "is-restyle": true,
+          "queue-time-label": "Handle Time: ",
           slot: `
           <div
             slot="queue"

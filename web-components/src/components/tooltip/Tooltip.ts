@@ -35,6 +35,7 @@ export namespace Tooltip {
     @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) opened = false;
+    @property({ type: Boolean, reflect: true, attribute: "slot-to-tooltip" }) slotToTooltip = false;
 
     @query(".md-tooltip__popper") popper!: HTMLDivElement;
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
@@ -198,6 +199,28 @@ export namespace Tooltip {
       }
     }
 
+    handleSlotChanged(event: Event) {
+      const slot = event.target as HTMLSlotElement;
+      if (this.slotToTooltip && slot) {
+        const slotContent = slot.assignedNodes({ flatten: true });
+        const contentText = slotContent
+          .map((el) => el.textContent)
+          .join(" ")
+          .trim();
+
+        if (this.reference && this.isContentTruncated(this.reference)) {
+          this.message = contentText;
+          this.disabled = false;
+        } else {
+          this.disabled = true;
+        }
+      }
+    }
+
+    private isContentTruncated(element: HTMLElement): boolean {
+      return element.scrollWidth > element.clientWidth;
+    }
+
     private get tooltipClassMap() {
       return {
         "md-tooltip--disabled": this.disabled
@@ -209,9 +232,8 @@ export namespace Tooltip {
         <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
           <div class="md-tooltip__popper" role="tooltip" part="tooltip-popper">
             <div id="md-tooltip__content" class="md-tooltip__content" part="tooltip-content">
-              ${this.message
-                ? this.message
-                : html` <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot> `}
+              ${this.message ||
+              html` <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot> `}
             </div>
             <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
           </div>
@@ -226,7 +248,7 @@ export namespace Tooltip {
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
             aria-describedby="md-tooltip__content"
           >
-            <slot></slot>
+            <slot @slotchange=${this.handleSlotChanged}></slot>
           </div>
         </div>
       `;

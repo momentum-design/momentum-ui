@@ -28,7 +28,7 @@ export namespace TaskItem {
     @property({ type: String }) status: TaskItemStatus | string = "";
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) queue = "";
-    @property({ type: String, attribute: "queue-time" }) queueTime = "";
+    @property({ type: String, attribute: "queue-time-label" }) queueTimeLabel = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Boolean, attribute: "display-only-title" }) displayOnlyTitle = false;
     @property({ type: Number }) quantity = 0;
@@ -131,7 +131,13 @@ export namespace TaskItem {
           }
         }
       }
-      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.queueTime} ${this.quantity ? this.quantity : ""} ${
+      const queueTimeSlot = this.querySelector('[slot="queue-time"]') as HTMLElement;
+      let queueTimeContent = this.queueTimeLabel;
+      if (queueTimeSlot) {
+        queueTimeContent += `${queueTimeSlot.textContent?.trim() ?? queueTimeSlot.innerText.trim()}`;
+      }
+
+      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${queueTimeContent} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
       }`;
     }
@@ -185,17 +191,26 @@ export namespace TaskItem {
               : html` <span class="md-taskitem__content_popover_title"><slot name="title"></slot></span> `}
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
-                ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
-                ${this.queueTime.length > 0
-                  ? html`<div class="md-taskitem__content_queue_dot"></div>
-                      ${this.queueTime}`
-                  : nothing}
+                <md-tooltip placement="bottom" slot-to-tooltip>
+                  ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
+                </md-tooltip>
               </span>
+              ${this.queueTimeLabel.length > 0 || this.querySelector('[slot="queue-time"]')
+                ? html`
+                    <span class="md-taskitem__content_queue_time">
+                      <div class="md-taskitem__content_queue_time_dot"></div>
+                      ${this.queueTimeLabel}
+                      <slot name="queue-time"></slot>
+                    </span>
+                  `
+                : nothing}
             </div>
             ${this.lastmessage
               ? html`
                   <span class="md-taskitem__content_chat">
-                    <span class="new-chat_massages">${this.lastmessage}</span>
+                    <span class="new-chat_massages">
+                      <md-tooltip placement="bottom" slot-to-tooltip> ${this.lastmessage} </md-tooltip></span
+                    >
                   </span>
                 `
               : nothing}

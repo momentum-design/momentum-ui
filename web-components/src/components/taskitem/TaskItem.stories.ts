@@ -14,6 +14,8 @@ import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
 import { iconUrlManager } from "@/managers/IconUrlManager";
+import "../link/Link";
+import "../chip/Chip";
 
 export default {
   title: "Components/Task Item",

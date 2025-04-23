@@ -101,6 +101,10 @@ export namespace DateRangePicker {
       if (!selection) {
         return;
       }
+
+      this.selectedDate = selection;
+      this.focusedDate = selection;
+
       if (!this.startDate) {
         this.startDate = this.dateToSqlTranslate(selection);
       } else if (!this.endDate) {

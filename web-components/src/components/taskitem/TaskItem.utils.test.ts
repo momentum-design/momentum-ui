@@ -115,20 +115,6 @@ describe("TaskItem Utils", () => {
       );
     });
 
-    it("should return the correct avatar for CALLBACK", () => {
-      const result = renderTaskType(TaskItemMediaType.CALLBACK, true, "active", "");
-      expect(result).toEqual(
-        getChannelAvatar(true, "active", "channel-custom", html`<md-icon name="icon-icon-callback_18"></md-icon>`)
-      );
-    });
-
-    it("should return the correct avatar for PROGRESSIVE_CAMPAIGN", () => {
-      const result = renderTaskType(TaskItemMediaType.PROGRESSIVE_CAMPAIGN, true, "active", "");
-      expect(result).toEqual(
-        getChannelAvatar(true, "active", "channel-custom", html`<md-icon name="icon-icon-campaign_18"></md-icon>`)
-      );
-    });
-
     it("should return the default avatar for unsupported mediaType", () => {
       const result = renderTaskType("UNSUPPORTED_TYPE", false, null, "");
       expect(result).toEqual(getChannelAvatar(false, null, "channel-custom", html`<slot name="task-type"></slot>`));

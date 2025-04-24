@@ -8,7 +8,7 @@
 
 import { Placement, PlacementType, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
-import { FocusMixin } from "@/mixins";
+import { FocusMixin, ResizeMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
@@ -30,7 +30,7 @@ export namespace Tooltip {
   export type Strategy = StrategyType;
 
   @customElementWithCheck("md-tooltip")
-  export class ELEMENT extends FocusMixin(LitElement) {
+  export class ELEMENT extends ResizeMixin(FocusMixin(LitElement)) {
     @property({ type: String }) message = "";
     @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
     @property({ type: Boolean, reflect: true }) disabled = false;
@@ -64,6 +64,13 @@ export namespace Tooltip {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
       window.removeEventListener("wheel", this._wheelListener);
+    }
+
+    protected handleResize(contentRect: DOMRect) {
+      super.handleResize?.(contentRect);
+      if (this.slotToTooltip) {
+        this.disabled = this.reference && !this.isContentTruncated(this.reference);
+      }
     }
 
     protected handleFocusIn(event: Event) {
@@ -208,12 +215,8 @@ export namespace Tooltip {
           .join(" ")
           .trim();
 
-        if (this.reference && this.isContentTruncated(this.reference)) {
-          this.message = contentText;
-          this.disabled = false;
-        } else {
-          this.disabled = true;
-        }
+        this.message = contentText;
+        this.disabled = this.reference && !this.isContentTruncated(this.reference);
       }
     }
 

@@ -176,7 +176,11 @@ export namespace TaskItem {
           </div>
           <div class="md-taskitem__content" part="task-item-content">
             ${this.popovertitle
-              ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
+              ? html`
+                  <span class="md-taskitem__content_popover_title"
+                    ><md-tooltip placement="bottom" slot-to-tooltip>${this.popovertitle}</md-tooltip></span
+                  >
+                `
               : nothing}
             ${this.itemTitle
               ? html`
@@ -185,7 +189,7 @@ export namespace TaskItem {
                       mainTitle: !this.popovertitle,
                       "display-only-title": this.displayOnlyTitle
                     })}"
-                    >${this.itemTitle}</span
+                    ><md-tooltip placement="bottom" slot-to-tooltip>${this.itemTitle}</md-tooltip></span
                   >
                 `
               : html` <span class="md-taskitem__content_popover_title"><slot name="title"></slot></span> `}

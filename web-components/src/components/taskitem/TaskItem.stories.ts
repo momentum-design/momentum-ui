@@ -21,7 +21,6 @@ export default {
   title: "Components/Task Item",
   component: "md-task-item",
   argTypes: {
-    title: { control: "text" },
     popovertitle: { control: "text" },
     "item-title": { control: "text" },
     quantity: { control: "number" },
@@ -56,7 +55,6 @@ const render = (args: Args) => {
       mediaType="${args.mediaType}"
       popovertitle="${args.popovertitle}"
       status="${args.status}"
-      title="${args.title}"
       item-title="${args["item-title"]}"
       queue="${args.queue}"
       queue-time-label="${args["queue-time-label"]}"
@@ -77,7 +75,7 @@ const render = (args: Args) => {
 
 export const Example: StoryObj = {
   args: {
-    title: "Mihael Varificantare",
+    "item-title": "Mihael Varificantare",
     quantity: 12,
     mediaType: "voice",
     status: "conference",
@@ -99,7 +97,7 @@ export const LegacyTaskItem: StoryObj = {
       <div style="width: 350px;">
         <h3>Legacy Task Item</h3>
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           quantity: 12,
           mediaType: TaskItemMediaType.CHAT,
           status: TaskItemStatus.CONFERENCE,
@@ -109,7 +107,7 @@ export const LegacyTaskItem: StoryObj = {
       `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           quantity: 123,
           mediaType: TaskItemMediaType.SMS,
           status: TaskItemStatus.COURTESY_CALLBACK,
@@ -119,7 +117,7 @@ export const LegacyTaskItem: StoryObj = {
       `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.SMS,
           status: TaskItemStatus.COURTESY_CALLBACK,
           queue: "%Queue%",
@@ -151,7 +149,7 @@ export const RestyleTaskItem: StoryObj = {
       <div style="width: 284px;">
         <h3>Restyle Task Item</h3>
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
           "queue-time-label": "Handle Time: 00:00",
@@ -159,7 +157,7 @@ export const RestyleTaskItem: StoryObj = {
           "is-restyle": true
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -181,7 +179,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           quantity: 1,
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
@@ -189,7 +187,7 @@ export const RestyleTaskItem: StoryObj = {
           "is-restyle": true
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.CHAT,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -200,7 +198,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.WHATSAPP,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -212,7 +210,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.WHATSAPP,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -223,7 +221,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.TELEPHONY,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -240,7 +238,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.TELEPHONY,
           queue: "%Queue%",
           lastmessage: "10:00AM 04/21/2025",
@@ -257,7 +255,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.TELEPHONY,
           queue: "%Queue%",
           lastmessage: "%Last Message%",
@@ -275,7 +273,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.TELEPHONY,
           lastmessage: "%Retry%",
           "is-restyle": true,
@@ -294,7 +292,7 @@ export const RestyleTaskItem: StoryObj = {
         `
         })}
         ${render({
-          title: "%CustName/Email/GUID%",
+          "item-title": "%CustName/Email/GUID%",
           mediaType: TaskItemMediaType.OUTBOUND_CAMPAIGN,
           "is-restyle": true,
           slot: `
@@ -304,7 +302,7 @@ export const RestyleTaskItem: StoryObj = {
           `
         })}
         ${render({
-          title: "%Campaign%",
+          "item-title": "%Campaign%",
           mediaType: TaskItemMediaType.OUTBOUND_CAMPAIGN,
           queue: "%Queue%",
           lastmessage: "Time left 00:29",
@@ -339,7 +337,7 @@ export const TaskItemMediaTypes: StoryObj = {
           (type) => html`
             <div>Media Type: <b>${type}</b></div>
             ${render({
-              title: "%CustName/Email/GUID%",
+              "item-title": "%CustName/Email/GUID%",
               mediaType: type,
               queue: "%Queue%",
               iconSrc: `${iconUrlManager.svgIconUrl}/social-viber-color.svg`,
@@ -364,7 +362,7 @@ export const TaskItemAvatarStatus: StoryObj = {
           (status) => html`
             <div>status: <b>${status}</b></div>
               ${render({
-                title: "%CustName/Email/GUID%",
+                "item-title": "%CustName/Email/GUID%",
                 mediaType: TaskItemMediaType.CHAT,
                 status: status,
                 queue: "%Queue%",

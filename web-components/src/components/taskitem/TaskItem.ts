@@ -137,7 +137,7 @@ export namespace TaskItem {
         queueTimeContent += `${queueTimeSlot.textContent?.trim() ?? queueTimeSlot.innerText.trim()}`;
       }
 
-      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${queueTimeContent} ${this.quantity ? this.quantity : ""} ${
+      return `${this.mediaType} ${this.status} ${this.popovertitle} ${this.itemTitle} ${queueContent} ${queueTimeContent} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
       }`;
     }
@@ -178,14 +178,14 @@ export namespace TaskItem {
             ${this.popovertitle
               ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
               : nothing}
-            ${this.title
+            ${this.itemTitle
               ? html`
                   <span
                     class="md-taskitem__content_title ${classMap({
                       mainTitle: !this.popovertitle,
                       "display-only-title": this.displayOnlyTitle
                     })}"
-                    >${this.title}</span
+                    >${this.itemTitle}</span
                   >
                 `
               : html` <span class="md-taskitem__content_popover_title"><slot name="title"></slot></span> `}

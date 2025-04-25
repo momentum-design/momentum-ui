@@ -14,6 +14,16 @@ describe("TaskItem Utils", () => {
       expect(result).toEqual(getChannelAvatar(true, "active", "channel-call"));
     });
 
+    it("should return the correct avatar for PROGRESSIVE_CAMPAIGN", () => {
+      const result = renderTaskType(TaskItemMediaType.PROGRESSIVE_CAMPAIGN, true, "active", "");
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-call"));
+    });
+
+    it("should return the correct avatar for CALLBACK", () => {
+      const result = renderTaskType(TaskItemMediaType.CALLBACK, true, "active", "");
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-call"));
+    });
+
     it("should return the correct avatar for OUTBOUND_TELEPHONY", () => {
       const result = renderTaskType(TaskItemMediaType.OUTBOUND_TELEPHONY, true, "active", "");
       expect(result).toEqual(getChannelAvatar(true, "active", "channel-callback"));
@@ -112,20 +122,6 @@ describe("TaskItem Utils", () => {
       const result = renderTaskType(TaskItemMediaType.ICON_SRC, false, "inactive", iconSrc);
       expect(result).toEqual(
         getChannelAvatar(false, "inactive", "channel-custom", html`<img height="20px" width="20px" src="${iconSrc}" />`)
-      );
-    });
-
-    it("should return the correct avatar for CALLBACK", () => {
-      const result = renderTaskType(TaskItemMediaType.CALLBACK, true, "active", "");
-      expect(result).toEqual(
-        getChannelAvatar(true, "active", "channel-custom", html`<md-icon name="icon-icon-callback_18"></md-icon>`)
-      );
-    });
-
-    it("should return the correct avatar for PROGRESSIVE_CAMPAIGN", () => {
-      const result = renderTaskType(TaskItemMediaType.PROGRESSIVE_CAMPAIGN, true, "active", "");
-      expect(result).toEqual(
-        getChannelAvatar(true, "active", "channel-custom", html`<md-icon name="icon-icon-campaign_18"></md-icon>`)
       );
     });
 

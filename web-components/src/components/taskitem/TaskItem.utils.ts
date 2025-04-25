@@ -33,6 +33,8 @@ export const getChannelAvatar = (
 
 export const renderTaskType = (mediaType: string, selected: boolean, status: string | null, iconSrc: string) => {
   switch (mediaType.toLowerCase()) {
+    case TaskItemMediaType.PROGRESSIVE_CAMPAIGN:
+    case TaskItemMediaType.CALLBACK:
     case TaskItemMediaType.TELEPHONY:
       return getChannelAvatar(selected, status, "channel-call");
     case TaskItemMediaType.OUTBOUND_TELEPHONY:
@@ -69,20 +71,6 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
       return getChannelAvatar(selected, status, "channel-we-chat");
     case TaskItemMediaType.WEBEX:
       return getChannelAvatar(selected, status, "channel-webex");
-    case TaskItemMediaType.CALLBACK:
-      return getChannelAvatar(
-        selected,
-        status,
-        "channel-custom",
-        html`<md-icon name="icon-icon-callback_18"></md-icon>`
-      );
-    case TaskItemMediaType.PROGRESSIVE_CAMPAIGN:
-      return getChannelAvatar(
-        selected,
-        status,
-        "channel-custom",
-        html`<md-icon name="icon-icon-campaign_18"></md-icon>`
-      );
     case TaskItemMediaType.GOOGLE_MESSAGES:
       return getChannelAvatar(
         selected,

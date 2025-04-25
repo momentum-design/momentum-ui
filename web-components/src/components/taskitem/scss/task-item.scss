@@ -230,13 +230,26 @@
         font-size: $taskitem-restyle-font-size;
         line-height: 20px;
         color: var(--taskitem-text-color);
+        width: auto;
+      }
+      &_queue_time {
+        font-size: $taskitem-restyle-font-size;
+        line-height: 20px;
+        color: var(--taskitem-text-color);
+        margin-left: 4px;
+        min-width: $taskitem-restyle-queue-time-min-width;
+        @include text-dots;
+
         &_dot {
           background-color: var(--taskitem-restyle-dot-color);
           border-radius: $taskitem-border-circle;
-          height: 4px;
-          width: 4px;
+          height: $taskitem-restyle-dot-size;
+          width: $taskitem-restyle-dot-size;
           display: inline-flex;
           margin: 3px 0px;
+        }
+        ::slotted(*) {
+          display: inline-flex;
         }
       }
       &_chat {
@@ -305,7 +318,9 @@
   .md-taskitem__content {
     &_popover_title,
     &_title {
-      font-weight: 700 !important;
+      ::part(tooltip_reference) {
+        font-weight: 700 !important;
+      }
     }
   }
   .md-taskitem__addition {

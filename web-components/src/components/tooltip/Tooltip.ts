@@ -8,7 +8,7 @@
 
 import { Placement, PlacementType, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
-import { FocusMixin } from "@/mixins";
+import { FocusMixin, ResizeMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
@@ -30,11 +30,12 @@ export namespace Tooltip {
   export type Strategy = StrategyType;
 
   @customElementWithCheck("md-tooltip")
-  export class ELEMENT extends FocusMixin(LitElement) {
+  export class ELEMENT extends ResizeMixin(FocusMixin(LitElement)) {
     @property({ type: String }) message = "";
     @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) opened = false;
+    @property({ type: Boolean, reflect: true, attribute: "slot-to-tooltip" }) slotToTooltip = false;
 
     @query(".md-tooltip__popper") popper!: HTMLDivElement;
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
@@ -63,6 +64,13 @@ export namespace Tooltip {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
       window.removeEventListener("wheel", this._wheelListener);
+    }
+
+    protected handleResize(contentRect: DOMRect) {
+      super.handleResize?.(contentRect);
+      if (this.slotToTooltip) {
+        this.disabled = this.reference && !this.isContentTruncated(this.reference);
+      }
     }
 
     protected handleFocusIn(event: Event) {
@@ -198,6 +206,24 @@ export namespace Tooltip {
       }
     }
 
+    handleSlotChanged(event: Event) {
+      const slot = event.target as HTMLSlotElement;
+      if (this.slotToTooltip && slot) {
+        const slotContent = slot.assignedNodes({ flatten: true });
+        const contentText = slotContent
+          .map((el) => el.textContent)
+          .join(" ")
+          .trim();
+
+        this.message = contentText;
+        this.disabled = this.reference && !this.isContentTruncated(this.reference);
+      }
+    }
+
+    private isContentTruncated(element: HTMLElement): boolean {
+      return element.scrollWidth > element.clientWidth;
+    }
+
     private get tooltipClassMap() {
       return {
         "md-tooltip--disabled": this.disabled
@@ -209,9 +235,8 @@ export namespace Tooltip {
         <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
           <div class="md-tooltip__popper" role="tooltip" part="tooltip-popper">
             <div id="md-tooltip__content" class="md-tooltip__content" part="tooltip-content">
-              ${this.message
-                ? this.message
-                : html` <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot> `}
+              ${this.message ||
+              html` <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot> `}
             </div>
             <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
           </div>
@@ -226,7 +251,7 @@ export namespace Tooltip {
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
             aria-describedby="md-tooltip__content"
           >
-            <slot></slot>
+            <slot @slotchange=${this.handleSlotChanged}></slot>
           </div>
         </div>
       `;

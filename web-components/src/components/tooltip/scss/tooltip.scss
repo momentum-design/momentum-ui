@@ -4,6 +4,17 @@
   display: inline-flex;
 }
 
+:host([slot-to-tooltip]) {
+  width: 100%;
+  .md-tooltip {
+    &__reference {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
 .md-tooltip {
   position: relative;
   width: 100%;
@@ -37,7 +48,7 @@
     word-break: break-word;
     z-index: 9999;
 
-    .md-tooltip__arrow {      
+    .md-tooltip__arrow {
       height: $tooltip-arrow__size;
       width: $tooltip-arrow__size;
       z-index: -1;

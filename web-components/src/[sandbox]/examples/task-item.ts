@@ -24,7 +24,7 @@ export class TaskItemSandbox extends LitElement {
         <md-task-item
           mediaType="telephony"
           status="conference"
-          title="Mihael Varificantare for test text overflow"
+          item-title="Mihael Varificantare for test text overflow"
           queue="IRV_quelle_1167676776767676asdadadas"
           lastmessage="I can ask one more question"
           quantity="0"
@@ -49,7 +49,6 @@ export class TaskItemSandbox extends LitElement {
         <md-task-item
           mediaType="inbound telephony"
           status="transfered"
-          title="Mihael Varificantare"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           lastmessage=" "
@@ -61,7 +60,6 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="midcall telephony"
-          title="MediaType: midcall telephony"
           item-title="MediaType: midcall telephony"
           queue="IRV_quelle_11"
           lastmessage=" "
@@ -75,7 +73,6 @@ export class TaskItemSandbox extends LitElement {
         <md-task-item
           mediaType="callback"
           status="campaign"
-          title="Media Type callback"
           item-title="Media Type callback"
           queue="IRV_quelle_11"
           lastmessage=" "
@@ -87,7 +84,7 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="progressive_campaign"
-          title="Media Type progressive_campaign"
+          item-title="Media Type progressive_campaign"
           queue="IRV_quelle_11"
           lastmessage=" "
           quantity="123"
@@ -99,7 +96,6 @@ export class TaskItemSandbox extends LitElement {
         <md-task-item
           mediaType="email"
           status="play"
-          title="mlittlefoot@gmail.com"
           item-title="mlittlefoot@gmail.com"
           queue="IRV_quelle_12"
           selected
@@ -111,7 +107,6 @@ export class TaskItemSandbox extends LitElement {
         <md-task-item
           mediaType="telephony"
           status="consulting"
-          title="Mihael Varificantare"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           ?is-restyle=${this.isRestyled}
@@ -121,7 +116,6 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="messenger"
-          title="Mihael Varificantare"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           ?is-restyle=${this.isRestyled}
@@ -131,7 +125,6 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="whatsApp"
-          title="Mihael Varificantare"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           ?is-restyle=${this.isRestyled}
@@ -141,7 +134,6 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="facebook"
-          title="MediaType: facebook"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           ?is-restyle=${this.isRestyled}
@@ -151,7 +143,6 @@ export class TaskItemSandbox extends LitElement {
 
         <md-task-item
           mediaType="chat"
-          title="Mihael Varificantare"
           item-title="Mihael Varificantare"
           queue="IRV_quelle_11"
           ?is-restyle=${this.isRestyled}

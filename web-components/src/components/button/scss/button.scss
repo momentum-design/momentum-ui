@@ -767,6 +767,7 @@
     background-color: var(--button-secondary-active-normal-bg-color);
     color: var(--button-secondary-text-color);
     border: 1px solid var(--button-secondary-border-color);
+    font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
       background-color: var(--button-secondary-active-hover-bg-color);
@@ -1075,6 +1076,7 @@
   &.isActive {
     background-color: var(--button-ghost-active-bg-color);
     color: var(--button-ghost-active-text-color);
+    font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
       background-color: var(--button-ghost-active-hover-bg-color);

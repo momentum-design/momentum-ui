@@ -318,7 +318,9 @@
   .md-taskitem__content {
     &_popover_title,
     &_title {
-      font-weight: 700 !important;
+      ::part(tooltip_reference) {
+        font-weight: 700 !important;
+      }
     }
   }
   .md-taskitem__addition {

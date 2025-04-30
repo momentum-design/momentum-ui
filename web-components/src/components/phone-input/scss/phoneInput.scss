@@ -1,73 +1,20 @@
 .md-phone-input__container {
-  --combo-box-contaier-width: 100px;
+  --combo-box-container-width: 100px;
+  container-type: inline-size;
   display: flex;
-  position: relative;
 
-  span.flag-box {
-    align-items: center;
-    border: 1px solid var(--input-default-border-color, #ccc);
-    border-bottom-left-radius: 0.25rem;    
-    border-top-left-radius: 0.25rem;
-    border-right: none;
-    display: flex;
-    height: rem-calc(34);
-    justify-content: center;
-    position: relative;
-    width: rem-calc(36);
-
-    &.new-momentum {
-      border: 1px solid var(--input-default-new-border-color, #ccc);      
-      height: rem-calc(32);
-      border-top-left-radius: rem-calc(8);
-      border-bottom-left-radius: rem-calc(8);
-      border-right: none;
-    }
-
-    .flag-svg-wrapper {
-      justify-content: center;
-    }
+  md-country-code-picker::part(combobox) {
+    width: var(--combo-box-container-width);
   }
 
-  .flag-svg-wrapper {
-    align-items: center;
-    display: flex;
-    width: 2rem;
-
-    img {
-      max-height: 0.7rem;
-    }
-  }
-
-  md-combobox {
-    width: var(--combo-box-contaier-width);
-  }
-
-  md-combobox::part(combobox) {
-    position: initial;
-  }
-
-  md-combobox::part(group) {
+  md-country-code-picker::part(combobox-group) {
     border-bottom-right-radius: 0;
     border-right-width: 0;
     border-top-right-radius: 0;
   }
 
-  md-combobox::part(multiwrap) {
-    overflow-x: hidden;
-  }
-
-  md-combobox::part(multiwrap-input) {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-  }
-
-  md-combobox::part(combobox-options) {
-    top: 2.5rem;
-  }
-
-  md-combobox::part(label) {
-    width: 100%;
+  md-country-code-picker::part(options-container) {
+    width: 100cqw;
   }
 
   md-input::part(input) {
@@ -77,18 +24,8 @@
   }
 
   md-input::part(message) {
-    margin-left: calc(var(--combo-box-contaier-width) * -1);
-    width: calc(100% + var(--combo-box-contaier-width));
-  }
-
-  .md-phone-input__option {
-    align-items: center;
-    display: flex;
-    justify-content: start;
-
-    :nth-child(3) {
-      margin-left: 1rem;
-    }
+    margin-left: calc(var(--combo-box-container-width) * -1);
+    width: calc(100% + var(--combo-box-container-width));
   }
 
   md-input[disabled]::part(input) {

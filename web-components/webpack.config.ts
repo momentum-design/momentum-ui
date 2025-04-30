@@ -159,6 +159,7 @@ const commonDist = merge(common, {
     "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
     "comp/md-coachmark-popover-entry": "./src/components/coachmark-popover/CoachmarkPopover",
     "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
+    "comp/md-country-code-picker-entry": "./src/components/country-code-picker/CountryCodePicker",
     "comp/md-date-range-picker-entry": "./src/components/date-range-picker/DateRangePicker",
     "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
     "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",

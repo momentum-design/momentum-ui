@@ -196,9 +196,10 @@ export namespace List {
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      const target = event.target as HTMLElement;
+      const path = event.composedPath();
+      const originalTarget = path[0] as HTMLElement;
 
-      if (this.shouldElementHandleKey(target, event.code)) {
+      if (this.shouldElementHandleKey(originalTarget, event.code)) {
         // Let the element handle its own keyboard navigation
         return;
       }

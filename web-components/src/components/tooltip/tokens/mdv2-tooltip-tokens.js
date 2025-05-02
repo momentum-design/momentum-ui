@@ -4,13 +4,13 @@ const tooltip = {
   prefix: "mdv2",
   component: "tooltip",
   "font-color": {
-    common: "$mds-color-theme-inverted-text-primary-normal"
+    common: "$mds-color-theme-text-primary-normal"
   },
   "bg-color": {
-    common: "$mds-color-theme-inverted-background-normal"
+    common: "$mds-color-theme-background-solid-primary-normal"
   },
   border: {
-    common: "$mds-color-theme-inverted-outline-primary-normal"
+    common: "$mds-color-theme-outline-secondary-normal"
   },
   radius: {
     common: "8px"

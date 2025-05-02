@@ -259,7 +259,7 @@ describe("New Alert", () => {
   test("alert with slotted buttons", async () => {
     const element = await fixture<Alert.ELEMENT>(html`
       <md-alert title="title" message="message" closable show newMomentum>
-        <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color"> </md-icon>
+        <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient"> </md-icon>
         <div slot="alert-footer">
           <md-button variant="primary">
             <span slot="text">primary</span>
@@ -281,7 +281,7 @@ describe("New Alert", () => {
   test("alert without footer slot", async () => {
     const element = await fixture<Alert.ELEMENT>(html`
       <md-alert title="title" message="message" closable show newMomentum>
-        <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color"> </md-icon>
+        <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient"> </md-icon>
       </md-alert>
     `);
 

@@ -35,6 +35,7 @@ export default {
     maximizable: { control: "boolean", defaultValue: false },
     resizable: { control: "boolean", defaultValue: false },
     minimizable: { control: "boolean", defaultValue: false },
+    centered: { control: "boolean", defaultValue: false }
   },
   parameters: {
     a11y: {
@@ -61,6 +62,7 @@ export const FloatingModal = (args: Args) => {
       ?maximizable=${args.maximizable}
       ?resizable=${args.resizable}
       ?minimizable=${args.minimizable}
+      ?centered=${args.centered}
     >
       <md-radiogroup group-label="group_process">
         <md-radio slot="radio" value="Option 1">Option 1</md-radio>

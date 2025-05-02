@@ -112,8 +112,6 @@ export namespace Popover {
     @property({ type: Boolean })
     interactive = false;
 
-    //Override FocusTrap Mixin property
-    shouldWrapFocus = () => this.interactive;
 
     /**
      * The role attribute for the popover.

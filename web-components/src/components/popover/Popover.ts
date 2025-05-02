@@ -13,28 +13,23 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { debounce } from "@/utils/helpers";
 import { isActionKey } from "@/utils/keyboard";
-import { Placement } from "@popperjs/core/lib";
-import arrow from "@popperjs/core/lib/modifiers/arrow";
-import flip from "@popperjs/core/lib/modifiers/flip";
-import offset from "@popperjs/core/lib/modifiers/offset";
-import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
-import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  flip,
+  Middleware,
+  offset,
+  Placement,
+  shift,
+  Strategy
+} from "@floating-ui/dom";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { ARROW_HEIGHT, PlacementType, PopoverRoleType, StrategyType } from "./Popover.types";
 import styles from "./scss/module.scss";
-
-type OffsetsFunction = ({
-  popper,
-  reference,
-  placement
-}: {
-  popper: Rect;
-  reference: Rect;
-  placement: Placement;
-}) => [number, number];
 
 export namespace Popover {
   /**
@@ -44,29 +39,17 @@ export namespace Popover {
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     /**
      * The placement of the popover relative to the trigger element.
-     *
-     * This property specifies where the popover should appear in relation to the trigger element.
-     * The default placement is "bottom", but it can be customized to other positions such as "top", "left", or "right".
-     *
      * @type {PlacementType}
      */
     @property({ type: String })
-    placement: PlacementType = "bottom";
+    placement: PlacementType = "bottom"; // Use local PlacementType
 
     /**
      * The positioning strategy for the popover.
-     *
-     * This property specifies how the popover is positioned relative to the trigger element.
-     * It accepts two values:
-     * - `"absolute"`: The popover is positioned relative to the nearest positioned ancestor.
-     * - `"fixed"`: The popover is positioned relative to the viewport, allowing it to escape parent containers with `overflow: hidden` or `overflow: auto`.
-     *
-     * By default, the positioning strategy is `"absolute"`. Use `"fixed"` if the popover needs to escape parent boundaries.
-     *
      * @type {StrategyType}
      */
     @property({ type: String, attribute: "positioning-strategy" })
-    positioningStrategy?: StrategyType = undefined;
+    positioningStrategy: StrategyType = "absolute"; // Use local StrategyType
 
     /**
      * Indicates whether the popover is open.
@@ -111,7 +94,6 @@ export namespace Popover {
      */
     @property({ type: Boolean })
     interactive = false;
-
 
     /**
      * The role attribute for the popover.
@@ -210,12 +192,9 @@ export namespace Popover {
     private triggerElement: HTMLElement | null = null;
 
     /**
-     * The Popper.js instance used to manage the positioning of the popover.
-     *
-     * This instance is created when the popover is opened and destroyed when the popover is closed.
-     * It is used to handle the positioning and alignment of the popover relative to the trigger element.
+     * Cleanup function returned by Floating UI's autoUpdate.
      */
-    private popperInstance: Instance | null = null;
+    private floatingUiCleanup: (() => void) | null = null;
 
     /**
      * If mouse is over the trigger element or popover container.
@@ -437,7 +416,67 @@ export namespace Popover {
       this.isOpen = !this.isOpen;
     }
 
-    private async handleCreatePopperFirstUpdate() {
+    private async handleFloatingUiUpdate() {
+      if (!this.triggerElement || !this.popoverContainer) {
+        return;
+      }
+
+      const middleware: Middleware[] = [
+        offset(this.showArrow ? ARROW_HEIGHT + this.offsetDistance : this.offsetDistance),
+        flip(),
+        shift({ padding: 16 })
+      ];
+
+      if (this.showArrow && this.popoverArrow) {
+        middleware.push(arrow({ element: this.popoverArrow, padding: ARROW_HEIGHT }));
+      }
+
+      const { x, y, strategy, placement, middlewareData } = await computePosition(
+        this.triggerElement,
+        this.popoverContainer,
+        {
+          // Cast local types to Floating UI types for internal use
+          placement: this.placement as Placement,
+          strategy: this.positioningStrategy as Strategy,
+          middleware
+        }
+      );
+
+      Object.assign(this.popoverContainer.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+        position: strategy
+      });
+
+      // Handle arrow positioning
+      if (this.showArrow && this.popoverArrow && middlewareData.arrow) {
+        const { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+        // We need to find the static side of the placement (e.g., 'bottom' for 'top-start')
+        const staticSide = {
+          top: "bottom",
+          right: "left",
+          bottom: "top",
+          left: "right"
+        }[placement.split("-")[0]]!;
+
+        Object.assign(this.popoverArrow.style, {
+          left: arrowX != null ? `${arrowX}px` : "",
+          top: arrowY != null ? `${arrowY}px` : "",
+          right: "",
+          bottom: "",
+          [staticSide]: `${-ARROW_HEIGHT / 2}px` // Adjust based on arrow size
+        });
+      }
+
+      // Handle focus after positioning is complete (moved from Popper's onFirstUpdate)
+      if (this.isOpen) {
+        this.handlePositioningComplete();
+      }
+    }
+
+    // Renamed from handleCreatePopperFirstUpdate
+    private async handlePositioningComplete() {
       if (this.isOpen && this.interactive) {
         this.setFocusableElements?.();
         await this.updateComplete;
@@ -446,65 +485,25 @@ export namespace Popover {
     }
 
     private createInstance() {
-      if (!this.triggerElement) {
-        console.warn("No trigger element not creating popper instance");
+      if (!this.triggerElement || !this.popoverContainer) {
+        console.warn("No trigger element or popover container, not creating Floating UI instance");
         return;
       }
 
-      this.popperInstance = createPopper(this.triggerElement, this.popoverContainer, {
-        onFirstUpdate: () => {
-          // We need to find all focusable elements, after Popper finish its positioning calculation
-          if (this.isOpen) {
-            this.handleCreatePopperFirstUpdate();
-          }
-        },
-        placement: this.placement,
-        strategy: this.positioningStrategy,
-        modifiers: [
-          ...defaultModifiers,
-          flip,
-          offset,
-          preventOverflow,
-          arrow,
-          {
-            name: "preventOverflow",
-            options: {
-              padding: 16
-            }
-          },
-          {
-            name: "offset",
-            options: {
-              offset: (({ placement, reference }) => {
-                if (placement === "left" || placement === "right") {
-                  return [reference.height + reference.y + this.offsetDistance, ARROW_HEIGHT];
-                } else {
-                  return [0, this.showArrow ? ARROW_HEIGHT + this.offsetDistance : this.offsetDistance];
-                }
-              }) as OffsetsFunction
-            }
-          },
-          {
-            name: "arrow",
-            options: {
-              element: this.popoverArrow,
-              padding: ARROW_HEIGHT
-            }
-          },
-          {
-            name: "computeStyles",
-            options: {
-              adaptive: false
-            }
-          }
-        ]
-      });
+      // Use Floating UI's autoUpdate
+      this.floatingUiCleanup = autoUpdate(
+        this.triggerElement,
+        this.popoverContainer,
+        this.handleFloatingUiUpdate.bind(this),
+        { animationFrame: true } // Use animationFrame for smoother updates
+      );
     }
 
     private destroyInstance() {
-      if (this.popperInstance) {
-        this.popperInstance.destroy();
-        this.popperInstance = null;
+      // Clean up Floating UI autoUpdate
+      if (this.floatingUiCleanup) {
+        this.floatingUiCleanup();
+        this.floatingUiCleanup = null;
       }
     }
 
@@ -557,19 +556,12 @@ export namespace Popover {
 
     private dispatchPopoverIsOpenChanged(isOpen: boolean) {
       this.dispatchEvent(
-        new CustomEvent("popover-open-changed", {
-          detail: { isOpen },
-          composed: true,
-          bubbles: true
-        })
+        new CustomEvent("popover-open-changed", { detail: { isOpen }, composed: true, bubbles: true })
       );
     }
 
     private get popoverClassMap() {
-      return {
-        "md-popover": true,
-        inverted: this.inverted
-      };
+      return { "md-popover": true, inverted: this.inverted };
     }
 
     private get renderPopoverTemplate() {
@@ -600,10 +592,8 @@ export namespace Popover {
 
     render() {
       return html`
-        <div class=${classMap(this.popoverClassMap)}>
-          <slot name="triggerElement" aria-expanded=${this.isOpen}></slot>
-          ${this.renderPopoverTemplate}
-        </div>
+        <slot name="triggerElement" aria-expanded=${this.isOpen}></slot>
+        <div class=${classMap(this.popoverClassMap)}>${this.renderPopoverTemplate}</div>
       `;
     }
   }

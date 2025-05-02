@@ -53,6 +53,7 @@
     "@interactjs/utils": "1.10.3",
     "@momentum-design/icons": "0.19.0",
     "@popperjs/core": "^2.11.8",
+    "@floating-ui/dom": "^1.7.0",
     "country-codes-list": "1.6.8",
     "country-flags-svg": "1.1.4",
     "dompurify": "^3.2.4",

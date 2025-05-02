@@ -92,7 +92,7 @@
     }
   }
 
-  .popover-container[data-popper-placement^="top"] > .popover-arrow {
+  .popover-container[data-placement^="top"] > .popover-arrow {
     bottom: 0;
     &::before {
       left: calc(50% - 8px);
@@ -103,7 +103,7 @@
     }
   }
 
-  .popover-container[data-popper-placement^="bottom"] > .popover-arrow {
+  .popover-container[data-placement^="bottom"] > .popover-arrow {
     top: 0;
     &::before {
       left: calc(50% - 8px);
@@ -114,7 +114,7 @@
     }
   }
 
-  .popover-container[data-popper-placement^="right"] > .popover-arrow {
+  .popover-container[data-placement^="right"] > .popover-arrow {
     left: 0;
     &::before {
       left: -9px;
@@ -125,7 +125,7 @@
     }
   }
 
-  .popover-container[data-popper-placement^="left"] > .popover-arrow {
+  .popover-container[data-placement^="left"] > .popover-arrow {
     right: 0;
     &::before {
       right: -9px;

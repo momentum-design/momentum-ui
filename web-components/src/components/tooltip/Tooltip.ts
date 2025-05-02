@@ -245,7 +245,6 @@ export namespace Tooltip {
             part="tooltip_reference"
             @mouseenter=${() => this.notifyTooltipCreate()}
             @mouseleave=${() => this.notifyTooltipDestroy()}
-            @click=${() => this.notifyTooltipDestroy()}
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}

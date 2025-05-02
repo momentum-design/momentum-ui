@@ -22,6 +22,7 @@ export namespace FloatingModal {
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
     @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
+    @property({ type: Boolean, reflect: true, attribute: "centered" }) centered = false;
     @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
@@ -285,7 +286,14 @@ export namespace FloatingModal {
                 aria-modal="true"
                 style=${ifDefined(
                   this.containerRect
-                    ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
+                    ? this.centered
+                      ? `
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    ${this.full ? "width: 100% !important; height: 100% !important;" : ""}
+                  `
+                      : `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
                   height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};
                   top: ${this.full ? "0 !important" : ""};
                   left: ${this.full ? "0 !important" : ""};

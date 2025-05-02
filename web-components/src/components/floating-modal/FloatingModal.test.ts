@@ -142,7 +142,6 @@ describe("Floating Modal Component", () => {
   });
 
   test("Floating Modal should not be resizable if resizable is false", async () => {
-
     const element = await fixture<FloatingModal.ELEMENT>(html`
       <md-floating-modal .show=${true} .resizable=${true}></md-floating-modal>
     `);
@@ -170,6 +169,19 @@ describe("Floating Modal Component", () => {
 
     const mdButton = minimizedModal.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
     expect(mdButton.getAttribute("arialabel")).toEqual("Maximize Modal");
-  }
-  );
+  });
+  test("should center align when centered attribute is true", async () => {
+    element.show = true;
+    element.centered = true;
+    element.maximizable = false;
+    element.containerRect = element.getBoundingClientRect();
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLDivElement;
+
+    expect(container).not.toBeNull();
+    const computedTransform = container.style.transform.trim().replace(/\s+/g, " ");
+    expect(computedTransform).toContain("translate(-50%, -50%)");
+  });
 });

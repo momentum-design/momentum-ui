@@ -131,6 +131,11 @@
     line-height: $taskitem-popover-title-height;
     margin-bottom: $taskitem-main-margin;
     width: calc(100%);
+
+    &.popover-item-title {
+      margin-bottom: 0;
+    }
+
   }
 
   &_title {

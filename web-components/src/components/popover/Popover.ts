@@ -10,6 +10,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { querySelectorDeep } from "@/utils/helpers";
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
@@ -322,7 +323,9 @@ export class Popover extends FocusTrapMixin(LitElement) {
   private setupTriggerListener() {
     if (!this.triggerID) return;
 
-    this.triggerElement = (this.getRootNode() as Document | ShadowRoot).querySelector(`[id="${this.triggerID}"]`);
+    const rootNode = this.getRootNode() as Document | ShadowRoot;
+    this.triggerElement = querySelectorDeep(`[id="${this.triggerID}"]`, rootNode) as HTMLElement;
+
     if (!this.triggerElement) return;
 
     if (this.trigger === "mouseenter") {

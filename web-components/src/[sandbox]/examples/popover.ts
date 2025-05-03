@@ -173,10 +173,12 @@ export class PopoverTemplateSandbox extends LitElement {
       <h3>positioning-strategy "fixed" for when in a container with hidden overflow</h3>
 
       <div style="width: 100px; overflow: hidden; margin-top: 12px;">
-        <md-button id="sort-button" circle variant="secondary" size="28" ariaLabel="Sort">
-          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
-          <span slot="text">Sort</span>
-        </md-button>
+        <md-tooltip message="Tooltip message" placement="top" ?disabled=${this.isButtonWithTooltipPopoverOpen}>
+          <md-button id="sort-button" circle variant="secondary" size="28" ariaLabel="Sort">
+            <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+            <span slot="text">Sort</span>
+          </md-button>
+        </md-tooltip>
         <md-popover
           placement="bottom"
           triggerID="sort-button"
@@ -184,6 +186,7 @@ export class PopoverTemplateSandbox extends LitElement {
           append-to="md-theme"
           interactive
           show-arrow
+          hide-on-outside-click
           @shown=${() => {
             this.isButtonWithTooltipPopoverOpen = true;
           }}

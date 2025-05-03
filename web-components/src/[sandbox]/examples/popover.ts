@@ -142,28 +142,28 @@ export class PopoverTemplateSandbox extends LitElement {
 
       <div class="popover-trigger-element-container">
         <md-button id="popover-1" class="popover-button" variant="primary" size="32">Click</md-button>
-        <md-popover placement="bottom" triggerID="popover-1">
+        <md-popover placement="bottom" show-arrow triggerID="popover-1">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
         <md-button id="popover-2" class="popover-button" variant="primary" size="32">Hover</md-button>
-        <md-popover placement="bottom" triggerID="popover-2" trigger="mouseenter">
+        <md-popover placement="bottom" show-arrow triggerID="popover-2" trigger="mouseenter">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
         <md-button id="popover-3" class="popover-button" variant="primary" size="32">Focus</md-button>
-        <md-popover triggerID="popover-3" placement="bottom" trigger="focusin">
+        <md-popover triggerID="popover-3" show-arrow placement="bottom" trigger="focusin">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
         <md-button id="popover-4" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
-        <md-popover triggerID="popover-4" placement="bottom" trigger="focusin mouseenter">
+        <md-popover triggerID="popover-4" show-arrow placement="bottom" trigger="focusin mouseenter">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
@@ -181,7 +181,9 @@ export class PopoverTemplateSandbox extends LitElement {
           placement="bottom"
           triggerID="sort-button"
           trigger="click"
+          append-to="md-theme"
           interactive
+          show-arrow
           @shown=${() => {
             this.isButtonWithTooltipPopoverOpen = true;
           }}

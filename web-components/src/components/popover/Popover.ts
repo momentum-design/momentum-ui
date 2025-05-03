@@ -14,10 +14,10 @@ import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
-import { COLOR, DEFAULTS, POPOVER_PLACEMENT, POPOVER_STRATEGY, TRIGGER } from "./Popover.constants";
+import { COLOR, DEFAULTS, POPOVER_PLACEMENT, TRIGGER } from "./Popover.constants";
 import { PopoverEventManager } from "./Popover.events";
 import { popoverStack } from "./Popover.stack";
-import { PopoverColor, PopoverPlacement, PopoverStrategy, PopoverTrigger, ValueOf } from "./Popover.types";
+import { PopoverColor, PopoverPlacement, PopoverTrigger, ValueOf } from "./Popover.types";
 import { PopoverUtils } from "./Popover.utils";
 import styles from "./scss/module.scss";
 
@@ -99,8 +99,8 @@ export class Popover extends FocusTrapMixin(LitElement) {
   @property({ type: String, reflect: true })
   placement: PopoverPlacement = DEFAULTS.PLACEMENT;
 
-  @property({ type: String, reflect: true })
-  strategy: PopoverStrategy = DEFAULTS.STRATEGY;
+  // @property({ type: String, reflect: true })
+  // strategy: PopoverStrategy = DEFAULTS.STRATEGY;
 
   /**
    * Color of the popover
@@ -390,12 +390,12 @@ export class Popover extends FocusTrapMixin(LitElement) {
         Object.values(POPOVER_PLACEMENT).includes(this.placement) ? this.placement : DEFAULTS.PLACEMENT
       );
     }
-    if (changedProperties.has("strategy")) {
-      this.setAttribute(
-        "strategy",
-        Object.values(POPOVER_STRATEGY).includes(this.strategy) ? this.strategy : DEFAULTS.PLACEMENT
-      );
-    }
+    // if (changedProperties.has("strategy")) {
+    //   this.setAttribute(
+    //     "strategy",
+    //     Object.values(POPOVER_STRATEGY).includes(this.strategy) ? this.strategy : DEFAULTS.PLACEMENT
+    //   );
+    // }
 
     if (changedProperties.has("delay")) {
       [this.openDelay, this.closeDelay] = this.utils.setupDelay();
@@ -672,7 +672,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
       const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
         placement: this.placement,
-        strategy: this.strategy,
         middleware
       });
 

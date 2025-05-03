@@ -5,12 +5,12 @@
 
 :host {
   --md-popover-arrow-border-radius: 0.1875rem;
-  --md-popover-arrow-border: 0.0625rem solid var(--md-color-theme-outline-secondary-normal);
+  --md-popover-arrow-border: 0.0625rem solid var(--popover-border-color);
   
   --md-popover-elevation-3: var(--md-elevation-3);
   --md-popover-max-width: max-content;
   --md-popover-max-height: auto;
-  
+
   display: none;
   position: absolute;
   top: 0;
@@ -19,7 +19,7 @@
   box-sizing: content-box;
   background-color: var(--popover-bg-color);
   border-radius: 0.5rem;
-  border: 0.0625rem solid var(--md-color-theme-outline-secondary-normal);
+  border: 0.0625rem solid var(--popover-border-color);
   filter: var(--md-popover-elevation-3);
   width: var(--md-popover-max-width);
 }

@@ -3,136 +3,109 @@
 
 /** @component popover */
 
-@include core.exports("md-popover") {
-  .md-popover {
-    box-sizing: border-box;
-    position: relative;
-    color: var(--popover-text-color);
+:host {
+  --md-popover-arrow-border-radius: 0.1875rem;
+  --md-popover-arrow-border: 0.0625rem solid var(--md-color-theme-outline-secondary-normal);
+  
+  --md-popover-elevation-3: var(--md-elevation-3);
+  --md-popover-max-width: max-content;
+  --md-popover-max-height: auto;
+  
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-    --popover-variant-border-color: var(--popover-border-color);
-    --popover-variant-bg-color: var(--popover-bg-color);
+  box-sizing: content-box;
+  background-color: var(--popover-bg-color);
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--md-color-theme-outline-secondary-normal);
+  filter: var(--md-popover-elevation-3);
+  width: var(--md-popover-max-width);
+}
 
-    &.inverted {
-      color: var(--popover-inverted-text-color);
-      --popover-variant-border-color: var(--popover-inverted-border-color);
-      --popover-variant-bg-color: var(--popover-inverted-bg-color);
-    }
+:host([visible]) {
+  display: block;
+}
 
-    * {
-      box-sizing: inherit;
-    }
+:host([color="contrast"]) {
+  background-color: var(--popover-inverted-bg-color);
+  border-color: var(--popover-inverted-border-color);
+  color: var(--popover-inverted-text-color);
+}
 
-    //Container of whole popover
-    .popover-container {
-      filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12)) drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.2));
-
-      box-sizing: border-box;
-      display: none;
-      position: absolute;
-      z-index: 1000;
-      background-color: var(--popover-variant-bg-color);
-      border: 1px solid var(--popover-variant-border-color);
-      border-radius: $container-border-radius;
-      padding: $main-padding;
-
-      min-height: 24px;
-      min-width: 14px;
-      max-width: 292px;
-
-      &[data-show] {
-        display: flex;
-      }     
-    }
-
-     //Div container for slot
-     .popover-content {
-      display: flex;
-      justify-content: space-around;
-
-      width: 100%;
-      flex-grow: 1;
-
-      font-size: $content-font-size;
-      font-weight: 400;
-      line-height: $content-line-height;
-    }
-
-    .cancel-icon-button {
-      position: absolute;
-      right: $main-padding;
-      top: $main-padding;
-      padding-left: $cancel-padding-left;
-      width: $cancel-button-size;
-      height: $cancel-button-size;
-      cursor: pointer;
-    }
-
-    .popover-arrow {
-      position: absolute;
-      width: 0;
-      height: 0;
-      visibility: hidden;
-
-      /* 
-       * This only works if the width and height are the same.
-       * The arrow is rotated 45 degrees into a diamond shape and
-       * then the border is removed where the arrow overlaps the container
-       * Update implementation in the future as width should be twice the height
-       */
-      &::before {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        background: var(--popover-variant-bg-color);
-        border: 1px solid var(--popover-variant-border-color);
-        transform: rotate(45deg);
-        visibility: visible;
-      }
-    }
+:host([color="contrast"]) {
+  .popover-arrow {
+    background-color: var(--popover-inverted-bg-color);
+    border-color: var(--popover-inverted-border-color);
   }
 
-  .popover-container[data-placement^="top"] > .popover-arrow {
-    bottom: 0;
-    &::before {
-      left: calc(50% - 8px);
-      bottom: -9px;
-      border-top: none;
-      border-left: none;
-      border-bottom-right-radius: 3px;
-    }
+  .popover-close {
+    color: var(--popover-inverted-text-color);
   }
+}
 
-  .popover-container[data-placement^="bottom"] > .popover-arrow {
-    top: 0;
-    &::before {
-      left: calc(50% - 8px);
-      top: -9px;
-      border-bottom: none;
-      border-right: none;
-      border-top-left-radius: 3px;
-    }
-  }
+:host::part(popover-content) {
+  position: relative;
+  padding: 0.75rem;
+  min-width: max-content;
+  z-index: 9998;
+  max-height: var(--md-popover-max-height);
+}
 
-  .popover-container[data-placement^="right"] > .popover-arrow {
-    left: 0;
-    &::before {
-      left: -9px;
-      top: calc(50% - 8px);
-      border-right: none;
-      border-top: none;
-      border-bottom-left-radius: 3px;
-    }
-  }
+.popover-hover-bridge {
+  position: absolute;
+  transform: translateX(-50%);
+  background: transparent;
+  pointer-events: auto;
+}
 
-  .popover-container[data-placement^="left"] > .popover-arrow {
-    right: 0;
-    &::before {
-      right: -9px;
-      border-bottom: none;
-      border-left: none;
-      top: calc(50% - 8px);
-      border-top-right-radius: 3px;
-    }
-  }
+.popover-arrow {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--popover-bg-color);
+  transform: rotate(45deg);
+  pointer-events: none;
+  border: var(--md-popover-arrow-border);
+}
+
+.popover-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  cursor: pointer;
+  z-index: 9999;
+
+  padding-left: $cancel-padding-left;
+  width: $cancel-button-size;
+  height: $cancel-button-size;  
+}
+
+.popover-arrow[data-side="top"] {
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: var(--md-popover-arrow-border-radius);
+  border-top-left-radius: 100%;
+}
+
+.popover-arrow[data-side="bottom"] {
+  border-bottom: none;
+  border-right: none;
+  border-top-left-radius: var(--md-popover-arrow-border-radius);
+  border-bottom-right-radius: 100%;
+}
+
+.popover-arrow[data-side="right"] {
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: var(--md-popover-arrow-border-radius);
+  border-top-right-radius: 100%;
+}
+
+.popover-arrow[data-side="left"] {
+  border-bottom: none;
+  border-left: none;
+  border-top-right-radius: var(--md-popover-arrow-border-radius);
+  border-bottom-left-radius: 100%;
 }

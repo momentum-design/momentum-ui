@@ -139,30 +139,31 @@ export class PopoverTemplateSandbox extends LitElement {
       </div>
       <br />
       <br />
+
       <div class="popover-trigger-element-container">
-        <md-popover placement="bottom">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
+        <md-button id="popover-1" class="popover-button" variant="primary" size="32">Click</md-button>
+        <md-popover placement="bottom" triggerID="popover-1">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
-        <md-popover placement="bottom" trigger="mouseenter">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Hover</md-button>
+        <md-button id="popover-2" class="popover-button" variant="primary" size="32">Hover</md-button>
+        <md-popover placement="bottom" triggerID="popover-2" trigger="mouseenter">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
-        <md-popover placement="bottom" trigger="focus">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Focus</md-button>
+        <md-button id="popover-3" class="popover-button" variant="primary" size="32">Focus</md-button>
+        <md-popover triggerID="popover-3" placement="bottom" trigger="focusin">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
 
-        <md-popover placement="bottom" trigger="focus mouseenter">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
+        <md-button id="popover-4" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
+        <md-popover triggerID="popover-4" placement="bottom" trigger="focusin mouseenter">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
@@ -170,31 +171,32 @@ export class PopoverTemplateSandbox extends LitElement {
       </div>
 
       <h3>positioning-strategy "fixed" for when in a container with hidden overflow</h3>
-      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
-        <md-tooltip placement="bottom" message="Sort" ?disabled=${this.isButtonWithTooltipPopoverOpen}>
-          <md-popover
-            placement="bottom"
-            positioning-strategy="fixed"
-            trigger="click"
-            interactive
-            @popover-open-changed=${(e: CustomEvent) => {
-              this.isButtonWithTooltipPopoverOpen = e.detail.isOpen;
-            }}
-          >
-            <md-button circle variant="secondary" size="28" ariaLabel="Sort" slot="triggerElement">
-              <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
-              <span slot="text">Sort</span>
-            </md-button>
 
-            <md-radiogroup checked="0">
-              ${repeat(
-                this.sortOptions,
-                (item) => item.sortValue,
-                (item) => html`<md-radio slot="radio" value=${item.sortValue}> ${item.sortLabel} </md-radio>`
-              )}
-            </md-radiogroup>
-          </md-popover>
-        </md-tooltip>
+      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+        <md-button id="sort-button" circle variant="secondary" size="28" ariaLabel="Sort">
+          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+          <span slot="text">Sort</span>
+        </md-button>
+        <md-popover
+          placement="bottom"
+          triggerID="sort-button"
+          trigger="click"
+          interactive
+          @shown=${() => {
+            this.isButtonWithTooltipPopoverOpen = true;
+          }}
+          @hidden=${() => {
+            this.isButtonWithTooltipPopoverOpen = false;
+          }}
+        >
+          <md-radiogroup checked="0">
+            ${repeat(
+              this.sortOptions,
+              (item) => item.sortValue,
+              (item) => html`<md-radio slot="radio" value=${item.sortValue}> ${item.sortLabel} </md-radio>`
+            )}
+          </md-radiogroup>
+        </md-popover>
       </div>
     `;
   }

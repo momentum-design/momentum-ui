@@ -18,7 +18,7 @@ import { ifDefined } from "lit-html/directives/if-defined.js";
 import { COLOR, DEFAULTS, POPOVER_PLACEMENT, TRIGGER } from "./Popover.constants";
 import { PopoverEventManager } from "./Popover.events";
 import { popoverStack } from "./Popover.stack";
-import { PopoverColor, PopoverPlacement, PopoverTrigger, ValueOf } from "./Popover.types";
+import { PopoverColor, PopoverPlacement, PopoverStrategy, PopoverTrigger, ValueOf } from "./Popover.types";
 import { PopoverUtils } from "./Popover.utils";
 import styles from "./scss/module.scss";
 
@@ -100,8 +100,14 @@ export class Popover extends FocusTrapMixin(LitElement) {
   @property({ type: String, reflect: true })
   placement: PopoverPlacement = DEFAULTS.PLACEMENT;
 
-  // @property({ type: String, reflect: true })
-  // strategy: PopoverStrategy = DEFAULTS.STRATEGY;
+  /**
+   * The positioning strategy for the popover.
+   * - **absolute** - Position relative to closest positioned ancestor or the document body
+   * - **fixed** - Position relative to the viewport
+   * @default absolute
+   */
+  @property({ type: String, reflect: true })
+  strategy: PopoverStrategy = DEFAULTS.STRATEGY;
 
   /**
    * Color of the popover
@@ -683,7 +689,8 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
       const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
         placement: this.placement,
-        middleware
+        middleware,
+        strategy: this.strategy
       });
 
       this.utils.updatePopoverStyle(x, y);

@@ -10,9 +10,10 @@
   --md-popover-elevation-3: var(--md-elevation-3);
   --md-popover-max-width: max-content;
   --md-popover-max-height: auto;
+  --md-popover-position: absolute;
 
   display: none;
-  position: absolute;
+  position: var(--md-popover-position);
   top: 0;
   left: 0;
 
@@ -22,6 +23,10 @@
   border: 0.0625rem solid var(--popover-border-color);
   filter: var(--md-popover-elevation-3);
   width: var(--md-popover-max-width);
+}
+
+:host([strategy="fixed"]) {
+  --md-popover-position: fixed;
 }
 
 :host([visible]) {

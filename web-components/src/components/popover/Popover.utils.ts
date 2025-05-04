@@ -59,8 +59,17 @@ export class PopoverUtils {
     const popoverHeight = this.popover.offsetHeight || 0;
     const popoverWidth = this.popover.offsetWidth || 0;
 
+    // If appendTo is used, we may need to adjust the hover bridge
+    const isAppendedToAnotherContainer = !!this.popover.appendTo && this.originalParent;
+
     if (hoverBridge) {
       const side = placement.split("-")[0];
+
+      // When using append-to, ensure the hover bridge event listener is attached
+      if (isAppendedToAnotherContainer && this.popover.trigger.includes("mouseenter")) {
+        hoverBridge.addEventListener("mouseenter", this.popover.cancelCloseDelay);
+      }
+
       switch (side) {
         case "top":
           hoverBridge.style.height = bridgeSize;

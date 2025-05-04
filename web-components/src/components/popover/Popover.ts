@@ -293,11 +293,11 @@ export class Popover extends FocusTrapMixin(LitElement) {
   constructor() {
     super();
     this.utils = new PopoverUtils(this);
+    this.preventClickOutside = true;
   }
 
   protected override async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.utils.setupAppendTo();
     [this.openDelay, this.closeDelay] = this.utils.setupDelay();
     this.setupTriggerListener();
     this.utils.setupAccessibility();
@@ -305,6 +305,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
     PopoverEventManager.onCreatedPopover(this);
 
     if (this.visible) {
+      this.utils.handleAppendTo(true);
       this.positionPopover();
       await this.handleCreatePopoverFirstUpdate();
     }
@@ -320,11 +321,21 @@ export class Popover extends FocusTrapMixin(LitElement) {
   /**
    * Sets up the trigger event listeners based on the trigger type.
    */
-  private setupTriggerListener() {
+  public setupTriggerListener() {
     if (!this.triggerID) return;
 
     const rootNode = this.getRootNode() as Document | ShadowRoot;
     this.triggerElement = querySelectorDeep(`[id="${this.triggerID}"]`, rootNode) as HTMLElement;
+
+    if (!this.triggerElement) {
+      const parentHost = (rootNode as ShadowRoot)?.host;
+      if (parentHost) {
+        const slottedTrigger = parentHost.querySelector("[slot]");
+        if (slottedTrigger?.id === this.triggerID) {
+          this.triggerElement = slottedTrigger as HTMLElement;
+        }
+      }
+    }
 
     if (!this.triggerElement) return;
 
@@ -364,7 +375,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
   /**
    * Removes the trigger event listeners.
    */
-  private removeEventListeners() {
+  public removeEventListeners() {
     if (!this.triggerElement) return;
     const hoverBridge = this.renderRoot.querySelector(".popover-hover-bridge");
     this.triggerElement.removeEventListener("click", this.togglePopoverVisible);
@@ -393,12 +404,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
         Object.values(POPOVER_PLACEMENT).includes(this.placement) ? this.placement : DEFAULTS.PLACEMENT
       );
     }
-    // if (changedProperties.has("strategy")) {
-    //   this.setAttribute(
-    //     "strategy",
-    //     Object.values(POPOVER_STRATEGY).includes(this.strategy) ? this.strategy : DEFAULTS.PLACEMENT
-    //   );
-    // }
 
     if (changedProperties.has("delay")) {
       [this.openDelay, this.closeDelay] = this.utils.setupDelay();
@@ -418,9 +423,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
     }
     if (changedProperties.has("zIndex")) {
       this.setAttribute("z-index", `${this.zIndex}`);
-    }
-    if (changedProperties.has("append-to")) {
-      this.utils.setupAppendTo();
     }
     if (
       changedProperties.has("interactive") ||
@@ -496,8 +498,12 @@ export class Popover extends FocusTrapMixin(LitElement) {
       if (popoverStack.peek() !== this) {
         popoverStack.push(this);
       }
-      // this.focusTrap = this.focusTrap;
-      // this.preventScroll = this.preventScroll;
+
+      super.preventScroll = this.preventScroll;
+
+      if (this.focusTrap) {
+        this.activateFocusTrap?.();
+      }
 
       if (this.backdrop) {
         this.utils.createBackdrop();
@@ -575,7 +581,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
   /**
    * Cancels the close delay timer.
    */
-  private readonly cancelCloseDelay = () => {
+  public readonly cancelCloseDelay = () => {
     if (this.hoverTimer) {
       clearTimeout(this.hoverTimer);
       this.hoverTimer = null;
@@ -588,6 +594,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
   public showPopover = () => {
     this.cancelCloseDelay();
     setTimeout(() => {
+      this.utils.handleAppendTo(true);
       this.visible = true;
     }, this.openDelay);
   };
@@ -600,6 +607,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
       setTimeout(() => {
         this.visible = false;
         this.isTriggerClicked = false;
+        this.utils.handleAppendTo(false);
       }, this.closeDelay);
     }
   };

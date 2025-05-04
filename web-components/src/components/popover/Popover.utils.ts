@@ -8,6 +8,12 @@ export class PopoverUtils {
   /** @internal */
   private arrowPixelChange: boolean = false;
 
+  /** @internal */
+  private originalParent: Node | null = null;
+
+  /** @internal */
+  private originalNextSibling: Node | null = null;
+
   constructor(popover: Popover) {
     this.popover = popover;
   }
@@ -85,16 +91,42 @@ export class PopoverUtils {
 
   /**
    * If the `appendTo` property is set, finds the corresponding
-   * DOM element by its ID, and appends this popover as a child of that element.
+   * DOM element by its ID, and appends this popover as a child of that element when opened.
+   * When closed, returns to original position.
+   * @param isOpen Whether the popover is being opened (true) or closed (false)
    */
-  setupAppendTo() {
-    if (this.popover.appendTo) {
-      //const appendToElement = closestElement(this.popover.appendTo, this.popover);
-      const appendToElement = getElementByIdDeep(this.popover.appendTo, document);
+  handleAppendTo(isOpen: boolean) {
+    if (!this.popover.appendTo) return;
 
+    if (isOpen) {
+      // Store original position before moving
+      this.originalParent = this.popover.parentNode;
+      this.originalNextSibling = this.popover.nextSibling;
+
+      const appendToElement = getElementByIdDeep(this.popover.appendTo, document);
       if (appendToElement) {
         appendToElement.appendChild(this.popover);
+
+        // Re-establish event listeners or other DOM-dependent features
+        if (this.popover.trigger.includes("mouseenter")) {
+          const hoverBridge = this.popover.renderRoot.querySelector(".popover-hover-bridge");
+          if (hoverBridge) {
+            hoverBridge.addEventListener("mouseenter", this.popover.cancelCloseDelay);
+          }
+        }
       }
+    } else if (this.originalParent) {
+      // Return to original position when closing
+      if (this.originalNextSibling) {
+        this.originalParent.insertBefore(this.popover, this.originalNextSibling);
+      } else {
+        this.originalParent.appendChild(this.popover);
+      }
+
+      // Re-setup the trigger listeners after returning to original position
+      // This ensures the popover can be opened again
+      this.popover.removeEventListeners();
+      this.popover.setupTriggerListener();
     }
   }
 

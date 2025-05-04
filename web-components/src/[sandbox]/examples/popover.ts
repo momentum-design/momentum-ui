@@ -68,6 +68,7 @@ export class PopoverTemplateSandbox extends LitElement {
       <div class="popover-trigger-element-container">
         <md-coachmark-popover
           placement="bottom"
+          triggerID="coachmark-popover1"
           header="Change your interaction preferences"
           primaryButton="Got it"
           secondaryButton="Dismiss"
@@ -76,7 +77,14 @@ export class PopoverTemplateSandbox extends LitElement {
           @secondary-button-action=${() => (this.firstOpen = false)}
           @coachmark-close=${() => (this.firstOpen = false)}
         >
-          <md-button style="width:32px; height:32px;" hasRemoveStyle circle @button-click=${this.openFirstCoach}>
+          <md-button
+            slot="trigger"
+            id="coachmark-popover1"
+            style="width:32px; height:32px;"
+            hasRemoveStyle
+            circle
+            @button-click=${this.openFirstCoach}
+          >
             <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
           </md-button>
           <div slot="coachmark-content">
@@ -87,6 +95,7 @@ export class PopoverTemplateSandbox extends LitElement {
         <md-coachmark-popover
           placement="top"
           header="Change your interaction preferences"
+          triggerID="coachmark-popover2"
           primaryButton="Got it"
           secondaryButton="Dismiss"
           ?show=${this.secondOpen}
@@ -94,7 +103,7 @@ export class PopoverTemplateSandbox extends LitElement {
           @secondary-button-action=${() => (this.secondOpen = false)}
           @coachmark-close=${() => (this.secondOpen = false)}
         >
-          <md-button hasRemoveStyle circle @button-click=${this.openSecondCoach}>
+          <md-button slot="trigger" id="coachmark-popover2" hasRemoveStyle circle @button-click=${this.openSecondCoach}>
             <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
           </md-button>
           <div slot="coachmark-content">
@@ -106,6 +115,7 @@ export class PopoverTemplateSandbox extends LitElement {
           placement="left"
           headerIconName="room-lights-bold"
           header="Tip Name"
+          triggerID="coachmark-popover3"
           message="Promote the feature, add some delight 🎉 and let the user know any top level information but don’t be instructional or technical. Max 4 lines of copy."
           primaryButton="Got it"
           secondaryButton="Dismiss"
@@ -114,7 +124,7 @@ export class PopoverTemplateSandbox extends LitElement {
           @secondary-button-action=${() => (this.thirdOpen = false)}
           @coachmark-close=${() => (this.thirdOpen = false)}
         >
-          <md-button hasRemoveStyle circle @button-click=${this.openThirdCoach}>
+          <md-button slot="trigger" id="coachmark-popover3" hasRemoveStyle circle @button-click=${this.openThirdCoach}>
             <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
           </md-button>
         </md-coachmark-popover>
@@ -123,18 +133,19 @@ export class PopoverTemplateSandbox extends LitElement {
           placement="right"
           header="Change your interaction preferences"
           primaryButton="Got it"
+          triggerID="coachmark-popover4"
           secondaryButton="Dismiss"
           ?show=${this.fourthOpen}
           @primary-button-action=${() => (this.fourthOpen = false)}
           @secondary-button-action=${() => (this.fourthOpen = false)}
           @coachmark-close=${() => (this.fourthOpen = false)}
         >
+          <md-button slot="trigger" id="coachmark-popover4" hasRemoveStyle circle @button-click=${this.openFourthCoach}>
+            <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
+          </md-button>
           <div slot="coachmark-content">
             <span>Come here to adjust your call and team details anytime.</span>
           </div>
-          <md-button hasRemoveStyle circle @button-click=${this.openFourthCoach}>
-            <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
-          </md-button>
         </md-coachmark-popover>
       </div>
       <br />
@@ -188,6 +199,8 @@ export class PopoverTemplateSandbox extends LitElement {
           interactive
           show-arrow
           hide-on-outside-click
+          focus-trap
+          focus-back-to-trigger
           @shown=${() => {
             this.isButtonWithTooltipPopoverOpen = true;
           }}

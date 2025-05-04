@@ -105,7 +105,13 @@ export class PopoverUtils {
 
       const appendToElement = getElementByIdDeep(this.popover.appendTo, document);
       if (appendToElement) {
+        // Remove event listeners before moving the element
+        this.popover.removeEventListeners();
+
         appendToElement.appendChild(this.popover);
+
+        // Re-setup the trigger listeners after moving to new location
+        this.popover.setupTriggerListener();
 
         // Re-establish event listeners or other DOM-dependent features
         if (this.popover.trigger.includes("mouseenter")) {
@@ -116,6 +122,9 @@ export class PopoverUtils {
         }
       }
     } else if (this.originalParent) {
+      // Remove event listeners before moving the element back
+      this.popover.removeEventListeners();
+
       // Return to original position when closing
       if (this.originalNextSibling) {
         this.originalParent.insertBefore(this.popover, this.originalNextSibling);
@@ -124,8 +133,6 @@ export class PopoverUtils {
       }
 
       // Re-setup the trigger listeners after returning to original position
-      // This ensures the popover can be opened again
-      this.popover.removeEventListeners();
       this.popover.setupTriggerListener();
     }
   }

@@ -441,15 +441,15 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   /**
    * Handles the outside click event to close the popover.
+   * Uses event.composedPath() to handle clicks across Shadow DOM boundaries.
    *
    * @param event - The mouse event.
    */
   private readonly onOutsidePopoverClick = (event: MouseEvent) => {
     if (popoverStack.peek() !== this) return;
 
-    let insidePopoverClick = false;
     const path = event.composedPath();
-    insidePopoverClick = this.contains(event.target as Node) || path.includes(this.triggerElement!);
+    const insidePopoverClick = path.includes(this) || (this.triggerElement && path.includes(this.triggerElement));
     const clickedOnBackdrop = this.backdropElement ? path.includes(this.backdropElement) : false;
 
     if (!insidePopoverClick || clickedOnBackdrop) {

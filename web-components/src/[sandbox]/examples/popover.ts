@@ -153,7 +153,7 @@ export class PopoverTemplateSandbox extends LitElement {
 
       <div class="popover-trigger-element-container">
         <md-button id="popover-1" class="popover-button" variant="primary" size="32">Click</md-button>
-        <md-popover placement="bottom" show-arrow triggerID="popover-1">
+        <md-popover hide-on-outside-click placement="bottom" show-arrow triggerID="popover-1">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
@@ -181,7 +181,7 @@ export class PopoverTemplateSandbox extends LitElement {
         </md-popover>
       </div>
 
-      <h3>positioning-strategy "fixed" for when in a container with hidden overflow</h3>
+      <h3>append to theme for when in a container with hidden overflow and fixed doesn't work</h3>
 
       <div style="width: 100px; overflow: hidden; margin-top: 12px;">
         <md-tooltip message="Tooltip message" placement="top" ?disabled=${this.isButtonWithTooltipPopoverOpen}>
@@ -215,6 +215,31 @@ export class PopoverTemplateSandbox extends LitElement {
               (item) => html`<md-radio slot="radio" value=${item.sortValue}> ${item.sortLabel} </md-radio>`
             )}
           </md-radiogroup>
+        </md-popover>
+      </div>
+
+      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+        <md-button id="append-to-popover-2" circle variant="secondary" size="28" ariaLabel="Sort">
+          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+          <span slot="text">Sort</span>
+        </md-button>
+        <md-popover
+          placement="right"
+          triggerID="append-to-popover-2"
+          trigger="mouseenter"
+          append-to="app-theme"
+          hide-on-escape
+          interactive
+          show-arrow
+          hide-on-outside-click
+          focus-trap
+          focus-back-to-trigger
+        >
+          <div style="width: 400px; height: 200px;">
+            <md-button>Assign to me</md-button>
+            <md-button>copy</md-button>
+            <span>information text</span>
+          </div>
         </md-popover>
       </div>
     `;

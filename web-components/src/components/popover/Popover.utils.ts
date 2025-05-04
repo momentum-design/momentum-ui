@@ -1,4 +1,4 @@
-import { closestElement } from "@/utils/helpers";
+import { getElementByIdDeep } from "@/utils/helpers";
 import { type Popover } from "./Popover";
 
 export class PopoverUtils {
@@ -89,7 +89,8 @@ export class PopoverUtils {
    */
   setupAppendTo() {
     if (this.popover.appendTo) {
-      const appendToElement = closestElement(this.popover.appendTo, this.popover);
+      //const appendToElement = closestElement(this.popover.appendTo, this.popover);
+      const appendToElement = getElementByIdDeep(this.popover.appendTo, document);
 
       if (appendToElement) {
         appendToElement.appendChild(this.popover);

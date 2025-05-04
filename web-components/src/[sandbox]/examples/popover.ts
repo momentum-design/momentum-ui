@@ -183,7 +183,8 @@ export class PopoverTemplateSandbox extends LitElement {
           placement="bottom"
           triggerID="sort-button"
           trigger="click"
-          append-to="md-theme"
+          append-to="app-theme"
+          hide-on-escape
           interactive
           show-arrow
           hide-on-outside-click

@@ -175,3 +175,21 @@ export function querySelectorDeep(
 
   return null;
 }
+
+export function getElementByIdDeep(id: string, base: HTMLElement | Document | ShadowRoot = document): Element | null {
+  if (base instanceof ShadowRoot || base instanceof Document) {
+    const element = base.getElementById(id);
+    if (element) return element;
+  }
+
+  const shadowRoots = Array.from(base.querySelectorAll("*"))
+    .map((el) => (el.shadowRoot ? el.shadowRoot : null))
+    .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
+
+  for (const shadowRoot of shadowRoots) {
+    const element = getElementByIdDeep(id, shadowRoot);
+    if (element) return element;
+  }
+
+  return null;
+}

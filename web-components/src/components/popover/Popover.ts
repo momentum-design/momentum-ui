@@ -565,7 +565,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
         }
       }
       if (this.focusBackToTrigger) {
-        this.triggerElement?.focus();
+        this.setFocusOnTrigger?.(this.triggerElement);
       }
       PopoverEventManager.onHidePopover(this);
     }

@@ -41,4 +41,3 @@ export type StrategyType = (typeof Strategy)[number];
 export type PopoverRoleType = (typeof PopoverRole)[number];
 
 export type { Events, PopoverColor, PopoverPlacement, PopoverStrategy, PopoverTrigger };
-

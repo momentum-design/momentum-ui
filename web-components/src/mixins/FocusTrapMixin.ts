@@ -59,6 +59,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
     @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
     shouldWrapFocus: () => boolean = () => true;
+    useLegacyFindFocusable: () => boolean = () => true;
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
@@ -213,6 +214,40 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private findFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
+      if (this.useLegacyFindFocusable()) {
+        return this.legacyFindFocusable(root, matches);
+      }
+      return this.newFindFocusable(root, matches);
+    }
+
+    private legacyFindFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
+      const children = Array.from(root.children) as HTMLElement[];
+      for (const child of children) {
+        if (this.isHidden(child)) {
+          continue;
+        }
+
+        if (this.shouldSkipFocus(child)) {
+          break;
+        }
+
+        if (this.isFocusable(child)) {
+          matches.add(child);
+        }
+
+        if (child.shadowRoot) {
+          this.findFocusable(child.shadowRoot, matches);
+        } else if (child.tagName === "SLOT") {
+          const slot = child as HTMLSlotElement;
+          this.handleFindFocusableSlot(slot, matches);
+        } else {
+          this.findFocusable(child, matches);
+        }
+      }
+      return [...matches];
+    }
+
+    private newFindFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
       const children = Array.from(root.children) as HTMLElement[];
       for (const child of children) {
         if (this.isHidden(child)) {
@@ -271,7 +306,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
-    private focusTrap(direction: boolean) {
+    private trapFocus(direction: boolean) {
       const activeElement = this.getDeepActiveElement!() as HTMLElement;
       const activeIndex = this.findElement(activeElement);
 
@@ -294,7 +329,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     handleFocusOnClear = () => {
-      this.focusTrap(true);
+      this.trapFocus(true);
     };
 
     private hasAutofocus(element: HTMLElement) {
@@ -366,7 +401,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.setFocusableElements();
     }
 
-    handleKeydownFocusTrap(event: KeyboardEvent) {
+    handleKeydownFocusTrap = (event: KeyboardEvent) => {
       if (event.code !== Key.Tab || (event.shiftKey && event.code !== Key.Tab)) {
         return;
       }
@@ -377,12 +412,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
       if (event.shiftKey) {
         event.preventDefault();
-        this.focusTrap(true);
+        this.trapFocus(true);
       } else {
         event.preventDefault();
-        this.focusTrap(false);
+        this.trapFocus(false);
       }
-    }
+    };
 
     protected activateFocusTrap(emitEvent = true) {
       if (emitEvent) {

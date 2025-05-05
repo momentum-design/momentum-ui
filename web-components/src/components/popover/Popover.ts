@@ -296,6 +296,8 @@ export class Popover extends FocusTrapMixin(LitElement) {
   /** @internal */
   public backdropElement: HTMLElement | null = null;
 
+  useLegacyFindFocusable: () => boolean = () => false;
+
   constructor() {
     super();
     this.utils = new PopoverUtils(this);
@@ -359,7 +361,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
     }
 
     if (this.trigger.includes("click")) {
-      this.triggerElement.addEventListener("click", this.togglePopoverVisible);
+      this.triggerElement.addEventListener("click", this.onTriggerClick);
     }
     if (this.trigger.includes("mouseenter")) {
       const hoverBridge = this.renderRoot.querySelector(".popover-hover-bridge");
@@ -384,7 +386,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
   public removeEventListeners() {
     if (!this.triggerElement) return;
     const hoverBridge = this.renderRoot.querySelector(".popover-hover-bridge");
-    this.triggerElement.removeEventListener("click", this.togglePopoverVisible);
+    this.triggerElement.removeEventListener("click", this.onTriggerClick);
     this.triggerElement.removeEventListener("mouseenter", this.showPopover);
     this.triggerElement.removeEventListener("mouseleave", this.hidePopover);
     this.removeEventListener("mouseenter", this.cancelCloseDelay);
@@ -629,6 +631,30 @@ export class Popover extends FocusTrapMixin(LitElement) {
       this.isTriggerClicked = true;
     }
   };
+
+  private onTriggerClick = (event: Event) => {
+    if (this.trigger.includes("mouseenter") && this.isMouseOverTrigger(event)) {
+      // If the trigger is mouseenter and the mouse is over the trigger, do not toggle
+      return;
+    }
+
+    this.togglePopoverVisible();
+  };
+
+  private isMouseOverTrigger(event: Event) {
+    if (this.triggerElement && typeof window !== "undefined" && typeof document !== "undefined") {
+      const rect = this.triggerElement.getBoundingClientRect();
+      const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
+      const isMouseOver =
+        clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+
+      if (isMouseOver) {
+        // Mouse is over the trigger, do not toggle
+        return true;
+      }
+    }
+    return false;
+  }
 
   /**
    * Sets the focusable elements inside the popover.

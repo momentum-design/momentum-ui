@@ -153,7 +153,7 @@ export class PopoverTemplateSandbox extends LitElement {
 
       <div class="popover-trigger-element-container">
         <md-button id="popover-1" class="popover-button" variant="primary" size="32">Click</md-button>
-        <md-popover hide-on-outside-click placement="bottom" show-arrow triggerID="popover-1">
+        <md-popover strategy="fixed" hide-on-outside-click placement="bottom" show-arrow triggerID="popover-1">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
@@ -174,7 +174,7 @@ export class PopoverTemplateSandbox extends LitElement {
         </md-popover>
 
         <md-button id="popover-4" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
-        <md-popover triggerID="popover-4" show-arrow placement="bottom" trigger="focusin mouseenter">
+        <md-popover triggerID="popover-4" show-arrow placement="bottom" trigger="mouseenter">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
@@ -194,7 +194,6 @@ export class PopoverTemplateSandbox extends LitElement {
           placement="bottom"
           triggerID="sort-button"
           trigger="click"
-          append-to="app-theme"
           hide-on-escape
           interactive
           show-arrow

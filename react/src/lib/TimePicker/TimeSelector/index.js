@@ -26,7 +26,7 @@ class TimeSelector extends React.Component {
       militaryTime
       ? (parseInt(newValue, 10) > 23 ? 23 : parseInt(newValue, 10)) || ''
       : (parseInt(newValue, 10) > 12 ? 12 : parseInt(newValue, 10)) || '';
-    } else if (unit === 'm') {
+    } else if (unit === 'm' || unit === 's') {
       newValue =
       parseInt(newValue, 10) > 59 ? 59 : parseInt(newValue, 10) || '';
     }

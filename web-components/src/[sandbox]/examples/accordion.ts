@@ -70,6 +70,10 @@ export const accordionTemplate = html`
     <md-accordion-item slot="accordion-item" label="Header №2">
       <div>Panel №2</div>
       <md-input type="text"></md-input>
+    </md-accordion-item>
+    <md-accordion-item slot="accordion-item" label="Header №2">
+      <div slot="header-content">Panel №2</div>
+      <md-input type="text"></md-input>
       <md-input type="text" disabled></md-input>
       <md-input type="text"></md-input>
     </md-accordion-item>

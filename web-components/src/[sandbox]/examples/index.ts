@@ -18,6 +18,7 @@ export { coachTemplate } from "./coachmark";
 export { codeEditorTemplate } from "./code-editor";
 export { colorTableTemplate } from "./colorTable";
 export { comboBoxTemplate } from "./combobox";
+export { countryCodePickerTemplate } from "./country-code-picker";
 export { dateRangePickerTemplate } from "./date-range-picker";
 export { dateTimePickerTemplate } from "./date-time-picker";
 export { datePickerTemplate } from "./datepicker";

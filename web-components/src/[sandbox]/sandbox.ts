@@ -27,6 +27,7 @@ import {
   codeEditorTemplate,
   colorTableTemplate,
   comboBoxTemplate,
+  countryCodePickerTemplate,
   datePickerTemplate,
   dateRangePickerTemplate,
   dateTimePickerTemplate,
@@ -359,6 +360,12 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Coachmark", "md-coachmark", "coachmark", coachTemplate)}
           ${this.getTabTemplate("Code Editor", "md-code-editor", "code-editor", codeEditorTemplate)}
           ${this.getTabTemplate("Combo Box", "md-combobox", "combobox", comboBoxTemplate)}
+          ${this.getTabTemplate(
+            "Country Code Picker",
+            "md-country-code-picker",
+            "country-code-picker",
+            countryCodePickerTemplate
+          )}
           ${this.getTabTemplate("Datepicker", "md-datepicker", "datepicker", datePickerTemplate)}
           ${this.getTabTemplate("Date Range Picker", "md-date-range-picker", "datepicker", dateRangePickerTemplate)}
           ${this.getTabTemplate("Date Time Picker", "md-date-time-picker", "date-time-picker", dateTimePickerTemplate)}

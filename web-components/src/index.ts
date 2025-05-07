@@ -31,6 +31,7 @@ export { CoachmarkPopover } from "./components/coachmark-popover/CoachmarkPopove
 export { Coachmark } from "./components/coachmark/Coachmark";
 export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
+export { CountryCodePicker } from "./components/country-code-picker/CountryCodePicker";
 export { DateRangePicker } from "./components/date-range-picker/DateRangePicker";
 export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { DatePicker } from "./components/datepicker/DatePicker";

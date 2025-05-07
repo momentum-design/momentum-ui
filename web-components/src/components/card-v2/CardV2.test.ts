@@ -110,7 +110,7 @@ describe("Card-v2 component", () => {
     expect(footer?.classList.contains("hidden")).toBe(true);
   });
 
-  it("Toggling expand card should dispatch its event", async () => {
+  it("Toggling expand card from expand button should dispatch its event", async () => {
     const element: CardV2.ELEMENT = await fixtureFactory(
       CardState.ACTIVE,
       "123",
@@ -135,5 +135,59 @@ describe("Card-v2 component", () => {
 
     expect(eventSpy).toHaveBeenCalled();
     expect(info?.name).toBe("arrow-circle-down-bold");
+  });
+
+  it("Toggling expand card from card background should dispatch its event", async () => {
+    const element: CardV2.ELEMENT = await fixtureFactory(
+      CardState.ACTIVE,
+      "123",
+      "Test Title",
+      "Test Info",
+      "Test Data",
+      true
+    );
+
+    const cardBackground = element.shadowRoot?.querySelector(".md-card-v2") as HTMLElement;
+    expect(cardBackground).not.toBeNull();
+
+    const eventSpy = jest.fn();
+    element.addEventListener("expand-card-toggled", eventSpy);
+
+    const info = element.shadowRoot?.querySelector(".md-card-v2-footer md-icon") as HTMLButtonElement;
+    expect(info).not.toBeNull();
+    expect(info?.name).toBe("arrow-circle-up-bold");
+
+    cardBackground?.click();
+    await elementUpdated(element);
+
+    expect(eventSpy).toHaveBeenCalled();
+    expect(info?.name).toBe("arrow-circle-down-bold");
+  });
+
+  it("Card background should not be clickable when card is not expandable", async () => {
+    const element: CardV2.ELEMENT = await fixtureFactory(
+      CardState.ACTIVE,
+      "123",
+      "Test Title",
+      "Test Info",
+      "Test Data",
+      false
+    );
+
+    const cardBackground = element.shadowRoot?.querySelector(".md-card-v2") as HTMLElement;
+    expect(cardBackground).not.toBeNull();
+
+    const eventSpy = jest.fn();
+    element.addEventListener("expand-card-toggled", eventSpy);
+
+    const info = element.shadowRoot?.querySelector(".md-card-v2-footer md-icon") as HTMLButtonElement;
+    expect(info).not.toBeNull();
+    expect(info?.name).toBe("arrow-circle-up-bold");
+
+    cardBackground?.click();
+    await elementUpdated(element);
+
+    expect(eventSpy).not.toHaveBeenCalled();
+    expect(info?.name).toBe("arrow-circle-up-bold");
   });
 });

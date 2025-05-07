@@ -1,20 +1,14 @@
 @use "settings" as constants;
 
 .md-coachmark {
-  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);  
-
-  md-popover::part(popover) {    
-
-    min-width: constants.$min-width;
-    max-width: constants.$max-width;
-  }
+  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);
 
   &__popper {
     border-radius: constants.$main-radius;
 
     min-width: constants.$min-width;
     max-width: constants.$max-width;
-    width: 282px;
+    width: 266px;
 
     //Header
     .header-container {

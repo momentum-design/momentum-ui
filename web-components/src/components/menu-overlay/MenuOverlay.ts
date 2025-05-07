@@ -89,8 +89,6 @@ export namespace MenuOverlay {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
     }
 
-    shouldWrapFocus = () => this.ariaRole === "dialog";
-
     private renderOverflowY() {
       return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
     }

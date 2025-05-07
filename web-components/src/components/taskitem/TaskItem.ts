@@ -192,13 +192,17 @@ export namespace TaskItem {
                     ><md-tooltip placement="bottom" slot-to-tooltip>${this.itemTitle}</md-tooltip></span
                   >
                 `
-              : html` <span class="md-taskitem__content_popover_title"><slot name="title"></slot></span> `}
+              : html` <span class="md-taskitem__content_popover_title popover-item-title"><slot name="title"></slot></span> `}
             <div class="md-taskitem__content_inner">
-              <span class="md-taskitem__content_queue">
-                <md-tooltip placement="bottom" slot-to-tooltip>
-                  ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
-                </md-tooltip>
-              </span>
+              ${this.displayOnlyTitle
+                ? nothing
+                : html`
+                    <span class="md-taskitem__content_queue">
+                      <md-tooltip placement="bottom" slot-to-tooltip>
+                        ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
+                      </md-tooltip>
+                    </span>
+                  `}
               ${this.queueTimeLabel.length > 0 || this.querySelector('[slot="queue-time"]')
                 ? html`
                     <span class="md-taskitem__content_queue_time">

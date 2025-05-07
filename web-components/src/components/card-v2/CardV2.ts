@@ -75,6 +75,10 @@ export namespace CardV2 {
       };
     }
 
+    private get expandCardHandler() {
+      return this.expandable ? this.expandCardToggled : null;
+    }
+
     private renderHeader() {
       return html`
         <div class="md-card-v2-header-title">
@@ -95,7 +99,7 @@ export namespace CardV2 {
     private renderFooter() {
       return html`
         <div class="${classMap(this.footerClassMap)}">
-          <md-button ariaLabel="" circle size="28" @click=${this.expandCardToggled}>
+          <md-button ariaLabel="" circle size="28" >
             <md-icon
               slot="icon"
               iconSet="momentumDesign"
@@ -110,7 +114,7 @@ export namespace CardV2 {
 
     render() {
       return html`
-        <div class="${classMap(this.cardClassMap)}">
+        <div class="${classMap(this.cardClassMap)}" @click=${this.expandCardHandler} >
           <div class="md-card-v2-header">${this.renderHeader()}</div>
           <div class="${classMap(this.contentClassMap)}">
             <h2>${this.data}</h2>

@@ -8,16 +8,18 @@
 
   .md-accordion {
     &-header {
+      border-radius: var(--accordion-item-header-border-radius);
+      margin: var(--accordion-item-margin);
       @include flex($jc: space-between, $ai: stretch);
     }
 
     &-expander {
       @include button-reset;
       @include flex($jc: flex-start, $ai: stretch);
-      border-radius: $accordion-btn-border-radius;
       flex: 0 1 100%;
       padding: $accordion-base-indent;
-
+      border-radius: var(--accordion-item-header-border-radius);
+      background: var(--accordion-item-header-bg);
       md-icon {
         display: flex;
         margin: 0 0 0 auto;
@@ -47,7 +49,7 @@
 :host(md-accordion-item[focus-visible]) {
   .md-accordion-expander {
     box-shadow: 0 0 0 core.rem-calc(2) $accordion-border_focus;
-    color: $accordion-active;
+    color: var(--accordion-item-header-color-active);
   }
 }
 
@@ -55,7 +57,7 @@
   .md-accordion-item:hover {
     .md-accordion-header {
       background: $accordion_hover;
-      border-radius: $accordion-btn-border-radius;
+      border-radius: var(--accordion-item-header-border-radius);
     }
   }
 }

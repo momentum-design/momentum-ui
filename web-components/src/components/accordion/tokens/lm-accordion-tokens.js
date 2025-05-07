@@ -5,6 +5,18 @@ const colors = require("@momentum-ui/tokens/dist/colors.json");
 const accordion = {
   prefix: "lm",
   component: "accordion",
+  "item-margin": {
+    common: "0"
+  },
+  "item-header-border-radius": {
+    common: "0.25em"
+  },
+  "item-header-bg": {
+    common: "transparent"
+  },
+  "item-header-color-active": {
+    common: "$mds-color-theme-outline-theme-normal"
+  },
   "color-border": {
     light: colors.gray[10].name,
     dark: colors.gray[90].name

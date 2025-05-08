@@ -17,7 +17,7 @@ export namespace Accordion {
   @customElementWithCheck("md-accordion")
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) multiple = false;
-    @property({ type: Boolean, reflect: true }) nocontainerfocusable = false;
+    @property({ type: Boolean, reflect: true }) suppressFocusableContainer = false;
 
     @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
 
@@ -89,7 +89,7 @@ export namespace Accordion {
 
     private setupFocusAccordionItems() {
       this.slotted.forEach((header) => {
-        if (!this.nocontainerfocusable) {
+        if (!this.suppressFocusableContainer) {
           header.addEventListener("focus", this.handleAccordionItemFocus);
           header.addEventListener("blur", this.handleAccordionItemBlur);
         }
@@ -98,7 +98,7 @@ export namespace Accordion {
 
     private removeFocusAccordionItems() {
       this.slotted.forEach((header) => {
-        if (!this.nocontainerfocusable) {
+        if (!this.suppressFocusableContainer) {
           header.removeEventListener("focus", this.handleAccordionItemFocus);
           header.removeEventListener("blur", this.handleAccordionItemBlur);
         }

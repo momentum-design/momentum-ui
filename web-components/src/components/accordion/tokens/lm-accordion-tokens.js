@@ -5,11 +5,14 @@ const colors = require("@momentum-ui/tokens/dist/colors.json");
 const accordion = {
   prefix: "lm",
   component: "accordion",
+  "border-radius": {
+    common: "0.25rem"
+  },
   "item-margin": {
     common: "0"
   },
   "item-header-border-radius": {
-    common: "0.25em"
+    common: "0.25rem"
   },
   "item-header-bg": {
     common: "transparent"

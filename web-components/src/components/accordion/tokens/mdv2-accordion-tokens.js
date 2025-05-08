@@ -3,11 +3,14 @@
 const accordion = {
   prefix: "mdv2",
   component: "accordion",
+  "border-radius": {
+    common: "0.75rem"
+  },
   "item-margin": {
-    common: "1em 0"
+    common: "1rem 0"
   },
   "item-header-border-radius": {
-    common: "0.75em"
+    common: "0.75rem"
   },
   "item-header-bg": {
     common: "$mds-color-theme-background-primary-active"

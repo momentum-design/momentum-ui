@@ -9,7 +9,6 @@
   .md-accordion {
     &-header {
       border-radius: var(--accordion-item-header-border-radius);
-      margin: var(--accordion-item-margin);
       @include flex($jc: space-between, $ai: stretch);
     }
 

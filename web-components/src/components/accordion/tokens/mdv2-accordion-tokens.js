@@ -6,9 +6,6 @@ const accordion = {
   "border-radius": {
     common: "0.75rem"
   },
-  "item-margin": {
-    common: "1rem 0"
-  },
   "item-header-border-radius": {
     common: "0.75rem"
   },
@@ -17,6 +14,9 @@ const accordion = {
   },
   "item-header-color-active": {
     common: "inherit"
+  },
+  gap: {
+    common: "1rem"
   },
   "color-border": {
     common: "$mds-color-theme-background-primary-active"

@@ -66,7 +66,7 @@ export const accordionTemplate = html`
   </md-accordion>
   <hr />
   <h3>Container not focusable</h3>
-  <md-accordion multiple nocontainerfocusable>
+  <md-accordion multiple suppressFocusableContainer>
     <md-accordion-item slot="accordion-item" label="Header №2">
       <div>Panel №2</div>
       <md-input type="text"></md-input>

@@ -10,7 +10,7 @@
 
   .md-accordion {
     width: 100%;
-    border-radius: $accordion-border-radius;
+    border-radius: var(--accordion-border-radius);
   }
 }
 

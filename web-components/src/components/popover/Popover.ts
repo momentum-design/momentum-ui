@@ -365,14 +365,14 @@ export class Popover extends FocusTrapMixin(LitElement) {
     }
     if (this.trigger.includes("mouseenter")) {
       const hoverBridge = this.renderRoot.querySelector(".popover-hover-bridge");
-      this.triggerElement.addEventListener("mouseenter", this.showPopover);
+      this.triggerElement.addEventListener("mouseenter", this.onMouseEnterTrigger);
       this.triggerElement.addEventListener("mouseleave", this.startCloseDelay);
       this.addEventListener("mouseenter", this.cancelCloseDelay);
       this.addEventListener("mouseleave", this.startCloseDelay);
       hoverBridge?.addEventListener("mouseenter", this.cancelCloseDelay);
     }
     if (this.trigger.includes("focusin")) {
-      this.triggerElement.addEventListener("focusin", this.showPopover);
+      this.triggerElement.addEventListener("focusin", this.onFocusInTrigger);
       if (!this.interactive) {
         this.triggerElement.addEventListener("focusout", this.hidePopover);
       }
@@ -387,11 +387,11 @@ export class Popover extends FocusTrapMixin(LitElement) {
     if (!this.triggerElement) return;
     const hoverBridge = this.renderRoot.querySelector(".popover-hover-bridge");
     this.triggerElement.removeEventListener("click", this.onTriggerClick);
-    this.triggerElement.removeEventListener("mouseenter", this.showPopover);
+    this.triggerElement.removeEventListener("mouseenter", this.onMouseEnterTrigger);
     this.triggerElement.removeEventListener("mouseleave", this.hidePopover);
     this.removeEventListener("mouseenter", this.cancelCloseDelay);
     this.removeEventListener("mouseleave", this.startCloseDelay);
-    this.triggerElement.removeEventListener("focusin", this.showPopover);
+    this.triggerElement.removeEventListener("focusin", this.onFocusInTrigger);
     this.triggerElement.removeEventListener("focusout", this.hidePopover);
     hoverBridge?.removeEventListener("mouseenter", this.cancelCloseDelay);
 
@@ -598,13 +598,24 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   /**
    * Shows the popover.
+   * By default (`useOpenDelay = false`), or if `openDelay` is 0 or less, the popover opens immediately.
+   * If `useOpenDelay` is true and `openDelay` is greater than 0, the `openDelay` will be applied before showing the popover.
+   * This allows programmatic calls (e.g., for `trigger="manual"`) to optionally use the `openDelay`.
+   * @param {boolean} [useOpenDelay=false] - Indicates if the `openDelay` should be applied.
    */
-  public showPopover = () => {
+  public showPopover = (useOpenDelay: boolean = false) => {
     this.cancelCloseDelay();
-    setTimeout(() => {
+
+    if (useOpenDelay && this.openDelay > 0) {
+      setTimeout(() => {
+        this.utils.handleAppendTo(true);
+        this.visible = true;
+      }, this.openDelay);
+    } else {
+      // Open immediately
       this.utils.handleAppendTo(true);
       this.visible = true;
-    }, this.openDelay);
+    }
   };
 
   /**
@@ -632,7 +643,20 @@ export class Popover extends FocusTrapMixin(LitElement) {
     }
   };
 
-  private onTriggerClick = (event: Event) => {
+  private readonly onMouseEnterTrigger = () => {
+    if (this.trigger.includes("mouseenter")) {
+      //Open with delay
+      this.showPopover(true);
+    }
+  };
+
+  private readonly onFocusInTrigger = () => {
+    if (this.trigger.includes("focusin")) {
+      this.showPopover(false);
+    }
+  };
+
+  private readonly onTriggerClick = (event: Event) => {
     if (this.trigger.includes("mouseenter") && this.isMouseOverTrigger(event)) {
       // If the trigger is mouseenter and the mouse is over the trigger, do not toggle
       return;

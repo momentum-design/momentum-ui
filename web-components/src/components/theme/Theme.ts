@@ -66,6 +66,7 @@ export namespace Theme {
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
+    private activeTooltipTrigger: HTMLElement | null = null;
 
     private setTheme() {
       //If the theme property is set, prefer using that theme over the lumos property
@@ -193,6 +194,7 @@ export namespace Theme {
 
       const { popper, placement, reference, slotContent } = event.detail;
 
+      this.activeTooltipTrigger = reference;
       this.placement = placement;
       this.initVirtualElements(popper, reference, slotContent);
       this.showVirtualTooltip();
@@ -201,12 +203,16 @@ export namespace Theme {
     handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
       event.stopPropagation();
       this.hideVirtualTooltip();
+
+      if (this.activeTooltipTrigger === event.detail.reference) {
+        this.activeTooltipTrigger = null;
+      }
     }
 
     handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
       const { popper, reference } = event.detail;
 
-      if (this.virtualReference !== reference) {
+      if (this.activeTooltipTrigger !== reference) {
         return;
       }
 
@@ -218,6 +224,7 @@ export namespace Theme {
         const virtualMessage = virtualContent.textContent;
         if (message && virtualMessage) {
           virtualContent.textContent = message;
+          this.popperInstance?.update();
         }
       }
     }
@@ -232,6 +239,7 @@ export namespace Theme {
 
     handleTooltipRemoved = () => {
       this.hideVirtualTooltip();
+      this.activeTooltipTrigger = null;
     };
 
     private destroyPopperInstance() {

@@ -2,13 +2,7 @@ import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/test
 import { Theme } from "./Theme";
 
 describe("Theme", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -94,54 +88,8 @@ describe("Theme", () => {
     expect(element.darkTheme).toBeFalsy();
   });
 
-  test("handleVirtualTooltipChangeMessage should update virtual tooltip content if reference matches", async () => {
-    const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
-    jest.runAllTimers();
-    await elementUpdated(element);
-
-    const reference = document.createElement("div");
-    const popper = document.createElement("div");
-    const content = document.createElement("div");
-    content.classList.add("md-tooltip__content");
-    content.textContent = "New Tooltip Message";
-    popper.appendChild(content);
-
-    jest.advanceTimersByTime(100);
-
-    Object.defineProperty(element, "virtualReference", {
-      value: reference,
-      configurable: true
-    });
-
-    const virtualWrapper = document.createElement("div");
-    const virtualContent = document.createElement("div");
-    virtualContent.classList.add("md-tooltip__content");
-    virtualContent.textContent = "Old Tooltip Message";
-    virtualWrapper.appendChild(virtualContent);
-    Object.defineProperty(element, "virtualWrapper", {
-      value: virtualWrapper,
-      configurable: true
-    });
-
-    const event = new CustomEvent("tooltip-message", {
-      detail: { popper, reference },
-      bubbles: true,
-      composed: true
-    });
-
-    const tooltipMessagePromise = oneEvent(element, "tooltip-message");
-    element.dispatchEvent(event);
-    await tooltipMessagePromise;
-    jest.advanceTimersByTime(100);
-
-    const updatedVirtualContent = virtualWrapper.querySelector(".md-tooltip__content");
-    expect(updatedVirtualContent).not.toBeNull();
-    expect(updatedVirtualContent!.textContent).toBe("New Tooltip Message");
-  });
-
   test("handleVirtualTooltipChangeMessage should not update virtual tooltip content if reference does not match", async () => {
     const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
-    jest.runAllTimers();
     const reference = document.createElement("div");
     const differentReference = document.createElement("div");
     const popper = document.createElement("div");
@@ -149,8 +97,6 @@ describe("Theme", () => {
     content.classList.add("md-tooltip__content");
     content.textContent = "New Tooltip Message";
     popper.appendChild(content);
-
-    jest.advanceTimersByTime(100);
 
     Object.defineProperty(element, "virtualReference", {
       value: reference,

@@ -174,7 +174,7 @@ export class PopoverTemplateSandbox extends LitElement {
         </md-popover>
 
         <md-button id="popover-4" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
-        <md-popover triggerID="popover-4" show-arrow placement="bottom" trigger="mouseenter">
+        <md-popover triggerID="popover-4" show-arrow placement="bottom" trigger="mouseenter" delay="500, 0">
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>

@@ -18,6 +18,7 @@ export namespace Accordion {
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) multiple = false;
     @property({ type: Boolean, reflect: true }) suppressFocusableContainer = false;
+    @property({ type: Number }) gap?: number;
 
     @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
 
@@ -156,6 +157,13 @@ export namespace Accordion {
       if (changedProperties.has("slotted")) {
         this.setupExpandedAccordionItems();
         this.setupFocusAccordionItems();
+      }
+      if (changedProperties.has("gap")) {
+        if (this.gap) {
+          this.style.setProperty("--custom-accordion-gap", `${this.gap}px`);
+        } else {
+          this.style.removeProperty("--custom-accordion-gap");
+        }
       }
     }
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const list = {
@@ -40,9 +39,6 @@ const list = {
     rounded: {
       common: "0.5rem"
     }
-  },
-  "line-height": {
-    common: "1.5rem"
   }
 };
 

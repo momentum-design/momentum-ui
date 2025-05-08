@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -25,6 +25,11 @@ const modal = {
     padding: {
       light: "1.5rem 1rem",
       dark: "1.5rem 1rem"
+    }
+  },
+  section: {
+    "h-padding": {
+      common: "0.5rem"
     }
   },
   title: {

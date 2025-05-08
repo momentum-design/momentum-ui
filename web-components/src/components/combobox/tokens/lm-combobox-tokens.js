@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -37,12 +37,24 @@ const combobox = {
     "border-color": {
       light: colors.theme[70].name,
       dark: colors.theme[50].name
+    },
+    "new-border-color": {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
+    },
+    "bg-color": {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
     }
   },
   disabled: {
     "bg-color": {
       light: colors.gray[10].name,
       dark: colors.gray[90].name
+    },
+    "border-color": {
+      light: colors.gray[40].name,
+      dark: colors.gray[80].name
     }
   },
   invalid: {

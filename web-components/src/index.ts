@@ -14,12 +14,14 @@ export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Alert } from "./components/alert/Alert";
 export { AudioPlayer } from "./components/audio-player/AudioPlayer";
 export { Avatar } from "./components/avatar/Avatar";
+export { AvatarType } from "./components/avatar/Avatar.constants";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { Badge } from "./components/badge/Badge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
 export { CardAi } from "./components/card-ai/CardAi";
+export { CardV2 } from "./components/card-v2/CardV2";
 export { Card } from "./components/card/Card";
 export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
@@ -29,6 +31,7 @@ export { CoachmarkPopover } from "./components/coachmark-popover/CoachmarkPopove
 export { Coachmark } from "./components/coachmark/Coachmark";
 export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
+export { CountryCodePicker } from "./components/country-code-picker/CountryCodePicker";
 export { DateRangePicker } from "./components/date-range-picker/DateRangePicker";
 export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { DatePicker } from "./components/datepicker/DatePicker";
@@ -41,6 +44,7 @@ export { DraggableItem } from "./components/draggable/DraggableItem";
 export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
+export { FloatingButtonBar, FloatingButtonBarAction } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { Form } from "./components/form/Form";
@@ -77,5 +81,14 @@ export { Theme, ThemeName } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
+export { iconUrlManager } from "./managers/IconUrlManager";
+export { ThemeManager, themeManager } from "./managers/ThemeManager";
 
-// eslint-disable-next-line prettier/prettier
+export type {
+    Events,
+    PopoverColor,
+    PopoverPlacement,
+    PopoverStrategy,
+    PopoverTrigger
+} from "./components/popover/Popover.types";
+

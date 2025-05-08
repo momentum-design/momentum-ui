@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -384,6 +384,48 @@ const badge = {
     active: {
       "bg-color": {
         common: "$mds-color-theme-background-alert-default-active"
+      }
+    }
+  },
+  status: {
+    positive: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-success-active"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-success-normal"
+      }
+    },
+    negative: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-error-active"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-error-normal"
+      }
+    },
+    accent: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-theme-active"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-accent-normal"
+      }
+    },
+    orange: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-orange-active"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-alert-orange-normal"
+      }
+    },
+    warning: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-warning-active"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-warning-normal"
       }
     }
   }

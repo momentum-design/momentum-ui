@@ -6,5 +6,5 @@ $slider-bar__border-radius: rem-calc(2);
 $slider-pointer__size: rem-calc(20);
 $slider-pointer__box-shadow: 0 2px 6px $black-16;
 $slider-pointer__box-shadow--focus: 0 0 0 8px rgba(0, 160, 209, 0.4);
-$slider__focus-shadow: 0 0 0 2px var(--slider-background-focus-selection, $md-slider-background-focus-selection-light), $slider-pointer__box-shadow;
+$slider__focus-shadow: 0 0 0 2px var(--slider-background-focus-selection), $slider-pointer__box-shadow;
 $slider-label__size: $font-size-base;

@@ -6,13 +6,13 @@
  *
  */
 
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const dropdown = {
   prefix: "mdv2",
   component: "dropdown",
   "bg-color": {
+    common: "$mds-color-theme-background-primary-ghost",
     hover: {
       common: "$mds-color-theme-background-primary-hover"
     },
@@ -21,12 +21,18 @@ const dropdown = {
     },
     disabled: {
       common: "$mds-color-theme-background-primary-disabled"
+    },
+    focus: {
+      common: "$mds-color-theme-background-primary-active"
     }
   },
   "border-color": {
     common: "$mds-color-theme-outline-input-normal",
     focus: {
       common: "$mds-color-theme-outline-theme-normal"
+    },
+    disabled: {
+      common: "$mds-color-theme-outline-primary-disabled"
     }
   },
   label: {
@@ -58,7 +64,7 @@ const dropdown = {
         common: "8"
       },
       height: {
-        common: "40"
+        common: "36"
       }
     }
   }

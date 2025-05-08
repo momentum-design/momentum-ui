@@ -12,9 +12,11 @@ import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { BadgeCircleSize } from "./badge.constant";
 import styles from "./scss/module.scss";
 
 export namespace Badge {
+  export type BadgeCircleSize = (typeof BadgeCircleSize)[keyof typeof BadgeCircleSize];
   @customElementWithCheck("md-badge")
   export class ELEMENT extends LitElement {
     @property({ type: String }) ariaLabel = "";
@@ -26,6 +28,7 @@ export namespace Badge {
     @property({ type: Boolean }) outlined = false;
     @property({ type: Boolean }) compact = false;
     @property({ type: Boolean }) circle = false;
+    @property({ type: Number, attribute: "circle-size" }) circleSize: BadgeCircleSize = BadgeCircleSize[40];
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) split = false;
     @property({ type: Boolean }) disabled = false;
@@ -64,9 +67,24 @@ export namespace Badge {
       return [reset, styles];
     }
 
+    private get computedAriaHiddenSplits(): boolean | undefined {
+      if (this.ariaHiddenSplits === "true") {
+        return true;
+      } else if (this.ariaHiddenSplits === "false") {
+        return false;
+      }
+      return undefined;
+    }
+
+    private get computedTabIndex(): number | undefined {
+      const parsedValue = parseInt(this.tabIndexing);
+      return isNaN(parsedValue) ? undefined : parsedValue;
+    }
+
     render() {
       const classNamesInfo = {
         "md-badge--circle": this.circle,
+        [`md-badge--circle-${this.circleSize}`]: this.circle,
         "md-badge--split": this.split,
         "md-badge--compact": this.compact,
         "md-badge--small": this.small,
@@ -78,13 +96,13 @@ export namespace Badge {
       const splitContent = () => {
         return html`
           <slot
-            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            aria-hidden=${ifDefined(this.computedAriaHiddenSplits)}
             name="split-left"
             class="split split-left"
           ></slot>
           <span aria-hidden="true" class="split-separator"> | </span>
           <slot
-            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            aria-hidden=${ifDefined(this.computedAriaHiddenSplits)}
             name="split-right"
             class="split split-right"
           ></slot>
@@ -94,7 +112,7 @@ export namespace Badge {
       return html`
         ${this.getStyles()}
         <span
-          tabindex=${this.tabIndexing}
+          tabindex=${ifDefined(this.computedTabIndex)}
           part="badge"
           class="md-badge ${classMap(classNamesInfo)}"
           aria-label=${this.ariaLabel}

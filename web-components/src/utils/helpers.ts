@@ -97,10 +97,10 @@ export const findHighlight = (text: string, query: string) => {
   return chunks;
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   let timeout: ReturnType<typeof setTimeout> | null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   return function (this: T, ...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const context = this;
@@ -144,7 +144,52 @@ export function closestElement(selector: string, base: HTMLElement) {
     if (!el || el === document || el === window) return null;
 
     const found = el.closest(selector);
-    return found ? found : __closestFrom(el.getRootNode().host);
+    return found ?? __closestFrom(el.getRootNode().host);
   }
   return __closestFrom(base);
+}
+
+export function getElementSafe<T>(elements: T[], index: number): T | undefined {
+  return index >= 0 && index < elements.length ? elements[index] : undefined;
+}
+
+export function querySelectorDeep(
+  selector: string,
+  base: HTMLElement | Document | ShadowRoot = document
+): Element | null {
+  const lightDomElement =
+    base instanceof ShadowRoot || base instanceof Document
+      ? base.querySelector(selector)
+      : base.shadowRoot?.querySelector(selector);
+
+  if (lightDomElement) return lightDomElement;
+
+  const shadowRoots = Array.from(base.querySelectorAll("*"))
+    .map((el) => (el.shadowRoot ? el.shadowRoot : null))
+    .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
+
+  for (const shadowRoot of shadowRoots) {
+    const shadowDomElement = querySelectorDeep(selector, shadowRoot);
+    if (shadowDomElement) return shadowDomElement;
+  }
+
+  return null;
+}
+
+export function getElementByIdDeep(id: string, base: HTMLElement | Document | ShadowRoot = document): Element | null {
+  if (base instanceof ShadowRoot || base instanceof Document) {
+    const element = base.getElementById(id);
+    if (element) return element;
+  }
+
+  const shadowRoots = Array.from(base.querySelectorAll("*"))
+    .map((el) => (el.shadowRoot ? el.shadowRoot : null))
+    .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
+
+  for (const shadowRoot of shadowRoots) {
+    const element = getElementByIdDeep(id, shadowRoot);
+    if (element) return element;
+  }
+
+  return null;
 }

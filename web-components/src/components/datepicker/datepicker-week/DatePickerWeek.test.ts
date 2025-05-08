@@ -3,7 +3,13 @@ import "./DatePickerWeek";
 import { DatePickerWeek } from "./DatePickerWeek";
 
 describe("DatePickerWeek Component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
   test("should render", async () => {

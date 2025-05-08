@@ -10,10 +10,11 @@ import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/card/Card";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
-import { html, nothing } from "lit-html";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html, nothing } from "lit";
+import { html as lit1Html } from "lit-html";
 
-export const Card = (args: Args) => {
+const render = (args: Args) => {
   return html`
       <md-card
         .menuOptions=${args.menu}
@@ -30,12 +31,12 @@ export const Card = (args: Args) => {
       >
         ${
           args.avatar
-            ? html`
+            ? lit1Html`
                 <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
               `
             : nothing
         }
-        ${args.slotTitle ? html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
+        ${args.slotTitle ? lit1Html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
         <div slot="content">
           <img src=https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
           alt="" />
@@ -55,29 +56,28 @@ export const Card = (args: Args) => {
 
 const cardMenu = ["Edit", "View", "Duplicate", "Delete"];
 
-export default {
+export const Card: StoryObj = {
+  args: {
+    menu: cardMenu,
+    id: "12345678",
+    title: "Team A Report - Q1",
+    subtitle: "Updated 2 hours ago",
+    avatar: false,
+    slotTitle: false,
+    info: "Lorem Ipsum is simply sample text of the printing and typesetting industry."
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Card",
   component: "md-card",
   argTypes: {
-    menu: { control: { type: "array" }, description: "Menu Items", defaultValue: cardMenu },
-    id: { defaultValue: "12345678" },
-    title: { defaultValue: "Team A Report - Q1" },
-    subtitle: { defaultValue: "Updated 2 hours ago" },
-    avatar: {
-      control: "boolean",
-      defaultValue: false,
-      description: "Change Favorite Icon in header on slot - 'card-header-icon'"
-    },
-    slotTitle: {
-      control: "boolean",
-      defaultValue: false,
-      description: "Add custom Title in slot - 'card-header-title'"
-    },
-    info: { defaultValue: "Lorem Ipsum is simply sample text of the printing and typesetting industry." }
+    menu: { description: "Menu Items" },
+    avatar: { description: "Change Favorite Icon in header on slot - 'card-header-icon'" },
+    slotTitle: { description: "Add custom Title in slot - 'card-header-title'" }
   },
-  parameters: {
-    a11y: {
-      element: "md-card"
-    }
-  }
+  parameters: { a11y: { element: "md-card" } }
 };
+
+export default meta;

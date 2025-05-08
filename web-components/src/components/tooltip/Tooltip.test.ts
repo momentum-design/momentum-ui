@@ -1,18 +1,18 @@
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
-import { Theme } from "@/components/theme/Theme";
+import { type Theme } from "@/components/theme/Theme";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./Tooltip";
-import { Tooltip } from "./Tooltip";
+import { type Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
   let theme: Theme.ELEMENT;
   let tooltip: Tooltip.ELEMENT;
 
-  afterEach(fixtureCleanup);
-
   beforeEach(async () => {
+    jest.useFakeTimers();
+
     theme = await fixture<Theme.ELEMENT>(html`
       <md-theme>
         <md-tooltip message="Tooltip">
@@ -20,7 +20,17 @@ describe("Tooltip", () => {
         </md-tooltip>
       </md-theme>
     `);
+
+    jest.runAllTimers();
+
     tooltip = theme.querySelector("md-tooltip") as Tooltip.ELEMENT;
+  });
+
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
   });
 
   test("should notify md-theme in show/hide case", async () => {
@@ -44,17 +54,20 @@ describe("Tooltip", () => {
   });
 
   test("should dispach event after show/hide case", async () => {
-    setTimeout(() => tooltip.notifyTooltipCreate());
+    const createPromise = oneEvent(tooltip, "tooltip-create");
+    const destroyPromise = oneEvent(tooltip, "tooltip-destroy");
 
-    const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
+    tooltip.notifyTooltipCreate();
+
+    const { detail: tooltipCreate } = await createPromise;
 
     expect(tooltipCreate).toBeDefined();
     expect(tooltip.opened).toBeTruthy();
     expect(tooltipCreate.reference).toEqual(tooltip.reference);
 
-    setTimeout(() => tooltip.notifyTooltipDestroy());
+    tooltip.notifyTooltipDestroy();
 
-    const { detail: tooltipDestroy } = await oneEvent(tooltip, "tooltip-destroy");
+    const { detail: tooltipDestroy } = await destroyPromise;
 
     expect(tooltipDestroy).toBeDefined();
     expect(tooltip.opened).toBeFalsy();
@@ -62,7 +75,7 @@ describe("Tooltip", () => {
   });
 
   test("should close tooltip on pressing escape anywhere when tooltip is open", async () => {
-    setTimeout(() => tooltip.notifyTooltipCreate());
+    tooltip.notifyTooltipCreate();
 
     const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
 

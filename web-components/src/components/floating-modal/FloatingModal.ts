@@ -22,12 +22,15 @@ export namespace FloatingModal {
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
     @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
+    @property({ type: Boolean, reflect: true, attribute: "centered" }) centered = false;
     @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
+    @property({ type: Boolean, reflect: true }) maximizable = true;
+    @property({ type: Boolean, reflect: true }) resizable = true;
     @property({ type: Boolean, reflect: true }) private minimize = false;
     @property({ type: Object }) position:
       | {
@@ -136,8 +139,18 @@ export namespace FloatingModal {
     private setInteractInstance() {
       requestAnimationFrame(() => {
         if (this.container) {
-          interact(this.container)
-            .resizable({
+          interact(this.container).draggable({
+            autoScroll: true,
+            allowFrom: this.header,
+            ignoreFrom: this.body,
+            listeners: {
+              move: this.dragMoveListener,
+              end: this.dragEndListener
+            }
+          });
+
+          if (this.resizable) {
+            interact(this.container).resizable({
               edges: { left: true, right: true, bottom: true, top: true },
               listeners: {
                 end: this.resizeEndListener,
@@ -152,16 +165,8 @@ export namespace FloatingModal {
                     })
                   ]
                 : undefined
-            })
-            .draggable({
-              autoScroll: true,
-              allowFrom: this.header,
-              ignoreFrom: this.body,
-              listeners: {
-                move: this.dragMoveListener,
-                end: this.dragEndListener
-              }
             });
+          }
         }
       });
     }
@@ -281,7 +286,14 @@ export namespace FloatingModal {
                 aria-modal="true"
                 style=${ifDefined(
                   this.containerRect
-                    ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
+                    ? this.centered
+                      ? `
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    ${this.full ? "width: 100% !important; height: 100% !important;" : ""}
+                  `
+                      : `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
                   height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};
                   top: ${this.full ? "0 !important" : ""};
                   left: ${this.full ? "0 !important" : ""};
@@ -312,7 +324,7 @@ export namespace FloatingModal {
                         <md-icon name="minus-bold" size="16" iconSet="momentumDesign"></md-icon>
                       </md-button>`
                     : nothing}
-                  ${!this.minimize
+                  ${!this.minimize && this.maximizable
                     ? html` <md-button
                         color="color-none"
                         class="md-floating__resize"
@@ -350,6 +362,8 @@ export namespace FloatingModal {
                       heading=${this.heading}
                       .minimize=${this.minimize}
                       .minPosition=${this.minPosition}
+                      .maximizeIconAriaLabel="${this.maximizeScreenLabel}"
+                      .closeAriaLabel="${this.closeAriaLabel}"
                       @floating-min-modal-minimize=${() => this.handleMinimize()}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}

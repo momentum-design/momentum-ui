@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const avatar = {
@@ -140,6 +139,16 @@ const avatar = {
       common: "$mds-color-theme-common-text-primary-normal"
     }
   },
+  white: {
+    "bg-color": {
+      common: "$mds-color-theme-avatar-glass-active"
+    }
+  },
+  darkgray: {
+    "bg-color": {
+      common: "$mds-color-theme-avatar-glass-normal"
+    }
+  },
   self: {
     "bg-color": {
       common: "$mds-color-theme-background-primary-ghost"
@@ -151,7 +160,53 @@ const avatar = {
       common: "$mds-color-theme-outline-primary-normal"
     }
   },
+  sms: {
+    "icon-color": {
+      common: "$mds-color-theme-common-control-share-content-inactive"
+    }
+  },
+  email: {
+    "icon-color": {
+      common: "$mds-color-theme-common-touchbar-background-violet-normal"
+    }
+  },
+  call: {
+    "icon-color": {
+      common: "$mds-color-theme-indicator-stable"
+    }
+  },
+  headset: {
+    "icon-color": {
+      common: "$mds-color-theme-common-whiteboard-pen-purple"
+    }
+  },
+  campaign: {
+    "icon-color": {
+      common: "$mds-color-theme-common-whiteboard-pen-purple"
+    }
+  },
+  chat: {
+    "icon-color": {
+      common: "$mds-color-theme-control-active-normal"
+    }
+  },
+  emoji: {
+    "icon-color": {
+      common: "$mds-color-theme-control-active-normal"
+    }
+  },
+  spam: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-warning-normal"
+    },
+    "icon-color": {
+      common: "$mds-color-theme-indicator-caution"
+    }
+  },
   presence: {
+    "cutout-bg-color": {
+      common: "$mds-color-theme-background-solid-primary-normal"
+    },
     active: {
       common: "$mds-color-theme-indicator-stable"
     },
@@ -173,6 +228,12 @@ const avatar = {
   },
   notificationBadge: {
     common: "$mds-color-theme-background-accent-normal"
+  },
+  "invertable-icon": {
+    filter: {
+      light: "invert(0)",
+      dark: "invert(1)"
+    }
   }
 };
 

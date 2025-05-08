@@ -260,6 +260,7 @@ export const inputTemplate = html`
     </div>
   </section>
   <md-input
+    newMomentum
     label="Success"
     htmlId="inputSuccess"
     containerSize="small-12"
@@ -268,6 +269,7 @@ export const inputTemplate = html`
     placeholder="Enter Text"
   ></md-input>
   <md-input
+    newMomentum
     label="Warning"
     htmlId="inputWarning"
     containerSize="small-12"
@@ -276,6 +278,7 @@ export const inputTemplate = html`
     placeholder="Enter Text"
   ></md-input>
   <md-input
+    newMomentum
     label="Error"
     htmlId="inputError"
     containerSize="small-12"

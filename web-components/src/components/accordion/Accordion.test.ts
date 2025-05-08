@@ -1,15 +1,17 @@
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
-import { Accordion } from "./Accordion";
-import "./Accordion";
-import "./AccordionItem";
-import { AccordionItem } from "./AccordionItem";
 import "@/components/input/Input";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import "./Accordion";
+import { type Accordion } from "./Accordion";
+import "./AccordionItem";
+import { type AccordionItem } from "./AccordionItem";
 
 describe("Accordion", () => {
   let accordion: Accordion.ELEMENT;
   let accordionItems: AccordionItem.ELEMENT[];
 
   beforeEach(async () => {
+    jest.useFakeTimers();
+
     accordion = await fixture(html`
       <md-accordion>
         <md-accordion-item slot="accordion-item" label="Header №1" expanded>
@@ -31,8 +33,13 @@ describe("Accordion", () => {
       </md-accordion>
     `);
     accordionItems = accordion.slotted as AccordionItem.ELEMENT[];
+    jest.runAllTimers();
   });
-  afterEach(fixtureCleanup);
+  afterEach(async () => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("slotted item", async () => {
     expect(accordion.slotItem.name).toBe("accordion-item");
@@ -55,58 +62,58 @@ describe("Accordion", () => {
     await elementUpdated(accordionItems[0]);
 
     accordionItems[0].header.dispatchEvent(arrowDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[0]);
 
     accordionItems[0].header.dispatchEvent(arrowDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[2]);
 
     accordionItems[0].header.dispatchEvent(arrowDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     accordionItems[0].header.dispatchEvent(arrowDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     accordionItems[0].header.dispatchEvent(arrowDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[0]);
 
     accordionItems[0].header.dispatchEvent(arrowUp);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     accordionItems[0].header.dispatchEvent(arrowUp);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     accordionItems[0].header.dispatchEvent(arrowUp);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[2]);
 
     accordionItems[4].header.dispatchEvent(home);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[0]);
 
     accordionItems[0].header.dispatchEvent(end);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(document.activeElement).toEqual(accordionItems[4]);
 
     accordionItems[4].header.dispatchEvent(enter);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[4].expanded).toBeTruthy();
     expect(document.activeElement).toEqual(accordionItems[4]);
 
     accordionItems[4].header.dispatchEvent(arrowUp);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     accordionItems[3].header.dispatchEvent(space);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[4].expanded).toBeFalsy();
     expect(accordionItems[3].expanded).toBeTruthy();
@@ -119,17 +126,17 @@ describe("Accordion", () => {
   test("should correct select accordion item by click", async () => {
     const mouseDown = new MouseEvent("mousedown");
     accordionItems[1].header.dispatchEvent(mouseDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[1].expanded).toBeFalsy();
 
     accordionItems[3].header.dispatchEvent(mouseDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeTruthy();
 
     accordionItems[4].header.dispatchEvent(mouseDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeFalsy();
     expect(accordionItems[4].expanded).toBeTruthy();
@@ -138,13 +145,13 @@ describe("Accordion", () => {
     await elementUpdated(accordion);
 
     accordionItems[0].header.dispatchEvent(mouseDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeTruthy();
     expect(accordionItems[4].expanded).toBeTruthy();
 
     accordionItems[0].header.dispatchEvent(mouseDown);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeFalsy();
   });

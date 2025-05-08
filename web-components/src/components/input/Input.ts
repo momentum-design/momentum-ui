@@ -184,6 +184,12 @@ export namespace Input {
 
     @internalProperty() private isEditing = false;
 
+    @query('slot[name="input-section-right"]')
+    private readonly inputSectionRightSlot!: HTMLSlotElement;
+
+    @internalProperty()
+    private hasRightSlotContent = false;
+
     private readonly messageController = new MessageController();
 
     connectedCallback() {
@@ -292,8 +298,16 @@ export namespace Input {
         if (code !== Key.Space && code !== Key.Enter) {
           return;
         }
+
         event.preventDefault();
+        event.stopPropagation();
+      } else if (event.type === "click") {
+        //When handling the click clear button do not propagate the event to the parent
+        //As this will close overlay menus that we do not want to close
+        event.preventDefault();
+        event.stopPropagation();
       }
+
       this.input.focus();
       this.dispatchEvent(
         new CustomEvent("input-clear", {
@@ -310,6 +324,10 @@ export namespace Input {
 
     handleLabelClick() {
       this.input.focus();
+    }
+
+    handleRighSlotChange() {
+      this.hasRightSlotContent = this.inputSectionRightSlot?.assignedNodes().length > 0;
     }
 
     get messageType(): Input.MessageType | null {
@@ -359,12 +377,25 @@ export namespace Input {
         "md-focus": this.isEditing,
         "md-read-only": this.readOnly,
         "md-disabled": this.disabled,
-        "md-dirty": !!this.value
+        "md-dirty": !!this.value,
+        "md-has-right-icon": this.hasRightIcon
       };
     }
 
     get ariaExpandedValue() {
       return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : "undefined";
+    }
+
+    get hasRightIcon() {
+      if (this.clear && !this.disabled && this.value && !this.readOnly) {
+        return true;
+      }
+
+      if (this.compact) {
+        return false;
+      }
+
+      return this.hasRightSlotContent;
     }
 
     inputTemplate() {
@@ -445,14 +476,23 @@ export namespace Input {
       }
     }
 
+    private get inputRightTemplateClassMap() {
+      return {
+        "md-input__after": true,
+        hidden: !this.hasRightIcon
+      };
+    }
+
     inputRightTemplate() {
-      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
+      if (this.clear && !this.disabled && this.value && !this.readOnly) {
         return html`
           <div class="md-input__after">
             <md-button
               hasRemoveStyle
               @click=${(event: MouseEvent) => this.handleClear(event)}
               @keydown=${(event: KeyboardEvent) => this.handleClear(event)}
+              size="20"
+              circle
             >
               <md-icon
                 class="md-input__icon-clear"
@@ -467,8 +507,8 @@ export namespace Input {
         `;
       } else if (!this.compact) {
         return html`
-          <div class="md-input__after">
-            <slot name="input-section-right"></slot>
+          <div class=${classMap(this.inputRightTemplateClassMap)}>
+            <slot name="input-section-right" @slotchange=${this.handleRighSlotChange}></slot>
           </div>
         `;
       }

@@ -12,7 +12,7 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { action } from "@storybook/addon-actions";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
@@ -35,7 +35,8 @@ export default {
     customWidth: { control: "text", defaultValue: "" },
     ariaRole: { control: { type: "select" }, options: menuOverlayRole, defaultValue: "menu" },
     ariaLabel: { control: "text", defaultValue: "Link Storybook" },
-    overlayOffset: { control: "number", defaultValue: 15 }
+    overlayOffset: { control: "number", defaultValue: 15 },
+    keepOpenOnWindowBlur: { control: "boolean", defaultValue: false }
   },
   parameters: {
     a11y: {
@@ -60,6 +61,7 @@ const render = (args: Args) => {
       @menu-overlay-open=${action("click open")}
       @menu-overlay-close=${action("click close")}
       overlay-offset=${args.overlayOffset}
+      ?keep-open-on-window-blur=${args.keepOpenOnWindowBlur}
     >
       <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
       <div style="padding:1.25rem ; width: 100%;">

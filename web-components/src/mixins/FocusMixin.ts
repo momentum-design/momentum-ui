@@ -114,7 +114,7 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
 
     protected getDeepActiveElement() {
       let host = document.activeElement || document.body;
-      while (host && host.shadowRoot && host.shadowRoot.activeElement) {
+      while (host?.shadowRoot?.activeElement) {
         host = host.shadowRoot.activeElement;
       }
       return host;

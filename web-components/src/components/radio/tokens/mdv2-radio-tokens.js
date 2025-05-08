@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const radio = {
@@ -6,7 +5,7 @@ const radio = {
   component: "radio",
   input: {
     "bg-color": {
-      common: "$mds-color-theme-button-secondary-normal"
+      common: "$mds-color-theme-control-inactive-normal"
     },
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
@@ -19,7 +18,7 @@ const radio = {
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-inverted-button-secondary-hover"
+        common: "$mds-color-theme-control-inactive-hover"
       },
       "border-color": {
         common: "$mds-color-theme-outline-input-normal"
@@ -27,10 +26,21 @@ const radio = {
     },
     pressed: {
       "bg-color": {
-        common: "$mds-color-theme-inverted-button-secondary-pressed"
+        common: "$mds-color-theme-control-inactive-pressed"
       },
       "border-color": {
         common: "$mds-color-theme-outline-input-normal"
+      }
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-control-inactive-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-primary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
       }
     },
     selected: {
@@ -47,10 +57,18 @@ const radio = {
         common: "$mds-color-theme-control-active-hover"
       },
       "pressed-bg-color": {
-        common: "$mds-color-theme-control-active-hover"
+        common: "$mds-color-theme-control-active-pressed"
       },
       "pressed-border-color": {
-        common: "$mds-color-theme-control-active-hover"
+        common: "$mds-color-theme-control-active-pressed"
+      }
+    },
+    "selected-disabled": {
+      "bg-color": {
+        common: "$mds-color-theme-control-active-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-inverted-text-primary-disabled"
       }
     },
     focus: {

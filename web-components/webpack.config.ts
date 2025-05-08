@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import * as fs from "fs";
@@ -18,51 +17,47 @@ const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
+const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg");
 
-const pMomentum = fs.existsSync(p1) ? p1 : fs.existsSync(p2) ? p2 : null;
+export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
+
+function toPosixPath(p: string, glob: string) {
+  return path.posix.join(p.replace(/\\/g, "/"), glob);
+}
+
+let pMomentum: string | null = null;
+if (fs.existsSync(p1)) {
+  pMomentum = p1;
+} else if (fs.existsSync(p2)) {
+  pMomentum = p2;
+}
 if (!pMomentum) {
   throw new Error("Can't find Momentum UI");
 }
 
 const common: webpack.Configuration = {
-  output: {
-    publicPath: "/"
-  },
+  output: { publicPath: "/" },
   resolve: {
     extensions: [".ts", ".js", ".scss"],
-    alias: {
-      "@": pSrc,
-      "@css": pCss,
-      "@img": pImg
+    alias: { ...commonAlias },
+    fallback: {
+      timers: require.resolve("timers-browserify")
     }
   },
   module: {
     rules: [
       {
         test: /\.(png|svg|jpe?g)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "images/[name].[hash:8].[ext]",
-            esModule: false
-          }
-        },
+        use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
         include: pSrc
       },
       {
         test: /\.svg$/,
         use: {
           loader: "url-loader",
-          options: {
-            name: "icons/[name].[hash:8].[ext]",
-            limit: Infinity,
-            esModule: false
-          }
+          options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
         },
-        include: [
-          path.resolve("node_modules/@momentum-design/icons/dist/svg"),
-          path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg")
-        ]
+        include: [path.resolve("node_modules/@momentum-design/icons/dist/svg")]
       }
     ]
   }
@@ -73,12 +68,8 @@ function ruleTS({ isDev }: { isDev: boolean }) {
     test: /\.ts$/,
     loader: "ts-loader",
     include: pSrc,
-    options: {
-      compilerOptions: {
-        declarationMap: isDev,
-        sourceMap: isDev
-      }
-    }
+    exclude: [/\.test\.ts$/, /node_modules/],
+    options: { compilerOptions: { declarationMap: isDev, sourceMap: isDev } }
   };
 }
 
@@ -86,29 +77,22 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   return {
     test: /\.scss$/,
     use: [
-      { loader: "lit-scss-loader", options: { minify: !isDev } },
+      { loader: "lit1-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
-      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
+      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
         loader: "sass-loader",
         options: {
           sourceMap: isDev,
           sassOptions: {
+            silenceDeprecations: ["global-builtin", "legacy-js-api", "import", "mixed-decls"],
             outputStyle: "compressed"
           }
         }
       },
-      {
-        loader: "alias-resolve-loader",
-        options: {
-          alias: {
-            "@css": pCss,
-            "@img": pImg
-          }
-        }
-      }
+      { loader: "alias-resolve-loader", options: { alias: { "@css": pCss, "@img": pImg } } }
     ],
     include: pSrc
   };
@@ -122,34 +106,29 @@ export const commonDev = merge(common, {
   mode: "development",
   devtool: "source-map",
   entry: "./src/[sandbox]/sandbox.ts",
-  output: {
-    path: pBuild
-  },
-  module: {
-    rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })]
-  },
+  output: { path: pBuild },
+  module: { rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })] },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/[sandbox]/index.html",
-      favicon: "./src/[sandbox]/favicon.ico"
-    }),
-    new CopyWebpackPlugin([
-      { from: `${pMomentum}/core/fonts`, to: "fonts" },
-      { from: `${pMomentum}/core/images`, to: "images" },
-      { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
-      { from: `${pMomentum}/icons/fonts`, to: "fonts" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
-      { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
-      { from: `${pCss}/*.css`, to: "css", flatten: true },
-      { from: `${pStats}/**/*.json`, to: "stats", flatten: true }
-    ])
+    new HtmlWebpackPlugin({ template: "./src/[sandbox]/index.html", favicon: "./src/[sandbox]/favicon.ico" }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: `${pMomentum}/core/fonts`, to: "fonts" },
+        { from: `${pMomentum}/core/images`, to: "images" },
+        { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
+        { from: `${pMomentum}/icons/fonts`, to: "fonts" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
+        { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
+        { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
+        { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
+        { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
+        { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
+      ]
+    })
   ]
 });
 
-const dev = merge(commonDev, {
-  plugins: [new CleanWebpackPlugin()]
-});
+const dev = merge(commonDev, { plugins: [new CleanWebpackPlugin()] });
 
 // DIST
 // ----------
@@ -172,6 +151,7 @@ const commonDist = merge(common, {
     "comp/md-button-group-entry": "./src/components/button-group/ButtonGroup",
     "comp/md-card-entry": "./src/components/card/Card",
     "comp/md-card-ai-entry": "./src/components/card-ai/CardAi",
+    "comp/md-card-v2-entry": "./src/components/card-v2/CardV2",
     "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
     "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
     "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",
@@ -179,6 +159,7 @@ const commonDist = merge(common, {
     "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
     "comp/md-coachmark-popover-entry": "./src/components/coachmark-popover/CoachmarkPopover",
     "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
+    "comp/md-country-code-picker-entry": "./src/components/country-code-picker/CountryCodePicker",
     "comp/md-date-range-picker-entry": "./src/components/date-range-picker/DateRangePicker",
     "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
     "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",
@@ -226,7 +207,8 @@ const commonDist = merge(common, {
     "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
     "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
     "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
-    "comp/md-form-entry": "./src/components/form/Form"
+    "comp/md-form-entry": "./src/components/form/Form",
+    "managers/thememanager-entry": "./src/managers/ThemeManager"
   },
   output: {
     path: pDist,
@@ -234,55 +216,38 @@ const commonDist = merge(common, {
     filename: "[name].js",
     chunkFilename: "chunks/md-[id].js",
     libraryTarget: "umd",
-    jsonpFunction: "momentum-web-components-[id]"
+    chunkLoadingGlobal: "momentum-web-components-[id]"
   },
   optimization: {
-    splitChunks: {
-      chunks: "all",
-      maxInitialRequests: Infinity,
-      maxAsyncRequests: Infinity,
-      minSize: 0
-    }
+    splitChunks: { chunks: "all", maxInitialRequests: Infinity, maxAsyncRequests: Infinity, minSize: 0 }
   },
-  externals: [
-    nodeExternals({
-      modulesFromFile: true,
-      importType: "umd"
-    })
-  ],
+  externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
     new CleanWebpackPlugin(),
-    new WebpackLoadChunksPlugin({
-      trimNameEnd: 6
+    new WebpackLoadChunksPlugin({ trimNameEnd: 6 }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
+        { from: `${pMomentum}/core/images`, to: "assets/images" },
+        { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },
+        { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
+        { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
+        { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
+        { from: toPosixPath(pCss, "*.css"), to: "assets/styles/[name][ext]" }
+      ]
     }),
-    new CopyWebpackPlugin([
-      { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
-      { from: `${pMomentum}/core/images`, to: "assets/images" },
-      { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },
-      { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
-      { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
-      { from: `${pCss}/*.css`, to: "assets/styles", flatten: true }
-    ]),
     new RemovePlugin({
       after: {
         log: false,
         include: ["./dist/types/[sandbox]"],
         test: [
-          {
-            folder: "./dist/types",
-            method: (p) => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
-            recursive: true
-          },
-          {
-            folder: "./dist/types",
-            method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
-            recursive: true
-          }
+          { folder: "./dist/types", method: (p) => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p), recursive: true },
+          { folder: "./dist/types", method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p), recursive: true }
         ]
       }
-    }) as any
+    })
   ]
 });
 
@@ -290,22 +255,15 @@ const distDev = merge(commonDist, {
   name: "distDev",
   mode: "development",
   devtool: "source-map",
-  module: {
-    rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })]
-  }
+  module: { rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })] }
 });
 
-const distDevWatch = merge(distDev, {
-  name: "distDevWatch",
-  watch: true
-});
+const distDevWatch = merge(distDev, { name: "distDevWatch", watch: true });
 
 const distProd = merge(commonDist, {
   name: "distProd",
   mode: "production",
-  module: {
-    rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })]
-  }
+  module: { rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })] }
 });
 
 export default [dev, distDev, distDevWatch, distProd];

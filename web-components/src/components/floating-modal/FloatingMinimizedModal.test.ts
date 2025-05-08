@@ -21,7 +21,7 @@ describe("Floating Modal Component", () => {
 
   beforeEach(async () => {
     element = await fixture<FloatingMinimizedModal.ELEMENT>(html`
-      <md-floating-modal-minimized></md-floating-modal-minimized>
+      <md-floating-modal-minimized .maximizeIconAriaLabel=${"Maximize Modal"}></md-floating-modal-minimized>
     `);
   });
   afterEach(fixtureCleanup);
@@ -89,4 +89,16 @@ describe("Floating Modal Component", () => {
     const headerText = element.shadowRoot!.querySelector(".md-floating__header-text") as HTMLElement;
     expect(headerText.textContent?.trim()).toEqual("momentum");
   });
+
+  test("should render maxmimize button when floating modal is minimized", async () => {
+    element.show = true;
+    element.minimize = true;
+    await nextFrame();
+    await elementUpdated(element);
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
+    expect(mdButton.getAttribute("arialabel")).toEqual("Maximize Modal");
+    expect(mdButton).toBeDefined();
+  }
+  );
+  
 });

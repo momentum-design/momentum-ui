@@ -39,6 +39,18 @@
         flex: 1 0 auto;
       }
 
+      &--left-icon {
+        margin-right: calc(#{$dropdown-main-indent} * 2);
+        align-self: center;
+        cursor: pointer;
+        height: 15px;
+        display: flex;
+
+        md-icon {
+          color: var(--md-primary-text-color, $md-gray-05);
+        }
+      }
+
       &--icon {
         @include arrow-transition;
         align-self: center;
@@ -61,11 +73,11 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
       }
     }
 
@@ -84,7 +96,6 @@
       width: 100%;
       z-index: 99;
       padding: calc((var(--dropdown-list-padding) / 16) * 1rem);
-      font-size: var(--body-primary-font-size, inherit);
     }
 
     &-option {
@@ -102,17 +113,17 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
+        background-color: var(--dropdown-list-item-bg-color-hover);
       }
 
       &[focused] {
-        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
+        background-color: var(--dropdown-list-item-bg-color-hover);
         @include remove-focus;
         @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
       }
 
       &[selected] {
-        background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
+        background-color: var(--dropdown-list-item-bg-color-focus);
         @include remove-focus;
         @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
       }
@@ -167,11 +178,11 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
       }
 
       input {
@@ -183,6 +194,10 @@
         flex: 1 1 auto;
         height: $dropdown-min-height;
         outline: none;
+
+        &::placeholder {
+          color: var(--md-secondary-text-color);
+        }
       }
 
       ::input-placeholder {
@@ -235,7 +250,7 @@
   }
 
   .group[readonly] {
-    border-color: var(--dropdown-bg-color-disabled) !important;
+    border-color: var(--dropdown-border-color-disabled) !important;
 
     md-icon {
       color: var(--dropdown-bg-color-disabled) !important;
@@ -252,18 +267,12 @@
     margin-left: calc(#{$dropdown-main-indent} * 2);
     outline: none;
     padding: 0;
-    padding-top: calc(#{$dropdown-main-indent} * 1.5);
     position: relative;
-    vertical-align: bottom;
-    height: inherit;
+    width: rem-calc(20);
+    height: rem-calc(20);
     display: flex;
     align-items: center;
-
-    &.clear {
-      align-items: center;
-      padding-top: #{$dropdown-main-indent};
-      display: flex;
-    }
+    justify-content: center;
 
     md-icon {
       color: var(--combobox-dropdown-item-icon-color);
@@ -280,8 +289,9 @@
   }
 
   .md-new-dropdown {
+    height: $dropdown-new-height;
     &-label {
-      background-color: transparent;
+      background-color: var(--dropdown-bg-color-default);
       border-radius: 8px;
 
       &--text {
@@ -289,17 +299,23 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
+      }
+
+      &:focus {
+        background-color: var(--dropdown-bg-color-focus);
       }
     }
 
     .group {
-      border-radius: 8px;
+      height: $dropdown-new-height;
+      border-radius: $dropdown-new-border-radius;
       background-color: transparent;
+      padding-right: $dropdown-new-padding-right;
     }
   }
 }
@@ -318,12 +334,13 @@
 
 :host([focus-visible]) {
   .md-dropdown-label {
-    border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+    border-color: var(--dropdown-border-color-focus);
     box-shadow: none;
     outline: none;
   }
   .group {
-    border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+    border-color: var(--dropdown-border-color-focus);
+    background-color: var(--dropdown-bg-color-focus);
   }
 
   .md-new-dropdown {
@@ -351,7 +368,7 @@
       }
     }
     &:focus-visible {
-      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+      border-color: var(--dropdown-border-color-focus);
       outline: none;
     }
   }
@@ -368,29 +385,29 @@
       pointer-events: none;
     }
     &:focus-visible {
-      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+      border-color: var(--dropdown-border-color-focus);
       outline: none;
     }
   }
 
   md-help-text {
-    color: var(--dropdown-bg-color-disabled, $md-gray-40);
+    color: var(--md-disabled-text-color, $md-gray-40);
   }
 
   .md-new-dropdown {
     &-label {
       background-color: transparent;
-      border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+      border-color: var(--dropdown-border-color-disabled, $md-gray-40);
       outline: none !important;
       box-shadow: none;
 
       &--text {
-        color: var(--dropdown-bg-color-disabled, $md-gray-40);
+        color: var(--md-disabled-text-color);
       }
 
       .md-dropdown-label--icon {
         md-icon {
-          color: var(--dropdown-bg-color-disabled, $md-gray-40);
+          color: var(--md-disabled-text-color);
         }
       }
 
@@ -400,30 +417,34 @@
         pointer-events: none;
         outline: none !important;
         box-shadow: none;
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled, $md-gray-40);
       }
       &:focus-visible {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
         outline: none !important;
         box-shadow: none;
       }
     }
     .group {
       background: transparent;
-      border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+      border-color: var(--dropdown-border-color-disabled);
       pointer-events: none;
       outline: none !important;
 
       input {
-        color: var(--dropdown-bg-color-disabled, $md-gray-40);
+        color: var(--md-disabled-text-color);
+
+        &::placeholder {
+          color: var(--md-disabled-text-color);
+        }
       }
 
       &:hover,
       &:active {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
       }
       &:focus-visible {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
       }
     }
   }
@@ -433,7 +454,7 @@
   :host([focus-visible]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 2px solid Highlight;
+        border: 2px solid Highlight;        
         &--text {
           forced-color-adjust: none;
           background-color: Canvas;
@@ -460,17 +481,19 @@
     .group {
       input {
         color: HighlightText;
+
+        &::placeholder {
+          color: GrayText;
+        }
       }
-      ::input-placeholder {
-        color: GrayText;
-      }
+      
     }
   }
 
   :host([disabled]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 1px solid GrayText !important;
+        border: 1px solid GrayText;
       }
     }
     .group,
@@ -479,10 +502,11 @@
       outline: none !important;
       input {
         color: GrayText;
-      }
-      ::input-placeholder {
-        color: HighlightText !important;
-      }
+
+        &::placeholder {
+          color: GrayText;
+        }
+      }      
     }
   }
 }

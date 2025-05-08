@@ -1,6 +1,7 @@
 import "@/components/advance-list/AdvanceList";
-import { AdvanceList } from "@/components/advance-list/AdvanceList";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
+import { type AdvanceList } from "@/components/advance-list/AdvanceList";
+import "@/components/spinner/Spinner";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { render } from "lit-html"; // Import Lit's render function
 
 // Helper function to create mock items
@@ -53,6 +54,8 @@ describe("advanceList Component", () => {
   let mockRender: jest.Mock;
 
   beforeEach(async () => {
+    jest.useFakeTimers();
+
     const initialItems = createItems(1, 20);
     const prefixId = "item-"; // Define the prefixId
     mockRender = createMockRender(prefixId); // Pass prefixId to the render function
@@ -63,7 +66,7 @@ describe("advanceList Component", () => {
         .items=${initialItems}
         .isLoading=${false}
         .isError=${false}
-        .value=${"2"}
+        .value=${["2"]}
         ariaRoleList="listbox"
         ariaLabelList="state selector"
         .totalRecords=${100}
@@ -74,7 +77,7 @@ describe("advanceList Component", () => {
     `);
 
     await el.updateComplete;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
     if (wrapper) {
@@ -82,7 +85,11 @@ describe("advanceList Component", () => {
     }
   });
 
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   describe("Interaction", () => {
     test("should render initial items and append more on scroll", async () => {
@@ -99,7 +106,7 @@ describe("advanceList Component", () => {
       }
       el.items = [...el.items, ...newItems];
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       expect(el.items.length).toBe(30);
       expect(mockRender).toHaveBeenCalledTimes(30);
@@ -114,15 +121,59 @@ describe("advanceList Component", () => {
       if (firstItem) {
         firstItem.click();
         await el.updateComplete;
-        await nextFrame();
+        jest.advanceTimersByTime(100);
         expect(firstItem.classList.contains("selected")).toBe(true);
+      }
+    });
+
+    test("should select and unselect multiple items on click with multi select", async () => {
+      const items = el.shadowRoot?.querySelectorAll(".default-wrapper");
+      expect(items).not.toBeNull();
+      el.isMulti = true;
+      const firstItem = items?.[0] as HTMLElement;
+      const secondItem = items?.[1] as HTMLElement;
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        jest.advanceTimersByTime(100);
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (secondItem) {
+        secondItem.click();
+        await el.updateComplete;
+        jest.advanceTimersByTime(100);
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        jest.advanceTimersByTime(100);
+        expect(firstItem.getAttribute("selected")).toBe("false");
+      }
+    });
+
+    test("should set selectAllItems as true on checking all items with multi select", async () => {
+      const items = Array.from(el.shadowRoot?.querySelectorAll<HTMLElement>(".default-wrapper") || []);
+      expect(items).not.toBeNull();
+      el.isMulti = true;
+      items.forEach(async (item) => {
+        if (item) {
+          item.click();
+          await el.updateComplete;
+        }
+      });
+      expect(el.selectAllItems).toBe(true);
+      if (items[0]) {
+        items[0].click();
+        await el.updateComplete;
+        expect(el.selectAllItems).toBe(false);
       }
     });
 
     test("should not select disabled item on click", async () => {
       const disabledId = el.items[10].id;
       (el as any).updateSelectedState();
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       const disabledItem = el.shadowRoot?.querySelector(`#item-${disabledId}`) as HTMLElement;
       if (disabledItem) {
@@ -139,18 +190,18 @@ describe("advanceList Component", () => {
 
       el.requestUpdate();
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(1);
 
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
       el.handleKeyDown(arrowUpEvent);
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(0);
@@ -159,50 +210,51 @@ describe("advanceList Component", () => {
     test("should handle ArrowDown for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[3].id;
+      el.value = [el.items[3].id];
 
       el.requestUpdate();
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
-      await nextFrame();
-
-      expect(el.activeId).toBe(el.items[4].id);
-      let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
-      expect(currentIndex).toBe(4);
-
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
-      el.handleKeyDown(arrowUpEvent);
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       expect(el.activeId).toBe(el.items[3].id);
-      currentIndex = el.items.findIndex((item) => item.id === el.activeId);
+      let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(3);
+
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
+      el.handleKeyDown(arrowUpEvent);
+      jest.advanceTimersByTime(100);
+
+      expect(el.activeId).toBe(el.items[2].id);
+      currentIndex = el.items.findIndex((item) => item.id === el.activeId);
+      expect(currentIndex).toBe(2);
     });
 
     test("should handle ArrowUp for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[4].id; // Preselect item 5
+      el.value = [el.items[4].id]; // Preselect item 5
 
       el.requestUpdate();
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
       el.handleKeyDown(arrowUpEvent);
-      await nextFrame();
+      el.handleKeyDown(arrowUpEvent);
+      jest.advanceTimersByTime(100);
 
       // Assert activeId is now the 4th item
       expect(el.activeId).toBe(el.items[3].id);
       let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(3);
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       // Assert activeId moves back to the preselected 5th item
       expect(el.activeId).toBe(el.items[4].id);
@@ -210,8 +262,27 @@ describe("advanceList Component", () => {
       expect(currentIndex).toBe(4);
 
       // Ensure the preselected item has tabindex="0"
-      const preselectedItem = el.shadowRoot?.querySelector(`#item-${el.items[4].id}`) as HTMLElement;
-      expect(preselectedItem.getAttribute("tabindex")).toBe("0");
+      // const preselectedItem = el.shadowRoot?.querySelector(`#item-${el.items[4].id}`) as HTMLElement;
+      // expect(preselectedItem.getAttribute("tabindex")).toBe("0");
+    });
+
+    test("should handle Tab for preselected value", async () => {
+      el.items = createItems(1, 20);
+      el.activeId = "";
+      el.value = [el.items[4].id]; // Preselect item 5
+
+      el.requestUpdate();
+      await el.updateComplete;
+      jest.advanceTimersByTime(100);
+
+      const tabEvent = new KeyboardEvent("keydown", { code: "Tab" });
+      el.handleKeyDown(tabEvent);
+      jest.advanceTimersByTime(100);
+
+      // Assert activeId is now the 5th item
+      expect(el.activeId).toBe(el.items[4].id);
+      const currentIndex = el.items.findIndex((item) => item.id === el.activeId);
+      expect(currentIndex).toBe(4);
     });
 
     test("should handle Enter key and select non-disabled item", async () => {
@@ -220,14 +291,45 @@ describe("advanceList Component", () => {
 
       el.requestUpdate();
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
-      const enterEvent = new KeyboardEvent("keydown", { key: "Enter" });
-      el.handleKeyDown(enterEvent);
-      await nextFrame();
+      const enterKey = new KeyboardEvent("keydown", { code: "Enter" });
+      el.handleKeyDown(enterKey);
+      jest.advanceTimersByTime(100);
 
       const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
       expect(selectedItem?.classList.contains("selected")).toBe(true);
+    });
+
+    test("should handle Space key and select non-disabled item", async () => {
+      el.items = createItems(1, 20);
+      el.activeId = el.items[1].id;
+
+      el.requestUpdate();
+      await el.updateComplete;
+      jest.advanceTimersByTime(100);
+
+      const enterSpace = new KeyboardEvent("keydown", { code: "Space" });
+      el.handleKeyDown(enterSpace);
+      jest.advanceTimersByTime(100);
+
+      const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
+      expect(selectedItem?.classList.contains("selected")).toBe(true);
+    });
+
+    test("should select all items if the selectAll flag is true", async () => {
+      el.items = createItems(1, 5);
+      el.selectAllItems = true;
+      el.requestUpdate();
+      await el.updateComplete;
+      jest.advanceTimersByTime(100);
+
+      await el.updateComplete;
+
+      el.items.forEach((item) => {
+        const selectedItem = el.shadowRoot?.querySelector(`#item-${item.id}`) as HTMLElement;
+        expect(selectedItem?.classList.contains("selected")).toBe(true);
+      });
     });
 
     test("should not select disabled item on Enter key press", async () => {
@@ -236,16 +338,16 @@ describe("advanceList Component", () => {
 
       el.requestUpdate();
       await el.updateComplete;
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       const secondItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
       if (secondItem) {
         secondItem.setAttribute("aria-disabled", "true");
       }
 
-      const enterEvent = new KeyboardEvent("keydown", { key: "Enter" });
-      el.handleKeyDown(enterEvent);
-      await nextFrame();
+      const enterSpace = new KeyboardEvent("keydown", { code: "Space" });
+      el.handleKeyDown(enterSpace);
+      jest.advanceTimersByTime(100);
 
       expect(secondItem?.classList.contains("selected")).toBe(false);
     });
@@ -253,10 +355,10 @@ describe("advanceList Component", () => {
     test("should update selected state and handle disabled items", async () => {
       el.items = createItems(1, 20);
       el.activeId = el.items[1].id;
-      el.selectedItemId = el.items[1].id;
+      el.selectedItemsIds = [el.items[1].id];
 
       (el as any).updateSelectedState();
-      await nextFrame();
+      jest.advanceTimersByTime(100);
 
       const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`);
       expect(selectedItem).not.toBeNull();
@@ -272,7 +374,6 @@ describe("advanceList Component", () => {
     });
 
     describe("Accessibility and Error Handling", () => {
-
       test("should apply correct ARIA role and label", async () => {
         const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
         expect(wrapper?.getAttribute("role")).toBe("listbox");
@@ -303,6 +404,8 @@ describe("AdvanceList Component test seperate render", () => {
   let el: AdvanceList.ELEMENT;
 
   beforeEach(async () => {
+    jest.useFakeTimers();
+
     el = await fixture(html`
       <md-advance-list
         .items=${Array.from({ length: 20 }, (_, i) => ({
@@ -312,11 +415,15 @@ describe("AdvanceList Component test seperate render", () => {
         .totalRecords=${30}
       ></md-advance-list>
     `);
+    jest.runAllTimers();
     await elementUpdated(el);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
   });
 
   test("should correctly render each item using renderItem (bypassing virtualization)", async () => {

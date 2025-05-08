@@ -7,7 +7,7 @@
  */
 
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const handlebars = require("handlebars");
 const semanticColorData = require("@momentum-ui/tokens/dist/semanticColor.json");
@@ -17,7 +17,7 @@ const fsPath = require("fs-path");
 const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const source = await fse.readFile(template, "utf8");
 
-  var hbs = handlebars.create();
+  let hbs = handlebars.create();
   hbs.registerHelper("nodash", (value) => {
     return value.replace(/-/g, "");
   });

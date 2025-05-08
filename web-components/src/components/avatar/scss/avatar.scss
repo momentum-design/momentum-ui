@@ -106,6 +106,49 @@
     border: $avatar-self__border;
     color: $avatar-self__color;
   }
+  .md-avatar__logo {
+    @include avatar-contents-base;
+    background-color: transparent;
+
+    &[data-channel-style="default"] {
+      &[data-channel-state="active"] {
+        background-color: var(--icon-color-white);
+
+        &.channel-spam {
+          background-color: var(--avatar-spam-bg-color);
+        }
+
+        &.channel-twitter-x {
+          filter: none;
+        }
+      }
+
+      &[data-channel-state="rest"] {
+        background-color: var(--icon-color-dark-gray);
+
+        &.channel-spam {
+          background-color: var(--avatar-spam-bg-color);
+        }
+
+        &.channel-twitter-x > md-icon{
+          
+          filter: var(--avatar-invertable-icon-filter); 
+        }
+      }
+    }
+
+    &[data-channel-style="table"] {
+      background-color: transparent;
+
+      &.channel-spam {
+        background-color: var(--avatar-spam-bg-color);
+      }
+
+      &.channel-twitter-x > md-icon{
+        filter: var(--avatar-invertable-icon-filter); 
+      }
+    }
+  }
 
   .md-avatar__icon {
     @include avatar-contents-base;
@@ -122,7 +165,7 @@
       color: $md-white-100;
     }
   }
-
+  
   .md-avatar__icon,
   .md-avatar__letter {
     &.md-avatar--blue {
@@ -306,6 +349,21 @@
   display: inline-block;
   line-height: 0rem;
   vertical-align: middle;
+  --icon-color-channel-sms-inbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-sms-outbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-email-inbound: var(--avatar-email-icon-color);
+  --icon-color-channel-email-outbound: var(--avatar-email-icon-color);
+  --icon-color-channel-call: var(--avatar-call-icon-color);
+  --icon-color-channel-call-inbound: var(--avatar-call-icon-color);
+  --icon-color-channel-social: var(--avatar-presence-engaged);
+  --icon-color-channel-callback: var(--avatar-call-icon-color);
+  --icon-color-channel-headset: var(--avatar-headset-icon-color);
+  --icon-color-channel-campaign: var(--avatar-campaign-icon-color);
+  --icon-color-channel-chat: var(--avatar-chat-icon-color);
+  --icon-color-channel-emoji:var(--avatar-emoji-icon-color);
+  --icon-color-channel-spam: var(--avatar-spam-icon-color);  
+  --icon-color-white: var(--avatar-white-bg-color);
+  --icon-color-dark-gray: var(--avatar-darkgray-bg-color);
 }
 
 ::slotted(*) {

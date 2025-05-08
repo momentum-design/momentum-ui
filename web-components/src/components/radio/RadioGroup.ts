@@ -88,7 +88,7 @@ export namespace RadioGroup {
       return this.slotted.findIndex((radio) => eventPath.includes(radio));
     }
 
-    private findCheckedRadioIndex() {
+    private findCheckedRadioIndex(): number {
       return this.slotted.findIndex((radio) => (radio as Radio.ELEMENT).checked);
     }
 
@@ -138,32 +138,35 @@ export namespace RadioGroup {
       switch (code) {
         case Key.Enter:
         case Key.Space:
-          {
-            if (!this.isRadioDisabled(this.selected)) {
-              this.setChecked(this.selected);
-              this.notifySelectedChange();
-            }
+          if (!this.isRadioDisabled(this.selected)) {
+            this.setChecked(this.selected);
+            this.notifySelectedChange();
+            event.stopPropagation();
+            event.preventDefault();
           }
+
           break;
         case Key.ArrowUp:
         case Key.ArrowLeft:
-          {
-            if (this.selected === 0) {
-              this.switchRadioOnArrowPress(this.slotted.length - 1, -1);
-            } else {
-              this.switchRadioOnArrowPress(this.selected - 1, -1);
-            }
+          if (this.selected === 0) {
+            this.switchRadioOnArrowPress(this.slotted.length - 1, -1);
+          } else {
+            this.switchRadioOnArrowPress(this.selected - 1, -1);
           }
+
+          event.stopPropagation();
+          event.preventDefault();
           break;
         case Key.ArrowDown:
         case Key.ArrowRight:
-          {
-            if (this.selected === this.slotted.length - 1) {
-              this.switchRadioOnArrowPress(0);
-            } else {
-              this.switchRadioOnArrowPress(this.selected + 1);
-            }
+          if (this.selected === this.slotted.length - 1) {
+            this.switchRadioOnArrowPress(0);
+          } else {
+            this.switchRadioOnArrowPress(this.selected + 1);
           }
+
+          event.stopPropagation();
+          event.preventDefault();
           break;
         default:
           break;
@@ -176,6 +179,14 @@ export namespace RadioGroup {
 
     static get styles() {
       return [reset, styles];
+    }
+
+    public clearSelection() {
+      const selectedIndex = this.findCheckedRadioIndex();
+      if (selectedIndex != -1) {
+        this.checked = -1;
+        (this.slotted[selectedIndex] as Radio.ELEMENT).checked = false;
+      }
     }
 
     render() {

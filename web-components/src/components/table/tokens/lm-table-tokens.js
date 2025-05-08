@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -36,6 +36,18 @@ const table = {
       light: colors.gray[10].name,
       dark: colors.gray[80].name
     }
+  },
+  "main-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "column-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "row-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "header-row-border": {
+    common: "1px solid var(--table-border-color)"
   }
 };
 

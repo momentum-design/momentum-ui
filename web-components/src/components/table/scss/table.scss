@@ -20,12 +20,12 @@
       }
 
       th {
-        background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+        background-color: var(--table-header-bg-color);
         position: sticky;
         top: 0;
 
         &:hover {
-          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+          background-color: var(--table-hover-bg-color);
         }
       }
     }
@@ -39,28 +39,30 @@
 
   .md-table__header {
     tr {
-      background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+      background-color: var(--table-header-bg-color);
     }
 
     th {
-      border-bottom: $table-main-border;
-      border-right: $table-main-border;
-      color: var(--table-text-color, $lm-table-text-color-light);
-      font-size: $font-size-small;
-      font-weight: bold;
+      border-bottom: var(--table-header-row-border);
+      border-right: var(--table-column-border);
+      color: var(--md-table-header-text-color, --table-text-color);
+      font-family: var(--brand-font-bold, $brand-font-regular);
+      font-size: var(--font-size-body-midsize, $font-size-small);
+      font-weight: var(--brand-font-weight-bold, bold);
+            
       padding-left: calc(#{$table-main-indent} * 3);
       text-align: left;
 
       &:hover {
-        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        background-color: var(--table-hover-bg-color);
       }
 
       &:active {
-        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+        background-color: var(--table-pressed-bg-color);
       }
 
       a {
-        color: var(--table-text-color, $lm-table-text-color-light);
+        color: var(--table-text-color);
         align-items: center;
         display: flex;
         gap: 0.5rem;
@@ -73,11 +75,11 @@
       height: $table-row-height;
 
       &:hover {
-        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        background-color: var(--table-hover-bg-color);
       }
 
       &:active {
-        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+        background-color: var(--table-pressed-bg-color);
       }
     }
 
@@ -91,6 +93,7 @@
         @include text-dots;
         min-height: calc(#{$table-main-indent} * 6);
         width: calc(100% - #{$table-main-indent});
+        vertical-align: middle;
       }
 
       md-icon {
@@ -110,7 +113,7 @@
     height: $table-row-height;
 
     td {
-      border-bottom: $table-main-border;
+      border-bottom: var(--table-row-border);
       border-right: $table-main-border;
       vertical-align: top;
     }
@@ -119,10 +122,10 @@
   &--stripped {
     .md-table__body {
       tr:nth-child(even) {
-        background-color: var(--table-stripped-bg-color, $lm-table-stripped-bg-color-light);
+        background-color: var(--table-stripped-bg-color);
 
         &:hover {
-          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+          background-color: var(--table-hover-bg-color);
         }
       }
     }

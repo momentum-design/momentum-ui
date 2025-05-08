@@ -7,11 +7,18 @@ export namespace ParentComponentError {
   @customElementWithCheck("parent-component-error")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
-    @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
-    @internalProperty() shouldFail = false;
     @property({ type: Boolean }) isError = false;
-    @internalProperty() totalRecords = 0;
+    @property({ type: Boolean }) isNonSelectable = false;
+
+    @internalProperty()
+    private page = 1;
+
+    @internalProperty()
+    private shouldFail = false;
+
+    @internalProperty()
+    private totalRecords = 0;
 
     constructor() {
       super();
@@ -44,7 +51,7 @@ export namespace ParentComponentError {
         this.page += 1;
         this.isLoading = false;
         this.isError = false;
-      } catch (err) {
+      } catch (_err) {
         this.isLoading = false;
         this.isError = true;
       } finally {
@@ -81,7 +88,7 @@ export namespace ParentComponentError {
 
     render() {
       return html`
-        <h2>Error scenario</h2>
+        <h2>${this.isNonSelectable ? "Non Selectable List" : "Error scenario"}</h2>
         <md-advance-list
           class="advance-list"
           .items=${this.items}
@@ -90,6 +97,7 @@ export namespace ParentComponentError {
           ariaLabelList="state selector"
           .isError=${this.isError}
           .totalRecords=${this.totalRecords}
+          .isNonSelectable=${this.isNonSelectable}
           @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}
         >

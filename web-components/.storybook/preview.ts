@@ -1,26 +1,25 @@
-import { Parameters } from "@storybook/client-api";
 import { setCustomElements } from "@storybook/web-components";
 import { ThemeNameValues } from "../src/components/theme/Theme";
-import customElements from './custom-elements.json';
+import customElements from "./custom-elements.json";
 import { withThemeDecorator } from "./themeDecorator";
 
-/** 
+/**
  * Custom element file generated automatically by execute this command
  * npx web-component-analyzer src\components\**\*.ts --outFile .storybook\custom-elements.json
-*/
+ */
 
 setCustomElements(customElements);
 
-export const parameters:Parameters = {
+export const parameters = {
   docs: {
-    inlineStories: false,
+    inlineStories: false
   },
   ally: {
     config: {},
     element: "#storybook-panel-root",
     options: {
-      checks: { 'color-contrast': { options: { noScroll: true } } },
-      restoreScroll: true,
+      checks: { "color-contrast": { options: { noScroll: true } } },
+      restoreScroll: true
     }
   },
   controls: {
@@ -28,25 +27,23 @@ export const parameters:Parameters = {
     expanded: true,
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
+      date: /Date$/
     }
   },
   options: {
     storySort: {
-      order: ['Components', 'Internal References'],
-      method: 'alphabetical'
+      order: ["Components", "Internal References"],
+      method: "alphabetical"
     }
-  }  
+  }
 };
 
-export const decorators = [
-  withThemeDecorator
-];
+export const decorators = [withThemeDecorator];
 
 export const globalTypes = {
   theme: {
     description: "Global theme for components",
-    defaultValue: "lumos",
+    defaultValue: "momentumV2",
     toolbar: {
       title: "Theme",
       icon: "globe",
@@ -66,5 +63,18 @@ export const globalTypes = {
       ],
       dynamicTitle: true
     }
+  },
+  isVisualRebrand: {
+    description: "Enable visual rebrand backgrounds",
+    defaultValue: false,
+    toolbar: {
+      title: "Visual Rebrand",
+      icon: "eye",
+      items: [
+        { value: false, title: "Off", icon: "eyeclose" },
+        { value: true, title: "On", icon: "eye" }
+      ],
+      dynamicTitle: true
+    }
   }
-}
+};

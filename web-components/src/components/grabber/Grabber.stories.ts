@@ -7,10 +7,9 @@
  */
 
 import "@/components/grabber/Grabber";
-import "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-grabber
@@ -21,6 +20,7 @@ const render = (args: Args) => html`
     checkedLabel=${args.checkedLabel}
     alignment=${args.alignment}
     ?visible=${args.visible}
+    ?shadow=${args.shadow}
   ></md-grabber>
 `;
 
@@ -31,7 +31,8 @@ export const Grabber: StoryObj = {
     disabled: false,
     alignment: "leading",
     checkedLabel: "Collapse",
-    label: "Expand"
+    label: "Expand",
+    shadow: false
   },
   render: render
 };

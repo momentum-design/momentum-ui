@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const slider = {
@@ -29,10 +28,10 @@ const slider = {
         common: "$mds-color-theme-control-inactive-disabled"
       },
       selection: {
-        common: "$mds-color-theme-control-inactive-pressed"
+        common: "$mds-color-theme-control-active-disabled"
       },
       pointer: {
-        common: "$mds-color-theme-background-solid-tertiary-normal"
+        common: "$mds-color-theme-background-solid-primary-normal"
       }
     },
 

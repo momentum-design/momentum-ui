@@ -60,9 +60,8 @@ export namespace TimePicker {
     @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
     @property({ type: String }) locale = "en-US";
-    @property({ type: String, reflect: true }) value = "00:00:00-08:00"; // ISO FORMAT
+    @property({ type: String, reflect: true }) value: string | null = "00:00:00-08:00"; // ISO FORMAT
 
-    @internalProperty() private localeTwentyFourFormat = false;
     @internalProperty() private finalTwentyFourFormat = false;
     @internalProperty() private timeObject: DateTime = now();
     @internalProperty() private tabNext = false;
@@ -363,7 +362,7 @@ export namespace TimePicker {
           ? html` <span class="colon-separator">:</span> `
           : nothing}
         <md-input
-          compact
+          newMomentum
           select-when-in-focus
           class="${`time-input-box ${unit}`}"
           id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
@@ -387,11 +386,14 @@ export namespace TimePicker {
       const options = ["AM", "PM"];
       return html`
         <md-combobox
-          compact
+          newMomentum
           select-when-in-focus
           class="amPm-combo-box"
           .options=${options}
           .value=${[options[0]]}
+          .preventFilter=${true}
+          is-dropdown-arrow
+          no-clear-icon
           .inputValue=${this.timeValue[TIME_UNIT.AM_PM]}
           .ariaLabel=${this.timeValue[TIME_UNIT.AM_PM]}
           @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"

@@ -6,7 +6,7 @@
  *
  */
 
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -14,6 +14,8 @@ const dropdown = {
   prefix: "lm",
   component: "dropdown",
   "bg-color": {
+    light: colors.white[100].name,
+    dark: colors.gray[100].name,
     hover: {
       light: colors.gray[20].name,
       dark: colors.gray[90].name
@@ -21,14 +23,22 @@ const dropdown = {
     active: {
       light: colors.gray[30].name,
       dark: colors.gray[80].name
+    },
+    focus: {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
     }
   },
   "border-color": {
-    light: colors.gray[30].name,
+    light: colors.gray[40].name,
     dark: colors.gray[80].name,
     focus: {
       light: colors.theme[70].name,
       dark: colors.theme[50].name
+    },
+    disabled: {
+      light: colors.gray[10].name,
+      dark: colors.gray[90].name
     }
   },
   label: {

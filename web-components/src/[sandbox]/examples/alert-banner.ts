@@ -1,13 +1,32 @@
 import "@/components/alert-banner/AlertBanner";
 import "@/components/button/Button";
-import { customElement, html, LitElement, property } from "lit-element";
+import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
+import { Dropdown } from "@/components/dropdown/Dropdown";
+import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+
+enum BannerType {
+  Default = "default",
+  Warning = "warning",
+  Error = "error",
+  Success = "success"
+}
 
 @customElement("alert-banner-template-sandbox")
 export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) default = false;
+  @property({ type: Boolean }) refresh = false;
   @property({ type: Boolean }) warning = false;
   @property({ type: Boolean }) error = false;
   @property({ type: Boolean }) success = false;
+  @property({ type: Number }) refreshClickCount = 0;
+
+  @property({ type: String }) iconBannerType = BannerType.Default;
+  @property({ type: Boolean }) showLeftIcon = true;
+  @property({ type: Boolean }) showRefreshButton = true;
+
+  @internalProperty()
+  private showErrorExpandBanner = false;
 
   async openAlert(kind: string) {
     switch (kind) {
@@ -22,6 +41,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         break;
       case "success":
         this.success = true;
+        break;
+      case "refresh":
+        this.refresh = true;
         break;
       default:
         break;
@@ -43,10 +65,206 @@ export class AlertBannerTemplateSandbox extends LitElement {
       case "success":
         this.success = false;
         break;
+      case "refresh":
+        this.refresh = false;
+        break;
       default:
         break;
     }
     await this.requestUpdate();
+  }
+
+  private get renderAlertBannerWithIcons() {
+    return html`<h2>New Momentum Alert Banner With Icons</h2>
+      <div style="margin-bottom: 15px; display: flex; align-items: center;">
+        Type:
+        <md-dropdown
+          .options="${Object.values(BannerType)}"
+          .defaultOption="${BannerType.Default}"
+          @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+            this.iconBannerType = e.detail.option as BannerType;
+          }}"
+        ></md-dropdown>
+        <md-checkboxgroup group-label="group_process" alignment="horizontal">
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.showLeftIcon}
+            @checkbox-change=${() => (this.showLeftIcon = !this.showLeftIcon)}
+            >Show left icon</md-checkbox
+          >
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.showRefreshButton}
+            @checkbox-change=${() => (this.showRefreshButton = !this.showRefreshButton)}
+            >Show refresh button</md-checkbox
+          >
+        </md-checkboxgroup>
+        <md-button variant="secondary" @click=${() => this.openAlert("refresh")}>Trigger Alert with Icon</md-button>
+      </div>
+      <md-alert-banner
+        ?showBannerTypeIcon=${this.showLeftIcon}
+        ?showRefreshButton=${this.showRefreshButton}
+        ?show=${this.refresh}
+        type=${this.iconBannerType}
+        @alertBanner-hide=${() => this.hideAlert("refresh")}
+        @alertBanner-refresh-button-click=${() => {
+          this.refreshClickCount++;
+          console.log("Refresh button clicked", this.refreshClickCount, "times.");
+        }}
+      >
+        Refresh to see 5 new interactions
+      </md-alert-banner>
+      <span>Refresh button clicked <strong>${this.refreshClickCount}</strong> times.</span>`;
+  }
+
+  private get renderWarningAlertBannerWithSlot() {
+    return html`<div style="width: 640px; margin-bottom: 15px;">
+      <md-alert-banner show showBannerTypeIcon closable type="warning" alignment="leading">
+        %No connection detected. Attempting to reconnect in the background...%
+        <md-button slot="right" variant="secondary" size="28">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderErrorWithExpandButton() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+        <md-alert-banner show showBannerTypeIcon type="error" alignment="leading">
+          %Failed to change status/accept.Show more%
+          <md-button
+            slot="right"
+            variant="ghostInheritTextColor"
+            circle
+            size="24"
+            @button-click=${() => (this.showErrorExpandBanner = !this.showErrorExpandBanner)}
+          >
+            <md-icon
+              slot="icon"
+              name=${this.showErrorExpandBanner ? "arrow-up-bold" : "arrow-down-bold"}
+              iconSet="momentumDesign"
+            ></md-icon>
+          </md-button>
+        </md-alert-banner>
+      </div>
+      ${this.renderErrorInfoBanner}`;
+  }
+
+  private get renderErrorInfoBanner() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+      <md-alert-banner ?show=${this.showErrorExpandBanner} type="default-momentum" alignment="leading">
+        Tracking ID: AHKDUJ-098DBJ-HSYBKIO-345KBK
+        <md-button
+          slot="right"
+          variant="ghostInheritTextColor"
+          circle
+          size="24"
+          @button-click=${() => (this.showErrorExpandBanner = !this.showErrorExpandBanner)}
+        >
+          <md-icon slot="icon" name="copy-bold" iconSet="momentumDesign"></md-icon>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderPromotionalBanner() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+      <md-alert-banner show type="promotional" alignment="leading">
+        <md-icon slot="left" name="sparkle-bold" iconSet="momentumDesign"></md-icon>
+        New feature available! Upgrade to the latest version to get access to the new feature.
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle1() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        closable
+        type="default"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        One line of text with small button and closable<br />
+        <md-button slot="right" variant="secondary" size="28">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle2() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        showRefreshButton
+        type="success"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        • Two lines of text<br />
+        • With small button, refresh button but not closable<br />
+        <md-button slot="right" variant="secondary" size="28">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle3() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner
+        show
+        showBannerTypeIcon
+        showRefreshButton
+        closable
+        type="warning"
+        alignment="leading"
+        titleText="Summary of changes"
+      >
+        • Three lines of text and closable<br />
+        • With big button, refresh button<br />
+        • And closable<br />
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle4() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner show showBannerTypeIcon closable type="error" titleText="Title text">
+        Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap
+        Showing word wrap Showing word wrap
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderBannerWithTitle5() {
+    return html`<div style="width: 840px;">
+      <md-alert-banner show closable type="promotional" alignment="leading" titleText="Title text">
+        • Three lines of text and closable<br />
+        Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap Showing word wrap
+        Showing word wrap Showing word wrap<br />
+        • And closable<br />
+        <md-icon slot="left" name="sparkle-bold" iconSet="momentumDesign"></md-icon>
+        <md-button slot="right" variant="secondary" size="44">
+          <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
+          <span>%Refresh%</span>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
   }
 
   render() {
@@ -93,6 +311,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         @alertBanner-hide=${() => this.hideAlert("success")}
         message="success text from a message attribute"
       ></md-alert-banner>
+      ${this.renderBannerWithTitle1} ${this.renderBannerWithTitle2} ${this.renderBannerWithTitle3}
+      ${this.renderBannerWithTitle4} ${this.renderBannerWithTitle5} ${this.renderAlertBannerWithIcons}
+      ${this.renderWarningAlertBannerWithSlot} ${this.renderErrorWithExpandButton} ${this.renderPromotionalBanner}
     `;
   }
 }

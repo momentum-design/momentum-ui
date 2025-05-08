@@ -7,79 +7,122 @@
  */
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { getLocaleDateFormat } from "@/utils/dateUtils";
 import { property } from "lit-element";
 import { DateTime } from "luxon";
-import "../datepicker/DatePicker";
 import { DatePicker } from "../datepicker/DatePicker";
+
+const DATE_RANGE_SEPARATOR = " - ";
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
   export class ELEMENT extends DatePicker.ELEMENT {
-    @property({ type: String, attribute: "start-date", reflect: true }) startDate: string | undefined = undefined;
-    @property({ type: String, attribute: "end-date", reflect: true }) endDate: string | undefined = undefined;
+    @property({ type: String, attribute: "start-date", reflect: true })
+    startDate: string | undefined | null = undefined;
+
+    @property({ type: String, attribute: "end-date", reflect: true })
+    endDate: string | undefined | null = undefined;
 
     connectedCallback() {
       super.connectedCallback();
       super.render();
-      this.addEventListener("date-selection-change", this.handleDateSelection);
+      this.addEventListener("date-pre-selection-change", this.handleDateSelection);
+      this.updateValue();
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.removeEventListener("date-selection-change", this.handleDateSelection);
+      this.removeEventListener("date-pre-selection-change", this.handleDateSelection);
+    }
+
+    updated(changedProperties: Map<string | number | symbol, unknown>) {
+      super.updated(changedProperties);
+
+      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !changedProperties.has("focusedDate")) {
+        this.updateValue();
+      }
     }
 
     updateValue = () => {
       if (this.startDate && this.endDate) {
-        this.value = `${this.sqlDateToSlashes(this.startDate)} - ${this.sqlDateToSlashes(this.endDate)}`;
+        const formatDate = (dateString: string) =>
+          this.useISOFormat
+          ? dateString
+          : DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+
+        const startDateString = formatDate(this.startDate);
+        const endDateString = formatDate(this.endDate);
+
+        this.value = `${startDateString}${DATE_RANGE_SEPARATOR}${endDateString}`;
       }
     };
+
+    // overload
+    protected getPlaceHolderString() : string {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
+      if (this.useISOFormat) {
+        return `YYYY/MM/DD${DATE_RANGE_SEPARATOR}YYYY/MM/DD`;
+      }
+      const placeholder = getLocaleDateFormat(this.locale).toUpperCase();
+      return `${placeholder}${DATE_RANGE_SEPARATOR}${placeholder}`;
+    };
+
+    // overload
+    isValueValid = (): boolean => {
+      if (!this.validateDate) {
+        return true;
+      }
+      const split = this.value?.split(DATE_RANGE_SEPARATOR) ?? [];
+      return (split.length === 2 && this.validateDateString(split[0]) && this.validateDateString(split[1]));
+    }
+
+    // empty overload to stop prevent super's value change
+    setSelected() {
+    }
 
     dateToSqlTranslate(date: DateTime) {
       return date.toSQLDate();
     }
 
-    sqlDateToSlashes(date: string) {
-      return date.replace(/-+/g, "/");
+    // overload
+    onApplyClick() {
+      this.emitDateRange();
+      this.updateValue();
+
+      if (this.shouldCloseOnSelect) {
+        this.setOpen(false);
+      }
     }
 
-    handleDateSelection = (e: any) => {
+    handleDateSelection(e: any): void {
       const selection: DateTime = e.detail.data;
-      if (this.startDate && this.endDate) {
-        const startObj = DateTime.fromSQL(this.startDate);
-        const endObj = DateTime.fromSQL(this.endDate);
-        if (selection < startObj || selection > endObj) {
-          if (selection < startObj) {
-            // scenario 1 : date is outside, before current start
-            this.startDate = this.dateToSqlTranslate(selection);
-          } else {
-            // scenario 2 : date is outside, after current end
-            this.endDate = this.dateToSqlTranslate(selection);
-          }
-        } else {
-          const selectionTime = selection.toMillis();
-          const endObjTime = endObj.toMillis();
-          const startObjTime = startObj.toMillis();
+      if (!selection) {
+        return;
+      }
 
-          if (Math.abs(selectionTime - endObjTime) < Math.abs(selectionTime - startObjTime)) {
-            // scenario 3 : date is inside, closer to end
-            this.endDate = this.dateToSqlTranslate(selection);
-          } else {
-            // scenario 4 : date is inside, closer to start
-            this.startDate = this.dateToSqlTranslate(selection);
-          }
-        }
-      } else if (this.startDate) {
-        const existing = DateTime.fromSQL(this.startDate);
-        if (selection > existing) {
-          this.endDate = this.dateToSqlTranslate(selection);
-        } else {
+      this.selectedDate = selection;
+      this.focusedDate = selection;
+
+      if (!this.startDate) {
+        this.startDate = this.dateToSqlTranslate(selection);
+      } else if (!this.endDate) {
+        if (selection < DateTime.fromISO(this.startDate)) {
           this.endDate = this.startDate;
           this.startDate = this.dateToSqlTranslate(selection);
+        } else {
+          this.endDate = this.dateToSqlTranslate(selection);
         }
       } else {
-        this.startDate = this.dateToSqlTranslate(e.detail.data);
+        this.startDate = this.dateToSqlTranslate(selection);
+        this.endDate = undefined;
       }
+
+      if (this.controlButtons?.apply) {
+        return;
+      }
+
       this.emitDateRange();
       this.updateValue();
     };
@@ -88,12 +131,12 @@ export namespace DateRangePicker {
       if (!this.startDate || !this.endDate) {
         return;
       }
-      
+
       const event = new CustomEvent("date-range-change", {
         detail: {
           startDate: this.startDate,
-          endDate: this.endDate,
-        },
+          endDate: this.endDate
+        }
       });
       this.dispatchEvent(event);
     }

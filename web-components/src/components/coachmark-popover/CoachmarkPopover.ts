@@ -35,6 +35,9 @@ export namespace CoachmarkPopover {
     @property({ type: String })
     placement: PlacementType = "bottom";
 
+    @property({ type: String, reflect: true })
+    triggerID: string = "";
+
     /**
      * The name of the icon to be displayed before the title in the header.
      * If set, the specified icon will be rendered before the title.
@@ -244,7 +247,11 @@ export namespace CoachmarkPopover {
       super.updated(changedProperties);
 
       if (changedProperties.has("show")) {
-        this.show ? this.notifyCoachCreate() : this.notifyCoachClose();
+        if (this.show) {
+          this.notifyCoachCreate();
+        } else {
+          this.notifyCoachClose();
+        }
       }
     }
 
@@ -335,22 +342,26 @@ export namespace CoachmarkPopover {
      */
     render() {
       return html`
+        <slot name="trigger"></slot>
         <md-popover
           class="md-coachmark"
-          ?is-open=${this.show}
+          ?visible=${this.show}
           role="dialog"
           show-arrow
-          ?show-close=${!this.hideCloseButton}
+          triggerID=${this.triggerID}
+          id="coachmark-popover"
+          ?close-button=${!this.hideCloseButton}
           interactive
           trigger="manual"
+          color="contrast"
+          focus-trap
+          focus-back-to-trigger
           placement=${this.placement}
-          @popover-open-changed="${(e: CustomEvent) => {
-            if (!e.detail.isOpen) {
-              this.notifyCoachClose();
-            }
+          hide-on-escape
+          @hidden="${() => {
+            this.notifyCoachClose();
           }}"
         >
-          <slot slot="triggerElement"></slot>
           <div class="md-coachmark__popper" tabindex="-1">
             ${this.renderHeader()} ${this.renderBody()} ${this.renderFooter()}
           </div>

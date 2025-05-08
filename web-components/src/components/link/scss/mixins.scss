@@ -1,29 +1,34 @@
 @mixin link-color(
-  $color: var(--link-default, $lm-link-default-light),
-  $color-hover: var(--link-hover, $lm-link-hover-light),
-  $color-pressed: var(--link-pressed, $lm-link-pressed-light),
-  $color-focus: var(--link-focus, $lm-link-focus-light),
-  $focus-outline: var( --link-focus-outline, $lm-link-focus-outline-light),
-  $color-disabled: var(--link-disabled, $lm-link-disabled-light),
-  $color-inline: var(--link-inline, $lm-link-inline-light),
-  $color-inline-hover: var(--link-inline-hover, $lm-link-inline-hover-light),
-  $color-inline-pressed: var(--link-inline-pressed, $lm-link-inline-pressed-light),
-  $color-inline-focus: var(--link-inline-focus, $lm-link-inline-focus-light),
-  $color-blue: var(--link-blue, $md-link-blue-light),
-  $color-blue-hover: var(--link-blue-hover,$md-link-blue-hover-light),
-  $color-blue-active: var(--link-blue-active,$md-link-blue-active-light),
-  $color-red: var(--link-red, $md-link-red-light),
-  $color-red-hover: var(--link-red-hover, $md-link-red-hover-light),
-  $color-red-active: var(--link-red-active, $md-link-red-active-light),
-  $color-green: var(--link-green, $md-link-green-light),
-  $color-green-hover: var(--link-green-hover, $md-link-green-hover-light),
-  $color-green-active: var(--link-green-active, $md-link-green-active-light),
-  $color-yellow: var(--link-yellow, $md-link-yellow-light),
-  $color-yellow-hover: var(--link-yellow-hover, $md-link-yellow-hover-light),
-  $color-yellow-active: var(--link-yellow-active, $md-link-yellow-active-light),
-  $color-orange: var(--link-orange, $md-link-orange-light),
-  $color-orange-hover: var(--link-orange-hover, $md-link-orange-hover-light),
-  $color-orange-active: var(--link-orange-active, $md-link-orange-active-light)
+  $color: var(--link-default),
+  $color-hover: var(--link-hover),
+  $color-pressed: var(--link-pressed),
+  $color-focus: var(--link-focus),
+  $focus-outline: var(--link-focus-outline),
+  $color-disabled: var(--link-disabled),
+  $color-inline: var(--link-inline),
+  $color-inline-hover: var(--link-inline-hover),
+  $color-inline-pressed: var(--link-inline-pressed),
+  $color-inline-focus: var(--link-inline-focus),
+  $color-blue: var(--link-blue),
+  $color-blue-hover: var(--link-blue-hover),
+  $color-blue-active: var(--link-blue-active),
+  $color-red: var(--link-red),
+  $color-red-hover: var(--link-red-hover),
+  $color-red-active: var(--link-red-active),
+  $color-green: var(--link-green),
+  $color-green-hover: var(--link-green-hover),
+  $color-green-active: var(--link-green-active),
+  $color-yellow: var(--link-yellow),
+  $color-yellow-hover: var(--link-yellow-hover),
+  $color-yellow-active: var(--link-yellow-active),
+  $color-orange: var(--link-orange),
+  $color-orange-hover: var(--link-orange-hover),
+  $color-orange-active: var(--link-orange-active),
+  $color-inverted: var(--link-inverted),
+  $color-inverted-hover: var(--link-inverted-hover),
+  $color-inverted-pressed: var(--link-inverted-pressed),
+  $color-inverted-focus: var(--link-inverted-focus),
+  $color-inverted-focus-outline: var(--link-inverted-focus-outline)
 ) {
   color: $color;
 
@@ -46,18 +51,37 @@
   }
 
   &.md-link--inline {
-    color: $color-inline;
+    &:not(.md-link--inline-style-default) {
+      color: $color-inline;
+
+      &:hover {
+        color: $color-inline-hover;
+      }
+
+      &:focus {
+        color: $color-inline-focus;
+      }
+
+      &.active {
+        color: $color-inline-pressed;
+      }
+    }
+  }
+
+  &.inverted {
+    color: $color-inverted;
 
     &:hover {
-      color: $color-inline-hover;
+      color: $color-inverted-hover;
+    }
+
+    &:active {
+      color: $color-inverted-pressed;
     }
 
     &:focus {
-      color: $color-inline-focus;
-    }
-
-    &.active {
-      color: $color-inline-pressed;
+      box-shadow: 0 0 0 2px $color-inverted-focus-outline;
+      color: $color-inverted-focus;
     }
   }
 
@@ -121,4 +145,3 @@
     }
   }
 }
-

@@ -10,11 +10,19 @@ import { dropdownObjectLongOptions, dropdownStringOptions } from "@/[sandbox]/ex
 import "@/components/dropdown/Dropdown";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { Dropdown } from "./Dropdown"; // Keep type import as a relative path
 
 describe("Dropdown Component", () => {
-  afterEach(() => fixtureCleanup());
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   const createKeyboardEvent = (code: string) =>
     new KeyboardEvent("keydown", {
@@ -53,8 +61,9 @@ describe("Dropdown Component", () => {
     it("should set correct handle focusin", async () => {
       const eventIn = new Event("focusin");
 
-      setTimeout(() => dropdown["handleFocusIn"](eventIn));
-      const focusIn = await oneEvent(dropdown, "dropdown-focus-in");
+      const focusInPromise = oneEvent(dropdown, "dropdown-focus-in");
+      dropdown["handleFocusIn"](eventIn);
+      const focusIn = await focusInPromise;
       expect(focusIn).toBeDefined();
     });
 
@@ -69,25 +78,28 @@ describe("Dropdown Component", () => {
       const eventIn = new Event("focusin");
       const eventOut = new Event("focusout");
 
-      setTimeout(() => dropdown["handleFocusIn"](eventIn));
+      const foucsInPromise = oneEvent(dropdown, "dropdown-focus-in");
+      dropdown["handleFocusIn"](eventIn);
 
-      const focusIn = await oneEvent(dropdown, "dropdown-focus-in");
+      const focusIn = await foucsInPromise;
       expect(focusIn).toBeDefined();
 
-      setTimeout(() => dropdown["handleFocusOut"](eventOut));
+      const focusOutPromise = oneEvent(dropdown, "dropdown-focus-out");
+      dropdown["handleFocusOut"](eventOut);
 
-      const focusOut = await oneEvent(dropdown, "dropdown-focus-out");
-      expect(focusOut).toBeDefined();
+      await focusOutPromise;
+      expect(focusOutPromise).toBeDefined();
 
       dropdown.dispatchEvent(new FocusEvent("focusin"));
       dropdown.focus();
 
       dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(1000);
 
-      setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+      const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
 
-      const { detail: detailOne } = await oneEvent(dropdown, "dropdown-selected");
+      const { detail: detailOne } = await dropdownSelectedPromise;
       expect(detailOne).toBeDefined();
       expect(detailOne).toEqual(
         expect.objectContaining({
@@ -120,9 +132,10 @@ describe("Dropdown Component", () => {
 
       expect(dropdown["focusedIndex"]).toBe(dropdownStringOptions.length - 1);
 
-      setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+      const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
 
-      const { detail } = await oneEvent(dropdown, "dropdown-selected");
+      const { detail } = await dropdownSelectedPromise;
 
       expect(dropdown["expanded"]).toBeFalsy();
 
@@ -150,7 +163,9 @@ describe("Dropdown Component", () => {
       await toggleExpandCollapseDropdown(dropdown);
 
       Event.prototype.composedPath = originalComposedPath;
-      const outsideDiv = await fixture<HTMLElement>(html` <div></div> `);
+      const outsideDivPromise = fixture<HTMLElement>(html` <div></div> `);
+      jest.runAllTimers();
+      const outsideDiv = await outsideDivPromise;
       const composedPathMock1 = jest.fn(() => [outsideDiv]);
       Event.prototype.composedPath = composedPathMock1;
       dropdown.onOutsideClick(new MouseEvent("click"));
@@ -172,9 +187,10 @@ describe("Dropdown Component", () => {
 
       //
       {
-        setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+        const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+        dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
 
-        const { detail } = await oneEvent(dropdown, "dropdown-selected");
+        const { detail } = await dropdownSelectedPromise;
         expect(dropdown["expanded"]).toBeFalsy();
 
         expect(detail).toEqual(
@@ -191,9 +207,10 @@ describe("Dropdown Component", () => {
 
       //
       {
-        setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+        const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+        dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
 
-        const { detail } = await oneEvent(dropdown, "dropdown-selected");
+        const { detail } = await dropdownSelectedPromise;
         expect(dropdown["expanded"]).toBeFalsy();
 
         expect(detail).toEqual(
@@ -223,6 +240,10 @@ describe("Dropdown Component", () => {
         " non-trimmed-with-spaces   "
       ];
 
+      const consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {
+        /* no-op */
+      });
+
       dropdown = await fixture<Dropdown.ELEMENT>(html`
         <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>
       `);
@@ -230,6 +251,8 @@ describe("Dropdown Component", () => {
       await elementUpdated(dropdown);
 
       expect(dropdown["renderOptions"].length).toBe(4);
+
+      consoleSpy.mockRestore();
     });
 
     it("should set correct aria attributes", async () => {
@@ -237,8 +260,8 @@ describe("Dropdown Component", () => {
 
       await elementUpdated(dropdown);
 
-      expect(dropdown.label!.getAttribute("aria-expanded")).toEqual("true");
-      expect(dropdown.label!.getAttribute("aria-label")).toEqual("Test");
+      expect(dropdown.label.getAttribute("aria-expanded")).toEqual("true");
+      expect(dropdown.label.getAttribute("aria-label")).toEqual("Test");
     });
 
     it("should apply disabled attribute", async () => {
@@ -456,6 +479,31 @@ describe("Dropdown Component", () => {
       `);
 
       expect(dropdown.shadowRoot!.querySelector(".md-dropbox__messages")).not.toBeNull();
+    });
+
+    test("should render left-icon even with passing searchable", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          htmlId="dropDownWarning"
+          left-icon="search-bold"
+          .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as Dropdown.Message]}
+        ></md-dropdown>
+      `);
+
+      expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).not.toBeNull();
+    });
+
+    test("should render not left-icon wrapper when we dont pass left icon and searchable", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          htmlId="dropDownWarning"
+          .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as Dropdown.Message]}
+        ></md-dropdown>
+      `);
+
+      expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).toBeNull();
     });
   });
 });

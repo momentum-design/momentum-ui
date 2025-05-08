@@ -1,14 +1,19 @@
-import "./Checkbox";
-import { Checkbox } from "./Checkbox";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
+import "./Checkbox";
+import { type Checkbox } from "./Checkbox";
 
 describe("Checkbox component", () => {
   let element: Checkbox.ELEMENT;
-  afterEach(fixtureCleanup);
+
   beforeEach(async () => {
     element = await fixture<Checkbox.ELEMENT>(`<md-checkbox label="text"></md-checkbox>`);
   });
+
+  afterEach(() => {
+    fixtureCleanup();
+  });
+
   test("should render checkbox", async () => {
     expect(element).not.toBeNull();
   });
@@ -104,8 +109,9 @@ describe("Checkbox component", () => {
     const event = new MouseEvent("click");
     element.dispatchEvent(event);
 
-    setTimeout(() => element.handleChange(event));
-    const { detail } = await oneEvent(element, "checkbox-change");
+    const checkboxChangePromise = oneEvent(element, "checkbox-change");
+    element.handleChange(event);
+    const { detail } = await checkboxChangePromise;
     expect(detail).toBeDefined();
     expect(detail.sourceEvent).toEqual(event);
   });
@@ -116,8 +122,9 @@ describe("Checkbox component", () => {
     });
     element.dispatchEvent(event);
 
-    setTimeout(() => element.handleChange(event));
-    const { detail } = await oneEvent(element, "checkbox-change");
+    const checkboxChangePromise = oneEvent(element, "checkbox-change");
+    element.handleChange(event);
+    const { detail } = await checkboxChangePromise;
     expect(detail).toBeDefined();
     expect(detail.sourceEvent).toEqual(event);
   });

@@ -12,6 +12,7 @@
   font-family: "Inter Regular";
   font-style: normal;
   font-weight: 400;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -20,6 +21,7 @@
   font-family: "Inter Light";
   font-style: normal;
   font-weight: 300;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -28,6 +30,7 @@
   font-family: "Inter Bold";
   font-style: normal;
   font-weight: 700;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -36,14 +39,16 @@
   font-family: "Inter Thin";
   font-style: normal;
   font-weight: 200;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
   font-display: fallback;
   font-family: "Inter Thin Oblique";
-  font-style: 200;
+  font-style: oblique;
   font-weight: 400;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -52,6 +57,7 @@
   font-family: "Inter Extra Light";
   font-style: normal;
   font-weight: 250;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -60,6 +66,7 @@
   font-family: "Inter Extra Light Oblique";
   font-style: italic;
   font-weight: 250;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -68,6 +75,7 @@
   font-family: "Inter Light Oblique";
   font-style: italic;
   font-weight: 300;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -76,6 +84,7 @@
   font-family: "Inter Regular Oblique";
   font-style: italic;
   font-weight: 400;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -84,6 +93,7 @@
   font-family: "Inter Medium";
   font-style: normal;
   font-weight: 500;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -92,6 +102,7 @@
   font-family: "Inter Bold Oblique";
   font-style: italic;
   font-weight: 700;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -100,6 +111,7 @@
   font-family: "Inter Heavy";
   font-style: normal;
   font-weight: 800;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 
@@ -108,6 +120,7 @@
   font-family: "Inter Heavy Oblique";
   font-style: italic;
   font-weight: 800;
+  font-feature-settings: "ss02";
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }
 

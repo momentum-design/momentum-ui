@@ -1,6 +1,6 @@
 $breadcrumb-padding: rem-calc(9 14 9) !default;
 $breadcrumb-side-padding: rem-calc(0 12) !default;
 $breadcrumb-font-size: rem-calc(14) !default;
-$breadcrumb-color: var(--breadcrumb-color, $lm-breadcrumb-color-light) !default;
-$breadcrumb-color-current: var(--breadcrumb-color-current, $lm-breadcrumb-color-current-light) !default;
-$breadcrumb-slash-color: var(--breadcrumb-color-slash, $lm-breadcrumb-color-slash-light) !default;
+$breadcrumb-color: var(--breadcrumb-color) !default;
+$breadcrumb-color-current: var(--breadcrumb-color-current) !default;
+$breadcrumb-slash-color: var(--breadcrumb-color-slash) !default;

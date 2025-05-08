@@ -1,20 +1,14 @@
 @use "settings" as constants;
 
 .md-coachmark {
-  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);  
-
-  md-popover::part(popover) {    
-
-    min-width: constants.$min-width;
-    max-width: constants.$max-width;
-  }
+  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);
 
   &__popper {
     border-radius: constants.$main-radius;
 
     min-width: constants.$min-width;
     max-width: constants.$max-width;
-    width: 282px;
+    width: 266px;
 
     //Header
     .header-container {
@@ -25,7 +19,7 @@
       align-items: center;
 
       &.hide-close {
-        margin-right: constants.$main-padding;;
+        margin-right: constants.$main-padding;
       }
     }
 
@@ -58,27 +52,4 @@
       flex-grow: 1;
     }
   }
-}
-
-@media (forced-colors:active) {
-  .md-coachmark {
-    
-    &__popper {  
-      background-color: Canvas;
-      outline: 1px solid CanvasText;
-    }
-  }
-
-  .md-coachmark__popper--top .md-coachmark__arrow,
-  .md-coachmark__popper--bottom .md-coachmark__arrow {
-    border-left: 0.625rem solid Canvas;
-    border-right: 0.625rem solid Canvas;
-  }
-
-  .md-coachmark__popper--right .md-coachmark__arrow,
-  .md-coachmark__popper--left .md-coachmark__arrow {
-    border-top: 0.625rem solid Canvas;
-    border-bottom: 0.625rem solid Canvas;
-  }
-
 }

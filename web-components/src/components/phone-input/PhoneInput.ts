@@ -2,21 +2,11 @@ import "@/components/combobox/ComboBox";
 import "@/components/input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { customArray } from "country-codes-list";
-import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { LitElement, html, internalProperty, property, query } from "lit-element";
-import { nothing } from "lit-html";
-import { repeat } from "lit-html/directives/repeat.js";
+import { LitElement, html, internalProperty, property } from "lit-element";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
-  export interface Country {
-    name: string;
-    value: string;
-    code: string;
-  }
-
   export type Attributes = {
     codePlaceholder: string;
     numberPlaceholder: string;
@@ -26,11 +16,6 @@ export namespace PhoneInput {
     errorMessage: string;
     flagClass: string;
     showErrorMessage: string;
-  };
-
-  export type CountryCalling = {
-    id: string;
-    value: string;
   };
 
   @customElementWithCheck("md-phone-input")
@@ -50,56 +35,26 @@ export namespace PhoneInput {
     @property({ type: String }) clearAriaLabel = "Clear Input";
     @property({ type: String }) clearCountryCodeAriaLabel = "Clear Country Code";
     @property({ type: String }) id = "";
+    @property({ type: Boolean }) newMomentum = false;
 
     @internalProperty() private countryCode: CountryCode = "US";
-    @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
     @internalProperty() private isValid = true;
 
-    @query("md-combobox") combobox!: HTMLElement;
-
     connectedCallback() {
       super.connectedCallback();
-      this.codeList = customArray({
-        name: "{countryNameEn}",
-        value: "{countryCallingCode}",
-        code: "{countryCode}"
-      });
       if (this.id === "") {
-        this.id = `md-phone-input-${Math.random().toString(36).substr(2, 4)}`;
+        this.id = `md-phone-input-${Math.random().toString(36).substring(2, 6)}`;
       }
       this.validateInput(this.value);
-    }
-
-    getCountryFlag(code: string) {
-      return html`
-        <span class="flag-svg-wrapper">
-          <img src="${findFlagUrlByIso2Code(code)}" />
-        </span>
-      `;
-    }
-
-    countryCodeOptionTemplate(country: PhoneInput.Country, index: number) {
-      return html`
-        <div
-          part="option"
-          class="md-phone-input__option"
-          display-value="+${country.value}"
-          slot=${index}
-          aria-label="+${country.value}, ${country.name}, ${country.code}"
-        >
-          ${this.showFlags ? this.getCountryFlag(country.code) : nothing}
-          <span>${country.name}</span>
-          <span>+${country.value}</span>
-        </div>
-      `;
     }
 
     validateNumber() {
       this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
     }
 
-    handleCountryChange(event: CustomEvent) {
+    handleCountryChange(e: CustomEvent) {
+      const event = e.detail.srcEvent;
       if (!event.detail.value || !event.detail.value?.id) {
         this.countryCode = "US";
         this.countryCallingCode = "";
@@ -188,25 +143,8 @@ export namespace PhoneInput {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
     }
 
-    getFormatedCountryCallingCode() {
-      return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
-    }
-
-    getModStyle() {
-      return html`
-        <style>
-          .md-phone-input__container md-combobox {
-            width: 5.625rem;
-          }
-
-          md-combobox::part(group) {
-            border-left-style: none;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-            padding-left: 0;
-          }
-        </style>
-      `;
+    get flagClassMap() {
+      return { "new-momentum": this.newMomentum };
     }
 
     static get styles() {
@@ -215,27 +153,23 @@ export namespace PhoneInput {
 
     render() {
       return html`
-        ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">
-          ${this.showFlags ? html` <span class="flag-box">${this.getCountryFlag(this.countryCode)}</span> ` : nothing}
-          <md-combobox
-            part="combobox"
+          <md-country-code-picker
+            part="md-country-code-picker"
+            exportparts="option: option"
             ?disabled=${this.disabled}
-            shape="${this.pill ? "pill" : "none"}"
+            ?pill=${this.pill}
+            ?show-flags=${this.showFlags}
             ariaLabel=${this.countryCodeAriaLabel}
-            placeholder="${this.codePlaceholder}"
-            .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
-            @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            clear-icon-height="${this.clearIconHeight}"
-            with-custom-content
+            codePlaceholder="${this.codePlaceholder}"
+            .countryCallingCode="${this.countryCallingCode}"
+            @country-code-changed="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            .clearIconHeight="${this.clearIconHeight}"
+            ?newMomentum=${this.newMomentum}
+            ?isDropdownArrow=${true}
             .clearAriaLabel="${this.clearCountryCodeAriaLabel}"
-          >
-            ${repeat(
-              this.codeList,
-              (country: PhoneInput.Country) => country.name,
-              (country: PhoneInput.Country, index) => this.countryCodeOptionTemplate(country, index)
-            )}
-          </md-combobox>
+          ></md-country-code-picker>
+
           <md-input
             part="md-input"
             ?disabled=${this.disabled}
@@ -248,6 +182,7 @@ export namespace PhoneInput {
             shape="${this.pill ? "pill" : "none"}"
             .ariaControls=${this.id}
             clear
+            ?newMomentum=${this.newMomentum}
             clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"

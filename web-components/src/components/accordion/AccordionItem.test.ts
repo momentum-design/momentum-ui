@@ -1,14 +1,15 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./Accordion";
-import { Accordion } from "./Accordion";
+import { type Accordion } from "./Accordion";
 import "./AccordionItem";
-import { AccordionItem } from "./AccordionItem";
+import { type AccordionItem } from "./AccordionItem";
 
 describe("AccordionItem", () => {
   let accordion: Accordion.ELEMENT;
   let accordionItems: AccordionItem.ELEMENT[];
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     accordion = await fixture(html`
       <md-accordion>
         <md-accordion-item slot="accordion-item" label="Header №1">
@@ -29,8 +30,13 @@ describe("AccordionItem", () => {
       </md-accordion>
     `);
     accordionItems = accordion.slotted as AccordionItem.ELEMENT[];
+    jest.runAllTimers();
   });
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should correct render label", async () => {
     expect(accordionItems[0].label).toEqual("Header №1");
@@ -62,18 +68,23 @@ describe("AccordionItem", () => {
 
   test("should dispatch events when item become expanded", async () => {
     accordionItems[2].expanded = true;
-    setTimeout(() => accordionItems[2]["notifyExpandedHeader"]());
-    const { detail } = await oneEvent(accordionItems[2], "accordion-item-expanded");
+
+    const itemExpandedPromise = oneEvent(accordionItems[2], "accordion-item-expanded");
+    accordionItems[2]["notifyExpandedHeader"]();
+    const { detail } = await itemExpandedPromise;
     expect(detail).toBeDefined();
     expect(detail.id).toEqual(accordionItems[2]["uniqueId"]);
 
-    setTimeout(() => accordionItems[2]["notifyAccordionFocus"]());
-    const event = await oneEvent(accordionItems[2], "focus-visible");
+    const focusVisiblePromise = oneEvent(accordionItems[2], "focus-visible");
+    accordionItems[2]["notifyAccordionFocus"]();
+    const event = await focusVisiblePromise;
     expect(event).toBeDefined();
   });
 
   test("should correct set level", async () => {
-    const warnSpy = jest.spyOn(console, "warn");
+    const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /* */
+    });
     const warnMessage = "Please set appropriate section heading level";
 
     accordionItems[0].level = 0;
@@ -102,9 +113,10 @@ describe("AccordionItem", () => {
 
   test("should handle click event", async () => {
     const mouseDown = new MouseEvent("mousedown");
-    setTimeout(() => accordionItems[1].handleMouseDown(mouseDown));
+    const itemClickPromise = oneEvent(accordionItems[1], "accordion-item-click");
+    accordionItems[1].handleMouseDown(mouseDown);
 
-    const { detail } = await oneEvent(accordionItems[1], "accordion-item-click");
+    const { detail } = await itemClickPromise;
 
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(mouseDown);
@@ -114,9 +126,11 @@ describe("AccordionItem", () => {
     const keydownEvent = new KeyboardEvent("keydown", {
       code: "Enter"
     });
-    setTimeout(() => accordionItems[1].handleKeyDown(keydownEvent));
 
-    const { detail } = await oneEvent(accordionItems[1], "accordion-item-keydown");
+    const keydownPromise = oneEvent(accordionItems[1], "accordion-item-keydown");
+    accordionItems[1].handleKeyDown(keydownEvent);
+
+    const { detail } = await keydownPromise;
 
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(keydownEvent);

@@ -58,7 +58,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
     @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
-    shouldWrapFocus: () => boolean = () => false;
+    shouldWrapFocus: () => boolean = () => true;
+    useLegacyFindFocusable: () => boolean = () => true;
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
@@ -202,7 +203,24 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return false;
     }
 
+    private handleFindFocusableSlot(slot: HTMLSlotElement, matches: Set<HTMLElement>) {
+      const childElements = slot.assignedNodes().filter((node) => node.nodeType === node.ELEMENT_NODE);
+      if (childElements.length) {
+        const parent = childElements[0].parentElement;
+        if (parent) {
+          this.findFocusable(parent, matches);
+        }
+      }
+    }
+
     private findFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
+      if (this.useLegacyFindFocusable()) {
+        return this.legacyFindFocusable(root, matches);
+      }
+      return this.newFindFocusable(root, matches);
+    }
+
+    private legacyFindFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
       const children = Array.from(root.children) as HTMLElement[];
       for (const child of children) {
         if (this.isHidden(child)) {
@@ -220,15 +238,35 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         if (child.shadowRoot) {
           this.findFocusable(child.shadowRoot, matches);
         } else if (child.tagName === "SLOT") {
-          const childElements = (child as HTMLSlotElement)
-            .assignedNodes()
-            .filter((node) => node.nodeType === node.ELEMENT_NODE);
-          if (childElements.length) {
-            const parent = childElements[0].parentElement;
-            if (parent) {
-              this.findFocusable(parent, matches);
-            }
-          }
+          const slot = child as HTMLSlotElement;
+          this.handleFindFocusableSlot(slot, matches);
+        } else {
+          this.findFocusable(child, matches);
+        }
+      }
+      return [...matches];
+    }
+
+    private newFindFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
+      const children = Array.from(root.children) as HTMLElement[];
+      for (const child of children) {
+        if (this.isHidden(child)) {
+          continue;
+        }
+
+        if (this.shouldSkipFocus(child)) {
+          break;
+        }
+
+        if (this.isFocusable(child)) {
+          matches.add(child);
+        }
+
+        if (child.shadowRoot) {
+          this.findFocusable(child.shadowRoot, matches);
+        } else if (child.tagName === "SLOT") {
+          const slot = child as HTMLSlotElement;
+          this.handleFindFocusableSlot(slot, matches);
         } else {
           this.findFocusable(child, matches);
         }
@@ -243,19 +281,40 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return false;
     }
 
-    private findElement(activeElement: HTMLElement) {
+    private findElement(activeElement: HTMLElement): number {
       return this.focusableElements.findIndex((element) => this.isEqualFocusNode(activeElement, element));
     }
 
-    private focusTrap(direction: boolean) {
+    private calculateNextFocusIndex(activeIndex: number, direction: boolean): number {
+      if (direction) {
+        // Moving backward
+        if (activeIndex > 0) {
+          return activeIndex - 1;
+        } else if (this.shouldWrapFocus()) {
+          return this.focusableElements.length - 1;
+        }
+        return 0;
+      }
+
+      // Moving forward
+      if (activeIndex + 1 < this.focusableElements.length) {
+        return activeIndex + 1;
+      } else if (this.shouldWrapFocus()) {
+        return 0;
+      } else {
+        return this.focusableElements.length - 1;
+      }
+    }
+
+    private trapFocus(direction: boolean) {
       const activeElement = this.getDeepActiveElement!() as HTMLElement;
       const activeIndex = this.findElement(activeElement);
+
       if (direction) {
         if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
           this.focusTrapIndex--;
         } else {
-          this.focusTrapIndex =
-            activeIndex > (this.shouldWrapFocus() ? 1 : 0) ? activeIndex - 1 : this.focusableElements.length - 1;
+          this.focusTrapIndex = this.calculateNextFocusIndex(activeIndex, direction);
         }
       } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
         this.focusTrapIndex++;
@@ -265,13 +324,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           this.tryFocus(nextEleToFocus);
         }
       } else {
-        this.focusTrapIndex =
-          activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : this.shouldWrapFocus() ? 1 : 0;
+        this.focusTrapIndex = this.calculateNextFocusIndex(activeIndex, direction);
       }
     }
 
     handleFocusOnClear = () => {
-      this.focusTrap(true);
+      this.trapFocus(true);
     };
 
     private hasAutofocus(element: HTMLElement) {
@@ -306,23 +364,35 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
      * @param   triggerElement  The trigger element.
      * @returns void
      */
-    protected setFocusOnTrigger(triggerElement: HTMLElement) {
-      let deepNestedTriggerElement;
-      if (triggerElement.shadowRoot!) {
-        deepNestedTriggerElement = this.findFocusable(triggerElement.shadowRoot!, new Set());
-      } else if (this.isFocusable(triggerElement)) {
-        deepNestedTriggerElement = [triggerElement];
-      } else {
-        deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
+    protected setFocusOnTrigger(triggerElement?: HTMLElement) {
+      if (!triggerElement) {
+        return;
       }
-      if (deepNestedTriggerElement[0]) {
-        const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
+
+      const deepNestedTriggerElement = this.getDeepNestedTriggerElement(triggerElement);
+
+      if (deepNestedTriggerElement.length > 0) {
+        const focusableIndex = this.findElement(deepNestedTriggerElement[0]);
         this.focusTrapIndex = focusableIndex;
       }
     }
 
+    private getDeepNestedTriggerElement(triggerElement: HTMLElement): HTMLElement[] {
+      if (triggerElement.shadowRoot) {
+        return this.findFocusable(triggerElement.shadowRoot, new Set());
+      } else if (this.isFocusable(triggerElement)) {
+        return [triggerElement];
+      } else {
+        return this.findFocusable(triggerElement, new Set());
+      }
+    }
+
     protected setFocusableElements() {
-      this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
+      if (this.shadowRoot) {
+        this.focusableElements = this.findFocusable(this.shadowRoot, new Set());
+      } else {
+        console.warn("shadow root is not available");
+      }
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -331,7 +401,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.setFocusableElements();
     }
 
-    handleKeydownFocusTrap(event: KeyboardEvent) {
+    handleKeydownFocusTrap = (event: KeyboardEvent) => {
       if (event.code !== Key.Tab || (event.shiftKey && event.code !== Key.Tab)) {
         return;
       }
@@ -342,22 +412,16 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
       if (event.shiftKey) {
         event.preventDefault();
-        this.focusTrap(true);
+        this.trapFocus(true);
       } else {
         event.preventDefault();
-        this.focusTrap(false);
+        this.trapFocus(false);
       }
-    }
+    };
 
     protected activateFocusTrap(emitEvent = true) {
       if (emitEvent) {
-        this.dispatchEvent(
-          new CustomEvent("on-focus-trap", {
-            bubbles: true,
-            composed: true,
-            cancelable: true
-          })
-        );
+        this.dispatchEvent(new CustomEvent("on-focus-trap", { bubbles: true, composed: true, cancelable: true }));
       }
       this.activeFocusTrap = true;
     }
@@ -367,13 +431,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
       if (emitEvent) {
-        this.dispatchEvent(
-          new CustomEvent("on-focus-untrap", {
-            bubbles: true,
-            composed: true,
-            cancelable: true
-          })
-        );
+        this.dispatchEvent(new CustomEvent("on-focus-untrap", { bubbles: true, composed: true, cancelable: true }));
       }
     }
 

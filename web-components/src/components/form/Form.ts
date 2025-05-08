@@ -165,7 +165,7 @@ export namespace Form {
 
       const { parentNode: parent } = element;
 
-      element.autocomplete = this.token;
+      element.autocomplete = this.token as AutoFill;
 
       if (!element.id) {
         element.id = this.autofillname;

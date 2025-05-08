@@ -1,7 +1,15 @@
 .included-timepicker-wrapper {
-  border-top: 1px solid var(--md-primary-seperator-color);
   display: flex;
   justify-content: center;
-  padding: $time-picker-vertical-padding 0;
+  padding: $time-picker-vertical-padding $time-picker-horizontal-padding;
+  padding-top: 0;
   white-space: nowrap;
+  flex-direction: column;
+}
+
+.time-picker-separator {
+  height: 2px;
+  flex-grow: 1;
+  margin-bottom: 12px;
+  background-color: var(--md-secondary-seperator-color);
 }

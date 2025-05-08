@@ -10,7 +10,7 @@ import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Combobox",

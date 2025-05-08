@@ -92,7 +92,8 @@ export namespace ComboBox {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty() ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
+    @internalProperty()
+    private ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
@@ -109,13 +110,15 @@ export namespace ComboBox {
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
     @property({ type: Boolean, reflect: true }) newMomentum = false;
     @property({ type: Boolean, attribute: "show-filter-icon" }) showFilterIcon = false;
+    @property({ type: Boolean, attribute: "prevent-filter" }) preventFilter = false;
 
     /**
      * When using the new momentum style sets whether to use the new combobox style arrow
      * or the arrow not in a div what a border to the right. This will be used for filter dropdowns
      * that were implemented using a combobox
      */
-    @property({ type: Boolean, attribute: "is-dropdown-arrow" }) isDropdownArrow = false;
+    @property({ type: Boolean, attribute: "is-dropdown-arrow" })
+    isDropdownArrow = false;
 
     @property({ type: String })
     comboboxId = "";
@@ -303,7 +306,7 @@ export namespace ComboBox {
             this.input!.select();
           }
         }
-        super.handleFocusIn && super.handleFocusIn(event);
+        super.handleFocusIn?.(event);
       }
       this.dispatchEvent(
         new CustomEvent("combobox-focus-in", {
@@ -314,7 +317,7 @@ export namespace ComboBox {
     }
 
     protected handleFocusOut(event: Event) {
-      super.handleFocusOut && super.handleFocusOut(event);
+      super.handleFocusOut?.(event);
       this.dispatchEvent(
         new CustomEvent("combobox-focus-out", {
           composed: true,
@@ -562,6 +565,10 @@ export namespace ComboBox {
     };
 
     private filterOptions(value: string): (string | OptionMember)[] {
+      if (this.preventFilter) {
+        this.searchItem = false;
+        return this.options;
+      }
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
           if (this.isOptGroup && typeof option !== "string" && option.isLabel === "true") {
@@ -1365,7 +1372,8 @@ export namespace ComboBox {
     get listItemOptionMap() {
       return {
         "md-combobox-multiselect": this.isMulti,
-        compact: this.compact
+        compact: this.compact,
+        "md-combobox-dropdown-arrow": this.isDropdownArrow
       };
     }
 
@@ -1405,7 +1413,8 @@ export namespace ComboBox {
         "md-new-combobox": this.newMomentum,
         [`md-${this.messageType}`]: !!this.messageType,
         "md-combobox-readonly": this.readOnly,
-        "md-combobox-compact": this.compact
+        "md-combobox-compact": this.compact,
+        "md-combobox-dropdown-arrow": this.isDropdownArrow
       };
     }
 
@@ -1472,6 +1481,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
+          part="combobox-button-arrow"
           aria-expanded=${this.expanded}
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
@@ -1492,6 +1502,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button"
+          part="combobox-button-arrow"
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
@@ -1707,12 +1718,34 @@ export namespace ComboBox {
         : nothing;
     }
 
+    get newArrowButtonTemplate() {
+      //TODO: implement a new button instead of a div and the old button template
+      //      This should be tabbable
+      return html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`;
+    }
+
     get renderNewMomentumArrow(): TemplateResult {
-      return html`
-        ${this.isDropdownArrow
-          ? this.arrowButtonTemplate()
-          : html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`}
-      `;
+      return html` ${this.isDropdownArrow ? this.arrowButtonTemplate() : this.newArrowButtonTemplate} `;
+    }
+
+    get renderTrailingInputControls(): TemplateResult {
+      const showClearButton = this.shouldChangeButton();
+
+      if (this.newMomentum) {
+        if (showClearButton && this.isDropdownArrow) {
+          return html`${this.clearButtonTemplate()}`;
+        } else if (showClearButton) {
+          return html`${this.clearButtonTemplate()} ${this.renderNewMomentumArrow}`;
+        }
+
+        return this.renderNewMomentumArrow;
+      }
+
+      if (this.compact) {
+        return html`${nothing}`;
+      }
+
+      return html`${showClearButton ? this.clearButtonTemplate() : this.arrowButtonTemplate()}`;
     }
 
     render() {
@@ -1750,14 +1783,7 @@ export namespace ComboBox {
                 @keydown=${this.handleInputKeyDown}
               />
             </div>
-            ${this.compact
-              ? nothing
-              : this.shouldChangeButton()
-                ? this.clearButtonTemplate()
-                : !this.newMomentum
-                  ? this.arrowButtonTemplate()
-                  : nothing}
-            ${this.newMomentum ? this.renderNewMomentumArrow : nothing}
+            ${this.renderTrailingInputControls}
           </div>
 
           ${this.showLoader || this.showCustomError

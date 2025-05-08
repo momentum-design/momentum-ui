@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const grabber = {
@@ -32,6 +31,9 @@ const grabber = {
   },
   "border-width": {
     common: "1px"
+  },
+  shadow: {
+    common: "var(--md-elevation-1)"
   }
 };
 

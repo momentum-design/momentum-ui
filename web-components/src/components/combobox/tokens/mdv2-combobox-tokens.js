@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -29,12 +29,18 @@ const combobox = {
       common: "$mds-color-theme-outline-theme-normal"
     },
     "new-border-color": {
-      common: "mds-color-theme-outline-input-active"
+      common: "$mds-color-theme-outline-input-active"
+    },
+    "bg-color": {
+      common: "$mds-color-theme-background-primary-active"
     }
   },
   disabled: {
     "bg-color": {
       common: "$mds-color-theme-background-primary-disabled"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-primary-disabled"
     }
   },
   invalid: {

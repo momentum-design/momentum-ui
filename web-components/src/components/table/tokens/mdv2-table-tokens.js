@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const table = {
@@ -6,7 +5,7 @@ const table = {
   component: "table",
   header: {
     "bg-color": {
-      common: "$mds-color-theme-background-secondary-normal"
+      common: "transparent"
     }
   },
   hover: {
@@ -29,6 +28,18 @@ const table = {
     "bg-color": {
       common: "$mds-color-theme-button-primary-disabled"
     }
+  },
+  "main-border": {
+    common: "none"
+  },
+  "column-border": {
+    common: "none"
+  },
+  "row-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "header-row-border": {
+    common: "1px solid $mds-color-theme-outline-primary-normal"
   }
 };
 

@@ -24,7 +24,7 @@
             border: none;
             &::after {
               left: calc(100% - 2px);
-              transform: translateX(-100%) translateY(-50%);              
+              transform: translateX(-100%) translateY(-50%);
             }
           }
         }
@@ -57,13 +57,13 @@
           margin-left: 0.75rem;
         }
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
           filter: brightness(1) contrast(1) saturate(1.5);
         }
 
         &::after {
           border-radius: 100%;          
-          box-shadow: 0 1px 2px 0 $black-32;
+          box-shadow: 0 1px 2px 0 $slider-box-shadow-color;
           content: "";
           height: $toggle-switch__size;
           left: 2px;

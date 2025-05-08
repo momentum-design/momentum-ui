@@ -6,7 +6,7 @@
  *
  */
 
-import { Placement as PopoverPlacement } from "@/components/popover/Popover.types";
+import { Placement as PopoverPlacement, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
@@ -48,7 +48,7 @@ export namespace MenuOverlay {
   @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     private _isOpen = false;
-    private static activeOverlay: ELEMENT[] = [];
+    private static readonly activeOverlay: ELEMENT[] = [];
     @property({ type: Boolean, attribute: "is-open", reflect: true })
     get isOpen() {
       return this._isOpen;
@@ -74,9 +74,11 @@ export namespace MenuOverlay {
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
     @property({ type: Number, attribute: "overlay-offset" }) overlayOffset = 15;
-
+    @property({ type: Boolean, attribute: "keep-open-on-window-blur" }) keepOpenOnWindowBlur = false;
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     @queryAssignedNodes("menu-trigger", true) trigger?: NodeListOf<HTMLElement>;
 
@@ -86,8 +88,6 @@ export namespace MenuOverlay {
     private renderMaxHeight() {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
     }
-
-    shouldWrapFocus = () => this.ariaRole === "dialog";
 
     private renderOverflowY() {
       return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
@@ -167,10 +167,20 @@ export namespace MenuOverlay {
     }
 
     checkIsInputField(element: HTMLElement) {
-      if (element && element.tagName && element.tagName.toLowerCase() === "md-input") {
+      if (element?.tagName?.toLowerCase() === "md-input") {
         return true;
       }
       return false;
+    }
+
+    private updateTriggerElementAriaExpanded() {
+      if (this.triggerElement) {
+        if (this.isOpen) {
+          this.triggerElement.setAttribute("aria-expanded", "true");
+        } else {
+          this.triggerElement.removeAttribute("aria-expanded");
+        }
+      }
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -203,6 +213,10 @@ export namespace MenuOverlay {
 
       if (this.arrow && this.showArrow) {
         this.arrow.toggleAttribute("data-show", true);
+      }
+
+      if (changedProperties.has("isOpen")) {
+        this.updateTriggerElementAriaExpanded();
       }
     }
 
@@ -282,6 +296,7 @@ export namespace MenuOverlay {
             }
           },
           placement: this.placement,
+          strategy: this.positioningStrategy,
           modifiers: [
             ...defaultModifiers,
             flip,
@@ -331,7 +346,7 @@ export namespace MenuOverlay {
       }
     }
 
-    private handleTriggerClick = () => {
+    private readonly handleTriggerClick = () => {
       this.toggleOverlay();
     };
 
@@ -341,17 +356,17 @@ export namespace MenuOverlay {
       }
     }
 
-    private setOverlay = debounce((flag: boolean) => {
+    private readonly setOverlay = debounce((flag: boolean) => {
       if (!this.disabled) {
         this.isOpen = flag;
       }
     }, 100);
 
-    private expandPopup = () => {
+    private readonly expandPopup = () => {
       this.setOverlay(true);
     };
 
-    private collapsePopup = () => {
+    private readonly collapsePopup = () => {
       this.setOverlay(false);
     };
 
@@ -405,7 +420,7 @@ export namespace MenuOverlay {
 
     private focusOnTrigger() {
       requestAnimationFrame(() => {
-        if (this.focusableElements && this.focusableElements.length) {
+        if (this.focusableElements?.length) {
           this.focusableElements[0].focus();
         }
       });
@@ -422,7 +437,7 @@ export namespace MenuOverlay {
     }
 
     private focusOnNestedTrigger(triggerElement?: HTMLElement) {
-      this.setFocusOnTrigger!(triggerElement);
+      this.setFocusOnTrigger?.(triggerElement);
     }
 
     handleOutsideOverlayClick = (event: MouseEvent) => {
@@ -437,7 +452,7 @@ export namespace MenuOverlay {
     };
 
     handleWindowBlurEvent() {
-      if (this._isOpen) {
+      if (this._isOpen && !this.keepOpenOnWindowBlur) {
         this.isOpen = false;
       }
     }
@@ -450,7 +465,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot name="menu-trigger" aria-expanded=${this.isOpen}></slot>
+          <slot name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

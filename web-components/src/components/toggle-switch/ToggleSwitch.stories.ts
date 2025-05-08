@@ -9,7 +9,7 @@
 import "@/components/toggle-switch/ToggleSwitch";
 import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-toggle-switch

@@ -1,5 +1,6 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, LitElement } from "lit-element";
@@ -90,6 +91,9 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="green" circle loading>
           <md-icon slot="icon" name="pause_16"></md-icon>
           <span slot="text">loading</span>
+        </md-button>
+        <md-button variant="primary" disabled>
+          <md-loading></md-loading>
         </md-button>
       </div>
 
@@ -201,13 +205,14 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button rounded variant="secondary" size="40"><span slot="text">40</span></md-button>
       </div>
 
-      <div class="row" style="display: flex; margin: .5rem 0">
-        <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
+      <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
+      <div class="row" style="display: flex; margin: .5rem 0; gap: 8px;">
         <md-button variant="primary"><span slot="text">primary</span></md-button>
         <md-button variant="secondary"><span slot="text">secondary</span></md-button>
         <md-button variant="red"><span slot="text">red</span></md-button>
         <md-button variant="green"><span slot="text">green</span></md-button>
         <md-button variant="ghost"><span slot="text">ghost</span></md-button>
+        <md-button variant="ghostInheritTextColor"><span slot="text">ghostInheritTextColor</span></md-button>
         <md-button variant="white"><span slot="text">White</span></md-button>
         <md-button variant="promotional"><span slot="text">Promotional</span></md-button>
         <md-button variant="tab"><span slot="text">tab</span></md-button>
@@ -220,6 +225,11 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="engaged"><span slot="text">Engaged</span></md-button>
         <md-button variant="idle"><span slot="text">Idle</span></md-button>
       </div>
+      <div class="row" style="display: flex; gap: 8px;">
+        <md-button variant="secondary-negative"><span slot="text">secondary negative</span></md-button>
+        <md-button variant="secondary-positive"><span slot="text">secondary positive</span></md-button>
+        <md-button variant="secondary-accent"><span slot="text">secondary accent</span></md-button>
+      </div>
 
       <h3 class="sandbox-header" style="margin: .5rem 1rem">Toggle state variant button</h3>
       <div class="row" style="display: flex; margin: .5rem 0">
@@ -230,6 +240,9 @@ export class ButtonTemplateSandbox extends LitElement {
           <span slot="text">secondary</span>
         </md-button>
         <md-button variant="tab" size="40" circle @click=${(e: Event) => this.toggleIsActive(e.target)}>
+          <md-icon slot="icon" name="chat_16"></md-icon>
+        </md-button>
+        <md-button variant="ghost" size="40" circle @click=${(e: Event) => this.toggleIsActive(e.target)}>
           <md-icon slot="icon" name="chat_16"></md-icon>
         </md-button>
       </div>
@@ -278,7 +291,7 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="secondary" tag="a" ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="primary" ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="secondary" ariaLabel="Link">Link</md-button>
-        <md-button variant="secondary" tag="a" variant="red" ariaLabel="Link">Link</md-button>
+        <md-button variant="secondary" tag="a" variant="red" outline ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="green" ariaLabel="Link">Link</md-button>
       </div>
 
@@ -406,6 +419,45 @@ export class ButtonTemplateSandbox extends LitElement {
             <span class="status-label engaged"> Engaged </span>
             <span class="status-time">10:11</span>
             <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
+          </div>
+        </md-button>
+      </div>
+      <h3 class="sandbox-header" style="margin: .5rem 1rem">Drop down button</h3>
+      <div class="row" style="display: flex; margin: .5rem 0; gap: 8px;">
+        <md-button variant="dropdown">
+          <div class="status-button__children">
+            <span> Selected text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text>
+          <div class="status-button__children">
+            <span> Placeholder text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" rounded>
+          <div class="status-button__children">
+            <span> Selected text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text rounded>
+          <div class="status-button__children">
+            <span> Placeholder text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" rounded disabled>
+          <div class="status-button__children">
+            <span> Selected text disabled </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text rounded disabled>
+          <div class="status-button__children">
+            <span> Placeholder text disabled </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
           </div>
         </md-button>
       </div>

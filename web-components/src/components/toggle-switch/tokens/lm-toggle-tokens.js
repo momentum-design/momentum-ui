@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -31,8 +31,10 @@ const toggleSwitch = {
   },
   slider: {
     color: {
-      light: colors.white[100].name,
-      dark: colors.white[100].name
+      common: colors.white["100"].name
+    },
+    "color--checked": {
+      common: colors.white["100"].name
     },
     "color-disabled": {
       light: colors.gray["05"].name,

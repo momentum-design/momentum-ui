@@ -10,18 +10,18 @@ import "@/components/menu-overlay/MenuOverlay";
 import "@/components/modal/Modal";
 import "@/components/radio/RadioGroup";
 import "@/components/tabs/Tab";
-import { TabCloseClickEvent } from "@/components/tabs/Tab";
+import { type TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
-import { Tabs } from "@/components/tabs/Tabs";
+import { type Tabs } from "@/components/tabs/Tabs";
 import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import svgWxm from "@img/wxm.svg";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { TemplateResult } from "lit-html";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index) => html`
@@ -35,29 +35,29 @@ const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].
   `
 );
 
+const tabMenuStyle = css`
+  .menu-trigger-button {
+    height: 100%;
+    background-color: white;
+    border: none;
+  }
+
+  .menu-trigger-button:focus {
+    box-shadow: 0 0 0 1.5px var(--md-blue-60);
+    outline: none;
+    border-radius: 4px;
+  }
+
+  .menu-trigger-button:hover {
+    background-color: #dcdcdc;
+    border-radius: 4px;
+  }
+`;
+
 @customElement("tabs-order-prefs-example")
 export class TabsOrderPrefsExample extends LitElement {
   static get styles() {
-    return [
-      css`
-        .menu-trigger-button {
-          height: 100%;
-          background-color: white;
-          border: none;
-        }
-
-        .menu-trigger-button:focus {
-          box-shadow: 0 0 0 1.5px var(--md-blue-60);
-          outline: none;
-          border-radius: 4px;
-        }
-
-        .menu-trigger-button:hover {
-          background-color: #dcdcdc;
-          border-radius: 4px;
-        }
-      `
-    ];
+    return [tabMenuStyle];
   }
 
   handleResetTabs() {
@@ -195,6 +195,7 @@ export class TabsTemplateSandbox extends LitElement {
   @internalProperty() private currentTabsOrder = this.defaultTabsOrder;
   @internalProperty() private isSingleButtonResetEnabled = false;
   closeTabName = "";
+  @property({ type: Number }) selectedTabIndex = 0;
 
   private setUpTabs() {
     this.tabs = {
@@ -274,26 +275,7 @@ export class TabsTemplateSandbox extends LitElement {
   }
 
   static get styles() {
-    return [
-      css`
-        .menu-trigger-button {
-          height: 100%;
-          background-color: white;
-          border: none;
-        }
-
-        .menu-trigger-button:focus {
-          box-shadow: 0 0 0 1.5px var(--md-blue-60);
-          outline: none;
-          border-radius: 4px;
-        }
-
-        .menu-trigger-button:hover {
-          background-color: #dcdcdc;
-          border-radius: 4px;
-        }
-      `
-    ];
+    return [tabMenuStyle];
   }
 
   private handleTabClick(event: any) {
@@ -364,6 +346,10 @@ export class TabsTemplateSandbox extends LitElement {
     if (draggableTabsOrder) this.currentTabsOrder = draggableTabsOrder.split(",");
   }
 
+  handleTabIndexChange() {
+    this.selectedTabIndex = this.selectedTabIndex === 0 ? 1 : 0;
+  }
+
   render() {
     return html`
       <div style="max-width: 600px; padding-top: 16px;">
@@ -373,7 +359,7 @@ export class TabsTemplateSandbox extends LitElement {
           Single Button Reset
         </md-toggle-switch>
         <div>
-          <md-tabs justified selected="0">
+          <md-tabs justified selected-index="0">
             <md-tab slot="tab" aria-label="entry-point">
               <span>Entry Point</span>
             </md-tab>
@@ -459,7 +445,7 @@ export class TabsTemplateSandbox extends LitElement {
           <md-tabs selected="0" persist-selection tabs-id="tabOrder" draggable justified>
             ${repeat(
               this.currentTabsOrder,
-              () => nanoid(10),
+              () => generateSimpleUniqueId("tabs"),
               (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
             )}
             ${!this.isSingleButtonResetEnabled
@@ -509,16 +495,72 @@ export class TabsTemplateSandbox extends LitElement {
                   </button>
                 `}
           </md-tabs>
-        </div>
-        <br />
-        <md-modal htmlId="modal-1" ?show=${this.isModalOpen} size="dialog" hideFooter hideHeader noExitOnEsc>
-          <div slot="header">
-            <span>Close Tab Confirmation</span>
+          <h3>
+            Allows the tab index to be changed programmatically without requiring a mouse click event on the tab item
+          </h3>
+          <md-toggle-switch @click=${() => this.handleTabIndexChange()}>
+            Programmatically change tab index
+          </md-toggle-switch>
+          <div>
+            <md-tabs justified selected-index="${this.selectedTabIndex}">
+              <md-tab slot="tab" aria-label="Consult Label">
+                <span>Consult</span>
+              </md-tab>
+              <md-tab-panel slot="panel">
+                <md-list role="listbox">
+                  <md-list-item slot="list-item" aria-label="item-1" shape="rounded">
+                    <div aria-label="item-1-div">
+                      <div>
+                        <p>Alan Johnson</p>
+                        <p>1234434</p>
+                      </div>
+                    </div>
+                  </md-list-item>
+                  <md-list-item slot="list-item" aria-label="item-2" shape="rounded">
+                    <div aria-label="item-2-div">
+                      <div>
+                        <p>Mark Corrigan</p>
+                        <p>43454334</p>
+                      </div>
+                    </div>
+                  </md-list-item>
+                </md-list>
+              </md-tab-panel>
+              <md-tab slot="tab" aria-label="Transfer label" aria-label="address-book">
+                <span>Transfer</span>
+              </md-tab>
+              <md-tab-panel slot="panel">
+                <md-list role="listbox">
+                  <md-list-item slot="list-item" aria-label="item-1">
+                    <div aria-label="item-1-div">
+                      <div>
+                        <p>Jermey Usborne</p>
+                        <p>83498347</p>
+                      </div>
+                    </div>
+                  </md-list-item>
+                  <md-list-item slot="list-item" aria-label="item-2">
+                    <div aria-label="item-2-div">
+                      <div>
+                        <p>Sophie Chapman</p>
+                        <p>22384758</p>
+                      </div>
+                    </div>
+                  </md-list-item>
+                </md-list>
+              </md-tab-panel>
+            </md-tabs>
           </div>
-          <p>Are you sure you want to close the Tab?</p>
-          <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
-          <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
-        </md-modal>
+          <br />
+          <md-modal htmlId="modal-1" ?show=${this.isModalOpen} size="dialog" hideFooter hideHeader noExitOnEsc>
+            <div slot="header">
+              <span>Close Tab Confirmation</span>
+            </div>
+            <p>Are you sure you want to close the Tab?</p>
+            <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
+            <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
+          </md-modal>
+        </div>
       </div>
     `;
   }
@@ -532,7 +574,8 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     hug: boolean,
     newMomentum: boolean,
     variant: Tabs.TabVariant,
-    type: Tabs.TabsType
+    type: Tabs.TabsType,
+    scrollArrow = false
   ): TemplateResult {
     return html`
       <md-tabs
@@ -542,6 +585,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         type=${type}
         ?newMomentum=${newMomentum}
         variant=${variant}
+        ?scroll-arrow=${scrollArrow}
       >
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <span>All</span>
@@ -556,7 +600,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
           <span>Content for "Messages"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
+          <span><img style="height: 16px; width: 16px;" src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
@@ -572,6 +616,24 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label1" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label2" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label3" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
         </md-tab-panel>
       </md-tabs>
     `;
@@ -595,6 +657,13 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     return html`
       <h3>md-tabs line primary newMomentum primary</h3>
       ${this.getTabsTemplate(false, true, true, true, "primary", "line")}
+    `;
+  }
+
+  get tabsSrollArrowTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs newMomentum rounded primary with scroll arrow</h3>
+      ${this.getTabsTemplate(true, true, true, true, "primary", "rounded", true)}
     `;
   }
 
@@ -626,8 +695,77 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     return html`
       <div style="max-width: 600px;">
         ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsLinePrimaryTemplate}
-        ${this.tabsJustifiedWithTooltipTemplate}
+        ${this.tabsSrollArrowTemplate} ${this.tabsJustifiedWithTooltipTemplate}
       </div>
+    `;
+  }
+}
+
+@customElement("adding-and-removing-tabs-sandbox-example")
+export class AddingAndRemovingTabsTemplate extends LitElement {
+  @internalProperty() private showSecondTab = true;
+  selectedTab = "tab1";
+
+  private readonly allTabs = ["tab1", "tab2", "tab3"];
+
+  get filteredTabs() {
+    return this.showSecondTab ? this.allTabs : this.allTabs.filter((tab) => tab !== "tab2");
+  }
+
+  private get checkboxTemplate(): TemplateResult {
+    return html`
+      <md-checkbox
+        @checkbox-change=${(e: Event) => {
+          this.showSecondTab = (e.target as HTMLInputElement).checked;
+        }}
+        slot="checkbox"
+        ?checked=${this.showSecondTab}
+      >
+        Show Second Tab
+      </md-checkbox>
+    `;
+  }
+
+  private selectedTabChanged(event: CustomEvent) {
+    const path = event.composedPath();
+    const originalTarget = path[0] as HTMLElement;
+    if (!originalTarget.classList.contains("adding-and-removing-tabs")) {
+      return;
+    }
+
+    const { value, tabsOrder } = event.detail;
+    const tab = tabsOrder[value];
+    this.selectedTab = tab;
+  }
+
+  private get selectedTabIndex(): number {
+    return this.filteredTabs.indexOf(this.selectedTab) ?? 0;
+  }
+
+  render(): TemplateResult {
+    return html`
+      ${this.checkboxTemplate}
+      <md-tabs
+        class="adding-and-removing-tabs"
+        newMomentum
+        type="rounded"
+        variant="primary"
+        selected-index=${this.selectedTabIndex}
+        @selected-changed=${(e: CustomEvent) => this.selectedTabChanged(e)}
+      >
+        ${repeat(
+          this.filteredTabs,
+          (tab) => tab,
+          (tab) => html`
+            <md-tab slot="tab" name=${tab} ?selected=${this.selectedTab === tab}>
+              <span>${tab}</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <span>Content for "${tab}"</span>
+            </md-tab-panel>
+          `
+        )}
+      </md-tabs>
     `;
   }
 }
@@ -638,7 +776,7 @@ export const tabsTemplate = html`
   <div style="max-width: 600px;">
     <h3>Draggable horizontal md-tabs with More button</h3>
     <div>
-      <md-tabs selected="2" draggable>
+      <md-tabs selected="2" draggable overflowLabel="More tabs bb">
         <md-tab disabled slot="tab" name="History" closable="auto" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
@@ -884,4 +1022,5 @@ export const tabsTemplate = html`
       </md-tab-panel>
     </md-tabs>
   </div>
+  <adding-and-removing-tabs-sandbox-example></adding-and-removing-tabs-sandbox-example>
 `;

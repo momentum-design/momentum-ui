@@ -4,6 +4,17 @@
   display: inline-flex;
 }
 
+:host([slot-to-tooltip]) {
+  width: 100%;
+  .md-tooltip {
+    &__reference {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
 .md-tooltip {
   position: relative;
   width: 100%;
@@ -19,11 +30,13 @@
   }
 
   &__popper {
-    background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
-    border: 1px solid var(--tooltip-border, $tooltip-border-color);
+    animation-duration: 0.15s;
+    animation-name: tooltip-fade;
+    background-color: var(--tooltip-bg-color);
+    border: 1px solid $tooltip-border-color;
     border-radius: var(--tooltip-radius, $tooltip__radius);
     box-shadow: var(--tooltip-shadow, $tooltip-box-shadow);
-    color: var(--tooltip-font-color, $lm-tooltip-font-color-light);
+    color: var(--tooltip-font-color);
     display: none;
     font-size: $tooltip__font-size;
     line-height: $tooltip__line-height;
@@ -35,22 +48,26 @@
     word-break: break-word;
     z-index: 9999;
 
-    .md-tooltip__arrow,
-    .md-tooltip__arrow::before {
+    .md-tooltip__arrow {
       height: $tooltip-arrow__size;
-      position: absolute;
       width: $tooltip-arrow__size;
       z-index: -1;
-    }
+      visibility: hidden;
 
-    .md-tooltip__arrow::before {
-      background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
-      border: 1px solid var(--tooltip-border, var(--tooltip-bg-color, $lm-tooltip-bg-color-light));
-      box-shadow: var(--tooltip-shadow, "inset 0 0 0 1px $tooltip-border-color");
-      content: "";
-      pointer-events: none;
-      transform: rotate(45deg);
-      z-index: 1;
+      &::before {
+        content: "";
+        height: $tooltip-arrow__size;
+        width: $tooltip-arrow__size;
+        background-color: var(--tooltip-bg-color);
+        border: 1px solid var(--tooltip-border, var(--tooltip-bg-color));
+        position: absolute;
+        box-shadow: var(--tooltip-shadow, "inset 0 0 0 1px $tooltip-border-color");
+
+        pointer-events: none;
+        transform: rotate(45deg);
+        z-index: 1;
+        visibility: visible;
+      }
     }
 
     &[data-show] {
@@ -59,83 +76,58 @@
     }
 
     &[data-popper-placement^="top"] > .md-tooltip__arrow {
-      bottom: -7px;
-
+      bottom: 0;
       &::before {
-        border-radius: 0 0 $tooltip__radius 0;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
-        left: 0;
+        left: calc(50% - 8px);
+        bottom: -9px;
+        border-top: none;
+        border-left: none;
+        border-bottom-right-radius: 3px;
       }
     }
 
     &[data-popper-placement^="bottom"] > .md-tooltip__arrow {
-      top: var(--tooltip-arrow-bottom-top, -8px);
-
+      top: 0;
       &::before {
-        border-radius: $tooltip__radius 0 0 0;
-        clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-        left: 0;
+        left: calc(50% - 8px);
+        top: -9px;
+        border-bottom: none;
+        border-right: none;
+        border-top-left-radius: $tooltip__radius;
       }
     }
 
     &[data-popper-placement^="left"] > .md-tooltip__arrow {
-      right: 1px;
+      right: 0;
 
       &::before {
-        top: var(--tooltip-arrow-right-before-top, inherit);
-        border-radius: 0 $tooltip__radius 0 0;
-        clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
+        top: calc(50% - 8px);
+        right: var(--tooltip-arrow-right-left, -8px);
+        border-bottom: none;
+        border-left: none;
+        border-top-right-radius: $tooltip__radius;
       }
     }
 
     &[data-popper-placement^="right"] > .md-tooltip__arrow {
-      left: var(--tooltip-arrow-right-left, -15px);
+      left: 0;
 
       &::before {
-        top: var(--tooltip-arrow-right-before-top, inherit);
-        border-radius: 0 0 0 $tooltip__radius;
-        clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+        top: calc(50% - 8px);
+        left: var(--tooltip-arrow-right-left, -8px);
+        border-right: none;
+        border-top: none;
+        border-bottom-left-radius: $tooltip__radius;
       }
     }
   }
 
-  @keyframes tooltip-slide-bottom {
+  @keyframes tooltip-fade {
     from {
-      top: 100%;
+      opacity: 0;
     }
-
     to {
-      top: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-top {
-    from {
-      bottom: 100%;
-    }
-
-    to {
-      bottom: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-left {
-    from {
-      right: 100%;
-    }
-
-    to {
-      right: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-right {
-    from {
-      left: 100%;
-    }
-
-    to {
-      left: calc(100% + 0.7rem);
+      opacity: 1;
     }
   }
 }

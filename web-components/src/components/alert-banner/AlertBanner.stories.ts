@@ -6,14 +6,23 @@
  *
  */
 
-import "@/components/alert-banner/AlertBanner";
+import { alertBannerType } from "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import mdx from "./AlertBanner.mdx";
 
 const render = (args: Args) => html`
-  <md-alert-banner show type="${args.type}" ?closable=${args.closable} message="${args.textContent}">
+  <md-alert-banner
+    ?show=${args.show}
+    type="${args.type}"
+    ?closable=${args.closable}
+    titleText="${args.titleText}"
+    message="${args.textContent}"
+    ?showBannerTypeIcon=${args.showBannerTypeIcon}
+    ?showRefreshButton=${args.showRefreshButton}
+    alignment=${args.alignment}
+  >
     ${args.textContent ? `${args.textContent}` : `Text with slotted tag element`}
   </md-alert-banner>
 `;
@@ -22,7 +31,11 @@ export const AlertBanner: StoryObj = {
   args: {
     type: "default",
     closable: false,
-    textContent: "Test Alert Message"
+    show: true,
+    titleText: "Test Title",
+    textContent: "Test Alert Message",
+    showBannerTypeIcon: true,
+    showRefreshButton: true
   },
   render: render
 };
@@ -31,7 +44,8 @@ const meta: Meta = {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
   argTypes: {
-    type: { control: { type: "select" }, options: ["default", "warning", "error", "success"] }
+    type: { control: { type: "select" }, options: alertBannerType },
+    alignment: { control: { type: "select" }, options: ["leading", "center"] }
   },
   parameters: {
     a11y: {

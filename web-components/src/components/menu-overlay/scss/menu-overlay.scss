@@ -84,26 +84,87 @@
 
   // styling to create triangle border to match menu for pointer
   .overlay-container[data-popper-placement^="top"] > .overlay-arrow:after {
-    border-top-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-top-color: var(--md-primary-bg-color);
     bottom: -17px;
     right: -19px;
   }
 
   .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow:after {
-    border-bottom-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-bottom-color: var(--md-primary-bg-color);
     top: -17px;
     left: -19px;
   }
 
   .overlay-container[data-popper-placement^="right"] > .overlay-arrow:after {
-    border-right-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-right-color: var(--md-primary-bg-color);
     bottom: -19px;
     left: -17px;
   }
 
   .overlay-container[data-popper-placement^="left"] > .overlay-arrow:after {
-    border-left-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-left-color: var(--md-primary-bg-color);
     top: -19px;
     right: -17px;
+  }
+
+  @media (forced-colors: active) {
+
+    .overlay-container[data-popper-placement^="top"] > .overlay-arrow {
+      forced-color-adjust: none;
+      border-left: solid $arrow-size transparent;
+      border-right: solid $arrow-size transparent;
+      border-top: solid $arrow-size ButtonBorder;
+      bottom: $arrow-offset;      
+    }
+  
+    .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow {
+      forced-color-adjust: none;
+      border-bottom: solid $arrow-size ButtonBorder;
+      border-left: solid $arrow-size transparent;
+      border-right: solid $arrow-size transparent;
+      top: $arrow-offset;
+    }
+  
+    .overlay-container[data-popper-placement^="right"] > .overlay-arrow {
+      forced-color-adjust: none;
+      border-bottom: solid $arrow-size transparent;
+      border-right: solid $arrow-size ButtonBorder;
+      border-top: solid $arrow-size transparent;
+      left: $arrow-offset;      
+    }
+  
+    .overlay-container[data-popper-placement^="left"] > .overlay-arrow {
+      forced-color-adjust: none;
+      border-bottom: solid $arrow-size transparent;
+      border-left: solid $arrow-size ButtonBorder;
+      border-top: solid $arrow-size transparent;
+      right: $arrow-offset;      
+    }
+  
+    .overlay-container > .overlay-arrow:after {
+      forced-color-adjust: none;
+      content: "";
+      position: absolute;
+      border-width: 19px;
+      border-style: solid;
+      border-color: transparent;
+    }
+  
+    // styling to create triangle border to match menu for pointer
+    .overlay-container[data-popper-placement^="top"] > .overlay-arrow:after {
+      border-top-color: Canvas;
+    }
+  
+    .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow:after {
+      border-bottom-color: Canvas;
+    }
+  
+    .overlay-container[data-popper-placement^="right"] > .overlay-arrow:after {
+      border-right-color: Canvas;
+    }
+  
+    .overlay-container[data-popper-placement^="left"] > .overlay-arrow:after {
+      border-left-color: Canvas;      
+    }
   }
 }

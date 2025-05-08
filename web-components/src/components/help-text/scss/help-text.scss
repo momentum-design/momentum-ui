@@ -46,5 +46,5 @@
 :host(.help-text.disabled.newMomentum),
 :host(.help-text-checkbox.disabled.newMomentum),
 :host(.help-text-radio.disabled.newMomentum) {
-  color: var(--input-default-new-disabled-color) !important;
+  color: var(--help-text-default-color) !important;
 }

@@ -1,17 +1,21 @@
-import { html, internalProperty, LitElement, property } from "lit-element";
-// import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
+import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property } from "lit-element";
 
 export namespace ParentComponentGeneric {
   @customElementWithCheck("parent-component-generic")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
-    @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: String }) value = "";
+    @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
-    @internalProperty() totalRecords = 60000; // Total count is set to 6000
+
+    @internalProperty()
+    private page = 1;
+
+    @internalProperty()
+    private readonly totalRecords = 60000; // Total count is set to 6000
 
     constructor() {
       super();
@@ -38,7 +42,7 @@ export namespace ParentComponentGeneric {
         this.page += 1;
         this.isLoading = false;
         this.value = this.items[1].id;
-      } catch (err) {
+      } catch (_err) {
         this.isLoading = false;
         this.isError = true;
       } finally {
@@ -57,11 +61,12 @@ export namespace ParentComponentGeneric {
         ariaLabel: `Item ${(page - 1) * 2000 + i + 1}`,
         template: (data: any, index: number) =>
           html` <div
-            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;"
+            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:20px; gap:0.5rem;"
             ?disabled="${index % 2 === 0}"
             aria-hidden="true"
             indexing="${index}"
           >
+            <md-icon name="info-badge-filled" iconSet="momentumDesign"> </md-icon>
             ${data.name}
           </div>`
       }));

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const input = {
@@ -55,6 +54,9 @@ const input = {
       }
     },
     new: {
+      "bg-color": {
+        common: "$mds-color-theme-background-primary-ghost"
+      },
       "border-color": {
         common: "$mds-color-theme-outline-input-normal"
       },

@@ -9,10 +9,10 @@
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
 import { Tabs } from "./Tabs";
 import styles from "./scss/module.scss";
 
@@ -36,13 +36,15 @@ export namespace Tab {
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
-    @property({ type: String }) ariaRole = "tab";
-    @property({ type: String }) type: Tabs.TabsType = "line";
+    @property({ type: String, attribute: "role", reflect: true }) role = "tab";
+    @property({ type: String, reflect: true }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;
     @property({ type: String }) variant: Tabs.TabVariant = "ghost";
+    @property({ type: Boolean, attribute: "visible-tab", reflect: true }) visibleTab = false;
 
     private _disabled = false;
+
     @property({ type: Boolean, reflect: true })
     get disabled() {
       return this._disabled;
@@ -50,13 +52,29 @@ export namespace Tab {
     set disabled(value: boolean) {
       const oldValue = this._disabled;
       this._disabled = value;
-      this.setAttribute("aria-disabled", `${value}`);
       if (value) {
-        this.tabIndex = -1;
+        this.tabDisabled();
       } else {
+        this.tabEnabled();
+      }
+
+      this.requestUpdate("disabled", oldValue);
+    }
+
+    private tabDisabled() {
+      if (this.tabIndex !== -1) {
+        this.tabIndex = -1;
+      }
+
+      this.setAttribute("aria-disabled", "true");
+    }
+
+    private tabEnabled() {
+      if (this.tabIndex === -1 && this.selected) {
         this.tabIndex = 0;
       }
-      this.requestUpdate("disabled", oldValue);
+
+      this.removeAttribute("aria-disabled");
     }
 
     private _selected = this.tabIndex === 0;
@@ -70,22 +88,26 @@ export namespace Tab {
       this._selected = value;
 
       if (value) {
+        this.setAttribute("aria-selected", "true");
         this.notifySelectedTab();
+      } else {
+        this.removeAttribute("aria-selected");
       }
 
-      this.setAttribute("aria-selected", `${value}`);
       this.requestUpdate("selected", oldValue);
     }
 
-    @property({ type: Boolean, reflect: true }) vertical = false;
+    @property({ type: Boolean, reflect: true })
+    vertical = false;
 
-    @property({ type: Boolean, reflect: true }) viewportHidden = false;
+    @property({ type: Boolean, reflect: true })
+    viewportHidden = false;
 
     static get styles() {
       return [reset, styles];
     }
 
-    handleClick(event: MouseEvent) {
+    handleClick(event: MouseEvent | KeyboardEvent) {
       event.preventDefault();
       if (this.id) {
         this.dispatchEvent(
@@ -97,6 +119,17 @@ export namespace Tab {
             composed: true
           })
         );
+      }
+    }
+
+    handleKeydown(event: KeyboardEvent) {
+      if (isActionKey(event.code)) {
+        if (this.disabled) {
+          event.preventDefault();
+          return;
+        }
+
+        this.handleClick(event);
       }
     }
 
@@ -151,49 +184,51 @@ export namespace Tab {
 
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
-      if (changedProperties.has("disabled")) {
+      if (changedProperties.has("disabled") && this.disabled) {
         this.selected = false;
-        this.setAttribute("aria-disabled", `${this.disabled}`);
       }
     }
 
     connectedCallback() {
       super.connectedCallback();
+
+      this.addEventListener("click", this.handleClick);
+      this.addEventListener("keydown", this.handleKeydown);
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.removeEventListener("click", this.handleClick);
+      this.removeEventListener("keydown", this.handleKeydown);
     }
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      if (this.ariaRole) {
-        this.setAttribute("role", this.ariaRole);
-      }
     }
 
     renderCrossButton() {
       return html`
-        <div
-          ?disabled=${this.disabled}
-          tabindex="-1"
+        <md-button
+          variant="ghost"
+          size="size-none"
+          circle
           class="tab-action-button"
+          ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.handleCrossClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
         >
-          <md-icon tabindex="0" name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
-        </div>
+          <md-icon name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
+        </md-button>
       `;
     }
 
     render() {
       return html`
-        <button
-          type="button"
-          role="button"
-          ?disabled=${this.disabled}
-          aria-selected="false"
-          aria-label=${ifDefined(this.ariaLabel || undefined)}
-          aria-hidden="true"
-          tabindex="-1"
+        <div
           part="tab"
           class="${classMap({
+            disabled: this.disabled,
+            "tab-content": true,
             closable: this.closable !== "",
             pill: this.type === "pill",
             rounded: this.type === "rounded",
@@ -202,11 +237,19 @@ export namespace Tab {
             newMomentum: this.newMomentum,
             onlyIcon: this.onlyIcon
           })}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
         >
           <slot class="tab-slot"></slot>
           ${this.isCrossVisible && this.closable ? this.renderCrossButton() : ""}
-        </button>
+        </div>
+        <div part="indicator"></div>
+        <!-- Invisible button for legacy third party test compatibility -->
+        <button
+          type="button"
+          class="test-compatibility-button"
+          aria-hidden="true"
+          @click=${(e: MouseEvent) => this.handleClick(e)}
+          @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
+        ></button>
       `;
     }
   }

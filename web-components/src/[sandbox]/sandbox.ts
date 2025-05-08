@@ -1,16 +1,11 @@
 import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import { ThemeName } from "@/components/theme/Theme";
+import { themeManager } from "@/managers/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
-import {
-  customElement,
-  html,
-  internalProperty,
-  LitElement,
-  property,
-  PropertyValues,
-  TemplateResult
-} from "lit-element";
+import { MobxLitElement } from "@adobe/lit-mobx";
+import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import {
   accordionTemplate,
   advanceListTemplate,
@@ -24,6 +19,7 @@ import {
   buttonTemplate,
   cardAiTemplate,
   cardTemplate,
+  cardV2Template,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
@@ -31,6 +27,7 @@ import {
   codeEditorTemplate,
   colorTableTemplate,
   comboBoxTemplate,
+  countryCodePickerTemplate,
   datePickerTemplate,
   dateRangePickerTemplate,
   dateTimePickerTemplate,
@@ -38,6 +35,7 @@ import {
   dropdownTemplate,
   editableField,
   favoriteTemplate,
+  floatingButtonBarTemplate,
   floatingModalTemplate,
   formTemplate,
   grabberTemplate,
@@ -69,15 +67,15 @@ import {
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
-export class Sandbox extends LitElement {
-  @property({ type: Boolean })
-  darkTheme = false;
-
-  @property({ type: String })
-  theme: ThemeName = "lumos";
-
+export class Sandbox extends MobxLitElement {
   @internalProperty()
   private selectedTab = "Accordion";
+
+  @internalProperty()
+  private renderSelectedTabPanelOnly = true;
+
+  @internalProperty()
+  private tabsOrientation: "horizontal" | "vertical" = "vertical";
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -93,20 +91,15 @@ export class Sandbox extends LitElement {
   }
 
   selectedTabChanged(event: CustomEvent) {
+    const path = event.composedPath();
+    const originalTarget = path[0] as HTMLElement;
+    if (!originalTarget.classList.contains("explorer")) {
+      return;
+    }
+
     const { value, tabsOrder } = event.detail;
     const tab = tabsOrder[value];
     this.selectedTab = tab;
-  }
-
-  protected updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-    if (this.darkTheme) {
-      document.body.style.backgroundColor = "#000";
-      document.body.style.color = "#fff";
-    } else {
-      document.body.style.backgroundColor = "#fff";
-      document.body.style.color = "#000";
-    }
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -116,12 +109,30 @@ export class Sandbox extends LitElement {
   loadSettingsFromStorage() {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
-      this.theme = storedTheme as ThemeName;
+      themeManager.setThemeName(storedTheme as ThemeName);
     }
 
     const storedDarkTheme = localStorage.getItem("darkTheme");
     if (storedDarkTheme) {
-      this.darkTheme = JSON.parse(storedDarkTheme);
+      themeManager.setDarkMode(JSON.parse(storedDarkTheme));
+    }
+
+    const storedVisualRebrand = localStorage.getItem("is-visual-rebrand-enabled");
+    if (storedVisualRebrand) {
+      themeManager.setVisualRebrandEnabled(JSON.parse(storedVisualRebrand));
+    }
+
+    const storedRenderSelectedTabOnly = localStorage.getItem("is-render-selected-tab-only-enabled");
+    if (storedRenderSelectedTabOnly) {
+      const parsedValue = JSON.parse(storedRenderSelectedTabOnly);
+      if (parsedValue !== this.renderSelectedTabPanelOnly) {
+        this.renderSelectedTabPanelOnly = parsedValue;
+      }
+    }
+
+    const storedTabsOrientation = localStorage.getItem("sandbox-tabs-orientation");
+    if (storedTabsOrientation && this.tabsOrientation !== storedTabsOrientation) {
+      this.tabsOrientation = storedTabsOrientation as "horizontal" | "vertical";
     }
   }
 
@@ -130,15 +141,25 @@ export class Sandbox extends LitElement {
     const target = composedPath[0] as unknown as HTMLOrSVGElement;
     const { aspect } = target.dataset;
     if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
-      this.theme = aspect;
-      localStorage.setItem("theme", this.theme);
+      themeManager.setThemeName(aspect);
+      localStorage.setItem("theme", themeManager.themeName);
     } else if (aspect === "darkTheme") {
-      this.darkTheme = !this.darkTheme;
-      localStorage.setItem("darkTheme", JSON.stringify(this.darkTheme));
+      themeManager.setDarkMode(!themeManager.isDarkMode);
+      localStorage.setItem("darkTheme", JSON.stringify(themeManager.isDarkMode));
     } else {
       console.error("Invalid data-aspect input");
       return;
     }
+  }
+
+  toggleVisualRebrandEnabled() {
+    themeManager.setVisualRebrandEnabled(!themeManager.isVisualRebrandEnabled);
+    localStorage.setItem("is-visual-rebrand-enabled", JSON.stringify(themeManager.isVisualRebrandEnabled));
+  }
+
+  toggleSelectedTabPanelRender() {
+    this.renderSelectedTabPanelOnly = !this.renderSelectedTabPanelOnly;
+    localStorage.setItem("is-render-selected-tab-only-enabled", JSON.stringify(this.renderSelectedTabPanelOnly));
   }
 
   themeToggle() {
@@ -151,7 +172,7 @@ export class Sandbox extends LitElement {
             class="theme-switch"
             data-aspect="darkTheme"
             @click=${this.toggleSetting}
-            ?checked=${this.darkTheme}
+            ?checked=${themeManager.isDarkMode}
           />
           Dark Mode
         </label>
@@ -162,7 +183,7 @@ export class Sandbox extends LitElement {
             class="momentum-switch"
             data-aspect="momentum"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "momentum"}
+            ?checked=${themeManager.themeName === "momentum"}
           />
           Momentum
         </label>
@@ -173,7 +194,7 @@ export class Sandbox extends LitElement {
             class="lumos-switch"
             data-aspect="lumos"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "lumos"}
+            ?checked=${themeManager.themeName === "lumos"}
           />
           Lumos
         </label>
@@ -184,12 +205,42 @@ export class Sandbox extends LitElement {
             class="momentumv2-switch"
             data-aspect="momentumV2"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "momentumV2"}
+            ?checked=${themeManager.themeName === "momentumV2"}
           />
           MomentumV2
         </label>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="theme-switch"
+            class="visual-rebrand-switch"
+            data-aspect="visual-rebrand"
+            @click=${this.toggleVisualRebrandEnabled}
+            ?checked=${themeManager.isVisualRebrandEnabled}
+          />
+          Visual rebrand
+        </label>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="selectedTabRender"
+            class="visual-rebrand-switch"
+            data-aspect="selected-tab-render"
+            @click=${this.toggleSelectedTabPanelRender}
+            ?checked=${this.renderSelectedTabPanelOnly}
+          />
+          Only render selected tab panel
+        </label>
+        <md-button variant="secondary" size="28" @click=${this.toggleTabsOrientation}
+          >Toggle Tabs Orientation</md-button
+        >
       </div>
     `;
+  }
+
+  toggleTabsOrientation() {
+    this.tabsOrientation = this.tabsOrientation === "horizontal" ? "vertical" : "horizontal";
+    localStorage.setItem("sandbox-tabs-orientation", this.tabsOrientation);
   }
 
   containerColorOptionTemplate() {
@@ -197,10 +248,11 @@ export class Sandbox extends LitElement {
       <div class="container-color-bg-color-options">
         <label for="color-dropdown">container color:</label>
         <select id="color-dropdown" name="colors" @change=${this.handleContainerColorChange}>
+          <option value="--md-glass-bg-color">--md-glass-bg-color</option>
+          <option value="--md-glass-overlay-bg-color">--md-glass-overlay-bg-color</option>
+          <option value="transparent">transparent</option>
           <option value="--md-primary-bg-color">--md-primary-bg-color</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
-          <option value="--md-primary-gradient-background">--md-primary-gradient-background</option>
-          <option value="--md-secondary-gradient-background">--md-secondary-gradient-background</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
           <option value="--md-tertiary-one-bg-color">--md-tertiary-one-bg-color</option>
           <option value="--md-quaternary-bg-color">--md-md-quaternary-bg-color</option>
@@ -216,7 +268,11 @@ export class Sandbox extends LitElement {
     const elements = this.shadowRoot?.querySelectorAll(".container");
     elements?.forEach((element) => {
       const containerElement = element as HTMLElement;
-      containerElement.style.background = `var(${selectedColor})`;
+      if (selectedColor === "transparent") {
+        containerElement.style.background = `${selectedColor}`;
+      } else {
+        containerElement.style.background = `var(${selectedColor})`;
+      }
     });
   }
 
@@ -224,7 +280,7 @@ export class Sandbox extends LitElement {
     return [reset, styles];
   }
 
-  getTabTemplate(
+  private getTabTemplate(
     componentName: string,
     component: string,
     componentSassStatsName: string,
@@ -238,7 +294,21 @@ export class Sandbox extends LitElement {
     `;
   }
 
-  getComponentTabPanelTemplate(
+  private getTabPanelTemplate(
+    componentName: string,
+    componentSassStatsName: string,
+    componentPanelTemplate: TemplateResult
+  ) {
+    if (componentName === this.selectedTab || !this.renderSelectedTabPanelOnly) {
+      //Not all tabs have sass stats if they don't have any, don't render the sass-stats above the component
+      return componentSassStatsName.length !== 0
+        ? html`<sass-stats component=${componentSassStatsName}> ${componentPanelTemplate} </sass-stats>`
+        : html`${componentPanelTemplate}`;
+    }
+    return html``;
+  }
+
+  private getComponentTabPanelTemplate(
     componentName: string,
     component: string,
     componentSassStatsName: string,
@@ -248,22 +318,30 @@ export class Sandbox extends LitElement {
       <md-tab-panel slot="panel">
         <div class="container" aria-label=${component}>
           <h2>${componentName}</h2>
-          ${componentName.length !== 0
-            ? componentSassStatsName.length !== 0
-              ? html`<sass-stats component=${componentSassStatsName}> ${componentPanelTemplate} </sass-stats>`
-              : html`${componentPanelTemplate}`
-            : html``}
+          ${this.getTabPanelTemplate(componentName, componentSassStatsName, componentPanelTemplate)}
         </div>
       </md-tab-panel>
     `;
   }
 
+  get themeClassMap() {
+    return {
+      "theme-toggle": true,
+      "is-visual-rebrand": themeManager.isVisualRebrandEnabled
+    };
+  }
+
   render() {
     return html`
-      <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
+      <md-theme
+        class="${classMap(this.themeClassMap)}"
+        id="app-theme"
+        ?darkTheme=${themeManager.isDarkMode}
+        theme=${themeManager.themeName}
+      >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
-        <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">
+        <md-tabs direction=${this.tabsOrientation} class="explorer" persist-selection tabs-id="explorer">
           ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
           ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)}
           ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}
@@ -274,6 +352,7 @@ export class Sandbox extends LitElement {
           ${this.getTabTemplate("Button", "md-button", "button", buttonTemplate)}
           ${this.getTabTemplate("Button Group", "md-button-group", "button-group", buttonGroupTemplate)}
           ${this.getTabTemplate("Card", "md-card", "card", cardTemplate)}
+          ${this.getTabTemplate("Card - v2", "md-card-v2", "card-v2", cardV2Template)}
           ${this.getTabTemplate("Card - AI", "md-card-ai", "card-ai", cardAiTemplate)}
           ${this.getTabTemplate("Chat Message", "md-chat-message", "chat-message", chatMessageTemplate)}
           ${this.getTabTemplate("Checkbox", "md-checkbox", "checkbox", checkboxTemplate)}
@@ -281,6 +360,12 @@ export class Sandbox extends LitElement {
           ${this.getTabTemplate("Coachmark", "md-coachmark", "coachmark", coachTemplate)}
           ${this.getTabTemplate("Code Editor", "md-code-editor", "code-editor", codeEditorTemplate)}
           ${this.getTabTemplate("Combo Box", "md-combobox", "combobox", comboBoxTemplate)}
+          ${this.getTabTemplate(
+            "Country Code Picker",
+            "md-country-code-picker",
+            "country-code-picker",
+            countryCodePickerTemplate
+          )}
           ${this.getTabTemplate("Datepicker", "md-datepicker", "datepicker", datePickerTemplate)}
           ${this.getTabTemplate("Date Range Picker", "md-date-range-picker", "datepicker", dateRangePickerTemplate)}
           ${this.getTabTemplate("Date Time Picker", "md-date-time-picker", "date-time-picker", dateTimePickerTemplate)}
@@ -288,6 +373,12 @@ export class Sandbox extends LitElement {
           ${this.getTabTemplate("Draggable", "md-draggable", "draggable", draggableTemplate)}
           ${this.getTabTemplate("Editable Field", "md-editable-field", "editable-textfield", editableField)}
           ${this.getTabTemplate("Favorite", "md-favorite", "favorite", favoriteTemplate)}
+          ${this.getTabTemplate(
+            "Floating Button Bar",
+            "md-floating-button-bar",
+            "Floating Button Bar",
+            floatingButtonBarTemplate
+          )}
           ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}
           ${this.getTabTemplate("Form", "md-form", "", formTemplate)}
           ${this.getTabTemplate("Grabber", "md-grabber", "grabber", grabberTemplate)}

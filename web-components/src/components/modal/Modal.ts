@@ -9,6 +9,7 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
+import { themeManager } from "@/managers/ThemeManager";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -19,6 +20,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
+export const modalAlignment = ["leading", "center"] as const;
 
 const minisculeLatency = 13;
 /**
@@ -31,6 +33,7 @@ const minisculeLatency = 13;
 
 export namespace Modal {
   export type Type = (typeof modalType)[number];
+  export type Alignment = (typeof modalAlignment)[number];
 
   @customElementWithCheck("md-modal")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -51,6 +54,8 @@ export namespace Modal {
     @property({ type: Boolean }) hideFooter = false;
     @property({ type: Boolean }) hideHeader = false;
     @property({ type: Boolean }) disableInitialFocus = false;
+
+    @property({ type: String }) alignment?: Alignment = undefined;
 
     @internalProperty() private animating = false;
 
@@ -79,6 +84,13 @@ export namespace Modal {
           this.modalFadeOut();
         }
       }
+    }
+
+    private get computedAlignment(): Alignment {
+      if (this.alignment === undefined) {
+        return themeManager.isMomentumV2Enabled ? "leading" : "center";
+      }
+      return this.alignment;
     }
 
     private notifyModalClose() {
@@ -174,7 +186,9 @@ export namespace Modal {
         ${this.showCloseButton
           ? html`
               <md-button
-                hasRemoveStyle
+                variant="ghost"
+                size="20"
+                circle
                 class="md-close md-modal__close"
                 @click="${this.hideModal}"
                 @keydown="${this.handleKeyDown}"
@@ -196,14 +210,12 @@ export namespace Modal {
         ? html`
             <div id="modal_header" part="modal-header" class="md-modal__header">
               <slot name="header"></slot>
-              ${this.topCloseBtnTemplate()}
             </div>
           `
         : html`
             <div id="modal_header" part="modal-header" class="md-modal__header">
               <h2 class="md-modal__title">${this.headerLabel}</h2>
               ${this.headerMessage ? html` <span class="md-modal__message">${this.headerMessage}</span> ` : nothing}
-              ${this.topCloseBtnTemplate()}
             </div>
           `;
     }
@@ -221,6 +233,7 @@ export namespace Modal {
                 aria-label=${this.ariaLabelCancel}
                 @click="${this.handleFooterClick}"
                 @keydown="${this.handleKeyDown}"
+                variant="secondary"
               >
                 <span>Cancel</span>
               </md-button>
@@ -246,7 +259,8 @@ export namespace Modal {
     get modalContainerClassMap() {
       return {
         in: this.show,
-        [`md-modal--${this.size}`]: !!this.size
+        [`md-modal--${this.size}`]: !!this.size,
+        [`md-modal--${this.computedAlignment}`]: !!this.computedAlignment
       };
     }
 
@@ -269,7 +283,7 @@ export namespace Modal {
                 >
                   <div part="modal-content" class="md-modal__content">
                     <div class="md-modal__flex-container" part="modal-flex-container">
-                      ${this.headerTemplate()}
+                      ${this.headerTemplate()} ${this.topCloseBtnTemplate()}
                       <div id="modal-body" part="modal-body" class="md-modal__body">
                         <slot></slot>
                       </div>

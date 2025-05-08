@@ -1,6 +1,13 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { CardAi, CardAiVariant } from "./CardAi";
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>')
+  })
+) as jest.Mock;
+
 const fixtureFactory = async (
   id: string,
   title: string,
@@ -37,7 +44,13 @@ const getSummariseMoreButton = (element: CardAi.ELEMENT) =>
   element.shadowRoot?.querySelector(".md-card-ai-footer  md-button");
 
 describe("CardAi component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -127,8 +140,6 @@ describe("CardAi component", () => {
       false
     );
 
-    jest.useFakeTimers();
-
     const writeTextMock = jest.fn();
     Object.assign(navigator, {
       clipboard: {
@@ -153,8 +164,6 @@ describe("CardAi component", () => {
     await elementUpdated(element);
 
     expect(copyButton.textContent).toBe(originalText);
-
-    jest.useRealTimers();
   });
 
   test("Actioning thumbs up should dispatch its event", async () => {

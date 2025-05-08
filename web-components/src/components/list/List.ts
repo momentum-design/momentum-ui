@@ -115,7 +115,8 @@ export namespace List {
       }
     }
     private isListItemDisabled(index: number) {
-      return (this.slotted[index] as ListItem.ELEMENT).disabled;
+      const item = this.slotted[index] as ListItem.ELEMENT;
+      return item?.disabled ?? true;
     }
 
     handleClick(event: MouseEvent) {
@@ -128,7 +129,81 @@ export namespace List {
       }
     }
 
+    /**
+     * Determines if an element should handle its own keyboard navigation
+     * based on its role, attributes, and the key pressed.
+     */
+    private shouldElementHandleKey(element: HTMLElement, keyCode: string): boolean {
+      // 1. Check for explicit opt-in/opt-out attributes
+      if (element.hasAttribute("data-handles-keys") || element.closest("[data-handles-keys]")) {
+        return true;
+      }
+
+      // 2. Check element type
+      const tagName = element.tagName.toLowerCase();
+      const nodeName = element.nodeName.toLowerCase();
+      const isFormElement = nodeName === "input" || nodeName === "textarea" || nodeName === "select";
+
+      // 3. Check based on ARIA roles and properties
+      const role = element.getAttribute("role");
+      const isEditableContent =
+        element.hasAttribute("contenteditable") || element.getAttribute("aria-readonly") === "false";
+
+      // 4. Element-specific keyboard handling needs
+      const arrowKeys = [Key.ArrowUp, Key.ArrowDown, Key.ArrowLeft, Key.ArrowRight];
+      const actionKeys = [Key.Enter, Key.Space];
+
+      // Check if the element needs arrow keys
+      if (arrowKeys.includes(keyCode as Key)) {
+        // Elements that need arrow keys for their own navigation
+        return (
+          isFormElement ||
+          isEditableContent ||
+          role === "textbox" ||
+          role === "combobox" ||
+          role === "listbox" ||
+          role === "menu" ||
+          role === "slider" ||
+          role === "scrollbar" ||
+          role === "tablist" ||
+          (tagName.startsWith("md-") &&
+            (tagName === "md-input" || tagName === "md-select" || tagName === "md-combobox"))
+        );
+      }
+
+      // Check if the element needs action keys
+      if (actionKeys.includes(keyCode as Key)) {
+        return (
+          role === "button" ||
+          role === "link" ||
+          role === "checkbox" ||
+          role === "radio" ||
+          tagName === "button" ||
+          tagName === "a" ||
+          tagName === "md-button" ||
+          tagName === "md-checkbox" ||
+          tagName === "md-radio" ||
+          isFormElement
+        );
+      }
+
+      // Check for Home/End keys
+      if (keyCode === Key.Home || keyCode === Key.End) {
+        return isFormElement || isEditableContent || role === "textbox" || tagName === "md-input";
+      }
+
+      return false;
+    }
+
     handleKeyDown(event: KeyboardEvent) {
+      const path = event.composedPath();
+      const originalTarget = path[0] as HTMLElement;
+
+      if (this.shouldElementHandleKey(originalTarget, event.code)) {
+        // Let the element handle its own keyboard navigation
+        return;
+      }
+
       const { code } = event;
       switch (code) {
         case Key.End:

@@ -6,16 +6,16 @@
  *
  */
 
-import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
+import "@/components/input/Input";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { CSSResultArray, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import "@/components/input/Input";
+import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
@@ -170,7 +170,7 @@ export namespace EditableTextfield {
     handleBlur = () => {
       this.isEditing = false;
       if (this.maxLines.length > 0) {
-        this.editableField && this.editableField.scrollTo(0, 0);
+        this.editableField?.scrollTo(0, 0);
       }
       this.content = this.editableField?.innerText.trim() || "";
       this.alert = false;
@@ -179,7 +179,7 @@ export namespace EditableTextfield {
 
     handleValidation() {
       if (this.type || this.pattern) {
-        const valid = this.checkValidity && this.checkValidity(this.content);
+        const valid = this.checkValidity?.(this.content);
         if (!valid) {
           this.reportValidity();
           this.showAlert();

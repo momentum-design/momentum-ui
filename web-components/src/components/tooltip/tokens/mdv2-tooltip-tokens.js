@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const tooltip = {
   prefix: "mdv2",
   component: "tooltip",
   "font-color": {
-    common: "$mds-color-theme-inverted-text-primary-normal"
+    common: "$mds-color-theme-text-primary-normal"
   },
   "bg-color": {
-    common: "$mds-color-theme-inverted-background-normal"
+    common: "$mds-color-theme-background-solid-primary-normal"
   },
   border: {
-    common: "$mds-color-theme-inverted-outline-primary-normal"
+    common: "$mds-color-theme-outline-secondary-normal"
   },
   radius: {
     common: "8px"
@@ -22,7 +21,7 @@ const tooltip = {
   arrow: {
     bottom: {
       top: {
-        common: "-9px"
+        common: "-8px"
       },
       "before-top": {
         common: "2px"
@@ -30,7 +29,7 @@ const tooltip = {
     },
     right: {
       left: {
-        common: "-17px"
+        common: "-9px"
       },
       "before-top": {
         common: "2px"

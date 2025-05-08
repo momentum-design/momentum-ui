@@ -1,14 +1,20 @@
 import "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Grabber";
-import { Grabber } from "./Grabber";
+import { type Grabber } from "./Grabber";
 
 const fixtureFactory = async (): Promise<Grabber.ELEMENT> => {
   return await fixture(html` <md-grabber> </md-grabber> `);
 };
 
 describe("Grabber component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -27,14 +33,14 @@ describe("Grabber component", () => {
     const element = await fixture<Grabber.ELEMENT>(`<md-grabber disabled></md-grabber>`);
 
     expect(element).toBeDefined();
-    expect(element.disabled).toBeTruthy;
+    expect(element.disabled).toBeTruthy();
   });
 
   test("should set active grabber", async () => {
     const element = await fixture<Grabber.ELEMENT>(`<md-grabber checked></md-grabber>`);
 
     expect(element).toBeDefined();
-    expect(element.checked).toBeTruthy;
+    expect(element.checked).toBeTruthy();
     expect(element.collapsed).toBe(false);
 
     const icon = element.shadowRoot?.querySelector("md-icon");

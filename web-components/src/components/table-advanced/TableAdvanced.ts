@@ -61,7 +61,7 @@ export namespace TableAdvanced {
     private selected: Record<number, boolean> = {};
     private expandedRowIdx: Record<number, boolean> = {};
 
-    private dragover = (e: Event) => e.preventDefault();
+    private readonly dragover = (e: Event) => e.preventDefault();
 
     @queryAll("tr[tabindex]") tableRaws?: HTMLTableRowElement[];
     disconnectedCallback() {
@@ -89,7 +89,7 @@ export namespace TableAdvanced {
       if (typeof this.data === "string") {
         try {
           this.tableData = JSON.parse(this.data);
-        } catch (error) {
+        } catch (_error) {
           console.error("[INVALID_JSON_FORMAT] Please recheck the config json");
         }
       } else {
@@ -101,7 +101,7 @@ export namespace TableAdvanced {
       if (typeof this.config === "string") {
         try {
           this.tableConfig = JSON.parse(this.config);
-        } catch (error) {
+        } catch (_error) {
           console.error("[INVALID_JSON_FORMAT] Please recheck the data json");
         }
       } else {
@@ -612,11 +612,11 @@ export namespace TableAdvanced {
 
     sortIconTemplate(sortOrder: SortOrder): TemplateResult | typeof nothing {
       if (sortOrder === "ascending") {
-        return html`<md-icon name="arrow-tail-down-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+        return html`<md-icon name="sort-descending-bold" size="16" iconSet="momentumDesign"></md-icon>`;
       } else if (sortOrder === "descending") {
-        return html`<md-icon name="arrow-tail-up-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+        return html`<md-icon name="sort-ascending-bold" size="16" iconSet="momentumDesign"></md-icon>`;
       }
-      return html`<md-icon name="unsorted-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+      return html`<md-icon name="unsorted-bold" size="16" iconSet="momentumDesign"></md-icon>`;
     }
 
     private renderCol(col: Col, rowspan?: number) {
@@ -658,7 +658,7 @@ export namespace TableAdvanced {
                           <md-icon
                             class="filter-active"
                             name="filter-bold"
-                            size="14"
+                            size="16"
                             iconSet="momentumDesign"
                           ></md-icon>
                         `

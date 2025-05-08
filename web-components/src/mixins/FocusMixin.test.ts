@@ -1,9 +1,17 @@
-import { defineCE, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { defineCE, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { AnyConstructor, FocusClass, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   @customElement("custom-element")
   class CustomElement extends LitElement {
@@ -58,7 +66,7 @@ describe("Focus Mixin", () => {
     class FocusableChild extends FocusMixin(LitElement) {
       @property({ type: Boolean, reflect: true }) autofocus = true;
 
-      protected async firstUpdated(changedProperties: PropertyValues) {
+      protected firstUpdated(changedProperties: PropertyValues) {
         super.firstUpdated(changedProperties);
         this.setAttribute("tabindex", "0");
       }
@@ -70,7 +78,7 @@ describe("Focus Mixin", () => {
 
     const element = await fixture<FocusableChild>(`<focusable-child></focusable-child>`);
 
-    await nextFrame();
+    jest.runAllTimers();
 
     expect(document.activeElement).toEqual(element);
     expect(element["getActiveElement"]!()).toEqual(element);
@@ -98,17 +106,19 @@ describe("Focus Mixin", () => {
     const el = await fixture<CustomElement>(`<${tag}></${tag}>`);
 
     const focusEvent = new Event("focus");
-    setTimeout(() => (el as FocusClass)["handleFocusIn"]!(focusEvent));
+    const focusVisiblePromise = oneEvent(el, "focus-visible");
+    (el as FocusClass)["handleFocusIn"]!(focusEvent);
 
-    const { detail: focusDetail } = await oneEvent(el, "focus-visible");
+    const { detail: focusDetail } = await focusVisiblePromise;
 
     expect(focusDetail).toBeDefined();
     expect(focusDetail.sourceEvent).toEqual(focusEvent);
 
     const blurEvent = new Event("blur");
-    setTimeout(() => (el as FocusClass)["handleFocusOut"]!(blurEvent));
+    const focusNotVisiblePromoise = oneEvent(el, "focus-not-visible");
+    (el as FocusClass)["handleFocusOut"]!(blurEvent);
 
-    const { detail: blurDetail } = await oneEvent(el, "focus-not-visible");
+    const { detail: blurDetail } = await focusNotVisiblePromoise;
 
     expect(blurDetail).toBeDefined();
     expect(blurDetail.sourceEvent).toEqual(blurEvent);

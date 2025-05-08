@@ -7,7 +7,7 @@
   position: fixed;
   right: 0;
   visibility: visible;
-  width: $width;
+  width: $width;  
 }
 
 @mixin modal-size(
@@ -17,7 +17,8 @@
   $min-height: 0,
   $radius: false,
   $top-offset: false,
-  $width: $modal__width--full-screen
+  $width: $modal__width--full-screen,
+  $setHeightWhenSettingMinHeight: false
 ) {
   width: $width;
 
@@ -32,6 +33,16 @@
   .md-modal__content {
     @if $min-height !=0 {
       min-height: $min-height;
+      
+      //Height was not being set if a min height was set
+      //Allow overridding of this behaviour
+      @if $setHeightWhenSettingMinHeight {
+        height: $height;
+      }@else {
+        height: auto;
+      }
+
+
     } @else {
       height: $height;
       min-height: $min-height;

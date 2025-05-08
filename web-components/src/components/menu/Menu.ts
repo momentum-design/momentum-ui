@@ -10,10 +10,10 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";
 import { SlottedMixin } from "@/mixins/SlottedMixin";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import { nanoid } from "nanoid";
 import { MenuItem } from "./MenuItem";
 import styles from "./scss/module.scss";
 
@@ -29,7 +29,7 @@ export namespace Menu {
     @query("slot") menuSlotElement?: HTMLSlotElement;
     @query("md-menu-overlay") menuSubElement?: HTMLSlotElement;
 
-    private items: MenuItem.ELEMENT[] = [];
+    private readonly items: MenuItem.ELEMENT[] = [];
     private itemsHash: Record<ItemId, MenuItem.ELEMENT> = {};
     private itemsIdxHash: Record<ItemId, number> = {};
 
@@ -49,7 +49,7 @@ export namespace Menu {
       const { items } = this;
 
       items.forEach((item, index) => {
-        const id = nanoid();
+        const id = generateSimpleUniqueId("menu");
 
         item.setAttribute("id", id);
         item.setAttribute("aria-controls", id);
@@ -99,7 +99,7 @@ export namespace Menu {
       if (this.items) {
         [oldSelectedIndex, newSelectedIndex].forEach((index) => {
           const item = this.items[index];
-          item && item.toggleAttribute("selected");
+          item?.toggleAttribute("selected");
         });
       }
 

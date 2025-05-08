@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
 const task_item = {
@@ -51,6 +50,20 @@ const task_item = {
   timer: {
     "text-color": {
       common: "$mds-color-theme-text-success-normal"
+    }
+  },
+  restyle: {
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "text-disabled-color": {
+      common: "$mds-color-theme-text-primary-disabled"
+    },
+    "error-text-color": {
+      common: "$mds-color-theme-text-error-normal"
+    },
+    "dot-color": {
+      common: "$mds-color-theme-outline-secondary-normal"
     }
   }
 };

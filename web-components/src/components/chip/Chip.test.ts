@@ -2,14 +2,21 @@ import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Chip";
-import { Chip } from "./Chip";
+import { type Chip } from "./Chip";
 
 const fixtureFactory = async (): Promise<Chip.ELEMENT> => {
   return await fixture(html` <md-chip value="chip text content"></md-chip> `);
 };
 
 describe("Chip component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.runAllTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -45,25 +52,32 @@ describe("Chip component", () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content that is way tooooooo long"></md-chip>
     `);
-    expect(component.truncStringPortion).toHaveBeenCalled;
+
+    const spy = jest.spyOn(component, "truncStringPortion");
+
+    component.requestUpdate();
+    await elementUpdated(component);
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
   });
   test("should render determinate progress bar", async () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" determinateProgress="50"></md-chip>
     `);
-    expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull;
+    expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull();
   });
   test("should render indeterminate progress bar", async () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" indeterminateProgress></md-chip>
     `);
-    expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull;
+    expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull();
   });
   test("should render an icon when icon attribute is used", async () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" icon="icon-alert_16"></md-chip>
     `);
-    expect(component.shadowRoot?.querySelector("md-icon")).not.toBeNull;
+    expect(component.shadowRoot?.querySelector("md-icon")).not.toBeNull();
   });
 
   test("should set disabled state", async () => {
@@ -105,10 +119,10 @@ describe("Chip component", () => {
 
     component.handleSelect();
     await elementUpdated(component);
-    expect(component.selected).toBeTruthy;
+    expect(component.selected).toBeTruthy();
     component.handleDeSelect();
     await elementUpdated(component);
-    expect(component.selected).toBeFalsy;
+    expect(component.selected).toBeFalsy();
   });
 
   test("should return add tooltip text", async () => {

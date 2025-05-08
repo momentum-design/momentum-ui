@@ -16,7 +16,7 @@ $inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
 $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
 @mixin global-theme-specific-vars {
-  --rem-base: 16px;
+  --rem-base: 14px;
   --brand-font-regular: #{$inter-base-font};
   --brand-font-bold: #{$inter-bold-font};
   --brand-font-bold-oblique: #{$inter-bold-oblique-font};
@@ -36,16 +36,22 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-weight-medium: 500;
   --brand-font-weight-bold: 700;
 
-  font-size: var(--rem-base);
+  font-size: 14px;
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
 
-  --body-large-font-size: 1.125rem;
   --body-primary-font-size: 1rem;
-  --body-secondary-font-size: 0.875rem;
-  --label-compact-font-size: 0.75rem;
+  --body-secondary-font-size: 0.875rem;  
 
+  --font-size-heading-small: 1.25rem;
+  --font-size-body-large: 1rem;
+  --font-size-body-midsize: 0.875rem;
+  --font-size-body-small: 0.75rem;
+
+  --font-lineheight-heading-small: 1.75rem;
+  --font-lineheight-body-large: 1.5rem;
   --body-primary-line-height: 1.5rem;
+  --list-line-height: rem-calc(20);
 
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
@@ -70,6 +76,9 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-disabled-text-color: #{$mds-color-theme-text-primary-disabled};
   --md-highlight-text-color: #{$mds-color-theme-text-highlight};
   --md-white-text-color: #{$mds-color-theme-common-text-primary-normal};
+
+  --md-inverted-primary-text-color: #{$mds-color-theme-inverted-text-primary-normal};
+  --md-inverted-secondary-text-color: #{$mds-color-theme-inverted-text-secondary-normal};
 
   --md-hyperlink-text-color: #{$mds-color-theme-text-accent-normal};
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
@@ -104,14 +113,16 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
 
-  --md-navigation-bg-color: transparent;
-  --md-header-bg-color: transparent;
-  --md-app-bg-color: var(--md-primary-gradient-background);
-  --md-header-bg-color: transparent;
   --md-header-separator-color: transparent;
-  --md-content-bg-color: var(--md-secondary-gradient-background);
-  --md-task-list-bg-color: transparent;
-  --md-agent-history-bg-color: transparent;
+  --md-glass-bg-color: #{$mds-color-theme-background-glass-normal};
+  --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-overlay-normal};
+  --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-overlay-inactive};
+
+  --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
+  --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);
+  --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
+  --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
+  --md-backdrop-filter: 10px;
 
   --md-nav-divider-primary: linear-gradient(
     0deg,
@@ -133,46 +144,17 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
   --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-header-text-color: #{$mds-color-theme-text-primary-normal};
   --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  --md-table-header-border-bottom-color: #{$mds-color-theme-outline-primary-normal};
   --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
   --md-table-border-style: none;
   --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
   --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-column-divider-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-row-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
+  --md-table-pinned-bg-color: #{$mds-color-theme-background-solid-primary-normal};
 
-  // Background colors can not be overwritten because they are being used by consumers in unexpected ways
-  // New background colors should be introduced and these phased out
-  // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
-  // --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
-  // --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
-  // --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active}
-  // --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-tertiary-two-bg-color: #{$md-gray-80};
-  // --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
-  // --md-quaternary-one-bg-color: #{$md-gray-60};
-  // --md-quaternary-two-bg-color: #{$md-gray-90};
-  // --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
-  // --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
-
-  // --md-presence-active-bg-color: #{$md-green-50};
-  // --md-presence-do-not-disturb-bg-color: #{$md-red-60};
-  // --md-presence-away-bg-color: #{$md-gray-30};
-  // --md-presence-busy-bg-color: #{$md-yellow-40};
-  // --md-email-composer-bg-color: #{$md-gray-95};
-  // --md-email-composer-thread-bar-color: #{$md-violet-40};
-  // --md-email-composer-ccChip-bg-color: #{$md-gray-90};
-  // --md-interaction-history-bg-color: #{$md-gray-95};
-  // --md-auto-wrapup-bg-color: #{$md-blue-90};
-  // --md-input-bg-color: #{$md-gray-95};
-  // --md-input-chat-length-indicator-bg-color: #{$md-gray-90};
-  // --md-input-chat-length-indicator-color: #{$md-gray-40};
-  // --md-input-chat-bg-color: #{$md-gray-90};
-  // --md-input-chat-color: #{$md-gray-05};
-  // --md-input-chat-error-color: #{$md-red-50};
-  // --md-webex-chat-disable-bg-color: #{$md-gray-90};
-  // --md-webex-chat-disable-color: #{$md-gray-70};
+  --md-inverted-primary-bg-color: #{$mds-color-theme-inverted-background-normal};
 }

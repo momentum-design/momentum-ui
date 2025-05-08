@@ -1,10 +1,13 @@
-// White button colors
-$icon--white__fill: $md-white-100 !default;
-$icon--white__fill--hover: $white-92 !default;
-$icon--white__fill--active: $white-84 !default;
-$icon--white__fill--disabled: $white-20 !default;
+@use "@/wc_scss/colors/settings-base" as color-base;
+@use "@/wc_scss/colors/settings-transparencies" as color-transparent;
 
-$icon--white__fill--contrast: $md-black-100 !default;
-$icon--white__fill--hover--contrast: $md-black-100 !default;
-$icon--white__fill--active--contrast: $md-black-100 !default;
-$icon--white__fill--disabled--contrast: $white-20 !default;
+// White button colors
+$icon--white__fill: color-base.$md-white-100 !default;
+$icon--white__fill--hover: color-transparent.$white-92 !default;
+$icon--white__fill--active: color-transparent.$white-84 !default;
+$icon--white__fill--disabled: color-transparent.$white-20 !default;
+
+$icon--white__fill--contrast: color-base.$md-black-100 !default;
+$icon--white__fill--hover--contrast: color-base.$md-black-100 !default;
+$icon--white__fill--active--contrast: color-base.$md-black-100 !default;
+$icon--white__fill--disabled--contrast: color-transparent.$white-20 !default;

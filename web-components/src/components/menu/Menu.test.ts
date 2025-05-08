@@ -1,7 +1,8 @@
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Menu";
-import { Menu } from "./Menu";
+import { type Menu } from "./Menu";
 
 const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
   return await fixture<Menu.ELEMENT>(html`
@@ -27,13 +28,19 @@ const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
 };
 
 describe("Menu component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
   test("should create component", async () => {
     const component = await fixtureFactory();
-    expect(component).toBeDefined;
+    expect(component).toBeDefined();
   });
 
   test("should setup menu items", async () => {

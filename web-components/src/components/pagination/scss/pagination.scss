@@ -5,7 +5,7 @@
 
 :host(md-pagination) {
   .md-pagination {
-    color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+    color: var(--pagination-nav-color);
     display: flex;
     padding: 0;
     position: relative;
@@ -20,7 +20,7 @@
       @include flex();
       font-size: $pagination-font-size;
       line-height: $pagination-line-height;
-      color: var(--pagination-color, $md-pagination-color-light);
+      color: var(--pagination-color);
 
       li:not(.page-ellipsis) {
         @include flex();
@@ -32,8 +32,8 @@
         padding: $pagination-item-indent;
 
         &:hover {
-          background: var(--pagination-bg-hover, $md-pagination-bg-hover-light);
-          color: var(--pagination-color-current, $md-pagination-color-current-light);
+          background: var(--pagination-bg-hover);
+          color: var(--pagination-color-current);
         }
 
         &:focus {
@@ -41,8 +41,8 @@
         }
 
         &[aria-current="true"] {
-          background: var(--pagination-bg-current, $md-pagination-bg-current-light);
-          color: var(--pagination-color-current, $md-pagination-color-current-light);
+          background: var(--pagination-bg-current);
+          color: var(--pagination-color-current);
           cursor: default;
           pointer-events: none;
         }
@@ -63,7 +63,7 @@
 
       li {
         @include text-overflow();
-        background: var(--pagination-dots-color, $md-pagination-dots-color-light);
+        background: var(--pagination-dots-color);
         border-radius: 50%;
         cursor: pointer;
         height: $pagination-dots-size;
@@ -72,7 +72,7 @@
 
         &[aria-current="true"],
         &:hover {
-          background: var(--pagination-dots-color-current, $md-pagination-dots-color-current-light);
+          background: var(--pagination-dots-color-current);
         }
       }
     }

@@ -29,28 +29,28 @@ $avatar-sizes: (xsmall, $icon-dnd_8, $icon-pto_8, $icon-handset_8, $icon-camera_
 
 $avatar--active__shadow:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-active, $md-green-50),
-  inset 0 0 0 rem-calc(2) $white-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $white-24);
 $avatar--active__shadow--dark:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-active, $md-green-50),
-  inset 0 0 0 rem-calc(2) $black-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $black-24);
 $avatar--engaged__shadow:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-engaged, $md-yellow-40),
-  inset 0 0 0 rem-calc(2) $white-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $white-24);
 $avatar--engaged__shadow--dark:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-engaged, $md-yellow-40),
-  inset 0 0 0 rem-calc(2) $black-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $black-24);
 $avatar--idle__shadow:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-inactive, $md-gray-30),
-  inset 0 0 0 rem-calc(2) $white-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $white-24);
 $avatar--idle__shadow--dark:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-inactive, $md-gray-30),
-  inset 0 0 0 rem-calc(2) $black-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $black-24);
 $avatar--rona__shadow:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-rona, $md-red-60),
-  inset 0 0 0 rem-calc(2) $white-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $white-24);
 $avatar--rona__shadow--dark:
   inset 0 0 0 rem-calc(1) var(--avatar-presence-rona, $md-red-60),
-  inset 0 0 0 rem-calc(2) $black-24;
+  inset 0 0 0 rem-calc(2) var(--avatar-presence-cutout-bg-color, $black-24);
 
 $avatar-letter__color: var(--avatar-letter-text-color);
 $avatar-letter__background: var(--avatar-letter-bg-color);

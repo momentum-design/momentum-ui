@@ -1,5 +1,5 @@
 :host {
-  width: 100%;  
+  width: 100%;
 }
 
 .md-taskitem {
@@ -22,55 +22,55 @@
       &_queue,
       &_chat,
       &_popover_title {
-        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+        color: var(--taskitem-selected-text-color);
       }
 
       &_title {
         &.mainTitle {
-          color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+          color: var(--taskitem-selected-text-color);
         }
       }
     }
   }
 
   &:hover {
-    background-color: var(--taskitem-hover-bg-color, $lm-taskitem-hover-bg-color-light);
+    background-color: var(--taskitem-hover-bg-color);
 
     .md-taskitem__content {
       &_queue,
       &_chat,
       &_popover_title {
-        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+        color: var(--taskitem-selected-text-color);
       }
 
       &_title {
         &.mainTitle {
-          color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+          color: var(--taskitem-selected-text-color);
         }
       }
     }
   }
 
   &:active {
-    background-color: var(--taskitem-pressed-bg-color, $lm-taskitem-pressed-bg-color-light);
+    background-color: var(--taskitem-pressed-bg-color);
 
     .md-taskitem__content {
       &_queue,
       &_chat,
       &_popover_title {
-        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+        color: var(--taskitem-selected-text-color);
       }
 
       &_title {
         &.mainTitle {
-          color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+          color: var(--taskitem-selected-text-color);
         }
       }
     }
   }
 
   &:focus {
-    background: var(--taskitem-focus-bg-color, $lm-taskitem-focus-bg-color-light);
+    background: var(--taskitem-focus-bg-color);
     box-shadow: none;
     outline: none;
 
@@ -97,10 +97,10 @@
 
   .md-taskitem__status {
     @include taskitem-status;
-    background: var(--taskitem-status-bg-color, $lm-taskitem-status-bg-color-light);
+    background: var(--taskitem-status-bg-color);
     border-radius: $taskitem-border-circle;
     bottom: -$taskitem-base-unit;
-    color: var(--taskitem-status-text-color, $lm-taskitem-status-text-color-light);
+    color: var(--taskitem-status-text-color);
     height: $taskitem-main-size;
     right: -$taskitem-base-unit;
     width: $taskitem-main-size;
@@ -110,12 +110,11 @@
     }
 
     md-icon::part(icon) {
-      
       vertical-align: top;
     }
 
     &.hold {
-      background: var(--taskitem-status-pause-bg-color, $lm-taskitem-status-pause-bg-color-light);
+      background: var(--taskitem-status-pause-bg-color);
     }
   }
 }
@@ -124,15 +123,19 @@
   @include taskitem-content;
   width: calc(100% - calc(#{$taskitem-mediatype-width} + #{$taskitem-additional-width}));
 
-
   &_popover_title {
     @include text-dots;
-    color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
+    color: var(--taskitem-text-color);
     font-family: $taskitem-title-font;
     font-size: $taskitem-popover-title-font-size;
     line-height: $taskitem-popover-title-height;
     margin-bottom: $taskitem-main-margin;
     width: calc(100%);
+
+    &.popover-item-title {
+      margin-bottom: 0;
+    }
+
   }
 
   &_title {
@@ -143,8 +146,12 @@
     width: calc(100%); //don't delete, it need for text overflow
 
     &.mainTitle {
-      color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
+      color: var(--taskitem-text-color);
       font-family: $taskitem-title-font;
+    }
+    &.display-only-title {
+      margin-bottom: 0;
+      width: $taskitem-additional-width;
     }
   }
 
@@ -162,7 +169,7 @@
   }
 
   &_chat {
-    color: var(--taskitem-chat-text-color, $lm-taskitem-chat-text-color-light);
+    color: var(--taskitem-chat-text-color);
     display: flex;
     font-size: $taskitem-queue-font-size;
     line-height: $taskitem-base-height;
@@ -187,9 +194,9 @@
   width: $taskitem-additional-width;
 
   .new-chat-quantity {
-    background: var(--taskitem-chat-quantity-bg-color, $lm-taskitem-chat-quantity-bg-color-light);
+    background: var(--taskitem-chat-quantity-bg-color);
     border-radius: 9px;
-    color: var(--taskitem-chat-quantity-text-color, $lm-taskitem-chat-quantity-text-color-light);
+    color: var(--taskitem-chat-quantity-text-color);
     display: inline-block;
     font-size: $taskitem-newchat-font-size;
     line-height: $taskitem-base-height;
@@ -199,7 +206,133 @@
   }
 }
 
-@media (forced-colors:active) {
+:host([is-restyle]) {
+  .md-taskitem {
+    padding: $taskitem-restyle-padding;
+    justify-content: space-between;
+
+    &__mediatype {
+      margin-right: $taskitem-restyle-content-margin;
+      white-space: nowrap;
+      width: auto;
+    }
+
+    .md-taskitem__content {
+      width: auto;
+      min-width: 0;
+      flex: 1;
+
+      &_popover_title,
+      &_title {
+        font-size: 1rem;
+        font-weight: $taskitem-restyle-title-weight;
+        line-height: 24px;
+        margin: 0px;
+        font-family: $taskitem-restyle-title-font;
+        color: var(--taskitem-restyle-text-color);
+      }
+      &_queue {
+        font-size: $taskitem-restyle-font-size;
+        line-height: 20px;
+        color: var(--taskitem-text-color);
+        width: auto;
+      }
+      &_queue_time {
+        font-size: $taskitem-restyle-font-size;
+        line-height: 20px;
+        color: var(--taskitem-text-color);
+        margin-left: 4px;
+        min-width: $taskitem-restyle-queue-time-min-width;
+        @include text-dots;
+
+        &_dot {
+          background-color: var(--taskitem-restyle-dot-color);
+          border-radius: $taskitem-border-circle;
+          height: $taskitem-restyle-dot-size;
+          width: $taskitem-restyle-dot-size;
+          display: inline-flex;
+          margin: 3px 0px;
+        }
+        ::slotted(*) {
+          display: inline-flex;
+        }
+      }
+      &_chat {
+        margin: 0px;
+        font-size: $taskitem-restyle-font-size;
+        line-height: 20px;
+        color: var(--taskitem-text-color);
+
+        .new-chat_massages {
+          padding: 0;
+        }
+      }
+    }
+
+    &__addition {
+      white-space: nowrap;
+      margin-left: $taskitem-restyle-content-margin;
+      width: auto;
+
+      &.empty_addition {
+        margin: 0px;
+      }
+    }
+
+    .avatar-badge::part(badge) {
+      height: 2rem;
+      width: 2rem;
+      background-color: var(--avatar-darkgray-bg-color);
+    }
+
+    &.selected {
+      .avatar-badge::part(badge) {
+        background-color: var(--avatar-white-bg-color);
+      }
+      .md-taskitem__content {
+        &_popover_title,
+        &_title {
+          font-weight: $taskitem-restyle-title-selected-weight;
+        }
+      }
+    }
+
+    &::after {
+      margin: 0;
+    }
+  }
+}
+
+:host([is-restyle][disabled]) {
+  .md-taskitem {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .md-taskitem__content {
+      &_popover_title,
+      &_title,
+      &_queue,
+      &_chat {
+        color: var(--taskitem-restyle-text-disabled-color);
+      }
+    }
+  }
+}
+
+:host([is-restyle][has-messages="true"]) {
+  .md-taskitem__content {
+    &_popover_title,
+    &_title {
+      ::part(tooltip_reference) {
+        font-weight: 700 !important;
+      }
+    }
+  }
+  .md-taskitem__addition {
+    margin-left: $taskitem-restyle-content-margin !important;
+  }
+}
+@media (forced-colors: active) {
   .md-taskitem {
     &:focus {
       outline: 1px solid Highlight;

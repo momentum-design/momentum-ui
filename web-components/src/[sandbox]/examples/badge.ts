@@ -35,7 +35,34 @@ export const badgeTemplate = html`
     <md-icon name="chat-active_16"></md-icon>
   </md-badge>
   <md-badge color="mint" circle>
-    <md-icon name="social-sms" size="16" iconSet="momentumDesign"></md-icon>
+    <md-icon name="sms-filled" size="16" iconSet="momentumDesign"></md-icon>
+  </md-badge>
+
+  <h4 class="sandbox-header">Circle Badges with Different Sizes</h4>
+
+  <md-badge color="green" circle circle-size="24">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="16"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="32">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="20"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="40">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="24"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="48">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="28"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="64">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="36"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="72">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="40"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="88">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="52"></md-icon>
+  </md-badge>
+  <md-badge color="green" circle circle-size="124">
+    <md-icon name="chat-filled" iconSet="momentumDesign" size="73"></md-icon>
   </md-badge>
 
   <h4 class="sandbox-header">Large Badges</h4>
@@ -128,10 +155,7 @@ export const badgeTemplate = html`
       </md-badge>
       ${"00:01"}
     </span>
-    <span slot="split-right">
-      <md-icon name="archive_12" style="margin-right:.375rem;height:1rem"></md-icon>
-      Wrap Up ${"00:01"}
-    </span>
+    <span slot="split-right"> Wrap Up ${"00:01"} </span>
   </md-badge>
   <md-badge split>
     <span slot="split-left">
@@ -165,6 +189,33 @@ export const badgeTemplate = html`
 
   <h4 class="snadbox-header">Unread count</h4>
 
+  <md-badge color="unreadcount"> 999 </md-badge>
   <md-badge color="unreadcount"> 99 </md-badge>
   <md-badge color="unreadcount"> 4 </md-badge>
+
+  <md-badge color="unreadcount" outlined> 99 </md-badge>
+  <md-badge color="unreadcount" outlined> 99 </md-badge>
+  <md-badge color="unreadcount" outlined> 4 </md-badge>
+
+  <h3 class="sandbox-header">status badge</h3>
+  <md-badge color="status-positive" small>
+    <md-icon name="participant-filled" iconSet="momentumDesign"></md-icon>
+    Agent name - 00:00
+  </md-badge>
+  <md-badge color="status-negative" small suppress-default-max-width>
+    <md-icon name="alert-active-filled" iconSet="momentumDesign"></md-icon>
+    %Wrap-up alert% - 00:00
+  </md-badge>
+  <md-badge color="status-accent" small>
+    <md-icon name="archive-filled" iconSet="momentumDesign"></md-icon>
+    Wrap-up - 00:00
+  </md-badge>
+  <md-badge color="status-warning" small>
+    <md-icon name="call-barge-filled" iconSet="momentumDesign"></md-icon>
+    Barged - 00:00
+  </md-badge>
+  <md-badge color="status-orange" small>
+    <md-icon name="call-hold-filled" iconSet="momentumDesign"></md-icon>
+    On hold - 00:00
+  </md-badge>
 `;

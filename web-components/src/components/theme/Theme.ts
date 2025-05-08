@@ -8,11 +8,11 @@
 
 import styles from "@/components/tooltip/scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
+import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
-import { lumosDark, lumosLight, momentumDark, momentumLight, momentumV2Dark, momentumV2Light } from "./index";
+import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
   interface Window {
@@ -30,7 +30,7 @@ declare global {
   }
 
   interface ThemeStyleSheet {
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     replaceSync: Function;
   }
 }
@@ -59,23 +59,19 @@ export namespace Theme {
     @property({ type: Boolean }) lumos = false;
     @property({ type: String }) theme?: ThemeName;
 
-    @internalProperty() private activeTheme = momentumLight;
+    @internalProperty() private activeTheme = lumosLight;
 
     @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
     @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
-    private eventListeners: {
-      mouseEnter?: (event: MouseEvent) => void;
-      mouseLeave?: (event: MouseEvent) => void;
-    } = {};
-    private currentPopperClone: HTMLElement | null = null;
+    private activeTooltipTrigger: HTMLElement | null = null;
 
     private setTheme() {
       //If the theme property is set, prefer using that theme over the lumos property
       if (this.theme === "momentum") {
-        return this.darkTheme ? momentumDark : momentumLight;
+        return this.darkTheme ? momentumV2Dark : momentumV2Light;
       } else if (this.theme === "lumos") {
         return this.darkTheme ? lumosDark : lumosLight;
       } else if (this.theme === "momentumV2") {
@@ -84,7 +80,7 @@ export namespace Theme {
       if (this.lumos) {
         return this.darkTheme ? lumosDark : lumosLight;
       } else {
-        return this.darkTheme ? momentumDark : momentumLight;
+        return this.darkTheme ? momentumV2Dark : momentumV2Light;
       }
     }
 
@@ -150,13 +146,6 @@ export namespace Theme {
       slotContent: Element[] | null | undefined
     ) {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
-      const popperShadowRoot = (popper.getRootNode() as ShadowRoot).host;
-
-      this.eventListeners.mouseEnter = () => popperShadowRoot.toggleAttribute("opened", true);
-      this.eventListeners.mouseLeave = () => popperShadowRoot.toggleAttribute("opened", false);
-      popperClone.addEventListener("mouseenter", this.eventListeners.mouseEnter);
-      popperClone.addEventListener("mouseleave", this.eventListeners.mouseLeave);
-      this.currentPopperClone = popperClone;
 
       if (this.virtualWrapper.hasChildNodes()) {
         this.removeChildFromVirtualPopper();
@@ -205,6 +194,7 @@ export namespace Theme {
 
       const { popper, placement, reference, slotContent } = event.detail;
 
+      this.activeTooltipTrigger = reference;
       this.placement = placement;
       this.initVirtualElements(popper, reference, slotContent);
       this.showVirtualTooltip();
@@ -213,12 +203,16 @@ export namespace Theme {
     handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
       event.stopPropagation();
       this.hideVirtualTooltip();
+
+      if (this.activeTooltipTrigger === event.detail.reference) {
+        this.activeTooltipTrigger = null;
+      }
     }
 
     handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
       const { popper, reference } = event.detail;
 
-      if (this.virtualReference !== reference) {
+      if (this.activeTooltipTrigger !== reference) {
         return;
       }
 
@@ -230,6 +224,7 @@ export namespace Theme {
         const virtualMessage = virtualContent.textContent;
         if (message && virtualMessage) {
           virtualContent.textContent = message;
+          this.popperInstance?.update();
         }
       }
     }
@@ -244,6 +239,7 @@ export namespace Theme {
 
     handleTooltipRemoved = () => {
       this.hideVirtualTooltip();
+      this.activeTooltipTrigger = null;
     };
 
     private destroyPopperInstance() {
@@ -255,6 +251,9 @@ export namespace Theme {
 
     private createPopperInstance(placement: Tooltip.Placement) {
       if (this.virtualPopper) {
+        const halfArrowSize = 8;
+        const additionalPadding = 4;
+
         this.popperInstance = createPopper(this.virtualReference, this.virtualPopper, {
           placement,
           modifiers: [
@@ -265,7 +264,18 @@ export namespace Theme {
             {
               name: "offset",
               options: {
-                offset: [8, 8]
+                offset: ({ placement }: { placement: Placement }) => {
+                  const padding = halfArrowSize + additionalPadding;
+                  if (
+                    placement.startsWith("left") ||
+                    placement.startsWith("right") ||
+                    placement.startsWith("top") ||
+                    placement.startsWith("bottom")
+                  ) {
+                    return [0, padding];
+                  }
+                  return [8, 8]; // leave old defaults
+                }
               }
             },
             ...(this.virtualArrow
@@ -274,7 +284,7 @@ export namespace Theme {
                     name: "arrow",
                     options: {
                       element: this.virtualArrow,
-                      padding: 5
+                      padding: halfArrowSize
                     }
                   }
                 ]
@@ -329,22 +339,9 @@ export namespace Theme {
       document.removeEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
     }
 
-    private removeVirtualPopperEvents() {
-      if (this.eventListeners.mouseEnter && this.currentPopperClone) {
-        this.currentPopperClone.removeEventListener("mouseenter", this.eventListeners.mouseEnter);
-      }
-      if (this.eventListeners.mouseLeave && this.currentPopperClone) {
-        this.currentPopperClone.removeEventListener("mouseleave", this.eventListeners.mouseLeave);
-      }
-      this.eventListeners.mouseEnter = undefined;
-      this.eventListeners.mouseLeave = undefined;
-      this.currentPopperClone = null;
-    }
-
     disconnectedCallback() {
       super.disconnectedCallback();
       this.teardownEvents();
-      this.removeVirtualPopperEvents();
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -354,7 +351,7 @@ export namespace Theme {
     }
 
     static get styles() {
-      return [momentumLight];
+      return [lumosLight];
     }
 
     render() {

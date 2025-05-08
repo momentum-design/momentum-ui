@@ -8,8 +8,31 @@
   @include flex.flex($display: inline-flex);
   overflow: hidden;
 
+  &.shadow {
+    transition: box-shadow 0.150s ease-in-out;
+    box-shadow: var(--grabber-shadow);
+  }
+
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);    
+    transition: box-shadow 0 ease-in-out;
+    box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);
+  }
+
+  //Set the border radius for the focus ring
+  &.leading {
+    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;    
+  }
+
+  &.trailing {
+    border-radius: var(--grabber-border-radius) 0 0 var(--grabber-border-radius);
+  }
+
+  &.top {
+    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
+  }
+
+  &.bottom {
+    border-radius: var(--grabber-border-radius) var(--grabber-border-radius) 0 0;
   }
 }
 

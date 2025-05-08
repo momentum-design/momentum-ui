@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
@@ -42,6 +42,17 @@ const radio = {
         dark: colors.gray[70].name
       }
     },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-control-inactive-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-primary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      }
+    },
     selected: {
       "bg-color": {
         light: colors.blue[50].name,
@@ -66,6 +77,14 @@ const radio = {
       "pressed-border-color": {
         light: colors.blue[70].name,
         dark: colors.blue[60].name
+      }
+    },
+    "selected-disabled": {
+      "bg-color": {
+        common: "$mds-color-theme-control-active-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-inverted-text-primary-disabled"
       }
     },
     focus: {

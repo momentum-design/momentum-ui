@@ -9,13 +9,13 @@
 import "@/components/icon/Icon";
 import { ATTRIBUTES, Key } from "@/constants";
 import { customElementWithCheck, FocusMixin } from "@/mixins";
+import { debounce } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
-import { debounce } from "@/utils/helpers";
 import { styleMap } from "lit-html/directives/style-map";
 import styles from "./scss/module.scss";
 
@@ -86,6 +86,9 @@ export namespace Dropdown {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
 
+    @property({ type: Boolean })
+    pill: boolean | null = false;
+
     @property({ type: String }) helpText = "";
     @property({ type: Array }) messageArr: Dropdown.Message[] = [];
     @property({ type: String }) htmlId = "";
@@ -97,7 +100,9 @@ export namespace Dropdown {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty() ariaLabelForDropdown = ""; // This internal property is used to conditionally set aria-label.
+
+    @internalProperty()
+    private ariaLabelForDropdown = ""; // This internal property is used to conditionally set aria-label.
 
     @internalProperty() private renderOptions: RenderOptionMember[] = [];
     @internalProperty() private selectedKey: string = EMPTY_KEY;
@@ -287,7 +292,7 @@ export namespace Dropdown {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled || !this.readOnly) {
-        super.handleFocusIn && super.handleFocusIn(event);
+        super.handleFocusIn?.(event);
       }
 
       this.dispatchEvent(
@@ -299,7 +304,7 @@ export namespace Dropdown {
     }
 
     protected handleFocusOut(event: Event) {
-      super.handleFocusOut && super.handleFocusOut(event);
+      super.handleFocusOut?.(event);
 
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
@@ -454,7 +459,11 @@ export namespace Dropdown {
     }
 
     toggle() {
-      !this.expanded ? this.expand() : this.collapse();
+      if (!this.expanded) {
+        this.expand();
+      } else {
+        this.collapse();
+      }
     }
 
     select() {
@@ -682,7 +691,8 @@ export namespace Dropdown {
       return {
         "md-dropdown__expanded": this.expanded,
         [`md-${this.messageType}`]: !!this.messageType,
-        "md-new-dropdown": this.newMomentum
+        "md-new-dropdown": this.newMomentum,
+        "md-dropdown--pill": this.pill === true
       };
     }
 
@@ -764,15 +774,13 @@ export namespace Dropdown {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span>
-            <md-icon
-              class="md-input__icon-clear"
-              name="cancel-bold"
-              size="14"
-              iconSet="momentumDesign"
-              style="height: ${this.clearIconHeight};"
-            ></md-icon
-          ></span>
+          <md-icon
+            class="md-input__icon-clear"
+            name="cancel-bold"
+            size="16"
+            iconSet="momentumDesign"
+            style="height: ${this.clearIconHeight};"
+          ></md-icon>
         </button>
       `;
     }
@@ -786,14 +794,12 @@ export namespace Dropdown {
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-dropdown-input"
           tabindex="-1"
-          aria-hidden=${this.popupChevronAriaHidden}
+          aria-hidden=${ifDefined(this.popupChevronAriaHidden === "true" ? "true" : undefined)}
           ?readonly=${this.readOnly}
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
-          <span>
-            <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
-          </span>
+          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
         </button>
       `;
     }
@@ -815,8 +821,13 @@ export namespace Dropdown {
                   role="combobox"
                   tabindex="0"
                 >
-                  <span class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
-                    >${this.labelTitle}</span
+                  ${this.leftIcon
+                    ? html`<span class="md-dropdown-label--left-icon">${this.iconTemplate()}</span>`
+                    : nothing}
+                  <span
+                    class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
+                  >
+                    ${this.labelTitle}</span
                   >
                   <span class="md-dropdown-label--icon">
                     <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>

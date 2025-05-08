@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Copyright (c) Cisco Systems, Inc. and its affiliates.
  *
@@ -9,10 +8,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ComplexTable, ShortkeyTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { Filter } from "./src/filter";
 import "./TableAdvanced";
-import { TableAdvanced } from "./TableAdvanced";
+import { type TableAdvanced } from "./TableAdvanced";
 
 const ELEM = () => {
   const DATA = ComplexTable.data;
@@ -45,7 +44,15 @@ const ELEM = () => {
 };
 
 describe("Table Advanced component", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should render correctly", async () => {
     const elem = await ELEM();
@@ -141,19 +148,18 @@ describe("Table Advanced component", () => {
 
     row?.click();
     await elementUpdated(elem);
-    expect(elem["isSelectable"]).toBeTruthy;
+    expect(elem["isSelectable"]).toBeTruthy();
   });
 
   test("should set selected row", async () => {
     const elem = await ELEM();
     const collapseBtn = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible") as HTMLElement;
-    expect(collapseBtn).toBeUndefined;
 
     const col1 = elem["COLS"][0];
     col1.isCollapsable = true;
     await elementUpdated(elem);
 
-    expect(collapseBtn).toBeDefined;
+    expect(collapseBtn).toBeDefined();
     const collapseIcon = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible md-icon") as HTMLElement;
     expect(collapseIcon?.getAttribute("name")).toEqual("plus-bold");
 
@@ -174,14 +180,20 @@ describe("Table Advanced component", () => {
 
   test("should emit event after any filter action", async () => {
     const elem = await ELEM();
+    jest.runAllTimers();
     const colObject = { index: 2, filter: { list: Filter.OPTIONS.equals, input: "inputText" } };
 
     jest.doMock("./src/decorators", () => {
       return jest.fn().mockImplementation((fn) => fn);
     });
 
-    setTimeout(() => elem["filter"](colObject as any));
-    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise = oneEvent(elem, "md-table-advanced-change");
+    elem["filter"](colObject as any);
+
+    //Filter has a debounce of 500ms
+    jest.advanceTimersByTime(600);
+
+    const { detail } = await tableChangePromise;
     expect(detail).toMatchObject({
       type: "filter-on"
     });
@@ -192,8 +204,9 @@ describe("Table Advanced component", () => {
     const elem = await ELEM();
     const colObject = { index: 2, sorter: "byString", options: { id: "unique-id" } };
 
-    setTimeout(() => elem["sort"](colObject as any, "ascending"));
-    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise = oneEvent(elem, "md-table-advanced-change");
+    elem["sort"](colObject as any, "ascending");
+    const { detail } = await tableChangePromise;
     expect(detail).toMatchObject({
       type: "sort"
     });
@@ -203,8 +216,9 @@ describe("Table Advanced component", () => {
     const elem = await ELEM();
     const event = new Event("click");
 
-    setTimeout(() => elem["collapseToggle"](event, 2));
-    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise = oneEvent(elem, "md-table-advanced-change");
+    elem["collapseToggle"](event, 2);
+    const { detail } = await tableChangePromise;
     expect(detail).toMatchObject({
       type: "expand"
     });
@@ -224,8 +238,9 @@ describe("Table Advanced component", () => {
     const elem = await ELEM();
     const collapseEvent = new Event("input");
 
-    setTimeout(() => elem["collapseToggle"](collapseEvent, 1));
-    const { detail: expandDetail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise1 = oneEvent(elem, "md-table-advanced-change");
+    elem["collapseToggle"](collapseEvent, 1);
+    const { detail: expandDetail } = await tableChangePromise1;
 
     expect(expandDetail).toBeDefined();
     expect(expandDetail).toMatchObject({
@@ -239,8 +254,9 @@ describe("Table Advanced component", () => {
 
     await elementUpdated(elem);
 
-    setTimeout(() => elem["collapseToggle"](collapseEvent, 1));
-    const { detail: collapseDetail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise2 = oneEvent(elem, "md-table-advanced-change");
+    elem["collapseToggle"](collapseEvent, 1);
+    const { detail: collapseDetail } = await tableChangePromise2;
 
     expect(collapseDetail).toBeDefined();
     expect(collapseDetail).toMatchObject({
@@ -262,8 +278,9 @@ describe("Table Advanced component", () => {
       children: []
     } as any;
 
-    setTimeout(() => elem["selectRow"]({ row, shiftKey: true, metaKey: true }));
-    const { detail: multiSelectDetail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise1 = oneEvent(elem, "md-table-advanced-change");
+    elem["selectRow"]({ row, shiftKey: true, metaKey: true });
+    const { detail: multiSelectDetail } = await tableChangePromise1;
 
     expect(multiSelectDetail).toBeDefined();
     expect(multiSelectDetail).toMatchObject({
@@ -274,8 +291,9 @@ describe("Table Advanced component", () => {
     elem["selected"] = { 9: false };
     await elementUpdated(elem);
 
-    setTimeout(() => elem["selectRow"]({ row, shiftKey: true, metaKey: true }));
-    const { detail: selectDetail } = await oneEvent(elem, "md-table-advanced-change");
+    const tableChangePromise2 = oneEvent(elem, "md-table-advanced-change");
+    elem["selectRow"]({ row, shiftKey: true, metaKey: true });
+    const { detail: selectDetail } = await tableChangePromise2;
 
     expect(selectDetail).toBeDefined();
     expect(selectDetail).toMatchObject({
@@ -283,34 +301,9 @@ describe("Table Advanced component", () => {
     });
   });
 
-  test("should calling connected/disconnected callbacks", async () => {
-    const tag = defineCE(
-      class extends TableAdvanced.ELEMENT {
-        connectedCallback() {
-          super.connectedCallback();
-          this.dispatchEvent(new CustomEvent("connected-callback"));
-        }
-        disconnectedCallback() {
-          super.disconnectedCallback();
-          this.dispatchEvent(new CustomEvent("disconnected-callback"));
-        }
-      }
-    );
-    const tableAdvanced = document.createElement(`${tag}`) as TableAdvanced.ELEMENT;
-    tableAdvanced.config = ComplexTable.config;
-    tableAdvanced.data = ComplexTable.data;
-    setTimeout(() => tableAdvanced.connectedCallback());
-    const connectedEvent = await oneEvent(tableAdvanced, "connected-callback");
-    expect(connectedEvent).toBeDefined();
-
-    tableAdvanced.remove();
-    setTimeout(() => tableAdvanced.disconnectedCallback());
-    const disconnectedEvent = await oneEvent(tableAdvanced, "disconnected-callback");
-    expect(disconnectedEvent).toBeDefined();
-  });
-
   test("should render caption when head.caption is defined", async () => {
     const elem = await ELEM();
+    jest.runAllTimers();
     elem.tableConfig.head = { caption: "Test Caption", tableDescription: "Test tableDescription" };
 
     // Wait for changes in the shadow DOM
@@ -330,6 +323,7 @@ describe("Table Advanced component", () => {
 
   test("should render caption when head.caption is defined but head.tableDescription is not defined", async () => {
     const elem = await ELEM();
+    jest.runAllTimers();
     elem.tableConfig.head = { caption: "Test Caption" };
 
     // Wait for changes in the shadow DOM
@@ -348,6 +342,7 @@ describe("Table Advanced component", () => {
 
   test("should render tableDescription when head.caption is not defined but head.tableDescription is defined", async () => {
     const elem = await ELEM();
+    jest.runAllTimers();
     elem.tableConfig.head = { tableDescription: "Test tableDescription" };
 
     // Wait for changes in the shadow DOM

@@ -3,12 +3,12 @@ import "@/components/button/Button";
 import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
 import "@/components/popover/Popover";
+import { PopoverController } from "@/components/popover/Popover";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
-
 @customElement("popover-template-sandbox")
 export class PopoverTemplateSandbox extends LitElement {
   @internalProperty()
@@ -41,6 +41,8 @@ export class PopoverTemplateSandbox extends LitElement {
   private openFourthCoach() {
     this.fourthOpen = true;
   }
+
+  private popoverController = new PopoverController();
 
   private sortOptions = [
     { sortLabel: "Sort by name", sortValue: "name" },
@@ -225,7 +227,7 @@ export class PopoverTemplateSandbox extends LitElement {
         <md-popover
           placement="right"
           triggerID="append-to-popover-2"
-          trigger="mouseenter"
+          trigger="click"
           append-to="app-theme"
           hide-on-escape
           interactive
@@ -233,10 +235,11 @@ export class PopoverTemplateSandbox extends LitElement {
           hide-on-outside-click
           focus-trap
           focus-back-to-trigger
+          .controller=${this.popoverController}
         >
           <div style="width: 400px; height: 200px;">
-            <md-button>Assign to me</md-button>
-            <md-button>copy</md-button>
+            <md-button @click="${() => this.popoverController.hide()}">Assign to me</md-button>
+            <md-button id="nested-copy">copy</md-button>
             <span>information text</span>
           </div>
         </md-popover>

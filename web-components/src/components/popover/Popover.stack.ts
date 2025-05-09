@@ -31,6 +31,10 @@ class PopoverStack {
     return this.stack.pop();
   }
 
+  removeItem(popover: Popover) {
+    this.stack = this.stack.filter((item) => item !== popover);
+  }
+
   /**
    * Returns the last popover in the stack
    * without removing it
@@ -55,6 +59,35 @@ class PopoverStack {
    */
   clear() {
     this.stack = [];
+  }
+
+  /**
+   * Determines if the currentPopover should defer closing to the topmost popover
+   * in the case of an outside click, based on nesting.
+   *
+   * @param currentPopover - The popover instance being checked.
+   * @returns True if the currentPopover is nested with the top popover and is not the top itself,
+   *          meaning it should defer closing. False otherwise.
+   */
+  shouldDeferToTopForOutsideClick(currentPopover: Popover): boolean {
+    const topPopover = this.peek();
+
+    if (!topPopover || topPopover === currentPopover) {
+      // No top popover, or the current popover is already the top one.
+      // No deferral needed.
+      return false;
+    }
+
+    // Check for direct parent/child relationship between currentPopover and topPopover
+    if (
+      (topPopover.triggerElement && currentPopover.contains(topPopover.triggerElement)) ||
+      (currentPopover.triggerElement && topPopover.contains(currentPopover.triggerElement))
+    ) {
+      return true;
+    }
+
+    // If they are nested and currentPopover is not the top one, it should defer.
+    return false;
   }
 }
 

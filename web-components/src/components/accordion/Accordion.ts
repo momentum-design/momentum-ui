@@ -17,6 +17,8 @@ export namespace Accordion {
   @customElementWithCheck("md-accordion")
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) multiple = false;
+    @property({ type: Boolean, reflect: true }) suppressFocusableContainer = false;
+    @property({ type: Number }) gap?: number;
 
     @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
 
@@ -88,15 +90,19 @@ export namespace Accordion {
 
     private setupFocusAccordionItems() {
       this.slotted.forEach((header) => {
-        header.addEventListener("focus", this.handleAccordionItemFocus);
-        header.addEventListener("blur", this.handleAccordionItemBlur);
+        if (!this.suppressFocusableContainer) {
+          header.addEventListener("focus", this.handleAccordionItemFocus);
+          header.addEventListener("blur", this.handleAccordionItemBlur);
+        }
       });
     }
 
     private removeFocusAccordionItems() {
       this.slotted.forEach((header) => {
-        header.removeEventListener("focus", this.handleAccordionItemFocus);
-        header.removeEventListener("blur", this.handleAccordionItemBlur);
+        if (!this.suppressFocusableContainer) {
+          header.removeEventListener("focus", this.handleAccordionItemFocus);
+          header.removeEventListener("blur", this.handleAccordionItemBlur);
+        }
       });
     }
 
@@ -151,6 +157,13 @@ export namespace Accordion {
       if (changedProperties.has("slotted")) {
         this.setupExpandedAccordionItems();
         this.setupFocusAccordionItems();
+      }
+      if (changedProperties.has("gap")) {
+        if (this.gap) {
+          this.style.setProperty("--custom-accordion-gap", `${this.gap}px`);
+        } else {
+          this.style.removeProperty("--custom-accordion-gap");
+        }
       }
     }
 

@@ -44,6 +44,13 @@ export class PopoverTemplateSandbox extends LitElement {
 
   private popoverController = new PopoverController();
 
+  @internalProperty()
+  private currentTriggerId = "button-t1";
+
+  private setTriggerId(id: string) {
+    this.currentTriggerId = id;
+  }
+
   private sortOptions = [
     { sortLabel: "Sort by name", sortValue: "name" },
     { sortLabel: "Sort by date", sortValue: "date" },
@@ -242,6 +249,34 @@ export class PopoverTemplateSandbox extends LitElement {
             <md-button id="nested-copy">copy</md-button>
             <span>information text</span>
           </div>
+        </md-popover>
+      </div>
+      <div>
+        <md-button
+          id="button-t1"
+          variant="secondary"
+          @focus=${() => this.setTriggerId("button-t1")}
+          @mouseenter=${() => this.setTriggerId("button-t1")}
+          ><span>Trigger 1</span></md-button
+        >
+        <md-button
+          id="button-t2"
+          variant="secondary"
+          @focus=${() => this.setTriggerId("button-t2")}
+          @mouseenter=${() => this.setTriggerId("button-t2")}
+          ><span>Trigger 2</span></md-button
+        >
+
+        <md-popover
+          triggerID=${this.currentTriggerId}
+          trigger="mouseenter focusin"
+          hide-on-escape
+          interactive
+          show-arrow
+          hide-on-outside-click
+          focus-trap
+          focus-back-to-trigger
+          ><md-button>test</md-button>
         </md-popover>
       </div>
     `;

@@ -369,7 +369,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
   protected override async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
     [this.openDelay, this.closeDelay] = this.utils.setupDelay();
-    this.setupTriggerListener();
     this.utils.setupAccessibility();
     this.style.zIndex = `${this.zIndex}`;
     PopoverEventManager.onCreatedPopover(this);
@@ -488,6 +487,11 @@ export class Popover extends FocusTrapMixin(LitElement) {
       this.setAttribute("trigger", validTriggers.length > 0 ? this.trigger : DEFAULTS.TRIGGER);
       this.removeEventListeners();
       this.setupTriggerListener();
+    }
+    if (changedProperties.has("triggerID")) {
+      this.removeEventListeners();
+      this.setupTriggerListener();
+      this.utils.setupAccessibility();
     }
     if (changedProperties.has("color")) {
       this.setAttribute("color", Object.values(COLOR).includes(this.color) ? this.color : DEFAULTS.COLOR);
@@ -758,19 +762,18 @@ export class Popover extends FocusTrapMixin(LitElement) {
     this.togglePopoverVisible();
   };
 
-  private isMouseOverTrigger(event: Event) {
+  private isRectOverTrigger(x: number, y: number): boolean {
     if (this.triggerElement && typeof window !== "undefined" && typeof document !== "undefined") {
       const rect = this.triggerElement.getBoundingClientRect();
-      const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
-      const isMouseOver =
-        clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
-
-      if (isMouseOver) {
-        // Mouse is over the trigger, do not toggle
-        return true;
-      }
+      const isOverTrigger = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      return isOverTrigger;
     }
     return false;
+  }
+
+  private isMouseOverTrigger(event: Event): boolean {
+    const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
+    return this.isRectOverTrigger(clientX, clientY);
   }
 
   /**

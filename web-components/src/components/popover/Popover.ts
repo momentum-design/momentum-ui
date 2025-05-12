@@ -18,9 +18,31 @@ import { ifDefined } from "lit-html/directives/if-defined.js";
 import { COLOR, DEFAULTS, POPOVER_PLACEMENT, TRIGGER } from "./Popover.constants";
 import { PopoverEventManager } from "./Popover.events";
 import { popoverStack } from "./Popover.stack";
-import { PopoverColor, PopoverPlacement, PopoverStrategy, PopoverTrigger, ValueOf } from "./Popover.types";
+import {
+  IPopoverController,
+  PopoverColor,
+  PopoverPlacement,
+  PopoverStrategy,
+  PopoverTrigger,
+  ValueOf
+} from "./Popover.types";
 import { PopoverUtils } from "./Popover.utils";
 import styles from "./scss/module.scss";
+
+export class PopoverController implements IPopoverController {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  show(_useDelay?: boolean): void {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  hide(): void {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggle(): void {}
+
+  isVisible(): boolean {
+    return false;
+  }
+}
 
 /**
  * Popover component is a lightweight floating UI element that displays additional content when triggered.
@@ -190,6 +212,13 @@ export class Popover extends FocusTrapMixin(LitElement) {
   hideOnBlur: boolean = DEFAULTS.HIDE_ON_BLUR;
 
   /**
+   * Hide popover on window blur.
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "hide-on-window-blur" })
+  hideOnWindowBlur: boolean = DEFAULTS.HIDE_ON_WINDOW_BLUR;
+
+  /**
    * Hide on outside click of the popover.
    * @default false
    */
@@ -274,6 +303,39 @@ export class Popover extends FocusTrapMixin(LitElement) {
   @property({ type: Boolean, reflect: true, attribute: "disable-aria-expanded" })
   disableAriaExpanded: boolean = DEFAULTS.DISABLE_ARIA_EXPANDED;
 
+  /**
+   * Controller object that provides methods to programmatically control the popover.
+   * This is especially useful when the popover is appended to another part of the DOM.
+   *
+   * @example
+   * ```js
+   * const controller = {};
+   * popover.controller = controller;
+   * // Now you can use controller.show(), controller.hide(), controller.toggle()
+   * ```
+   */
+  @property({ type: Object, attribute: false })
+  set controller(value: PopoverController | null | undefined) {
+    if (!value) {
+      this._controller = null;
+      return;
+    }
+
+    // Assign the controller methods
+    value.show = (useDelay = false) => this.showPopover(useDelay);
+    value.hide = () => this.hidePopover();
+    value.toggle = () => this.togglePopoverVisible();
+    value.isVisible = () => this.visible;
+
+    this._controller = value;
+  }
+
+  get controller(): PopoverController | null {
+    return this._controller;
+  }
+
+  private _controller: PopoverController | null = null;
+
   public arrowElement: HTMLElement | null = null;
 
   public triggerElement: HTMLElement | null = null;
@@ -307,7 +369,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
   protected override async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
     [this.openDelay, this.closeDelay] = this.utils.setupDelay();
-    this.setupTriggerListener();
     this.utils.setupAccessibility();
     this.style.zIndex = `${this.zIndex}`;
     PopoverEventManager.onCreatedPopover(this);
@@ -321,6 +382,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   override async disconnectedCallback() {
     super.disconnectedCallback();
+    this._controller = null;
     this.removeEventListeners();
     PopoverEventManager.onDestroyedPopover(this);
     popoverStack.remove(this);
@@ -426,6 +488,11 @@ export class Popover extends FocusTrapMixin(LitElement) {
       this.removeEventListeners();
       this.setupTriggerListener();
     }
+    if (changedProperties.has("triggerID")) {
+      this.removeEventListeners();
+      this.setupTriggerListener();
+      this.utils.setupAccessibility();
+    }
     if (changedProperties.has("color")) {
       this.setAttribute("color", Object.values(COLOR).includes(this.color) ? this.color : DEFAULTS.COLOR);
     }
@@ -454,15 +521,33 @@ export class Popover extends FocusTrapMixin(LitElement) {
    * @param event - The mouse event.
    */
   private readonly onOutsidePopoverClick = (event: MouseEvent) => {
-    if (popoverStack.peek() !== this) return;
+    const path = event.composedPath() as HTMLElement[];
 
-    const path = event.composedPath();
-    const insidePopoverClick = path.includes(this) || (this.triggerElement && path.includes(this.triggerElement));
-    const clickedOnBackdrop = this.backdropElement ? path.includes(this.backdropElement) : false;
-
-    if (!insidePopoverClick || clickedOnBackdrop) {
-      this.hidePopover();
+    // If the click is inside this specific popover or its trigger, do nothing.
+    if (path.includes(this) || (this.triggerElement && path.includes(this.triggerElement))) {
+      return;
     }
+
+    if (popoverStack.shouldDeferToTopForOutsideClick(this)) {
+      // This popover is part of a nested structure and is not the topmost one.
+      // It should not close based on this outside click.
+      return;
+    }
+
+    // If we reach here, the click was:
+    // - Not inside this popover or its trigger.
+    // - Not inside any other open popover.
+    // This constitutes an "outside click" for this specific popover instance.
+    // Clicks on this popover's own backdrop (if any) will also fall here.
+    this.hideThisPopover();
+  };
+
+  private readonly hideThisPopover = () => {
+    setTimeout(() => {
+      this.visible = false;
+      this.isTriggerClicked = false;
+      this.utils.handleAppendTo(false);
+    }, this.closeDelay);
   };
 
   /**
@@ -486,6 +571,12 @@ export class Popover extends FocusTrapMixin(LitElement) {
    */
   private readonly onPopoverFocusOut = (event: FocusEvent) => {
     if (!this.contains(event.relatedTarget as Node)) {
+      this.hidePopover();
+    }
+  };
+
+  private readonly handleWindowBlurEvent = () => {
+    if (this.visible) {
       this.hidePopover();
     }
   };
@@ -527,6 +618,9 @@ export class Popover extends FocusTrapMixin(LitElement) {
           this.triggerElement.style.pointerEvents = "none";
         }
       }
+      if (this.hideOnWindowBlur) {
+        window.addEventListener("blur", this.handleWindowBlurEvent);
+      }
       if (this.hideOnOutsideClick) {
         document.addEventListener("click", this.onOutsidePopoverClick);
       }
@@ -535,7 +629,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
       }
       PopoverEventManager.onShowPopover(this);
     } else {
-      popoverStack.pop();
+      popoverStack.removeItem(this);
 
       if (this.backdropElement) {
         this.backdropElement?.remove();
@@ -546,6 +640,9 @@ export class Popover extends FocusTrapMixin(LitElement) {
         if (this.trigger === "click") {
           this.triggerElement.style.pointerEvents = "";
         }
+      }
+      if (this.hideOnWindowBlur) {
+        window.removeEventListener("blur", this.handleWindowBlurEvent);
       }
       if (this.hideOnOutsideClick) {
         document.removeEventListener("click", this.onOutsidePopoverClick);
@@ -665,19 +762,18 @@ export class Popover extends FocusTrapMixin(LitElement) {
     this.togglePopoverVisible();
   };
 
-  private isMouseOverTrigger(event: Event) {
+  private isRectOverTrigger(x: number, y: number): boolean {
     if (this.triggerElement && typeof window !== "undefined" && typeof document !== "undefined") {
       const rect = this.triggerElement.getBoundingClientRect();
-      const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
-      const isMouseOver =
-        clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
-
-      if (isMouseOver) {
-        // Mouse is over the trigger, do not toggle
-        return true;
-      }
+      const isOverTrigger = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      return isOverTrigger;
     }
     return false;
+  }
+
+  private isMouseOverTrigger(event: Event): boolean {
+    const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
+    return this.isRectOverTrigger(clientX, clientY);
   }
 
   /**

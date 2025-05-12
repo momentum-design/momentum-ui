@@ -44,6 +44,7 @@ const DEFAULTS = {
   PREVENT_SCROLL: false,
   HIDE_ON_ESCAPE: false,
   HIDE_ON_BLUR: false,
+  HIDE_ON_WINDOW_BLUR: false,
   HIDE_ON_CLICK_OUTSIDE: false,
   FOCUS_BACK: false,
   BACKDROP: false,

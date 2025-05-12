@@ -286,6 +286,9 @@
     }
 
     &.selected {
+      .avatar-badge::part(badge) {
+        background-color: var(--avatar-white-bg-color);
+      }
       .md-taskitem__content {
         &_popover_title,
         &_title {

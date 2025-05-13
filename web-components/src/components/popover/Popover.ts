@@ -662,7 +662,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
         }
       }
       if (this.focusBackToTrigger) {
-        this.setFocusOnTrigger?.(this.triggerElement);
+        this.setFocusOnDeepestNestedElement?.(this.triggerElement);
       }
       PopoverEventManager.onHidePopover(this);
     }

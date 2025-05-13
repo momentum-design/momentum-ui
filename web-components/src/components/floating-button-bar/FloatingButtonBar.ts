@@ -77,7 +77,7 @@ export class FloatingButtonBar extends LitElement {
 
   private getPillButtonTemplate(action: FloatingButtonBarAction) {
     return html`
-      <md-button class="button pill" size="24" variant="ghostInheritTextColor" @button-click=${() => action.action()}>
+      <md-button class="button pill" size="24" variant="inverted-ghost" @button-click=${() => action.action()}>
         ${this.getIconTemplate(action)} ${this.getPrimaryLabelTemplate(action.label)}
       </md-button>
     `;
@@ -92,7 +92,9 @@ export class FloatingButtonBar extends LitElement {
   }
 
   private getTooltipCircleButtonTemplate(action: FloatingButtonBarAction) {
-    return html` <md-tooltip message="${action.label}"> ${this.getCircleButtonTemplate(action)} </md-tooltip> `;
+    return html`
+      <md-tooltip message="${action.label}" placement="top"> ${this.getCircleButtonTemplate(action)} </md-tooltip>
+    `;
   }
 
   private getActionAndLabelTemplate(action: FloatingButtonBarAction) {

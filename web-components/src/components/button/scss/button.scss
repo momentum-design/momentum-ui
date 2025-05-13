@@ -680,6 +680,27 @@
   }
 }
 
+:host([variant="inverted-ghost"]) .md-button {
+  background-color: var(--button-inverted-secondary-bg-color);
+  color: var(--button-inverted-secondary-text-color);  
+
+  &:hover {
+    background-color: var(--button-inverted-secondary-hover-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:active {
+    background-color: var(--button-inverted-secondary-pressed-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-inverted-secondary-disabled-bg-color);    
+    color: var(--button-inverted-secondary-disabled-text-color);
+  }
+}
+
 :host([variant="promotional"]) .md-button {
   background: var(--button-promotional-bg-color);
   color: var(--button-promotional-text-color, var(--button-primary-text-color));

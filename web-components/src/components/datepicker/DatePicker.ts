@@ -72,6 +72,7 @@ export namespace DatePicker {
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
     @property({ type: String, attribute: "positioning-strategy" })
     positioningStrategy?: StrategyType = undefined;
+    @property({ type: Boolean, attribute: "show-default-now-date" }) showDefaultNowDate = true;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -106,16 +107,8 @@ export namespace DatePicker {
     firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (!this.value) {
-        if (this.useISOFormat) {
-          this.value = this.includesTime
-            ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
-            : this.selectedDate?.toISODate();
-        } else {
-          this.value = this.includesTime
-            ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
-            : this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
-        }
+      if (!this.value && this.showDefaultNowDate) {
+        this.value = this.getFormattedDate(this.selectedDate);
       }
     }
 
@@ -143,7 +136,7 @@ export namespace DatePicker {
       if (this.useISOFormat) {
         this.value = event?.detail?.value;
       } else {
-        this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+        this.value = this.getFormattedDate(this.selectedDate);
       }
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
@@ -195,13 +188,8 @@ export namespace DatePicker {
     protected setSelected(date: DateTime, event: Event) {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        if (this.useISOFormat) {
-          this.value = dateString;
-        } else {
-          this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
-        }
+        this.value = this.getFormattedDate(date);
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {
@@ -381,7 +369,33 @@ export namespace DatePicker {
       return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
     }
 
+    protected getFormattedDate(date: DateTime): string | null {
+      if (!date) return null;
+      
+      if (this.useISOFormat) {
+        return this.getISODateTime(date);
+      } else {
+        return this.includesTime
+          ? date.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
+          : date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+      }
+    }
+
+    protected getInputValue(): string | undefined {
+      if (this.value) {
+        return this.value;
+      } 
+      
+      if (this.showDefaultNowDate) {
+        return this.getFormattedDate(this.selectedDate) ?? undefined;
+      }
+      
+      return undefined;
+    }
+
     render() {
+      const inputValue = this.getInputValue();
+      
       return html`
         <md-menu-overlay
           is-date-picker
@@ -402,7 +416,7 @@ export namespace DatePicker {
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
-                  value=${ifDefined(this.value ?? undefined)}
+                  value=${ifDefined(inputValue)}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.ariaLabel + this.chosenDateLabel()}

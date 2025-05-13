@@ -15,6 +15,7 @@ export default {
     disabled: { control: "boolean" },
     minDate: { control: { type: "text" } },
     maxDate: { control: { type: "text" } },
+    showDefaultNowDate: { control: "boolean", defaultValue: true },
     value: { control: { type: "text" } },
     newMomentum: { control: { type: "select" }, options: [undefined, "true", "false"] },
     compactInput: { control: { type: "select" }, options: [undefined, "true", "false"] },
@@ -33,9 +34,17 @@ export default {
 export const DatePicker: StoryObj = {
   args: {
     locale: "en-US",
-    minDate: now().minus({ day: 5 }).toISODate(),
-    maxDate: now().plus({ day: 30 }).toISODate(),
+    minDate: now().minus({ days: 5 }).toISODate(),
+    maxDate: now().plus({ days: 30 }).toISODate(),
     value: now().toISODate(),
+    placeholder: "",
+    showDefaultNowDate: true,
+    useISOFormat: true,
+    includesTime: false,
+    validateDate: true,
+    disabled: false,
+    controlButtons: true,
+    weekStart: "Sunday",
     positioningStrategy: undefined
   },
   render: (args: Args) => {
@@ -48,9 +57,55 @@ export const DatePicker: StoryObj = {
         value=${args.value}
         weekStart=${args.weekStart}
         locale=${args.locale}
+        placeholder=${args.placeholder}
         .useISOFormat=${args.useISOFormat}
         .validateDate=${args.validateDate}
         .controlButtons=${controlButtons}
+        .includesTime=${args.includesTime}
+        .showDefaultNowDate=${args.showDefaultNowDate}
+        .newMomentum=${args.newMomentum}
+        .compactInput=${args.compactInput}
+        minDate=${args.minDate}
+        maxDate=${args.maxDate}
+        positioning-strategy=${args.positioningStrategy}
+      >
+      </md-datepicker>
+    `;
+  }
+};
+
+// Sub-story focusing on placeholder behavior
+export const Placeholder: StoryObj = {
+  name: "With Placeholder",
+  args: {
+    locale: "en-US",
+    placeholder: "Select date",
+    showDefaultNowDate: false,
+    useISOFormat: true,
+    includesTime: false,
+    validateDate: true,
+    disabled: false,
+    controlButtons: false,
+    weekStart: "Sunday",
+    value: "",
+    minDate: "",
+    maxDate: "",
+    positioningStrategy: undefined
+  },
+  render: (args: Args) => {
+    return html`
+      <md-datepicker
+        ?disabled=${args.disabled}
+        ?should-close-on-select=${args.shouldCloseOnSelect}
+        weekStart=${args.weekStart}
+        locale=${args.locale}
+        placeholder=${args.placeholder}
+        .useISOFormat=${args.useISOFormat}
+        .validateDate=${args.validateDate}
+        .includesTime=${args.includesTime}
+        .showDefaultNowDate=${args.showDefaultNowDate}
+        .newMomentum=${args.newMomentum}
+        .compactInput=${args.compactInput}
         minDate=${args.minDate}
         maxDate=${args.maxDate}
         positioning-strategy=${args.positioningStrategy}

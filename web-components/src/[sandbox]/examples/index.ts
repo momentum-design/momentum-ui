@@ -44,6 +44,7 @@ export { modalTemplate } from "./modal";
 export { paginationTemplate } from "./pagination";
 export { phoneInputTemplate } from "./phone-input";
 export { popoverTemplate } from "./popover";
+export { presenceTemplate } from "./presence";
 export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";

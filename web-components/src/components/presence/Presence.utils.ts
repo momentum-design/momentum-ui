@@ -1,5 +1,7 @@
-import { TaskItemStatus } from "../taskitem/TaskItem.constants";
 import { TaskItem } from "../taskitem/TaskItem";
+import { TaskItemStatus } from "../taskitem/TaskItem.constants";
+
+export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
 
 type ReturnType = {
   presenceIcon: string | undefined;
@@ -28,8 +30,12 @@ export const PresenceType = [
   ""
 ] as const;
 
+export const isPresenceType = (value: string): value is PresenceState => {
+  return (PresenceType as readonly string[]).includes(value);
+}
+
 export const getPresenceIconColor = (
-  presenceType: (typeof PresenceType)[number] | TaskItem.TaskItemStatus,
+  presenceType: PresenceState,
   failureBadge: boolean,
   isMomentumDesign = false
 ): ReturnType => {
@@ -146,21 +152,3 @@ export const getPresenceIconColor = (
 
   return { presenceColor, presenceIcon };
 };
-
-export function getPresenceSize(size: number): number {
-  if (size <= 24) {
-    return 10.5;
-  } else if (size <= 32) {
-    return 14;
-  } else if (size <= 48) {
-    return 13.94;
-  } else if (size <= 64) {
-    return 18.58;
-  } else if (size <= 72) {
-    return 20.9;
-  } else if (size <= 88) {
-    return 25.55;
-  } else {
-    return 36;
-  }
-}

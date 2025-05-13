@@ -1,5 +1,5 @@
 import "@/components/floating-button-bar/FloatingButtonBar";
-import { FloatingButtonBarAction } from "@/components/floating-button-bar/FloatingButtonBar";
+import { FloatingButtonActionGroup, FloatingButtonBarAction } from "@/components/floating-button-bar/FloatingButtonBar";
 import { css, customElement, LitElement } from "lit-element";
 import { html } from "lit-html";
 
@@ -21,18 +21,32 @@ export class FloatingButtonBarTemplateSandbox extends LitElement {
   private get assignToMeAction(): FloatingButtonBarAction {
     return {
       label: "Assign to me",
-      icon: "arrow-tail-up-bold",
-      isIconOnly: true,
-      iconAlign: "right",
+      isIconOnly: false,
       action: () => {
         console.log("Assign to me clicked");
       }
     };
   }
 
+  private get backToTopAction(): FloatingButtonBarAction {
+    return {
+      label: "Back to top",
+      icon: "arrow-tail-up-bold",
+      isIconOnly: true,
+      iconAlign: "right",
+      action: () => {
+        console.log("back to top action");
+      }
+    };
+  }
+
+  private get groupActions(): FloatingButtonActionGroup {
+    return { actions: [this.assignToMeAction, this.backToTopAction] };
+  }
+
   render() {
     return html` <div class="container">
-      <md-floating-button-bar leadingLabel="4 selected" .actions=${[this.assignToMeAction]}></md-floating-button-bar>
+      <md-floating-button-bar leadingLabel="4 selected" .actions=${[this.groupActions]}></md-floating-button-bar>
     </div>`;
   }
 }

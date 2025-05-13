@@ -1,12 +1,16 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElement, html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
+import { nothing, TemplateResult } from "lit-html";
 import styles from "./scss/floating-button-bar.styles.scss";
+
+export type FloatingButtonActionGroup = {
+  actions: Array<FloatingButtonBarAction>;
+};
 
 export type FloatingButtonBarAction = {
   label: string;
-  icon: string;
+  icon?: string;
   isIconOnly: boolean;
   iconAlign?: "left" | "right";
   action: () => void;
@@ -24,7 +28,7 @@ export class FloatingButtonBar extends LitElement {
   showCloseButton: boolean = true;
 
   @property({ type: Array })
-  actions: Array<FloatingButtonBarAction> = [];
+  actions: Array<FloatingButtonActionGroup> = [];
 
   static get styles() {
     return [styles];
@@ -65,11 +69,16 @@ export class FloatingButtonBar extends LitElement {
     return html` <div class="separator"></div> `;
   }
 
+  private getIconTemplate(action: FloatingButtonBarAction): TemplateResult | typeof nothing {
+    return html`${action.icon
+      ? html`<md-icon slot="icon" iconSet="momentumDesign" name=${action.icon} size="16"></md-icon>`
+      : nothing}`;
+  }
+
   private getPillButtonTemplate(action: FloatingButtonBarAction) {
     return html`
-      <md-button class="button" size="28" variant="inverted-secondary" @button-click=${() => action.action()}>
-        <md-icon slot="icon" iconSet="momentumDesign" name=${action.icon} size="16"></md-icon>
-        ${this.getPrimaryLabelTemplate(action.label)}
+      <md-button class="button pill" size="24" variant="ghostInheritTextColor" @button-click=${() => action.action()}>
+        ${this.getIconTemplate(action)} ${this.getPrimaryLabelTemplate(action.label)}
       </md-button>
     `;
   }
@@ -77,9 +86,13 @@ export class FloatingButtonBar extends LitElement {
   private getCircleButtonTemplate(action: FloatingButtonBarAction) {
     return html`
       <md-button class="button" circle size="24" variant="inverted-secondary" @button-click=${() => action.action()}>
-        <md-icon slot="icon" iconSet="momentumDesign" name=${action.icon} size="16"></md-icon>
+        ${this.getIconTemplate(action)}
       </md-button>
     `;
+  }
+
+  private getTooltipCircleButtonTemplate(action: FloatingButtonBarAction) {
+    return html` <md-tooltip message="${action.label}"> ${this.getCircleButtonTemplate(action)} </md-tooltip> `;
   }
 
   private getActionAndLabelTemplate(action: FloatingButtonBarAction) {
@@ -93,13 +106,17 @@ export class FloatingButtonBar extends LitElement {
   }
 
   private getActionTemplate(action: FloatingButtonBarAction) {
-    return action.isIconOnly ? this.getActionAndLabelTemplate(action) : this.getPillButtonTemplate(action);
+    return action.isIconOnly ? this.getTooltipCircleButtonTemplate(action) : this.getPillButtonTemplate(action);
+  }
+
+  private getActionGroupTemplate(actionGroup: FloatingButtonActionGroup) {
+    return html` ${this.separatorTemplate} ${actionGroup.actions.map((action) => this.getActionTemplate(action))} `;
   }
 
   render() {
     return html`
       ${this.showCloseButton ? this.closeButtonTemplate : nothing} ${this.getSecondaryLabelTemplate(this.leadingLabel)}
-      ${this.actions.map((action) => html` ${this.separatorTemplate} ${this.getActionTemplate(action)} `)}
+      ${this.actions.map((actionGroup) => this.getActionGroupTemplate(actionGroup))}
     `;
   }
 }

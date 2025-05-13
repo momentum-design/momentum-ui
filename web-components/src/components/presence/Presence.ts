@@ -1,7 +1,7 @@
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, internalProperty } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { getPresenceIconColor, PresenceState } from "./Presence.utils";
 import styles from "./scss/module.scss";
@@ -12,7 +12,7 @@ export namespace Presence {
   export class ELEMENT extends LitElement {
     @property({ type: Number }) size = 48;
     @property({ type: String }) title = "";
-    @property({ type: String, attribute: "presence-type" }) presenceType?: PresenceState;
+    @property({ type: String, attribute: "presence-type" }) presenceType: PresenceState = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) failurePresence = false;
     @property({ type: Boolean }) avatarLinked = false;

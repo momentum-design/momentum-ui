@@ -11,14 +11,27 @@ import { action } from "@storybook/addon-actions";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-const assignToMeAction = {
-  label: "Assign to me",
+const backToTopAction = {
+  label: "Back to top",
   icon: "arrow-tail-up-bold",
   isIconOnly: true,
   iconAlign: "right",
   action: () => {
+    action("back-to-top-action")();
+  }
+};
+
+const assignToMeAction = {
+  label: "Assign to me",
+  isIconOnly: false,
+  iconAlign: "right",
+  action: () => {
     action("assign-to-me-action")();
   }
+};
+
+const groupActions = {
+  actions: [assignToMeAction, backToTopAction]
 };
 
 const render = (args: Args) => html`
@@ -38,7 +51,7 @@ export const FloatingButtonBar: StoryObj = {
   args: {
     leadingLabel: "4 selected",
     showCancelButton: true,
-    actions: [assignToMeAction]
+    actions: [groupActions]
   },
   render: render
 };

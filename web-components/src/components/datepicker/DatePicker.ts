@@ -419,7 +419,7 @@ export namespace DatePicker {
                   value=${ifDefined(inputValue)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${inputValue ? this.ariaLabel + this.chosenDateLabel() : ''}
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"

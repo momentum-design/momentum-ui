@@ -269,7 +269,7 @@ export class PopoverTemplateSandbox extends LitElement {
 
         <md-popover
           triggerID=${this.currentTriggerId}
-          trigger="mouseenter focusin"
+          trigger="mouseenter"
           hide-on-escape
           interactive
           show-arrow

@@ -65,7 +65,7 @@ export { MenuItem } from "./components/menu/MenuItem";
 export { Modal } from "./components/modal/Modal";
 export { Pagination } from "./components/pagination/Pagination";
 export { PhoneInput } from "./components/phone-input/PhoneInput";
-export { Popover } from "./components/popover/Popover";
+export { Popover, PopoverController } from "./components/popover/Popover";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
@@ -86,6 +86,7 @@ export { ThemeManager, themeManager } from "./managers/ThemeManager";
 
 export type {
     Events,
+    IPopoverController,
     PopoverColor,
     PopoverPlacement,
     PopoverStrategy,

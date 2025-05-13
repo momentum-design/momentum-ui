@@ -292,7 +292,7 @@
       .md-taskitem__content {
         &_popover_title,
         &_title {
-          font-weight: $taskitem-restyle-title-selected-weight;
+          font-family: $taskitem-restyle-title-font-bold;
         }
       }
     }

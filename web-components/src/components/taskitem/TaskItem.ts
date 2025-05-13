@@ -38,8 +38,7 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
-    @property({ type: Boolean, attribute: "is-restyle" })
-    isRestyle = false;
+    @property({ type: Boolean, attribute: "is-restyle" }) isRestyle = false;
 
     /**
      * @deprecated Use `itemTitle` instead.

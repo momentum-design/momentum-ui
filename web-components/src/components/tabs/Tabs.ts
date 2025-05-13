@@ -65,7 +65,12 @@ export namespace Tabs {
       return this._selectedIndex;
     }
     set selectedIndex(value: number) {
+      const oldValue = this._selectedIndex;
       this._selectedIndex = value;
+
+      if (oldValue !== value && this.tabs?.length) {
+        this.updateSelectedTab(value);
+      }
     }
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -683,7 +688,7 @@ export namespace Tabs {
       return this.tabsFilteredAsHiddenList.find((t) => t.id === tab.id) !== undefined;
     }
 
-    private updateSelectedTab(newSelectedIndex: number) {
+    public updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 

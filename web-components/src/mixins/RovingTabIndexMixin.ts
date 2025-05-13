@@ -33,6 +33,7 @@ export abstract class RovingTabIndexClass extends LitElement {
 
 export interface RovingTabIndexInterface {
   selected: number;
+  selectedIndex: number;
   rovingPreventFocus: boolean;
 }
 

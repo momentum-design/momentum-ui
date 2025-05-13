@@ -165,7 +165,7 @@ export function querySelectorDeep(
   if (lightDomElement) return lightDomElement;
 
   const shadowRoots = Array.from(base.querySelectorAll("*"))
-    .map((el) => (el.shadowRoot ? el.shadowRoot : null))
+    .map((el) => el.shadowRoot ?? null)
     .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
 
   for (const shadowRoot of shadowRoots) {
@@ -183,7 +183,7 @@ export function getElementByIdDeep(id: string, base: HTMLElement | Document | Sh
   }
 
   const shadowRoots = Array.from(base.querySelectorAll("*"))
-    .map((el) => (el.shadowRoot ? el.shadowRoot : null))
+    .map((el) => el.shadowRoot ?? null)
     .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
 
   for (const shadowRoot of shadowRoots) {

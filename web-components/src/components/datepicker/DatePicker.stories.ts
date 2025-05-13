@@ -37,14 +37,6 @@ export const DatePicker: StoryObj = {
     minDate: now().minus({ days: 5 }).toISODate(),
     maxDate: now().plus({ days: 30 }).toISODate(),
     value: now().toISODate(),
-    placeholder: "",
-    showDefaultNowDate: true,
-    useISOFormat: true,
-    includesTime: false,
-    validateDate: true,
-    disabled: false,
-    controlButtons: true,
-    weekStart: "Sunday",
     positioningStrategy: undefined
   },
   render: (args: Args) => {
@@ -58,13 +50,10 @@ export const DatePicker: StoryObj = {
         weekStart=${args.weekStart}
         locale=${args.locale}
         placeholder=${args.placeholder}
+        .showDefaultNowDate=${args.showDefaultNowDate}
         .useISOFormat=${args.useISOFormat}
         .validateDate=${args.validateDate}
         .controlButtons=${controlButtons}
-        .includesTime=${args.includesTime}
-        .showDefaultNowDate=${args.showDefaultNowDate}
-        .newMomentum=${args.newMomentum}
-        .compactInput=${args.compactInput}
         minDate=${args.minDate}
         maxDate=${args.maxDate}
         positioning-strategy=${args.positioningStrategy}
@@ -74,6 +63,7 @@ export const DatePicker: StoryObj = {
   }
 };
 
+
 // Sub-story focusing on placeholder behavior
 export const Placeholder: StoryObj = {
   name: "With Placeholder",
@@ -82,8 +72,6 @@ export const Placeholder: StoryObj = {
     placeholder: "Select date",
     showDefaultNowDate: false,
     useISOFormat: true,
-    includesTime: false,
-    validateDate: true,
     disabled: false,
     controlButtons: false,
     weekStart: "Sunday",
@@ -92,6 +80,7 @@ export const Placeholder: StoryObj = {
     maxDate: "",
     positioningStrategy: undefined
   },
+  
   render: (args: Args) => {
     return html`
       <md-datepicker
@@ -101,11 +90,7 @@ export const Placeholder: StoryObj = {
         locale=${args.locale}
         placeholder=${args.placeholder}
         .useISOFormat=${args.useISOFormat}
-        .validateDate=${args.validateDate}
-        .includesTime=${args.includesTime}
         .showDefaultNowDate=${args.showDefaultNowDate}
-        .newMomentum=${args.newMomentum}
-        .compactInput=${args.compactInput}
         minDate=${args.minDate}
         maxDate=${args.maxDate}
         positioning-strategy=${args.positioningStrategy}

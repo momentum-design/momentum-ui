@@ -136,7 +136,7 @@ export namespace DatePicker {
       if (this.useISOFormat) {
         this.value = event?.detail?.value;
       } else {
-        this.value = this.getFormattedDate(this.selectedDate);
+        this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
       }
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
@@ -188,8 +188,13 @@ export namespace DatePicker {
     protected setSelected(date: DateTime, event: Event) {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
+        const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = this.getFormattedDate(date);
+        if (this.useISOFormat) {
+          this.value = dateString;
+        } else {
+          this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+        }
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {

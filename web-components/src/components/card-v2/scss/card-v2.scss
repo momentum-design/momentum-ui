@@ -26,6 +26,7 @@
             justify-content: center;
             flex: 1 1 100%;
             flex-direction: column;
+            user-select: none;
 
             &-title {
                 display: flex;
@@ -52,6 +53,7 @@
             display: flex;
             flex: 1;
             gap: 8px;
+            user-select: none;
 
             h2 {
                 font-size: $md-card-v2-content-font-size;

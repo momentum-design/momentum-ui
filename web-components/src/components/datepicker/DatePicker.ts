@@ -30,8 +30,8 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
-import styles from "./scss/module.scss";
 import { StrategyType } from "../popover/Popover.types";
+import styles from "./scss/module.scss";
 export interface DatePickerControlButton {
   value: string;
   ariaLabel?: string;
@@ -125,7 +125,11 @@ export namespace DatePicker {
         if (closestElement("md-date-range-picker", this)) {
           return;
         }
-        this.selectedDate = dateStringToDateTime(this.value);
+        if (this.useISOFormat) {
+          this.selectedDate = dateStringToDateTime(this.value);
+        } else {
+          this.selectedDate = DateTime.fromFormat(this.value, getLocaleDateFormat(this.locale), { locale: this.locale });
+        }
         this.setPreSelection(this.selectedDate);
       }
       if (changedProperties.has("locale")) {
@@ -272,11 +276,13 @@ export namespace DatePicker {
       }
     };
 
-    chosenDateLabel = () => {
-      return this.selectedDate
-        ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
-        : undefined;
-    };
+
+    protected getDateAriaLabel = (): string => {
+      if (this.selectedDate && this.selectedDate.isValid) {
+        return `, selected date is ${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
+      }
+      return "";
+    }
 
     private readonly getValidRegexString = (): string => {
       if (this.includesTime) {
@@ -381,6 +387,10 @@ export namespace DatePicker {
       return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
     }
 
+    protected getAriaLabel(): string {
+      return this.ariaLabel + this.getDateAriaLabel()
+    }
+
     render() {
       return html`
         <md-menu-overlay
@@ -405,7 +415,7 @@ export namespace DatePicker {
                   value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${this.getAriaLabel()}
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"

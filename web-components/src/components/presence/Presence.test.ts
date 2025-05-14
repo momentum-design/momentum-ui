@@ -162,7 +162,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("", true);
     expect(result).toEqual({
       presenceIcon: "warning-badge-filled",
-      presenceColor: "var(--mds-color-theme-indicator-attention)"
+      presenceColor: "var(--avatar-presence-warning)"
     });
   });
 

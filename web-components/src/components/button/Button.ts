@@ -76,6 +76,7 @@ export const buttonVariant = [
   "idle",
   "inverted-primary",
   "inverted-secondary",
+  "inverted-ghost",
   "dropdown",
   "secondary-negative",
   "secondary-positive",

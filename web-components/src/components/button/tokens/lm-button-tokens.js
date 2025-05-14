@@ -165,6 +165,8 @@ const button = {
     "bg-color": { common: "$mds-color-theme-inverted-button-secondary-normal" },
     "text-color": { common: "$mds-color-theme-inverted-text-primary-normal" },
     "border-color": { common: "$mds-color-theme-inverted-outline-button-normal" },
+    hover: { "bg-color": { common: "$mds-color-theme-inverted-button-secondary-hover" } },
+    pressed: { "bg-color": { common: "$mds-color-theme-inverted-button-secondary-pressed" } },
     disabled: {
       "bg-color": { common: "$mds-color-theme-inverted-button-secondary-disabled" },
       "text-color": { common: "$mds-color-theme-inverted-text-primary-disabled" },

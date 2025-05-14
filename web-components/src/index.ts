@@ -71,6 +71,7 @@ export { Pagination } from "./components/pagination/Pagination";
 export { PhoneInput } from "./components/phone-input/PhoneInput";
 export { Popover, PopoverController } from "./components/popover/Popover";
 export { Presence } from "./components/presence/Presence";
+export type { PresenceState } from "./components/presence/Presence.utils";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";

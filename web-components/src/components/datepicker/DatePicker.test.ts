@@ -206,17 +206,21 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
 
-    test("should render with default date if we set showDefaultNowDate as true", async () => {
+  test("should render with default date if we set showDefaultNowDate as true", async () => {
+    const todayDate = now();
+    const expectedDate = todayDate.toISO()?.slice(0, 10);
     const el: DatePicker.ELEMENT = await createFixture(html`
-       <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
+      <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
     `);
     await elementUpdated(el);
+    
     const mdInput = el.shadowRoot?.querySelector("md-input");
     expect(mdInput?.value).not.toBeNull();
     expect(mdInput?.value).not.toBe("");
+    expect(mdInput?.value).toBe(expectedDate);
   });
 
- test("should render with default locale placeholder if we set showDefaultNowDate as false without passing placeholder", async () => {
+  test("should render with default locale placeholder if we set showDefaultNowDate as false without passing placeholder", async () => {
     const el: DatePicker.ELEMENT = await createFixture(html`
        <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} ></md-datepicker>
     `);
@@ -230,7 +234,7 @@ describe("DatePicker Component", () => {
 
   });
 
-  test("should render with default date if we set showDefaultNowDate as false", async () => {
+  test("should not render with default date if we set showDefaultNowDate as false", async () => {
     const el: DatePicker.ELEMENT = await createFixture(html`
        <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} placeholder="Select date"></md-datepicker>
     `);

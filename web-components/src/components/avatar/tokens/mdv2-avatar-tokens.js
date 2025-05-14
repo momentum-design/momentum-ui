@@ -224,6 +224,9 @@ const avatar = {
     },
     unstable: {
       common: "$mds-color-theme-indicator-unstable"
+    },
+    warning: {
+      common: "$mds-color-theme-text-warning-normal"
     }
   },
   notificationBadge: {

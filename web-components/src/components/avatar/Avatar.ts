@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
+import "@/components/presence/Presence";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
@@ -18,13 +18,11 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
+import { isPresenceType, PresenceState } from "../presence/Presence.utils";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
-import { getPresenceIconColor, PresenceType } from "./Presence.utils";
-import { TaskItem } from "../taskitem/TaskItem";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
   export type ChannelType = (typeof AvatarChannelType)[number];
   export type Type = (typeof AvatarType)[number] | PresenceState | ChannelType;
   export type Size = (typeof AvatarSize)[number];
@@ -86,44 +84,26 @@ export namespace Avatar {
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
-    @internalProperty() private presenceColor = "";
-    @internalProperty() private presenceIcon = "";
 
     static get styles() {
       return [reset, styles];
     }
 
-    private isPresenceType(value: string): value is PresenceState {
-      return (PresenceType as readonly string[]).includes(value);
-    }
-
     firstUpdated() {
-      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
+      const presenceValue = this.presenceType || (isPresenceType(this.type) ? this.type : "");
       if (presenceValue) {
-        const { presenceColor, presenceIcon } = getPresenceIconColor(
-          presenceValue,
-          this.failurePresence,
-          this.newMomentum
-        );
-        this.presenceColor = presenceColor!;
-        this.presenceIcon = presenceIcon!;
+        this.presenceType = presenceValue;
       }
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
+      const presenceValue = this.presenceType || (isPresenceType(this.type) ? this.type : "");
       if (
         presenceValue &&
         (changedProperties.has("type") || changedProperties.has("presenceType") || changedProperties.has("newMomentum"))
       ) {
-        const { presenceColor, presenceIcon } = getPresenceIconColor(
-          presenceValue,
-          this.failurePresence,
-          this.newMomentum
-        );
-        this.presenceColor = presenceColor!;
-        this.presenceIcon = presenceIcon!;
+        this.presenceType = presenceValue;
       }
       if (changedProperties.has("role")) {
         this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
@@ -199,6 +179,24 @@ export namespace Avatar {
 
     private get chatIconSize() {
       return this.iconSize;
+    }
+
+    private get presenceSize() {
+      if (this.size <= 24) {
+        return 10.5;
+      } else if (this.size <= 32) {
+        return 14;
+      } else if (this.size <= 48) {
+        return 13.94;
+      } else if (this.size <= 64) {
+        return 18.58;
+      } else if (this.size <= 72) {
+        return 20.9;
+      } else if (this.size <= 88) {
+        return 25.55;
+      } else {
+        return 36;
+      }
     }
 
     private get iconSize() {
@@ -357,13 +355,15 @@ export namespace Avatar {
     }
 
     renderPresence() {
-      return this.newMomentum && (this.presenceType || this.type) && this.type !== "self" && this.presenceIcon
+      return this.newMomentum && (this.presenceType || this.type) && this.type !== "self" 
         ? html`
             <md-presence
               class="avatar-presence"
-              name="${this.presenceIcon}"
-              color="${this.presenceColor}"
-              size="${this.size}"
+              size="${this.presenceSize}"
+              presence-type="${this.presenceType as PresenceState}"
+              .failurePresence=${this.failurePresence}
+              .newMomentum=${this.newMomentum}
+              .avatarLinked=${true}
             >
             </md-presence>
           `

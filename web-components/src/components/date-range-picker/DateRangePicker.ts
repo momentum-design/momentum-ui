@@ -17,6 +17,8 @@ const DATE_RANGE_SEPARATOR = " - ";
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
   export class ELEMENT extends DatePicker.ELEMENT {
+    @property({ type: String }) ariaLabel = "Choose Date Range";
+    
     @property({ type: String, attribute: "start-date", reflect: true })
     startDate: string | undefined | null = undefined;
 
@@ -63,7 +65,7 @@ export namespace DateRangePicker {
         return this.placeholder;
       }
       if (this.useISOFormat) {
-        return `YYYY/MM/DD${DATE_RANGE_SEPARATOR}YYYY/MM/DD`;
+        return `YYYY-MM-DD${DATE_RANGE_SEPARATOR}YYYY-MM-DD`;
       }
       const placeholder = getLocaleDateFormat(this.locale).toUpperCase();
       return `${placeholder}${DATE_RANGE_SEPARATOR}${placeholder}`;
@@ -94,6 +96,23 @@ export namespace DateRangePicker {
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
+    }
+
+    // overload
+    protected getAriaLabel(): string {
+      return this.ariaLabel + this.getDateRangeAriaLabel();
+    }
+
+    private getDateRangeAriaLabel(): string {
+      if (this.startDate && this.endDate) {
+        const startDateISO = DateTime.fromISO(this.startDate);
+        const endDateISO = DateTime.fromISO(this.endDate);
+        if (startDateISO.isValid && endDateISO.isValid) {
+          return `, selected date range is ${startDateISO.toLocaleString(DateTime.DATE_FULL)} to ${endDateISO.toLocaleString(DateTime.DATE_FULL)}`;
+        }
+      }
+
+      return "";
     }
 
     handleDateSelection(e: any): void {

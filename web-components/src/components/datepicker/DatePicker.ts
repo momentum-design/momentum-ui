@@ -386,21 +386,7 @@ export namespace DatePicker {
       }
     }
 
-    protected getInputValue(): string | undefined {
-      if (this.value) {
-        return this.value;
-      } 
-      
-      if (this.showDefaultNowDate) {
-        return this.getFormattedDate(this.selectedDate) ?? undefined;
-      }
-      
-      return undefined;
-    }
-
     render() {
-      const inputValue = this.getInputValue();
-      
       return html`
         <md-menu-overlay
           is-date-picker
@@ -421,10 +407,10 @@ export namespace DatePicker {
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
-                  value=${ifDefined(inputValue)}
+                  value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  ariaLabel=${inputValue ? this.ariaLabel + this.chosenDateLabel() : ''}
+                  ariaLabel=${this.value ? this.ariaLabel + this.chosenDateLabel() : ''}
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"

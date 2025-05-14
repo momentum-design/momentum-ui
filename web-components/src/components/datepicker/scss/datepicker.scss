@@ -206,7 +206,7 @@
         background: radial-gradient(
           circle at 50% center,
           var(--datepicker-selected-bg-color) 60%,
-          transparent 50%,
+          transparent 60%,
           var(--datepicker-range-bg-color) 60%,
           var(--datepicker-range-bg-color) 60%
         );
@@ -271,10 +271,10 @@
         &::before {                 
           background: radial-gradient(
             circle at 50% center,
-            var(--datepicker-selected-hover-bg-color) 60%,
-            rgba(0, 0, 0, 0) 60%,
-            var(--datepicker-range-bg-color) 60%,
-            var(--datepicker-range-bg-color) 60%
+            var(--datepicker-selected-hover-bg-color) 50%,
+            rgba(0, 0, 0, 0) 50%,
+            var(--datepicker-range-bg-color) 50%,
+            var(--datepicker-range-bg-color) 50%
           );  
         }
 
@@ -308,10 +308,10 @@
 
         background: radial-gradient(
           circle at 50% center,
-          var(--datepicker-selected-bg-color) 40%,
-          transparent 40%,
-          var(--datepicker-range-bg-color) 40%,
-          var(--datepicker-range-bg-color) 40%
+          var(--datepicker-selected-bg-color) 50%,
+          transparent 50%,
+          var(--datepicker-range-bg-color) 50%,
+          var(--datepicker-range-bg-color) 50%
         );
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;        
@@ -343,10 +343,10 @@
         &::before {
           background: radial-gradient(
             circle at 50% center,
-            var(--datepicker-selected-bg-color) 40%,
-            rgba(0, 0, 0, 0) 40%,
-            var(--datepicker-range-bg-color) 40%,
-            var(--datepicker-range-bg-color) 40%
+            var(--datepicker-selected-bg-color) 50%,
+            transparent 50%,
+            var(--datepicker-range-bg-color) 50%,
+            var(--datepicker-range-bg-color) 50%
           );
         }
 
@@ -376,10 +376,10 @@
          &::before {                 
           background: radial-gradient(
             circle at 50% center,
-            var(--datepicker-selected-hover-bg-color) 40%,
-            rgba(0, 0, 0, 0) 40%,
-            var(--datepicker-range-bg-color) 40%,
-            var(--datepicker-range-bg-color) 40%
+            var(--datepicker-selected-hover-bg-color) 60%,
+            rgba(0, 0, 0, 0) 60%,
+            var(--datepicker-range-bg-color) 60%,
+            var(--datepicker-range-bg-color) 60%
           );  
         }
 

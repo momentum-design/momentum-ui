@@ -111,7 +111,6 @@ export namespace DateRangePicker {
           return `, selected date range is ${startDateISO.toLocaleString(DateTime.DATE_FULL)} to ${endDateISO.toLocaleString(DateTime.DATE_FULL)}`;
         }
       }
-
       return "";
     }
 

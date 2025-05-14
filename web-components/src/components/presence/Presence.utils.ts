@@ -44,7 +44,7 @@ export const getPresenceIconColor = (
 
   if (failureBadge) {
     presenceIcon = "warning-badge-filled";
-    presenceColor = "var(--mds-color-theme-indicator-attention)";
+    presenceColor = "var(--avatar-presence-warning)";
   } else {
     if (!presenceType) {
       return {

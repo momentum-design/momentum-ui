@@ -72,6 +72,7 @@ export namespace DatePicker {
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
     @property({ type: String, attribute: "positioning-strategy" })
     positioningStrategy?: StrategyType = undefined;
+    @property({ type: Boolean, attribute: "show-default-now-date" }) showDefaultNowDate = true;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -106,16 +107,8 @@ export namespace DatePicker {
     firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (!this.value) {
-        if (this.useISOFormat) {
-          this.value = this.includesTime
-            ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
-            : this.selectedDate?.toISODate();
-        } else {
-          this.value = this.includesTime
-            ? this.selectedDate?.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
-            : this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
-        }
+      if (!this.value && this.showDefaultNowDate) {
+        this.value = this.getFormattedDate(this.selectedDate);
       }
     }
 
@@ -381,6 +374,18 @@ export namespace DatePicker {
       return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
     }
 
+    protected getFormattedDate(date: DateTime): string | null {
+      if (!date) return null;
+      
+      if (this.useISOFormat) {
+        return this.getISODateTime(date);
+      } else {
+        return this.includesTime
+          ? date.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
+          : date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+      }
+    }
+
     render() {
       return html`
         <md-menu-overlay
@@ -405,7 +410,7 @@ export namespace DatePicker {
                   value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${this.value ? this.ariaLabel + this.chosenDateLabel() : ''}
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"

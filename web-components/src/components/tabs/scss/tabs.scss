@@ -231,7 +231,7 @@ md-menu-overlay {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: rem-calc(64);
+    height: calc($new-tab-height + $new-tab-padding);
 
     .tabs-left-arrow {
       margin-right: rem-calc(12);
@@ -248,7 +248,7 @@ md-menu-overlay {
       position: relative;
       display: inline-flex;
       gap: rem-calc(8);
-      height: rem-calc(42); 
+      height: calc($new-tab-height + $new-tab-padding + 2px);
       padding: rem-calc(5);
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -270,6 +270,7 @@ md-menu-overlay {
     display: inline-flex;
     flex-direction: column;
     height: 100%;
+    gap: 0.25rem;
     justify-content: flex-start;
     width: auto;
 

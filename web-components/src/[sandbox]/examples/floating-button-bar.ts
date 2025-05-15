@@ -46,7 +46,11 @@ export class FloatingButtonBarTemplateSandbox extends LitElement {
 
   render() {
     return html` <div class="container">
-      <md-floating-button-bar leadingLabel="4 selected" .actions=${[this.groupActions]}></md-floating-button-bar>
+      <md-floating-button-bar
+        closeButtonAriaLabel="Clear selection"
+        leadingLabel="4 selected"
+        .actions=${[this.groupActions]}
+      ></md-floating-button-bar>
     </div>`;
   }
 }

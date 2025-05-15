@@ -30,10 +30,6 @@ export const PresenceType = [
   ""
 ] as const;
 
-export const isPresenceType = (value: string): value is PresenceState => {
-  return (PresenceType as readonly string[]).includes(value);
-}
-
 export const getPresenceIconColor = (
   presenceType: PresenceState,
   failureBadge: boolean,

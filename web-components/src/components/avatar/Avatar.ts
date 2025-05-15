@@ -18,7 +18,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { isPresenceType, PresenceState } from "../presence/Presence.utils";
+import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import styles from "./scss/module.scss";
 
@@ -84,26 +84,44 @@ export namespace Avatar {
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
+    @internalProperty() private presenceColor = "";
+    @internalProperty() private presenceIcon = "";
 
     static get styles() {
       return [reset, styles];
     }
 
+    private isPresenceType(value: string): value is PresenceState {
+      return (PresenceType as readonly string[]).includes(value);
+    }
+
     firstUpdated() {
-      const presenceValue = this.presenceType || (isPresenceType(this.type) ? this.type : "");
+      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       if (presenceValue) {
-        this.presenceType = presenceValue;
+        const { presenceColor, presenceIcon } = getPresenceIconColor(
+          presenceValue,
+          this.failurePresence,
+          this.newMomentum
+        );
+        this.presenceColor = presenceColor!;
+        this.presenceIcon = presenceIcon!;
       }
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      const presenceValue = this.presenceType || (isPresenceType(this.type) ? this.type : "");
+      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       if (
         presenceValue &&
         (changedProperties.has("type") || changedProperties.has("presenceType") || changedProperties.has("newMomentum"))
       ) {
-        this.presenceType = presenceValue;
+        const { presenceColor, presenceIcon } = getPresenceIconColor(
+          presenceValue,
+          this.failurePresence,
+          this.newMomentum
+        );
+        this.presenceColor = presenceColor!;
+        this.presenceIcon = presenceIcon!;
       }
       if (changedProperties.has("role")) {
         this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
@@ -355,12 +373,13 @@ export namespace Avatar {
     }
 
     renderPresence() {
-      return this.newMomentum && (this.presenceType || this.type) && this.type !== "self" 
+      return this.newMomentum && (this.presenceType || this.type) && this.type !== "self" && this.presenceIcon
         ? html`
             <md-presence
               class="avatar-presence"
+              name="${this.presenceIcon}"
+              color="${this.presenceColor}"
               size="${this.presenceSize}"
-              presence-type="${this.presenceType as PresenceState}"
               .failurePresence=${this.failurePresence}
               .newMomentum=${this.newMomentum}
               .avatarLinked=${true}

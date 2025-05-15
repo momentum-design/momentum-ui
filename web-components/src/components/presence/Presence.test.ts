@@ -15,11 +15,27 @@ describe("Presence", () => {
     fixtureCleanup();
   });
 
-  test("should set properties", async () => {
-    const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active" presence-type="active"></md-presence> `);
+  test("should set size property", async () => {
+    const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active"></md-presence> `);
     expect(element.size).toEqual(36);
     expect(element.title).toEqual("active");
+  });
+
+  test("should set color property", async () => {
+    const element = await fixture<Presence.ELEMENT>(html`
+      <md-presence color="var(--mds-color-theme-indicator-stable)" title="active"></md-presence>
+    `);
+    expect(element.color).toEqual("var(--mds-color-theme-indicator-stable)");
+    expect(element.title).toEqual("active");
+  });
+
+    test("should set presence type property", async () => {
+    const element = await fixture<Presence.ELEMENT>(html`
+      <md-presence title="active" presence-type="active"></md-presence>
+    `);
+    expect(element.title).toEqual("active");
     expect(element.presenceType).toEqual("active");
+    expect(element.color).toEqual("var(--avatar-presence-active)");
   });
 
   test("returns correct values for active presenceType", () => {

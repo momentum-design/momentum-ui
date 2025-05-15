@@ -49,6 +49,7 @@ export namespace Tabs {
   type TabId = Element["id"];
   export type TabsType = "line" | "pill" | "rounded";
   export type TabVariant = "ghost" | "primary";
+  export type TabSize = "28" | "32";
 
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
@@ -88,6 +89,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
     @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Backward Button";
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
+    @property({ type: String }) size: TabSize = "28";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -407,6 +409,7 @@ export namespace Tabs {
         tab.newMomentum = this.newMomentum;
         tab.type = this.type;
         tab.variant = this.variant;
+        tab.size = this.size;
 
         if (this.scrollArrow) {
           tab.visibleTab = true;
@@ -1269,6 +1272,7 @@ export namespace Tabs {
         <md-tab
           slot="menu-trigger"
           id="${MORE_MENU_TAB_TRIGGER_ID}"
+          size="${this.size}"
           aria-label="${this.overflowLabel}"
           aria-haspopup="true"
           role="button"
@@ -1366,7 +1370,7 @@ export namespace Tabs {
       return html`<md-button
         class="tabs-${direction}-arrow"
         @click=${() => this.scrollTabs(direction)}
-        size="28"
+        size="${this.size}"
         variant="ghost"
         circle
         ariaLabel="${ariaLabel}"
@@ -1402,6 +1406,7 @@ export namespace Tabs {
             (tab) => html`
               <md-tab
                 .closable="${tab.closable}"
+                size="${this.size}"
                 .disabled="${tab.disabled}"
                 .selected="${tab.selected}"
                 name="${tab.name}"
@@ -1438,6 +1443,7 @@ export namespace Tabs {
               "vertical-tab-list": this.direction === "vertical",
               "tab-new-momentum": this.newMomentum
             })}"
+            size="${this.size}"
             role="tablist"
           >
             ${this.renderTabSlot}

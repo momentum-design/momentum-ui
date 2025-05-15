@@ -309,7 +309,7 @@ describe("DatePicker Component", () => {
       );
 
     test.each([
-      { useISOFormat: true, locale: "en-US", placeholder: undefined, expected: "YYYY/MM/DD - YYYY/MM/DD" },
+      { useISOFormat: true, locale: "en-US", placeholder: undefined, expected: "YYYY-MM-DD - YYYY-MM-DD" },
       { useISOFormat: true, locale: "en-US", placeholder: "FOOBAR", expected: "FOOBAR" },
       { useISOFormat: false, locale: "en-US", placeholder: undefined, expected: "M/D/YYYY - M/D/YYYY" },
       { useISOFormat: false, locale: "fr-FR", placeholder: undefined, expected: "DD/MM/YYYY - DD/MM/YYYY" },

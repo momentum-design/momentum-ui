@@ -250,9 +250,6 @@ const avatar = {
     },
     unstable: {
       common: colors.orange[60].name
-    },
-    warning: {
-      common: "$mds-color-theme-text-warning-normal"
     }
   }
 };

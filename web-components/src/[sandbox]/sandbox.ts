@@ -53,7 +53,6 @@ import {
   paginationTemplate,
   phoneInputTemplate,
   popoverTemplate,
-  presenceTemplate,
   progressBarTemplate,
   radioGroupTemplate,
   sliderTemplate,
@@ -398,7 +397,6 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Pagination", "md-pagination", "pagination", paginationTemplate)}
           ${this.getTabTemplate("Phone Input", "md-phone-input", "phone-input", phoneInputTemplate)}
           ${this.getTabTemplate("Popover", "md-popover", "popover", popoverTemplate)}
-          ${this.getTabTemplate("Presence", "md-presence", "presence", presenceTemplate)}
           ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}

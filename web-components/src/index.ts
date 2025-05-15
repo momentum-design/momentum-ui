@@ -70,7 +70,6 @@ export { Modal } from "./components/modal/Modal";
 export { Pagination } from "./components/pagination/Pagination";
 export { PhoneInput } from "./components/phone-input/PhoneInput";
 export { Popover, PopoverController } from "./components/popover/Popover";
-export { Presence } from "./components/presence/Presence";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";

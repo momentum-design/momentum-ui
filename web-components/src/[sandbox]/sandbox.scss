@@ -67,7 +67,10 @@ md-theme[darkTheme] {
   &::part(tabs-list) {    
     overflow-y: auto;
     height: calc(100vh - 1.75rem);    
-    flex-shrink: 0;    
+    flex-shrink: 0; 
+    padding-left:5px;
+    padding-right:5px;
+    gap:0.25rem;
   }
 }
 

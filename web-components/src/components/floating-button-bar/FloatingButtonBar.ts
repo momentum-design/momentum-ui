@@ -1,7 +1,9 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import "@/components/tooltip/Tooltip";
 import { customElement, html, LitElement, property } from "lit-element";
 import { nothing, TemplateResult } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/floating-button-bar.styles.scss";
 
 export type FloatingButtonActionGroup = {
@@ -45,15 +47,22 @@ export class FloatingButtonBar extends LitElement {
 
   private get closeButtonTemplate() {
     return html`
-      <md-button
-        class="button cancel"
-        circle
-        size="20"
-        variant="ghostInheritTextColor"
-        @button-click=${() => this.onCancelButttonAction()}
+      <md-tooltip
+        message="${ifDefined(this.closeButtonAriaLabel)}"
+        ?disabled=${!this.closeButtonAriaLabel}
+        placement="top"
       >
-        <md-icon slot="icon" iconSet="momentumDesign" name="cancel-bold" size="16"></md-icon>
-      </md-button>
+        <md-button
+          class="button cancel"
+          circle
+          size="20"
+          variant="ghostInheritTextColor"
+          ariaLabel=${ifDefined(this.closeButtonAriaLabel)}
+          @button-click=${() => this.onCancelButttonAction()}
+        >
+          <md-icon slot="icon" iconSet="momentumDesign" name="cancel-bold" size="16"></md-icon>
+        </md-button>
+      </md-tooltip>
     `;
   }
 

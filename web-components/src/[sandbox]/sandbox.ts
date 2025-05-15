@@ -342,7 +342,16 @@ export class Sandbox extends MobxLitElement {
       >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
-        <md-tabs direction=${this.tabsOrientation} class="explorer" persist-selection tabs-id="explorer">
+        <md-tabs
+          direction=${this.tabsOrientation}
+          newMomentum
+          variant=${this.tabsOrientation === "vertical" ? "ghost" : "primary"}
+          type=${this.tabsOrientation === "vertical" ? "rounded" : "line"}
+          scroll-arrow
+          class="explorer"
+          persist-selection
+          tabs-id="explorer"
+        >
           ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
           ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)}
           ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}

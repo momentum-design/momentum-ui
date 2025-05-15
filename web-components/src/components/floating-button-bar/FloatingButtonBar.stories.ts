@@ -39,6 +39,7 @@ const render = (args: Args) => html`
     style="width: 286px; height: 200px; background: var(--md-glass-bg-color); padding: 1rem; display: flex; align-items: flex-end;"
   >
     <md-floating-button-bar
+      closeButtonAriaLabel=${args.closeButtonAriaLabel}
       leadingLabel=${args.leadingLabel}
       ?showCancelButton=${args.showCancelButton}
       .actions=${args.actions}
@@ -51,6 +52,7 @@ export const FloatingButtonBar: StoryObj = {
   args: {
     leadingLabel: "4 selected",
     showCancelButton: true,
+    closeButtonAriaLabel: "Clear selection",
     actions: [groupActions]
   },
   render: render

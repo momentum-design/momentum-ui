@@ -43,6 +43,9 @@ export interface DatePickerControlButtons {
   cancel?: DatePickerControlButton;
 }
 
+const DEFAULT_ARIA_LABEL = "Choose Date";
+const DEFAULT_ARIA_LABEL_DATE_SELECTED = "Choose Date, selected date is ";
+
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
   const EMPTY_STRING = "";
@@ -62,7 +65,7 @@ export namespace DatePicker {
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "";
-    @property({ type: String }) ariaLabel = "Choose Date";
+    @property({ type: String }) ariaLabel: string | null = null;
     @property({ type: Boolean }) required = false;
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
@@ -276,12 +279,11 @@ export namespace DatePicker {
       }
     };
 
-
-    protected getDateAriaLabel = (): string => {
+    protected getDefaultAriaLabel = (): string => {
       if (this.selectedDate && this.selectedDate.isValid) {
-        return `, selected date is ${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
+        return `${DEFAULT_ARIA_LABEL_DATE_SELECTED} ${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
       }
-      return "";
+      return DEFAULT_ARIA_LABEL;
     }
 
     private readonly getValidRegexString = (): string => {
@@ -382,13 +384,13 @@ export namespace DatePicker {
         return this.placeholder;
       }
       if (this.useISOFormat) {
-        return "YYYY/MM/DD";
+        return "YYYY-MM-DD";
       }
       return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
     }
 
-    protected getAriaLabel(): string {
-      return this.ariaLabel + this.getDateAriaLabel()
+    private getAriaLabel(): string {
+      return this.ariaLabel ?? this.getDefaultAriaLabel()
     }
 
     render() {

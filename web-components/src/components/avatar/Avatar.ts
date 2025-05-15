@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
+import "@/components/presence/Presence";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
@@ -18,13 +18,11 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
+import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
-import { getPresenceIconColor, PresenceType } from "./Presence.utils";
-import { TaskItem } from "../taskitem/TaskItem";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
   export type ChannelType = (typeof AvatarChannelType)[number];
   export type Type = (typeof AvatarType)[number] | PresenceState | ChannelType;
   export type Size = (typeof AvatarSize)[number];
@@ -201,6 +199,24 @@ export namespace Avatar {
       return this.iconSize;
     }
 
+    private get presenceSize() {
+      if (this.size <= 24) {
+        return 10.5;
+      } else if (this.size <= 32) {
+        return 14;
+      } else if (this.size <= 48) {
+        return 13.94;
+      } else if (this.size <= 64) {
+        return 18.58;
+      } else if (this.size <= 72) {
+        return 20.9;
+      } else if (this.size <= 88) {
+        return 25.55;
+      } else {
+        return 36;
+      }
+    }
+
     private get iconSize() {
       if (this.size === 24) {
         return "16";
@@ -363,7 +379,10 @@ export namespace Avatar {
               class="avatar-presence"
               name="${this.presenceIcon}"
               color="${this.presenceColor}"
-              size="${this.size}"
+              size="${this.presenceSize}"
+              .failurePresence=${this.failurePresence}
+              .newMomentum=${this.newMomentum}
+              .avatarLinked=${true}
             >
             </md-presence>
           `

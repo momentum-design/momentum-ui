@@ -2,8 +2,9 @@ import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
-import { AvatarSize } from "./Avatar.constants";
-import { getPresenceSize } from "./Presence.utils";
+import { classMap } from "lit-html/directives/class-map";
+import { AvatarSize } from "../avatar/Avatar.constants";
+import { getPresenceIconColor, PresenceState } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Presence {
@@ -15,20 +16,34 @@ export namespace Presence {
     @property({ type: Number }) size: Size = 48;
     @property({ type: String }) title = "";
     @property({ type: String }) color = "";
+    @property({ type: String, attribute: "presence-type" }) presenceType: PresenceState = "";
+    @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) failurePresence = false;
+    @property({ type: Boolean }) avatarLinked = false;
 
     static get styles() {
       return [reset, styles];
     }
 
-    render() {
-      const iconSize = getPresenceSize(this.size);
+    private get presenceClassMap() {
+      return {
+        "avatar-presence-wrapper": this.avatarLinked
+      };
+    }
+
+    render() {      
+      if (this.presenceType) {
+        const { presenceIcon, presenceColor } = getPresenceIconColor(this.presenceType, this.failurePresence, this.newMomentum);
+        this.name = presenceIcon!;
+        this.color = presenceColor!;
+      }
 
       return html`
-        <div class="avatar-presence-wrapper" data-size=${this.size} data-icon-size=${iconSize}>
+        <div class="${classMap(this.presenceClassMap)}" data-size=${this.size} data-icon-size=${this.size}>
           <md-icon
             name="${this.name}"
             color="${this.color}"
-            size=${iconSize}
+            size=${this.size}
             title="${this.title}"
             .iconSet=${"momentumDesign"}
           >

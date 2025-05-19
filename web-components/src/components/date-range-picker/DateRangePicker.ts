@@ -14,7 +14,7 @@ import { DatePicker } from "../datepicker/DatePicker";
 
 const DATE_RANGE_SEPARATOR = " - ";
 const DEFAULT_ARIA_LABEL = "Choose Date Range"
-const DEFAULT_ARIA_LABEL_RANGE_SELECTED = "Choose Date Range, currently selected range is"
+const DEFAULT_ARIA_LABEL_RANGE_SELECTED = "Choose Date Range, currently selected range is "
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
@@ -104,7 +104,7 @@ export namespace DateRangePicker {
         const startDateISO = DateTime.fromISO(this.startDate);
         const endDateISO = DateTime.fromISO(this.endDate);
         if (startDateISO.isValid && endDateISO.isValid) {
-          return `${DEFAULT_ARIA_LABEL_RANGE_SELECTED}  ${startDateISO.toLocaleString(DateTime.DATE_FULL)} to ${endDateISO.toLocaleString(DateTime.DATE_FULL)}`; // TODO is the "to" alright here? ort should we havbe a template for the default range
+          return `${DEFAULT_ARIA_LABEL_RANGE_SELECTED}${startDateISO.toLocaleString(DateTime.DATE_FULL)} to ${endDateISO.toLocaleString(DateTime.DATE_FULL)}`; // TODO is the "to" alright here? ort should we havbe a template for the default range
         }
       }
       return DEFAULT_ARIA_LABEL;

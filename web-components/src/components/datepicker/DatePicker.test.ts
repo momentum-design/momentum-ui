@@ -206,6 +206,25 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
 
+  test("should use default aria label if no ariaLabel prop is set", async () => {
+    Settings.defaultLocale = "en-US";
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker value="2024-05-01"></md-datepicker>
+    `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Choose Date, selected date is May 1, 2024");
+  });
+
+  test("should use custom aria label if ariaLabel prop is set", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker  value="2024-05-01" ariaLabel="Custom aria label"></md-datepicker>
+    `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Custom aria label");
+  });
+
   test("should render with default date if we set showDefaultNowDate as true", async () => {
     const todayDate = now();
     const expectedDate = todayDate.toISO()?.slice(0, 10);

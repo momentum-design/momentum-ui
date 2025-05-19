@@ -281,6 +281,22 @@ describe("DatePicker Component", () => {
     });
   });
 
+
+  test("should use default aria label if no ariaLabel prop is set", async () => {
+    Settings.defaultLocale = "en-US";
+    const el = await fixture(html` <md-date-range-picker start-date="2024-12-01" end-date="2024-12-15"></md-date-range-picker> `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Choose Date Range, currently selected range is December 1, 2024 to December 15, 2024");
+  });
+
+  test("should use custom aria label if ariaLabel prop is set", async () => {
+    const el = await fixture(html` <md-date-range-picker ariaLabel="Custom aria label" startDate="2024-12-01" endDate="2024-12-15"></md-date-range-picker> `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Custom aria label");
+  });
+
   describe("Localised + ISO format testing", () => {
     test.each([
         { useISOFormat: true},

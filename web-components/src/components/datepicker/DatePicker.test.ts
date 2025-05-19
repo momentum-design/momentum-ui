@@ -230,7 +230,7 @@ describe("DatePicker Component", () => {
     expect(mdInput?.value).toBe("");
     expect(mdInput?.value).not.toBeNull();
     const input = mdInput?.shadowRoot?.querySelector("input");
-    expect(input?.getAttribute("placeholder")).toBe("YYYY/MM/DD");
+    expect(input?.getAttribute("placeholder")).toBe("YYYY-MM-DD");
 
   });
 

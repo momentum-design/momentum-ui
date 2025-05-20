@@ -541,6 +541,17 @@ export class Popover extends FocusTrapMixin(LitElement) {
       return;
     }
 
+    const target = event.target as Node;
+
+    const isClickInsidePopover =
+      this.contains(target) ||
+      path.some((el) => el === this) ||
+      path.some((el) => el instanceof Element && this.contains(el));
+
+    if (isClickInsidePopover) {
+      return;
+    }
+
     if (popoverStack.shouldDeferToTopForOutsideClick(this)) {
       // This popover is part of a nested structure and is not the topmost one.
       // It should not close based on this outside click.

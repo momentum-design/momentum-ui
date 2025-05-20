@@ -246,7 +246,7 @@ md-menu-overlay {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: calc($new-tab-height + $new-tab-padding);
+    height: calc($tab-height-28 + $new-tab-padding);
 
     .tabs-left-arrow {
       margin-right: rem-calc(12);

@@ -267,12 +267,12 @@ md-menu-overlay {
       scrollbar-width: none;
 
       &[size="28"] {
-        height: rem-calc(38); // 28px + padding
+        height: calc($tab-height-28 + $new-tab-padding + 2px);
         padding: rem-calc(5);
       }
 
       &[size="32"] {
-        height: rem-calc(42); // 32px + padding
+        height: calc($tab-height-32 + $new-tab-padding + 2px);
         padding: rem-calc(5);   
       }
     }

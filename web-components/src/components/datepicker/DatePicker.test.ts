@@ -206,6 +206,67 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
 
+  test("should use default aria label if no ariaLabel prop is set", async () => {
+    Settings.defaultLocale = "en-US";
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker value="2024-05-01"></md-datepicker>
+    `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Choose Date, selected date is May 1, 2024");
+  });
+
+  test("should use custom aria label if ariaLabel prop is set", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker  value="2024-05-01" ariaLabel="Custom aria label"></md-datepicker>
+    `);
+    const input = el.shadowRoot?.querySelector("md-input");
+    expect(input).not.toBeNull();
+    expect(input?.ariaLabel).toBe("Custom aria label");
+  });
+
+  test("should render with default date if we set showDefaultNowDate as true", async () => {
+    const todayDate = now();
+    const expectedDate = todayDate.toISO()?.slice(0, 10);
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
+    `);
+    await elementUpdated(el);
+    
+    const mdInput = el.shadowRoot?.querySelector("md-input");
+    expect(mdInput?.value).not.toBeNull();
+    expect(mdInput?.value).not.toBe("");
+    expect(mdInput?.value).toBe(expectedDate);
+  });
+
+  test("should render with default locale placeholder if we set showDefaultNowDate as false without passing placeholder", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+       <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} ></md-datepicker>
+    `);
+
+    await elementUpdated(el);
+    const mdInput = el.shadowRoot?.querySelector("md-input");
+    expect(mdInput?.value).toBe("");
+    expect(mdInput?.value).not.toBeNull();
+    const input = mdInput?.shadowRoot?.querySelector("input");
+    expect(input?.getAttribute("placeholder")).toBe("YYYY-MM-DD");
+
+  });
+
+  test("should not render with default date if we set showDefaultNowDate as false", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html`
+       <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} placeholder="Select date"></md-datepicker>
+    `);
+
+    await elementUpdated(el);
+    const mdInput = el.shadowRoot?.querySelector("md-input");
+    expect(mdInput?.value).toBe("");
+    expect(mdInput?.value).not.toBeNull();
+    const input = mdInput?.shadowRoot?.querySelector("input");
+    expect(input?.getAttribute("placeholder")).toBe("Select date");
+  });
+
+
   test("should update value and fire the date-input-change event when handleDateInputChange is called with an empty string", async () => {
     const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker></md-datepicker> `);
     const eventSpy = jest.spyOn(el, "dispatchEvent");
@@ -263,7 +324,7 @@ describe("DatePicker Component", () => {
     );
 
     test.each([
-      { useISOFormat: true, locale: "en-US", placeholder: undefined, expected: "YYYY/MM/DD" },
+      { useISOFormat: true, locale: "en-US", placeholder: undefined, expected: "YYYY-MM-DD" },
       { useISOFormat: true, locale: "en-US", placeholder: "FOOBAR", expected: "FOOBAR" },
       { useISOFormat: false, locale: "en-US", placeholder: undefined, expected: "M/D/YYYY" },
       { useISOFormat: false, locale: "fr-FR", placeholder: undefined, expected: "DD/MM/YYYY" },

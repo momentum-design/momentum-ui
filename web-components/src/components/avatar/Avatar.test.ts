@@ -179,7 +179,7 @@ describe("Avatar", () => {
       expect(computedStyle.color).toBe(
         getComputedStyle(document.documentElement).getPropertyValue("--avatar-presence-active")
       );
-      expect(presenceIndicator.getAttribute("presence-type")).toBe("active");
+      expect(presenceIndicator.getAttribute("name")).toBe("active-presence-small-filled");
       expect(presenceIndicator.hasAttribute("isCircularWrapper"));
     }
   });

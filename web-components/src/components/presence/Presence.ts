@@ -1,24 +1,25 @@
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
+import { AvatarSize } from "../avatar/Avatar.constants";
 import { getPresenceIconColor, PresenceState } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Presence {
+  export type Size = (typeof AvatarSize)[number];
 
   @customElementWithCheck("md-presence")
   export class ELEMENT extends LitElement {
-    @property({ type: Number }) size = 48;
+    @property({ type: String }) name = "";
+    @property({ type: Number }) size: Size = 48;
     @property({ type: String }) title = "";
+    @property({ type: String }) color = "";
     @property({ type: String, attribute: "presence-type" }) presenceType: PresenceState = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) failurePresence = false;
     @property({ type: Boolean }) avatarLinked = false;
-
-    @internalProperty() private presenceColor = "";
-    @internalProperty() private presenceIcon = "";
 
     static get styles() {
       return [reset, styles];
@@ -30,18 +31,18 @@ export namespace Presence {
       };
     }
 
-    render() {
+    render() {      
       if (this.presenceType) {
         const { presenceIcon, presenceColor } = getPresenceIconColor(this.presenceType, this.failurePresence, this.newMomentum);
-        this.presenceIcon = presenceIcon!;
-        this.presenceColor = presenceColor!;
+        this.name = presenceIcon!;
+        this.color = presenceColor!;
       }
-      
+
       return html`
         <div class="${classMap(this.presenceClassMap)}" data-size=${this.size} data-icon-size=${this.size}>
           <md-icon
-            name="${this.presenceIcon}"
-            color="${this.presenceColor}"
+            name="${this.name}"
+            color="${this.color}"
             size=${this.size}
             title="${this.title}"
             .iconSet=${"momentumDesign"}

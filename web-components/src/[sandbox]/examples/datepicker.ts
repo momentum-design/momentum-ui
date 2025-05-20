@@ -28,6 +28,11 @@ export const datePickerTemplate = html`
   <md-datepicker custom-trigger>
     <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
   </md-datepicker>
+  <h3>default date if we set showDefaultNowDate as true</h3>
+   <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
+  <h3>show the passed placeholder if we set showDefaultNowDate as false</h3>
+   <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} placeholder="Select date"></md-datepicker>
+ 
   <h3>datepicker with user's system locale</h3>
   <md-datepicker .useISOFormat=${false}></md-datepicker>
   <h3>datepicker with "ru" locale</h3>
@@ -42,7 +47,7 @@ export const datePickerTemplate = html`
   <md-datepicker weekStart="Monday" value="2021-01-31"></md-datepicker>
   <h3>disabled datepicker</h3>
   <md-datepicker weekStart="Monday" value="2021-01-31" disabled></md-datepicker>
-  <h3>Call Date</h3>
+  <h3>Call Date (with custom aria label)</h3>
   <md-datepicker ariaLabel="Call Date" weekStart="Monday" value="2021-01-31"></md-datepicker>
   <h3>datepicker with initial value compact newMomentum</h3>
   <md-datepicker weekStart="Monday" value="2021-01-31" compact-input newMomentum></md-datepicker>

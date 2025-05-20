@@ -1,4 +1,3 @@
-
 import "@/components/presence/Presence";
 import { TaskItemStatus } from "@/components/taskitem/TaskItem.constants";
 import { css, customElement, html, LitElement } from "lit-element";
@@ -6,7 +5,7 @@ import { PresenceState, PresenceType } from "../../components/presence/Presence.
 
 @customElement("presence-template-sandbox")
 export class PresenceTemplateSandbox extends LitElement {
-  
+
   static styles = css`
     .presence-grid {
         display: grid;

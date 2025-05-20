@@ -257,7 +257,7 @@ export default {
     rightArrowAriaLabel: { control: "text" },
     size: {
       control: { type: "select" },
-      options: ["28", "32"]
+      options: [28, 32]
     },
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },

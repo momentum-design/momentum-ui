@@ -50,7 +50,7 @@ export namespace Tabs {
   type TabId = Element["id"];
   export type TabsType = "line" | "pill" | "rounded";
   export type TabVariant = "ghost" | "primary";
-  export type TabSize = "28" | "32";
+  export type TabSize = 28 | 32;
 
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
@@ -90,7 +90,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
     @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Backward Button";
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
-    @property({ type: String }) size: TabSize = "28";
+    @property({ type: Number }) size: TabSize = 28;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -1444,7 +1444,7 @@ export namespace Tabs {
               "vertical-tab-list": this.direction === "vertical",
               "tab-new-momentum": this.newMomentum
             })}"
-            size="${this.newMomentum ? this.size : "undefined"}"
+            size="${ifDefined(this.newMomentum ? this.size : undefined)}"
             role="tablist"
           >
             ${this.renderTabSlot}

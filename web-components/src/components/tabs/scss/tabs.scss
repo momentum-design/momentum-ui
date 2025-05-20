@@ -301,14 +301,14 @@ md-menu-overlay {
       display: block;
       text-align: left;
 
-      &[size="28"] {
-        height: 38px;
-        padding: 5px;
+       &[size="28"] {
+        height: $tab-height-28;
+        min-height: $tab-height-28;
       }
-
+  
       &[size="32"] {
-        height: 42px;
-        padding: 5px;      
+        height: $tab-height-32;
+        min-height: $tab-height-32; 
       }
 
       &[selected] {

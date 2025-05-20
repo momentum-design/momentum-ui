@@ -42,7 +42,7 @@ export namespace Tab {
     @property({ type: Boolean }) onlyIcon = false;
     @property({ type: String }) variant: Tabs.TabVariant = "ghost";
     @property({ type: Boolean, attribute: "visible-tab", reflect: true }) visibleTab = false;
-    @property({ type: String }) size: Tabs.TabSize = "28";
+    @property({ type: String }) size?: Tabs.TabSize = "28";
 
     private _disabled = false;
 

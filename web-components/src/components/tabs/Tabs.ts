@@ -26,6 +26,7 @@ import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import a
 import styles from "./scss/module.scss";
 import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -409,7 +410,7 @@ export namespace Tabs {
         tab.newMomentum = this.newMomentum;
         tab.type = this.type;
         tab.variant = this.variant;
-        tab.size = this.size;
+        tab.size = this.newMomentum ? this.size : undefined;
 
         if (this.scrollArrow) {
           tab.visibleTab = true;
@@ -1272,7 +1273,7 @@ export namespace Tabs {
         <md-tab
           slot="menu-trigger"
           id="${MORE_MENU_TAB_TRIGGER_ID}"
-          size="${this.size}"
+          size="${ifDefined(this.newMomentum ? this.size : undefined)}"
           aria-label="${this.overflowLabel}"
           aria-haspopup="true"
           role="button"
@@ -1406,7 +1407,6 @@ export namespace Tabs {
             (tab) => html`
               <md-tab
                 .closable="${tab.closable}"
-                size="${this.size}"
                 .disabled="${tab.disabled}"
                 .selected="${tab.selected}"
                 name="${tab.name}"
@@ -1416,6 +1416,7 @@ export namespace Tabs {
                 .isCrossVisible=${true}
                 tabIndex="${this.getTabIndex(tab)}"
                 .newMomentum=${this.newMomentum}
+                size="${ifDefined(this.newMomentum ? this.size : undefined)}"
                 variant=${this.variant}
                 type=${this.type}
                 .onlyIcon="${tab.onlyIcon}"
@@ -1443,7 +1444,7 @@ export namespace Tabs {
               "vertical-tab-list": this.direction === "vertical",
               "tab-new-momentum": this.newMomentum
             })}"
-            size="${this.size}"
+            size="${this.newMomentum ? this.size : "undefined"}"
             role="tablist"
           >
             ${this.renderTabSlot}

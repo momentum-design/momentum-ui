@@ -255,7 +255,10 @@ export default {
     "scroll-arrow": { control: "boolean" },
     leftArrowAriaLabel: { control: "text" },
     rightArrowAriaLabel: { control: "text" },
-
+    size: {
+      control: { type: "select" },
+      options: ["28", "32"]
+    },
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },
     panelSlotElement: { table: { disable: true } },

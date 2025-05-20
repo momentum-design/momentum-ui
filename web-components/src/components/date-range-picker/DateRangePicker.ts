@@ -13,10 +13,12 @@ import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 
 const DATE_RANGE_SEPARATOR = " - ";
+const DEFAULT_ARIA_LABEL = "Choose Date Range"
+const DEFAULT_ARIA_LABEL_RANGE_SELECTED = "Choose Date Range, currently selected range is "
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
-  export class ELEMENT extends DatePicker.ELEMENT {
+  export class ELEMENT extends DatePicker.ELEMENT {   
     @property({ type: String, attribute: "start-date", reflect: true })
     startDate: string | undefined | null = undefined;
 
@@ -63,7 +65,7 @@ export namespace DateRangePicker {
         return this.placeholder;
       }
       if (this.useISOFormat) {
-        return `YYYY/MM/DD${DATE_RANGE_SEPARATOR}YYYY/MM/DD`;
+        return `YYYY-MM-DD${DATE_RANGE_SEPARATOR}YYYY-MM-DD`;
       }
       const placeholder = getLocaleDateFormat(this.locale).toUpperCase();
       return `${placeholder}${DATE_RANGE_SEPARATOR}${placeholder}`;
@@ -94,6 +96,18 @@ export namespace DateRangePicker {
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
+    }
+
+    // overload
+    protected getDefaultAriaLabel = (): string => {
+      if (this.startDate && this.endDate) {
+        const startDateISO = DateTime.fromISO(this.startDate);
+        const endDateISO = DateTime.fromISO(this.endDate);
+        if (startDateISO.isValid && endDateISO.isValid) {
+          return `${DEFAULT_ARIA_LABEL_RANGE_SELECTED}${startDateISO.toLocaleString(DateTime.DATE_FULL)} to ${endDateISO.toLocaleString(DateTime.DATE_FULL)}`; // TODO is the "to" alright here? ort should we havbe a template for the default range
+        }
+      }
+      return DEFAULT_ARIA_LABEL;
     }
 
     handleDateSelection(e: any): void {

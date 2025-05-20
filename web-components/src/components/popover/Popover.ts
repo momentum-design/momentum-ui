@@ -536,19 +536,15 @@ export class Popover extends FocusTrapMixin(LitElement) {
   private readonly onOutsidePopoverClick = (event: MouseEvent) => {
     const path = event.composedPath() as HTMLElement[];
 
-    // If the click is inside this specific popover or its trigger, do nothing.
-    if (path.includes(this) || (this.triggerElement && path.includes(this.triggerElement))) {
+    // First check if the click is on the trigger element
+    if (this.triggerElement && path.includes(this.triggerElement)) {
       return;
     }
 
-    const target = event.target as Node;
+    // Simple check if the popover itself is in the event path
+    const insidePopoverClick = path.includes(this);
 
-    const isClickInsidePopover =
-      this.contains(target) ||
-      path.some((el) => el === this) ||
-      path.some((el) => el instanceof Element && this.contains(el));
-
-    if (isClickInsidePopover) {
+    if (insidePopoverClick) {
       return;
     }
 
@@ -558,11 +554,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
       return;
     }
 
-    // If we reach here, the click was:
-    // - Not inside this popover or its trigger.
-    // - Not inside any other open popover.
-    // This constitutes an "outside click" for this specific popover instance.
-    // Clicks on this popover's own backdrop (if any) will also fall here.
+    // If we reach here, the click was truly outside the popover
     this.hideThisPopover();
   };
 

@@ -24,6 +24,7 @@ const tabs = (args: Args) => {
       variant="${args.variant}"
       type="${args.type}"
       ?newmomentum=${args.newMomentum}
+      size=${args.size}
       animation=${args.animation}
       ghost-class=${args.ghostClass}
       chosen-class=${args.chosenClass}
@@ -84,6 +85,7 @@ const moreTabs = (args: Args) => {
         variant="${args.variant}"
         type="${args.type}"
         ?newmomentum=${args.newMomentum}
+        size=${args.size}
         animation=${args.animation}
         ghost-class=${args.ghostClass}
         chosen-class=${args.chosenClass}
@@ -194,37 +196,50 @@ export const HorizontalTab: StoryObj = {
 };
 
 export const HorizontalTabNewMomentum: StoryObj = {
-  render: () => {
+  args: {
+    size: 28
+  },
+  render: (args: Args) => {
     return html`
       <h3>Default Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "horizontal", type: "line", newMomentum: true })}
+      ${moreTabs({ alignment: "horizontal", type: "line", newMomentum: true, size: args.size })}
       <h3>Pill Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "horizontal", type: "pill", newMomentum: true })}
+      ${moreTabs({ alignment: "horizontal", type: "pill", newMomentum: true, size: args.size })}
       <h3>Rounded Primary Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary", newMomentum: true })}
+      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary", newMomentum: true, size: args.size })}
       <h3>Rounded Primary Tab with Scroll Arrow (NewMomentum)</h3>
       ${moreTabs({
         alignment: "horizontal",
         type: "rounded",
         variant: "primary",
         "scroll-arrow": true,
-        newMomentum: true
+        newMomentum: true,
+        size: args.size
       })}
     `;
   }
 };
 
 export const VerticalTab: StoryObj = {
-  render: () => {
+  args: {
+    size: 28
+  },
+  render: (args: Args) => {
     return html`
       <h3>Default Line Tab</h3>
-      ${moreTabs({ alignment: "vertical", type: "line" })}
+      ${moreTabs({ alignment: "vertical", type: "line", size: args.size })}
       <h3>Line Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "vertical", type: "line", newMomentum: true })}
+      ${moreTabs({ alignment: "vertical", type: "line", newMomentum: true, size: args.size })}
       <h3>Pill Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "vertical", type: "pill", newMomentum: true })}
+      ${moreTabs({ alignment: "vertical", type: "pill", newMomentum: true, size: args.size })}
       <h3>Rounded Primary Tab (NewMomentum)</h3>
-      ${moreTabs({ alignment: "vertical", type: "rounded", variant: "primary", newMomentum: true })}
+      ${moreTabs({ 
+        alignment: "vertical", 
+        type: "rounded", 
+        variant: "primary", 
+        newMomentum: true,
+        size: args.size
+      })}
     `;
   }
 };
@@ -257,7 +272,9 @@ export default {
     rightArrowAriaLabel: { control: "text" },
     size: {
       control: { type: "select" },
-      options: [28, 32]
+      options: [28, 32],
+      defaultValue: 28,
+      description: "Tab size in pixels (only works with newMomentum)"
     },
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },

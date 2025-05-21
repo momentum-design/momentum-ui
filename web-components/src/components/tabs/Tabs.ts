@@ -26,6 +26,7 @@ import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import a
 import styles from "./scss/module.scss";
 import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -49,6 +50,7 @@ export namespace Tabs {
   type TabId = Element["id"];
   export type TabsType = "line" | "pill" | "rounded";
   export type TabVariant = "ghost" | "primary";
+  export type TabSize = 28 | 32;
 
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
@@ -88,6 +90,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
     @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Backward Button";
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
+    @property({ type: Number }) size: TabSize = 28;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -407,6 +410,7 @@ export namespace Tabs {
         tab.newMomentum = this.newMomentum;
         tab.type = this.type;
         tab.variant = this.variant;
+        tab.size = this.newMomentum ? this.size : undefined;
 
         if (this.scrollArrow) {
           tab.visibleTab = true;
@@ -1269,6 +1273,7 @@ export namespace Tabs {
         <md-tab
           slot="menu-trigger"
           id="${MORE_MENU_TAB_TRIGGER_ID}"
+          size="${ifDefined(this.newMomentum ? this.size : undefined)}"
           aria-label="${this.overflowLabel}"
           aria-haspopup="true"
           role="button"
@@ -1366,7 +1371,7 @@ export namespace Tabs {
       return html`<md-button
         class="tabs-${direction}-arrow"
         @click=${() => this.scrollTabs(direction)}
-        size="28"
+        size="${this.size}"
         variant="ghost"
         circle
         ariaLabel="${ariaLabel}"
@@ -1411,6 +1416,7 @@ export namespace Tabs {
                 .isCrossVisible=${true}
                 tabIndex="${this.getTabIndex(tab)}"
                 .newMomentum=${this.newMomentum}
+                size="${ifDefined(this.newMomentum ? this.size : undefined)}"
                 variant=${this.variant}
                 type=${this.type}
                 .onlyIcon="${tab.onlyIcon}"
@@ -1438,6 +1444,7 @@ export namespace Tabs {
               "vertical-tab-list": this.direction === "vertical",
               "tab-new-momentum": this.newMomentum
             })}"
+            size="${ifDefined(this.newMomentum ? this.size : undefined)}"
             role="tablist"
           >
             ${this.renderTabSlot}

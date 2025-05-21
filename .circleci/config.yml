@@ -108,6 +108,7 @@ jobs:
 
   test_web_components:
     <<: *image_defaults
+    resource_class: xlarge
     steps:
       - attach_workspace:
           at: ~/

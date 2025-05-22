@@ -405,6 +405,176 @@ const badge = {
         common: "$mds-color-theme-text-warning-normal"
       }
     }
+  },
+  confidence: {
+    default: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-default-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-button-normal"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-default-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-default-active"
+        }
+      }
+    },
+    violet: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-violet-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-violet"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-violet-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-violet-active"
+        }
+      }
+    },
+    slate: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-slate-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-slate"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-slate-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-slate-active"
+        }
+      }
+    },
+    gold: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-gold-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-gold"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-gold-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-gold-active"
+        }
+      }
+    },
+    mint: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-mint-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-mint"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-mint-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-mint-active"
+        }
+      }
+    },
+    pink: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-pink-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-pink"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-pink-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-pink-active"
+        }
+      }
+    },
+    cobalt: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-cobalt-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-theme-normal"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-cobalt-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-cobalt-active"
+        }
+      }
+    },
+    lime: {
+      "bg-color": {
+        common: "$mds-color-theme-background-label-lime-normal"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-label-lime"
+      },
+      hover: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-lime-hover"
+        }
+      },
+      active: {
+        "bg-color": {
+          common: "$mds-color-theme-background-label-lime-active"
+        }
+      }
+    }
   }
 };
 

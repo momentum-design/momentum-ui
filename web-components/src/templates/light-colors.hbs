@@ -27,6 +27,14 @@
 {{#with common}}
 --{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-common};
 {{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../../../../component}}-{{@../../../key}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../../prefix}}-{{../../../../../component}}-{{@../../../key}}-{{@../../key}}-{{@../key}}-{{@key}}-light};
+{{/with}}
+{{#with common}}
+--{{../../../../../component}}-{{@../../../key}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../../prefix}}-{{../../../../../component}}-{{@../../../key}}-{{@../../key}}-{{@../key}}-{{@key}}-common};
+{{/with}}
+{{/each}}
 {{/each}}
 {{/each}}
   {{/each}}

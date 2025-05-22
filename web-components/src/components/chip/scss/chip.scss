@@ -332,6 +332,7 @@
     @include chip-sentiment-style(
       var(--badge-positive-bg-color),
       var(--badge-positive-text-color),
+      var(--badge-positive-icon-color),
       var(--badge-positive-border-color),
       var(--badge-positive-hover-bg-color),
       var(--badge-positive-active-bg-color)
@@ -342,6 +343,7 @@
     @include chip-sentiment-style(
       var(--badge-negative-bg-color),
       var(--badge-negative-text-color),
+      var(--badge-negative-icon-color),
       var(--badge-negative-border-color),
       var(--badge-negative-hover-bg-color),
       var(--badge-negative-active-bg-color)
@@ -352,6 +354,7 @@
     @include chip-sentiment-style(
       var(--badge-neutral-bg-color),
       var(--badge-neutral-text-color),
+      var(--badge-neutral-icon-color),
       var(--badge-neutral-border-color),
       var(--badge-neutral-hover-bg-color),
       var(--badge-neutral-active-bg-color)

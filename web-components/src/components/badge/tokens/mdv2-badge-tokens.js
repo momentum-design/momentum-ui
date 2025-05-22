@@ -141,23 +141,19 @@ const badge = {
   },
   violet: {
     "bg-color": {
-      light: colors.violet[20].name,
-      dark: colors.violet[70].name
+      common: "$mds-color-theme-background-label-violet-hover"
     },
     "text-color": {
-      light: colors.violet[70].name,
-      dark: colors.violet[20].name
+      common: "$mds-color-theme-text-team-violet-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.violet[30].name,
-        dark: colors.violet[60].name
+        common: "$mds-color-theme-background-label-violet-hover"
       }
     },
     active: {
       "bg-color": {
-        light: colors.violet[40].name,
-        dark: colors.violet[50].name
+        common: "$mds-color-theme-background-label-violet-active"
       }
     }
   },
@@ -331,8 +327,11 @@ const badge = {
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
     },
-    "border-color": {
+    "icon-color": {
       common: "$mds-color-theme-text-success-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-join-normal"
     },
     hover: {
       "bg-color": {
@@ -352,8 +351,11 @@ const badge = {
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
     },
-    "border-color": {
+    "icon-color": {
       common: "$mds-color-theme-text-error-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-cancel-normal"
     },
     hover: {
       "bg-color": {
@@ -372,6 +374,9 @@ const badge = {
     },
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"
+    },
+    "icon-color": {
+      common: "$mds-color-theme-text-secondary-normal"
     },
     "border-color": {
       common: "$mds-color-theme-outline-button-normal"

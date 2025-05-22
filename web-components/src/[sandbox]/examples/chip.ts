@@ -134,4 +134,33 @@ export const chipTemplate = html`
   <md-chip value="On hold - 00:00" color="status-orange" small>
     <md-icon name="call-hold-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
   </md-chip>
+  <h3 class="sandbox-header">confidence chip</h3>
+  <md-chip value="Default" color="confidence-default" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Violet" color="confidence-violet" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Slate" color="confidence-slate" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Gold" color="confidence-gold" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Mint" color="confidence-mint" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Pink" color="confidence-pink" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Cobalt" color="confidence-cobalt" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <md-chip value="Lime" color="confidence-lime" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #</span>
+  </md-chip>
+  <h3 class="sandbox-header">confidence chip with long text</h3>
+  <md-chip value="Confidence chip with long text and long confidence" color="confidence-default" small>
+    <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #####</span>
+  </md-chip>
 `;

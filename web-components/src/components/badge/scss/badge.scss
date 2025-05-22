@@ -19,6 +19,11 @@
       min-width: auto;
     }
 
+    &--size-36 {
+      height: 2.25rem;
+      padding: rem-calc(8 12 8 12);      
+    }
+
     &--compact,
     &--split {
       @include badge-size($padding: rem-calc(4 16 4 4), $text-size: var(--body-secondary, rem-calc(12)));

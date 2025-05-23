@@ -135,6 +135,63 @@ export const CircleBadges: StoryObj = {
   }
 };
 
+export const ChannelCapacity: StoryObj = {
+  render: () => {
+    return html`
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <md-badge color="green" size="36">
+          <md-icon iconSet="momentumDesign" name="handset-filled" size="16"></md-icon>
+          <span class="badge-text">Voice</span>
+          <span class="counter">5</span>
+        </md-badge>
+
+        <md-badge color="blue" size="36">
+          <md-icon iconSet="momentumDesign" name="chat-filled" size="16"></md-icon>
+          <span class="badge-text">Chat</span>
+          <span class="counter">3</span>
+        </md-badge>
+
+        <md-badge color="violet" size="36">
+          <md-icon iconSet="momentumDesign" name="email-filled" size="16"></md-icon>
+          <span class="badge-text">Email</span>
+          <span class="counter">4</span>
+        </md-badge>
+
+        <md-badge color="orange" size="36">
+          <md-icon iconSet="momentumDesign" name="sms-message-filled" size="16"></md-icon>
+          <span class="badge-text">Social</span>
+          <span class="counter">2</span>
+        </md-badge>
+
+        <md-badge color="orange" disabled size="36">
+          <md-icon iconSet="momentumDesign" name="sms-message-filled" size="16"></md-icon>
+          <span class="badge-text">Disabled</span>
+          <span class="counter">-</span>
+        </md-badge>
+      </div>
+
+      <style>
+        .badge-text {
+          width: 112px;
+          justify-content: flex-start;
+        }
+
+        .counter {
+          font-weight: 700;
+        }
+      </style>
+    `;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Channel capacity badges display the current usage and capacity of different communication channels. The counter shows current/maximum capacity."
+      }
+    }
+  }
+};
+
 const meta: Meta = {
   title: "Components/Badge",
   component: "md-badge",

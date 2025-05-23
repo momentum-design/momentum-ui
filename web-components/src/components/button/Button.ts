@@ -128,6 +128,32 @@ export namespace Button {
   };
   export type Size = (typeof buttonSize)[number];
 
+  // Add this near the top of your file, after the imports
+  export interface ButtonClickEventDetail {
+    srcEvent: MouseEvent;
+  }
+
+  export interface ButtonKeydownEventDetail {
+    srcEvent: KeyboardEvent;
+  }
+
+  /**
+   * Custom events dispatched by the Button component
+   */
+  export interface ButtonEvents {
+    /**
+     * Dispatched when the button is clicked
+     * @detail An object containing the original MouseEvent
+     */
+    "button-click": CustomEvent<ButtonClickEventDetail>;
+
+    /**
+     * Dispatched when a key is pressed while the button has focus
+     * @detail An object containing the original KeyboardEvent
+     */
+    "button-keydown": CustomEvent<ButtonKeydownEventDetail>;
+  }
+
   @customElementWithCheck("md-button")
   export class ELEMENT extends LitElement {
     _active = false;
@@ -397,5 +423,10 @@ export namespace Button {
 declare global {
   interface HTMLElementTagNameMap {
     "md-button": Button.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "button-click": CustomEvent<Button.ButtonClickEventDetail>;
+    "button-keydown": CustomEvent<Button.ButtonKeydownEventDetail>;
   }
 }

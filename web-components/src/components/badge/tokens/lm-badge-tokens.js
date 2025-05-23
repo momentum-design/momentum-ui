@@ -293,12 +293,13 @@ const badge = {
   },
   disabled: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[90].name
+      common: "$mds-color-theme-background-primary-ghost"
     },
     "text-color": {
-      light: colors.gray[40].name,
-      dark: colors.gray[70].name
+      common: "$mds-color-theme-text-primary-disabled"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-primary-disabled"
     }
   },
   positive: {

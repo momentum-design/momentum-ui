@@ -184,10 +184,11 @@
     }
 
     &--disabled {
-      @include badge-style(var(--md-quaternary-two-bg-color), false, var(--md-disabled-text-color));
+      @include badge-style(var(--badge-disabled-bg-color), false, var(--badge-disabled-text-color));
+      border: 1px solid var(--badge-disabled-border-color);
 
       ::slotted(md-icon) {
-        color: var(--md-disabled-text-color);
+        color: var(--badge-disabled-text-color);
       }
     }
   }

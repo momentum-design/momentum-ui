@@ -28,7 +28,6 @@
 }
 
 .md-tab__list {
-  border-bottom: $tab-list-border;
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;
@@ -41,7 +40,7 @@
     height: 100%;
     margin-left: auto;
     width: auto;
-    max-width: 128.5px;    
+    max-width: 128.5px;
 
     .md-menu-overlay__overflow-label {
       display: inline-block;
@@ -61,7 +60,6 @@
   }
 
   .md-menu-overlay__more_tab {
-    height: 100%;
     min-height: $tab-overflow-button-height;
 
     &.md-menu-overlay__more_tab--measuring {
@@ -83,10 +81,9 @@
   .md-menu-overlay__more_list {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 8px;
+    padding: 8px;
     height: auto;
-    max-width: 100%;    
+    max-width: 100%;
     width: 100%;
     overflow-x: hidden;
 
@@ -100,6 +97,22 @@
       }
       &[selected]::part(tab) {
         background-color: var(--md-menu-active-background-color);
+        color: var(--tabs-default-active);
+      }
+    }
+  }
+
+  &.tab-new-momentum {
+    .md-menu-overlay__more_tab {
+   
+      &[size="28"] {
+        height: $tab-height-28;
+        min-height: $tab-height-28;
+      }
+  
+      &[size="32"] {
+        height: $tab-height-32;
+        min-height: $tab-height-32; 
       }
     }
   }
@@ -110,8 +123,17 @@
 }
 
 .tab-new-momentum {
-  height: $new-tab-height;
-  min-height: $new-tab-height;
+  padding: 0;
+
+  &[size="28"] {
+    height: $tab-height-28;
+    min-height: $tab-height-28;
+  }
+
+  &[size="32"] {
+    height: $tab-height-32; 
+    min-height: $tab-height-32;
+  }
 
   md-icon,
   img {
@@ -218,6 +240,49 @@ md-menu-overlay {
   display: none !important;
 }
 
+:host([direction="horizontal"][scroll-arrow]) {
+  .md-tabs-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc($tab-height-28 + $new-tab-padding);
+
+    .tabs-left-arrow {
+      margin-right: rem-calc(12);
+    }
+
+    .tabs-right-arrow {
+      margin-left: rem-calc(12);
+    }
+
+    .md-tab__list {
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      position: relative;
+      display: inline-flex;
+      gap: rem-calc(8);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &[size="28"] {
+        height: calc($tab-height-28 + $new-tab-padding + 2px);
+        padding: rem-calc(5);
+      }
+
+      &[size="32"] {
+        height: calc($tab-height-32 + $new-tab-padding + 2px);
+        padding: rem-calc(5);   
+      }
+    }
+    
+    .md-tab__list::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
 // Vertical Direction
 
 //Host context is not supported in Safari or Firefox so set using host
@@ -228,20 +293,35 @@ md-menu-overlay {
     border-right: $tab-list-border;
     display: inline-flex;
     flex-direction: column;
-    height: 100%;
     justify-content: flex-start;
+    height: 100%; 
+    gap: 0.25rem;
     width: auto;
 
     ::slotted([slot="tab"]) {
       border-left: $tab-border;
       display: block;
-      height: auto;
       text-align: left;
 
       &[selected] {
         color: var(--tabs-default-active);
       }
     }
+
+    &.tab-new-momentum {
+      padding: 0;
+
+      &[size="28"] ::slotted([slot="tab"]) {
+        height: $tab-height-28;
+        min-height: $tab-height-28;
+      }
+
+      &[size="32"] ::slotted([slot="tab"]) {
+        height: $tab-height-32;
+        min-height: $tab-height-32; 
+      }
+    }
+    
   }
 
   .md-tab__content ::slotted([slot="panel"]) {

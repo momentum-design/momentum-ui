@@ -4,13 +4,7 @@ import "./Spinner";
 import { type Spinner } from "./Spinner";
 
 describe("Spinner component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 

@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
+import "@/components/presence/Presence";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
@@ -18,13 +18,13 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { until } from "lit/directives/until.js";
-import { AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
-import { getPresenceIconColor, PresenceType } from "./Presence.utils";
+import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
+import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type PresenceState = (typeof PresenceType)[number];
-  export type Type = (typeof AvatarType)[number] | PresenceState;
+  export type ChannelType = (typeof AvatarChannelType)[number];
+  export type Type = (typeof AvatarType)[number] | PresenceState | ChannelType;
   export type Size = (typeof AvatarSize)[number];
   export type State = (typeof AvatarState)[number];
   export type Style = (typeof AvatarStyle)[number];
@@ -173,19 +173,22 @@ export namespace Avatar {
       "channel-email-inbound": "email-filled",
       "channel-email-outbound": "email-outgoing-filled",
       "channel-call": "handset-filled",
+      "channel-call-inbound": "incoming-call-legacy-filled",
       "channel-callback": "outgoing-call-legacy-filled",
       "channel-headset": "headset-filled",
       "channel-campaign": "campaign-management-bold",
       "channel-emoji": "emoji-happy-filled",
       "channel-webex": "webex-app-icon-color-container",
       "channel-fb-messenger": "social-fbmessenger-color",
+      "channel-facebook": "social-facebook-color",
       "channel-apple-chat": "apple-business-chat-color",
       "channel-line": "social-line-color",
       "channel-twitter-x": "social-x",
       "channel-viber": "social-viber-color",
       "channel-whats-app": "social-whatsapp-color",
       "channel-we-chat": "social-wechat-color",
-      "channel-spam": "participant-unknown-bold"
+      "channel-spam": "participant-unknown-bold",
+      "channel-monitoring": "monitoring-bold"
     };
 
     private getIconName(type: string): string {
@@ -196,8 +199,54 @@ export namespace Avatar {
       return this.iconSize;
     }
 
+    private get presenceSize() {
+      if (this.size <= 24) {
+        return 10.5;
+      } else if (this.size <= 32) {
+        return 14;
+      } else if (this.size <= 48) {
+        return 13.94;
+      } else if (this.size <= 64) {
+        return 18.58;
+      } else if (this.size <= 72) {
+        return 20.9;
+      } else if (this.size <= 88) {
+        return 25.55;
+      } else {
+        return 36;
+      }
+    }
+
     private get iconSize() {
-      return (this.size / 2).toString();
+      if (this.size === 24) {
+        return "16";
+      }
+      if (this.size === 28) {
+        return "18";
+      }
+      if (this.size === 32) {
+        return "20";
+      }
+      if (this.size === 36) {
+        return "22";
+      }
+      if (this.size === 40) {
+        return "24";
+      }
+      if (this.size === 48) {
+        return "28";
+      }
+      if (this.size === 56) {
+        return "32";
+      }
+      if (this.size === 64) {
+        return "36";
+      }
+      if (this.size === 72) {
+        return "40";
+      }
+
+      return Math.round(this.size / 1.7).toString();
     }
 
     get renderIsTyping() {
@@ -300,6 +349,7 @@ export namespace Avatar {
       const brandIcons = new Set([
         "webex-app-icon-color-container",
         "social-fbmessenger-color",
+        "social-facebook-color",
         "apple-business-chat-color",
         "social-line-color",
         "social-viber-color",
@@ -329,7 +379,10 @@ export namespace Avatar {
               class="avatar-presence"
               name="${this.presenceIcon}"
               color="${this.presenceColor}"
-              size="${this.size}"
+              size="${this.presenceSize}"
+              .failurePresence=${this.failurePresence}
+              .newMomentum=${this.newMomentum}
+              .avatarLinked=${true}
             >
             </md-presence>
           `

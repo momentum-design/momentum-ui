@@ -243,6 +243,9 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="tab" size="40" circle @click=${(e: Event) => this.toggleIsActive(e.target)}>
           <md-icon slot="icon" name="chat_16"></md-icon>
         </md-button>
+        <md-button variant="ghost" size="40" circle @click=${(e: Event) => this.toggleIsActive(e.target)}>
+          <md-icon slot="icon" name="chat_16"></md-icon>
+        </md-button>
       </div>
 
       <h3 class="sandbox-header" style="margin: .5rem 1rem">Outline Color Schema</h3>

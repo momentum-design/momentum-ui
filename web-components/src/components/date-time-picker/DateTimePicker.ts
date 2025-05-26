@@ -1,7 +1,7 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { now, reformatDateString } from "@/utils/dateUtils";
+import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
@@ -26,12 +26,13 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-
+ 
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
     @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
-    @property({ type: String }) locale = "en-US";
+    @property({ type: String }) locale: string | undefined = undefined;
+    @property({ type: Boolean }) useISOFormat = true;
     @property({ type: Boolean }) disabled = false;
 
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
@@ -116,7 +117,7 @@ export namespace DateTimePicker {
     };
 
     handleDateTimeInputChange = (event: CustomEvent) => {
-      this.value = reformatDateString(event?.detail?.value);
+      this.value = event?.detail?.value;
     };
 
     parseValueForVisuals = (value: string) => {
@@ -150,9 +151,9 @@ export namespace DateTimePicker {
     combineDateAndTimeValues = (dateString: string | undefined | null, timeString: string | null) => {
       if (dateString) {
         if (timeString) {
-          this.value = reformatDateString(`${dateString}T${timeString}`);
+          this.value = `${dateString}T${timeString}`;
         } else {
-          this.value = reformatDateString(dateString);
+          this.value = dateString;
         }
       }
     };
@@ -191,7 +192,7 @@ export namespace DateTimePicker {
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
-              locale=${this.locale}
+              locale=${ifDefined(this.locale)}
               value=${ifDefined(this.timeValue ?? undefined)}>
             </md-timepicker>
           </div>

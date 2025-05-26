@@ -11,6 +11,8 @@ const meta: Meta = {
   argTypes: {
     weekStart: { control: { type: "select" }, options: DP.weekStartDays },
     locale: { control: "text" },
+    useISOFormat: { control: "boolean", defaultValue: true },
+    validateDate: { control: "boolean", defaultValue: true },
     controlButtons: { control: "boolean" },
     disabled: { control: "boolean" },
     minDate: { control: "text", defaultValue: now().minus({ day: 5 }).toISODate() },
@@ -34,6 +36,8 @@ const render = (args: Args) => {
       value=${args.value}
       weekStart=${args.weekStart}
       locale=${args.locale}
+      .useISOFormat=${args.useISOFormat}
+      .validateDate=${args.validateDate}
       minDate=${args.minDate}
       maxDate=${args.maxDate}
       start-date=${args.startDate}

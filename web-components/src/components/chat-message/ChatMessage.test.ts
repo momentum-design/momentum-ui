@@ -92,4 +92,31 @@ describe("Chat Message Component", () => {
     await elementUpdated(element);
     expect(avatar?.color).toEqual("red");
   });
+
+  test("should fire timestamp-clicked event when clickable timestamp is clicked", async () => {
+    element.clickableTimestamp = true;
+    await elementUpdated(element);
+    const dispatchEventSpy = jest.spyOn(element, 'dispatchEvent');
+    const timestampLink = element.shadowRoot!.querySelector('md-link.md-chat-message_time');
+    expect(timestampLink).not.toBeNull();
+    
+    (timestampLink as HTMLElement)!.click();
+
+    expect(dispatchEventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'timestamp-clicked'
+      })
+    );
+  });
+  
+  test("should render timestamp as non-clickable div when clickableTimestamp is false", async () => {
+    element.clickableTimestamp = false;
+    await elementUpdated(element);
+
+    const timestampDiv = element.shadowRoot!.querySelector('div.md-chat-message_time');
+    const timestampLink = element.shadowRoot!.querySelector('md-link.md-chat-message_time');
+    
+    expect(timestampDiv).not.toBeNull();
+    expect(timestampLink).toBeNull();
+  });
 });

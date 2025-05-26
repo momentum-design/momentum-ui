@@ -19,6 +19,11 @@
       min-width: auto;
     }
 
+    &--size-36 {
+      height: 2.25rem;
+      padding: rem-calc(8 12 8 12);      
+    }
+
     &--compact,
     &--split {
       @include badge-size($padding: rem-calc(4 16 4 4), $text-size: var(--body-secondary, rem-calc(12)));
@@ -34,6 +39,35 @@
       ::slotted(md-icon) {
         margin: 0 !important;
       }
+
+      &-24 {
+        height: rem-calc(24);
+        width: rem-calc(24);
+      }
+      &-32 {
+        height: rem-calc(32);
+        width: rem-calc(32);
+      }
+      &-48 {
+        height: rem-calc(48);
+        width: rem-calc(48);
+      }
+      &-64 {
+        height: rem-calc(64);
+        width: rem-calc(64);
+      }
+      &-72 {
+        height: rem-calc(72);
+        width: rem-calc(72);
+      }
+      &-88 {
+        height: rem-calc(88);
+        width: rem-calc(88);
+      }
+      &-124 {
+        height: rem-calc(124);
+        width: rem-calc(124);
+      }
     }
 
     &--outline {
@@ -43,84 +77,44 @@
     }
 
     &--gray {
-      @include badge-style(
-        var(--badge-gray-bg-color),
-        false,
-        var(--badge-gray-text-color)
-      );
+      @include badge-style(var(--badge-gray-bg-color), false, var(--badge-gray-text-color));
     }
 
     &--gold {
-      @include badge-style(
-        var(--badge-gold-bg-color),
-        false,
-        var(--badge-gold-text-color)
-      );
+      @include badge-style(var(--badge-gold-bg-color), false, var(--badge-gold-text-color));
     }
 
     &--lime {
-      @include badge-style(
-        var(--badge-lime-bg-color),
-        false,
-        var(--badge-lime-text-color)
-      );
+      @include badge-style(var(--badge-lime-bg-color), false, var(--badge-lime-text-color));
     }
 
     &--blue,
     &--cobalt {
-      @include badge-style(
-        var(--badge-blue-bg-color),
-        false,
-        var(--badge-blue-text-color)
-      );
+      @include badge-style(var(--badge-blue-bg-color), false, var(--badge-blue-text-color));
     }
 
     &--mint {
-      @include badge-style(
-        var(--badge-mint-bg-color),
-        false,
-        var(--badge-mint-text-color)
-      );
+      @include badge-style(var(--badge-mint-bg-color), false, var(--badge-mint-text-color));
     }
 
     &--darkmint {
-      @include badge-style(
-        var(--badge-darkmint-bg-color),
-        false,
-        var(--badge-darkmint-text-color)
-      );
+      @include badge-style(var(--badge-darkmint-bg-color), false, var(--badge-darkmint-text-color));
     }
 
     &--green {
-      @include badge-style(
-        var(--badge-green-bg-color),
-        false,
-        var(--badge-green-text-color)
-      );
+      @include badge-style(var(--badge-green-bg-color), false, var(--badge-green-text-color));
     }
 
     &--yellow {
-      @include badge-style(
-        var(--badge-yellow-bg-color),
-        false,
-        var(--badge-yellow-text-color)
-      );
+      @include badge-style(var(--badge-yellow-bg-color), false, var(--badge-yellow-text-color));
     }
 
     &--red {
-      @include badge-style(
-        var(--badge-red-bg-color),
-        false,
-        var(--badge-red-text-color)
-      );
+      @include badge-style(var(--badge-red-bg-color), false, var(--badge-red-text-color));
     }
 
     &--darkred {
-      @include badge-style(
-        var(--badge-darkred-bg-color),
-        false,
-        var(--badge-darkred-text-color)
-      );
+      @include badge-style(var(--badge-darkred-bg-color), false, var(--badge-darkred-text-color));
     }
 
     &--unreadcount {
@@ -146,97 +140,55 @@
     }
 
     &--orange {
-      @include badge-style(
-        var(--badge-orange-bg-color),
-        false,
-        var(--badge-orange-text-color)
-      );
+      @include badge-style(var(--badge-orange-bg-color), false, var(--badge-orange-text-color));
     }
 
     &--purple {
-      @include badge-style(
-        var(--badge-purple-bg-color),
-        false,
-        var(--badge-purple-text-color)
-      );
+      @include badge-style(var(--badge-purple-bg-color), false, var(--badge-purple-text-color));
     }
 
     &--violet {
-      @include badge-style(
-        var(--badge-violet-bg-color),
-        false,
-        var(--badge-violet-text-color)
-      );
+      @include badge-style(var(--badge-violet-bg-color), false, var(--badge-violet-text-color));
     }
 
     &--cyan {
-      @include badge-style(
-        var(--badge-cyan-bg-color),
-        false,
-        var(--badge-cyan-text-color)
-      );
+      @include badge-style(var(--badge-cyan-bg-color), false, var(--badge-cyan-text-color));
     }
 
     &--pink {
-      @include badge-style(
-        var(--badge-pink-bg-color),
-        false,
-        var(--badge-pink-text-color)
-      );
+      @include badge-style(var(--badge-pink-bg-color), false, var(--badge-pink-text-color));
     }
 
     &--hold {
-      @include badge-style(
-        var(--badge-hold-bg-color),
-        false,
-        var(--badge-hold-text-color)
-      );
+      @include badge-style(var(--badge-hold-bg-color), false, var(--badge-hold-text-color));
     }
 
     &--status-negative {
-      @include badge-status-style(
-        var(--badge-status-negative-bg-color),
-        var(--badge-status-negative-text-color)
-      );
+      @include badge-status-style(var(--badge-status-negative-bg-color), var(--badge-status-negative-text-color));
     }
-    
+
     &--status-positive {
-      @include badge-status-style(
-        var(--badge-status-positive-bg-color),
-        var(--badge-status-positive-text-color)
-      );
+      @include badge-status-style(var(--badge-status-positive-bg-color), var(--badge-status-positive-text-color));
     }
-    
+
     &--status-warning {
-      @include badge-status-style(
-        var(--badge-status-warning-bg-color),
-        var(--badge-status-warning-text-color)
-      );
+      @include badge-status-style(var(--badge-status-warning-bg-color), var(--badge-status-warning-text-color));
     }
-    
+
     &--status-accent {
-      @include badge-status-style(
-        var(--badge-status-accent-bg-color),
-        var(--badge-status-accent-text-color)
-      );
+      @include badge-status-style(var(--badge-status-accent-bg-color), var(--badge-status-accent-text-color));
     }
-    
+
     &--status-orange {
-      @include badge-status-style(
-        var(--badge-status-orange-bg-color),
-        var(--badge-status-orange-text-color)
-      );
+      @include badge-status-style(var(--badge-status-orange-bg-color), var(--badge-status-orange-text-color));
     }
 
     &--disabled {
-      @include badge-style(
-        var(--md-quaternary-two-bg-color),
-        false,
-        var(--md-disabled-text-color)
-      );
+      @include badge-style(var(--badge-disabled-bg-color), false, var(--badge-disabled-text-color));
+      border: 1px solid var(--badge-disabled-border-color);
 
       ::slotted(md-icon) {
-        color: var(--md-disabled-text-color);
+        color: var(--badge-disabled-text-color);
       }
     }
   }
@@ -253,12 +205,12 @@
 }
 
 ::slotted(md-icon) {
-  height: rem-calc(16);  
+  height: rem-calc(16);
   width: rem-calc(16);
 }
 
 ::slotted(md-badge) {
-  height: rem-calc(16);  
+  height: rem-calc(16);
   width: rem-calc(16);
 }
 

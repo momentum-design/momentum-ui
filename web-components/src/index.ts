@@ -31,6 +31,7 @@ export { CoachmarkPopover } from "./components/coachmark-popover/CoachmarkPopove
 export { Coachmark } from "./components/coachmark/Coachmark";
 export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
+export { CountryCodePicker } from "./components/country-code-picker/CountryCodePicker";
 export { DateRangePicker } from "./components/date-range-picker/DateRangePicker";
 export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { DatePicker } from "./components/datepicker/DatePicker";
@@ -43,6 +44,11 @@ export { DraggableItem } from "./components/draggable/DraggableItem";
 export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
+export {
+    FloatingButtonActionGroup,
+    FloatingButtonBar,
+    FloatingButtonBarAction
+} from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { Form } from "./components/form/Form";
@@ -63,7 +69,9 @@ export { MenuItem } from "./components/menu/MenuItem";
 export { Modal } from "./components/modal/Modal";
 export { Pagination } from "./components/pagination/Pagination";
 export { PhoneInput } from "./components/phone-input/PhoneInput";
-export { Popover } from "./components/popover/Popover";
+export { Popover, PopoverController } from "./components/popover/Popover";
+export { Presence } from "./components/presence/Presence";
+export type { PresenceState } from "./components/presence/Presence.utils";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
@@ -82,4 +90,12 @@ export { Tooltip } from "./components/tooltip/Tooltip";
 export { iconUrlManager } from "./managers/IconUrlManager";
 export { ThemeManager, themeManager } from "./managers/ThemeManager";
 
-// eslint-disable-next-line prettier/prettier
+export type {
+    Events,
+    IPopoverController,
+    PopoverColor,
+    PopoverPlacement,
+    PopoverStrategy,
+    PopoverTrigger
+} from "./components/popover/Popover.types";
+

@@ -28,6 +28,7 @@ import {
   codeEditorTemplate,
   colorTableTemplate,
   comboBoxTemplate,
+  countryCodePickerTemplate,
   datePickerTemplate,
   dateRangePickerTemplate,
   dateTimePickerTemplate,
@@ -35,6 +36,7 @@ import {
   dropdownTemplate,
   editableField,
   favoriteTemplate,
+  floatingButtonBarTemplate,
   floatingModalTemplate,
   formTemplate,
   grabberTemplate,
@@ -52,6 +54,7 @@ import {
   paginationTemplate,
   phoneInputTemplate,
   popoverTemplate,
+  presenceTemplate,
   progressBarTemplate,
   radioGroupTemplate,
   sliderTemplate,
@@ -340,7 +343,16 @@ export class Sandbox extends MobxLitElement {
       >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
-        <md-tabs direction=${this.tabsOrientation} class="explorer" persist-selection tabs-id="explorer">
+        <md-tabs
+          direction=${this.tabsOrientation}
+          newMomentum
+          variant=${this.tabsOrientation === "vertical" ? "ghost" : "primary"}
+          type=${this.tabsOrientation === "vertical" ? "rounded" : "line"}
+          scroll-arrow
+          class="explorer"
+          persist-selection
+          tabs-id="explorer"
+        >
           ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
           ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)}
           ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}
@@ -359,6 +371,12 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Coachmark", "md-coachmark", "coachmark", coachTemplate)}
           ${this.getTabTemplate("Code Editor", "md-code-editor", "code-editor", codeEditorTemplate)}
           ${this.getTabTemplate("Combo Box", "md-combobox", "combobox", comboBoxTemplate)}
+          ${this.getTabTemplate(
+            "Country Code Picker",
+            "md-country-code-picker",
+            "country-code-picker",
+            countryCodePickerTemplate
+          )}
           ${this.getTabTemplate("Datepicker", "md-datepicker", "datepicker", datePickerTemplate)}
           ${this.getTabTemplate("Date Range Picker", "md-date-range-picker", "datepicker", dateRangePickerTemplate)}
           ${this.getTabTemplate("Date Time Picker", "md-date-time-picker", "date-time-picker", dateTimePickerTemplate)}
@@ -366,6 +384,12 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Draggable", "md-draggable", "draggable", draggableTemplate)}
           ${this.getTabTemplate("Editable Field", "md-editable-field", "editable-textfield", editableField)}
           ${this.getTabTemplate("Favorite", "md-favorite", "favorite", favoriteTemplate)}
+          ${this.getTabTemplate(
+            "Floating Button Bar",
+            "md-floating-button-bar",
+            "Floating Button Bar",
+            floatingButtonBarTemplate
+          )}
           ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}
           ${this.getTabTemplate("Form", "md-form", "", formTemplate)}
           ${this.getTabTemplate("Grabber", "md-grabber", "grabber", grabberTemplate)}
@@ -384,6 +408,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Pagination", "md-pagination", "pagination", paginationTemplate)}
           ${this.getTabTemplate("Phone Input", "md-phone-input", "phone-input", phoneInputTemplate)}
           ${this.getTabTemplate("Popover", "md-popover", "popover", popoverTemplate)}
+          ${this.getTabTemplate("Presence", "md-presence", "presence", presenceTemplate)}
           ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}

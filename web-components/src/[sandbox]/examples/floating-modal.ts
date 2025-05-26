@@ -88,10 +88,12 @@ export class FloatingTemplateSandbox extends LitElement {
         .minPosition=${this.minLocation}
         .containerRect=${this.containerRect}
         minimizable
+        .resizable=${false}
+        .maximizable=${false}
         @floating-modal-close=${() => this.closeFloatingModal()}
         @floating-modal-minimize-location=${this.saveMinLocation}
         @floating-modal-location=${this.saveLocation}
-        @floating-modal-resize=${this.resize}
+        centered
       >
         <md-table tabledata="${data}" sorting></md-table>
       </md-floating-modal>

@@ -15,6 +15,16 @@ import { property, query } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace Checkbox {
+  export interface CheckboxChangeEventDetail {
+    sourceEvent: Event;
+    checked: boolean;
+  }
+
+  /**
+   * Fired when the checkbox state changes
+   * @event checkbox-change
+   * @type {CustomEvent<CheckboxChangeEventDetail>}
+   */
   @customElementWithCheck("md-checkbox")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) autofocus = false;
@@ -102,11 +112,12 @@ export namespace Checkbox {
 
     handleChange(event: Event) {
       this.dispatchEvent(
-        new CustomEvent<{ sourceEvent: Event }>("checkbox-change", {
+        new CustomEvent<CheckboxChangeEventDetail>("checkbox-change", {
           bubbles: true,
           composed: true,
           detail: {
-            sourceEvent: event
+            sourceEvent: event,
+            checked: this.checked
           }
         })
       );
@@ -169,5 +180,9 @@ export namespace Checkbox {
 declare global {
   interface HTMLElementTagNameMap {
     "md-checkbox": Checkbox.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "checkbox-change": CustomEvent<Checkbox.CheckboxChangeEventDetail>;
   }
 }

@@ -51,7 +51,12 @@ export const iconTemplate = html`
   <md-icon name="social-microsoft-color" iconSet="momentumBrandVisuals" title="microsoft" size="32"></md-icon>
   <md-icon name="social-viber-color" iconSet="momentumBrandVisuals" title="viber" size="32"></md-icon>
   <md-icon name="social-telegram-color" iconSet="momentumBrandVisuals" title="telegram" size="32"></md-icon>
-  <md-icon name="cisco-ai-assistant-color" iconSet="momentumBrandVisuals" title="assistant" size="32"></md-icon>
+  <md-icon
+    name="cisco-ai-assistant-color-gradient"
+    iconSet="momentumBrandVisuals"
+    title="assistant"
+    size="32"
+  ></md-icon>
   <md-icon name="social-rcs-color" iconSet="momentumBrandVisuals" title="rcs" size="32"></md-icon>
   <md-icon name="social-wechat-color" iconSet="momentumBrandVisuals" title="wechat" size="32"></md-icon>
   <md-icon name="social-whatsapp-color" iconSet="momentumBrandVisuals" title="whatsapp" size="32"></md-icon>
@@ -69,5 +74,7 @@ export const iconTemplate = html`
   <md-icon name="twitter_16" iconSet="preferMomentumDesign" title="twitter_16"></md-icon>
   <md-icon name="facebook_16" iconSet="preferMomentumDesign" title="facebook_16"></md-icon>
   <md-icon name="whatsApp_16" iconSet="preferMomentumDesign" title="whatsApp_16"></md-icon>
+  <md-icon name="skip-bold" iconSet="preferMomentumDesign" title="skip" size="16"></md-icon>
+  <md-icon name="remove-bold" iconSet="preferMomentumDesign" title="Remove" size="16"></md-icon>
   <br />
 `;

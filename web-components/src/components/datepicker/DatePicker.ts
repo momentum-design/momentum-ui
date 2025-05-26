@@ -17,9 +17,9 @@ import {
   addWeeks,
   dateStringToDateTime,
   DayFilters,
+  getLocaleDateFormat,
   isDayDisabled,
   now,
-  reformatDateString,
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
@@ -29,11 +29,10 @@ import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import { StrategyType } from "../popover/Popover.types";
 import styles from "./scss/module.scss";
-
 export interface DatePickerControlButton {
   value: string;
   ariaLabel?: string;
@@ -44,6 +43,9 @@ export interface DatePickerControlButtons {
   apply?: DatePickerControlButton;
   cancel?: DatePickerControlButton;
 }
+
+const DEFAULT_ARIA_LABEL = "Choose Date";
+const DEFAULT_ARIA_LABEL_DATE_SELECTED = "Choose Date, selected date is ";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -57,12 +59,14 @@ export namespace DatePicker {
     @property({ type: String, reflect: true }) value: string | null | undefined = undefined;
     @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
-    @property({ type: String }) locale = "en-US";
+    @property({ type: String }) locale: string | undefined = undefined;
+    @property({ type: Boolean }) useISOFormat = true;
+    @property({ type: Boolean }) validateDate = true;
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "";
-    @property({ type: String }) ariaLabel = "Choose Date";
+    @property({ type: String }) ariaLabel: string | null = null;
     @property({ type: Boolean }) required = false;
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
@@ -70,6 +74,9 @@ export namespace DatePicker {
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
+    @property({ type: Boolean, attribute: "show-default-now-date" }) showDefaultNowDate = true;
 
     @state() selectedDate: DateTime = now();
     @state() focusedDate: DateTime = now();
@@ -99,17 +106,13 @@ export namespace DatePicker {
       if (this.maxDate) {
         this.maxDateData = dateStringToDateTime(this.maxDate);
       }
-
-      this.value = reformatDateString(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (this.value === EMPTY_STRING) {
-        this.value = this.includesTime
-          ? reformatDateString(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-          : reformatDateString(this.selectedDate?.toISODate());
+      if (!this.value && this.showDefaultNowDate) {
+        this.value = this.getFormattedDate(this.selectedDate);
       }
     }
 
@@ -119,7 +122,11 @@ export namespace DatePicker {
         if (closestElement("md-date-range-picker", this)) {
           return;
         }
-        this.selectedDate = dateStringToDateTime(this.value);
+        if (this.useISOFormat) {
+          this.selectedDate = dateStringToDateTime(this.value);
+        } else {
+          this.selectedDate = DateTime.fromFormat(this.value, getLocaleDateFormat(this.locale), { locale: this.locale });
+        }
         this.setPreSelection(this.selectedDate);
       }
       if (changedProperties.has("locale")) {
@@ -134,7 +141,11 @@ export namespace DatePicker {
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      this.value = reformatDateString(event?.detail?.value);
+      if (this.useISOFormat) {
+        this.value = event?.detail?.value;
+      } else {
+        this.value = this.selectedDate?.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+      }
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,
@@ -176,7 +187,7 @@ export namespace DatePicker {
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
-    };
+    }
 
     private getISODateTime(date: DateTime): string | null {
       return this.includesTime ? date.startOf("second").toISO({ suppressMilliseconds: true }) : date.toISODate();
@@ -187,7 +198,11 @@ export namespace DatePicker {
       if (!isDayDisabled(date, filters)) {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = reformatDateString(dateString);
+        if (this.useISOFormat) {
+          this.value = dateString;
+        } else {
+          this.value = date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+        }
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {
@@ -258,18 +273,14 @@ export namespace DatePicker {
       }
     };
 
-    chosenDateLabel = () => {
-      return this.selectedDate
-        ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
-        : undefined;
-    };
+    protected getDefaultAriaLabel = (): string => {
+      if (this.selectedDate && this.selectedDate.isValid) {
+        return `${DEFAULT_ARIA_LABEL_DATE_SELECTED}${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
+      }
+      return DEFAULT_ARIA_LABEL;
+    }
 
     private readonly getValidRegexString = (): string => {
-      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
-      if (dateRangePicker) {
-        return ValidationRegex.dateRangeString;
-      }
-
       if (this.includesTime) {
         return ValidationRegex.ISOString;
       }
@@ -277,16 +288,31 @@ export namespace DatePicker {
       return ValidationRegex.ISODateString;
     };
 
-    isValueValid = (): boolean => {
-      if (!this.value && this.value !== EMPTY_STRING) return true;
-      const regex = RegExp(this.getValidRegexString());
+    protected validateDateString(dateString: string | null | undefined): boolean {
+      if (!dateString && dateString !== EMPTY_STRING) return true;
 
-      const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-      const isValid =
-        !!this.value && regex.test(this.value) && !isDayDisabled(dateStringToDateTime(this.value), filters);
+      if (this.useISOFormat) {
+        const regex = RegExp(this.getValidRegexString());
+        const filters: DayFilters = {
+          maxDate: this.maxDateData,
+          minDate: this.minDateData,
+          filterDate: this.filterDate
+        };
+        return !!dateString && regex.test(dateString) && !isDayDisabled(dateStringToDateTime(dateString), filters);
+      }
 
-      return isValid;
-    };
+      const format = getLocaleDateFormat(this.locale);
+      const parsedDate = DateTime.fromFormat(dateString, format, { locale: this.locale });
+
+      return parsedDate.isValid;
+    }
+
+    protected isValueValid(): boolean {
+      if (!this.validateDate) {
+        return true;
+      }
+      return this.validateDateString(this.value);
+    }
 
     private get messageArray(): Input.Message[] {
       if (this.errorMessage) {
@@ -347,9 +373,40 @@ export namespace DatePicker {
       `;
     }
 
+    protected getPlaceHolderString(): string {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
+      if (this.useISOFormat) {
+        return "YYYY-MM-DD";
+      }
+      return getLocaleDateFormat(this.locale ?? DateTime.local().locale).toUpperCase();
+    }
+
+    protected getFormattedDate(date: DateTime): string | null {
+      if (!date) return null;
+      
+      if (this.useISOFormat) {
+        return this.getISODateTime(date);
+      } else {
+        return this.includesTime
+          ? date.toLocaleString(DateTime.DATETIME_SHORT, { locale: this.locale })
+          : date.toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+      }
+    }
+
+    private getAriaLabel(): string {
+      return this.ariaLabel ?? this.getDefaultAriaLabel()
+    }
+
     render() {
       return html`
-        <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
+        <md-menu-overlay
+          is-date-picker
+          custom-width="272px"
+          ?disabled=${this.disabled}
+          positioning-strategy=${ifDefined(this.positioningStrategy)}
+        >
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
@@ -362,11 +419,11 @@ export namespace DatePicker {
                   slot="menu-trigger"
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
-                  placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
+                  placeholder=${this.getPlaceHolderString()}
                   value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${this.getAriaLabel()}
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"

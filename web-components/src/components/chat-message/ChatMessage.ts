@@ -15,6 +15,7 @@ export namespace ChatMessage {
     @property({ type: String }) time = "";
     @property({ type: String }) label = "Avatar";
     @property({ type: String }) status = "";
+    @property({ type: Boolean }) clickableTimestamp = false;
 
     @property({ type: String, reflect: true, attribute: "self-label" })
     selfLabel?: string;
@@ -51,6 +52,13 @@ export namespace ChatMessage {
       return this.avatarType === "self";
     }
 
+    private timeStampClicked() {
+      this.dispatchEvent(new CustomEvent('timestamp-clicked', {
+        bubbles: true,
+        composed: true
+      }));
+    }
+
     static get styles() {
       return [reset, styles];
     }
@@ -72,7 +80,14 @@ export namespace ChatMessage {
               <div class="md-chat-message_title">
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>
               </div>
-              <div class="md-chat-message_time">${this.time}</div>
+              ${this.clickableTimestamp 
+                ? html`<md-link class="md-chat-message_time" 
+                          @click=${(e: Event) => {
+                            e.preventDefault();
+                            this.timeStampClicked();
+                          }}>${this.time}</md-link>`
+                : html`<div class="md-chat-message_time">${this.time}</div>`
+                }
               <div class="md-chat-message_status">${this.status}</div>
               <div class="md-chat-message_custom_content">
                 <slot name="custom-content"></slot>

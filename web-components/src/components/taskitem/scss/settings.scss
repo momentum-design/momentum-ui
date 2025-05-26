@@ -37,9 +37,14 @@ $taskitem-chat-padding: rem-calc(40);
 $taskitem-newchat-font-size: math.ceil($font-size-base * 0.71);
 $taskitem-newchat-right: -20%;
 $taskitem-newchat-margin: rem-calc(20);
-$taskitem-newchat-padding: rem-calc(2 4); 
+$taskitem-newchat-padding: rem-calc(2 4);
 
-
-
-
-
+$taskitem-restyle-padding: rem-calc(8 12);
+$taskitem-restyle-content-margin: rem-calc(12);
+$taskitem-restyle-title-weight: 500;
+$taskitem-restyle-title-selected-weight: 700;
+$taskitem-restyle-font-size: rem-calc(14);
+$taskitem-restyle-title-font: $brand-font-regular;
+$taskitem-restyle-title-font-bold: $brand-font-bold;
+$taskitem-restyle-dot-size: rem-calc(4);
+$taskitem-restyle-queue-time-min-width: rem-calc(70);

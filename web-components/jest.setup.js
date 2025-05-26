@@ -1,8 +1,11 @@
-// Mock ResizeObserver
+/* eslint-disable no-undef */
 class ResizeObserverMock {
-  observe() {/* no-op */}
-  unobserve() {/* no-op */}
-  disconnect() {/* no-op */}
+  observe = jest.fn();
+  unobserve = jest.fn();
+  disconnect = jest.fn();
+  constructor() {
+    jest.fn();
+  }
 }
 
 global.ResizeObserver = ResizeObserverMock;

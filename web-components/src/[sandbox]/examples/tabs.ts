@@ -574,7 +574,8 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     hug: boolean,
     newMomentum: boolean,
     variant: Tabs.TabVariant,
-    type: Tabs.TabsType
+    type: Tabs.TabsType,
+    scrollArrow = false
   ): TemplateResult {
     return html`
       <md-tabs
@@ -584,6 +585,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         type=${type}
         ?newMomentum=${newMomentum}
         variant=${variant}
+        ?scroll-arrow=${scrollArrow}
       >
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <span>All</span>
@@ -598,7 +600,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
           <span>Content for "Messages"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
+          <span><img style="height: 16px; width: 16px;" src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
@@ -614,6 +616,24 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label1" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label2" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label3" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
         </md-tab-panel>
       </md-tabs>
     `;
@@ -637,6 +657,13 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     return html`
       <h3>md-tabs line primary newMomentum primary</h3>
       ${this.getTabsTemplate(false, true, true, true, "primary", "line")}
+    `;
+  }
+
+  get tabsSrollArrowTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs newMomentum rounded primary with scroll arrow</h3>
+      ${this.getTabsTemplate(true, true, true, true, "primary", "rounded", true)}
     `;
   }
 
@@ -668,7 +695,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     return html`
       <div style="max-width: 600px;">
         ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsLinePrimaryTemplate}
-        ${this.tabsJustifiedWithTooltipTemplate}
+        ${this.tabsSrollArrowTemplate} ${this.tabsJustifiedWithTooltipTemplate}
       </div>
     `;
   }

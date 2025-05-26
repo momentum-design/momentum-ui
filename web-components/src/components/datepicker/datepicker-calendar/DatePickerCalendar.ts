@@ -57,14 +57,18 @@ export namespace DatePickerCalendar {
         if (this.datePickerProps?.selected.invalidReason === null) {
           this.viewAnchorDate = this.datePickerProps.selected || now();
         }
-        this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
-          this.monthFormat
-        );
+        this.localeMonth = (
+          this.datePickerProps?.locale
+            ? localizeDate(this.viewAnchorDate, this.datePickerProps?.locale)
+            : this.viewAnchorDate
+        ).toFormat(this.monthFormat);
       }
       if (changedProperties.has("viewAnchorDate")) {
-        this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
-          this.monthFormat
-        );
+        this.localeMonth = (
+          this.datePickerProps?.locale
+            ? localizeDate(this.viewAnchorDate, this.datePickerProps?.locale)
+            : this.viewAnchorDate
+        ).toFormat(this.monthFormat);
       }
     }
 

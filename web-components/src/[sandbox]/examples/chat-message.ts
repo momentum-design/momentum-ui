@@ -59,4 +59,8 @@ export const chatMessageTemplate = html`
     </span>
     <p slot="message">I have issue with my silencer</p>
   </md-chat-message>
+
+  <md-chat-message title="Person" avatar-size="32" avatar-color="orange" time="11:27AM" ?clickableTimestamp=${true}>
+    <p slot="message">Click my timestamp</p>
+  </md-chat-message>
 `;

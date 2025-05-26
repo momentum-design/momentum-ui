@@ -29,7 +29,7 @@ export namespace CardV2 {
     @property({ type: String }) header?: string = undefined;
     @property({ type: String }) info?: string = undefined;
     @property({ type: String }) data?: string = undefined;
-    @property({ type: Boolean }) expandable = false;
+    @property({ type: Boolean, reflect: true }) expandable = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -75,6 +75,10 @@ export namespace CardV2 {
       };
     }
 
+    private get expandCardHandler() {
+      return this.expandable ? this.expandCardToggled : null;
+    }
+
     private renderHeader() {
       return html`
         <div class="md-card-v2-header-title">
@@ -95,11 +99,11 @@ export namespace CardV2 {
     private renderFooter() {
       return html`
         <div class="${classMap(this.footerClassMap)}">
-          <md-button ariaLabel="" circle size="28" @click=${this.expandCardToggled}>
+          <md-button ariaLabel="" circle size="28" >
             <md-icon
               slot="icon"
               iconSet="momentumDesign"
-              name=${this.isActive ? "arrow-circle-down-bold" : "arrow-circle-up-bold"}
+              name=${this.isActive ? "arrow-circle-up-bold" : "arrow-circle-down-bold"}
               size="18"
             >
             </md-icon>
@@ -110,7 +114,7 @@ export namespace CardV2 {
 
     render() {
       return html`
-        <div class="${classMap(this.cardClassMap)}">
+        <div class="${classMap(this.cardClassMap)}" @click=${this.expandCardHandler} >
           <div class="md-card-v2-header">${this.renderHeader()}</div>
           <div class="${classMap(this.contentClassMap)}">
             <h2>${this.data}</h2>

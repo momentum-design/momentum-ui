@@ -38,10 +38,12 @@ export namespace Tab {
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
     @property({ type: String, attribute: "role", reflect: true }) role = "tab";
-    @property({ type: String }) type: Tabs.TabsType = "line";
+    @property({ type: String, reflect: true }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;
     @property({ type: String }) variant: Tabs.TabVariant = "ghost";
+    @property({ type: Boolean, attribute: "visible-tab", reflect: true }) visibleTab = false;
+    @property({ type: Number }) size?: Tabs.TabSize = 28;
 
     private _disabled = false;
 
@@ -241,11 +243,12 @@ export namespace Tab {
           <slot class="tab-slot"></slot>
           ${this.isCrossVisible && this.closable ? this.renderCrossButton() : ""}
         </div>
+        <div part="indicator"></div>
         <!-- Invisible button for legacy third party test compatibility -->
         <button
           type="button"
           class="test-compatibility-button"
-          aria-hidden="true"          
+          aria-hidden="true"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
         ></button>

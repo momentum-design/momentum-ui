@@ -56,11 +56,12 @@
 @mixin chip-sentiment-style(
   $bg-color,
   $text-color,
+  $icon-color,
   $border-color,
   $hover-bg-color,
   $active-bg-color
 ) {
-  --left-content-right-margin: 4px;
+  gap: rem-calc(4);
   padding: 0px 4px;
   font-weight: 500;
   font-family: var(--brand-font-regular);
@@ -68,6 +69,10 @@
   color: $text-color;
   border: 1px solid $border-color;
   border-radius: 4px;
+
+  ::slotted([slot="custom-left-content"]) {
+    color: $icon-color;
+  }
 
   &:hover {
     background-color: $hover-bg-color;
@@ -79,7 +84,7 @@
 }
 
 @mixin chip-status-style($bg-color, $text-color) {
-  --left-content-right-margin: 4px;
+  gap: rem-calc(4);
   padding: 0px 4px;
   padding-right: 6px;
   font-weight: 400;
@@ -89,10 +94,30 @@
   border-radius: 12px;
 
   &:hover {
-    background-color: $bg-color;    
+    background-color: $bg-color;
   }
 
   &:active {
-    background-color: $bg-color;    
+    background-color: $bg-color;
+  }
+}
+
+@mixin chip-confidence-style($bg-color, $text-color, $border-color, $hover-bg-color, $active-bg-color) {
+  gap: rem-calc(4);
+  padding: 0px 4px;
+  font-weight: 500;
+  font-family: var(--brand-font-regular);
+  background-color: $bg-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  max-width: fit-content;
+
+  &:hover {
+    background-color: $hover-bg-color;
+  }
+
+  &:active {
+    background-color: $active-bg-color;
   }
 }

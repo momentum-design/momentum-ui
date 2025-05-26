@@ -9,7 +9,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, PropertyValues } from "lit";
-import { property, state } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
@@ -19,7 +19,6 @@ export namespace Spinner {
     @property({ type: Number, reflect: true })
     size = 56;
 
-    @state()
     private isAnimating = false;
 
     private animationFrameId: number | null = null;

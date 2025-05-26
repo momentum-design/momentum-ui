@@ -6,7 +6,7 @@
  *
  */
 
-import { Placement as PopoverPlacement } from "@/components/popover/Popover.types";
+import { Placement as PopoverPlacement, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
@@ -78,6 +78,8 @@ export namespace MenuOverlay {
     @property({ type: Boolean, attribute: "keep-open-on-window-blur" }) keepOpenOnWindowBlur = false;
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
 
     @queryAssignedNodes({ slot: "menu-trigger", flatten: true }) trigger?: NodeListOf<HTMLElement>;
 
@@ -87,8 +89,6 @@ export namespace MenuOverlay {
     private renderMaxHeight() {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
     }
-
-    shouldWrapFocus = () => this.ariaRole === "dialog";
 
     private renderOverflowY() {
       return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
@@ -297,6 +297,7 @@ export namespace MenuOverlay {
             }
           },
           placement: this.placement,
+          strategy: this.positioningStrategy,
           modifiers: [
             ...defaultModifiers,
             flip,

@@ -1,3 +1,8 @@
+import { TaskItem } from "../taskitem/TaskItem";
+import { TaskItemStatus } from "../taskitem/TaskItem.constants";
+
+export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
+
 type ReturnType = {
   presenceIcon: string | undefined;
   presenceColor: string | undefined;
@@ -26,7 +31,7 @@ export const PresenceType = [
 ] as const;
 
 export const getPresenceIconColor = (
-  presenceType: (typeof PresenceType)[number],
+  presenceType: PresenceState,
   failureBadge: boolean,
   isMomentumDesign = false
 ): ReturnType => {
@@ -35,7 +40,7 @@ export const getPresenceIconColor = (
 
   if (failureBadge) {
     presenceIcon = "warning-badge-filled";
-    presenceColor = "var(--mds-color-theme-indicator-attention)";
+    presenceColor = "var(--avatar-presence-warning)";
   } else {
     if (!presenceType) {
       return {
@@ -100,6 +105,7 @@ export const getPresenceIconColor = (
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "on-hold":
+      case TaskItemStatus.HOLD:
         presenceIcon = "pause-badge-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
@@ -111,6 +117,30 @@ export const getPresenceIconColor = (
         presenceIcon = "dnd-presence-badge-filled";
         presenceColor = "var(--avatar-presence-rona)";
         break;
+      case TaskItemStatus.CONSULTING:
+        presenceIcon = "headset-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
+      case TaskItemStatus.PLAY:
+        presenceIcon = "play-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
+      case TaskItemStatus.CONFERENCE:
+        presenceIcon = "meet-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
+      case TaskItemStatus.TRANSFERED:
+        presenceIcon = "assign-privilege-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
+      case TaskItemStatus.COURTESY_CALLBACK:
+        presenceIcon = "callrate-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
+      case TaskItemStatus.CAMPAIGN:
+        presenceIcon = "announcement-bold";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
       default:
         break;
     }
@@ -118,21 +148,3 @@ export const getPresenceIconColor = (
 
   return { presenceColor, presenceIcon };
 };
-
-export function getPresenceSize(size: number): number {
-  if (size <= 24) {
-    return 10.5;
-  } else if (size <= 32) {
-    return 14;
-  } else if (size <= 48) {
-    return 13.94;
-  } else if (size <= 64) {
-    return 18.58;
-  } else if (size <= 72) {
-    return 20.9;
-  } else if (size <= 88) {
-    return 25.55;
-  } else {
-    return 36;
-  }
-}

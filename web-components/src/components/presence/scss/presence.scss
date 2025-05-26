@@ -8,11 +8,18 @@
   bottom: -0.15rem;
   right: -0.15rem;
 
+  &[data-icon-size="10.5"] {
+    width: 0.78125rem;
+    height: 0.78125rem;
+    bottom: -0.03175rem;
+    right: -0.03175rem;
+  }
+
   &[data-icon-size="13.94"] {
     width: 1.064375rem;
     height: 1.064375rem;
-    bottom: -0.5px;
-    right: -0.5px;
+    bottom: -0.03175rem;
+    right: -0.03175rem;
   }
 
   &[data-icon-size="14"] {

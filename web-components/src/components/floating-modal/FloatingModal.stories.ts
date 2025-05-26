@@ -29,9 +29,13 @@ export default {
     show: { control: "boolean", defaultValue: true },
     full: { control: "boolean", defaultValue: false },
     fixed: { control: "boolean", defaultValue: false },
-    ascpectRatio: { control: "boolean", defaultValue: false },
+    aspectRatio: { control: "boolean", defaultValue: false },
     heading: { control: "text", defaultValue: "Test Heading" },
-    label: { control: "text", defaultValue: "Test label" }
+    label: { control: "text", defaultValue: "Test label" },
+    maximizable: { control: "boolean", defaultValue: false },
+    resizable: { control: "boolean", defaultValue: false },
+    minimizable: { control: "boolean", defaultValue: false },
+    centered: { control: "boolean", defaultValue: false }
   },
   parameters: {
     a11y: {
@@ -52,9 +56,13 @@ export const FloatingModal = (args: Args) => {
       ?show=${args.show}
       ?full-screen=${args.full}
       ?fixed-strategy=${args.fixed}
-      ?aspect-ratio=${args.ascpectRatio}
+      ?aspect-ratio=${args.aspectRatio}
       heading=${args.heading}
       label=${args.label}
+      ?maximizable=${args.maximizable}
+      ?resizable=${args.resizable}
+      ?minimizable=${args.minimizable}
+      ?centered=${args.centered}
     >
       <md-radiogroup group-label="group_process">
         <md-radio slot="radio" value="Option 1">Option 1</md-radio>

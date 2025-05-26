@@ -680,6 +680,27 @@
   }
 }
 
+:host([variant="inverted-ghost"]) .md-button {
+  background-color: var(--button-inverted-secondary-bg-color);
+  color: var(--button-inverted-secondary-text-color);  
+
+  &:hover {
+    background-color: var(--button-inverted-secondary-hover-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:active {
+    background-color: var(--button-inverted-secondary-pressed-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-inverted-secondary-disabled-bg-color);    
+    color: var(--button-inverted-secondary-disabled-text-color);
+  }
+}
+
 :host([variant="promotional"]) .md-button {
   background: var(--button-promotional-bg-color);
   color: var(--button-promotional-text-color, var(--button-primary-text-color));
@@ -700,22 +721,46 @@
 }
 
 :host([variant="ghost"]) .md-button {
-  background-color: var(--button-ghost-bg-color, transparent);
-  color: var(--button-ghost-text-color);
-  border: unset;
+  &:not(.isActive) {
+    background-color: var(--button-ghost-bg-color, transparent);
+    color: var(--button-ghost-text-color);
+    border: unset;
 
-  &:hover {
-    background-color: var(--button-ghost-hover-bg-color);
+    &:hover {
+      background-color: var(--button-ghost-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--button-ghost-pressed-bg-color);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--button-ghost-disabled-bg-color, transparent);
+      color: var(--button-ghost-disabled-text-color, var(--button-disabled-text-color));
+    }
   }
 
-  &:active {
-    background-color: var(--button-ghost-pressed-bg-color);
-  }
+  &.isActive {
+    background-color: var(--button-secondary-active-normal-bg-color);
+    color: var(--button-secondary-text-color);    
+    font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
-  &:disabled,
-  &.disabled {
-    background-color: var(--button-ghost-disabled-bg-color, transparent);
-    color: var(--button-ghost-disabled-text-color, var(--button-disabled-text-color));
+    &:hover {
+      background-color: var(--button-secondary-active-hover-bg-color);
+      color: var(--button-secondary-text-color);
+    }
+
+    &:active {
+      background-color: var(--button-secondary-active-pressed-bg-color);
+      color: var(--button-secondary-text-color);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));      
+      color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color));
+    }
   }
 }
 
@@ -764,9 +809,10 @@
   }
 
   &.isActive {
-    background-color: var(--button-secondary-active-bg-color);
+    background-color: var(--button-secondary-active-normal-bg-color);
     color: var(--button-secondary-text-color);
     border: 1px solid var(--button-secondary-border-color);
+    font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
       background-color: var(--button-secondary-active-hover-bg-color);
@@ -1075,6 +1121,7 @@
   &.isActive {
     background-color: var(--button-ghost-active-bg-color);
     color: var(--button-ghost-active-text-color);
+    font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
       background-color: var(--button-ghost-active-hover-bg-color);

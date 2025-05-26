@@ -152,3 +152,54 @@ export function closestElement(selector: string, base: HTMLElement) {
 export function getElementSafe<T>(elements: T[], index: number): T | undefined {
   return index >= 0 && index < elements.length ? elements[index] : undefined;
 }
+
+export function querySelectorDeep(
+  selector: string,
+  base: HTMLElement | Document | ShadowRoot = document
+): Element | null {
+  const lightDomElement =
+    base instanceof ShadowRoot || base instanceof Document
+      ? base.querySelector(selector)
+      : base.shadowRoot?.querySelector(selector);
+
+  if (lightDomElement) return lightDomElement;
+
+  const shadowRoots = Array.from(base.querySelectorAll("*"))
+    .map((el) => el.shadowRoot ?? null)
+    .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
+
+  for (const shadowRoot of shadowRoots) {
+    const shadowDomElement = querySelectorDeep(selector, shadowRoot);
+    if (shadowDomElement) return shadowDomElement;
+  }
+
+  return null;
+}
+
+export function getElementByIdDeep(id: string, base: HTMLElement | Document | ShadowRoot = document): Element | null {
+  if (base instanceof ShadowRoot || base instanceof Document) {
+    const element = base.getElementById(id);
+    if (element) return element;
+  }
+
+  const shadowRoots = Array.from(base.querySelectorAll("*"))
+    .map((el) => el.shadowRoot ?? null)
+    .filter((shadowRoot): shadowRoot is ShadowRoot => shadowRoot !== null);
+
+  for (const shadowRoot of shadowRoots) {
+    const element = getElementByIdDeep(id, shadowRoot);
+    if (element) return element;
+  }
+
+  return null;
+}
+
+export function getDeepActiveElement(): HTMLElement | null {
+  let active = document.activeElement;
+
+  while (active?.shadowRoot?.activeElement) {
+    active = active.shadowRoot.activeElement;
+  }
+
+  return active as HTMLElement;
+}

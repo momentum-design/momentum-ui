@@ -1,6 +1,5 @@
 import { DateTime } from "luxon";
 
-const DATE_HYPHENS_REGEX = /(?<!\s)-+(?!\s)/g; // Matches hyphens that are *not* surrounded by spaces
 const DATE_SLASHES_REGEX = /\//g; // Matches slashes
 
 export interface DayFilters {
@@ -130,13 +129,18 @@ export function dateStringToDateTime(date: string): DateTime {
   return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
 }
 
-export function reformatDateString(date: string | null | undefined): string {
-  if (!date) {
-    return "";
-  }
+export function getLocaleDateFormat(locale: string | undefined = undefined): string {
+  // luxon Datetime has no inbuilt way to get a locale's expected date format
+  // hence this awkward workaround
 
-  const splitString = date.split("T"); // need to make sure we don't modify the time offset part!
-  splitString[0] = splitString[0].replace(DATE_HYPHENS_REGEX, "/");
+  const sampleDate = DateTime.fromObject({ year: 2025, month: 1, day: 3 }).setLocale(locale ?? DateTime.local().locale);
+  const formattedDate = sampleDate.toFormat("D");
 
-  return splitString.join("T");
+  return formattedDate
+    .replace("2025", "yyyy")
+    .replace("25", "yy")
+    .replace("01", "MM")
+    .replace("1", "M")
+    .replace("03", "dd")
+    .replace("3", "d");
 }

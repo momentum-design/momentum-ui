@@ -1,13 +1,14 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html, TemplateResult } from "lit";
+import { Presence } from "../presence/Presence";
 import "./Avatar";
 import { type Avatar } from "./Avatar";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
-    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>'),
+    text: () => Promise.resolve('<svg><circle cx="50" cy="50" r="40" /></svg>')
   })
 ) as jest.Mock;
 
@@ -84,19 +85,19 @@ describe("Avatar", () => {
     expect(element.shadowRoot!.querySelector(".md-avatar__self")).not.toBeNull();
     expect(element.shadowRoot!.querySelector("md-icon")).not.toBeNull();
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("18");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("22");
 
     element.size = 44;
     await elementUpdated(element);
 
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("22");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("26");
 
     element.size = 28;
     await elementUpdated(element);
 
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
-    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("14");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("18");
   });
 
   test("should render notification bange", async () => {
@@ -131,6 +132,37 @@ describe("Avatar", () => {
 
     expect(element.shadowRoot!.querySelector("md-presence")).not.toBeNull();
     expect(element.shadowRoot!.querySelector(".md-avatar--active")).toBeNull();
+  });
+
+  it.each([
+    {avatarSize: 10, presenceSize: 10.5},
+    {avatarSize: 20, presenceSize: 10.5},
+    {avatarSize: 24, presenceSize: 10.5},
+    {avatarSize: 25, presenceSize: 14},
+    {avatarSize: 32, presenceSize: 14},
+    {avatarSize: 33, presenceSize: 13.94},
+    {avatarSize: 36, presenceSize: 13.94},
+    {avatarSize: 37, presenceSize: 13.94},
+    {avatarSize: 40, presenceSize: 13.94},
+    {avatarSize: 41, presenceSize: 13.94},
+    {avatarSize: 48, presenceSize: 13.94},
+    {avatarSize: 49, presenceSize: 18.58},
+    {avatarSize: 64, presenceSize: 18.58},
+    {avatarSize: 65, presenceSize: 20.9},
+    {avatarSize: 72, presenceSize: 20.9},
+    {avatarSize: 73, presenceSize: 25.55},
+    {avatarSize: 88, presenceSize: 25.55},
+    {avatarSize: 89, presenceSize: 36},
+    {avatarSize: 100, presenceSize: 36},
+  ])("should have a presence icon size of ($presenceSize) when avatar size is ($avatarSize)", 
+    async ({avatarSize, presenceSize}) => {  
+    const element = await createFixture<Avatar.ELEMENT>(html`
+      <md-avatar type="active" size="${avatarSize}" title="active" ?newMomentum=${true}></md-avatar>
+    `);
+
+    const presence = element.shadowRoot!.querySelector("md-presence") as Presence.ELEMENT;
+    expect(presence).toBeDefined();
+    expect(presence.size).toEqual(presenceSize);
   });
 
   test("should set presenceColor, presenceIcon, and isCircularWrapper based on type", async () => {

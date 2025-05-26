@@ -244,6 +244,10 @@ export namespace Chip {
       };
     }
 
+    private get textContentTemplate() {
+      return html`<span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
+    }
+
     render() {
       const classNamesInfo = {
         "md-chip--small": this.small,
@@ -274,7 +278,7 @@ export namespace Chip {
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>
-            <span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>
+            ${this.renderedText ? this.textContentTemplate : nothing}
             <slot name="custom-right-content" part="chip-right"> </slot>
           </span>
         </md-tooltip>

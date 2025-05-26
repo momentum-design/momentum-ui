@@ -24,6 +24,7 @@ export namespace FloatingMinimizedModal {
     @property({ type: Boolean, reflect: true }) show = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: Boolean, reflect: true }) minimize = false;
+    @property({ type: String, attribute: "maximize-icon-aria-label" }) maximizeIconAriaLabel = "Maximize Modal";
 
     @property({ type: Object }) minPosition:
       | {
@@ -159,7 +160,13 @@ export namespace FloatingMinimizedModal {
       }
     }
 
-    handleClose(event: MouseEvent) {
+    handleKeyDownClose(event: KeyboardEvent) {
+      if (event.code === Key.Enter || event.code === Key.Space) {
+        this.handleClose(event);
+      }
+    }
+
+    handleClose(event: MouseEvent | KeyboardEvent) {
       this.show = false;
 
       this.dispatchEvent(
@@ -175,6 +182,8 @@ export namespace FloatingMinimizedModal {
     }
 
     handleMinimize(event: Event) {
+      event.preventDefault();
+      event.stopPropagation();
       if (!this.dragOccured) {
         this.dispatchEvent(
           new CustomEvent("floating-min-modal-minimize", {
@@ -255,10 +264,21 @@ export namespace FloatingMinimizedModal {
                   </div>
                   <md-button
                     color="color-none"
+                    class="md-floating__resize"
+                    ariaLabel="${this.maximizeIconAriaLabel}"
+                    circle
+                    @click=${this.handleMinimize}
+                  >
+                    <md-icon name="maximize-bold" size="16" iconSet="momentumDesign"></md-icon>
+                  </md-button>
+
+                  <md-button
+                    color="color-none"
                     class="md-floating__close"
                     aria-label="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}
+                    @keydown="${this.handleKeyDownClose}"
                   >
                     <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </md-button>

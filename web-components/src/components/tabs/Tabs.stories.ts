@@ -14,8 +14,6 @@ import { action } from "@storybook/addon-actions";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-const closeOptions = ["", "auto", "custom"] as const;
-
 const tabs = (args: Args) => {
   return html` <div style="height: 300px;">
     <md-tabs
@@ -23,6 +21,24 @@ const tabs = (args: Args) => {
       ?draggable=${args.draggable}
       direction="${args.alignment}"
       ?justified=${args.justified}
+      variant="${args.variant}"
+      type="${args.type}"
+      ?newmomentum=${args.newMomentum}
+      size=${args.size}
+      animation=${args.animation}
+      ghost-class=${args.ghostClass}
+      chosen-class=${args.chosenClass}
+      force-fallback=${args.forceFallback}
+      fallback-class=${args.fallbackClass}
+      tabs-id=${args.tabsId}
+      persist-selection=${args.persistSelection}
+      comp-unique-id=${args.compUniqueId}
+      ?hug-tabs=${args.hugTabs}
+      more-items-scroll-limit=${args.moreItemsScrollLimit}
+      selected-index=${args.selectedIndex}
+      ?scroll-arrow=${args["scroll-arrow"]}
+      left-arrow-aria-label=${args.leftArrowAriaLabel}
+      right-arrow-aria-label=${args.rightArrowAriaLabel}
     >
       <md-tab slot="tab" closable="${args.closable}">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -64,9 +80,24 @@ const moreTabs = (args: Args) => {
       <md-tabs
         @selected-changed=${action("changed")}
         selected="0"
-        more-items-scroll-limit="${args.moreItemsScrollLimit}"
-        ?draggable=${args.draggable}
         justified
+        direction="${args.alignment}"
+        variant="${args.variant}"
+        type="${args.type}"
+        ?newmomentum=${args.newMomentum}
+        size=${args.size}
+        animation=${args.animation}
+        ghost-class=${args.ghostClass}
+        chosen-class=${args.chosenClass}
+        ?force-fallback=${args.forceFallback}
+        fallback-class=${args.fallbackClass}
+        tabs-id=${args.tabsId}
+        persist-selection=${args.persistSelection}
+        comp-unique-id=${args.compUniqueId}
+        ?hug-tabs=${args.hugTabs}
+        more-items-scroll-limit=${args.moreItemsScrollLimit}
+        selected-index=${args.selectedIndex}
+        ?scroll-arrow=${args["scroll-arrow"]}
       >
         <md-tab slot="tab" closable="${args.closable}" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -111,7 +142,7 @@ const moreTabs = (args: Args) => {
           <span>Content for "Cisco News"</span>
         </md-tab-panel>
         <md-tab slot="tab" closable="${args.closable}">
-          <md-icon name="month_16"></md-icon>
+          <md-icon name="monthly-recurring-schedule-node-bold" iconSet="momentumDesign"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -138,12 +169,78 @@ const moreTabs = (args: Args) => {
   `;
 };
 
-export const Tabs: StoryObj = {
+export const Example: StoryObj = {
   args: {
-    alignment: "horizontal"
+    alignment: "horizontal",
+    type: "line",
+    variant: "ghost",
+    leftArrowAriaLabel: "Backward Button",
+    rightArrowAriaLabel: "Forward Button"
   },
   render: (args: Args) => {
     return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+  }
+};
+
+export const HorizontalTab: StoryObj = {
+  render: () => {
+    return html`
+      <h3>Default Line Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "line" })}
+      <h3>Pill Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "pill" })}
+      <h3>Rounded Primary Tab</h3>
+      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary" })}
+    `;
+  }
+};
+
+export const HorizontalTabNewMomentum: StoryObj = {
+  args: {
+    size: 28
+  },
+  render: (args: Args) => {
+    return html`
+      <h3>Default Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "line", newMomentum: true, size: args.size })}
+      <h3>Pill Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "pill", newMomentum: true, size: args.size })}
+      <h3>Rounded Primary Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "horizontal", type: "rounded", variant: "primary", newMomentum: true, size: args.size })}
+      <h3>Rounded Primary Tab with Scroll Arrow (NewMomentum)</h3>
+      ${moreTabs({
+        alignment: "horizontal",
+        type: "rounded",
+        variant: "primary",
+        "scroll-arrow": true,
+        newMomentum: true,
+        size: args.size
+      })}
+    `;
+  }
+};
+
+export const VerticalTab: StoryObj = {
+  args: {
+    size: 28
+  },
+  render: (args: Args) => {
+    return html`
+      <h3>Default Line Tab</h3>
+      ${moreTabs({ alignment: "vertical", type: "line", size: args.size })}
+      <h3>Line Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "vertical", type: "line", newMomentum: true, size: args.size })}
+      <h3>Pill Tab (NewMomentum)</h3>
+      ${moreTabs({ alignment: "vertical", type: "pill", newMomentum: true, size: args.size })}
+      <h3>Rounded Primary Tab (NewMomentum)</h3>
+      ${moreTabs({ 
+        alignment: "vertical", 
+        type: "rounded", 
+        variant: "primary", 
+        newMomentum: true,
+        size: args.size
+      })}
+    `;
   }
 };
 
@@ -151,18 +248,48 @@ export default {
   title: "Components/Tabs",
   component: "md-tabs",
   argTypes: {
+    more: { control: "boolean" },
+    draggable: { control: "boolean" },
+    variant: { control: { type: "select" }, options: ["ghost", "primary"] },
+    type: { control: { type: "select" }, options: ["line", "pill", "rounded"] },
+    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] },
+    closable: { control: { type: "select" }, options: ["", "auto", "custom"] },
+    settings: { control: "boolean" },
+    newMomentum: { control: "boolean" },
+    animation: { control: "boolean" },
+    ghostClass: { control: "text" },
+    chosenClass: { control: "text" },
+    forceFallback: { control: "boolean" },
+    fallbackClass: { control: "text" },
+    tabsId: { control: "text" },
+    persistSelection: { control: "boolean" },
+    compUniqueId: { control: "text" },
+    hugTabs: { control: "boolean" },
+    moreItemsScrollLimit: { control: "number" },
+    selectedIndex: { control: "number" },
+    "scroll-arrow": { control: "boolean" },
+    leftArrowAriaLabel: { control: "text" },
+    rightArrowAriaLabel: { control: "text" },
+    size: {
+      control: { type: "select" },
+      options: [28, 32],
+      defaultValue: 28,
+      description: "Tab size in pixels (only works with newMomentum)"
+    },
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },
     panelSlotElement: { table: { disable: true } },
     moreTabMenuElement: { table: { disable: true } },
     tabsCopyHiddenListElements: { table: { disable: true } },
     tabsListElement: { table: { disable: true } },
+    hiddenTabsContainerElement: { table: { disable: true } },
+    visibleTabsContainerElement: { table: { disable: true } },
+    tabsMoreListElement: { table: { disable: true } },
+    menuOverlayElement: { table: { disable: true } },
+    tabsSettingsElement: { table: { disable: true } },
     slotItem: { table: { disable: true } },
-    more: { control: "boolean" },
-    draggable: { control: "boolean" },
-    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] },
-    closable: { control: { type: "select" }, options: closeOptions },
-    settings: { control: "boolean" }
+    handleOnDragEnd: { table: { disable: true } },
+    updateArrowsVisibility: { table: { disable: true } }
   },
   parameters: {
     a11y: {

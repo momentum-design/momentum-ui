@@ -297,7 +297,7 @@ export namespace Icon {
       };
     }
 
-    consoleHandler = (message: string, data: string) => {      
+    consoleHandler = (message: string, data: string) => {
       switch (message) {
         case "color-warn":
           console.warn(
@@ -312,7 +312,6 @@ export namespace Icon {
           );
           break;
       }
-      /* eslint-enable no-console */
     };
 
     get iconFontSize() {

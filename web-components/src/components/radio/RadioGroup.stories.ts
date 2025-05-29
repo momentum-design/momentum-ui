@@ -11,16 +11,46 @@ import "@/components/radio/RadioGroup";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
+const optionsArray = [
+  {
+    label: "",
+    message: "",
+    type: "default"
+  },
+  {
+    label: "Success",
+    message: "This is where the success message appears.",
+    type: "success"
+  },
+  {
+    label: "Warning",
+    message: "This is where the warning message appears.",
+    type: "warning"
+  },
+  {
+    label: "Error",
+    message: "This is where the error message appears.",
+    type: "error"
+  }
+];
+
 export default {
   title: "Components/Radio",
   component: "md-radio",
-  argTypes: { alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] } },
+  argTypes: {
+    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] },
+    messageType: { control: { type: "select" }, options: optionsArray.map(m => m.type) }
+  },
   parameters: { a11y: { element: "md-radiogroup" } }
 };
 
 const render = (args: Args) => {
+  const selectedMessageObj = args.messageType !== "default"
+    ? optionsArray.find(option => option.type === args.messageType)
+    : undefined;
+
   return html`
-    <md-radiogroup group-label="group_process" alignment=${args.alignment} checked=${args.check}>
+    <md-radiogroup group-label="group_process" alignment=${args.alignment} checked=${args.check} .messageArr=${selectedMessageObj ? [selectedMessageObj] : []}>
       <md-radio slot="radio" value="developing">Developing</md-radio>
       <md-radio slot="radio" value="linting" ?disabled=${args.disabled}>Linting</md-radio>
       <md-radio slot="radio" value="testing">Testing</md-radio>

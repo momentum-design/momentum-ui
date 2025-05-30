@@ -257,7 +257,7 @@ export namespace Tabs {
 
         tabList.forEach((tab) => {
           if (tab.children?.length && tab.children[0]?.children?.length === 0) {
-            const slotHeaderNode = tab?.querySelector("slot")?.assignedNodes({ flatten: true })[0].cloneNode(true);
+            const slotHeaderNode = tab?.querySelector("slot")?.assignedNodes({ flatten: true })[0]?.cloneNode(true);
             if (slotHeaderNode) {
               (slotHeaderNode as HTMLElement).classList.add("tab-content");
               tab?.children[0]?.appendChild(slotHeaderNode);

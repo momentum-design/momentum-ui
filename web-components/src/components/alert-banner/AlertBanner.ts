@@ -202,4 +202,18 @@ declare global {
   interface HTMLElementTagNameMap {
     "md-alert-banner": AlertBanner.ELEMENT;
   }
+
+  interface HTMLElementEventMap {
+    /**
+     * Fired when the alert banner is closed (hidden).
+     * @event alertBanner-hide
+     */
+    "alertBanner-hide": CustomEvent<void>;
+
+    /**
+     * Fired when the refresh button is clicked.
+     * @event alertBanner-refresh-button-click
+     */
+    "alertBanner-refresh-button-click": CustomEvent<void>;
+  }
 }

@@ -8,6 +8,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { DatePicker, type DatePickerControlButtons } from "../datepicker/DatePicker";
+import { StrategyType } from "../popover/Popover.types";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
@@ -25,14 +26,25 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
- 
+
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
     @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
-    @property({ type: String }) locale: string | undefined = undefined;
-    @property({ type: Boolean }) useISOFormat = true;
-    @property({ type: Boolean }) disabled = false;
+    @property({ type: String })
+    locale: string | undefined = undefined;
+
+    @property({ type: Boolean })
+    useISOFormat = true;
+
+    @property({ type: Boolean })
+    disabled = false;
+
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
+
+    @property({ type: Boolean, attribute: "show-default-now-date" })
+    showDefaultNowDate = true;
 
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
@@ -177,9 +189,12 @@ export namespace DateTimePicker {
           includes-time
           ?disabled=${this.disabled}
           ariaLabel=${ifDefined(this.ariaLabel || undefined)}
+          .positioningStrategy=${this.positioningStrategy}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}
+          .useISOFormat=${this.useISOFormat}
+          .showDefaultNowDate=${this.showDefaultNowDate}
           weekStart=${this.weekStart}
           placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
           locale=${ifDefined(this.locale)}

@@ -17,6 +17,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
@@ -26,7 +27,6 @@ import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import a
 import styles from "./scss/module.scss";
 import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
-import { ifDefined } from "lit-html/directives/if-defined";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -587,19 +587,19 @@ export namespace Tabs {
       this.handleNewSelectedTab(id);
     }
 
-    handleNewSelectedTab(id: string) {
+    handleNewSelectedTab(id: string, setFocus: boolean = true) {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled) {
         const newIndex = this.tabsIdxHash[tab.id];
 
         if (newIndex !== -1) {
-          this.updateSelectedTab(newIndex);
+          this.updateSelectedTab(newIndex, setFocus);
         }
 
         // Setting up focus for tab copy (hidden menu)
         {
           const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-          if (tabCopy) {
+          if (tabCopy && setFocus) {
             this.makeTabCopyFocus(tabCopy);
           }
           this.updateHiddenIdPositiveTabIndex(tab);
@@ -692,7 +692,7 @@ export namespace Tabs {
       return this.tabsFilteredAsHiddenList.find((t) => t.id === tab.id) !== undefined;
     }
 
-    public updateSelectedTab(newSelectedIndex: number) {
+    public updateSelectedTab(newSelectedIndex: number, setFocus: boolean = true) {
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 
@@ -715,7 +715,7 @@ export namespace Tabs {
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
           (element) => element.id === tabs[newSelectedIndex].id
         );
-        this.changeSelectedTabIdx(newSelectedTabIdx);
+        this.changeSelectedTabIdx(newSelectedTabIdx, setFocus);
       }
     }
 
@@ -741,17 +741,21 @@ export namespace Tabs {
       );
     }
 
-    private changeSelectedTabIdx(newSelectedTabIdx: number) {
+    private changeSelectedTabIdx(newSelectedTabIdx: number, setFocus: boolean = true) {
       this.requestUpdate();
       this.selected = newSelectedTabIdx;
       this.updateComplete.then(() => {
         if (newSelectedTabIdx < this.tabsFilteredAsVisibleList.length) {
-          const selectedVisibleTab = this.visibleTabsContainerElement?.children[this.selected] as HTMLElement;
-          selectedVisibleTab?.focus();
+          if (setFocus) {
+            const selectedVisibleTab = this.visibleTabsContainerElement?.children[this.selected] as HTMLElement;
+            selectedVisibleTab?.focus();
+          }
         } else {
           const hiddenTabIdx = this.selected - this.tabsFilteredAsVisibleList.length;
           const selectedHiddenTab = this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement;
-          this.moveFocusToTab(selectedHiddenTab);
+          if (setFocus) {
+            this.moveFocusToTab(selectedHiddenTab);
+          }
           const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
           if (!newHiddenTab?.disabled) {
             this.updateHiddenIdPositiveTabIndex(newHiddenTab);
@@ -1132,7 +1136,7 @@ export namespace Tabs {
         const tabsLayout = this.currentTabsLayout;
         if (tabsLayout.length && tabsLayout[selectedTabIndex].id) {
           this._selectedIndex = selectedTabIndex;
-          this.handleNewSelectedTab(tabsLayout[selectedTabIndex].id);
+          this.handleNewSelectedTab(tabsLayout[selectedTabIndex].id, false);
         } else {
           this.selected = selectedTabIndex;
         }
@@ -1246,7 +1250,7 @@ export namespace Tabs {
       }
 
       if (changedProperties.has("selectedIndex")) {
-        this.updateSelectedTab(this.selectedIndex);
+        this.updateSelectedTab(this.selectedIndex, false);
       }
 
       if (changedProperties.has("overflowLabel")) {
@@ -1471,5 +1475,35 @@ export namespace Tabs {
 declare global {
   interface HTMLElementTagNameMap {
     "md-tabs": Tabs.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    /**
+     * Fired when the selected tab changes.
+     * @event selected-changed
+     * @type {CustomEvent<{ value: number; tabsOrder: string[] }>}
+     */
+    "selected-changed": CustomEvent<{ value: number; tabsOrder: string[] }>;
+
+    /**
+     * Fired when a keydown event occurs on a tab.
+     * @event tab-keydown
+     * @type {CustomEvent<{ id: string; key: string; ctrlKey: boolean; shiftKey: boolean; altKey: boolean; srcEvent: KeyboardEvent }>}
+     */
+    "tab-keydown": CustomEvent<{
+      id: string;
+      key: string;
+      ctrlKey: boolean;
+      shiftKey: boolean;
+      altKey: boolean;
+      srcEvent: KeyboardEvent;
+    }>;
+
+    /**
+     * Fired to clear tab order preferences.
+     * @event clear-tab-order-prefs
+     * @type {CustomEvent<{ compUniqueId: string }>}
+     */
+    "clear-tab-order-prefs": CustomEvent<{ compUniqueId: string }>;
   }
 }

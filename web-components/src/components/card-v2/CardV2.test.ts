@@ -195,7 +195,7 @@ describe("Card-v2 component", () => {
     expect(info?.name).toBe("arrow-circle-up-bold");
   });
 
-  it("should update increment data content when active", async () => {
+  it("should increment rendered data at 1 sec intervals when active", async () => {
     
     const fixedDate = new Date("2023-10-01T00:00:00Z");
     jest.setSystemTime(fixedDate);

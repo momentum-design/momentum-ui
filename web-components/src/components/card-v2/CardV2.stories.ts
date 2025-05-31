@@ -36,7 +36,7 @@ export const CardV2: StoryObj = {
     identifier: "1234567890",
     header: "Test Title",
     info: "Test Info",
-    data: "00:12:11",
+    data: "00:00:00",
     createdTime: Date.now() - 60000,
     active: false,
     expandable: true

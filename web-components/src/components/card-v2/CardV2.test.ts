@@ -24,6 +24,10 @@ const fixtureFactory = async (
 };
 
 describe("Card-v2 component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
     fixtureCleanup();
   });
@@ -189,5 +193,36 @@ describe("Card-v2 component", () => {
 
     expect(eventSpy).not.toHaveBeenCalled();
     expect(info?.name).toBe("arrow-circle-up-bold");
+  });
+
+  it("should update increment data content when active", async () => {
+    
+    const fixedDate = new Date("2023-10-01T00:00:00Z");
+    jest.setSystemTime(fixedDate);
+      
+    const element: CardV2.ELEMENT = await fixture(html`
+      <md-card-v2
+        state=${CardState.ACTIVE}
+        identifier=${"123"}
+        header=${"Test Title"}
+        info=${"Test Info"}
+        createdTime=${Date.now()}
+        .active=${true}
+        .expandable=${true}
+      >
+      </md-card-v2>
+    `)
+
+    expect(element.createdTime).toBe(1696118400000);
+    expect(element.active).toBe(true);
+    
+    const data = element.shadowRoot?.querySelector(".md-card-v2-content h2");
+    expect(data).not.toBeNull();
+    expect(data?.textContent).toBe("00:00:00");
+
+    // Simulate the passage of time
+    jest.advanceTimersByTime(61000); // 61 seconds
+    await elementUpdated(element);
+    expect(data?.textContent).toBe("00:01:01");    
   });
 });

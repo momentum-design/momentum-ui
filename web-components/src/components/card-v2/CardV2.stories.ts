@@ -18,6 +18,8 @@ const render = (args: Args) => {
       identifier=${args.identifier}
       header=${args.header}
       data=${args.data}
+      createdTime=${args.createdTime}
+      .active=${args.active}
       info=${args.info}
       .expandable=${args.expandable}
       @expand-card-toggled=${(e: CustomEvent<{ id: string; active: boolean }>) => {
@@ -34,7 +36,9 @@ export const CardV2: StoryObj = {
     identifier: "1234567890",
     header: "Test Title",
     info: "Test Info",
-    data: "00:00:00",
+    data: "00:12:11",
+    createdTime: Date.now() - 60000,
+    active: false,
     expandable: true
   },
   render: render

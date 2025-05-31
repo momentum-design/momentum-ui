@@ -6,6 +6,8 @@ import { css, customElement, html, LitElement, property } from "lit-element";
 export class CardV2TemplateSandbox extends LitElement {
   @property({ type: String }) value = "";
 
+  private createdTime = Date.now() - 60000;
+
   static readonly styles = css`
     .card-v2-container {
       display: flex;
@@ -59,6 +61,18 @@ export class CardV2TemplateSandbox extends LitElement {
             data="00:19:20"
             info="Avg. handling time"
             .expandable=${false}
+          >
+          </md-card-v2>
+
+          <h3>Dynamic</h3>
+          <md-card-v2
+            identifier="aaa43a56-ec31-4d70-a77c-c797a1239777"
+            state="inactive"
+            header="Longest waiting in queue"
+            createdTime=${this.createdTime}
+            active=${true}
+            info="Longest waiting in queue"
+            .expandable=${true}
           >
           </md-card-v2>
         </div>

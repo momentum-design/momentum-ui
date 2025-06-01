@@ -147,7 +147,7 @@ export namespace CardV2 {
       this.clearInterval();
       if (!this.active && this.data) {
         this.renderedData = this.data;
-      } else if (this.createdTime > 0) {
+      } else if (this.active && this.createdTime > 0) {
         this.renderedData = Duration.fromMillis(Date.now() - this.createdTime).toFormat(DISPLAY_FORMAT);
         this.interval = window.setInterval(() => {
           this.renderedData = Duration.fromMillis(Date.now() - this.createdTime).toFormat(DISPLAY_FORMAT);

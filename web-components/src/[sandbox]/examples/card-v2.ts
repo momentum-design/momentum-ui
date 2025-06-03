@@ -46,8 +46,9 @@ export class CardV2TemplateSandbox extends LitElement {
             state="default"
             header="Longest waiting in queue"
             data="00:12:11"
-            info="Longest waiting in queue"
+            info="This card is for longest waiting in queue"
             .expandable=${true}
+            expand-aria-label="Expand"
           >
           </md-card-v2>
 

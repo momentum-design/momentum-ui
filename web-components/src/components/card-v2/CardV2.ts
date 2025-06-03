@@ -36,6 +36,7 @@ export namespace CardV2 {
     @property({ type: Number }) createdTime = 0;
     @property({ type: Boolean }) active = false;
     @property({ type: Boolean, reflect: true }) expandable = false;
+    @property({ type: String, attribute: "expand-aria-label" }) expandAriaLabel = "Expand for more details";
 
     @internalProperty() 
     private interval: number | undefined;
@@ -117,7 +118,7 @@ export namespace CardV2 {
           ${this.info
             ? html`
                 <md-tooltip message="${this.info}" placement="top">
-                  <md-button ariaLabel="${this.info}" size="20" variant="ghost" circle>
+                  <md-button ariaLabel="${this.header}, ${this.data}, ${this.info}" size="20" variant="ghost" circle>
                     <md-icon slot="icon" name="info-badge-filled" iconSet="momentumDesign"></md-icon>
                   </md-button>
                 </md-tooltip>
@@ -130,7 +131,7 @@ export namespace CardV2 {
     private renderFooter() {
       return html`
         <div class="${classMap(this.footerClassMap)}">
-          <md-button ariaLabel="" circle size="28" >
+          <md-button ariaLabel="${this.expandAriaLabel}" circle size="28">
             <md-icon
               slot="icon"
               iconSet="momentumDesign"
@@ -157,7 +158,7 @@ export namespace CardV2 {
 
     render() {
       return html`
-        <div class="${classMap(this.cardClassMap)}" @click=${this.expandCardHandler} >
+        <div class="${classMap(this.cardClassMap)}" @click=${this.expandCardHandler}>
           <div class="md-card-v2-header">${this.renderHeader()}</div>
           <div class="${classMap(this.contentClassMap)}">
             <h2>${this.renderedData}</h2>

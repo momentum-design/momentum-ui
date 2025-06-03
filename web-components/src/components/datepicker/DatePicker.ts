@@ -125,7 +125,9 @@ export namespace DatePicker {
         if (this.useISOFormat) {
           this.selectedDate = dateStringToDateTime(this.value);
         } else {
-          this.selectedDate = DateTime.fromFormat(this.value, getLocaleDateFormat(this.locale), { locale: this.locale });
+          this.selectedDate = DateTime.fromFormat(this.value, getLocaleDateFormat(this.locale), {
+            locale: this.locale
+          });
         }
         this.setPreSelection(this.selectedDate);
       }
@@ -278,7 +280,7 @@ export namespace DatePicker {
         return `${DEFAULT_ARIA_LABEL_DATE_SELECTED}${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
       }
       return DEFAULT_ARIA_LABEL;
-    }
+    };
 
     private readonly getValidRegexString = (): string => {
       if (this.includesTime) {
@@ -385,7 +387,7 @@ export namespace DatePicker {
 
     protected getFormattedDate(date: DateTime): string | null {
       if (!date) return null;
-      
+
       if (this.useISOFormat) {
         return this.getISODateTime(date);
       } else {
@@ -396,7 +398,7 @@ export namespace DatePicker {
     }
 
     private getAriaLabel(): string {
-      return this.ariaLabel ?? this.getDefaultAriaLabel()
+      return this.ariaLabel ?? this.getDefaultAriaLabel();
     }
 
     render() {

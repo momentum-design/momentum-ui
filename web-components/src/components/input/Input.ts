@@ -22,6 +22,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
+import { FormControl } from "../form";
 
 export const containerSize = [
   "small-1",
@@ -179,6 +180,7 @@ export namespace Input {
     @property({ type: String }) ariaControls = "";
     @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Object }) control?: FormControl<unknown>;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -267,6 +269,7 @@ export namespace Input {
 
     handleChange(event: Event) {
       this.value = (event.target as HTMLInputElement).value;
+      this.control?.setValue(this.value);
       this.dispatchEvent(
         new CustomEvent("input-change", {
           bubbles: true,
@@ -280,6 +283,7 @@ export namespace Input {
     }
 
     handleBlur(event: FocusEvent) {
+      this.control?.markAsTouched();
       this.isEditing = false;
       this.dispatchEvent(
         new CustomEvent("input-blur", {
@@ -461,8 +465,8 @@ export namespace Input {
         return html`
           <div class="md-input__before">
             ${this.isLoading
-              ? html` <md-spinner size="20"></md-spinner> `
-              : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
+            ? html` <md-spinner size="20"></md-spinner> `
+            : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
           </div>
         `;
       } else {
@@ -545,7 +549,7 @@ export namespace Input {
         ? html`
             <div id="${this.htmlId}-message" part="message" class="md-input__messages">
               ${repeat(this.messages, (message, id) => {
-                return html`
+          return html`
                   <md-help-text
                     .message=${message}
                     .id=${this.messageArr[id].id ?? ""}
@@ -553,7 +557,7 @@ export namespace Input {
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
                 `;
-              })}
+        })}
             </div>
           `
         : nothing;

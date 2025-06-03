@@ -136,4 +136,12 @@ declare global {
   interface HTMLElementTagNameMap {
     "md-floating-button-bar": FloatingButtonBar;
   }
+
+  interface HTMLElementEventMap {
+    /**
+     * Fired when the close/cancel button is clicked.
+     * @event cancel-button-action
+     */
+    "cancel-button-action": CustomEvent<void>;
+  }
 }

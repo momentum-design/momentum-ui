@@ -60,7 +60,7 @@ describe("RadioGroup", () => {
         }
       };
 
-    const tag = defineCE(class extends mixin(RadioGroup.ELEMENT) {});
+    const tag = defineCE(class extends mixin(RadioGroup.ELEMENT) { });
     const firstElement = fixtureSync<RadioGroup.ELEMENT>(`<${tag}></${tag}>`);
     const firstEvent = await oneEvent(firstElement, "first-updated");
     expect(firstEvent).toBeDefined();
@@ -205,5 +205,56 @@ describe("RadioGroup", () => {
     el.handleKeyDown(keyboardEvent);
     await elementUpdated(element);
     expect(notifyEvent).toBeCalledTimes(0);
+  });
+
+  test("should render messages when messageArr is provided", async () => {
+    const messageArr = [
+      {
+        type: "error",
+        message: "This is an error message.",
+        label: "Error"
+      },
+      {
+        type: "warning",
+        message: "This is a warning message.",
+        label: "Warning"
+      }
+    ];
+
+    const el = await fixture<RadioGroup.ELEMENT>(html`
+      <md-radiogroup
+        group-label="recommendations"
+        .messageArr=${messageArr}
+      >
+        <md-radio slot="radio" value="developing">Developing</md-radio>
+        <md-radio slot="radio" value="linting">Linting</md-radio>
+        <md-radio slot="radio" value="testing">Testing</md-radio>
+        <md-radio slot="radio" value="building">Building</md-radio>
+      </md-radiogroup>
+    `);
+
+    await elementUpdated(el);
+    const helpTexts = el.shadowRoot?.querySelectorAll("md-help-text") as NodeListOf<HTMLElementTagNameMap["md-help-text"]>;
+    expect(helpTexts.length).toBe(2);
+    expect(helpTexts[0].message).toBe("This is an error message.");
+    expect(helpTexts[0].messageType).toBe("error");
+
+    expect(helpTexts[1].message).toBe("This is a warning message.");
+    expect(helpTexts[1].messageType).toBe("warning");
+  });
+
+  test("should not render messages when messageArr is not passed as a property", async () => {
+    const el = await fixture<RadioGroup.ELEMENT>(html`
+    <md-radiogroup group-label="recommendations">
+      <md-radio slot="radio" value="developing">Developing</md-radio>
+      <md-radio slot="radio" value="linting">Linting</md-radio>
+      <md-radio slot="radio" value="testing">Testing</md-radio>
+      <md-radio slot="radio" value="building">Building</md-radio>
+    </md-radiogroup>
+  `);
+
+    await elementUpdated(el);
+    const helpTexts = el.shadowRoot?.querySelectorAll("md-help-text");
+    expect(helpTexts?.length).toBe(0);
   });
 });

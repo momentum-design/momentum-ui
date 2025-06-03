@@ -1,13 +1,20 @@
 import { AbstractControl } from "./Form.types";
 import { FormArray } from "./FormArray";
-import { FormControl } from "./FormControl";
+import { ControlListener, FormControl } from "./FormControl";
+import { ObservableControl } from "./ObservableControl";
 
-export class FormGroup<FormValues extends Record<string, unknown>> implements AbstractControl<FormValues> {
+export class FormGroup<FormValues extends Record<string, unknown>> extends ObservableControl<FormValues> implements AbstractControl<FormValues> {
     constructor(
         private readonly controls: {
             [Field in keyof FormValues]: AbstractControl<FormValues[Field]>;
         }
-    ) { }
+    ) {
+        super();
+        for (const key of Object.keys(this.controls) as Array<keyof FormValues>) {
+            const child = this.controls[key];
+            child.onChange?.(() => this.emitChange());
+        }
+    }
 
     // This cast to `any` is intentional:
     // - The return type is conditionally determined by the fieldName type passed in
@@ -41,5 +48,13 @@ export class FormGroup<FormValues extends Record<string, unknown>> implements Ab
         for (const control of Object.values(this.controls)) {
             control.validate();
         }
+        this.emitChange();
+    }
+
+    markAllAsTouched(): void {
+        Object.values(this.controls).forEach((control) => {
+            control.markAllAsTouched?.();
+            control.markAsTouched?.();
+        });
     }
 }

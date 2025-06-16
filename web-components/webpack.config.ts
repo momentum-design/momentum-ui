@@ -18,6 +18,7 @@ const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg");
+const iconSvgs = path.resolve("node_modules/@momentum-design/icons/dist/svg");
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
@@ -50,14 +51,6 @@ const common: webpack.Configuration = {
         test: /\.(png|svg|jpe?g)$/,
         use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
         include: pSrc
-      },
-      {
-        test: /\.svg$/,
-        use: {
-          loader: "url-loader",
-          options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
-        },
-        include: [path.resolve("node_modules/@momentum-design/icons/dist/svg")]
       }
     ]
   }
@@ -120,6 +113,7 @@ export const commonDev = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
         { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
+        { from: `${iconSvgs}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
         { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
         { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
@@ -236,6 +230,7 @@ const commonDist = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
         { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
+        { from: `${iconSvgs}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "assets/styles/[name][ext]" }
       ]
     }),

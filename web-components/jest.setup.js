@@ -9,3 +9,12 @@ class ResizeObserverMock {
 }
 
 global.ResizeObserver = ResizeObserverMock;
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    status: 200,
+    text: () => Promise.resolve("<svg></svg>"),
+    json: () => Promise.resolve({})
+  })
+);

@@ -399,6 +399,7 @@ export namespace Tabs {
       }
 
       const isVertical = this.direction === "vertical";
+      const tabSelectedIndex = this.selectedIndex < 0 ? 0 : this.selectedIndex;
 
       tabs.forEach((tab, index) => {
         const uniqueId = generateSimpleUniqueId("tabs");
@@ -406,7 +407,7 @@ export namespace Tabs {
         const panelId = "tab_panel_" + uniqueId;
         tab.setAttribute("id", tabId);
         tab.setAttribute("aria-controls", panelId);
-        tab.selected = this.selectedIndex === index;
+        tab.selected = tabSelectedIndex === index;
         tab.newMomentum = this.newMomentum;
         tab.type = this.type;
         tab.variant = this.variant;
@@ -429,7 +430,7 @@ export namespace Tabs {
         if (panel) {
           panel.setAttribute("id", panelId);
           panel.setAttribute("aria-labelledby", tabId);
-          panel.selected = this.selectedIndex === index;
+          panel.selected = tabSelectedIndex === index;
           if (tab.disabled) {
             panel.hidden = true;
             panel.selected = false;
@@ -439,7 +440,7 @@ export namespace Tabs {
         }
       });
 
-      let selectedIndex = this.selectedIndex;
+      let selectedIndex = tabSelectedIndex;
       while (selectedIndex < tabs.length && tabs[selectedIndex].disabled) {
         selectedIndex++;
       }

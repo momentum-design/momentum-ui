@@ -167,6 +167,7 @@ export namespace Avatar {
     }
     private readonly iconNameMap: { [key: string]: string } = {
       "channel-chat": "chat-filled",
+      "channel-chat-outbound": "chat-outbound-filled",
       "channel-social": "sms-message-filled",
       "channel-sms-inbound": "sms-filled",
       "channel-sms-outbound": "sms-outgoing-filled",

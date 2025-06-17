@@ -30,7 +30,8 @@ const TaskItemMediaType = {
   VIBER: "viber",
   WECHAT: "wechat",
   WEBEX: "webex",
-  GOOGLE_MESSAGES: "googlemessages"
+  GOOGLE_MESSAGES: "googlemessages",
+  OUTBOUND_CHAT: "outbound_chat"
 } as const;
 
 export { TaskItemStatus, TaskItemMediaType };

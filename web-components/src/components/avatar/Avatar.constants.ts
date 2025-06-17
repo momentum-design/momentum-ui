@@ -4,6 +4,7 @@ const AvatarStyle = ["default", "table"] as const;
 
 const AvatarChannelType = [
   "channel-chat",
+  "channel-chat-outbound",
   "channel-sms-inbound",
   "channel-sms-outbound",
   "channel-email-inbound",

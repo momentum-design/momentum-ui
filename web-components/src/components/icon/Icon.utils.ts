@@ -63,4 +63,20 @@ function getSvgContentFromInline(importedIcon: string | { data: string }) {
   return parseSvgContent(svgContent);
 }
 
-export { fetchSVG, getSvgContentFromFile, getSvgContentFromInline, isSVGPath };
+async function getMomentumDesignIconContent(iconName: string) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+
+  if (!importedIcon) {
+    console.error(`Icon: ${iconName} does not exist in the design system.`);
+    return;
+  }
+
+  if (isSVGPath(importedIcon)) {
+    return await getSvgContentFromFile(importedIcon);
+  } else {
+    return getSvgContentFromInline(importedIcon);
+  }
+}
+
+export { fetchSVG, getMomentumDesignIconContent, getSvgContentFromFile, getSvgContentFromInline, isSVGPath };

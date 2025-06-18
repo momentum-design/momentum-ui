@@ -303,6 +303,8 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="gold"></md-avatar>
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="pink"></md-avatar>
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="lime"></md-avatar>
+      <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="glass" state="rest"></md-avatar>
+      <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="glass" state="active"></md-avatar>
       <h3>Medium Src Avatar</h3>
       <md-avatar
         alt="avatar"

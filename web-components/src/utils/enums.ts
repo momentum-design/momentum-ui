@@ -41,7 +41,8 @@ export const avatarColorOptions = [
   "violet",
   "cyan",
   "cobalt",
-  "pink"
+  "pink",
+  "glass"
 ] as const;
 
 export const TooltipDirection = ["top", "left", "right", "bottom"];

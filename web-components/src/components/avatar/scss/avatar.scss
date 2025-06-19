@@ -227,6 +227,15 @@
     &.md-avatar--lime {
       background-color: var(--avatar-lime-bg-color);
     }
+
+    &.md-avatar--glass {
+      background-color: var(--avatar-glass-bg-color);
+      color: var(--avatar-glass-text-color);
+
+      &.active {
+        background-color: var(--avatar-glass-active-bg-color);
+      }
+    }
   }
 
   .md-avatar__img--hidden {

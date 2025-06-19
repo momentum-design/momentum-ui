@@ -1,15 +1,17 @@
 function parseSvgContent(svgContent: string): HTMLElement | null {
-  try {
-    const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
-    return doc.documentElement;
-  } catch (_error) {
-    try {
-      return new DOMParser().parseFromString(svgContent, "text/html").body.children[0] as HTMLElement;
-    } catch (error) {
-      console.error("Error parsing svg content: ", error);
-      return null;
-    }
+  if (!svgContent) {
+    console.error("SVG content is empty or undefined.");
+    return null;
   }
+
+  const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
+  const parserError = doc.querySelector("parsererror");
+  if (parserError) {
+    console.error("Error parsing svg content: ", doc.documentElement.innerText);
+    return null;
+  }
+
+  return doc.documentElement;
 }
 
 const fetchSVG = async (url: string, name: string, fileExtension = "svg"): Promise<HTMLElement | null> => {
@@ -28,14 +30,14 @@ const fetchSVG = async (url: string, name: string, fileExtension = "svg"): Promi
   }
 };
 
-function isSVGPath(importedIcon: string | object) {
+function isSVGPath(importedIcon: string | object): boolean {
   if (typeof importedIcon === "object") {
     return false;
   }
   return importedIcon.endsWith(".svg");
 }
 
-function decodeIfBase64EncodedSvg(data: string) {
+function decodeIfBase64EncodedSvg(data: string): string {
   const base64DataRegex = /data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/;
   const base64DataMatch = base64DataRegex.exec(data);
   if (base64DataMatch?.[1]) {
@@ -53,7 +55,7 @@ async function getSvgContentFromFile(importedIcon: string): Promise<HTMLElement 
   return getSvgContentFromInline(responseText);
 }
 
-function getSvgContentFromInline(importedIcon: string | { data: string }) {
+function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLElement | null {
   let svgContent = "";
   if (typeof importedIcon === "object" && "data" in importedIcon) {
     svgContent = importedIcon.data;
@@ -79,4 +81,4 @@ async function getMomentumDesignIconContent(iconName: string) {
   }
 }
 
-export { fetchSVG, getMomentumDesignIconContent, getSvgContentFromFile, getSvgContentFromInline, isSVGPath };
+export { fetchSVG, getMomentumDesignIconContent, getSvgContentFromInline, isSVGPath };

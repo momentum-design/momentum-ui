@@ -361,6 +361,7 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="idle" size="48" type="idle" newMomentum></md-avatar>
       <md-avatar title="inactive" size="48" type="inactive" newMomentum></md-avatar>
       <h3>New Icon Avatar Status Size</h3>
+      <md-avatar title="active" size="16" newMomentum></md-avatar>
       <md-avatar title="active" size="24" type="active" newMomentum></md-avatar>
       <md-avatar title="active" size="32" type="active" newMomentum></md-avatar>
       <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>

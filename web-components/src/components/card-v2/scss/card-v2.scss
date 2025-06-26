@@ -9,8 +9,12 @@
         border-radius: $md-card-v2-border-radius;
         padding: $md-card-v2-padding;
         border: 1px solid transparent;
-        background: $md-card-v2-background;
+        background: var(--md-card-v2-background, $md-card-v2-background);
         font-family: $brand-font-medium;
+
+        &:hover {
+            background: var(--md-card-v2-background-hover, $md-card-v2-background-hover);
+        }
 
         &.md-card--active {
             border: $md-card-v2-border-active;
@@ -51,6 +55,7 @@
 
         &-content {
             display: flex;
+            flex-direction: column;
             flex: 1;
             gap: 8px;
             user-select: none;
@@ -74,11 +79,49 @@
 
         &-footer {
             display: flex;
-            flex: 1;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            
+            &-content {
+                display: flex;
+                align-items: center;
 
-            &.hidden {
-                visibility: hidden;
+                ::slotted(*) {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
+               }
+            }
+
+            &-expand {
+                margin-left: auto;
+
+                &.hidden {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+}
+
+:host(md-card-v2[has-extra-info]) {
+    .md-card-v2 {
+        height: $md-card-v2-height-with-extra-info;
+        gap: 8px;
+        &-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            user-select: none;
+            gap: 6px;
+
+            &-extra-info {
+                display: inline-flex;
+                align-items: center;
+                color: $md-card-v2-extra-info-color;
+                font-size: $md-card-v2-extra-info-font-size;
+                line-height: $md-card-v2-extra-info-line-height;
             }
         }
     }
@@ -88,4 +131,10 @@
   .md-card-v2:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
+}
+
+:host(md-card-v2[selected]) {
+    .md-card-v2 {
+        background: var(--md-card-v2-background-hover, $md-card-v2-background-hover);
+    }
 }

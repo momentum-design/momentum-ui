@@ -11,7 +11,7 @@ import "@/components/icon/Icon";
 import "@/components/tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { Duration } from "luxon";
@@ -38,7 +38,10 @@ export namespace CardV2 {
     @property({ type: Boolean, reflect: true }) expandable = false;
     @property({ type: String, attribute: "expand-aria-label" }) expandAriaLabel = "Expand for more details";
 
-    @internalProperty() 
+    @query('slot[name="card-extra-info"]')
+    private readonly extraInfoSlot!: HTMLSlotElement;
+
+    @internalProperty()
     private interval: number | undefined;
 
     @internalProperty()
@@ -46,6 +49,7 @@ export namespace CardV2 {
 
     connectedCallback() {
       super.connectedCallback();
+      this.checkForExtraInfoSlot();
     }
 
     disconnectedCallback() {
@@ -86,6 +90,19 @@ export namespace CardV2 {
       );
     }
 
+    private checkForExtraInfoSlot() {
+      const hasExtraInfoSlotContent = this.extraInfoSlot?.assignedNodes().length > 0;
+      if (hasExtraInfoSlotContent) {
+        this.setAttribute("has-extra-info", "");
+      } else {
+        this.removeAttribute("has-extra-info");
+      }
+    }
+
+    handleExtraInfoSlotChange(_event: Event) {
+      this.checkForExtraInfoSlot();
+    }
+
     private get cardClassMap() {
       return {
         "md-card-v2": true,
@@ -100,9 +117,9 @@ export namespace CardV2 {
       };
     }
 
-    private get footerClassMap() {
+    private get footerExpandClassMap() {
       return {
-        "md-card-v2-footer": true,
+        "md-card-v2-footer-expand": true,
         hidden: !this.expandable
       };
     }
@@ -128,18 +145,28 @@ export namespace CardV2 {
       `;
     }
 
-    private renderFooter() {
+    private renderExpandButton() {
       return html`
-        <div class="${classMap(this.footerClassMap)}">
+        <div class="${classMap(this.footerExpandClassMap)}">
           <md-button ariaLabel="${this.expandAriaLabel}" circle size="28">
             <md-icon
               slot="icon"
               iconSet="momentumDesign"
               name=${this.isCardActive ? "arrow-circle-up-bold" : "arrow-circle-down-bold"}
               size="18"
-            >
-            </md-icon>
+            ></md-icon>
           </md-button>
+        </div>
+      `;
+    }
+
+    private renderFooter() {
+      return html`
+        <div class="md-card-v2-footer">
+          <div class="md-card-v2-footer-content">
+            <slot name="card-footer-content"></slot>
+          </div>
+          ${this.renderExpandButton()}
         </div>
       `;
     }
@@ -162,6 +189,9 @@ export namespace CardV2 {
           <div class="md-card-v2-header">${this.renderHeader()}</div>
           <div class="${classMap(this.contentClassMap)}">
             <h2>${this.renderedData}</h2>
+            <div class="md-card-v2-content-extra-info">
+              <slot name="card-extra-info" @slotchange=${this.handleExtraInfoSlotChange}></slot>
+            </div>
           </div>
           ${this.renderFooter()}
         </div>

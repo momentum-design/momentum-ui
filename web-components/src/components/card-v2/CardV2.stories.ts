@@ -14,6 +14,7 @@ import { html } from "lit";
 const render = (args: Args) => {
   return html`
     <md-card-v2
+      style="--md-card-v2-background: transparent; --md-card-v2-background-hover: var(--md-glass-overlay-bg-color);"
       state=${args.state}
       identifier=${args.identifier}
       header=${args.header}
@@ -26,6 +27,26 @@ const render = (args: Args) => {
         action("expand-card-toggled")(e.detail);
       }}
     >
+      <div slot="card-extra-info">
+        <md-icon
+          slot="icon"
+          name="arrow-tail-up-bold"
+          color="var(--md-alert-success-text-color)"
+          size="18"
+          iconSet="momentumDesign"
+        ></md-icon>
+        <span>This is a test</span>
+      </div>
+      <div slot="card-footer-content">
+        <md-icon
+          slot="icon"
+          name="people-filled"
+          color="var(--md-primary-text-color)"
+          size="14"
+          iconSet="momentumDesign"
+        ></md-icon>
+        <span>54.0</span>
+      </div>
     </md-card-v2>
   `;
 };

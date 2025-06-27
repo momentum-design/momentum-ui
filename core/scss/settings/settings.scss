@@ -4224,7 +4224,7 @@ $contrast-class: '#{$prefix}--contrast' !default;
 $base-cap-height: 0.0618em;
 
 // 8px used in _trumps.spacing.responsive.scss
-$base-unit-rem: $rem-base / 1px;
+$base-unit-rem: calc($rem-base / 1px);
 $base-unit-px: 4;
 $base-rem: 0.5rem;
 
@@ -4260,10 +4260,10 @@ $definition-list-margin-bottom: 0.5rem;
 
 // ex.: golden ratio
 // current: 16 * 1.71429 / 4 = 6.85716
-$base-scale: $base-unit-rem * $base-line-height-ratio / $base-unit-px;
+$base-scale: calc($base-unit-rem * $base-line-height-ratio / $base-unit-px);
 
 // 4px = 0.25rem
-$base-unit: $base-line-height / $base-scale * $rem-base;
+$base-unit: calc($base-line-height / $base-scale * $rem-base);
 
 // We use these to control text direction settings
 $text-direction: ltr;

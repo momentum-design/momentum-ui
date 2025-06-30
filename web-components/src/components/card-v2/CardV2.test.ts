@@ -109,7 +109,7 @@ describe("Card-v2 component", () => {
       "Test Data",
       false
     );
-    const footer = element.shadowRoot?.querySelector(".md-card-v2-footer");
+    const footer = element.shadowRoot?.querySelector(".md-card-v2-footer-expand");
     expect(footer).not.toBeNull();
     expect(footer?.classList.contains("hidden")).toBe(true);
   });
@@ -224,5 +224,40 @@ describe("Card-v2 component", () => {
     jest.advanceTimersByTime(61000); // 61 seconds
     await elementUpdated(element);
     expect(data?.textContent).toBe("00:01:01");    
+  });
+
+  it("should show extra-info", async () => {
+    const element = await fixture(html`
+      <md-card-v2
+        state=${CardState.ACTIVE}
+        identifier=${"123"}
+        header=${"Test Title"}
+        info=${"Test info"}
+        data=${"00:00:00"}
+        .expandable=${false}
+      >
+        <div slot="card-extra-info">
+          <md-icon slot="icon" name="arrow-tail-up-bold" color="green-50" size="18" iconSet="momentumDesign"></md-icon>
+          <span>This is a test</span>
+        </div>
+        <div slot="card-footer-content">
+          <md-icon
+            slot="icon"
+            name="people-filled"
+            color="var(--md-primary-text-color)"
+            size="14"
+            iconSet="momentumDesign"
+          ></md-icon>
+          <span>54.0</span>
+        </div>
+      </md-card-v2>
+ `);
+    const extraInfo = element.shadowRoot?.querySelector(".md-card-v2-content-extra-info");
+    expect(extraInfo).not.toBeNull();
+    const extraInfoSlot = element.shadowRoot?.querySelector('slot[name="card-extra-info"]');
+    expect(extraInfoSlot).not.toBeNull();
+    const footerSlot = element.shadowRoot?.querySelector('slot[name="card-footer-content"]');
+    expect(footerSlot).not.toBeNull();
+
   });
 });

@@ -164,7 +164,7 @@ export const chipTemplate = html`
     <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #####</span>
   </md-chip>
   <h3 class="sandbox-header">Agent Chip informational</h3>
-  <md-chip value="Agent: John Doe" .interactive=${false}> </md-chip>
+  <md-chip value="Agent: John Doe" decorative> </md-chip>
   <h3 class="sandbox-header">Agent Chip</h3>
   <md-chip value="Kevin Hyde" color="neutral" small>
     <md-avatar

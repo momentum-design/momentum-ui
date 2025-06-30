@@ -35,6 +35,7 @@ export namespace Chip {
     @property({ type: String }) role: Chip.Role = "group";
     @property({ type: String, reflect: true }) id = "";
     @property({ type: Boolean }) small = false;
+        @property({ type: Boolean, reflect: true }) interactive = false;
     @property({ type: Boolean }) readonly = false;
     @property({ type: Boolean, reflect: true }) selected = false;
     @property({ type: Boolean }) disabled = false;
@@ -256,6 +257,13 @@ export namespace Chip {
         "suppress-max-width": this.suppressDefaultMaxWidth
       };
 
+      let ariaPressedValue: "true" | "false" | undefined;
+      if (this.interactive) {
+        ariaPressedValue = this.selected ? "true" : "false";
+      } else {
+        ariaPressedValue = undefined;
+      }
+
       return html`
         ${this.getStyles()}
         <md-tooltip
@@ -268,13 +276,9 @@ export namespace Chip {
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
-            aria-pressed=${this.selected}
-            @click=${() => {
-              this.handleClick();
-            }}
-            @keydown=${(e: KeyboardEvent) => {
-              this.handleKeydown(e);
-            }}
+            aria-pressed=${ifDefined(ariaPressedValue)}
+            @click=${this.interactive ? this.handleClick : undefined}
+            @keydown=${this.interactive ? this.handleKeydown : undefined}
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>

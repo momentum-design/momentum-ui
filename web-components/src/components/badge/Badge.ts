@@ -12,11 +12,12 @@ import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { BadgeCircleSize } from "./badge.constant";
+import { BadgeCircleSize, BadgeSize } from "./badge.constant";
 import styles from "./scss/module.scss";
 
 export namespace Badge {
   export type BadgeCircleSize = (typeof BadgeCircleSize)[keyof typeof BadgeCircleSize];
+  export type BadgeSize = (typeof BadgeSize)[keyof typeof BadgeSize];
   @customElementWithCheck("md-badge")
   export class ELEMENT extends LitElement {
     @property({ type: String }) ariaLabel = "";
@@ -29,6 +30,7 @@ export namespace Badge {
     @property({ type: Boolean }) compact = false;
     @property({ type: Boolean }) circle = false;
     @property({ type: Number, attribute: "circle-size" }) circleSize: BadgeCircleSize = BadgeCircleSize[40];
+    @property({ type: Number }) size?: BadgeSize;
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) split = false;
     @property({ type: Boolean }) disabled = false;
@@ -87,7 +89,8 @@ export namespace Badge {
         [`md-badge--circle-${this.circleSize}`]: this.circle,
         "md-badge--split": this.split,
         "md-badge--compact": this.compact,
-        "md-badge--small": this.small,
+        "md-badge--small": this.small || this.size === 24,
+        [`md-badge--size-${this.size}`]: !!this.size && this.size !== 24,
         "md-badge--outline": this.outlined,
         "md-badge--disabled": this.disabled,
         [`md-badge--${this.color}`]: !this.disabled && this.color

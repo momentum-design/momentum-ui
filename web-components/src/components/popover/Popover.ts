@@ -10,7 +10,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
-import { querySelectorDeep } from "@/utils/helpers";
+import { getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
@@ -360,6 +360,12 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   useLegacyFindFocusable: () => boolean = () => false;
 
+  /** @internal */
+  private cleanupAutoUpdate: (() => void) | null = null;
+
+  /** @internal */
+  private previousActiveElement: HTMLElement | null = null;
+
   constructor() {
     super();
     this.utils = new PopoverUtils(this);
@@ -382,7 +388,14 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   override async disconnectedCallback() {
     super.disconnectedCallback();
+
+    if (this.cleanupAutoUpdate) {
+      this.cleanupAutoUpdate();
+      this.cleanupAutoUpdate = null;
+    }
+
     this._controller = null;
+    this.previousActiveElement = null;
     this.removeEventListeners();
     PopoverEventManager.onDestroyedPopover(this);
     popoverStack.remove(this);
@@ -523,8 +536,15 @@ export class Popover extends FocusTrapMixin(LitElement) {
   private readonly onOutsidePopoverClick = (event: MouseEvent) => {
     const path = event.composedPath() as HTMLElement[];
 
-    // If the click is inside this specific popover or its trigger, do nothing.
-    if (path.includes(this) || (this.triggerElement && path.includes(this.triggerElement))) {
+    // First check if the click is on the trigger element
+    if (this.triggerElement && path.includes(this.triggerElement)) {
+      return;
+    }
+
+    // Simple check if the popover itself is in the event path
+    const insidePopoverClick = path.includes(this);
+
+    if (insidePopoverClick) {
       return;
     }
 
@@ -534,11 +554,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
       return;
     }
 
-    // If we reach here, the click was:
-    // - Not inside this popover or its trigger.
-    // - Not inside any other open popover.
-    // This constitutes an "outside click" for this specific popover instance.
-    // Clicks on this popover's own backdrop (if any) will also fall here.
+    // If we reach here, the click was truly outside the popover
     this.hideThisPopover();
   };
 
@@ -629,6 +645,11 @@ export class Popover extends FocusTrapMixin(LitElement) {
       }
       PopoverEventManager.onShowPopover(this);
     } else {
+      if (this.cleanupAutoUpdate) {
+        this.cleanupAutoUpdate();
+        this.cleanupAutoUpdate = null;
+      }
+
       popoverStack.removeItem(this);
 
       if (this.backdropElement) {
@@ -662,8 +683,13 @@ export class Popover extends FocusTrapMixin(LitElement) {
         }
       }
       if (this.focusBackToTrigger) {
-        this.setFocusOnDeepestNestedElement?.(this.triggerElement);
+        if (this.previousActiveElement instanceof HTMLElement) {
+          this.previousActiveElement.focus();
+        } else {
+          this.setFocusOnDeepestNestedElement?.(this.triggerElement);
+        }
       }
+      this.previousActiveElement = null;
       PopoverEventManager.onHidePopover(this);
     }
   }
@@ -742,6 +768,10 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
   private readonly onMouseEnterTrigger = () => {
     if (this.trigger.includes("mouseenter")) {
+      if (!this.visible) {
+        this.previousActiveElement = getDeepActiveElement();
+      }
+
       //Open with delay
       this.showPopover(true);
     }
@@ -795,6 +825,12 @@ export class Popover extends FocusTrapMixin(LitElement) {
   private positionPopover() {
     if (!this.triggerElement) return;
 
+    // Clean up any existing autoUpdate before starting a new one
+    if (this.cleanupAutoUpdate) {
+      this.cleanupAutoUpdate();
+      this.cleanupAutoUpdate = null;
+    }
+
     const middleware = [shift()];
     let popoverOffset = this.offset;
 
@@ -830,7 +866,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
     middleware.push(offset(popoverOffset));
 
-    autoUpdate(this.triggerElement, this, async () => {
+    this.cleanupAutoUpdate = autoUpdate(this.triggerElement, this, async () => {
       if (!this.triggerElement) return;
 
       const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {

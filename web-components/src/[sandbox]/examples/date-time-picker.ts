@@ -35,6 +35,5 @@ export const dateTimePickerTemplate = html`
     .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
     .shouldCloseOnSelect=${true}
     value="2021-01-31"
-    newMomentum
   ></md-date-time-picker>
 `;

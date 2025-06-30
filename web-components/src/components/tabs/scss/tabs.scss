@@ -60,7 +60,6 @@
   }
 
   .md-menu-overlay__more_tab {
-    height: $new-tab-height;
     min-height: $tab-overflow-button-height;
 
     &.md-menu-overlay__more_tab--measuring {
@@ -105,8 +104,16 @@
 
   &.tab-new-momentum {
     .md-menu-overlay__more_tab {
-      min-height: 0;
-      padding: 0; 
+   
+      &[size="28"] {
+        height: $tab-height-28;
+        min-height: $tab-height-28;
+      }
+  
+      &[size="32"] {
+        height: $tab-height-32;
+        min-height: $tab-height-32; 
+      }
     }
   }
 
@@ -116,9 +123,17 @@
 }
 
 .tab-new-momentum {
-  height: $new-tab-height;
-  min-height: $new-tab-height;
   padding: 0;
+
+  &[size="28"] {
+    height: $tab-height-28;
+    min-height: $tab-height-28;
+  }
+
+  &[size="32"] {
+    height: $tab-height-32; 
+    min-height: $tab-height-32;
+  }
 
   md-icon,
   img {
@@ -231,7 +246,7 @@ md-menu-overlay {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: calc($new-tab-height + $new-tab-padding);
+    height: calc($tab-height-28 + $new-tab-padding);
 
     .tabs-left-arrow {
       margin-right: rem-calc(12);
@@ -248,11 +263,20 @@ md-menu-overlay {
       position: relative;
       display: inline-flex;
       gap: rem-calc(8);
-      height: calc($new-tab-height + $new-tab-padding + 2px);
-      padding: rem-calc(5);
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+
+      &[size="28"] {
+        height: calc($tab-height-28 + $new-tab-padding + 2px);
+        padding: rem-calc(5);
+      }
+
+      &[size="32"] {
+        height: calc($tab-height-32 + $new-tab-padding + 2px);
+        padding: rem-calc(5);   
+      }
     }
+    
     .md-tab__list::-webkit-scrollbar {
       display: none;
     }
@@ -269,21 +293,35 @@ md-menu-overlay {
     border-right: $tab-list-border;
     display: inline-flex;
     flex-direction: column;
-    height: 100%;
-    gap: 0.25rem;
     justify-content: flex-start;
+    height: 100%; 
+    gap: 0.25rem;
     width: auto;
 
     ::slotted([slot="tab"]) {
       border-left: $tab-border;
       display: block;
-      height: $new-tab-height;
       text-align: left;
 
       &[selected] {
         color: var(--tabs-default-active);
       }
     }
+
+    &.tab-new-momentum {
+      padding: 0;
+
+      &[size="28"] ::slotted([slot="tab"]) {
+        height: $tab-height-28;
+        min-height: $tab-height-28;
+      }
+
+      &[size="32"] ::slotted([slot="tab"]) {
+        height: $tab-height-32;
+        min-height: $tab-height-32; 
+      }
+    }
+    
   }
 
   .md-tab__content ::slotted([slot="panel"]) {

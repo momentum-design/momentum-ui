@@ -71,6 +71,8 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
       return getChannelAvatar(selected, status, "channel-we-chat");
     case TaskItemMediaType.WEBEX:
       return getChannelAvatar(selected, status, "channel-webex");
+    case TaskItemMediaType.OUTBOUND_CHAT:
+      return getChannelAvatar(selected, status, "channel-chat-outbound");
     case TaskItemMediaType.GOOGLE_MESSAGES:
       return getChannelAvatar(
         selected,
@@ -188,6 +190,12 @@ export const renderLegacyTaskType = (mediaType: string, selected: boolean, iconS
       return html`
         <md-badge bgColor="#25D366" circle>
           <md-icon name="whatsApp_16" iconSet="momentumUI" color="white-100"></md-icon>
+        </md-badge>
+      `;
+    case TaskItemMediaType.OUTBOUND_CHAT:
+      return html`
+        <md-badge color="blue" circle>
+          <md-icon name="chat-outbound-filled" size="20" iconSet="momentumDesign"></md-icon>
         </md-badge>
       `;
     default:

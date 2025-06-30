@@ -89,6 +89,7 @@ export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
 export { iconUrlManager } from "./managers/IconUrlManager";
 export { ThemeManager, themeManager } from "./managers/ThemeManager";
+export { FormGroup, FormArray, FormControl, Validators, AbstractControl, ValidationError } from "./components/form";
 
 export type {
     Events,

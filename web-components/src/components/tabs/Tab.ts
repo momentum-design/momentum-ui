@@ -42,6 +42,7 @@ export namespace Tab {
     @property({ type: Boolean }) onlyIcon = false;
     @property({ type: String }) variant: Tabs.TabVariant = "ghost";
     @property({ type: Boolean, attribute: "visible-tab", reflect: true }) visibleTab = false;
+    @property({ type: Number }) size?: Tabs.TabSize = 28;
 
     private _disabled = false;
 
@@ -228,7 +229,7 @@ export namespace Tab {
           part="tab"
           class="${classMap({
             disabled: this.disabled,
-            "tab-content": true,
+            "md-tab-content": true,
             closable: this.closable !== "",
             pill: this.type === "pill",
             rounded: this.type === "rounded",

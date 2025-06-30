@@ -54,9 +54,9 @@ export namespace ListItem {
 
     render() {
       return html`
-        <li class="md-list-item ${classMap(this.listItemTemplateClassMap)}" part="list-item">
+        <div class="md-list-item ${classMap(this.listItemTemplateClassMap)}" part="list-item">
           <slot></slot>
-        </li>
+        </div>
       `;
     }
   }

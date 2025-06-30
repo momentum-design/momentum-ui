@@ -19,6 +19,11 @@
       min-width: auto;
     }
 
+    &--size-36 {
+      height: 2.25rem;
+      padding: rem-calc(8 12 8 12);      
+    }
+
     &--compact,
     &--split {
       @include badge-size($padding: rem-calc(4 16 4 4), $text-size: var(--body-secondary, rem-calc(12)));
@@ -179,10 +184,11 @@
     }
 
     &--disabled {
-      @include badge-style(var(--md-quaternary-two-bg-color), false, var(--md-disabled-text-color));
+      @include badge-style(var(--badge-disabled-bg-color), false, var(--badge-disabled-text-color));
+      border: 1px solid var(--badge-disabled-border-color);
 
       ::slotted(md-icon) {
-        color: var(--md-disabled-text-color);
+        color: var(--badge-disabled-text-color);
       }
     }
   }

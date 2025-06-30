@@ -332,6 +332,7 @@
     @include chip-sentiment-style(
       var(--badge-positive-bg-color),
       var(--badge-positive-text-color),
+      var(--badge-positive-icon-color),
       var(--badge-positive-border-color),
       var(--badge-positive-hover-bg-color),
       var(--badge-positive-active-bg-color)
@@ -342,6 +343,7 @@
     @include chip-sentiment-style(
       var(--badge-negative-bg-color),
       var(--badge-negative-text-color),
+      var(--badge-negative-icon-color),
       var(--badge-negative-border-color),
       var(--badge-negative-hover-bg-color),
       var(--badge-negative-active-bg-color)
@@ -352,6 +354,7 @@
     @include chip-sentiment-style(
       var(--badge-neutral-bg-color),
       var(--badge-neutral-text-color),
+      var(--badge-neutral-icon-color),
       var(--badge-neutral-border-color),
       var(--badge-neutral-hover-bg-color),
       var(--badge-neutral-active-bg-color)
@@ -390,6 +393,86 @@
     @include chip-status-style(
       var(--badge-status-orange-bg-color),
       var(--badge-status-orange-text-color)
+    );
+  }
+
+  &--confidence-default {
+    @include chip-confidence-style(
+      var(--badge-confidence-default-bg-color),
+      var(--badge-confidence-default-text-color),
+      var(--badge-confidence-default-border-color),
+      var(--badge-confidence-default-hover-bg-color),
+      var(--badge-confidence-default-active-bg-color)
+    );
+  }
+
+  &--confidence-violet {
+    @include chip-confidence-style(
+      var(--badge-confidence-violet-bg-color),
+      var(--badge-confidence-violet-text-color),
+      var(--badge-confidence-violet-border-color),
+      var(--badge-confidence-violet-hover-bg-color),
+      var(--badge-confidence-violet-active-bg-color)
+    );
+  }
+
+  &--confidence-slate {
+    @include chip-confidence-style(
+      var(--badge-confidence-slate-bg-color),
+      var(--badge-confidence-slate-text-color),
+      var(--badge-confidence-slate-border-color),
+      var(--badge-confidence-slate-hover-bg-color),
+      var(--badge-confidence-slate-active-bg-color)
+    );
+  }
+
+  &--confidence-gold {
+    @include chip-confidence-style(
+      var(--badge-confidence-gold-bg-color),
+      var(--badge-confidence-gold-text-color),
+      var(--badge-confidence-gold-border-color),
+      var(--badge-confidence-gold-hover-bg-color),
+      var(--badge-confidence-gold-active-bg-color)
+    );
+  }
+
+  &--confidence-mint {
+    @include chip-confidence-style(
+      var(--badge-confidence-mint-bg-color),
+      var(--badge-confidence-mint-text-color),
+      var(--badge-confidence-mint-border-color),
+      var(--badge-confidence-mint-hover-bg-color),
+      var(--badge-confidence-mint-active-bg-color)
+    );
+  }
+
+  &--confidence-pink {
+    @include chip-confidence-style(
+      var(--badge-confidence-pink-bg-color),
+      var(--badge-confidence-pink-text-color),
+      var(--badge-confidence-pink-border-color),
+      var(--badge-confidence-pink-hover-bg-color),
+      var(--badge-confidence-pink-active-bg-color)
+    );
+  }
+
+  &--confidence-cobalt {
+    @include chip-confidence-style(
+      var(--badge-confidence-cobalt-bg-color),
+      var(--badge-confidence-cobalt-text-color),
+      var(--badge-confidence-cobalt-border-color),
+      var(--badge-confidence-cobalt-hover-bg-color),
+      var(--badge-confidence-cobalt-active-bg-color)
+    );
+  }
+
+  &--confidence-lime {
+    @include chip-confidence-style(
+      var(--badge-confidence-lime-bg-color),
+      var(--badge-confidence-lime-text-color),
+      var(--badge-confidence-lime-border-color),
+      var(--badge-confidence-lime-hover-bg-color),
+      var(--badge-confidence-lime-active-bg-color)
     );
   }
 

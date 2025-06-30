@@ -132,7 +132,8 @@ export namespace Avatar {
       return {
         ...((!this.newMomentum || this.type === "bot") && this.type ? { [`md-avatar--${this.type}`]: true } : {}),
         [`md-avatar--${this.size}`]: !!this.size,
-        [`md-avatar--${this.color}`]: !!this.color
+        [`md-avatar--${this.color}`]: !!this.color,
+        active: this.state === "active"
       };
     }
 
@@ -140,7 +141,8 @@ export namespace Avatar {
       return {
         "md-decrypting": this.decrypting,
         [`md-avatar--${this.color}`]: this.color,
-        "new-momentum": this.newMomentum
+        "new-momentum": this.newMomentum,
+        active: this.state === "active"
       };
     }
 
@@ -167,6 +169,7 @@ export namespace Avatar {
     }
     private readonly iconNameMap: { [key: string]: string } = {
       "channel-chat": "chat-filled",
+      "channel-chat-outbound": "chat-outbound-filled",
       "channel-social": "sms-message-filled",
       "channel-sms-inbound": "sms-filled",
       "channel-sms-outbound": "sms-outgoing-filled",

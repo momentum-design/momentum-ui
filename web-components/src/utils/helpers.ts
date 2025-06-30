@@ -193,3 +193,13 @@ export function getElementByIdDeep(id: string, base: HTMLElement | Document | Sh
 
   return null;
 }
+
+export function getDeepActiveElement(): HTMLElement | null {
+  let active = document.activeElement;
+
+  while (active?.shadowRoot?.activeElement) {
+    active = active.shadowRoot.activeElement;
+  }
+
+  return active as HTMLElement;
+}

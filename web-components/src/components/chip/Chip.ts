@@ -35,7 +35,7 @@ export namespace Chip {
     @property({ type: String }) role: Chip.Role = "group";
     @property({ type: String, reflect: true }) id = "";
     @property({ type: Boolean }) small = false;
-        @property({ type: Boolean, reflect: true }) interactive = false;
+    @property({ type: Boolean }) interactive = true;
     @property({ type: Boolean }) readonly = false;
     @property({ type: Boolean, reflect: true }) selected = false;
     @property({ type: Boolean }) disabled = false;
@@ -257,12 +257,7 @@ export namespace Chip {
         "suppress-max-width": this.suppressDefaultMaxWidth
       };
 
-      let ariaPressedValue: "true" | "false" | undefined;
-      if (this.interactive) {
-        ariaPressedValue = this.selected ? "true" : "false";
-      } else {
-        ariaPressedValue = undefined;
-      }
+      const ariaPressed = this.interactive || undefined;
 
       return html`
         ${this.getStyles()}
@@ -272,13 +267,17 @@ export namespace Chip {
           placement="${this.tooltipPlacement}"
         >
           <span
-            role="button"
+            role=${ifDefined(this.interactive ? "button" : undefined)}
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
-            aria-pressed=${ifDefined(ariaPressedValue)}
-            @click=${this.interactive ? this.handleClick : undefined}
-            @keydown=${this.interactive ? this.handleKeydown : undefined}
+            aria-pressed=${ifDefined(ariaPressed)}
+            @click=${() => {
+              this.handleClick();
+            }}
+            @keydown=${(e: KeyboardEvent) => {
+              this.handleKeydown(e);
+            }}
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>

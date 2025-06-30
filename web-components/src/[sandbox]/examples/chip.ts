@@ -163,6 +163,8 @@ export const chipTemplate = html`
   <md-chip value="Confidence chip with long text and long confidence" color="confidence-default" small>
     <span slot="custom-right-content"><span aria-hidden="true"> | </span>Confidence: #####</span>
   </md-chip>
+  <h3 class="sandbox-header">Agent Chip informational</h3>
+  <md-chip value="Agent: John Doe" .interactive=${false}> </md-chip>
   <h3 class="sandbox-header">Agent Chip</h3>
   <md-chip value="Kevin Hyde" color="neutral" small>
     <md-avatar

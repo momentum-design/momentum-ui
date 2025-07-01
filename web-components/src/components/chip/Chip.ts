@@ -257,7 +257,7 @@ export namespace Chip {
         "suppress-max-width": this.suppressDefaultMaxWidth
       };
 
-      const ariaPressed = !this.decorative || undefined;
+      const ariaPressed = !this.decorative ? (this.selected ? "true" : "false") : undefined;
 
       return html`
         ${this.getStyles()}
@@ -272,12 +272,8 @@ export namespace Chip {
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
             aria-pressed=${ifDefined(ariaPressed)}
-            @click=${() => {
-              this.handleClick();
-            }}
-            @keydown=${(e: KeyboardEvent) => {
-              this.handleKeydown(e);
-            }}
+            @click=${!this.decorative ? () => this.handleClick() : undefined}
+            @keydown=${!this.decorative ? (e: KeyboardEvent) => this.handleKeydown(e) : undefined}
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>

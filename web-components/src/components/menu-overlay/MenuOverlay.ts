@@ -153,17 +153,7 @@ export namespace MenuOverlay {
       this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
 
-      if (this.triggerElement) {
-        this.triggerElement.removeEventListener("click", this.handleTriggerClick);
-        this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
-        if (this.allowHoverToggle) {
-          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
-          this.triggerElement.removeEventListener("mouseleave", this.collapsePopup);
-          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup);
-          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
-        }
-        this.triggerElement = null;
-      }
+      this.removeTriggerEventListeners();
     }
 
     checkIsInputField(element: HTMLElement) {
@@ -177,16 +167,40 @@ export namespace MenuOverlay {
       if (this.triggerElement) {
         if (this.isOpen) {
           this.triggerElement.setAttribute("aria-expanded", "true");
+          if (this.triggerElement.hasAttribute("ariaexpanded")) {
+            this.triggerElement.setAttribute("ariaexpanded", "true");
+          }
         } else {
           this.triggerElement.removeAttribute("aria-expanded");
+          if (this.triggerElement.hasAttribute("ariaexpanded")) {
+            this.triggerElement.setAttribute("ariaexpanded", "false");
+          }
         }
       }
     }
 
-    protected async firstUpdated(changedProperties: PropertyValues) {
-      super.firstUpdated(changedProperties);
-      await new Promise((resolve) => setTimeout(resolve, 0));
+    private handleTriggerSlotChange() {
+      this.removeTriggerEventListeners();
+      this.setupTriggerEventListeners();
 
+      this.updateTriggerElementAriaExpanded();
+    }
+
+    private removeTriggerEventListeners() {
+      if (this.triggerElement) {
+        this.triggerElement.removeEventListener("click", this.handleTriggerClick);
+        this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
+        if (this.allowHoverToggle) {
+          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.removeEventListener("mouseleave", this.collapsePopup);
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup);
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
+        }
+        this.triggerElement = null;
+      }
+    }
+
+    private setupTriggerEventListeners() {
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
@@ -204,19 +218,6 @@ export namespace MenuOverlay {
           this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
         }
         this.triggerElement.setAttribute("aria-haspopup", "true");
-      }
-
-      if (this.overlayContainer && this.isOpen) {
-        this.handleInstance(true);
-        this.overlayContainer.toggleAttribute("data-show", true);
-      }
-
-      if (this.arrow && this.showArrow) {
-        this.arrow.toggleAttribute("data-show", true);
-      }
-
-      if (changedProperties.has("isOpen")) {
-        this.updateTriggerElementAriaExpanded();
       }
     }
 
@@ -238,21 +239,10 @@ export namespace MenuOverlay {
       if (changedProperties.has("isOpen")) {
         if (this.isOpen) {
           this.dispatchMenuOpen();
-
-          if (this.triggerElement) {
-            this.triggerElement.setAttribute("aria-expanded", "true");
-            if (this.triggerElement.hasAttribute("ariaexpanded")) {
-              this.triggerElement.setAttribute("ariaexpanded", "true");
-            }
-          }
+          this.updateTriggerElementAriaExpanded();
         } else {
           this.dispatchMenuClose();
-          if (this.triggerElement) {
-            this.triggerElement.removeAttribute("aria-expanded");
-            if (this.triggerElement.hasAttribute("ariaexpanded")) {
-              this.triggerElement.setAttribute("ariaexpanded", "false");
-            }
-          }
+          this.updateTriggerElementAriaExpanded();
         }
       }
     }
@@ -465,7 +455,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot name="menu-trigger"></slot>
+          <slot @slotchange="${this.handleTriggerSlotChange}" name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

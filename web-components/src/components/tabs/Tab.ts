@@ -229,7 +229,7 @@ export namespace Tab {
           part="tab"
           class="${classMap({
             disabled: this.disabled,
-            "tab-content": true,
+            "md-tab-content": true,
             closable: this.closable !== "",
             pill: this.type === "pill",
             rounded: this.type === "rounded",

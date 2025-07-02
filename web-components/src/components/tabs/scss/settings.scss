@@ -8,7 +8,7 @@ $tab-overflow-button-height: rem-calc(45);
 $tab-span-height: rem-calc(27);
 $tab-none-bg: transparent;
 $tab-font-size: var(--font-size-body-midsize, $font-size-base);
-$tab-button-padding: 0.3rem 1rem;
+$tab-button-padding: 0.3rem 0.75rem;
 $tab-slot-padding: 0 rem-calc(4);
 $tab-list-border: 1px solid var(--tabs-default-border-color);
 $tab-active-border: inset 0 -2px 0 0 var(--tabs-default-active-border);

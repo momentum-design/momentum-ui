@@ -44,6 +44,7 @@ export namespace Chip {
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
+    @property({ type: Boolean }) decorative = false;
 
     @property({
       type: String,
@@ -256,6 +257,8 @@ export namespace Chip {
         "suppress-max-width": this.suppressDefaultMaxWidth
       };
 
+      const ariaPressed = !this.decorative ? (this.selected ? "true" : "false") : undefined;
+
       return html`
         ${this.getStyles()}
         <md-tooltip
@@ -264,17 +267,13 @@ export namespace Chip {
           placement="${this.tooltipPlacement}"
         >
           <span
-            role="button"
+            role=${ifDefined(!this.decorative ? "button" : undefined)}
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
-            aria-pressed=${this.selected}
-            @click=${() => {
-              this.handleClick();
-            }}
-            @keydown=${(e: KeyboardEvent) => {
-              this.handleKeydown(e);
-            }}
+            aria-pressed=${ifDefined(ariaPressed)}
+            @click=${!this.decorative ? () => this.handleClick() : undefined}
+            @keydown=${!this.decorative ? (e: KeyboardEvent) => this.handleKeydown(e) : undefined}
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>

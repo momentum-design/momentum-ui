@@ -136,7 +136,7 @@ export namespace TimePicker {
       if (this.finalTwentyFourFormat) {
         stringDate = this.timeObject.toFormat("HH:mm:ss");
       } else {
-        stringDate = this.timeObject.toFormat("tt");
+        stringDate = this.timeObject.toFormat("hh:mm:ss a");
       }
 
       const [times, amPmValue] = stringDate.split(" ");
@@ -390,7 +390,7 @@ export namespace TimePicker {
           select-when-in-focus
           class="amPm-combo-box"
           .options=${options}
-          .value=${[options[0]]}
+          .selectedOptions=${[this.timeValue[TIME_UNIT.AM_PM]]}
           .preventFilter=${true}
           is-dropdown-arrow
           no-clear-icon

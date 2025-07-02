@@ -8,6 +8,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { DatePicker, type DatePickerControlButtons } from "../datepicker/DatePicker";
+import { StrategyType } from "../popover/Popover.types";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
@@ -25,14 +26,26 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
- 
+
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
     @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
+    @property({ type: Boolean, attribute: "disable-date-validation" }) disableDateValidation = false;
 
-    @property({ type: String }) locale: string | undefined = undefined;
-    @property({ type: Boolean }) useISOFormat = true;
-    @property({ type: Boolean }) disabled = false;
+    @property({ type: String })
+    locale: string | undefined = undefined;
+
+    @property({ type: Boolean })
+    useISOFormat = true;
+
+    @property({ type: Boolean })
+    disabled = false;
+
+    @property({ type: String, attribute: "positioning-strategy" })
+    positioningStrategy?: StrategyType = undefined;
+
+    @property({ type: Boolean, attribute: "show-default-now-date" })
+    showDefaultNowDate = true;
 
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
@@ -50,25 +63,12 @@ export namespace DateTimePicker {
     @query("md-datepicker") datePicker!: DatePicker.ELEMENT;
     @query("md-timepicker") timePicker!: TimePicker.ELEMENT;
 
-    protected async firstUpdated(changedProperties: PropertyValues) {
+    protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
       if (!this.value) {
         const dateString = this.selectedDateObject?.toISODate();
         this.combineDateAndTimeValues(dateString, this.timeValue);
-      }
-
-      await this.updateComplete;
-      this.addEventListeners();
-    }
-
-    private addEventListeners() {
-      if (this.datePicker) {
-        this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
-        this.datePicker.addEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
-      }
-      if (this.timePicker) {
-        this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
       }
     }
 
@@ -157,16 +157,6 @@ export namespace DateTimePicker {
       }
     };
 
-    disconnectedCallback(): void {
-      if (this.datePicker) {
-        this.datePicker.removeEventListener("date-selection-change", this.handleDateChange);
-        this.datePicker.removeEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
-      }
-      if (this.timePicker) {
-        this.timePicker.removeEventListener("time-selection-change", this.handleTimeChange);
-      }
-    }
-
     static get styles() {
       return [reset, styles];
     }
@@ -177,17 +167,24 @@ export namespace DateTimePicker {
           includes-time
           ?disabled=${this.disabled}
           ariaLabel=${ifDefined(this.ariaLabel || undefined)}
+          .positioningStrategy=${this.positioningStrategy}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}
+          .useISOFormat=${this.useISOFormat}
+          .showDefaultNowDate=${this.showDefaultNowDate}
           weekStart=${this.weekStart}
           placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
           locale=${ifDefined(this.locale)}
           .controlButtons=${this.controlButtons}
-          .shouldCloseOnSelect=${this.shouldCloseOnSelect}>
+          .shouldCloseOnSelect=${this.shouldCloseOnSelect}
+          @date-selection-change=${this.handleDateChange}
+          @date-input-change=${this.handleDateTimeInputChange as EventListener}
+          .validateDate=${!this.disableDateValidation}>
           <div slot="time-picker" class="included-timepicker-wrapper">
             <div class="time-picker-separator"></div>
             <md-timepicker
+              @time-selection-change=${this.handleTimeChange}
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}

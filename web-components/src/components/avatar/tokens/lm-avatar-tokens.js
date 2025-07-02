@@ -178,6 +178,19 @@ const avatar = {
       common: "$mds-color-theme-avatar-glass-normal"
     }
   },
+  glass: {
+    "bg-color": {
+      common: "$mds-color-theme-avatar-glass-normal"
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-avatar-glass-active"
+      }
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    }
+  },
   self: {
     "bg-color": {
       common: "$mds-color-theme-background-primary-ghost"

@@ -142,6 +142,10 @@ export namespace MenuOverlay {
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.addEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
+
+      this.updateComplete.then(() => {
+        this.handleTriggerSlotChange();
+      });
     }
 
     disconnectedCallback() {
@@ -182,7 +186,6 @@ export namespace MenuOverlay {
     private handleTriggerSlotChange() {
       this.removeTriggerEventListeners();
       this.setupTriggerEventListeners();
-
       this.updateTriggerElementAriaExpanded();
     }
 
@@ -203,6 +206,9 @@ export namespace MenuOverlay {
     private setupTriggerEventListeners() {
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
+        if (!this.triggerElement) {
+          return;
+        }
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
 
         if (this.allowHoverToggle) {

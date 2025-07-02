@@ -85,6 +85,11 @@ export namespace TimePicker {
       };
     }
 
+    connectedCallback() {
+      super.connectedCallback();
+      this.updateValue();
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
 
@@ -94,12 +99,20 @@ export namespace TimePicker {
           changedProperties.has("locale") ||
           changedProperties.has("twentyFourHourFormat"))
       ) {
-        this.timeObject = DateTime.fromISO(this.value, { locale: this.locale });
-        const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);
-        this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
-        this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
-        this.updateTimeValues();
+        this.updateValue();
       }
+    }
+
+    private updateValue() {
+      if (!this.value) {
+        return;
+      }
+
+      this.timeObject = DateTime.fromISO(this.value, { locale: this.locale });
+      const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);
+      this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
+      this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
+      this.updateTimeValues();
     }
 
     addLeadingZeros = (value: string | undefined) => {
@@ -390,7 +403,7 @@ export namespace TimePicker {
           select-when-in-focus
           class="amPm-combo-box"
           .options=${options}
-          .selectedOptions=${[this.timeValue[TIME_UNIT.AM_PM]]}
+          .value=${[this.timeValue[TIME_UNIT.AM_PM]]}
           .preventFilter=${true}
           is-dropdown-arrow
           no-clear-icon

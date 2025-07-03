@@ -5,9 +5,8 @@ import mdx from "./Accordion.mdx";
 import "./AccordionItem";
 import { Accordion as AccordionEl } from "./Accordion";
 
-const Template = ({ disabled, expanded, gap, disableCustomGap, multiple, suppressFocusableContainer }: Args) => {
-  if (disableCustomGap) gap = undefined;
-  return html`<md-accordion ?multiple=${multiple} ?suppressfocusablecontainer=${suppressFocusableContainer} gap=${gap}>
+const Template = ({ disabled, expanded, multiple, suppressContainerFocus }: Args) => {
+  return html`<md-accordion ?multiple=${multiple} ?suppress-container-focus=${suppressContainerFocus}>
     <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
       <div>Panel №1</div>
     </md-accordion-item>
@@ -25,7 +24,7 @@ type Story = StoryObj<AccordionEl.ELEMENT>;
 export const Accordion: Story = {
   args: {
     multiple: false,
-    suppressFocusableContainer: true
+    suppressContainerFocus: true
   },
   render: Template
 };
@@ -33,24 +32,14 @@ export const Accordion: Story = {
 export const MultiSelectAccordion: Story = {
   args: {
     multiple: true,
-    suppressFocusableContainer: true,
+    suppressContainerFocus: true
   },
   render: Template
 };
 
 const meta: Meta = {
   title: "Components/Accordion",
-  argTypes: {
-    disableCustomGap: {
-      control: { type: "boolean" },
-      defaultValue: true,
-      description: "Disable the gap property",
-    },
-    gap: {
-      control: { type: "range", min: 0, max: 100 },
-      description: "Gap between accordion items in px"
-    }
-  },
+  argTypes: {},
   parameters: {
     a11y: {
       element: "md-accordion"

@@ -400,6 +400,10 @@ export namespace DatePicker {
       return this.ariaLabel ?? this.getDefaultAriaLabel();
     }
 
+    private get isAriaExpanded(): string {
+      return this.isMenuOverlayOpen ? "true" : "false";
+    }
+
     render() {
       return html`
         <md-menu-overlay
@@ -425,7 +429,7 @@ export namespace DatePicker {
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.getAriaLabel()}
-                  ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
+                  ariaExpanded=${this.isAriaExpanded}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"
                   ?required=${this.required}

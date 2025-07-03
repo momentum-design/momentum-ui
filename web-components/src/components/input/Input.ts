@@ -21,8 +21,8 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
-import styles from "./scss/module.scss";
 import { FormControl } from "../form";
+import styles from "./scss/module.scss";
 
 export const containerSize = [
   "small-1",
@@ -465,8 +465,8 @@ export namespace Input {
         return html`
           <div class="md-input__before">
             ${this.isLoading
-            ? html` <md-spinner size="20"></md-spinner> `
-            : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
+              ? html` <md-spinner size="20"></md-spinner> `
+              : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
           </div>
         `;
       } else {
@@ -549,7 +549,7 @@ export namespace Input {
         ? html`
             <div id="${this.htmlId}-message" part="message" class="md-input__messages">
               ${repeat(this.messages, (message, id) => {
-          return html`
+                return html`
                   <md-help-text
                     .message=${message}
                     .id=${this.messageArr[id].id ?? ""}
@@ -557,7 +557,7 @@ export namespace Input {
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
                 `;
-        })}
+              })}
             </div>
           `
         : nothing;

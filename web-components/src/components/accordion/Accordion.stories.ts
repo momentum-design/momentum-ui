@@ -39,6 +39,7 @@ export const MultiSelectAccordion: Story = {
 
 const meta: Meta = {
   title: "Components/Accordion",
+  component: "md-accordion",
   argTypes: {},
   parameters: {
     a11y: {

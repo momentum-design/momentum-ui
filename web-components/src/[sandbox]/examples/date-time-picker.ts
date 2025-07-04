@@ -53,7 +53,7 @@ export class DateTimePickerSandbox extends LitElement {
       <md-date-time-picker
         .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
         .shouldCloseOnSelect=${true}
-        value="2021-01-31"
+        .showDefaultNowDate=${false}
       ></md-date-time-picker>
     `;
   }

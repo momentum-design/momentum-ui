@@ -17,8 +17,8 @@
       border-radius: $accordion-btn-border-radius;
       flex: 0 1 100%;
       padding: $accordion-base-indent;
-
       md-icon {
+        @include arrow-transition;
         display: flex;
         margin: 0 0 0 auto;
       }
@@ -41,6 +41,9 @@
 :host(md-accordion-item[expanded]) {
   .md-accordion-panel {
     display: block;
+  }
+  .md-accordion-expander md-icon {
+    transform: rotate(180deg);
   }
 }
 
@@ -89,4 +92,3 @@
     }
   }
 }
-

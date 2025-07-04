@@ -64,4 +64,17 @@ export const accordionTemplate = html`
       <div>Panel №5</div>
     </md-accordion-item>
   </md-accordion>
+  <hr />
+  <h3>Suppressed container focus</h3>
+  <md-accordion multiple suppress-container-focus>
+    <md-accordion-item slot="accordion-item" label="Header №2">
+      <div>Panel №2</div>
+      <md-input type="text"></md-input>
+    </md-accordion-item>
+    <md-accordion-item slot="accordion-item" label="Header №2">
+      <div slot="header-content">Panel №2</div>
+      <md-input type="text"></md-input>
+      <md-input type="text" disabled></md-input>
+    </md-accordion-item>
+  </md-accordion>
 `;

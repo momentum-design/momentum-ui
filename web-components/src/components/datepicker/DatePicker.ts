@@ -275,7 +275,7 @@ export namespace DatePicker {
     };
 
     protected getDefaultAriaLabel = (): string => {
-      if (this.selectedDate && this.selectedDate.isValid) {
+      if (this.selectedDate?.isValid) {
         return `${DEFAULT_ARIA_LABEL_DATE_SELECTED}${this.selectedDate.toLocaleString(DateTime.DATE_FULL)}`;
       }
       return DEFAULT_ARIA_LABEL;

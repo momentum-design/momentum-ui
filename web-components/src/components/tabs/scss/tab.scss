@@ -6,7 +6,7 @@
   box-shadow: none !important;
   outline: none;
 
-  .tab-content {
+  .md-tab-content {
     outline: $tab-main-focus-border;
     outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow);
@@ -36,8 +36,8 @@
 }
 
 :host([selected]) {
-  .tab-content {
-    // box-shadow: $tab-active-border;
+  .md-tab-content {
+    
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
     color: var(--tabs-default-active);
     font-family: var(--brand-font-bold);
@@ -47,7 +47,7 @@
       border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
     }
   }
-  .tab-content.pill {
+  .md-tab-content.pill {
     box-shadow: none;
     border-radius: $tab-new-border-radius;
     background-color: var(--tabs-default-pressed);
@@ -56,7 +56,7 @@
       border-radius: $tab-new-border-radius;
     }
   }
-  .tab-content.rounded {
+  .md-tab-content.rounded {
     box-shadow: $tab-rounded-active-border;
     border-radius: $tab-rounded-border-radius;
 
@@ -64,7 +64,7 @@
       border-radius: $tab-rounded-border-radius;
     }
   }
-  .tab-content.primary {
+  .md-tab-content.primary {
     font-family: var(--brand-font-bold);
     font-weight: var(--brand-font-weight-bold);
     background-color: var(--tabs-primary-bg-color);
@@ -84,7 +84,7 @@
       color: var(--tabs-default-disabled) !important;
     }
   }
-  .tab-content.primary.line {
+  .md-tab-content.primary.line {
     background: $tab-none-bg;
     color: var(--tabs-default-active);
 
@@ -105,7 +105,7 @@
       color: var(--tabs-default-disabled) !important;
     }
   }
-  .tab-content.pill.onlyIcon {
+  .md-tab-content.pill.onlyIcon {
     border-radius: 100%;
 
     &:active {
@@ -125,13 +125,13 @@
   display: none;
 }
 
-.tab-content.primary {
+.md-tab-content.primary {
   color: var(--tabs-default-text-color);
   font-family: var(--brand-font-medium);
   font-weight: var(--brand-font-weight-medium);
 }
 
-.tab-content.primary.line {
+.md-tab-content.primary.line {
   background: $tab-none-bg;
 
   &:hover {
@@ -153,7 +153,7 @@
 }
 
 :host([vertical]) {
-  .tab-content {
+  .md-tab-content {
     text-align: left !important;
     justify-content: flex-start;
 
@@ -164,7 +164,7 @@
 }
 
 :host([vertical][type="line"]) {
-  .tab-content {
+  .md-tab-content {
     border-radius: 0 $tab-focus-border-radius $tab-focus-border-radius 0;
   }
 }
@@ -173,7 +173,7 @@
   visibility: hidden;
 }
 
-:host([selected][vertical]) .tab-content {
+:host([selected][vertical]) .md-tab-content {
   border-radius: 0 $tab-focus-border-radius $tab-focus-border-radius 0;
   box-shadow: var(--tabs-default-active-vertical-border, $tab-active-vertical-border);
 
@@ -182,7 +182,7 @@
   }
 }
 
-:host([selected][vertical]) .tab-content.rounded {
+:host([selected][vertical]) .md-tab-content.rounded {
   box-shadow: $tab-rounded-active-border;
   border-radius: $tab-rounded-border-radius;
 
@@ -191,7 +191,7 @@
   }
 }
 
-:host([selected][vertical]) .tab-content.pill {
+:host([selected][vertical]) .md-tab-content.pill {
   border-radius: $tab-new-border-radius;
   box-shadow: none;
 
@@ -200,7 +200,7 @@
   }
 }
 
-:host([selected][vertical]) .tab-content.pill.onlyIcon {
+:host([selected][vertical]) .md-tab-content.pill.onlyIcon {
   border-radius: 100%;
 
   &:active {
@@ -292,7 +292,7 @@ md-icon {
   }
 }
 
-.tab-content {
+.md-tab-content {
   font-family: var(--brand-font-medium);
   font-weight: var(--brand-font-weight-medium);
   background: $tab-none-bg;
@@ -385,11 +385,11 @@ md-icon {
     box-shadow: none;
   }
 
-  :host .tab-content {
+  :host .md-tab-content {
     border: none;
   }
 
-  :host([selected]) .tab-content {
+  :host([selected]) .md-tab-content {
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
     color: HighlightText !important;
     background-color: Highlight !important;
@@ -400,7 +400,7 @@ md-icon {
     }
   }
 
-  :host(:focus) .tab-content {
+  :host(:focus) .md-tab-content {
     outline: 2px solid Highlight !important;
     outline-offset: -2px;
     box-shadow: none;
@@ -411,19 +411,19 @@ md-icon {
     background: Canvas;
   }
 
-  .tab-content {
+  .md-tab-content {
     &:hover {
       outline: 1px solid Highlight;
       outline-offset: -1px;
     }
   }
 
-  .tab-content:focus:not(.disabled) {
+  .md-tab-content:focus:not(.disabled) {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
 
-  .tab-content.disabled {
+  .md-tab-content.disabled {
     forced-color-adjust: none;
     background-color: none;
     color: GrayText;

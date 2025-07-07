@@ -23,7 +23,7 @@ export const iconType = ["", "white"] as const;
 export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals", "svg"] as const;
 
 import { iconUrlManager } from "@/managers/IconUrlManager";
-import { fetchSVG } from "./Icon.utils";
+import { fetchSVG, getMomentumDesignIconContent } from "./Icon.utils";
 
 export namespace Icon {
   export type Size = (typeof iconSize)[number];
@@ -196,7 +196,10 @@ export namespace Icon {
         return;
       }
 
-      const importedIcon = await fetchSVG(this.computedSvgPath, iconName, "svg");
+      const importedIcon =
+        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg"
+          ? await fetchSVG(this.computedSvgPath, iconName, "svg")
+          : await getMomentumDesignIconContent(iconName);
 
       if (!importedIcon) {
         return;

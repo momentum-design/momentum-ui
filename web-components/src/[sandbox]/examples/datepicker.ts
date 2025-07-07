@@ -29,10 +29,10 @@ export const datePickerTemplate = html`
     <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
   </md-datepicker>
   <h3>default date if we set showDefaultNowDate as true</h3>
-   <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
+  <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${true} placeholder="Select date"></md-datepicker>
   <h3>show the passed placeholder if we set showDefaultNowDate as false</h3>
-   <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} placeholder="Select date"></md-datepicker>
- 
+  <md-datepicker .useISOFormat=${true} .showDefaultNowDate=${false} placeholder="Select date"></md-datepicker>
+
   <h3>datepicker with user's system locale</h3>
   <md-datepicker .useISOFormat=${false}></md-datepicker>
   <h3>datepicker with "ru" locale</h3>

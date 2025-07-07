@@ -30,9 +30,13 @@ export namespace DateTimePicker {
     @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
     @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
+    @property({ type: Boolean, attribute: "disable-date-validation" }) disableDateValidation = false;
 
     @property({ type: String })
     locale: string | undefined = undefined;
+
+    @property({ type: String, attribute: "placeholder" })
+    placeholder: string | undefined = undefined;
 
     @property({ type: Boolean })
     useISOFormat = true;
@@ -46,6 +50,9 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "show-default-now-date" })
     showDefaultNowDate = true;
 
+    @property({ type: Boolean, attribute: "compact-input" })
+    compactInput?: boolean = undefined;
+
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
 
     @internalProperty()
@@ -57,30 +64,15 @@ export namespace DateTimePicker {
     @internalProperty()
     private selectedDateObject: DateTime = now();
 
-    firstCycle = true;
-
     @query("md-datepicker") datePicker!: DatePicker.ELEMENT;
     @query("md-timepicker") timePicker!: TimePicker.ELEMENT;
 
-    protected async firstUpdated(changedProperties: PropertyValues) {
+    protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (!this.value) {
+      if (!this.value && this.showDefaultNowDate) {
         const dateString = this.selectedDateObject?.toISODate();
         this.combineDateAndTimeValues(dateString, this.timeValue);
-      }
-
-      await this.updateComplete;
-      this.addEventListeners();
-    }
-
-    private addEventListeners() {
-      if (this.datePicker) {
-        this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
-        this.datePicker.addEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
-      }
-      if (this.timePicker) {
-        this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
       }
     }
 
@@ -91,18 +83,14 @@ export namespace DateTimePicker {
         if (this.value) {
           this.parseValueForVisuals(this.value);
         }
-        if (!this.firstCycle) {
-          this.updateDateTimeObject();
-        } else {
-          this.firstCycle = false;
-        }
+        this.updateDateTimeObject();
       }
 
       if (
         this.dateValue &&
         this.timeValue &&
         !this.controlButtons?.apply &&
-        (changedProperties.has("timeValue") || changedProperties.has("dateValue"))
+        (changedProperties.has("dateValue") || changedProperties.has("timeValue"))
       ) {
         this.combineDateAndTimeValues(this.dateValue, this.timeValue);
       }
@@ -112,13 +100,13 @@ export namespace DateTimePicker {
       }
     }
 
-    handleDateChange = (event: any) => {
+    handleDateChange = (event: CustomEvent) => {
       this.selectedDateObject = event?.detail?.data as DateTime;
       this.dateValue = this.selectedDateObject?.toISODate();
       this.combineDateAndTimeValues(this.dateValue, this.timeValue);
     };
 
-    handleTimeChange = (event: any) => {
+    handleTimeChange = (event: CustomEvent) => {
       this.selectedTimeObject = event?.detail?.data as DateTime;
       this.timeValue = this.selectedTimeObject?.startOf("second").toISOTime({ suppressMilliseconds: true });
 
@@ -169,14 +157,13 @@ export namespace DateTimePicker {
       }
     };
 
-    disconnectedCallback(): void {
-      if (this.datePicker) {
-        this.datePicker.removeEventListener("date-selection-change", this.handleDateChange);
-        this.datePicker.removeEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
+    private get placeholderValue() {
+      if (this.placeholder) {
+        return this.placeholder;
       }
-      if (this.timePicker) {
-        this.timePicker.removeEventListener("time-selection-change", this.handleTimeChange);
-      }
+
+      //ISO format placeholder
+      return "YYYY-MM-DDTHH:MM:SS-HH:MM";
     }
 
     static get styles() {
@@ -196,13 +183,19 @@ export namespace DateTimePicker {
           .useISOFormat=${this.useISOFormat}
           .showDefaultNowDate=${this.showDefaultNowDate}
           weekStart=${this.weekStart}
-          placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
+          placeholder=${this.placeholderValue}
           locale=${ifDefined(this.locale)}
           .controlButtons=${this.controlButtons}
-          .shouldCloseOnSelect=${this.shouldCloseOnSelect}>
+          .shouldCloseOnSelect=${this.shouldCloseOnSelect}
+          @date-selection-change=${this.handleDateChange}
+          @date-input-change=${this.handleDateTimeInputChange as EventListener}
+          .validateDate=${!this.disableDateValidation}
+          ?compact-input=${this.compactInput}
+          >
           <div slot="time-picker" class="included-timepicker-wrapper">
             <div class="time-picker-separator"></div>
             <md-timepicker
+              @time-selection-change=${this.handleTimeChange}
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}

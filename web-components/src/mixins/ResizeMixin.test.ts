@@ -72,10 +72,10 @@ describe("Resize Mixin", () => {
     expect(disconnectMock).toHaveBeenCalled();
   });
 
-  test("should dispatch resize event", async () => {
+  test("should dispatch md-resize event", async () => {
     const el = await fixture<CustomElement>(`<custom-element></custom-element>`);
     setTimeout(() => el.customResize());
-    const { detail } = await oneEvent(el, "resize");
+    const { detail } = await oneEvent(el, "md-resize");
     expect(detail).toBeDefined();
 
     const elDOMRect = el.getBoundingClientRect();

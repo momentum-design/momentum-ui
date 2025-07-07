@@ -90,7 +90,7 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
         super.handleResize(contentRect);
       }
       this.dispatchEvent(
-        new CustomEvent("resize", {
+        new CustomEvent("md-resize", {
           detail: {
             contentRect
           },

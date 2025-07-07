@@ -10,6 +10,7 @@ import { Placement, PlacementType, StrategyType } from "@/components/popover/Pop
 import { Key } from "@/constants";
 import { FocusMixin, ResizeMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { debounce } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -68,9 +69,12 @@ export namespace Tooltip {
 
     protected handleResize(contentRect: DOMRect) {
       super.handleResize?.(contentRect);
-      if (this.slotToTooltip) {
-        this.disabled = this.reference && !this.isContentTruncated(this.reference);
-      }
+
+      debounce(() => {
+        if (this.slotToTooltip) {
+          this.disabled = this.reference && !this.isContentTruncated(this.reference);
+        }
+      }, 100)();
     }
 
     protected handleFocusIn(event: Event) {

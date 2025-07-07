@@ -90,8 +90,10 @@ export namespace Tab {
 
       if (value) {
         this.setAttribute("aria-selected", "true");
+        this.tabIndex = 0;
         this.notifySelectedTab();
       } else {
+        this.tabIndex = -1;
         this.removeAttribute("aria-selected");
       }
 

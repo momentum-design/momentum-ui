@@ -138,7 +138,6 @@ export namespace MenuOverlay {
       super.connectedCallback();
       this.handleWindowBlurEvent = this.handleWindowBlurEvent.bind(this);
       window.addEventListener("blur", this.handleWindowBlurEvent);
-      document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.addEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
@@ -187,6 +186,17 @@ export namespace MenuOverlay {
       this.removeTriggerEventListeners();
       this.setupTriggerEventListeners();
       this.updateTriggerElementAriaExpanded();
+
+      if (this.popperInstance) {
+        this.destroy();
+      }
+
+      if (this.isOpen) {
+        this.create();
+        if (this.overlayContainer) {
+          this.overlayContainer.toggleAttribute("data-show", this.isOpen);
+        }
+      }
     }
 
     private removeTriggerEventListeners() {
@@ -218,6 +228,10 @@ export namespace MenuOverlay {
           this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
         }
 
+        if (this.arrow && this.showArrow) {
+          this.arrow.toggleAttribute("data-show", true);
+        }
+
         if (!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
@@ -238,6 +252,12 @@ export namespace MenuOverlay {
           document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
         }
       }
+
+      if (changedProperties.has("showArrow")) {
+        if (this.arrow) {
+          this.arrow.toggleAttribute("data-show", this.showArrow);
+        }
+      }
     }
 
     protected updated(changedProperties: PropertyValues) {
@@ -245,9 +265,14 @@ export namespace MenuOverlay {
       if (changedProperties.has("isOpen")) {
         if (this.isOpen) {
           this.dispatchMenuOpen();
+          requestAnimationFrame(() => {
+            document.addEventListener("click", this.handleOutsideOverlayClick);
+          });
+
           this.updateTriggerElementAriaExpanded();
         } else {
           this.dispatchMenuClose();
+          document.removeEventListener("click", this.handleOutsideOverlayClick);
           this.updateTriggerElementAriaExpanded();
         }
       }

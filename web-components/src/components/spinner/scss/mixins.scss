@@ -3,25 +3,35 @@
 @mixin spinner-style(
   $border: $spinner__bg-color,
   $border-progress-left: $spinner__color,
-  $border-progress: transparent
+  $border-progress: transparent,
+  $track-width: 2px
 ) {
-  border: 2px solid $border;
+  border: $track-width solid $border;
+  $positionAdjustment: calc($track-width * -1);
+  $width: calc($track-width * 2);
 
   &::after {
-    border-bottom: 2px solid $border-progress;
-    border-left: 2px solid $border-progress-left;
-    border-right: 2px solid $border-progress;
-    border-top: 2px solid $border-progress;
+    border-bottom: $track-width solid $border-progress;
+    border-left: $track-width solid $border-progress-left;
+    border-right: $track-width solid $border-progress;
+    border-top: $track-width solid $border-progress;
+
+    border-radius: 50%;
+    content: "";
+    height: calc(100% + $width);
+    left: $positionAdjustment;
+    position: absolute;
+    top: $positionAdjustment;
+    width: calc(100% + $width);
   }
+
 }
 
 @mixin spinner-progress-color($border, $progress) {
   background-color: transparent;
   box-shadow: inset 0 0 0 1px $border;
 
-  .md-spinner-progress__circle
-  .md-spinner-progress__mask
-  .md-spinner-progress__fill {
+  .md-spinner-progress__circle .md-spinner-progress__mask .md-spinner-progress__fill {
     background-color: transparent;
     box-shadow: inset 0 0 0 1px $progress;
   }

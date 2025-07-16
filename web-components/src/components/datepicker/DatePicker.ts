@@ -352,7 +352,7 @@ export namespace DatePicker {
                   class="cancel-button"
                   aria-label=${ifDefined(this.controlButtons.cancel?.ariaLabel)}
                   ?disabled=${this.controlButtons.cancel?.disabled ?? false}
-                  @click=${this.onCancelClick}
+                  @button-click=${this.onCancelClick}
                   variant="secondary"
                 >
                   ${this.controlButtons.cancel.value}
@@ -365,7 +365,7 @@ export namespace DatePicker {
                   class="apply-button"
                   aria-label=${ifDefined(this.controlButtons.apply?.ariaLabel)}
                   ?disabled=${this.controlButtons.apply?.disabled ?? false}
-                  @click=${this.controlButtons.apply?.disabled ? {} : this.onApplyClick}
+                  @button-click=${this.onApplyClick}
                   variant="primary"
                 >
                   ${this.controlButtons.apply.value}

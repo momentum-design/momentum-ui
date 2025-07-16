@@ -171,7 +171,7 @@ export namespace DateTimePicker {
     }
 
     private get displayValue(): string | undefined {
-      if (!this.useISOFormat && this.fullDateTime) {
+      if (!this.useISOFormat && this.fullDateTime && this.fullDateTime.isValid) {
         return this.fullDateTime.toLocaleString(DateTime.DATETIME_MED, { locale: this.locale });
       }
       return undefined;

@@ -63,7 +63,8 @@ describe("DatePicker Component", () => {
     expect(el.menuOverlay.isOpen).toBeTruthy();
 
     const cancelButton = el.shadowRoot!.querySelector("md-button.cancel-button");
-    cancelButton?.dispatchEvent(new MouseEvent("click"));
+    cancelButton?.dispatchEvent(new CustomEvent("button-click"));
+
     expect(el.menuOverlay.isOpen).toBeFalsy();
   });
 
@@ -92,7 +93,7 @@ describe("DatePicker Component", () => {
       if (includeApplyButton) {
         expect(el.selectedDate).toEqual(firstDate);
         const applyButton = el.shadowRoot!.querySelector("md-button.apply-button");
-        applyButton?.dispatchEvent(new MouseEvent("click"));
+        applyButton?.dispatchEvent(new MouseEvent("button-click"));
         expect(el.selectedDate).toEqual(secondDate);
       } else {
         expect(el.selectedDate).toEqual(secondDate);

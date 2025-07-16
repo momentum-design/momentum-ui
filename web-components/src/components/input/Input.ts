@@ -149,6 +149,7 @@ export namespace Input {
     @property({ type: Boolean }) clear = false;
     @property({ type: String }) clearAriaLabel = "";
     @property({ type: Boolean }) compact = false;
+    @property({ type: Boolean }) allowUserTextInput = true;
     @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) id = "";
@@ -452,7 +453,7 @@ export namespace Input {
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}
-              ?readonly=${this.readOnly || this.disabled}
+              ?readonly=${this.readOnly || this.disabled || !this.allowUserTextInput}
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}

@@ -170,6 +170,13 @@ export namespace DateTimePicker {
       return [reset, styles];
     }
 
+    private get displayValue(): string | undefined {
+      if (!this.useISOFormat && this.fullDateTime) {
+        return this.fullDateTime.toLocaleString(DateTime.DATETIME_MED, { locale: this.locale });
+      }
+      return undefined;
+    }
+
     render() {
       return html`
         <md-datepicker
@@ -180,7 +187,8 @@ export namespace DateTimePicker {
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}
-          .useISOFormat=${this.useISOFormat}
+          displayValue=${ifDefined(this.displayValue)}
+          .allowUserTextInput=${!this.useISOFormat}
           .showDefaultNowDate=${this.showDefaultNowDate}
           weekStart=${this.weekStart}
           placeholder=${this.placeholderValue}
@@ -189,7 +197,7 @@ export namespace DateTimePicker {
           .shouldCloseOnSelect=${this.shouldCloseOnSelect}
           @date-selection-change=${this.handleDateChange}
           @date-input-change=${this.handleDateTimeInputChange as EventListener}
-          .validateDate=${!this.disableDateValidation}
+          .validateDate=${!this.disableDateValidation && !this.useISOFormat}
           ?compact-input=${this.compactInput}
           >
           <div slot="time-picker" class="included-timepicker-wrapper">

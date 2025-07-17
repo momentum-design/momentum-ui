@@ -282,7 +282,7 @@ export namespace TimePicker {
             this.dispatchTimeChangeEvent();
           }
         } catch (error) {
-          // Invalid time construction, don't update
+           console.warn('Failed to construct time object:');
         }
       } else if (this.timeObject && this.timeValidity[unit]) {
         if (unit !== TIME_UNIT.AM_PM) {

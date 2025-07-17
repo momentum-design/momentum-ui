@@ -8,7 +8,7 @@ const minDate = now().minus({ day: 5 }).toISODate();
 const maxDate = now().plus({ day: 5 }).toISODate();
 
 @customElement("date-time-picker-sandbox")
-export class DateTimePickerSandbox extends LitElement {
+class DateTimePickerSandbox extends LitElement {
   static get styles() {
     return [
       css`
@@ -54,6 +54,16 @@ export class DateTimePickerSandbox extends LitElement {
         .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
         .shouldCloseOnSelect=${true}
         .showDefaultNowDate=${false}
+      ></md-date-time-picker>
+
+      <h3>date time picker with custom placeholder</h3>
+      <md-date-time-picker
+        placeholder=${"Select date and time"}
+        .showDefaultNowDate=${false}
+        .useISOFormat=${false}
+        .disableDateValidation=${true}
+        .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
+        .shouldCloseOnSelect=${true}
       ></md-date-time-picker>
     `;
   }

@@ -123,9 +123,13 @@ export namespace EditableTextfield {
       if (this.editableField) {
         const range = document.createRange();
         const sel = window.getSelection();
-        const position = this.editableField.childNodes[0].nodeValue?.length;
-        range.setStart(this.editableField.childNodes[0], position ? position : 0);
-        range.collapse(true);
+        const firstNode = this.editableField.childNodes[0];
+        const position = firstNode?.nodeValue?.length || 0;
+
+        if (firstNode) {
+          range.setStart(firstNode, position);
+          range.collapse(true);
+        }
 
         if (sel && sel.toString().length === 0) {
           sel.removeAllRanges();

@@ -72,7 +72,7 @@ export namespace DatePicker {
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
-    @property({ type: Boolean }) disableUserInput = false;
+    @property({ type: Boolean }) disableUserTextInput = false;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
     @property({ type: String, attribute: "positioning-strategy" })
@@ -428,7 +428,7 @@ export namespace DatePicker {
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
                   value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
-                  .disableUserInput=${this.disableUserInput}
+                  .disableUserTextInput=${this.disableUserTextInput}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.getAriaLabel()}

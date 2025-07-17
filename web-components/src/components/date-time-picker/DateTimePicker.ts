@@ -188,7 +188,7 @@ export namespace DateTimePicker {
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}
           displayValue=${ifDefined(this.displayValue)}
-          .disableUserInput=${this.useISOFormat}
+          .disableUserTextInput=${!this.useISOFormat}
           .showDefaultNowDate=${this.showDefaultNowDate}
           weekStart=${this.weekStart}
           placeholder=${this.placeholderValue}

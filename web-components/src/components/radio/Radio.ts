@@ -70,6 +70,7 @@ export namespace Radio {
         <div class="md-radio-wrapper" part="radio-wrapper">
           <input
             class="md-radio-input"
+            part="radio-input"
             type="radio"
             aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
             aria-checked=${this.checked ? "true" : "false"}

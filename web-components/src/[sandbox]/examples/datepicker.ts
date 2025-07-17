@@ -17,7 +17,7 @@ export const datePickerTemplate = html`
   <md-datepicker-calendar
     .datePickerProps=${{
       locale: "en-US",
-      selected: now().plus({ days: 1 }),
+      selected: now().plus({ days: 30 }),
       focused: now().minus({ day: 1 }),
       weekStart: "Sunday"
     }}

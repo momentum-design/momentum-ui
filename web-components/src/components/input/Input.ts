@@ -181,6 +181,7 @@ export namespace Input {
     @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Object }) control?: FormControl<unknown>;
+    @property({ type: Boolean }) disableUserInput = false;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -452,7 +453,7 @@ export namespace Input {
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}
-              ?readonly=${this.readOnly || this.disabled}
+              ?readonly=${this.readOnly || this.disabled || this.disableUserInput}
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}

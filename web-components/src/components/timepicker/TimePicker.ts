@@ -132,7 +132,9 @@ export namespace TimePicker {
 
     private updateValue(timeValue?: string) {
       const valueToUse = timeValue || this.value;
-      if (!valueToUse) return;
+      if (!valueToUse) {
+        return;
+      }
 
       this.timeObject = DateTime.fromISO(valueToUse, { locale: this.locale });
       const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);

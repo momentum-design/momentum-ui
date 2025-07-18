@@ -77,7 +77,7 @@ describe("DatePicker Component", () => {
       if (includeApplyButton) {
         expect(el.value).toEqual(defaultValue);
         const applyButton = el.shadowRoot!.querySelector("md-button.apply-button");
-        applyButton?.dispatchEvent(new MouseEvent("click"));
+        applyButton?.dispatchEvent(new MouseEvent("button-click"));
         expect(updateFunc).toHaveBeenCalledTimes(1);
       }
 

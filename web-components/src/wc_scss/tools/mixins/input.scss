@@ -86,8 +86,8 @@
       }
     }
 
-    &[readonly],
-    &.md-readonly {
+    &[readonly]:not(.md-disable-user-text-input),
+    &.md-readonly:not(.md-disable-user-text-input) {
       background-color: $background-color-disabled;
       @if $border-color-read-only != null {
         border-color: $border-color-disabled;

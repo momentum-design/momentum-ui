@@ -66,11 +66,13 @@ export namespace DatePicker {
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "";
     @property({ type: String }) ariaLabel: string | null = null;
+    @property({ type: String }) displayValue: string | null = null;
     @property({ type: Boolean }) required = false;
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
+    @property({ type: Boolean }) disableUserTextInput = false;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
     @property({ type: String, attribute: "positioning-strategy" })
@@ -350,7 +352,7 @@ export namespace DatePicker {
                   class="cancel-button"
                   aria-label=${ifDefined(this.controlButtons.cancel?.ariaLabel)}
                   ?disabled=${this.controlButtons.cancel?.disabled ?? false}
-                  @click=${this.onCancelClick}
+                  @button-click=${this.onCancelClick}
                   variant="secondary"
                 >
                   ${this.controlButtons.cancel.value}
@@ -363,7 +365,7 @@ export namespace DatePicker {
                   class="apply-button"
                   aria-label=${ifDefined(this.controlButtons.apply?.ariaLabel)}
                   ?disabled=${this.controlButtons.apply?.disabled ?? false}
-                  @click=${this.onApplyClick}
+                  @button-click=${this.onApplyClick}
                   variant="primary"
                 >
                   ${this.controlButtons.apply.value}
@@ -425,7 +427,8 @@ export namespace DatePicker {
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
-                  value=${ifDefined(this.value ?? undefined)}
+                  value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
+                  .disableUserTextInput=${this.disableUserTextInput}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.getAriaLabel()}

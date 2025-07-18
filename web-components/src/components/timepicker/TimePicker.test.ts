@@ -148,4 +148,94 @@ describe("TimePicker Component", () => {
     expect(minuteInput.value).toEqual(invalidMinuteText);
     expect(minuteInput.messageArr).toEqual([{ message: "", type: "error" }]);
   });
+
+  describe("Placeholders and Default Values", () => {
+    test("should show placeholders when showDefaultNowTime is false and no value is set", async () => {
+      const element = await fixture<TimePicker.ELEMENT>(html`<md-timepicker .showDefaultNowTime=${false}></md-timepicker>`);
+
+      const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+      const hourNativeInput = hourInput?.shadowRoot?.querySelector("input");
+      expect(hourNativeInput?.placeholder).toBe("HH");
+      expect(hourInput.value).toBe("");
+
+      const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+      const minuteNativeInput = minuteInput?.shadowRoot?.querySelector("input");
+      expect(minuteNativeInput?.placeholder).toBe("MM");
+      expect(minuteInput.value).toBe("");
+
+      const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
+      const secondNativeInput = secondInput?.shadowRoot?.querySelector("input");
+      expect(secondNativeInput?.placeholder).toBe("SS");
+      expect(secondInput.value).toBe("");
+
+      const ampmCombo = element.shadowRoot?.querySelector(".amPm-combo-box");
+      expect(ampmCombo).toBeDefined();
+    });
+
+    test("should show correct placeholders for timeSpecificity='hour'", async () => {
+      const element = await fixture<TimePicker.ELEMENT>(
+        html`<md-timepicker .showDefaultNowTime=${false} timeSpecificity="hour"></md-timepicker>`
+      );
+
+      const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+      const hourNativeInput = hourInput?.shadowRoot?.querySelector("input");
+      expect(hourNativeInput?.placeholder).toBe("HH");
+      expect(hourInput.value).toBe("");
+
+      expect(element.shadowRoot?.querySelector(".time-input-box.minute")).toBeNull();
+      expect(element.shadowRoot?.querySelector(".time-input-box.second")).toBeNull();
+    });
+
+    test("should show correct placeholders for timeSpecificity='minute'", async () => {
+      const element = await fixture<TimePicker.ELEMENT>(
+        html`<md-timepicker .showDefaultNowTime=${false} timeSpecificity="minute"></md-timepicker>`
+      );
+
+      const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+      const hourNativeInput = hourInput?.shadowRoot?.querySelector("input");
+      expect(hourNativeInput?.placeholder).toBe("HH");
+      expect(hourInput.value).toBe("");
+
+      const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+      const minuteNativeInput = minuteInput?.shadowRoot?.querySelector("input");
+      expect(minuteNativeInput?.placeholder).toBe("MM");
+      expect(minuteInput.value).toBe("");
+
+      expect(element.shadowRoot?.querySelector(".time-input-box.second")).toBeNull();
+    });
+
+    test("should show correct placeholders for timeSpecificity='second'", async () => {
+      const element = await fixture<TimePicker.ELEMENT>(
+        html`<md-timepicker .showDefaultNowTime=${false} timeSpecificity="second"></md-timepicker>`
+      );
+
+      const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+      const hourNativeInput = hourInput?.shadowRoot?.querySelector("input");
+      expect(hourNativeInput?.placeholder).toBe("HH");
+      expect(hourInput.value).toBe("");
+
+      const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+      const minuteNativeInput = minuteInput?.shadowRoot?.querySelector("input");
+      expect(minuteNativeInput?.placeholder).toBe("MM");
+      expect(minuteInput.value).toBe("");
+
+      const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
+      const secondNativeInput = secondInput?.shadowRoot?.querySelector("input");
+      expect(secondNativeInput?.placeholder).toBe("SS");
+      expect(secondInput.value).toBe("");
+    });
+
+    test("should not show placeholder if showDefaultNowTime is true", async () => {
+      const element = await fixture<TimePicker.ELEMENT>(html`<md-timepicker .showDefaultNowTime=${true}></md-timepicker>`);
+
+      const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+      expect(hourInput.value).not.toBe("");
+
+      const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+      expect(minuteInput.value).not.toBe("");
+
+      const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
+      expect(secondInput.value).not.toBe("");
+    });
+  });
 });

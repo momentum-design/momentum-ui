@@ -7,6 +7,9 @@ export const timePickerTemplate = html`
   <h3>Default</h3>
   <md-timepicker></md-timepicker>
 
+  <h3>placeholder</h3>
+  <md-timepicker .showDefaultNowTime=${false}></md-timepicker>
+
   <h3>Locate</h3>
   <md-timepicker locale="ru"></md-timepicker>
 

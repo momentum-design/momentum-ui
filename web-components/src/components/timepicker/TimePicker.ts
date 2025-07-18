@@ -15,7 +15,6 @@ import { TIME_UNIT } from "../../constants";
 import styles from "./scss/module.scss";
 
 export const timeUnits = [TIME_UNIT.HOUR, TIME_UNIT.MINUTE, TIME_UNIT.SECOND, TIME_UNIT.AM_PM] as const;
-
 export const timeSpecificity = [TIME_UNIT.HOUR, TIME_UNIT.MINUTE, TIME_UNIT.SECOND];
 
 const timePlaceholders = {
@@ -60,7 +59,8 @@ export namespace TimePicker {
     @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
     @property({ type: String }) locale = "en-US";
-    @property({ type: String, reflect: true }) value: string | null = "00:00:00-08:00"; // ISO FORMAT
+    @property({ type: String, reflect: true }) value: string | null = null;
+    @property({ type: Boolean, attribute: "show-default-now-time" }) showDefaultNowTime = true;
 
     @internalProperty() private finalTwentyFourFormat = false;
     @internalProperty() private timeObject: DateTime = now();
@@ -87,28 +87,56 @@ export namespace TimePicker {
 
     connectedCallback() {
       super.connectedCallback();
-      this.updateValue();
+      this.initializeTimeValues();
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
 
-      if (
-        this.value &&
-        (changedProperties.has("value") ||
-          changedProperties.has("locale") ||
-          changedProperties.has("twentyFourHourFormat"))
-      ) {
-        this.updateValue();
+    const triggers = [
+      "value",
+      "locale",
+      "twentyFourHourFormat",
+      "showDefaultNowTime",
+      "timeSpecificity"
+    ];
+
+    if (triggers.some(prop => changedProperties.has(prop))) {
+      this.initializeTimeValues();
+    }
+  }
+
+    private initializeTimeValues() {
+      if (!this.showDefaultNowTime && !this.value) {
+        const tempTimeObject = DateTime.now().setLocale(this.locale);
+        const localeTimeFormat = this.getLocaleTimeFormat(tempTimeObject);
+        this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
+
+        const shouldShowMinute = this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.SECOND;
+        const shouldShowSecond = this.timeSpecificity === TIME_UNIT.SECOND;
+
+        this.timeValue = {
+          [TIME_UNIT.HOUR]: "",
+          [TIME_UNIT.MINUTE]: shouldShowMinute ? "" : "00",
+          [TIME_UNIT.SECOND]: shouldShowSecond ? "" : "00",
+          [TIME_UNIT.AM_PM]: "AM"
+        };
+
+      } else {
+        const timeToUse = this.value || now().toISOTime({ suppressMilliseconds: true });
+        if (timeToUse) {
+          this.updateValue(timeToUse);
+        }
       }
     }
 
-    private updateValue() {
-      if (!this.value) {
+    private updateValue(timeValue?: string) {
+      const valueToUse = timeValue || this.value;
+      if (!valueToUse) {
         return;
       }
 
-      this.timeObject = DateTime.fromISO(this.value, { locale: this.locale });
+      this.timeObject = DateTime.fromISO(valueToUse, { locale: this.locale });
       const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);
       this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
       this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
@@ -168,6 +196,11 @@ export namespace TimePicker {
 
     updateValidity = (input: string, unit: TimePicker.TimeUnit) => {
       let result = true;
+      if (!this.showDefaultNowTime && !this.value && !input) {
+        this.timeValidity[unit] = true;
+        return;
+      }
+
       const regexTester = (regex: RegExp): void => {
         if (input.match(regex) === null) {
           result = false;
@@ -211,41 +244,76 @@ export namespace TimePicker {
     };
 
     isEntireTimeValid = () => {
-      return Object.values(this.timeValidity).every((timeUnitValidity) => timeUnitValidity);
+        const requiredUnits: TimePicker.TimeUnit[] = [TIME_UNIT.HOUR];
+        if (this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.SECOND) {
+          requiredUnits.push(TIME_UNIT.MINUTE);
+        }
+        if (this.timeSpecificity === TIME_UNIT.SECOND) {
+          requiredUnits.push(TIME_UNIT.SECOND);
+        }
+        if (!this.finalTwentyFourFormat) {
+          requiredUnits.push(TIME_UNIT.AM_PM);
+        }
+
+        const internalValidity = requiredUnits.every((unit) => this.timeValidity[unit]);
+        
+        if (!this.showDefaultNowTime && !this.value) {
+          const allFieldsFilled = requiredUnits.every((unit) => !!this.timeValue[unit]);
+          return allFieldsFilled && internalValidity;
+        }
+        return internalValidity;
     };
 
     updateTimeUnit = (unit: TIME_UNIT) => {
       this.updateValidity(this.timeValue[unit], unit);
 
-      if (this.timeObject && this.timeValidity[unit]) {
+      if (!this.showDefaultNowTime && !this.value) {
+        const hour = this.timeValue[TIME_UNIT.HOUR] || "00";
+        const minute = this.timeValue[TIME_UNIT.MINUTE] || "00";
+        const second = this.timeValue[TIME_UNIT.SECOND] || "00";
+        try {
+          let timeString = `${hour}:${minute}:${second}`;
+          if (!this.finalTwentyFourFormat && this.timeValue[TIME_UNIT.AM_PM]) {
+            timeString += ` ${this.timeValue[TIME_UNIT.AM_PM]}`;
+          }
+          this.timeObject = DateTime.fromFormat(timeString, this.finalTwentyFourFormat ? "HH:mm:ss" : "hh:mm:ss a");
+          if (this.timeObject.isValid && this.isEntireTimeValid()) {
+            this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
+            this.dispatchTimeChangeEvent();
+          }
+        } catch (error) {
+           console.warn('Failed to construct time object:');
+        }
+      } else if (this.timeObject && this.timeValidity[unit]) {
         if (unit !== TIME_UNIT.AM_PM) {
-          this.timeObject = this.timeObject?.set({ [unit]: this.timeValue[unit] });
+          this.timeObject = this.timeObject?.set({ [unit]: Number(this.timeValue[unit]) });
         } else {
-          this.timeObject = this.timeObject?.set({
-            hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
-          });
+          const hour24 = this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR]);
+          if (hour24 !== undefined) {
+            this.timeObject = this.timeObject?.set({ hour: hour24 });
+          }
         }
 
         if (this.isEntireTimeValid()) {
-          this.timeObject = this.timeObject?.set({
-            hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
-          });
-
           this.value = this.timeObject.toISOTime({ suppressMilliseconds: true }) || this.value;
-
-          this.dispatchEvent(
-            new CustomEvent(`time-selection-change`, {
-              bubbles: true,
-              composed: true,
-              detail: {
-                time: this.value,
-                data: this.timeObject
-              }
-            })
-          );
+          this.dispatchTimeChangeEvent();
         }
       }
     };
+
+    private dispatchTimeChangeEvent() {
+      this.dispatchEvent(
+        new CustomEvent(`time-selection-change`, {
+          bubbles: true,
+          composed: true,
+          detail: {
+            time: this.value,
+            data: this.timeObject,
+            isValid: this.isEntireTimeValid()
+          }
+        })
+      );
+    }
 
     handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
       this.timeValue[unit] = event?.detail?.value;
@@ -377,6 +445,7 @@ export namespace TimePicker {
         <md-input
           newMomentum
           select-when-in-focus
+          exportparts="input:timepicker-part-input"
           class="${`time-input-box ${unit}`}"
           id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
           value="${this.timeValue[unit]}"

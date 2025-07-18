@@ -97,7 +97,7 @@ export namespace TimePicker {
       "value",
       "locale",
       "twentyFourHourFormat",
-      "showPlaceholderMode",
+      "showDefaultNowTime",
       "timeSpecificity"
     ];
 
@@ -112,10 +112,8 @@ export namespace TimePicker {
         const localeTimeFormat = this.getLocaleTimeFormat(tempTimeObject);
         this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
 
-        // const shouldShowHour = true;
         const shouldShowMinute = this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.SECOND;
         const shouldShowSecond = this.timeSpecificity === TIME_UNIT.SECOND;
-        // const shouldShowAmPm = !this.finalTwentyFourFormat;
 
         this.timeValue = {
           [TIME_UNIT.HOUR]: "",

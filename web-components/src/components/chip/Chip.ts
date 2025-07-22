@@ -265,6 +265,7 @@ export namespace Chip {
           ?disabled=${!this.tooltipText && !this.textOverflow}
           message="${this.getToolTipContent()}"
           placement="${this.tooltipPlacement}"
+          part="tooltip"
         >
           <span
             role=${ifDefined(!this.decorative ? "button" : undefined)}

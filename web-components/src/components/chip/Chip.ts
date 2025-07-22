@@ -264,8 +264,8 @@ export namespace Chip {
         <md-tooltip
           ?disabled=${!this.tooltipText && !this.textOverflow}
           message="${this.getToolTipContent()}"
-          placement="${this.tooltipPlacement}"
           part="tooltip"
+          placement="${this.tooltipPlacement}"
         >
           <span
             role=${ifDefined(!this.decorative ? "button" : undefined)}

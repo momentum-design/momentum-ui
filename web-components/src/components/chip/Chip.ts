@@ -45,6 +45,7 @@ export namespace Chip {
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
     @property({ type: Boolean }) decorative = false;
+    @property({ type: Boolean }) performManualTextElide = true;
 
     @property({
       type: String,
@@ -86,7 +87,7 @@ export namespace Chip {
       endCharCount = this.POST_TRUNC_CHARS,
       dotCount = this.DOT_COUNT
     ): void {
-      if (this.value.length > this.MAX_LENGTH) {
+      if (this.value.length > this.MAX_LENGTH && this.performManualTextElide) {
         let convertedStr = "";
         convertedStr += str.substring(0, firstCharCount);
         convertedStr += ".".repeat(dotCount);
@@ -246,7 +247,7 @@ export namespace Chip {
     }
 
     private get textContentTemplate() {
-      return html`<span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
+      return html`<span part="text-content" class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
     }
 
     render() {

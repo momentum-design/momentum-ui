@@ -41,12 +41,11 @@ export namespace Chip {
     @property({ type: Number }) determinateProgress = 0;
     @property({ type: Boolean }) indeterminateProgress = false;
     @property({ type: String }) tooltipText = "";
-    @property({ type: Object }) tooltipTemplate?: TemplateResult;
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
     @property({ type: Boolean }) decorative = false;
-    @property({ type: Boolean }) performManualTextElide = true;
+    @property({ type: Boolean }) shouldTruncateValue = true;
 
     @property({
       type: String,
@@ -88,7 +87,7 @@ export namespace Chip {
       endCharCount = this.POST_TRUNC_CHARS,
       dotCount = this.DOT_COUNT
     ): void {
-      if (this.value.length > this.MAX_LENGTH && this.performManualTextElide) {
+      if (this.value.length > this.MAX_LENGTH && this.shouldTruncateValue) {
         let convertedStr = "";
         convertedStr += str.substring(0, firstCharCount);
         convertedStr += ".".repeat(dotCount);
@@ -264,16 +263,11 @@ export namespace Chip {
       return html`
         ${this.getStyles()}
         <md-tooltip
-          ?disabled=${!this.tooltipText && !this.tooltipTemplate && !this.textOverflow}
-          message="${this.tooltipTemplate ? "" : this.getToolTipContent()}"
+          ?disabled=${!this.tooltipText && !this.textOverflow}
+          message="${this.getToolTipContent()}"
           part="tooltip"
           placement="${this.tooltipPlacement}"
         >
-          ${
-            this.tooltipTemplate
-              ? html`<span slot="tooltip-content" part="tooltip-content">${this.tooltipTemplate}</span>`
-              : nothing
-          }
           <span
             role=${ifDefined(!this.decorative ? "button" : undefined)}
             tabindex="0"

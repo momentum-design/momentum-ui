@@ -14,7 +14,7 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
+import { nothing, TemplateResult } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
@@ -41,6 +41,7 @@ export namespace Chip {
     @property({ type: Number }) determinateProgress = 0;
     @property({ type: Boolean }) indeterminateProgress = false;
     @property({ type: String }) tooltipText = "";
+    @property({ type: Object }) tooltipTemplate?: TemplateResult;
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
@@ -263,11 +264,16 @@ export namespace Chip {
       return html`
         ${this.getStyles()}
         <md-tooltip
-          ?disabled=${!this.tooltipText && !this.textOverflow}
-          message="${this.getToolTipContent()}"
+          ?disabled=${!this.tooltipText && !this.tooltipTemplate && !this.textOverflow}
+          message="${this.tooltipTemplate ? "" : this.getToolTipContent()}"
           part="tooltip"
           placement="${this.tooltipPlacement}"
         >
+          ${
+            this.tooltipTemplate
+              ? html`<span slot="tooltip-content" part="tooltip-content">${this.tooltipTemplate}</span>`
+              : nothing
+          }
           <span
             role=${ifDefined(!this.decorative ? "button" : undefined)}
             tabindex="0"

@@ -10,7 +10,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
-import { getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
+import { closestElement, getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
@@ -586,10 +586,33 @@ export class Popover extends FocusTrapMixin(LitElement) {
    * @param event - The focus event.
    */
   private readonly onPopoverFocusOut = (event: FocusEvent) => {
-    if (!this.contains(event.relatedTarget as Node)) {
+    const relatedTarget = event.relatedTarget as HTMLElement | null;
+
+    // If we have a relatedTarget, check it immediately
+    if (relatedTarget && !this.isElementInPopover(relatedTarget)) {
       this.hidePopover();
+      return;
+    }
+
+    // If no relatedTarget (Shadow DOM case), use async check
+    if (!relatedTarget) {
+      setTimeout(() => {
+        const activeElement = getDeepActiveElement();
+        if (!this.isElementInPopover(activeElement)) {
+          this.hidePopover();
+        }
+      }, 0);
     }
   };
+
+  private isElementInPopover(element: HTMLElement | null): boolean {
+    if (!element) return false;
+
+    if (this.contains(element)) return true;
+
+    const closestPopover = closestElement("md-popover", element);
+    return closestPopover === this;
+  }
 
   private readonly handleWindowBlurEvent = () => {
     if (this.visible) {

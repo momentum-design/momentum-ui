@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+import "@/components/help-text/HelpText";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -13,6 +14,9 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { Radio } from "./Radio";
 import styles from "./scss/module.scss";
+import { Input } from "../input/Input";
+import { nothing } from "lit-html";
+import { repeat } from "lit-html/directives/repeat";
 
 export namespace RadioGroup {
   @customElementWithCheck("md-radiogroup")
@@ -20,6 +24,7 @@ export namespace RadioGroup {
     @property({ type: String, attribute: "group-label" }) label = "group";
     @property({ type: Number, reflect: true }) checked = -1;
     @property({ type: String, reflect: true }) alignment: "horizontal" | "vertical" = "vertical";
+    @property({ type: Array }) messageArr: Input.Message[] = [];
 
     @query("slot[name='radio']") radioSlot?: HTMLSlotElement;
 
@@ -189,10 +194,28 @@ export namespace RadioGroup {
       }
     }
 
+    messagesTemplate() {
+      if (!this.messageArr?.length) return html`${nothing}`;
+
+      return html`
+        <div part="message" class="md-input__messages">
+          ${repeat(this.messageArr, (msg) => html`
+            <md-help-text
+              .message=${msg.message ?? ""}
+              .id=${msg.id ?? ""}
+              .ariaLive=${msg.ariaLive ?? "polite"}
+              .messageType=${msg.type}
+            ></md-help-text>
+          `)}
+        </div>
+      `;
+    }
+
     render() {
       return html`
         <div class="radio-group-container" part="radio-group-container">
           <slot name="radio"></slot>
+          ${this.messagesTemplate()}
         </div>
       `;
     }

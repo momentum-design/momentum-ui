@@ -50,6 +50,16 @@
         }
       }
 
+      .md-lightbox__control-download {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .md-lightbox__control-download:focus {
+        outline: 2px solid #0078d4;
+        outline-offset: 2px;
+      }
+
       > .#{$prefix}-lightbox__header {
         display: flex;
         height: $lightbox-control__size;

@@ -365,6 +365,30 @@ const badge = {
       }
     }
   },
+  warning: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-warning-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-warning-normal"
+    },
+    "icon-color": {
+      common: "$mds-color-theme-text-warning-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-warning-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-warning-hover"
+      }
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-warning-active"
+      }
+    }
+  },
   status: {
     positive: {
       "bg-color": {

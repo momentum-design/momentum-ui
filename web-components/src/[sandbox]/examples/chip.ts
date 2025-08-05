@@ -118,6 +118,9 @@ export const chipTemplate = html`
   <md-chip value="- % #" color="neutral" small>
     <md-icon name="emoji-passive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
   </md-chip>
+  <md-chip value="Partial" color="warning" small>
+    <md-icon name="unblock-bold" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
   <h3 class="sandbox-header">status chip</h3>
   <md-chip value="Agent name - 00:00" color="status-positive" small>
     <md-icon name="participant-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>

@@ -255,7 +255,8 @@ export namespace Chip {
         "md-chip--small": this.small,
         "md-chip--disabled": this.disabled,
         [`md-chip--${this.color}`]: this.color,
-        "suppress-max-width": this.suppressDefaultMaxWidth
+        "suppress-max-width": this.suppressDefaultMaxWidth,
+        "md-chip--interactive": !this.decorative
       };
 
       const ariaPressed = !this.decorative ? (this.selected ? "true" : "false") : undefined;

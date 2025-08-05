@@ -3,6 +3,7 @@
     &-wrapper {
       max-height: $radio-input-max-height;
       display: inline-flex;
+      gap: 0.5rem;
       align-items: center;
       max-width: 100%;
     }
@@ -14,30 +15,30 @@
       width: 100%;
     }
 
+    &-icon {
+      border: $radio-input-border;
+      @include border-radius(50%);
+      background-color: $radio-input-bg;
+      height: $radio-input-size;
+      width: $radio-input-size;
+      display: inline-flex;
+      flex-shrink: 0;
+      flex-grow: 0;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
     &-label {
       color: var(--md-primary-text-color);
       cursor: pointer;
       font-size: $font-size-base;
       line-height: $radio-input-max-height;
-      padding-left: $radio-input-left-padding;
-      padding-right: rem-calc(8);
+      padding-right: 0.5rem;
       pointer-events: none;
       position: relative;
       vertical-align: middle;
       @include text-dots;
-
-      &::before {
-        content: "";
-        position: absolute;
-        border: $radio-input-border;
-        @include border-radius(50%);
-        background-color: $radio-input-bg;
-        box-sizing: border-box;
-        height: $radio-input-size;
-        left: rem-calc(4);
-        top: rem-calc(3);
-        width: $radio-input-size;
-      }
     }
   }
 }
@@ -48,18 +49,20 @@
 }
 
 :host([focus-visible]:not([disabled])) {
-  @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color));
+  .md-radio-icon {
+    @include focus-ring();
+  }
 }
 
 :host(:hover:not([disabled])) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border: $radio-input-hover-border;
     background-color: $radio-input-hover-bg;
   }
 }
 
 :host(:active:not([disabled])) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border: $radio-input-pressed-border;
     background-color: $radio-input-pressed-bg;
   }
@@ -72,22 +75,23 @@
     color: var(--radio-input-disabled-text-color);
   }
 
-  .md-radio-label:before {
+  .md-radio-icon {
     border-color: var(--radio-input-disabled-border-color);
     background-color: var(--radio-input-disabled-bg-color);
   }
 }
 
 :host([aria-checked="true"]) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border-color: var(--radio-input-selected-border-color);
     background-color: $radio-input-selected-bg;
   }
-  .md-radio-label:after {
+  .md-radio-icon:before {
     content: "";
-    position: absolute;
-    top: 8px;
-    left: 9px;
+    position: absolute; // Add this
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: rem-calc(6);
     height: rem-calc(6);
     background-color: var(--radio-input-icon-color);
@@ -96,26 +100,26 @@
 }
 
 :host([aria-checked="true"]:hover:not([disabled])) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border-color: var(--radio-input-selected-hover-border-color);
     background-color: var(--radio-input-selected-hover-bg-color);
   }
 }
 
 :host([aria-checked="true"]:active:not([disabled])) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border-color: var(--radio-input-selected-pressed-border-color);
     background-color: var(--radio-input-selected-pressed-bg-color);
   }
 }
 
 :host([aria-checked="true"][disabled]) {
-  .md-radio-label:before {
+  .md-radio-icon {
     border-color: var(--radio-input-selected-disabled-border-color);
     background-color: var(--radio-input-selected-disabled-bg-color);
   }
 
-  .md-radio-label:after {
+  .md-radio-icon:before {
     background-color: var(--radio-input-selected-disabled-border-color);
   }
 }
@@ -123,32 +127,30 @@
 @media (forced-colors: active) {
   :host(md-radio) {
     .md-radio {
-      &-label {
-        &::before {
-          border: 1px solid CanvasText;
-        }
+      &-icon {
+        border: 1px solid CanvasText;
       }
     }
   }
 
-  :host(:hover:not([disabled])) .md-radio-label:before,
+  :host(:hover:not([disabled])) .md-radio-icon,
   :host(:active:not([disabled])) .md-radio-label:before {
     border: none;
     outline: 2px solid Highlight;
     outline-offset: -1px;
   }
 
-  :host([aria-checked="true"]) .md-radio-label:before {
+  :host([aria-checked="true"]) .md-radio-icon {
     background-color: Highlight;
     border: none;
     outline: none;
   }
 
-  :host([aria-checked="true"]:hover:not([disabled])) .md-radio-label:before {
+  :host([aria-checked="true"]:hover:not([disabled])) .md-radio-icon {
     background-color: Highlight;
   }
 
-  :host([aria-checked="true"]) .md-radio-label:after {
+  :host([aria-checked="true"]) .md-radio-icon:before {
     content: "";
     position: absolute;
     top: 50%;

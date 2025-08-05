@@ -47,7 +47,7 @@
 
 :host([focus-visible]:not([disabled])) {
   .checkbox-box {
-    @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color));
+    @include focus-ring();
   }
 }
 
@@ -73,6 +73,7 @@
   .checkbox-box {
     color: var(--checkbox-disabled-text-color);
     border-color: var(--checkbox-disabled-border-color);
+    background-color: var(--checkbox-disabled-bg-color);
   }
 }
 

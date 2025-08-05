@@ -68,6 +68,7 @@ export namespace Radio {
     render() {
       return html`
         <div class="md-radio-wrapper" part="radio-wrapper">
+          <div class="md-radio-icon"></div>
           <input
             class="md-radio-input"
             part="radio-input"
@@ -81,7 +82,9 @@ export namespace Radio {
             aria-hidden="true"
             id="radio-label"
           />
-          <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
+          <label for="radio-label" class="md-radio-label" part="radio-label">
+            <slot></slot>
+          </label>
         </div>
       `;
     }

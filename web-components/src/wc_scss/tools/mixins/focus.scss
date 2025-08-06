@@ -33,3 +33,14 @@
 @mixin focus-boxshadow($borderWidth, $borderColor) {
   box-shadow: 0 0 0 $borderWidth $borderColor;
 }
+
+@mixin focus-ring($inner-color: var(--md-focus-inner-color), $middle-color: var(--md-focus-middle-color), $outer-color: var(--md-focus-outer-color)) {
+  $innerWidth: 0.125rem;
+  $middleWidth: calc(2 * $innerWidth);
+  $outerWidth: calc(0.0625rem + $middleWidth);
+
+  box-shadow:
+    0 0 0 $innerWidth $inner-color,
+    0 0 0 $middleWidth $middle-color,
+    0 0 0 $outerWidth $outer-color;
+}

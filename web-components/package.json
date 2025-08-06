@@ -138,6 +138,8 @@
     "remove-files-webpack-plugin": "1.5.0",
     "sass": "^1.83.4",
     "sass-loader": "^10.5.2",
+    "@testing-library/dom": "^10.4.1",
+    "shadow-dom-testing-library": "^1.12.0",
     "sonarqube-scanner": "^2.8.1",
     "storybook": "8.6.14",
     "string-replace-loader": "^3.1.0",

@@ -22,6 +22,7 @@
       height: $radio-input-size;
       width: $radio-input-size;
       display: inline-flex;
+      cursor: pointer;
       flex-shrink: 0;
       flex-grow: 0;
       align-items: center;
@@ -35,7 +36,6 @@
       font-size: $font-size-base;
       line-height: $radio-input-max-height;
       padding-right: 0.5rem;
-      pointer-events: none;
       position: relative;
       vertical-align: middle;
       @include text-dots;
@@ -44,11 +44,12 @@
 }
 
 :host(:focus) {
-  box-shadow: none;
-  outline: none;
+  @include remove-focus();
 }
 
 :host([focus-visible]:not([disabled])) {
+  @include remove-focus();
+
   .md-radio-icon {
     @include focus-ring();
   }
@@ -72,16 +73,18 @@
   cursor: not-allowed;
 
   .md-radio-label {
+    cursor: not-allowed;
     color: var(--radio-input-disabled-text-color);
   }
 
   .md-radio-icon {
+    cursor: not-allowed;
     border-color: var(--radio-input-disabled-border-color);
     background-color: var(--radio-input-disabled-bg-color);
   }
 }
 
-:host([aria-checked="true"]) {
+:host([checked]) {
   .md-radio-icon {
     border-color: var(--radio-input-selected-border-color);
     background-color: $radio-input-selected-bg;
@@ -99,21 +102,21 @@
   }
 }
 
-:host([aria-checked="true"]:hover:not([disabled])) {
+:host([checked]:hover:not([disabled])) {
   .md-radio-icon {
     border-color: var(--radio-input-selected-hover-border-color);
     background-color: var(--radio-input-selected-hover-bg-color);
   }
 }
 
-:host([aria-checked="true"]:active:not([disabled])) {
+:host([checked]:active:not([disabled])) {
   .md-radio-icon {
     border-color: var(--radio-input-selected-pressed-border-color);
     background-color: var(--radio-input-selected-pressed-bg-color);
   }
 }
 
-:host([aria-checked="true"][disabled]) {
+:host([checked][disabled]) {
   .md-radio-icon {
     border-color: var(--radio-input-selected-disabled-border-color);
     background-color: var(--radio-input-selected-disabled-bg-color);
@@ -140,17 +143,17 @@
     outline-offset: -1px;
   }
 
-  :host([aria-checked="true"]) .md-radio-icon {
+  :host([checked]) .md-radio-icon {
     background-color: Highlight;
     border: none;
     outline: none;
   }
 
-  :host([aria-checked="true"]:hover:not([disabled])) .md-radio-icon {
+  :host([checked]:hover:not([disabled])) .md-radio-icon {
     background-color: Highlight;
   }
 
-  :host([aria-checked="true"]) .md-radio-icon:before {
+  :host([checked]) .md-radio-icon:before {
     content: "";
     position: absolute;
     top: 50%;

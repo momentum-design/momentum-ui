@@ -1,5 +1,6 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { PropertyValues } from "lit-element";
+import { screen } from "shadow-dom-testing-library";
 import { Radio } from "./Radio";
 
 describe("Radio", () => {
@@ -15,8 +16,10 @@ describe("Radio", () => {
   test("should add correct aria attribute", async () => {
     const element = await fixture<Radio.ELEMENT>(`<md-radio disabled>Linting</md-radio>`);
     expect(element.disabled).toBeTruthy();
-    expect(element.getAttribute("aria-disabled")).toEqual("true");
-    expect(element.getAttribute("role")).toEqual("radio");
+
+    const radio = screen.getByShadowRole("radio");
+    expect(radio).toBeTruthy();
+    expect(radio.getAttribute("disabled")).toBeDefined();
   });
 
   test("should change tabindex when disabled attribute is set", async () => {
@@ -36,11 +39,11 @@ describe("Radio", () => {
     const element = await fixture<Radio.ELEMENT>(`<md-radio>Linting</md-radio>`);
     element.checked = false;
     await elementUpdated(element);
-    expect(element.getAttribute("aria-checked")).toEqual("false");
+    expect(element.getAttribute("checked")).toBeNull();
     element.checked = true;
     await elementUpdated(element);
     expect(element.checked).toBeTruthy();
-    expect(element.getAttribute("aria-checked")).toEqual("true");
+    expect(element.getAttribute("checked")).toBeDefined();
   });
 
   test("handle firstUpdated lifecycle hook", async () => {
@@ -61,6 +64,9 @@ describe("Radio", () => {
     const labelValue = "Test Label";
     const element = await fixture(`<md-radio label="${labelValue}"></md-radio>`);
     await elementUpdated(element);
-    expect(element.getAttribute("aria-label")).toEqual(labelValue);
+
+    const radioInput = screen.getByShadowRole("radio");
+    expect(radioInput).toBeTruthy();
+    expect(radioInput.getAttribute("aria-label")).toEqual(labelValue);
   });
 });

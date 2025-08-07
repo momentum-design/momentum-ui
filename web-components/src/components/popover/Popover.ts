@@ -304,6 +304,13 @@ export class Popover extends FocusTrapMixin(LitElement) {
   disableAriaExpanded: boolean = DEFAULTS.DISABLE_ARIA_EXPANDED;
 
   /**
+   * animation-frame for update the position of floating element on every animation frame
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "animation-frame" })
+  animationFrame: boolean = DEFAULTS.ANIMATION_FRAME;
+
+  /**
    * Controller object that provides methods to programmatically control the popover.
    * This is especially useful when the popover is appended to another part of the DOM.
    *
@@ -889,23 +896,30 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
     middleware.push(offset(popoverOffset));
 
-    this.cleanupAutoUpdate = autoUpdate(this.triggerElement, this, async () => {
-      if (!this.triggerElement) return;
+    this.cleanupAutoUpdate = autoUpdate(
+      this.triggerElement,
+      this,
+      async () => {
+        if (!this.triggerElement) return;
 
-      const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
-        placement: this.placement,
-        middleware,
-        strategy: this.strategy
-      });
+        const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
+          placement: this.placement,
+          middleware,
+          strategy: this.strategy
+        });
 
-      this.utils.updatePopoverStyle(x, y);
-      if (middlewareData.arrow && this.arrowElement) {
-        this.utils.updateArrowStyle(middlewareData.arrow, placement);
+        this.utils.updatePopoverStyle(x, y);
+        if (middlewareData.arrow && this.arrowElement) {
+          this.utils.updateArrowStyle(middlewareData.arrow, placement);
+        }
+        if (this.trigger.includes("mouseenter")) {
+          this.utils.setupHoverBridge(placement);
+        }
+      },
+      {
+        animationFrame: this.animationFrame
       }
-      if (this.trigger.includes("mouseenter")) {
-        this.utils.setupHoverBridge(placement);
-      }
-    });
+    );
   }
 
   public override render() {

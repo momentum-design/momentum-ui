@@ -753,6 +753,7 @@ export class AddingAndRemovingTabsTemplate extends LitElement {
         variant="primary"
         selected-index=${this.selectedTabIndex}
         @selected-changed=${(e: CustomEvent) => this.selectedTabChanged(e)}
+        roving-prevent-focus
       >
         ${repeat(
           this.filteredTabs,

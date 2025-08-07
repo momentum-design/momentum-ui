@@ -1,4 +1,5 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
+import "@testing-library/jest-dom";
 import { PropertyValues } from "lit-element";
 import { screen } from "shadow-dom-testing-library";
 import { Radio } from "./Radio";
@@ -8,6 +9,9 @@ describe("Radio", () => {
   test("should set label attribute", async () => {
     const element = await fixture<Radio.ELEMENT>(`<md-radio value="linting">Linting</md-radio>`);
     expect(element.value).toEqual("linting");
+
+    const radio = screen.getByShadowRole("radio", { name: "Linting" });
+    expect(radio).toBeVisible();
   });
   test("should set tabindex attribute", async () => {
     const element = await fixture<Radio.ELEMENT>(`<md-radio>Linting</md-radio>`);
@@ -17,7 +21,7 @@ describe("Radio", () => {
     const element = await fixture<Radio.ELEMENT>(`<md-radio disabled>Linting</md-radio>`);
     expect(element.disabled).toBeTruthy();
 
-    const radio = screen.getByShadowRole("radio");
+    const radio = screen.getByShadowRole("radio", { name: "Linting" });
     expect(radio).toBeTruthy();
     expect(radio.getAttribute("disabled")).toBeDefined();
   });
@@ -65,7 +69,7 @@ describe("Radio", () => {
     const element = await fixture(`<md-radio label="${labelValue}"></md-radio>`);
     await elementUpdated(element);
 
-    const radioInput = screen.getByShadowRole("radio");
+    const radioInput = screen.getByShadowRole("radio", { name: labelValue });
     expect(radioInput).toBeTruthy();
     expect(radioInput.getAttribute("aria-label")).toEqual(labelValue);
   });

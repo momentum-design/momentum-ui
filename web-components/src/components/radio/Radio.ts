@@ -73,6 +73,7 @@ export namespace Radio {
             ?checked=${this.checked}
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
+            tabindex="-1"
             id="radio-label"
           />
           <label for="radio-label" class="md-radio-label" part="radio-label">

@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.23.47",
+  "version": "2.23.48",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -139,6 +139,7 @@
     "sass": "^1.83.4",
     "sass-loader": "^10.5.2",
     "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.6.4",
     "shadow-dom-testing-library": "^1.12.0",
     "sonarqube-scanner": "^2.8.1",
     "storybook": "8.6.14",

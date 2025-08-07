@@ -66,12 +66,14 @@ export namespace Radio {
             class="md-radio-input"
             part="radio-input"
             type="radio"
+            role="radio"
             aria-label=${ifDefined(this.inputAriaLabel)}
             aria-checked=${this.checked ? "true" : "false"}
             .value=${this.value}
             ?checked=${this.checked}
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
+            tabindex="-1"
             id="radio-label"
           />
           <label for="radio-label" class="md-radio-label" part="radio-label">

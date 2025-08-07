@@ -1,6 +1,7 @@
 :host(md-radio) {
   .md-radio {
     &-wrapper {
+      position: relative;
       max-height: $radio-input-max-height;
       display: inline-flex;
       gap: 0.5rem;
@@ -11,13 +12,14 @@
     &-input {
       //visually hidden but still accessible
       position: absolute;
-      width: 1px;
-      height: 1px;
+      top: 0;
+      left: 0;
+      height: $radio-input-size;
+      width: $radio-input-size;
+      opacity: 0;
+      cursor: pointer;
+      margin: 0;
       padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
       border: 0;
     }
 
@@ -77,6 +79,10 @@
 
 :host([disabled]) {
   cursor: not-allowed;
+
+  .md-radio-input {
+    cursor: not-allowed;
+  }
 
   .md-radio-label {
     cursor: not-allowed;

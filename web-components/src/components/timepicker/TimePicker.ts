@@ -90,21 +90,15 @@ export namespace TimePicker {
       this.initializeTimeValues();
     }
 
-  protected updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
 
-    const triggers = [
-      "value",
-      "locale",
-      "twentyFourHourFormat",
-      "showDefaultNowTime",
-      "timeSpecificity"
-    ];
+      const triggers = ["value", "locale", "twentyFourHourFormat", "showDefaultNowTime", "timeSpecificity"];
 
-    if (triggers.some(prop => changedProperties.has(prop))) {
-      this.initializeTimeValues();
+      if (triggers.some((prop) => changedProperties.has(prop))) {
+        this.initializeTimeValues();
+      }
     }
-  }
 
     private initializeTimeValues() {
       if (!this.showDefaultNowTime && !this.value) {
@@ -121,7 +115,6 @@ export namespace TimePicker {
           [TIME_UNIT.SECOND]: shouldShowSecond ? "" : "00",
           [TIME_UNIT.AM_PM]: "AM"
         };
-
       } else {
         const timeToUse = this.value || now().toISOTime({ suppressMilliseconds: true });
         if (timeToUse) {
@@ -244,24 +237,24 @@ export namespace TimePicker {
     };
 
     isEntireTimeValid = () => {
-        const requiredUnits: TimePicker.TimeUnit[] = [TIME_UNIT.HOUR];
-        if (this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.SECOND) {
-          requiredUnits.push(TIME_UNIT.MINUTE);
-        }
-        if (this.timeSpecificity === TIME_UNIT.SECOND) {
-          requiredUnits.push(TIME_UNIT.SECOND);
-        }
-        if (!this.finalTwentyFourFormat) {
-          requiredUnits.push(TIME_UNIT.AM_PM);
-        }
+      const requiredUnits: TimePicker.TimeUnit[] = [TIME_UNIT.HOUR];
+      if (this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.SECOND) {
+        requiredUnits.push(TIME_UNIT.MINUTE);
+      }
+      if (this.timeSpecificity === TIME_UNIT.SECOND) {
+        requiredUnits.push(TIME_UNIT.SECOND);
+      }
+      if (!this.finalTwentyFourFormat) {
+        requiredUnits.push(TIME_UNIT.AM_PM);
+      }
 
-        const internalValidity = requiredUnits.every((unit) => this.timeValidity[unit]);
-        
-        if (!this.showDefaultNowTime && !this.value) {
-          const allFieldsFilled = requiredUnits.every((unit) => !!this.timeValue[unit]);
-          return allFieldsFilled && internalValidity;
-        }
-        return internalValidity;
+      const internalValidity = requiredUnits.every((unit) => this.timeValidity[unit]);
+
+      if (!this.showDefaultNowTime && !this.value) {
+        const allFieldsFilled = requiredUnits.every((unit) => !!this.timeValue[unit]);
+        return allFieldsFilled && internalValidity;
+      }
+      return internalValidity;
     };
 
     updateTimeUnit = (unit: TIME_UNIT) => {
@@ -282,7 +275,7 @@ export namespace TimePicker {
             this.dispatchTimeChangeEvent();
           }
         } catch (error) {
-           console.warn('Failed to construct time object:');
+          console.warn("Failed to construct time object:");
         }
       } else if (this.timeObject && this.timeValidity[unit]) {
         if (unit !== TIME_UNIT.AM_PM) {

@@ -112,4 +112,37 @@ class ThemeManager {
 }
 
 const themeManager = new ThemeManager();
+
+/**
+ * Registers the ThemeManager globally for access from any JavaScript bundle
+ * @param globalName - Optional custom global name (defaults to 'MomentumUIThemeManager')
+ * @param instance - Optional specific instance to register (defaults to default themeManager)
+ */
+export function registerThemeManagerGlobally(
+  globalName = "MomentumUIThemeManager",
+  instance: ThemeManager = themeManager
+) {
+  if (typeof globalThis !== "undefined") {
+    (globalThis as any)[globalName] = instance;
+  }
+  if (typeof window !== "undefined") {
+    (window as any)[globalName] = instance;
+  }
+  if (typeof global !== "undefined") {
+    (global as any)[globalName] = instance;
+  }
+}
+
+declare global {
+  interface Window {
+    MomentumUIThemeManager?: ThemeManager;
+  }
+
+  interface Global {
+    MomentumUIThemeManager?: ThemeManager;
+  }
+
+  var MomentumUIThemeManager: ThemeManager | undefined;
+}
+
 export { themeManager, ThemeManager };

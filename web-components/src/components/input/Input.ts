@@ -21,8 +21,8 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
-import styles from "./scss/module.scss";
 import { FormControl } from "../form";
+import styles from "./scss/module.scss";
 
 export const containerSize = [
   "small-1",
@@ -181,6 +181,7 @@ export namespace Input {
     @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Object }) control?: FormControl<unknown>;
+    @property({ type: Boolean }) disableUserTextInput = false;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -380,6 +381,7 @@ export namespace Input {
         "md-active": this.isEditing,
         "md-focus": this.isEditing,
         "md-read-only": this.readOnly,
+        "md-disable-user-text-input": this.disableUserTextInput,
         "md-disabled": this.disabled,
         "md-dirty": !!this.value,
         "md-has-right-icon": this.hasRightIcon
@@ -452,7 +454,7 @@ export namespace Input {
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}
-              ?readonly=${this.readOnly || this.disabled}
+              ?readonly=${this.readOnly || this.disabled || this.disableUserTextInput}
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}
@@ -465,8 +467,8 @@ export namespace Input {
         return html`
           <div class="md-input__before">
             ${this.isLoading
-            ? html` <md-spinner size="20"></md-spinner> `
-            : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
+              ? html` <md-spinner size="20"></md-spinner> `
+              : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
           </div>
         `;
       } else {
@@ -549,7 +551,7 @@ export namespace Input {
         ? html`
             <div id="${this.htmlId}-message" part="message" class="md-input__messages">
               ${repeat(this.messages, (message, id) => {
-          return html`
+                return html`
                   <md-help-text
                     .message=${message}
                     .id=${this.messageArr[id].id ?? ""}
@@ -557,7 +559,7 @@ export namespace Input {
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
                 `;
-        })}
+              })}
             </div>
           `
         : nothing;

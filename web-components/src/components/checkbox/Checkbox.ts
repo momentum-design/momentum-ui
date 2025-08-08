@@ -6,11 +6,12 @@
  *
  */
 
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, PropertyValues } from "lit";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
@@ -158,6 +159,24 @@ export namespace Checkbox {
       }
     }
 
+    private get checkboxIconName(): string | null {
+      if (this.checked) {
+        return "check-bold";
+      } else if (this.indeterminate) {
+        return "minus-bold";
+      }
+      return null;
+    }
+
+    private checkboxIconTemplate(): TemplateResult | typeof nothing {
+      const iconName = this.checkboxIconName;
+      return iconName ? html`<md-icon name="${iconName}" iconSet="momentumDesign" size="16"></md-icon>` : nothing;
+    }
+
+    private checkboxBoxTemplate(): TemplateResult {
+      return html` <div part="checkbox-box" class="checkbox-box">${this.checkboxIconTemplate()}</div> `;
+    }
+
     render() {
       return html`
         <input
@@ -170,6 +189,7 @@ export namespace Checkbox {
           aria-hidden="true"
         />
         <label part="checkbox-label" class="checkbox-label">
+          ${this.checkboxBoxTemplate()}
           <slot></slot>
         </label>
       `;

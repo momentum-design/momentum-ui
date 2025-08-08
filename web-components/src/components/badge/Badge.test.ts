@@ -1,16 +1,15 @@
 import "@/components/icon/Icon";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { waitFor } from "@testing-library/dom";
+import "@testing-library/jest-dom";
+import { screen } from "shadow-dom-testing-library";
 import "./Badge";
 import { type Badge } from "./Badge";
+import "./NotificationBadge";
+import { type NotificationBadge } from "./NotificationBadge";
 
 describe("Badge component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -101,5 +100,80 @@ describe("Badge component", () => {
     expect(component.height).toBeFalsy();
     expect(component.width).toBeFalsy();
     expect(component.getStyles()).toBeTruthy();
+  });
+});
+
+describe("Notification Badge component", () => {
+  afterEach(() => {
+    fixtureCleanup();
+  });
+
+  test("should render a dot badge by default", async () => {
+    const el: NotificationBadge = await fixture(html` <md-notification-badge></md-notification-badge> `);
+    const dot = el.shadowRoot?.querySelector(".md-notification-badge-dot");
+    expect(dot).not.toBeNull();
+    expect(el.type).toBe("dot");
+  });
+
+  test("should render a counter badge", async () => {
+    await fixture(html` <md-notification-badge type="counter" counter="5"></md-notification-badge> `);
+    const textElement = await screen.getByShadowText("5");
+    expect(textElement).toBeInTheDocument();
+  });
+
+  test("should render a counter badge with max value", async () => {
+    await fixture(html`
+      <md-notification-badge type="counter" counter="150" max-counter="99"></md-notification-badge>
+    `);
+    const textElement = await screen.getByShadowText("99+");
+    expect(textElement).toBeInTheDocument();
+  });
+
+  test("should render an icon badge", async () => {
+    const el: NotificationBadge = await fixture(html`
+      <md-notification-badge type="icon" icon-name="chat-filled"></md-notification-badge>
+    `);
+    const icon = el.shadowRoot?.querySelector("md-icon");
+    expect(icon).not.toBeNull();
+    expect(icon?.name).toBe("chat-filled");
+  });
+
+  test("should render a success badge", async () => {
+    const el: NotificationBadge = await fixture(html` <md-notification-badge type="success"></md-notification-badge> `);
+    const icon = el.shadowRoot?.querySelector("md-icon");
+    expect(icon).not.toBeNull();
+    expect(icon?.name).toBe("check-circle-badge-filled");
+    expect(icon?.classList.contains("md-notification-badge-icon__success")).toBe(true);
+  });
+
+  test("should render a warning badge", async () => {
+    const el: NotificationBadge = await fixture(html` <md-notification-badge type="warning"></md-notification-badge> `);
+    const icon = el.shadowRoot?.querySelector("md-icon");
+    expect(icon).not.toBeNull();
+    expect(icon?.name).toBe("warning-badge-filled");
+    expect(icon?.classList.contains("md-notification-badge-icon__warning")).toBe(true);
+  });
+
+  test("should render an error badge", async () => {
+    const el: NotificationBadge = await fixture(html` <md-notification-badge type="error"></md-notification-badge> `);
+    const icon = el.shadowRoot?.querySelector("md-icon");
+    expect(icon).not.toBeNull();
+    expect(icon?.name).toBe("error-legacy-badge-filled");
+    expect(icon?.classList.contains("md-notification-badge-icon__error")).toBe(true);
+  });
+
+  test("should apply overlay class when overlay is true", async () => {
+    const el: NotificationBadge = await fixture(html` <md-notification-badge overlay></md-notification-badge> `);
+    const dot = el.shadowRoot?.querySelector(".md-notification-badge-dot");
+    expect(dot?.classList.contains("md-notification-badge-overlay")).toBe(true);
+  });
+
+  test("should set aria-label and role", async () => {
+    await fixture(html` <md-notification-badge aria-label="New notification"></md-notification-badge> `);
+
+    waitFor(() => {
+      const img = screen.getByShadowRole("img", { name: "New notification" });
+      expect(img).toBeInTheDocument();
+    });
   });
 });

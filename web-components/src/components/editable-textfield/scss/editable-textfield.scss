@@ -5,10 +5,16 @@
 }
 
 @include exports("md-editable-textfield") {
+
+  :host {
+    --editable-textfield-line-height: $field-line-height;
+    --editable-textfield-min-height: 2rem;
+  }
+
   .md-editable-textfield {
     border-radius: $field-border-radius;
-    line-height: $field-line-height;
-    min-height: 2rem;
+    line-height: var(--editable-textfield-line-height);
+    min-height: var(--editable-textfield-min-height);
     overflow-y: auto;
     padding: $field-padding;
     align-content: center;

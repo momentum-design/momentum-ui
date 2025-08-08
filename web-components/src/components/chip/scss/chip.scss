@@ -361,6 +361,17 @@
     );
   }
 
+  &--warning {
+    @include chip-sentiment-style(
+      var(--badge-warning-bg-color),
+      var(--badge-warning-text-color),
+      var(--badge-warning-icon-color),
+      var(--badge-warning-border-color),
+      var(--badge-warning-hover-bg-color),
+      var(--badge-warning-active-bg-color)
+    );
+  }
+
   &--status-negative {
     @include chip-status-style(
       var(--badge-status-negative-bg-color),

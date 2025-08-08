@@ -704,7 +704,7 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
 @customElement("adding-and-removing-tabs-sandbox-example")
 export class AddingAndRemovingTabsTemplate extends LitElement {
   @state() private showSecondTab = true;
-  selectedTab = "tab1";
+  selectedTab = "tab2";
 
   private readonly allTabs = ["tab1", "tab2", "tab3"];
 
@@ -749,15 +749,17 @@ export class AddingAndRemovingTabsTemplate extends LitElement {
         class="adding-and-removing-tabs"
         newMomentum
         type="rounded"
+        scroll-arrow
         variant="primary"
         selected-index=${this.selectedTabIndex}
         @selected-changed=${(e: CustomEvent) => this.selectedTabChanged(e)}
+        roving-prevent-focus
       >
         ${repeat(
           this.filteredTabs,
           (tab) => tab,
           (tab) => html`
-            <md-tab slot="tab" name=${tab} ?selected=${this.selectedTab === tab}>
+            <md-tab slot="tab" name=${tab}>
               <span>${tab}</span>
             </md-tab>
             <md-tab-panel slot="panel">

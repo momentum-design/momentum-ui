@@ -26,7 +26,7 @@ describe("DateTimePicker Component", () => {
 
   test("should render with default date and time", async () => {
     const el: DateTimePicker.ELEMENT = await fixture(html` <md-date-time-picker></md-date-time-picker> `);
-    expect(el.value).not.toBeNull();
+    expect(el.value).not.toBeFalsy();
 
     const dateTime = DateTime.fromISO(el.value?.replace(/\//g, "-") ?? "");
     expect(dateTime.isValid).toBe(true);
@@ -113,7 +113,7 @@ describe("DateTimePicker Component", () => {
 
       if (includeApplyButton) {
         expect(applyButton).not.toBeNull();
-        applyButton?.dispatchEvent(new MouseEvent("click"));
+        applyButton?.dispatchEvent(new MouseEvent("button-click"));
         await elementUpdated(el);
         expect(dateTime2.equals(dateStringToDateTime(el.value))).toBe(true);
       } else {

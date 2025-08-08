@@ -73,13 +73,26 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
       const observer = Resize._resizeObserver;
       if (observer == null) {
         Resize._resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+          if (Resize._animationFrameID) {
+            cancelAnimationFrame(Resize._animationFrameID);
+          }
+
           Resize._animationFrameID = requestAnimationFrame(() => {
             if (Array.isArray(entries) && entries.length) {
               entries.forEach((entry) => {
                 const { target, contentRect } = entry;
-                (target as Resize).handleResize(contentRect as DOMRect);
+                const el = target as Resize;
+
+                if (el.isConnected && typeof el.handleResize === "function") {
+                  try {
+                    el.handleResize.call(el, contentRect as DOMRect);
+                  } catch (error) {
+                    console.warn("ResizeObserver handleResize error:", error);
+                  }
+                }
               });
             }
+            Resize._animationFrameID = undefined;
           });
         });
       }
@@ -90,7 +103,7 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
         super.handleResize(contentRect);
       }
       this.dispatchEvent(
-        new CustomEvent("resize", {
+        new CustomEvent("md-resize", {
           detail: {
             contentRect
           },

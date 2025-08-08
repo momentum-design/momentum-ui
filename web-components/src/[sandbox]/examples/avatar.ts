@@ -235,6 +235,15 @@ export class AvatarTemplateSandbox extends LitElement {
         state="rest"
         newMomentum
       ></md-avatar>
+       <md-avatar
+        title="Channel Call"
+        type="channel-call"
+        size="24"
+        avatar-style="default"
+        presence-type="wrapup"
+        state="rest"
+        newMomentum
+      ></md-avatar>
       <md-avatar
         title="Channel Chat"
         type="channel-chat"
@@ -304,6 +313,8 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="gold"></md-avatar>
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="pink"></md-avatar>
       <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="lime"></md-avatar>
+      <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="glass" state="rest"></md-avatar>
+      <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44" color="glass" state="active"></md-avatar>
       <h3>Medium Src Avatar</h3>
       <md-avatar
         alt="avatar"
@@ -360,6 +371,7 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="idle" size="48" type="idle" newMomentum></md-avatar>
       <md-avatar title="inactive" size="48" type="inactive" newMomentum></md-avatar>
       <h3>New Icon Avatar Status Size</h3>
+      <md-avatar title="active" size="16" newMomentum></md-avatar>
       <md-avatar title="active" size="24" type="active" newMomentum></md-avatar>
       <md-avatar title="active" size="32" type="active" newMomentum></md-avatar>
       <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>

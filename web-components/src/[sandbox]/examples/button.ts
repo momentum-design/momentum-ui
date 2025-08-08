@@ -1,3 +1,4 @@
+import "@/components/badge/NotificationBadge";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
@@ -186,7 +187,10 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button circle size="20"><span slot="text">20</span></md-button>
         <md-button circle size="24"><span slot="text">24</span></md-button>
         <md-button circle size="28"><span slot="text">28</span></md-button>
-        <md-button circle size="32"><span slot="text">32</span></md-button>
+        <md-button circle size="32"
+          ><span slot="text">32</span
+          ><md-notification-badge slot="notification" type="error" overlay></md-notification-badge
+        ></md-button>
         <md-button circle size="36"><span slot="text">36</span></md-button>
         <md-button circle size="40"><span slot="text">40</span></md-button>
         <md-button circle size="44"><span slot="text">44</span></md-button>

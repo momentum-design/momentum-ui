@@ -10,6 +10,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, PropertyValues } from "lit";
 import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
@@ -83,7 +84,15 @@ export namespace Spinner {
     }
 
     render() {
-      return html` <i class="md-spinner" part="spinner" style=${styleMap(this.spinnerStyleMap)}></i> `;
+      return html`
+        <i
+          class="md-spinner ${classMap({
+            large: this.size >= 56
+          })}"
+          part="spinner"
+          style=${styleMap(this.spinnerStyleMap)}
+        ></i>
+      `;
     }
   }
 }

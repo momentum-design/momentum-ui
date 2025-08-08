@@ -10,7 +10,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
-import { getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
+import { closestElement, getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, LitElement, PropertyValues } from "lit";
 import { nothing } from "lit-html";
@@ -305,6 +305,13 @@ export class Popover extends FocusTrapMixin(LitElement) {
   disableAriaExpanded: boolean = DEFAULTS.DISABLE_ARIA_EXPANDED;
 
   /**
+   * animation-frame for update the position of floating element on every animation frame
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "animation-frame" })
+  animationFrame: boolean = DEFAULTS.ANIMATION_FRAME;
+
+  /**
    * Controller object that provides methods to programmatically control the popover.
    * This is especially useful when the popover is appended to another part of the DOM.
    *
@@ -587,10 +594,33 @@ export class Popover extends FocusTrapMixin(LitElement) {
    * @param event - The focus event.
    */
   private readonly onPopoverFocusOut = (event: FocusEvent) => {
-    if (!this.contains(event.relatedTarget as Node)) {
+    const relatedTarget = event.relatedTarget as HTMLElement | null;
+
+    // If we have a relatedTarget, check it immediately
+    if (relatedTarget && !this.isElementInPopover(relatedTarget)) {
       this.hidePopover();
+      return;
+    }
+
+    // If no relatedTarget (Shadow DOM case), use async check
+    if (!relatedTarget) {
+      setTimeout(() => {
+        const activeElement = getDeepActiveElement();
+        if (!this.isElementInPopover(activeElement)) {
+          this.hidePopover();
+        }
+      }, 0);
     }
   };
+
+  private isElementInPopover(element: HTMLElement | null): boolean {
+    if (!element) return false;
+
+    if (this.contains(element)) return true;
+
+    const closestPopover = closestElement("md-popover", element);
+    return closestPopover === this;
+  }
 
   private readonly handleWindowBlurEvent = () => {
     if (this.visible) {
@@ -867,23 +897,30 @@ export class Popover extends FocusTrapMixin(LitElement) {
 
     middleware.push(offset(popoverOffset));
 
-    this.cleanupAutoUpdate = autoUpdate(this.triggerElement, this, async () => {
-      if (!this.triggerElement) return;
+    this.cleanupAutoUpdate = autoUpdate(
+      this.triggerElement,
+      this,
+      async () => {
+        if (!this.triggerElement) return;
 
-      const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
-        placement: this.placement,
-        middleware,
-        strategy: this.strategy
-      });
+        const { x, y, middlewareData, placement } = await computePosition(this.triggerElement, this, {
+          placement: this.placement,
+          middleware,
+          strategy: this.strategy
+        });
 
-      this.utils.updatePopoverStyle(x, y);
-      if (middlewareData.arrow && this.arrowElement) {
-        this.utils.updateArrowStyle(middlewareData.arrow, placement);
+        this.utils.updatePopoverStyle(x, y);
+        if (middlewareData.arrow && this.arrowElement) {
+          this.utils.updateArrowStyle(middlewareData.arrow, placement);
+        }
+        if (this.trigger.includes("mouseenter")) {
+          this.utils.setupHoverBridge(placement);
+        }
+      },
+      {
+        animationFrame: this.animationFrame
       }
-      if (this.trigger.includes("mouseenter")) {
-        this.utils.setupHoverBridge(placement);
-      }
-    });
+    );
   }
 
   public override render() {

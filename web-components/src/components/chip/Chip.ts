@@ -44,6 +44,8 @@ export namespace Chip {
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
+    @property({ type: Boolean }) decorative = false;
+    @property({ type: Boolean }) shouldTruncateValue = true;
 
     @property({
       type: String,
@@ -85,7 +87,7 @@ export namespace Chip {
       endCharCount = this.POST_TRUNC_CHARS,
       dotCount = this.DOT_COUNT
     ): void {
-      if (this.value.length > this.MAX_LENGTH) {
+      if (this.value.length > this.MAX_LENGTH && this.shouldTruncateValue) {
         let convertedStr = "";
         convertedStr += str.substring(0, firstCharCount);
         convertedStr += ".".repeat(dotCount);
@@ -245,7 +247,7 @@ export namespace Chip {
     }
 
     private get textContentTemplate() {
-      return html`<span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
+      return html`<span part="text-content" class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
     }
 
     render() {
@@ -253,28 +255,28 @@ export namespace Chip {
         "md-chip--small": this.small,
         "md-chip--disabled": this.disabled,
         [`md-chip--${this.color}`]: this.color,
-        "suppress-max-width": this.suppressDefaultMaxWidth
+        "suppress-max-width": this.suppressDefaultMaxWidth,
+        "md-chip--interactive": !this.decorative
       };
+
+      const ariaPressed = !this.decorative ? (this.selected ? "true" : "false") : undefined;
 
       return html`
         ${this.getStyles()}
         <md-tooltip
           ?disabled=${!this.tooltipText && !this.textOverflow}
           message="${this.getToolTipContent()}"
+          part="tooltip"
           placement="${this.tooltipPlacement}"
         >
           <span
-            role="button"
+            role=${ifDefined(!this.decorative ? "button" : undefined)}
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
-            aria-pressed=${this.selected}
-            @click=${() => {
-              this.handleClick();
-            }}
-            @keydown=${(e: KeyboardEvent) => {
-              this.handleKeydown(e);
-            }}
+            aria-pressed=${ifDefined(ariaPressed)}
+            @click=${!this.decorative ? () => this.handleClick() : undefined}
+            @keydown=${!this.decorative ? (e: KeyboardEvent) => this.handleKeydown(e) : undefined}
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>

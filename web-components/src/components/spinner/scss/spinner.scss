@@ -11,18 +11,12 @@
     display: block;
     position: relative;
 
-    @include spinner-style();
+    $trackWidth: 2px;
+    @include spinner-style($track-width: 2px);
 
-    &::after {      
-      border-radius: 50%;
-      content: "";
-      height: calc(100% + 4px);
-      left: -2px;
-      position: absolute;
-      top: -2px;
-      width: calc(100% + 4px);
+    &.large {
+      @include spinner-style($track-width: 4px);
     }
-    
   }
 }
 

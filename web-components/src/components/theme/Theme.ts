@@ -68,6 +68,7 @@ export namespace Theme {
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
     private activeTooltipTrigger: HTMLElement | null = null;
+    private positionTrackingId: number | undefined;
 
     private setTheme() {
       //If the theme property is set, prefer using that theme over the lumos property
@@ -198,7 +199,29 @@ export namespace Theme {
       this.activeTooltipTrigger = reference;
       this.placement = placement;
       this.initVirtualElements(popper, reference, slotContent);
+      this.startContinuousPositionTracking(reference);
       this.showVirtualTooltip();
+    }
+
+    private startContinuousPositionTracking(trigger: HTMLElement): void {
+      this.stopContinuousPositionTracking();
+
+      const trackPosition = () => {
+        if (this.activeTooltipTrigger === trigger && this.popperInstance) {
+          this.setVirtualReferencePosition(trigger);
+          this.popperInstance.update();
+          this.positionTrackingId = requestAnimationFrame(trackPosition);
+        }
+      };
+
+      this.positionTrackingId = requestAnimationFrame(trackPosition);
+    }
+
+    private stopContinuousPositionTracking(): void {
+      if (this.positionTrackingId) {
+        cancelAnimationFrame(this.positionTrackingId);
+        this.positionTrackingId = undefined;
+      }
     }
 
     handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
@@ -318,6 +341,7 @@ export namespace Theme {
       if (this.virtualPopper) {
         this.virtualPopper.toggleAttribute("data-show", false);
         this.destroyPopperInstance();
+        this.stopContinuousPositionTracking();
         this.setInitStyleToVirtualReference();
       }
     }
@@ -342,6 +366,7 @@ export namespace Theme {
 
     disconnectedCallback() {
       super.disconnectedCallback();
+      this.stopContinuousPositionTracking();
       this.teardownEvents();
     }
 

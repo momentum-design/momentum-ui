@@ -139,10 +139,13 @@ export namespace MenuOverlay {
       super.connectedCallback();
       this.handleWindowBlurEvent = this.handleWindowBlurEvent.bind(this);
       window.addEventListener("blur", this.handleWindowBlurEvent);
-      document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.addEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
+
+      this.updateComplete.then(() => {
+        this.handleTriggerSlotChange();
+      });
     }
 
     disconnectedCallback() {
@@ -154,17 +157,7 @@ export namespace MenuOverlay {
       this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
 
-      if (this.triggerElement) {
-        this.triggerElement.removeEventListener("click", this.handleTriggerClick);
-        this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
-        if (this.allowHoverToggle) {
-          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
-          this.triggerElement.removeEventListener("mouseleave", this.collapsePopup);
-          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup);
-          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
-        }
-        this.triggerElement = null;
-      }
+      this.removeTriggerEventListeners();
     }
 
     checkIsInputField(element: HTMLElement) {
@@ -178,18 +171,55 @@ export namespace MenuOverlay {
       if (this.triggerElement) {
         if (this.isOpen) {
           this.triggerElement.setAttribute("aria-expanded", "true");
+          if (this.triggerElement.hasAttribute("ariaexpanded")) {
+            this.triggerElement.setAttribute("ariaexpanded", "true");
+          }
         } else {
           this.triggerElement.removeAttribute("aria-expanded");
+          if (this.triggerElement.hasAttribute("ariaexpanded")) {
+            this.triggerElement.setAttribute("ariaexpanded", "false");
+          }
         }
       }
     }
 
-    protected async firstUpdated(changedProperties: PropertyValues) {
-      super.firstUpdated(changedProperties);
-      await new Promise((resolve) => setTimeout(resolve, 0));
+    private handleTriggerSlotChange() {
+      this.removeTriggerEventListeners();
+      this.setupTriggerEventListeners();
+      this.updateTriggerElementAriaExpanded();
 
+      if (this.popperInstance) {
+        this.destroy();
+      }
+
+      if (this.isOpen) {
+        this.create();
+        if (this.overlayContainer) {
+          this.overlayContainer.toggleAttribute("data-show", this.isOpen);
+        }
+      }
+    }
+
+    private removeTriggerEventListeners() {
+      if (this.triggerElement) {
+        this.triggerElement.removeEventListener("click", this.handleTriggerClick);
+        this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
+        if (this.allowHoverToggle) {
+          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.removeEventListener("mouseleave", this.collapsePopup);
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup);
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
+        }
+        this.triggerElement = null;
+      }
+    }
+
+    private setupTriggerEventListeners() {
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
+        if (!this.triggerElement) {
+          return;
+        }
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
 
         if (this.allowHoverToggle) {
@@ -199,25 +229,16 @@ export namespace MenuOverlay {
           this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
         }
 
+        if (this.arrow && this.showArrow) {
+          this.arrow.toggleAttribute("data-show", true);
+        }
+
         if (!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
           this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
         }
         this.triggerElement.setAttribute("aria-haspopup", "true");
-      }
-
-      if (this.overlayContainer && this.isOpen) {
-        this.handleInstance(true);
-        this.overlayContainer.toggleAttribute("data-show", true);
-      }
-
-      if (this.arrow && this.showArrow) {
-        this.arrow.toggleAttribute("data-show", true);
-      }
-
-      if (changedProperties.has("isOpen")) {
-        this.updateTriggerElementAriaExpanded();
       }
     }
 
@@ -232,6 +253,12 @@ export namespace MenuOverlay {
           document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
         }
       }
+
+      if (changedProperties.has("showArrow")) {
+        if (this.arrow) {
+          this.arrow.toggleAttribute("data-show", this.showArrow);
+        }
+      }
     }
 
     protected updated(changedProperties: PropertyValues) {
@@ -239,21 +266,15 @@ export namespace MenuOverlay {
       if (changedProperties.has("isOpen")) {
         if (this.isOpen) {
           this.dispatchMenuOpen();
+          requestAnimationFrame(() => {
+            document.addEventListener("click", this.handleOutsideOverlayClick);
+          });
 
-          if (this.triggerElement) {
-            this.triggerElement.setAttribute("aria-expanded", "true");
-            if (this.triggerElement.hasAttribute("ariaexpanded")) {
-              this.triggerElement.setAttribute("ariaexpanded", "true");
-            }
-          }
+          this.updateTriggerElementAriaExpanded();
         } else {
           this.dispatchMenuClose();
-          if (this.triggerElement) {
-            this.triggerElement.removeAttribute("aria-expanded");
-            if (this.triggerElement.hasAttribute("ariaexpanded")) {
-              this.triggerElement.setAttribute("ariaexpanded", "false");
-            }
-          }
+          document.removeEventListener("click", this.handleOutsideOverlayClick);
+          this.updateTriggerElementAriaExpanded();
         }
       }
     }
@@ -466,7 +487,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot name="menu-trigger"></slot>
+          <slot @slotchange="${this.handleTriggerSlotChange}" name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

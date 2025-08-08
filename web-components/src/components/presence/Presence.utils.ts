@@ -27,6 +27,7 @@ export const PresenceType = [
   "on-hold",
   "engaged",
   "rona",
+  "wrapup",
   ""
 ] as const;
 
@@ -95,6 +96,10 @@ export const getPresenceIconColor = (
       case "busy":
         presenceIcon = "busy-presence-bold";
         presenceColor = "var(--avatar-presence-unstable)";
+        break;
+      case "wrapup":
+        presenceIcon = "archive-filled";
+        presenceColor = "var(--avatar-chat-icon-color)";
         break;
       case "on-mobile":
         presenceIcon = "phone-filled";

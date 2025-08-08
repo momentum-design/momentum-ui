@@ -8,11 +8,12 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, nothing } from "lit";
+import { html, LitElement } from "lit";
+import { nothing } from "lit-html";
 import { property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { BadgeCircleSize, BadgeSize } from "./badge.constant";
+import { BadgeCircleSize, BadgeSize } from "./badge.constants";
 import styles from "./scss/module.scss";
 
 export namespace Badge {

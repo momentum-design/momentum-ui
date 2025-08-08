@@ -182,6 +182,7 @@
     background: transparent;
     height: $combobox-new-height;
     max-width: 100%;
+    min-width: 3rem;
     flex-grow: 1;
 
     &.md-combobox-dropdown-arrow {
@@ -222,7 +223,7 @@
       .md-combobox__multiwrap {
         display: flex;
         align-items: center;
-        width: 50%;
+        width: 50%;        
         max-height: $combobox-new-height-compact;
 
         input {
@@ -255,6 +256,7 @@
   }
 
   .md-combobox__multiwrap {
+    min-width: 2rem;
     input {
       color: var(--md-primary-text-color);
     }
@@ -531,6 +533,7 @@ div#md-combobox-listbox {
   margin-left: 0;
   max-height: calc(#{$combobox-select-size} * 4.5);
   max-width: 100%;
+  min-width: 3rem;
 
   .selected-count {
     color: var(--md-primary-text-color, $md-gray-05);
@@ -577,6 +580,7 @@ div#md-combobox-listbox {
     flex: 1 1 auto;
     height: $combobox-min-height;
     outline: none;
+    min-width: 3rem;
   }
 
   ::input-placeholder {

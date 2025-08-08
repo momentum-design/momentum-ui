@@ -4,6 +4,7 @@ const AvatarStyle = ["default", "table"] as const;
 
 const AvatarChannelType = [
   "channel-chat",
+  "channel-chat-outbound",
   "channel-sms-inbound",
   "channel-sms-outbound",
   "channel-email-inbound",
@@ -31,6 +32,6 @@ const AvatarChannelType = [
 
 const AvatarType = ["bot", "group", "self", "typing", ""] as const;
 
-const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124];
+const AvatarSize = [16, 18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124];
 
 export { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType };

@@ -13,12 +13,12 @@ import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 
 const DATE_RANGE_SEPARATOR = " - ";
-const DEFAULT_ARIA_LABEL = "Choose Date Range"
-const DEFAULT_ARIA_LABEL_RANGE_SELECTED = "Choose Date Range, currently selected range is "
+const DEFAULT_ARIA_LABEL = "Choose Date Range";
+const DEFAULT_ARIA_LABEL_RANGE_SELECTED = "Choose Date Range, currently selected range is ";
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
-  export class ELEMENT extends DatePicker.ELEMENT {   
+  export class ELEMENT extends DatePicker.ELEMENT {
     @property({ type: String, attribute: "start-date", reflect: true })
     startDate: string | undefined | null = undefined;
 
@@ -40,7 +40,10 @@ export namespace DateRangePicker {
     updated(changedProperties: Map<string | number | symbol, unknown>) {
       super.updated(changedProperties);
 
-      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !changedProperties.has("focusedDate")) {
+      if (
+        (changedProperties.has("startDate") || changedProperties.has("endDate")) &&
+        !changedProperties.has("focusedDate")
+      ) {
         this.updateValue();
       }
     }
@@ -49,8 +52,8 @@ export namespace DateRangePicker {
       if (this.startDate && this.endDate) {
         const formatDate = (dateString: string) =>
           this.useISOFormat
-          ? dateString
-          : DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
+            ? dateString
+            : DateTime.fromISO(dateString).toLocaleString(DateTime.DATE_SHORT, { locale: this.locale });
 
         const startDateString = formatDate(this.startDate);
         const endDateString = formatDate(this.endDate);
@@ -60,7 +63,7 @@ export namespace DateRangePicker {
     };
 
     // overload
-    protected getPlaceHolderString() : string {
+    protected getPlaceHolderString(): string {
       if (this.placeholder) {
         return this.placeholder;
       }
@@ -69,7 +72,7 @@ export namespace DateRangePicker {
       }
       const placeholder = getLocaleDateFormat(this.locale).toUpperCase();
       return `${placeholder}${DATE_RANGE_SEPARATOR}${placeholder}`;
-    };
+    }
 
     // overload
     isValueValid = (): boolean => {
@@ -77,12 +80,11 @@ export namespace DateRangePicker {
         return true;
       }
       const split = this.value?.split(DATE_RANGE_SEPARATOR) ?? [];
-      return (split.length === 2 && this.validateDateString(split[0]) && this.validateDateString(split[1]));
-    }
+      return split.length === 2 && this.validateDateString(split[0]) && this.validateDateString(split[1]);
+    };
 
     // empty overload to stop prevent super's value change
-    setSelected() {
-    }
+    setSelected() {}
 
     dateToSqlTranslate(date: DateTime) {
       return date.toSQLDate();
@@ -108,7 +110,7 @@ export namespace DateRangePicker {
         }
       }
       return DEFAULT_ARIA_LABEL;
-    }
+    };
 
     handleDateSelection(e: any): void {
       const selection: DateTime = e.detail.data;
@@ -139,7 +141,7 @@ export namespace DateRangePicker {
 
       this.emitDateRange();
       this.updateValue();
-    };
+    }
 
     emitDateRange() {
       if (!this.startDate || !this.endDate) {

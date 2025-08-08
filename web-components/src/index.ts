@@ -17,6 +17,7 @@ export { Avatar } from "./components/avatar/Avatar";
 export { AvatarType } from "./components/avatar/Avatar.constants";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { Badge } from "./components/badge/Badge";
+export { NotificationBadge } from "./components/badge/NotificationBadge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
@@ -51,6 +52,7 @@ export {
 } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
+export { AbstractControl, FormArray, FormControl, FormGroup, ValidationError, Validators } from "./components/form";
 export { Form } from "./components/form/Form";
 export { Grabber } from "./components/grabber/Grabber";
 export { HelpText } from "./components/help-text/HelpText";
@@ -88,8 +90,7 @@ export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
 export { iconUrlManager } from "./managers/IconUrlManager";
-export { ThemeManager, themeManager } from "./managers/ThemeManager";
-export { FormGroup, FormArray, FormControl, Validators, AbstractControl, ValidationError } from "./components/form";
+export { registerThemeManagerGlobally, ThemeManager, themeManager } from "./managers/ThemeManager";
 
 export type {
     Events,

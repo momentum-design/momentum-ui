@@ -86,6 +86,54 @@ export class TooltipDisconnectedSandbox extends LitElement {
   }
 }
 
+@customElement("tooltip-animation-sandbox")
+export class TooltipAnimationSandbox extends LitElement {
+  @property({ type: Boolean, reflect: true }) moved = false;
+
+  static get styles() {
+    return css`
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .container {
+        position: relative;
+        display: flex;
+        gap: 20px;
+        border: 1px dashed #ccc;
+        padding: 20px;
+        width: fit-content;
+        transition: transform 0.5s ease-in-out;
+        transform: translateX(0);
+      }
+      .container.moved {
+        transform: translateX(200px);
+      }
+    `;
+  }
+
+  private toggleMove() {
+    this.moved = !this.moved;
+  }
+
+  render() {
+    return html`
+      <div class="wrapper">
+        <div class="container ${this.moved ? "moved" : ""}">
+          <md-tooltip message="I should move with the button.">
+            <md-button @click=${this.toggleMove}>Button 1</md-button>
+          </md-tooltip>
+          <md-tooltip message="I should also move with the button.">
+            <md-button>Button 2</md-button>
+          </md-tooltip>
+        </div>
+      </div>
+    `;
+  }
+}
+
 export const tooltipTemplate = html`
   <div class="row md-margin__bottom"><h3>md-tooltip</h3></div>
   <div class="row md-padding__vertical">
@@ -135,5 +183,12 @@ export const tooltipTemplate = html`
   </div>
   <div class="row md-padding__vertical">
     <tooltip-disconnected-sandbox></tooltip-disconnected-sandbox>
+  </div>
+  <div class="row md-padding__vertical">
+    <div class="row md-margin__bottom">
+      <h3>Tooltip with Animated Trigger</h3>
+      <p>The tooltip should follow the button when it moves, but it gets left behind.</p>
+    </div>
+    <tooltip-animation-sandbox></tooltip-animation-sandbox>
   </div>
 `;

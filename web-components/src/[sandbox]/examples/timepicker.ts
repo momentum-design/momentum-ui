@@ -1,10 +1,14 @@
 import "@/components/timepicker/TimePicker";
 import "@/index";
 import { html } from "lit";
+import { DateTime } from "luxon";
 
 export const timePickerTemplate = html`
   <h3>Default</h3>
   <md-timepicker></md-timepicker>
+
+  <h3>placeholder</h3>
+  <md-timepicker .showDefaultNowTime=${false}></md-timepicker>
 
   <h3>Locate</h3>
   <md-timepicker locale="ru"></md-timepicker>
@@ -23,4 +27,7 @@ export const timePickerTemplate = html`
 
   <h3>Default Value</h3>
   <md-timepicker value="02:16:00.000-08:00"></md-timepicker>
+
+  <h3>Default Value PM value</h3>
+  <md-timepicker value=${`23:59:59${DateTime.local().toFormat("ZZ")}`}></md-timepicker>
 `;

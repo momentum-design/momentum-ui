@@ -93,6 +93,21 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("whatsApp_16");
   });
 
+  test("should render TaskItem Component", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      TaskItemMediaType.OUTBOUND_CHAT,
+      "Mihael Varificantare",
+      "Mihael Varificantare",
+      "quelle_1",
+      TaskItemStatus.CONSULTING,
+      0,
+      "",
+      false
+    );
+    const type = element.shadowRoot?.querySelector("md-icon");
+    expect(type?.getAttribute("name")).toEqual("chat-outbound-filled");
+  });
+
   test("should render TaskItem Component for Apple Chat Messenger", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       TaskItemMediaType.APPLE_MESSAGES,

@@ -130,4 +130,8 @@
   --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
   --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
   --md-backdrop-filter: 10px;
+
+  --md-focus-inner-color: #{$mds-color-theme-focus-default-0};
+  --md-focus-middle-color: #{$mds-color-theme-focus-default-1};
+  --md-focus-outer-color: #{$mds-color-theme-focus-default-2};
 }

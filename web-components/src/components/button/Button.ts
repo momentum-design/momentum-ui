@@ -207,6 +207,7 @@ export namespace Button {
     @property({ type: String }) activityType = "";
     @property({ type: Boolean }) iconActive = false;
     @property({ type: Boolean }) isActive = false;
+    @property({ type: String, attribute: "aria-describedby" }) ariaDescribedBy?: string;
     @property({ attribute: false }) clickFunction?: () => void;
     @property({ type: Boolean, attribute: "is-placeholder-text" }) isPlaceholderText?: boolean;
 
@@ -320,6 +321,7 @@ export namespace Button {
           ${this.iconTemplate()} ${this.textTemplate()}
           <slot></slot>
         </span>
+        <slot name="notification"></slot>
       `;
     }
 
@@ -347,6 +349,7 @@ export namespace Button {
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
             aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
+            aria-describedby=${ifDefined(this.ariaDescribedBy || undefined)}
             type=${this.type}
             role=${ifDefined(this.role === "button" ? undefined : this.role)}
           >

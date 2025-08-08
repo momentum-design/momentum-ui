@@ -9,7 +9,7 @@
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, PropertyValues } from "lit";
+import { html, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
@@ -31,7 +31,6 @@ export namespace Radio {
     set disabled(value: boolean) {
       const oldValue = this._disabled;
       this._disabled = value;
-      this.setAttribute("aria-disabled", `${value}`);
       if (value) {
         this.tabIndex = -1;
       } else {
@@ -40,26 +39,20 @@ export namespace Radio {
       this.requestUpdate("disabled", oldValue);
     }
 
-    private _checked = false;
-    @property({ type: Boolean, attribute: false })
-    get checked() {
-      return this._checked;
-    }
-    set checked(value: boolean) {
-      const oldValue = this._checked;
-      this._checked = value;
-      this.setAttribute("aria-checked", `${value}`);
-      this.requestUpdate("checked", oldValue);
-    }
+    @property({ type: Boolean, reflect: true })
+    checked = false;
 
-    protected firstUpdated(changedProperties: PropertyValues) {
-      super.firstUpdated(changedProperties);
-
-      this.setAttribute("role", "radio");
-
-      if (this.label) {
-        this.setAttribute("aria-label", this.label);
+    private get inputAriaLabel(): string | undefined {
+      if (this.ariaLabel?.length) {
+        return this.ariaLabel;
       }
+
+      if (this.label?.length) {
+        return this.label;
+      }
+
+      const textContent = this.textContent?.trim();
+      return textContent?.length ? textContent : undefined;
     }
 
     static get styles() {
@@ -69,19 +62,24 @@ export namespace Radio {
     render() {
       return html`
         <div class="md-radio-wrapper" part="radio-wrapper">
+          <div class="md-radio-icon"></div>
           <input
             class="md-radio-input"
+            part="radio-input"
             type="radio"
-            aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
+            role="radio"
+            aria-label=${ifDefined(this.inputAriaLabel)}
             aria-checked=${this.checked ? "true" : "false"}
             .value=${this.value}
             ?checked=${this.checked}
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
-            aria-hidden="true"
+            tabindex="-1"
             id="radio-label"
           />
-          <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
+          <label for="radio-label" class="md-radio-label" part="radio-label">
+            <slot></slot>
+          </label>
         </div>
       `;
     }

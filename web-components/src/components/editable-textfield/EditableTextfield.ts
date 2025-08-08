@@ -233,6 +233,7 @@ export namespace EditableTextfield {
 
       return html`
         <div
+          part="editable-textfield"
           style="${this.overflowStyles}"
           class="md-editable-textfield ${classMap(classes)}"
           role=${ifDefined(!this.disabled ? "textbox" : undefined)}

@@ -393,6 +393,30 @@ const badge = {
       }
     }
   },
+  warning: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-warning-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-warning-normal"
+    },
+    "icon-color": {
+      common: "$mds-color-theme-text-warning-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-warning-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-warning-hover"
+      }
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-warning-active"
+      }
+    }
+  },
   status: {
     positive: {
       "bg-color": {
@@ -602,6 +626,53 @@ const badge = {
         "bg-color": {
           common: "$mds-color-theme-background-label-lime-active"
         }
+      }
+    }
+  },
+  notification: {
+    overlay: {
+      "border-color": {
+        common: "$mds-color-theme-background-solid-primary-normal"
+      }
+    },
+    primary: {
+      "background-color": {
+        common: "$mds-color-theme-background-accent-normal"
+      },
+      "foreground-color": {
+        common: "$mds-color-theme-common-text-primary-normal"
+      }
+    },
+    secondary: {
+      "background-color": {
+        common: "$mds-color-theme-background-alert-default-normal"
+      },
+      "foreground-color": {
+        common: "$mds-color-theme-text-secondary-normal"
+      }
+    },
+    success: {
+      "background-color": {
+        common: "$mds-color-theme-background-alert-success-normal"
+      },
+      "foreground-color": {
+        common: "$mds-color-theme-text-success-normal"
+      }
+    },
+    warning: {
+      "background-color": {
+        common: "$mds-color-theme-background-alert-warning-normal"
+      },
+      "foreground-color": {
+        common: "$mds-color-theme-text-warning-normal"
+      }
+    },
+    error: {
+      "background-color": {
+        common: "$mds-color-theme-background-alert-error-normal"
+      },
+      "foreground-color": {
+        common: "$mds-color-theme-text-error-normal"
       }
     }
   }

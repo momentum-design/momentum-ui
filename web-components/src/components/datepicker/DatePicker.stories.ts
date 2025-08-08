@@ -17,6 +17,7 @@ export default {
     maxDate: { control: { type: "text" } },
     showDefaultNowDate: { control: "boolean", defaultValue: true },
     value: { control: { type: "text" } },
+    displayValue: { control: { type: "text" } },
     newMomentum: { control: { type: "select" }, options: [undefined, "true", "false"] },
     compactInput: { control: { type: "select" }, options: [undefined, "true", "false"] },
     positioningStrategy: {
@@ -47,6 +48,7 @@ export const DatePicker: StoryObj = {
         ?disabled=${args.disabled}
         ?should-close-on-select=${args.shouldCloseOnSelect}
         value=${args.value}
+        displayValue=${args.value}
         weekStart=${args.weekStart}
         locale=${args.locale}
         placeholder=${args.placeholder}

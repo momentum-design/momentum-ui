@@ -321,6 +321,7 @@ export namespace Button {
           ${this.iconTemplate()} ${this.textTemplate()}
           <slot></slot>
         </span>
+        <slot name="notification"></slot>
       `;
     }
 

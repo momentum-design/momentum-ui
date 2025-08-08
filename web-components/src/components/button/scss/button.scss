@@ -577,6 +577,54 @@
       }
     }
   }
+
+  ::slotted([slot="notification"]) {
+    // Styles for the notification slot
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+  }
+
+  @each $size in (20, 24, 28, 32, 36, 40, 44, 52, 56, 64, 68, 72, 84) {
+    .md-button.md-button--#{$size} {
+      $top-offset: 0px;
+      $right-offset: 0px;
+
+      // Define offsets based on button size
+      @if $size <= 28 {
+        $top-offset: -6px;
+        $right-offset: -6px;
+      } @else if $size <= 32 {
+        $top-offset: -4px;
+        $right-offset: -4px;
+      } @else if $size <= 36 {
+        $top-offset: -4px;
+        $right-offset: -4px;
+      } @else if $size <= 40 {
+        $top-offset: -4px;
+        $right-offset: -4px;
+      } @else if $size <= 52 {
+        $top-offset: -6px;
+        $right-offset: -6px;
+      } @else {
+        $top-offset: -2px;
+        $right-offset: -2px;
+      }
+
+      // Apply positioning for standard notification badges
+      ::slotted([slot="notification"]) {
+        top: $top-offset;
+        right: $right-offset;
+      }
+
+      // Override for "dot" type to have a smaller offset
+      ::slotted([slot="notification"][type="dot"]) {
+        top: $top-offset + 2;
+        right: $right-offset + 2;
+      }
+    }
+  }
 }
 
 // --------------------------------------------------------------
@@ -682,7 +730,7 @@
 
 :host([variant="inverted-ghost"]) .md-button {
   background-color: var(--button-inverted-secondary-bg-color);
-  color: var(--button-inverted-secondary-text-color);  
+  color: var(--button-inverted-secondary-text-color);
 
   &:hover {
     background-color: var(--button-inverted-secondary-hover-bg-color);
@@ -696,7 +744,7 @@
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-inverted-secondary-disabled-bg-color);    
+    background-color: var(--button-inverted-secondary-disabled-bg-color);
     color: var(--button-inverted-secondary-disabled-text-color);
   }
 }
@@ -743,7 +791,7 @@
 
   &.isActive {
     background-color: var(--button-secondary-active-normal-bg-color);
-    color: var(--button-secondary-text-color);    
+    color: var(--button-secondary-text-color);
     font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
@@ -758,7 +806,7 @@
 
     &:disabled,
     &.disabled {
-      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));      
+      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));
       color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color));
     }
   }

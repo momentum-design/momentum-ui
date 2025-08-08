@@ -1,0 +1,76 @@
+:host {
+  color: var(--badge-notification-primary-foreground-color);
+
+  font-size: var(--font-size-body-small, 0.75rem);
+  font-weight: var(--brand-font-weight-medium, 500);
+  line-height: var(--font-lineheight-body-small, 1rem);
+  font-family: var(--brand-font-medium);
+
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  width: fit-content;
+}
+
+.md-notification-badge-overlay {
+  outline: 0.0625rem solid var(--badge-notification-overlay-border-color);
+}
+
+.md-notification-badge-text {
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  border-radius: 6.25rem;
+  min-width: 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--badge-notification-primary-background-color);
+}
+
+.md-notification-badge-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--badge-notification-primary-background-color);
+}
+
+.md-notification-badge-icon {
+  padding: 2px;
+  size: 1rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.md-notification-badge-icon__primary {
+  background-color: var(--badge-notification-primary-background-color);
+  color: var(--badge-notification-primary-foreground-color);
+}
+
+.md-notification-badge-icon__success {
+  background-color: var(--badge-notification-success-background-color);
+  color: var(--badge-notification-success-foreground-color);
+}
+
+.md-notification-badge-icon__warning {
+  background-color: var(--badge-notification-warning-background-color);
+  color: var(--badge-notification-warning-foreground-color);
+}
+
+.md-notification-badge-icon__error {
+  background-color: var(--badge-notification-error-background-color);
+  color: var(--badge-notification-error-foreground-color);
+}
+
+.md-notification-badge-icon__secondary {
+  background-color: var(--badge-notification-secondary-background-color);
+  color: var(--badge-notification-secondary-foreground-color);
+}
+
+@media (forced-colors: active) {
+  .md-notification-badge-dot,
+  .md-notification-badge-icon,
+  .md-notification-badge-text {
+    outline: 0.125rem solid;
+  }
+}

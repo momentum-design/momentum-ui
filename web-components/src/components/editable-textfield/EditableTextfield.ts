@@ -59,19 +59,8 @@ export namespace EditableTextfield {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      if (this.innerText && this.innerText.length > 0) {
+      if (this.innerText && this.innerText.trim().length > 0 && this.innerText.trim() !== this.content) {
         this.content = this.innerText.trim();
-      } else {
-        this.innerText = dompurify.sanitize(this.content);
-      }
-    }
-
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
-      if (changedProperties.has("content")) {
-        if (this.editableField) {
-          this.editableField.innerText = dompurify.sanitize(this.content);
-        }
       }
     }
 
@@ -123,15 +112,20 @@ export namespace EditableTextfield {
       if (this.editableField) {
         const range = document.createRange();
         const sel = window.getSelection();
-        const position = this.editableField.childNodes[0].nodeValue?.length;
-        range.setStart(this.editableField.childNodes[0], position ? position : 0);
+
+        const firstChild = this.editableField.childNodes[0];
+
+        if (!firstChild || firstChild.nodeType !== Node.TEXT_NODE) {
+          return; // Exit early if no text node exists
+        }
+
+        const position = firstChild.nodeValue?.length || 0;
+        range.setStart(firstChild, position);
         range.collapse(true);
 
         if (sel && sel.toString().length === 0) {
           sel.removeAllRanges();
           sel.addRange(range);
-        } else {
-          return;
         }
 
         if (this.maxLines.length > 0) {
@@ -148,21 +142,28 @@ export namespace EditableTextfield {
         return;
       }
 
+      // Handle specific type restrictions
       if (
-        (this.type === "integer" && key.includes(".")) ||
-        ((this.type === "integer" || this.type === "decimal") && code.match("Space"))
+        this.type === "integer" &&
+        (key.includes(".") || (key === "-" && this.editableField?.innerText.includes("-")))
       ) {
         e.preventDefault();
+        return;
       }
 
-      const currentString = this.editableField?.innerText.trim() + key;
-      if (this.type) {
-        if (isNaN(Number(currentString))) {
+      if ((this.type === "integer" || this.type === "decimal") && code.match("Space")) {
+        e.preventDefault();
+        return;
+      }
+
+      if (this.type && key.length === 1) {
+        const currentText = this.editableField?.innerText.trim() || "";
+        const newText = currentText + key;
+
+        if (this.type === "integer" && !/^-?\d*$/.test(newText)) {
           e.preventDefault();
-        } else if (this.type === "integer" && !Number.isInteger(Number(currentString))) {
+        } else if (this.type === "decimal" && !/^-?\d*\.?\d*$/.test(newText)) {
           e.preventDefault();
-        } else {
-          return;
         }
       }
     };
@@ -172,7 +173,8 @@ export namespace EditableTextfield {
       if (this.maxLines.length > 0) {
         this.editableField?.scrollTo(0, 0);
       }
-      this.content = this.editableField?.innerText.trim() || "";
+      // Add null check before accessing innerText
+      this.content = this.editableField?.innerText?.trim() || "";
       this.alert = false;
       this.handleValidation();
     };

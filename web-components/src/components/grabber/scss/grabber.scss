@@ -20,11 +20,21 @@
 
   //Set the border radius for the focus ring
   &.leading {
-    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;    
+    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
+    
+    // RTL: leading becomes trailing
+    :host([dir="rtl"]) & {
+      border-radius: var(--grabber-border-radius) 0 0 var(--grabber-border-radius);
+    }
   }
 
   &.trailing {
     border-radius: var(--grabber-border-radius) 0 0 var(--grabber-border-radius);
+    
+    // RTL: trailing becomes leading
+    :host([dir="rtl"]) & {
+      border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
+    }
   }
 
   &.top {
@@ -79,10 +89,33 @@
     &:not(.visible) {
       transform: translate3d(-100%, 0, 0);
     }
+
+    // RTL adjustments for leading/trailing
+    :host([dir="rtl"]) & {
+      border-radius: var(--grabber-border-radius) 0 0 var(--grabber-border-radius);
+      border-left-width: 1px;
+      border-right-width: 0;
+
+      &:not(.visible) {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  &--leading {
+    // RTL: leading appears on the right side
+    :host([dir="rtl"]) & {
+      rotate: 180deg;
+    }
   }
 
   &--trailing {
     rotate: 180deg;
+
+    // RTL: trailing appears on the left side (no rotation needed)
+    :host([dir="rtl"]) & {
+      rotate: 0deg;
+    }
   }
 
   &--top,
@@ -128,7 +161,6 @@
 }
 
 @media (forced-colors: active) {
-
   .md-grabber__container {
     &:focus-within {
       outline: 2px solid ButtonText;      

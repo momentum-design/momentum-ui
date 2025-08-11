@@ -589,39 +589,49 @@
   @each $size in (20, 24, 28, 32, 36, 40, 44, 52, 56, 64, 68, 72, 84) {
     .md-button.md-button--#{$size} {
       $top-offset: 0px;
-      $right-offset: 0px;
+      $horizontal-offset: 0px;
 
       // Define offsets based on button size
       @if $size <= 28 {
         $top-offset: -6px;
-        $right-offset: -6px;
+        $horizontal-offset: -6px;
       } @else if $size <= 32 {
         $top-offset: -4px;
-        $right-offset: -4px;
-      } @else if $size <= 36 {
-        $top-offset: -4px;
-        $right-offset: -4px;
+        $horizontal-offset: -4px;
       } @else if $size <= 40 {
         $top-offset: -4px;
-        $right-offset: -4px;
+        $horizontal-offset: -4px;
       } @else if $size <= 52 {
         $top-offset: -6px;
-        $right-offset: -6px;
+        $horizontal-offset: -6px;
       } @else {
         $top-offset: -2px;
-        $right-offset: -2px;
+        $horizontal-offset: -2px;
       }
 
-      // Apply positioning for standard notification badges
+      // Standard positioning (LTR)
       ::slotted([slot="notification"]) {
         top: $top-offset;
-        right: $right-offset;
+        right: $horizontal-offset;
       }
 
-      // Override for "dot" type to have a smaller offset
+      // Dot type with smaller offset
       ::slotted([slot="notification"][type="dot"]) {
         top: $top-offset + 2;
-        right: $right-offset + 2;
+        right: $horizontal-offset + 2;
+      }
+
+      // RTL positioning - mirror horizontally
+      :host-context([dir="rtl"]) & {
+        ::slotted([slot="notification"]) {
+          right: auto;
+          left: $horizontal-offset;
+        }
+
+        ::slotted([slot="notification"][type="dot"]) {
+          right: auto;
+          left: $horizontal-offset + 3px;
+        }
       }
     }
   }
@@ -1200,21 +1210,12 @@
   white-space: nowrap;
 }
 
-::slotted(*:not(:first-child)) {
-  display: inline-block;
-  margin-left: 0.5rem;
-}
-
 ::slotted(md-icon) {
   line-height: normal;
 }
 
 md-spinner {
   display: flex;
-}
-
-md-spinner + ::slotted(*) {
-  margin-left: 0.5rem;
 }
 
 @media (forced-colors: active) {

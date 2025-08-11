@@ -16,11 +16,12 @@
     gap: constants.$alert-banner__flexbox-gap;
 
     &.closable {
-      padding-right: calc(
+      padding-inline-end: calc(
         constants.$alert-banner-close__size + constants.$alert-banner__padding + constants.$alert-banner__flexbox-gap
       );
-      &.with-title{
-        padding-right: constants.$alert-banner-close__padding;
+
+      &.with-title {
+        padding-inline-end: constants.$alert-banner-close__padding;
       }
     }
 
@@ -94,18 +95,18 @@
       flex-direction: column;
       align-items: flex-start;
       gap: constants.$alert-banner__text-content-gap;
-      margin-left: 0;
+      margin-inline-end: 0;
 
       &.with-icon {
-        margin-left: constants.$alert-banner__icon-size + constants.$alert-banner__icon-padding;
+        margin-inline-start: constants.$alert-banner__icon-size + constants.$alert-banner__icon-padding;
       }
     }
 
     &__icon {
-      &.with-title{
+      &.with-title {
         position: absolute;
         top: constants.$alert-banner__padding;
-        left: constants.$alert-banner__padding;
+        inset-inline-start: constants.$alert-banner__padding;
       }
     }
 
@@ -113,12 +114,12 @@
       ::slotted([slot="left"]) {
         position: absolute;
         top: constants.$alert-banner__padding;
-        left: constants.$alert-banner__padding;
+        inset-inline-start: constants.$alert-banner__padding;
       }
     }
 
     &--leading {
-      text-align: left;
+      text-align: start;
       justify-content: space-between;
     }
 
@@ -145,7 +146,7 @@
       }
 
       &.leading {
-        justify-content: flex-start;
+        justify-content: start;
       }
     }
 
@@ -155,7 +156,7 @@
       justify-content: center;
 
       &.trailing {
-        justify-content: flex-end;
+        justify-content: end;
       }
     }
 
@@ -164,14 +165,14 @@
       display: flex;
       align-items: center;
 
-      right: constants.$alert-banner-close__padding;
+      inset-inline-end: constants.$alert-banner-close__padding;
       top: constants.$alert-banner-close__padding;
       bottom: constants.$alert-banner-close__padding;
       width: constants.$alert-banner-close__size;
 
       &.with-title {
         position: relative;
-        right: 0px;
+        inset-inline-end: 0px;
         top: 0px;
         bottom: 0px;
       }
@@ -194,7 +195,7 @@
       align-items: flex-end;
       justify-content: center;
     }
-    
+
     &__top-right-centered-content {
       display: flex;
       align-items: center;

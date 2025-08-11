@@ -78,6 +78,9 @@ export class Sandbox extends MobxLitElement {
   @internalProperty()
   private tabsOrientation: "horizontal" | "vertical" = "vertical";
 
+  @internalProperty()
+  private isRtl = false;
+
   connectedCallback(): void {
     super.connectedCallback();
     this.loadSettingsFromStorage();
@@ -135,6 +138,11 @@ export class Sandbox extends MobxLitElement {
     if (storedTabsOrientation && this.tabsOrientation !== storedTabsOrientation) {
       this.tabsOrientation = storedTabsOrientation as "horizontal" | "vertical";
     }
+
+    const storedRtl = localStorage.getItem("is-rtl-enabled");
+    if (storedRtl) {
+      this.isRtl = JSON.parse(storedRtl);
+    }
   }
 
   toggleSetting(event: MouseEvent) {
@@ -151,6 +159,11 @@ export class Sandbox extends MobxLitElement {
       console.error("Invalid data-aspect input");
       return;
     }
+  }
+
+  toggleRtl() {
+    this.isRtl = !this.isRtl;
+    localStorage.setItem("is-rtl-enabled", JSON.stringify(this.isRtl));
   }
 
   toggleVisualRebrandEnabled() {
@@ -176,17 +189,6 @@ export class Sandbox extends MobxLitElement {
             ?checked=${themeManager.isDarkMode}
           />
           Dark Mode
-        </label>
-        <label class="switch">
-          <input
-            type="radio"
-            name="theme-switch"
-            class="momentum-switch"
-            data-aspect="momentum"
-            @click=${this.toggleSetting}
-            ?checked=${themeManager.themeName === "momentum"}
-          />
-          Momentum
         </label>
         <label class="switch">
           <input
@@ -231,6 +233,10 @@ export class Sandbox extends MobxLitElement {
             ?checked=${this.renderSelectedTabPanelOnly}
           />
           Only render selected tab panel
+        </label>
+        <label class="switch">
+          <input type="checkbox" name="rtl-switch" class="rtl-switch" @click=${this.toggleRtl} ?checked=${this.isRtl} />
+          RTL
         </label>
         <md-button variant="secondary" size="28" @click=${this.toggleTabsOrientation}
           >Toggle Tabs Orientation</md-button
@@ -339,6 +345,7 @@ export class Sandbox extends MobxLitElement {
         id="app-theme"
         ?darkTheme=${themeManager.isDarkMode}
         theme=${themeManager.themeName}
+        dir=${this.isRtl ? "rtl" : "ltr"}
       >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 

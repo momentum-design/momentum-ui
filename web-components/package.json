@@ -148,6 +148,7 @@
     "stylelint": "^15.0.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-prettier": "^4.0.2",
+    "storybook-addon-rtl": "^1.0.1",
     "timers-browserify": "^2.0.12",
     "ts-jest": "29.2.6",
     "ts-loader": "^9.5.2",

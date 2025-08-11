@@ -16,10 +16,10 @@ import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, queryAll, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { templateContent } from "lit/directives/template-content.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
-import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
+import { debounce, Evt, evt, TemplateCallback, TemplateInfo } from "./src/decorators";
 import { Filter } from "./src/filter";
 
 const IMG = document.createElement("img");
@@ -843,6 +843,45 @@ export namespace TableAdvanced {
       `;
     }
 
+    private processTemplate(template: HTMLTemplateElement): string {
+      const fragment = document.importNode(template.content, true);
+      return Array.from(fragment.childNodes)
+        .map((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            return (node as Element).outerHTML;
+          } else if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent || "";
+          }
+          return "";
+        })
+        .join("");
+    }
+
+    private processTemplateCallback(
+      templateInfo: TemplateInfo & { template: HTMLTemplateElement; cb: TemplateCallback }
+    ): string {
+      const fragment = document.importNode(templateInfo.template.content, true);
+
+      templateInfo.cb({
+        content: templateInfo.content,
+        row: templateInfo.row,
+        col: templateInfo.col,
+        insertIndex: templateInfo.insertIndex,
+        fragment
+      });
+
+      return Array.from(fragment.childNodes)
+        .map((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            return (node as Element).outerHTML;
+          } else if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent || "";
+          }
+          return "";
+        })
+        .join("");
+    }
+
     private renderRow(row: Row, rowsLen: number) {
       const isSelected = Object.prototype.hasOwnProperty.call(this.selected, row.idx);
       const rowStyles = classMap({
@@ -868,17 +907,17 @@ export namespace TableAdvanced {
             const t = cell.template;
             if (t) {
               content = t.templateCb
-                ? html`
-                    ${templateCallback({
+                ? html`${unsafeHTML(
+                    this.processTemplateCallback({
                       cb: t.templateCb,
                       insertIndex: t.insertIndex,
                       template: t.template,
                       content: cell.text,
                       row: row.idx,
                       col: j
-                    })}
-                  `
-                : html` ${templateContent(t.template)} `;
+                    })
+                  )}`
+                : html`${unsafeHTML(this.processTemplate(t.template))}`;
               if (t.insertIndex != -1) {
                 content = html`
                   ${t.insertIndex > 0 ? cell.text.substring(0, t.insertIndex) : nothing} ${content}

@@ -94,17 +94,8 @@ export class Evt<T extends Detail<V>, V = any> {
   }
 }
 
-// TEMPLATE decorator
+// TEMPLATE types - for template callback functionality
 // --------------------------------------
-
-import { ChildPart, directive, Directive, PartInfo, PartType } from "lit/directive.js";
-
-interface PreviousValue {
-  readonly template: HTMLTemplateElement;
-  readonly fragment: DocumentFragment;
-}
-
-const previousValues = new WeakMap<ChildPart, PreviousValue>();
 
 export type TemplateInfo = {
   content: string;
@@ -117,47 +108,4 @@ type TCallback = TemplateInfo & {
   fragment: DocumentFragment;
 };
 
-type TPayload = TemplateInfo & {
-  template: HTMLTemplateElement;
-  cb: TemplateCallback;
-};
-
 export type TemplateCallback = (p: TCallback) => void;
-
-class TemplateCallbackDirective extends Directive {
-  private previousValue?: PreviousValue;
-
-  constructor(partInfo: PartInfo) {
-    super(partInfo);
-    if (partInfo.type !== PartType.CHILD) {
-      throw new Error("templateCallback can only be used in text bindings");
-    }
-  }
-
-  render(p: TPayload) {
-    return p.template;
-  }
-
-  update(part: ChildPart, [p]: [TPayload]) {
-    const previousValue = previousValues.get(part);
-
-    if (previousValue !== undefined && p.template === previousValue.template) {
-      return previousValue.fragment;
-    }
-
-    const fragment = document.importNode(p.template.content, true);
-
-    p.cb({
-      content: p.content,
-      row: p.row,
-      col: p.col,
-      insertIndex: p.insertIndex,
-      fragment
-    });
-
-    previousValues.set(part, { template: p.template, fragment });
-    return fragment;
-  }
-}
-
-export const templateCallback = directive(TemplateCallbackDirective);

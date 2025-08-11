@@ -299,7 +299,7 @@ export namespace AdvanceList {
       );
     }
 
-    readonly renderItem = (item: any, index: number) : TemplateResult => {
+    readonly renderItem = (item: any, index: number): TemplateResult => {
       if (item.id === "status-indicator") {
         return html`
           <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
@@ -319,7 +319,7 @@ export namespace AdvanceList {
           ${item.template(item, index)}
         </div>
       `;
-    }
+    };
 
     getActiveDescendant() {
       if (this.activeId) {

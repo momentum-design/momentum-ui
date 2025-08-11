@@ -583,7 +583,7 @@
     position: absolute;
     pointer-events: none;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
   }
 
   @each $size in (20, 24, 28, 32, 36, 40, 44, 52, 56, 64, 68, 72, 84) {
@@ -612,27 +612,14 @@
       // Standard positioning (LTR)
       ::slotted([slot="notification"]) {
         top: $top-offset;
-        right: $horizontal-offset;
+        inset-inline-end: $horizontal-offset;
       }
 
       // Dot type with smaller offset
       ::slotted([slot="notification"][type="dot"]) {
         top: $top-offset + 2;
-        right: $horizontal-offset + 2;
-      }
-
-      // RTL positioning - mirror horizontally
-      :host-context([dir="rtl"]) & {
-        ::slotted([slot="notification"]) {
-          right: auto;
-          left: $horizontal-offset;
-        }
-
-        ::slotted([slot="notification"][type="dot"]) {
-          right: auto;
-          left: $horizontal-offset + 3px;
-        }
-      }
+        inset-inline-end: $horizontal-offset + 2;
+      }     
     }
   }
 }

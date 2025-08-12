@@ -12,7 +12,7 @@ $progress-label-font-size: rem-calc(11) !default;
 $progress-bar-pad: 0 !default;
 $progress-bar-margin-bottom: rem-calc(10) !default;
 
-$progress-meter-color: $md-theme-50 !default;
+$progress-meter-color: var(--progress-bar-indicator-in-progress, $md-theme-50);
 $progress-meter-secondary-color: $md-gray-70 !default;
 $progress-meter-success-color: $md-green-50 !default;
 $progress-meter-alert-color: $md-red-50 !default;

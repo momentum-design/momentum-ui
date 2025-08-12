@@ -18,9 +18,18 @@
   }
 
   md-input::part(input) {
-    border-start-start-radius: 0;
-    border-end-start-radius: 0;
-    padding-inline-end: $input__padding-side--icon;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding-right: $input__padding-side--icon;
+  }
+
+   md-input[dir="rtl"]::part(input) {
+    border-start-start-radius: var(--input-border-radius, 4px);
+    border-end-start-radius: var(--input-border-radius, 4px);
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    padding-right: 0;
+    padding-left: $input__padding-side--icon;
   }
 
   md-input::part(message) {

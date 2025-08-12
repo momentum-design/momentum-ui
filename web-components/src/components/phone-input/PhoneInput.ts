@@ -1,4 +1,5 @@
 import "@/components/combobox/ComboBox";
+import "@/components/country-code-picker/CountryCodePicker";
 import "@/components/input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -40,6 +41,10 @@ export namespace PhoneInput {
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private formattedValue = "";
     @internalProperty() private isValid = true;
+
+    private get isRtl(): boolean {
+      return getComputedStyle(this).direction === "rtl";
+    }
 
     connectedCallback() {
       super.connectedCallback();
@@ -186,6 +191,7 @@ export namespace PhoneInput {
             clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"
+            dir="${this.isRtl ? "rtl" : "ltr"}"
             .messageArr="${!this.isValid || this.showErrorMessage
               ? [
                   {

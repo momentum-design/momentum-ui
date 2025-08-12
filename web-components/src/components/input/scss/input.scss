@@ -361,24 +361,24 @@
     width: 100%;
 
     &.md-dirty {
-      padding-right: rem-calc(8);
+      padding-inline-end: rem-calc(8);
     }
 
     &.md-dirty.md-has-right-icon {
-      padding-right: rem-calc(34);
+      padding-inline-end: rem-calc(34);
     }
 
     &--nested {
       &-1 {
-        padding-left: 2rem;
+        padding-inline-start: 2rem;
       }
 
       &-2 {
-        padding-left: 4rem;
+        padding-inline-start: 4rem;
       }
 
       &-3 {
-        padding-left: 6rem;
+        padding-inline-start: 6rem;
       }
     }
 
@@ -409,8 +409,8 @@
 
     // Elements
     &__after {
-      left: auto;
-      right: 0;
+      inset-inline-start: auto;
+      inset-inline-end: 0;
 
       &.hidden {
         display: none;
@@ -418,8 +418,8 @@
     }
 
     &__before {
-      left: 0;
-      right: auto;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
 
     &__after,
@@ -450,7 +450,7 @@
       display: none;
       font-size: $input__message__font-size;
       line-height: $input__message__line-height;
-      padding-left: rem-calc(16);
+      padding-inline-start: rem-calc(16);
       padding-top: rem-calc(8);
     }
 
@@ -460,14 +460,14 @@
       width: 100%;
 
       md-icon {
-        margin-right: 0.5em;
+        margin-inline-end: 0.5em;
       }
 
       &--error {
         color: var(--input-error-mesage-text-color, $md-red-50);
         font-size: $input__message__font-size;
         line-height: $input__message__line-height;
-        padding-left: 1rem;
+        padding-inline-start: 1rem;
         position: relative;
         top: -0.5rem;
 
@@ -480,7 +480,7 @@
         float: left;
         font-family: $icon-font-name;
         font-size: $input__message__icon__font-size;
-        margin-right: rem-calc(8);
+        margin-inline-end: rem-calc(8);
       }
     }
 
@@ -495,11 +495,11 @@
 
     // Modifiers
     &--after {
-      padding-right: $input__padding-side--icon;
+      padding-inline-end: $input__padding-side--icon;
     }
 
     &--before {
-      padding-left: $input__padding-side--icon;
+      padding-inline-start: $input__padding-side--icon;
     }
 
     &--pill {
@@ -509,7 +509,7 @@
     // MUST REMAIN BELOW --PILL TO OVERWRITE RADIUS
     &--multiline {
       min-height: rem-calc(69);
-      padding-right: rem-calc(44);
+      padding-inline-end: rem-calc(44);
     }
 
     &__icon-clear {
@@ -547,7 +547,7 @@
 
 .md-input__message {
   md-icon {
-    margin-right: 0.5em;
+    margin-inline-end: 0.5em;
   }
 }
 

@@ -115,10 +115,10 @@ export namespace CountryCodePicker {
       return html`
         <style>
           md-combobox::part(group) {
-            border-left-style: none;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-            padding-left: 0;
+            border-inline-start-style: none;
+            border-start-start-radius: 0;
+            border-end-start-radius: 0;
+            padding-inline-start: 0;
           }
         </style>
       `;

@@ -20,7 +20,8 @@
       md-icon {
         @include arrow-transition;
         display: flex;
-        margin: 0 0 0 auto;
+        margin: 0;
+        margin-inline-start: auto;
       }
 
       &-label {

@@ -33,7 +33,7 @@
       background-color: var(--slider-background-selection);
       border-radius: $slider-bar__border-radius;
       height: $slider-bar__height;
-      left: 0;
+      inset-inline-start: 0;
       transition: left 50ms, right 50ms;
       z-index: 1;
     }
@@ -112,12 +112,14 @@
 
 :host([focus-visible]:not([disabled])) {
   .md-slider__pointer::after {
-    box-shadow: var(--slider-background-focus-shadow, $slider-pointer__box-shadow--focus);
+    //box-shadow: var(--slider-background-focus-shadow, $slider-pointer__box-shadow--focus);
+    @include focus-ring();
   }
 }
 
 :host([no-pointer][focus-visible]:not([disabled])) {
   .md-slider {
+    @include focus-ring();
     box-shadow: var(--slider-background-focus-shadow, $slider__focus-shadow);
   }
 }

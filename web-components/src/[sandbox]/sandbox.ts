@@ -161,6 +161,11 @@ export class Sandbox extends MobxLitElement {
     }
   }
 
+  toggleDarkMode() {
+    themeManager.setDarkMode(!themeManager.isDarkMode);
+    localStorage.setItem("darkTheme", JSON.stringify(themeManager.isDarkMode));
+  }
+
   toggleRtl() {
     this.isRtl = !this.isRtl;
     localStorage.setItem("is-rtl-enabled", JSON.stringify(this.isRtl));
@@ -179,17 +184,9 @@ export class Sandbox extends MobxLitElement {
   themeToggle() {
     return html`
       <div class="toggle-container">
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="theme-switch"
-            class="theme-switch"
-            data-aspect="darkTheme"
-            @click=${this.toggleSetting}
-            ?checked=${themeManager.isDarkMode}
-          />
+        <md-checkbox @checkbox-change=${this.toggleDarkMode} ?checked=${themeManager.isDarkMode}>
           Dark Mode
-        </label>
+        </md-checkbox>
         <label class="switch">
           <input
             type="radio"
@@ -212,32 +209,17 @@ export class Sandbox extends MobxLitElement {
           />
           MomentumV2
         </label>
-        <label class="switch">
-          <input
-            type="checkbox"
-            name="theme-switch"
-            class="visual-rebrand-switch"
-            data-aspect="visual-rebrand"
-            @click=${this.toggleVisualRebrandEnabled}
-            ?checked=${themeManager.isVisualRebrandEnabled}
-          />
-          Visual rebrand
-        </label>
-        <label class="switch">
-          <input
-            type="checkbox"
-            name="selectedTabRender"
-            class="visual-rebrand-switch"
-            data-aspect="selected-tab-render"
-            @click=${this.toggleSelectedTabPanelRender}
-            ?checked=${this.renderSelectedTabPanelOnly}
-          />
+        <md-checkbox
+          @checkbox-change=${this.toggleVisualRebrandEnabled}
+          ?checked=${themeManager.isVisualRebrandEnabled}
+        >
+          Visual Rebrand
+        </md-checkbox>
+
+        <md-checkbox @checkbox-change=${this.toggleSelectedTabPanelRender} ?checked=${this.renderSelectedTabPanelOnly}>
           Only render selected tab panel
-        </label>
-        <label class="switch">
-          <input type="checkbox" name="rtl-switch" class="rtl-switch" @click=${this.toggleRtl} ?checked=${this.isRtl} />
-          RTL
-        </label>
+        </md-checkbox>
+        <md-checkbox @checkbox-change=${this.toggleRtl} ?checked=${this.isRtl}> RTL </md-checkbox>
         <md-button variant="secondary" size="28" @click=${this.toggleTabsOrientation}
           >Toggle Tabs Orientation</md-button
         >

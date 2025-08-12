@@ -17,7 +17,7 @@
     width: 100%;
 
     padding-left: calc(#{$checkbox__main-indent});
-    padding-right: calc(#{$checkbox__main-indent} / 2);
+    padding-right: calc(#{$checkbox__main-indent});
   }
 
   .checkbox-box {

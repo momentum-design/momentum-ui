@@ -9,6 +9,29 @@ import "@/components/radio/RadioGroup";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
+
+@customElement("test-popover-element")
+export class TestPopoverElement extends LitElement {
+  @internalProperty()
+  private isOpen = false;
+
+  render() {
+    return html`
+      <md-radiogroup checked="0">
+        <md-radio slot="radio" value="1">Option 1</md-radio>
+        <md-radio slot="radio" value="2">Option 2</md-radio>
+        <md-radio slot="radio" value="3">Option 3</md-radio>
+      </md-radiogroup>
+      <md-button
+        @click=${() => {
+          this.isOpen = !this.isOpen;
+        }}
+        >test button</md-button
+      >
+    `;
+  }
+}
+
 @customElement("popover-template-sandbox")
 export class PopoverTemplateSandbox extends LitElement {
   @internalProperty()
@@ -223,6 +246,34 @@ export class PopoverTemplateSandbox extends LitElement {
               (item) => html`<md-radio slot="radio" value=${item.sortValue}> ${item.sortLabel} </md-radio>`
             )}
           </md-radiogroup>
+        </md-popover>
+      </div>
+
+      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+        <md-button id="sort-button-lit-popover-child" circle variant="secondary" size="28" ariaLabel="Sort">
+          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+          <span slot="text">Sort</span>
+        </md-button>
+
+        <md-popover
+          placement="bottom"
+          triggerID="sort-button-lit-popover-child"
+          trigger="click"
+          hide-on-escape
+          hide-on-blur
+          interactive
+          show-arrow
+          hide-on-outside-click
+          focus-trap
+          focus-back-to-trigger
+          @shown=${() => {
+            this.isButtonWithTooltipPopoverOpen = true;
+          }}
+          @hidden=${() => {
+            this.isButtonWithTooltipPopoverOpen = false;
+          }}
+        >
+          <test-popover-element></test-popover-element>
         </md-popover>
       </div>
 

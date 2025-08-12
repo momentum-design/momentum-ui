@@ -17,6 +17,7 @@ export { Avatar } from "./components/avatar/Avatar";
 export { AvatarType } from "./components/avatar/Avatar.constants";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { Badge } from "./components/badge/Badge";
+export { NotificationBadge } from "./components/badge/NotificationBadge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";

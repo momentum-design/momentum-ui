@@ -67,6 +67,10 @@ export namespace Tabs {
       return this._selectedIndex;
     }
     set selectedIndex(value: number) {
+      if (value === -1) {
+        return;
+      }
+
       const oldValue = this._selectedIndex;
       this._selectedIndex = value;
 
@@ -710,7 +714,7 @@ export namespace Tabs {
         );
       }
 
-      if (newSelectedIndex >= 0) {
+      if (newSelectedIndex >= 0 && newSelectedIndex < tabs.length) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
         const currentTabsConfiguration = this.currentTabsLayout;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(

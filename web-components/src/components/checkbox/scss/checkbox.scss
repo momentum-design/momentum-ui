@@ -1,4 +1,3 @@
-
 :host(:focus) {
   box-shadow: none;
   outline: none;
@@ -16,137 +15,107 @@
     position: absolute;
     visibility: hidden;
     width: 100%;
+
+    padding-left: calc(#{$checkbox__main-indent});
+    padding-right: calc(#{$checkbox__main-indent} / 2);
+  }
+
+  .checkbox-box {
+    background: var(--checkbox-bg-color);
+    color: var(--checkbox-icon-color);
+    border: $checkbox__border;
+    border-radius: $checkbox__border-radius;
+    height: $checkbox__size;
+    width: $checkbox__size;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .checkbox-label {
     cursor: pointer;
     display: inline-flex;
-    padding-left: $checkbox__label-size;
-    padding-right: calc(#{$checkbox__main-indent} / 2);
     position: relative;
     width: 100%;
     z-index: 1;
     align-items: center;
     gap: 0.5rem;
-
-    &::before {
-      background: var(--checkbox-bg-color);
-      border: $checkbox__border;
-      border-radius: $checkbox__border-radius;
-      height: $checkbox__size;
-      width: $checkbox__size;
-    }
-
-    &::before,
-    &::after {
-      content: "";
-      left: calc(#{$checkbox__size} * 0.75);
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+    min-height: calc(#{$checkbox__size} + 4px);
   }
 }
 
 :host([focus-visible]:not([disabled])) {
-  @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color));
-
-}
-
-
-:host(:hover:not([disabled])) {
-  .checkbox-label {
-    &::before {
-      background: $checkbox__hover-bg;
-      border: $checkbox__hover-border;
-    }
+  .checkbox-box {
+    @include focus-ring();
   }
 }
 
+:host(:hover:not([disabled])) {
+  .checkbox-box {
+    background: $checkbox__hover-bg;
+    border: $checkbox__hover-border;
+  }
+}
 
 :host(:active:not([disabled])) {
-  .checkbox-label {
-    &::before {
-      background: $checkbox__pressed-bg;
-      border: $checkbox__pressed-border;
-    }
+  .checkbox-box {
+    background: $checkbox__pressed-bg;
+    border: $checkbox__pressed-border;
   }
 }
 
 :host([disabled]) {
-  opacity: 0.4;
-
   .checkbox-label {
     cursor: not-allowed;
-
-    &::before {
-      background: $checkbox__hover-bg;
-      border: $checkbox__hover-border;
-    }
   }
 
-
-}
-
-:host([aria-checked="true"]) {
-  .checkbox-label {
-    &::after {
-      border: solid var(--checkbox-icon-color);
-      border-width: 0 0.12em 0.12em 0;
-      display: block;
-      height: 0.6em;
-      transform: translateY(-65%) translateX(-50%) rotate(45deg);
-      width: 0.35em;
-    }
-
-    &::before {
-      background: $checkbox__selected-bg;
-      border: $checkbox__selected-border;
-    }
+  .checkbox-box {
+    color: var(--checkbox-disabled-text-color);
+    border-color: var(--checkbox-disabled-border-color);
+    background-color: var(--checkbox-disabled-bg-color);
   }
 }
 
+:host([aria-checked="true"]),
 :host([indeterminate]) {
-  .checkbox-label {
-    &::after {
-      border: solid var(--checkbox-icon-color);
-      border-width: 0 0 0.12em;
-      display: block;
-      height: 0.2em;
-      transform: translateY(-85%) translateX(-50%) rotate(0);
-      width: 0.75em;
-    }
+  .checkbox-box {
+    background: $checkbox__selected-bg;
+    border: $checkbox__selected-border;
+  }
+}
 
-    &::before {
-      background: $checkbox__selected-bg;
-      border: $checkbox__selected-border;
-    }
+:host([aria-checked="true"][disabled]),
+:host([indeterminate][disabled]) {
+  .checkbox-box {
+    background: var(--checkbox-disabled-selected-bg-color);
+    border-color: var(--checkbox-disabled-border-color);
+    color: var(--checkbox-disabled-text-color);
+  }
+  .checkbox-label {
+    color: var(--checkbox-disabled-text-color);
   }
 }
 
 :host([aria-checked="true"]:hover:not([disabled])),
 :host([indeterminate]:hover:not([disabled])) {
-  .checkbox-label {
-    &::before {
-      background: var(--checkbox-selected-hover-bg-color);
-      border-color: var(--checkbox-selected-hover-border-color);
-    }
+  .checkbox-box {
+    background: var(--checkbox-selected-hover-bg-color);
+    border-color: var(--checkbox-selected-hover-border-color);
   }
 }
 
 :host([aria-checked="true"]:active:not([disabled])),
 :host([indeterminate]:active:not([disabled])) {
-  .checkbox-label {
-    &::before {
-      background: var(--checkbox-selected-pressed-bg-color);
-      border-color: var(--checkbox-selected-pressed-border-color);
-    }
+  .checkbox-box {
+    background: var(--checkbox-selected-pressed-bg-color);
+    border-color: var(--checkbox-selected-pressed-border-color);
   }
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   :host([focus-visible]:not([disabled])) {
-    outline: 2px solid Highlight; 
-    box-shadow: none; 
+    outline: 2px solid Highlight;
+    box-shadow: none;
   }
 }

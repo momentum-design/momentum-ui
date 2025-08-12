@@ -5,8 +5,9 @@ import { timeSpecificity } from "./TimePicker"; // Keep type import as a relativ
 
 const render = (args: Args) => html`
   <md-timepicker
-    ?two-digit-auto-tab=${args.twoDigitAutoTab}
-    ?twenty-four-hour-format=${args.twentyFourHourFormat}
+    .twoDigitAutoTab=${args.twoDigitAutoTab}
+    .twentyFourHourFormat=${args.twentyFourHourFormat}
+    .showDefaultNowTime=${args.showDefaultNowTime}
     timeSpecificity=${args.theTimeSpecificity}
     locale=${args.locale}
     value=${args.value}
@@ -18,7 +19,18 @@ export const TimePicker: StoryObj = {
   args: {
     theTimeSpecificity: TIME_UNIT.SECOND,
     locale: "en-US",
-    value: "00:00:00-08:00"
+    value: "00:00:00-08:00",
+    showDefaultNowTime: true
+  },
+  render: render
+};
+
+export const TimePickerWithoutDefaultTime: StoryObj = {
+  args: {
+    theTimeSpecificity: TIME_UNIT.SECOND,
+    locale: "en-US",
+    showDefaultNowTime: false,
+    // No value passed - this will show empty placeholders
   },
   render: render
 };

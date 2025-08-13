@@ -2,6 +2,15 @@
   display: flex;
   position: relative;
 
+  &.show-flags {
+    md-combobox::part(group) {
+      border-inline-start-style: none;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+      padding-inline-start: 0;
+    }
+  }
+
   span.flag-box {
     align-items: center;
     border: 1px solid var(--input-default-border-color, #ccc);

@@ -2,7 +2,6 @@ import "@/components/combobox/ComboBox";
 import "@/components/country-code-picker/CountryCodePicker";
 import "@/components/input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import reset from "@/wc_scss/reset.scss";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
 import { LitElement, html, internalProperty, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -31,7 +30,6 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
     @property({ type: Boolean }) showErrorMessage = false;
-    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
@@ -51,7 +49,6 @@ export namespace PhoneInput {
         const computedStyle = getComputedStyle(this);
         return computedStyle?.direction === "rtl";
       } catch (_) {
-        // Fallback for test environments or edge cases
         return false;
       }
     }
@@ -167,7 +164,7 @@ export namespace PhoneInput {
     }
 
     static get styles() {
-      return [reset, styles];
+      return [styles];
     }
 
     render() {
@@ -183,7 +180,6 @@ export namespace PhoneInput {
             codePlaceholder="${this.codePlaceholder}"
             .countryCallingCode="${this.countryCallingCode}"
             @country-code-changed="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            .clearIconHeight="${this.clearIconHeight}"
             ?newMomentum=${this.newMomentum}
             ?isDropdownArrow=${true}
             .clearAriaLabel="${this.clearCountryCodeAriaLabel}"

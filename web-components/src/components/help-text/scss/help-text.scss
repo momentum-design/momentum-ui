@@ -28,19 +28,19 @@
   font-size: $help-text__font-size;
   line-height: $help-text__line-height;
   margin-bottom: rem-calc(4);
-  padding-left: rem-calc(16);
+  padding-inline-start: rem-calc(16);
   padding-top: rem-calc(8);
 }
 
 :host(.help-text-checkbox),
 :host(.help-text-radio) {
-  padding-left: rem-calc(32);
+  padding-inline-start: rem-calc(32);
 }
 
 :host(.help-text.newMomentum),
 :host(.help-text-checkbox.newMomentum),
 :host(.help-text-radio.newMomentum) {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 :host(.help-text.disabled.newMomentum),

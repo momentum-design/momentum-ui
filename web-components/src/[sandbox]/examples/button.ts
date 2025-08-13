@@ -36,6 +36,7 @@ export class ButtonTemplateSandbox extends LitElement {
           align-items: center;
           justify-content: space-between;
           width: 100%;
+          gap: 0.5rem;
         }
 
         .status-button__children .status-indicator-container {
@@ -46,9 +47,8 @@ export class ButtonTemplateSandbox extends LitElement {
 
         .status-label {
           flex-grow: 1;
-          text-align: left;
+          text-align: start;
           width: 1%;
-          padding: 0.5px 0 0 calc(4px * 2);
         }
 
         .status-label.available {
@@ -69,10 +69,6 @@ export class ButtonTemplateSandbox extends LitElement {
 
         .status-time {
           color: var(--md-secondary-text-color);
-        }
-
-        .status-arrow {
-          margin-left: 8px;
         }
       `
     ];

@@ -1,18 +1,43 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "libphonenumber-js";
+
 import "./PhoneInput";
-import { PhoneInput } from "./PhoneInput";
+import { type PhoneInput } from "./PhoneInput";
+
+jest.mock("country-codes-list", () => ({
+  customArray: jest.fn().mockReturnValue([
+    { name: "United States", value: "1", code: "US" },
+    { name: "Canada", value: "1", code: "CA" },
+    { name: "United Kingdom", value: "44", code: "GB" }
+  ])
+}));
+
+jest.mock("country-flags-svg", () => ({
+  findFlagUrlByIso2Code: jest.fn().mockReturnValue("data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=")
+}));
+
+jest.mock("libphonenumber-js", () => ({
+  parsePhoneNumber: jest.fn().mockReturnValue({
+    isValid: () => true,
+    format: () => "+1234567890",
+    country: "US"
+  }),
+  getCountries: jest.fn().mockReturnValue(["US", "CA", "GB"]),
+  getCountryCallingCode: jest.fn().mockReturnValue("1"),
+  AsYouType: jest.fn().mockImplementation(() => ({
+    input: jest.fn(),
+    getNumber: jest.fn().mockReturnValue("+1234567890")
+  })),
+  CountryCode: {
+    US: "1",
+    CA: "1",
+    GB: "44"
+  },
+  isValidNumberForRegion: jest.fn().mockReturnValue(true)
+}));
 
 describe("PhoneInput Component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
     fixtureCleanup();
-    jest.restoreAllMocks();
-    jest.clearAllTimers();
-    jest.useRealTimers();
   });
 
   test("should render phone input", async () => {
@@ -28,7 +53,7 @@ describe("PhoneInput Component", () => {
 
   test("should emit a custom event on input blur", async () => {
     const parentElementPromise = fixture(html` <div class="parent"></div> `);
-    jest.runOnlyPendingTimers();
+
     const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
 
@@ -45,7 +70,7 @@ describe("PhoneInput Component", () => {
 
   test("should verify phone number on input blur", async () => {
     const parentElementPromise = fixture(html` <div class="parent"></div> `);
-    jest.runOnlyPendingTimers();
+
     const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input value="(773)-777-6002"></md-phone-input> `);
 
@@ -114,7 +139,7 @@ describe("PhoneInput Component", () => {
 
   test("should not display error on empty input text-box", async () => {
     const parentElementPromise = fixture(html` <div class="parent"></div> `);
-    jest.runOnlyPendingTimers();
+
     const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html`
       <md-phone-input

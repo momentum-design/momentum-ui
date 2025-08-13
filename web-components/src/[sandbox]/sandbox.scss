@@ -34,11 +34,11 @@ md-theme[darkTheme] {
 
 .container-color-bg-color-options {
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
 }
 
 #color-dropdown {
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
   width: 240px;
 }
 
@@ -47,8 +47,8 @@ md-theme[darkTheme] {
   justify-content: space-between;
   align-items: center;
 
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-inline-start: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 .toggle-container {
@@ -63,13 +63,12 @@ md-theme[darkTheme] {
 
 
 .explorer[direction="vertical"] {
-  
-  &::part(tabs-list) {    
+  &::part(tabs-list) {
     overflow-y: auto;
     height: calc(100vh - 1.75rem);    
     flex-shrink: 0; 
-    padding-left:5px;
-    padding-right:5px;
+    padding-inline-end:5px;
+    padding-inline-start:5px;
     gap:0.25rem;
   }
 }

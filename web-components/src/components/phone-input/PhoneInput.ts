@@ -1,9 +1,10 @@
 import "@/components/combobox/ComboBox";
+import "@/components/country-code-picker/CountryCodePicker";
 import "@/components/input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import reset from "@/wc_scss/reset.scss";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
 import { LitElement, html, internalProperty, property } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
@@ -29,7 +30,6 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
     @property({ type: Boolean }) showErrorMessage = false;
-    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
@@ -40,6 +40,18 @@ export namespace PhoneInput {
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private formattedValue = "";
     @internalProperty() private isValid = true;
+
+    private get isRtl(): boolean {
+      try {
+        if (!this.isConnected) {
+          return false;
+        }
+        const computedStyle = getComputedStyle(this);
+        return computedStyle?.direction === "rtl";
+      } catch (_) {
+        return false;
+      }
+    }
 
     connectedCallback() {
       super.connectedCallback();
@@ -147,13 +159,17 @@ export namespace PhoneInput {
       return { "new-momentum": this.newMomentum };
     }
 
+    private get containerClassMap() {
+      return { "md-phone-input__container": true, rtl: this.isRtl };
+    }
+
     static get styles() {
-      return [reset, styles];
+      return [styles];
     }
 
     render() {
       return html`
-        <div class="md-phone-input__container">
+        <div class=${classMap(this.containerClassMap)}>
           <md-country-code-picker
             part="md-country-code-picker"
             exportparts="option: option"
@@ -164,7 +180,6 @@ export namespace PhoneInput {
             codePlaceholder="${this.codePlaceholder}"
             .countryCallingCode="${this.countryCallingCode}"
             @country-code-changed="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            .clearIconHeight="${this.clearIconHeight}"
             ?newMomentum=${this.newMomentum}
             ?isDropdownArrow=${true}
             .clearAriaLabel="${this.clearCountryCodeAriaLabel}"

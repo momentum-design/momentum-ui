@@ -43,7 +43,7 @@
       cursor: pointer;
       font-size: $font-size-base;
       line-height: $radio-input-max-height;
-      padding-right: 0.5rem;
+      padding-inline-end: 0.5rem;
       position: relative;
       vertical-align: middle;
       @include text-dots;

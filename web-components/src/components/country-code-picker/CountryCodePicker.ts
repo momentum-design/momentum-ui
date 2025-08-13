@@ -35,7 +35,6 @@ export namespace CountryCodePicker {
     @property({ type: Boolean, attribute: "show-flags" }) showFlags = false;
     @property({ type: Boolean }) pill = false;
     @property({ type: Boolean }) disabled = false;
-    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Country Code";
     @property({ type: String }) id = "";
@@ -107,21 +106,12 @@ export namespace CountryCodePicker {
       return { "new-momentum": this.newMomentum };
     }
 
-    getFormatedCountryCallingCode() {
-      return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
+    private get containerClassMap() {
+      return { "md-country-code-picker__container": true, "show-flags": this.showFlags };
     }
 
-    getModStyle() {
-      return html`
-        <style>
-          md-combobox::part(group) {
-            border-left-style: none;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-            padding-left: 0;
-          }
-        </style>
-      `;
+    getFormatedCountryCallingCode() {
+      return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
     }
 
     static get styles() {
@@ -130,8 +120,7 @@ export namespace CountryCodePicker {
 
     render() {
       return html`
-        ${this.showFlags ? this.getModStyle() : nothing}
-        <div class="md-country-code-picker__container">
+        <div class="${classMap(this.containerClassMap)}">
           ${this.showFlags
             ? html`
                 <span class="flag-box ${classMap(this.flagClassMap)}">${this.getCountryFlag(this.countryCode)}</span>
@@ -146,7 +135,6 @@ export namespace CountryCodePicker {
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            clear-icon-height="${this.clearIconHeight}"
             with-custom-content
             ?newMomentum=${this.newMomentum}
             ?is-dropdown-arrow=${this.isDropdownArrow}

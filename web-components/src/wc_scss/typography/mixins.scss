@@ -178,11 +178,11 @@
 
 @mixin align-classes {
   .text-left {
-    text-align: left !important;
+    text-align: start !important;
   }
 
   .text-right {
-    text-align: right !important;
+    text-align: end !important;
   }
 
   .text-center {

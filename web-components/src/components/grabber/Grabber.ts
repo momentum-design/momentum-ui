@@ -179,7 +179,8 @@ export namespace Grabber {
         "md-grabber--disabled": this.disabled,
         "md-grabber--dragger": this.dragger,
         [`md-grabber--${this.alignment}`]: this.alignment,
-        visible: this.visible || this.focused
+        visible: this.visible || this.focused,
+        "md-grabber--rtl": this.isRtl
       };
     }
 
@@ -190,13 +191,20 @@ export namespace Grabber {
       };
     }
 
+    private get isRtl(): boolean {
+      return getComputedStyle(this).direction === "rtl";
+    }
+
     get iconName() {
       if (this.dragger) {
         return "list-menu-bold";
       }
 
       if (this.alignment === "leading" || this.alignment === "trailing") {
-        return this.checked ? "arrow-left-bold" : "arrow-right-bold";
+        const leftIcon = this.isRtl ? "arrow-right-bold" : "arrow-left-bold";
+        const rightIcon = this.isRtl ? "arrow-left-bold" : "arrow-right-bold";
+
+        return this.checked ? leftIcon : rightIcon;
       }
 
       return this.checked ? "arrow-up-bold" : "arrow-down-bold";

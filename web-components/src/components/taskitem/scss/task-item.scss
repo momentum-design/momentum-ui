@@ -87,7 +87,7 @@
 }
 
 .md-taskitem__mediatype {
-  margin-right: $taskitem-mediatype-margin;
+  margin-inline-end: $taskitem-mediatype-margin;
   position: relative;
   width: $taskitem-mediatype-width;
 
@@ -179,7 +179,7 @@
 
     .new-chat_massages {
       @include text-dots;
-      padding-right: $taskitem-chat-padding;
+      padding-inline-end: $taskitem-chat-padding;
       width: calc(100% - $taskitem-main-margin);
     }
   }
@@ -189,8 +189,8 @@
   align-items: flex-end;
   display: flex;
   flex-direction: column;
-  margin-left: $taskitem-mediatype-margin;
-  text-align: right;
+  margin-inline-start: $taskitem-mediatype-margin;
+  text-align: end;
   width: $taskitem-additional-width;
 
   .new-chat-quantity {
@@ -212,7 +212,7 @@
     justify-content: space-between;
 
     &__mediatype {
-      margin-right: $taskitem-restyle-content-margin;
+      margin-inline-end: $taskitem-restyle-content-margin;
       white-space: nowrap;
       width: auto;
     }
@@ -241,7 +241,7 @@
         font-size: $taskitem-restyle-font-size;
         line-height: 20px;
         color: var(--taskitem-text-color);
-        margin-left: 4px;
+        margin-inline-start: 4px;
         min-width: $taskitem-restyle-queue-time-min-width;
         @include text-dots;
 
@@ -271,7 +271,7 @@
 
     &__addition {
       white-space: nowrap;
-      margin-left: $taskitem-restyle-content-margin;
+      margin-inline-start: $taskitem-restyle-content-margin;
       width: auto;
 
       &.empty_addition {
@@ -329,7 +329,7 @@
     }
   }
   .md-taskitem__addition {
-    margin-left: $taskitem-restyle-content-margin !important;
+    margin-inline-end: $taskitem-restyle-content-margin !important;
   }
 }
 @media (forced-colors: active) {

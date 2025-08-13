@@ -95,7 +95,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: constants.$alert-banner__text-content-gap;
-      margin-inline-end: 0;
+      margin-inline-start: 0;
 
       &.with-icon {
         margin-inline-start: constants.$alert-banner__icon-size + constants.$alert-banner__icon-padding;

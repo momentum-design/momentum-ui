@@ -112,7 +112,6 @@
 
 :host([focus-visible]:not([disabled])) {
   .md-slider__pointer::after {
-    //box-shadow: var(--slider-background-focus-shadow, $slider-pointer__box-shadow--focus);
     @include focus-ring();
   }
 }

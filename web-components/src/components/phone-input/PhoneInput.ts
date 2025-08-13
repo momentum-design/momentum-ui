@@ -5,6 +5,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
 import { LitElement, html, internalProperty, property } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
@@ -43,7 +44,16 @@ export namespace PhoneInput {
     @internalProperty() private isValid = true;
 
     private get isRtl(): boolean {
-      return getComputedStyle(this).direction === "rtl";
+      try {
+        if (!this.isConnected) {
+          return false;
+        }
+        const computedStyle = getComputedStyle(this);
+        return computedStyle?.direction === "rtl";
+      } catch (_) {
+        // Fallback for test environments or edge cases
+        return false;
+      }
     }
 
     connectedCallback() {
@@ -152,13 +162,17 @@ export namespace PhoneInput {
       return { "new-momentum": this.newMomentum };
     }
 
+    private get containerClassMap() {
+      return { "md-phone-input__container": true, rtl: this.isRtl };
+    }
+
     static get styles() {
       return [reset, styles];
     }
 
     render() {
       return html`
-        <div class="md-phone-input__container">
+        <div class=${classMap(this.containerClassMap)}>
           <md-country-code-picker
             part="md-country-code-picker"
             exportparts="option: option"
@@ -191,7 +205,6 @@ export namespace PhoneInput {
             clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"
-            dir="${this.isRtl ? "rtl" : "ltr"}"
             .messageArr="${!this.isValid || this.showErrorMessage
               ? [
                   {

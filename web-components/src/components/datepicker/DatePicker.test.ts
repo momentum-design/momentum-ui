@@ -1,11 +1,11 @@
 import { Key } from "@/constants";
 import { now } from "@/utils/dateUtils";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { TemplateResult } from "lit-element";
 import { DateTime, Settings } from "luxon";
 import "../button/Button";
-import "./DatePicker";
 import "../popover/Popover";
+import "./DatePicker";
 import { DatePickerControlButton, type DatePicker } from "./DatePicker";
 
 const DATE1 = DateTime.fromObject({ year: 2025, month: 4, day: 10 });

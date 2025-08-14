@@ -304,9 +304,12 @@
       // Error
       &.md-error {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $background-color: var(--input-default-new-bg-color, var(--input-error-bg-color)),
           $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
           $border-color: var(--input-error-border-color),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-error-border-color),
           $background-color-active: var(--input-error-pressed-bg-color),
           $color-message: var(--input-error-message-text-color),
@@ -322,23 +325,29 @@
       // Warning
       &.md-warning {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $background-color: var(--input-default-new-bg-color, var(--md-alert-warning-bg-color)),
-          $background-color-hover: var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-colorg)),
+          $background-color-hover: var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-color)),
           $background-color-active: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color)),
           $border-color: var(--input-warning-border-color, var(--input-warning-border-color)),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-warning-border-color, var(--input-warning-border-color)),
           $color-message: var(--input-success-text-color, var(--md-alert-warning-text-color)),
-          $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))
+          $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))          
         );
       }
 
       // Success
       &.md-success {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $background-color: var(--input-default-new-bg-color, var(--md-alert-success-bg-color)),
           $background-color-hover: var(--input-success-hover-bg-color, var(--md-alert-success-bg-color)),
           $background-color-active: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color)),
           $border-color: var(--input-success-border-color, var(--input-success-border-color)),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-success-border-color, var(--input-success-border-color)),
           $color-message: var(--input-success-text-color, var(--md-success-text-color)),
           $focus-background-color: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color))
@@ -348,7 +357,10 @@
       // Priority
       &.md-priority {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $border-color: var(--input-default-outline-color),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-default-outline-color)
         );
 
@@ -374,6 +386,9 @@
       cursor: pointer;
       align-items: center;
       justify-content: center;
+      padding: 0;
+      padding-inline-end: 1px;
+      margin: 0;
 
       &:hover {
         background-color: var(--input-default-hover-bg-color);
@@ -385,7 +400,12 @@
 
       &:disabled {
         cursor: not-allowed;
-        opacity: 0.5;
+        background-color: transparent;
+        border-inline-start-color: var(--input-default-new-disabled-color);
+
+        .md-input__dropdown-icon {
+          color: var(--input-default-new-disabled-color);
+        }
       }
 
       // Icon styles
@@ -435,6 +455,10 @@
           &:focus {
             outline-color: var(--input-error-focus-border-color);
           }
+
+          &:disabled {
+            border-inline-start-color: var(--input-default-new-disabled-color);
+          }
         }
       }
 
@@ -446,6 +470,10 @@
           &:hover {
             background-color: var(--input-warning-hover-bg-color);
             border-inline-start-color: var(--input-warning-border-color);
+          }
+
+          &:disabled {
+            border-inline-start-color: var(--input-default-new-disabled-color);
           }
         }
       }
@@ -459,6 +487,10 @@
             background-color: var(--input-success-hover-bg-color);
             border-inline-start-color: var(--input-success-border-color);
           }
+
+          &:disabled {
+            border-inline-start-color: var(--input-default-new-disabled-color);
+          }
         }
       }
 
@@ -469,6 +501,9 @@
 
           &:hover {
             border-inline-start-color: var(--input-default-outline-color);
+          }
+          &:disabled {
+            border-inline-start-color: var(--input-default-new-disabled-color);
           }
         }
       }

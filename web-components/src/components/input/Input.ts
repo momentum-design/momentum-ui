@@ -139,6 +139,36 @@ export namespace Input {
     }
   }
 
+  export interface InputChangeEventDetail {
+    srcEvent: Event;
+    value: string;
+  }
+
+  export interface InputFocusEventDetail {
+    srcEvent: FocusEvent;
+  }
+
+  export interface InputBlurEventDetail {
+    srcEvent: FocusEvent;
+  }
+
+  export interface InputKeydownEventDetail {
+    srcEvent: KeyboardEvent;
+  }
+
+  export interface InputMousedownEventDetail {
+    srcEvent: MouseEvent;
+  }
+
+  export interface InputClearEventDetail {
+    srcEvent: MouseEvent | KeyboardEvent;
+  }
+
+  export interface InputDropdownClickEventDetail {
+    srcEvent: MouseEvent;
+    expanded: boolean;
+  }
+
   @customElementWithCheck("md-input")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) ariaDescribedBy = "";
@@ -184,8 +214,8 @@ export namespace Input {
     @property({ type: Boolean }) disableUserTextInput = false;
 
     @property({ type: Boolean }) showDropdown = false;
-    @property({ type: String }) dropdownAriaLabel = "Show options";
     @property({ type: Boolean }) dropdownExpanded = false;
+    @property({ type: String }) dropdownAriaLabel = "Show options";
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -341,7 +371,6 @@ export namespace Input {
 
     handleDropdownClick(event: MouseEvent) {
       event.preventDefault();
-      event.stopPropagation();
 
       this.dropdownExpanded = !this.dropdownExpanded;
 
@@ -484,6 +513,7 @@ export namespace Input {
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}
+              aria-haspopup=${ifDefined(this.showDropdown ? "true" : undefined)}
             />
           `;
     }
@@ -556,7 +586,7 @@ export namespace Input {
             <button
               class="md-input__dropdown-button"
               tabindex="-1"
-              aria-label=${this.dropdownAriaLabel}
+              .ariaLabel=${this.dropdownAriaLabel}
               @click=${(event: MouseEvent) => this.handleDropdownClick(event)}
               @mousedown=${(event: MouseEvent) => event.preventDefault()}
               ?disabled=${this.disabled}
@@ -566,6 +596,7 @@ export namespace Input {
                 name="arrow-down-bold"
                 size="16"
                 iconSet="momentumDesign"
+                .ariaHidden=${"true"}
               >
               </md-icon>
             </button>
@@ -652,5 +683,15 @@ export namespace Input {
 declare global {
   interface HTMLElementTagNameMap {
     "md-input": Input.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "input-change": CustomEvent<Input.InputChangeEventDetail>;
+    "input-focus": CustomEvent<Input.InputFocusEventDetail>;
+    "input-blur": CustomEvent<Input.InputBlurEventDetail>;
+    "input-keydown": CustomEvent<Input.InputKeydownEventDetail>;
+    "input-mousedown": CustomEvent<Input.InputMousedownEventDetail>;
+    "input-clear": CustomEvent<Input.InputClearEventDetail>;
+    "input-dropdown-click": CustomEvent<Input.InputDropdownClickEventDetail>;
   }
 }

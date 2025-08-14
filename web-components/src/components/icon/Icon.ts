@@ -241,10 +241,17 @@ export namespace Icon {
       return iconUrlManager.svgIconUrl;
     }
 
+    private getIsMomentumDesignName(name: string) {
+      return name.endsWith("-filled") || name.endsWith("-light") || name.endsWith("-regular") || name.endsWith("-bold");
+    }
+
     private get svgIconName() {
       if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg") {
         return this.name;
+      } else if (this.iconSet === "preferMomentumDesign" && this.getIsMomentumDesignName(this.name)) {
+        return this.name;
       }
+
       const lookupName = this.momentumUIIconLookupName;
       const mappedName = ELEMENT.designLookup.get(lookupName);
 
@@ -361,6 +368,11 @@ export namespace Icon {
       if (this.sizeOverrided) {
         return this.handleSizeOverride(iconName);
       }
+
+      if (this.iconSet === "preferMomentumDesign" && this.getIsMomentumDesignName(this.name)) {
+        return "";
+      }
+
       return iconNames.includes(iconName) || iconName === ""
         ? `icon-${iconName}`
         : this.consoleHandler("name-error", iconName);

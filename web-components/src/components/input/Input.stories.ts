@@ -123,6 +123,204 @@ export const Input: StoryObj = {
   }
 };
 
+export const NewMomentumMessages: StoryObj = {
+  args: {
+    searchable: false,
+    clear: false,
+    showDropdown: false,
+    compact: false,
+    disabled: false,
+    readOnly: false,
+    placeholder: "Enter text..."
+  },
+  render: (args: Args) => html`
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px;">
+      <h3>New Momentum Input States</h3>
+
+      <!-- Default State -->
+      <md-input
+        label="Default State"
+        placeholder=${args.placeholder}
+        value="Default input value"
+        containerSize="small-12"
+        ?newMomentum=${true}
+        ?searchable=${args.searchable}
+        ?clear=${args.clear}
+        ?showDropdown=${args.showDropdown}
+        ?compact=${args.compact}
+        ?disabled=${args.disabled}
+        ?readOnly=${args.readOnly}
+        @input-change=${action("default-change")}
+        @input-dropdown-click=${action("default-dropdown-click")}
+      ></md-input>
+
+      <!-- Success State -->
+      <md-input
+        label="Success State"
+        placeholder=${args.placeholder}
+        value="Success input value"
+        containerSize="small-12"
+        .messageArr=${[
+          {
+            type: "success",
+            message: "This is a success message.",
+            id: "success-message",
+            ariaLive: "polite"
+          }
+        ]}
+        ?newMomentum=${true}
+        ?searchable=${args.searchable}
+        ?clear=${args.clear}
+        ?showDropdown=${args.showDropdown}
+        ?compact=${args.compact}
+        ?disabled=${args.disabled}
+        ?readOnly=${args.readOnly}
+        @input-change=${action("success-change")}
+        @input-dropdown-click=${action("success-dropdown-click")}
+      ></md-input>
+
+      <!-- Warning State -->
+      <md-input
+        label="Warning State"
+        placeholder=${args.placeholder}
+        value="Warning input value"
+        containerSize="small-12"
+        .messageArr=${[
+          {
+            type: "warning",
+            message: "This is a warning message.",
+            id: "warning-message",
+            ariaLive: "polite"
+          }
+        ]}
+        ?newMomentum=${true}
+        ?searchable=${args.searchable}
+        ?clear=${args.clear}
+        ?showDropdown=${args.showDropdown}
+        ?compact=${args.compact}
+        ?disabled=${args.disabled}
+        ?readOnly=${args.readOnly}
+        @input-change=${action("warning-change")}
+        @input-dropdown-click=${action("warning-dropdown-click")}
+      ></md-input>
+
+      <!-- Error State -->
+      <md-input
+        label="Error State"
+        placeholder=${args.placeholder}
+        value="Error input value"
+        containerSize="small-12"
+        .messageArr=${[
+          {
+            type: "error",
+            message: "This is an error message.",
+            id: "error-message",
+            ariaLive: "assertive"
+          }
+        ]}
+        ?newMomentum=${true}
+        ?searchable=${args.searchable}
+        ?clear=${args.clear}
+        ?showDropdown=${args.showDropdown}
+        ?compact=${args.compact}
+        ?disabled=${args.disabled}
+        ?readOnly=${args.readOnly}
+        @input-change=${action("error-change")}
+        @input-dropdown-click=${action("error-dropdown-click")}
+      ></md-input>
+
+      <!-- Priority State -->
+      <md-input
+        label="Priority State"
+        placeholder=${args.placeholder}
+        value="Priority input value"
+        containerSize="small-12"
+        .messageArr=${[
+          {
+            type: "priority",
+            message: "This is a priority message.",
+            id: "priority-message",
+            ariaLive: "assertive"
+          }
+        ]}
+        ?newMomentum=${true}
+        ?searchable=${args.searchable}
+        ?clear=${args.clear}
+        ?showDropdown=${args.showDropdown}
+        ?compact=${args.compact}
+        ?disabled=${args.disabled}
+        ?readOnly=${args.readOnly}
+        @input-change=${action("priority-change")}
+        @input-dropdown-click=${action("priority-dropdown-click")}
+      ></md-input>
+    </div>
+  `,
+  argTypes: {
+    searchable: {
+      control: "boolean",
+      description: "Show search icon on the left"
+    },
+    clear: {
+      control: "boolean",
+      description: "Show clear button when input has value"
+    },
+    showDropdown: {
+      control: "boolean",
+      description: "Show dropdown button for combobox functionality"
+    },
+    compact: {
+      control: "boolean",
+      description: "Use compact input size"
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disable all inputs"
+    },
+    readOnly: {
+      control: "boolean",
+      description: "Make all inputs read-only"
+    },
+    placeholder: {
+      control: "text",
+      description: "Placeholder text for all inputs"
+    },
+
+    label: { table: { disable: true } },
+    value: { table: { disable: true } },
+    size: { table: { disable: true } },
+    messageType: { table: { disable: true } },
+    shape: { table: { disable: true } },
+    multiline: { table: { disable: true } },
+    type: { table: { disable: true } },
+    secondaryLabel: { table: { disable: true } },
+    helpText: { table: { disable: true } },
+    hasNested: { table: { disable: true } },
+    hasIcon: { table: { disable: true } },
+    nested: { table: { disable: true } },
+    position: { table: { disable: true } },
+    nameIcon: { table: { disable: true } },
+    newMomentum: { table: { disable: true } },
+    clearAriaLabel: { table: { disable: true } },
+    isFilled: { table: { disable: true } },
+    isLoading: { table: { disable: true } },
+    input: { table: { disable: true } },
+    inputClassMap: { table: { disable: true } },
+    inputWrapperClassMap: { table: { disable: true } },
+    inputTemplateClassMap: { table: { disable: true } },
+    multi: { table: { disable: true } },
+    autofocus: { table: { disable: true } },
+    htmlId: { table: { disable: true } }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Displays all four message types (default, success, warning, error, priority) with new momentum styling. Use the controls to toggle search icon, clear button, dropdown button, and other input features."
+      }
+    }
+  }
+};
+
 export default {
   title: "Components/Input",
   component: "md-input",

@@ -11,42 +11,53 @@
 import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { action } from "@storybook/addon-actions";
-import { Args, StoryObj } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
+import {
+  containerSize,
+  iconNames,
+  iconPosition,
+  Input as InputComponent,
+  inputShape,
+  inputType,
+  nestedLevel
+} from "./Input";
 
-const messageArr = [
-  {
-    type: "default" as const,
-    message: "",
-    id: undefined,
-    ariaLive: undefined
-  },
-  {
-    type: "success" as const,
-    message: "This is where the success message.",
-    id: "success-message",
-    ariaLive: "polite" as const
-  },
-  {
-    type: "warning" as const,
-    message: "This is where the warning message.",
-    id: "warning-message",
-    ariaLive: "polite" as const
-  },
-  {
-    type: "error" as const,
-    message: "This is where the error message.",
-    id: "error-message",
-    ariaLive: "assertive" as const
-  },
-  {
-    type: "priority" as const,
-    message: "This is where the priority message.",
-    id: "priority-message",
-    ariaLive: "assertive" as const
-  }
-];
+const messageArr: Record<string, InputComponent.Message[]> = {
+  default: [],
+  success: [
+    {
+      type: "success" as const,
+      message: "This is where the success message.",
+      id: "success-message",
+      ariaLive: "polite" as const
+    }
+  ],
+  warning: [
+    {
+      type: "warning" as const,
+      message: "This is where the warning message.",
+      id: "warning-message",
+      ariaLive: "polite" as const
+    }
+  ],
+  error: [
+    {
+      type: "error" as const,
+      message: "This is where the error message.",
+      id: "error-message",
+      ariaLive: "assertive" as const
+    }
+  ],
+  priority: [
+    {
+      type: "priority" as const,
+      message: "This is where the priority message.",
+      id: "priority-message",
+      ariaLive: "assertive" as const
+    }
+  ]
+};
 
 export const Input: StoryObj = {
   args: {
@@ -74,7 +85,7 @@ export const Input: StoryObj = {
     compact: false
   },
   render: (args: Args) => {
-    const selectedMessage = messageArr.find((msg) => msg.type === args.messageType) || messageArr[0];
+    const selectedMessage = messageArr[args.messageType] || [];
 
     if (args.hasNested) {
       return html`
@@ -98,7 +109,7 @@ export const Input: StoryObj = {
         <md-input
           .label=${args.label}
           .placeholder=${args.placeholder}
-          .messageArr=${selectedMessage.message ? [selectedMessage] : []}
+          .messageArr=${selectedMessage}
           .value=${args.value}
           .containerSize="${args.size}"
           .disabled=${args.disabled}
@@ -133,128 +144,47 @@ export const NewMomentumMessages: StoryObj = {
     readOnly: false,
     placeholder: "Enter text..."
   },
-  render: (args: Args) => html`
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px;">
-      <h3>New Momentum Input States</h3>
+  render: (args: Args) => {
+    const inputStates = [
+      { type: "default" as const, label: "Default State", value: "Default input value" },
+      { type: "success" as const, label: "Success State", value: "Success input value" },
+      { type: "warning" as const, label: "Warning State", value: "Warning input value" },
+      { type: "error" as const, label: "Error State", value: "Error input value" },
+      { type: "priority" as const, label: "Priority State", value: "Priority input value" }
+    ];
 
-      <!-- Default State -->
-      <md-input
-        label="Default State"
-        placeholder=${args.placeholder}
-        value="Default input value"
-        containerSize="small-12"
-        ?newMomentum=${true}
-        ?searchable=${args.searchable}
-        ?clear=${args.clear}
-        ?showDropdown=${args.showDropdown}
-        ?compact=${args.compact}
-        ?disabled=${args.disabled}
-        ?readOnly=${args.readOnly}
-        @input-change=${action("default-change")}
-        @input-dropdown-click=${action("default-dropdown-click")}
-      ></md-input>
+    return html`
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px;">
+        <h3>New Momentum Input States</h3>
+        ${inputStates.map((state) => {
+          const selectedMessage = messageArr[state.type] || [];
 
-      <!-- Success State -->
-      <md-input
-        label="Success State"
-        placeholder=${args.placeholder}
-        value="Success input value"
-        containerSize="small-12"
-        .messageArr=${[
-          {
-            type: "success",
-            message: "This is a success message.",
-            id: "success-message",
-            ariaLive: "polite"
-          }
-        ]}
-        ?newMomentum=${true}
-        ?searchable=${args.searchable}
-        ?clear=${args.clear}
-        ?showDropdown=${args.showDropdown}
-        ?compact=${args.compact}
-        ?disabled=${args.disabled}
-        ?readOnly=${args.readOnly}
-        @input-change=${action("success-change")}
-        @input-dropdown-click=${action("success-dropdown-click")}
-      ></md-input>
-
-      <!-- Warning State -->
-      <md-input
-        label="Warning State"
-        placeholder=${args.placeholder}
-        value="Warning input value"
-        containerSize="small-12"
-        .messageArr=${[
-          {
-            type: "warning",
-            message: "This is a warning message.",
-            id: "warning-message",
-            ariaLive: "polite"
-          }
-        ]}
-        ?newMomentum=${true}
-        ?searchable=${args.searchable}
-        ?clear=${args.clear}
-        ?showDropdown=${args.showDropdown}
-        ?compact=${args.compact}
-        ?disabled=${args.disabled}
-        ?readOnly=${args.readOnly}
-        @input-change=${action("warning-change")}
-        @input-dropdown-click=${action("warning-dropdown-click")}
-      ></md-input>
-
-      <!-- Error State -->
-      <md-input
-        label="Error State"
-        placeholder=${args.placeholder}
-        value="Error input value"
-        containerSize="small-12"
-        .messageArr=${[
-          {
-            type: "error",
-            message: "This is an error message.",
-            id: "error-message",
-            ariaLive: "assertive"
-          }
-        ]}
-        ?newMomentum=${true}
-        ?searchable=${args.searchable}
-        ?clear=${args.clear}
-        ?showDropdown=${args.showDropdown}
-        ?compact=${args.compact}
-        ?disabled=${args.disabled}
-        ?readOnly=${args.readOnly}
-        @input-change=${action("error-change")}
-        @input-dropdown-click=${action("error-dropdown-click")}
-      ></md-input>
-
-      <!-- Priority State -->
-      <md-input
-        label="Priority State"
-        placeholder=${args.placeholder}
-        value="Priority input value"
-        containerSize="small-12"
-        .messageArr=${[
-          {
-            type: "priority",
-            message: "This is a priority message.",
-            id: "priority-message",
-            ariaLive: "assertive"
-          }
-        ]}
-        ?newMomentum=${true}
-        ?searchable=${args.searchable}
-        ?clear=${args.clear}
-        ?showDropdown=${args.showDropdown}
-        ?compact=${args.compact}
-        ?disabled=${args.disabled}
-        ?readOnly=${args.readOnly}
-        @input-change=${action("priority-change")}
-        @input-dropdown-click=${action("priority-dropdown-click")}
-      ></md-input>
-    </div>
-  `,
+          return html`
+            <md-input
+              label=${state.label}
+              placeholder=${args.placeholder}
+              value=${state.value}
+              .messageArr=${selectedMessage}
+              ?newMomentum=${true}
+              ?searchable=${args.searchable}
+              ?clear=${args.clear}
+              ?showDropdown=${args.showDropdown}
+              ?compact=${args.compact}
+              ?disabled=${args.disabled}
+              ?readOnly=${args.readOnly}
+              @input-change=${action(`${state.type}-change`)}
+              @input-clear=${action(`${state.type}-clear`)}
+              @input-focus=${action(`${state.type}-focus`)}
+              @input-blur=${action(`${state.type}-blur`)}
+              @input-keydown=${action(`${state.type}-keydown`)}
+              @input-mousedown=${action(`${state.type}-mousedown`)}
+              @input-dropdown-click=${action(`${state.type}-dropdown-click`)}
+            ></md-input>
+          `;
+        })}
+      </div>
+    `;
+  },
   argTypes: {
     searchable: {
       control: "boolean",
@@ -321,7 +251,7 @@ export const NewMomentumMessages: StoryObj = {
   }
 };
 
-export default {
+const meta: Meta = {
   title: "Components/Input",
   component: "md-input",
   argTypes: {
@@ -366,3 +296,5 @@ export default {
     }
   }
 };
+
+export default meta;

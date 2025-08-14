@@ -17,7 +17,8 @@ import mdx from "./Button.mdx";
 
 const render = (args: Args) => html`
   <md-button
-    @button-click=${action("detail")}
+    @button-click=${action("click")}
+    @button-keydown=${action("keydown")}
     variant=${args.variant}
     .color=${args.color}
     .disabled=${args.disabled}
@@ -91,27 +92,45 @@ const meta: Meta = {
 export const Notification: StoryObj = {
   render: () => html`
     <div style="display: flex; gap: 1.5rem; align-items: center; padding: 1rem;">
-      <md-button variant="secondary" circle size="28">
+      <md-button
+        variant="secondary"
+        circle
+        size="28"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
         <md-icon slot="icon" name="sign-out-bold" iconSet="momentumDesign"></md-icon>
         <md-notification-badge slot="notification" type="success" overlay></md-notification-badge>
       </md-button>
-      <md-button variant="secondary" circle size="32">
+      <md-button
+        variant="secondary"
+        circle
+        size="32"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
         <md-icon slot="icon" name="chat-filled" iconSet="momentumDesign"></md-icon>
         <md-notification-badge slot="notification" type="dot" overlay></md-notification-badge>
       </md-button>
-      <md-button variant="secondary" circle size="40">
+      <md-button
+        variant="secondary"
+        circle
+        size="40"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
         <md-icon slot="icon" name="chat-filled" iconSet="momentumDesign" size="24"></md-icon>
         <md-notification-badge slot="notification" type="error" overlay></md-notification-badge>
       </md-button>
-      <md-button variant="secondary" size="28">
+      <md-button variant="secondary" size="28" @button-click=${action("click")} @button-keydown=${action("keydown")}>
         <span slot="text">Pill Button</span>
         <md-notification-badge slot="notification" type="warning" overlay></md-notification-badge>
       </md-button>
-      <md-button variant="secondary" size="32">
+      <md-button variant="secondary" size="32" @button-click=${action("click")} @button-keydown=${action("keydown")}>
         <span slot="text">Another Pill</span>
         <md-notification-badge slot="notification" type="error" overlay></md-notification-badge>
       </md-button>
-      <md-button variant="secondary" size="40">
+      <md-button variant="secondary" size="40" @button-click=${action("click")} @button-keydown=${action("keydown")}>
         <span slot="text">Another Pill</span>
         <md-notification-badge slot="notification" type="dot" overlay></md-notification-badge>
       </md-button>

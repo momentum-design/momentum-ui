@@ -243,6 +243,10 @@ export namespace Input {
       this.input.select();
     }
 
+    public focus() {
+      this.input.focus();
+    }
+
     handleOutsideClick(event: MouseEvent) {
       let insideInputClick = false;
       const path = event.composedPath();

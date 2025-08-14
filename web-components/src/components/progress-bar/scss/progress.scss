@@ -2,11 +2,11 @@
 
 @include exports("md-progress-bar") {
   .progressbar-label {
-    text-align: left;
+    text-align: start;
   }
 
   .progressbar-progress {
-    float: right;
+    float: inline-end;
   }
 
   .progressbar-label,

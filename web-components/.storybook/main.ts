@@ -19,7 +19,8 @@ module.exports = {
     "@storybook/addon-controls",
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
-    "@storybook/addon-toolbars"
+    "@storybook/addon-toolbars",
+    "storybook-addon-rtl"
   ],
 
   framework: "@storybook/web-components-webpack5",

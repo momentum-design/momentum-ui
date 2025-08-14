@@ -43,8 +43,6 @@ export namespace EditableTextfield {
     @property({ type: String }) ariaLabel = "editable field";
     @property({ type: String, attribute: "aria-described-by" }) ariaDescribedBy = "";
 
-    private readonly messageController: Input.MessageController = new Input.MessageController();
-
     @query(".md-editable-textfield") editableField: HTMLElement | undefined;
 
     connectedCallback() {

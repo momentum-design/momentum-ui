@@ -61,13 +61,20 @@ export namespace Slider {
       return (progress / range) * 100;
     }
 
+    private get isRtl(): boolean {
+      return getComputedStyle(this).direction === "rtl";
+    }
+
     private calculateHandlePosition(event: MouseEvent) {
       const { width, left } = this.getBoundingClientRect();
       const { clientX } = event;
 
-      const percent = (clientX - left) / width;
-      const value = this.min + (this.max - this.min) * percent;
+      let percent = (clientX - left) / width;
+      if (this.isRtl) {
+        percent = 1 - percent;
+      }
 
+      const value = this.min + (this.max - this.min) * percent;
       return value;
     }
 
@@ -187,12 +194,22 @@ export namespace Slider {
 
       switch (code) {
         case Key.ArrowLeft:
+          {
+            this.moveSliderTo(this.now + (this.isRtl ? 1 : -1));
+          }
+          break;
+
+        case Key.ArrowRight:
+          {
+            this.moveSliderTo(this.now + (this.isRtl ? -1 : 1));
+          }
+          break;
+
         case Key.ArrowDown:
           {
             this.moveSliderTo(this.now - 1);
           }
           break;
-        case Key.ArrowRight:
         case Key.ArrowUp:
           {
             this.moveSliderTo(this.now + 1);
@@ -224,12 +241,12 @@ export namespace Slider {
 
     get sliderPointerStyleMap() {
       return {
-        left: `${this.pointerPosition}%`
+        "inset-inline-start": `${this.pointerPosition}%`
       };
     }
     get sliderSelectionStyleMap() {
       return {
-        right: `calc(100% - ${this.pointerPosition}%)`
+        "inset-inline-end": `calc(100% - ${this.pointerPosition}%)`
       };
     }
 

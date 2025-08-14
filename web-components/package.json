@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.24.3",
+  "version": "3.0.0-alpha.1",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -17,6 +17,7 @@
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
     "npm:publish:local": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' ",
     "npm:publish:external": "yarn npm:publish:local && cd ./publish && npm publish",
+    "npm:publish:alpha": "yarn npm:publish:local && cd ./publish && npm publish --tag alpha",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --runInBand",

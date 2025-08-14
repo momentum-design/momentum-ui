@@ -37,7 +37,7 @@ const render = (args: Args) => html`
     .value=${args.value}
     .outline=${args.outline}
     .hasRemoveStyle=${args.hasRemoveStyle}
-    role=${args.role}
+    .role=${args.role}
   >
     ${args.circle
       ? html` <md-icon slot="icon" name="search-bold" size="12" iconSet="momentumDesign"></md-icon> `

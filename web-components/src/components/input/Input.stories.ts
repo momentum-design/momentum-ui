@@ -17,24 +17,34 @@ import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLe
 
 const messageArr = [
   {
-    label: "",
+    type: "default" as const,
     message: "",
-    type: "default"
+    id: undefined,
+    ariaLive: undefined
   },
   {
-    label: "Success",
+    type: "success" as const,
     message: "This is where the success message.",
-    type: "success"
+    id: "success-message",
+    ariaLive: "polite" as const
   },
   {
-    label: "Warning",
+    type: "warning" as const,
     message: "This is where the warning message.",
-    type: "warning"
+    id: "warning-message",
+    ariaLive: "polite" as const
   },
   {
-    label: "Error",
+    type: "error" as const,
     message: "This is where the error message.",
-    type: "error"
+    id: "error-message",
+    ariaLive: "assertive" as const
+  },
+  {
+    type: "priority" as const,
+    message: "This is where the priority message.",
+    id: "priority-message",
+    ariaLive: "assertive" as const
   }
 ];
 
@@ -47,7 +57,7 @@ export const Input: StoryObj = {
     messageValue: "Message 2",
     disabled: false,
     readOnly: false,
-    shape: "pill",
+    shape: "",
     multiline: false,
     searchable: false,
     clear: false,
@@ -59,9 +69,13 @@ export const Input: StoryObj = {
     nested: 1,
     position: "before",
     nameIcon: "accessibility_16",
-    newMomentum: false
+    newMomentum: true,
+    showDropdown: false,
+    compact: false
   },
   render: (args: Args) => {
+    const selectedMessage = messageArr.find((msg) => msg.type === args.messageType) || messageArr[0];
+
     if (args.hasNested) {
       return html`
         <md-input label="Default Input"></md-input>
@@ -74,6 +88,7 @@ export const Input: StoryObj = {
           containerSize="small-12"
           placeholder="Enter Text"
           .auxiliaryContentPosition=${args.position as any}
+          ?newMomentum=${args.newMomentum}
         >
           <md-icon slot="input-section${args.position === "after" ? "-right" : ""}" name=${args.nameIcon}></md-icon>
         </md-input>
@@ -83,7 +98,7 @@ export const Input: StoryObj = {
         <md-input
           .label=${args.label}
           .placeholder=${args.placeholder}
-          .messageArr=${[args.messageValue]}
+          .messageArr=${selectedMessage.message ? [selectedMessage] : []}
           .value=${args.value}
           .containerSize="${args.size}"
           .disabled=${args.disabled}
@@ -98,6 +113,9 @@ export const Input: StoryObj = {
           @input-change=${action("change")}
           @input-blur=${action("focus out")}
           @input-focus=${action("focus in")}
+          ?newMomentum=${args.newMomentum}
+          ?showDropdown=${args.showDropdown}
+          ?compact=${args.compact}
         >
         </md-input>
       `;
@@ -123,7 +141,11 @@ export default {
     label: { control: "text" },
     value: { control: "text" },
     size: { control: { type: "select" }, options: containerSize },
-    messageValue: { control: { type: "select" }, options: messageArr },
+    messageType: {
+      control: { type: "select" },
+      options: ["default", "success", "warning", "error", "priority"],
+      description: "Type of message to display"
+    },
     disabled: { control: "boolean" },
     readOnly: { control: "boolean" },
     shape: { control: { type: "select" }, options: inputShape },

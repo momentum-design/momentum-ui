@@ -183,6 +183,10 @@ export namespace Input {
     @property({ type: Object }) control?: FormControl<unknown>;
     @property({ type: Boolean }) disableUserTextInput = false;
 
+    @property({ type: Boolean }) showDropdown = false;
+    @property({ type: String }) dropdownAriaLabel = "Show options";
+    @property({ type: Boolean }) dropdownExpanded = false;
+
     @query(".md-input") input!: HTMLInputElement;
 
     @internalProperty() private isEditing = false;
@@ -335,6 +339,24 @@ export namespace Input {
       this.hasRightSlotContent = this.inputSectionRightSlot?.assignedNodes().length > 0;
     }
 
+    handleDropdownClick(event: MouseEvent) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.dropdownExpanded = !this.dropdownExpanded;
+
+      this.dispatchEvent(
+        new CustomEvent("input-dropdown-click", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event,
+            expanded: this.dropdownExpanded
+          }
+        })
+      );
+    }
+
     get messageType(): Input.MessageType | null {
       if (this.messageArr.length > 0) {
         return this.messageController.determineMessageType(this.messageArr);
@@ -389,11 +411,15 @@ export namespace Input {
     }
 
     get ariaExpandedValue() {
-      return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : "undefined";
+      return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : undefined;
     }
 
     get hasRightIcon() {
       if (this.clear && !this.disabled && this.value && !this.readOnly) {
+        return true;
+      }
+
+      if (this.showDropdown) {
         return true;
       }
 
@@ -509,15 +535,42 @@ export namespace Input {
               >
               </md-icon>
             </md-button>
+            ${this.comboBoxButtonTemplate}
           </div>
         `;
       } else if (!this.compact) {
         return html`
           <div class=${classMap(this.inputRightTemplateClassMap)}>
             <slot name="input-section-right" @slotchange=${this.handleRighSlotChange}></slot>
+            ${this.comboBoxButtonTemplate}
           </div>
         `;
+      } else if (this.showDropdown) {
+        return html` <div class=${classMap(this.inputRightTemplateClassMap)}>${this.comboBoxButtonTemplate}</div> `;
       }
+    }
+
+    private get comboBoxButtonTemplate() {
+      return this.showDropdown
+        ? html`
+            <button
+              class="md-input__dropdown-button"
+              tabindex="-1"
+              aria-label=${this.dropdownAriaLabel}
+              @click=${(event: MouseEvent) => this.handleDropdownClick(event)}
+              @mousedown=${(event: MouseEvent) => event.preventDefault()}
+              ?disabled=${this.disabled}
+            >
+              <md-icon
+                class="md-input__dropdown-icon ${this.dropdownExpanded ? "expanded" : ""}"
+                name="arrow-down-bold"
+                size="16"
+                iconSet="momentumDesign"
+              >
+              </md-icon>
+            </button>
+          `
+        : nothing;
     }
 
     secondaryLabelTemplate() {

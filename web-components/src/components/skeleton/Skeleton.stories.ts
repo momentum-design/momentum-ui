@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/web-components";
-import { skeletonAnimationTypes, skeletonVariants, Skeleton as SKELETON } from "./Skeleton";
-import "./Skeleton.ts";
 import { html } from "lit";
+import { Skeleton as SKELETON, skeletonAnimationTypes, skeletonVariants } from "./Skeleton";
+import "./Skeleton.ts";
 
 interface SkeletonArgs {
   width?: string;
@@ -28,12 +28,11 @@ const meta = {
     },
     height: {
       control: { type: "text" },
-      description:
-        "Height of skeleton. Any valid CSS values are accepted. If number is provided, it will be used as px."
+      description: "Height of skeleton. Any valid CSS values are accepted."
     },
     width: {
       control: { type: "text" },
-      description: "Width of skeleton. Any valid CSS values are accepted. If number is provided, it will be used as px."
+      description: "Width of skeleton. Any valid CSS values are accepted."
     }
   },
   parameters: {

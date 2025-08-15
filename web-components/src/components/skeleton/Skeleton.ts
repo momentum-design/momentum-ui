@@ -27,3 +27,9 @@ export namespace Skeleton {
     }
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "md-skeleton": Skeleton.ELEMENT;
+  }
+}

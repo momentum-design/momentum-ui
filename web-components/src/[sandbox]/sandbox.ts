@@ -66,6 +66,7 @@ import {
   toggleSwitchTemplate,
   tooltipTemplate
 } from "./examples";
+import { skeletonTemplate } from "./examples/skeleton";
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends MobxLitElement {
@@ -399,6 +400,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Presence", "md-presence", "presence", presenceTemplate)}
           ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
+          ${this.getTabTemplate("Skeleton", "md-skeleton", "skeleton", skeletonTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}
           ${this.getTabTemplate("Spinner", "md-spinner", "spinner", spinnerTemplate)}
           ${this.getTabTemplate("Table", "md-table", "table", tableTemplate)}

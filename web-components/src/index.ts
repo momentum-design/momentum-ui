@@ -77,6 +77,7 @@ export type { PresenceState } from "./components/presence/Presence.utils";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
+export { Skeleton } from "./components/skeleton/Skeleton";
 export { Slider } from "./components/slider/Slider";
 export { Spinner } from "./components/spinner/Spinner";
 export { TableAdvanced } from "./components/table-advanced/TableAdvanced";

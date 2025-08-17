@@ -21,8 +21,7 @@ Add peerDependencies & devDependencies to match the following: <br>
     "@momentum-ui/tokens": "^1.5.0",
     "@momentum-ui/utils": "^6.2.7",
     "@momentum-ui/web-components": "2.1.5-dev",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1"
+    "lit":"^3.0.0"
   },
   ```
   
@@ -34,8 +33,7 @@ Add peerDependencies & devDependencies to match the following: <br>
     "@momentum-ui/tokens": "^1.5.0",
     "@momentum-ui/utils": "^6.2.7",
     "@momentum-ui/web-components": "2.1.5-dev",
-    "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit":"^3.0.0"
   ```
   <sub>*The changes to scripts commands enable the following Webpack modifications to be run within the Create React App environment. <br> The addition of `jest` as a resolution is important for tests to run*</sub>
   

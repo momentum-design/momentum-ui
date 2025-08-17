@@ -1,7 +1,6 @@
 import "@/components/floating-button-bar/FloatingButtonBar";
 import { FloatingButtonActionGroup, FloatingButtonBarAction } from "@/components/floating-button-bar/FloatingButtonBar";
-import { css, LitElement } from "lit";
-import { html } from "lit-html";
+import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 
 @customElement("floating-button-bar-sandbox")

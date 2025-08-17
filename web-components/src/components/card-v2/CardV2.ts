@@ -11,10 +11,9 @@ import "@/components/icon/Icon";
 import "@/components/tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, PropertyValues } from "lit";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { html, LitElement, nothing, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import { Duration } from "luxon";
 import styles from "./scss/module.scss";
 

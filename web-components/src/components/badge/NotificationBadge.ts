@@ -1,6 +1,6 @@
 import { customElementWithCheck } from "@/mixins";
+import type { CSSResult, CSSResultArray, PropertyValues, TemplateResult } from "lit";
 import { html, LitElement } from "lit";
-import type { CSSResult, CSSResultArray, PropertyValues, TemplateResult } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { property } from "lit/decorators.js";

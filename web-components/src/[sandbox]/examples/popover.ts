@@ -7,7 +7,7 @@ import { PopoverController } from "@/components/popover/Popover";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/tooltip/Tooltip";
-import { css, html, LitElement } from "lit-element";
+import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 

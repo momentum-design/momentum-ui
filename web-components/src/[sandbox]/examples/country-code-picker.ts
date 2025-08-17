@@ -1,6 +1,6 @@
 import "@/components/country-code-picker/CountryCodePicker";
 import "@/components/form/Form";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const countryCodeChangedHandler = (e: CustomEvent) => {
   console.log("country code changed: ", e.detail.srcEvent.detail.value.id);

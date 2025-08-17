@@ -4,11 +4,10 @@ import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { CountryCode } from "libphonenumber-js";
-import { LitElement, html } from "lit";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
-import { repeat } from "lit-html/directives/repeat.js";
+import { LitElement, html, nothing } from "lit";
 import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { repeat } from "lit/directives/repeat.js";
 import styles from "./scss/module.scss";
 export namespace CountryCodePicker {
   export interface Country {

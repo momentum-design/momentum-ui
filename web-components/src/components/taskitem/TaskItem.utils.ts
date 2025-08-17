@@ -1,5 +1,5 @@
 import { Avatar } from "@/components/avatar/Avatar";
-import { html, nothing, TemplateResult } from "lit-html";
+import { html, nothing, TemplateResult } from "lit";
 import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
 
 export const getTaskTypeTemplate = (

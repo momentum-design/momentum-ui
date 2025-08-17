@@ -1,6 +1,6 @@
-import { renderTaskType, getChannelAvatar, renderChatCount, renderLegacyTaskType } from "./TaskItem.utils";
+import { html } from "lit";
 import { TaskItemMediaType } from "./TaskItem.constants";
-import { html } from "lit-html";
+import { getChannelAvatar, renderChatCount, renderLegacyTaskType, renderTaskType } from "./TaskItem.utils";
 
 describe("TaskItem Utils", () => {
   let mockElement: HTMLElement;

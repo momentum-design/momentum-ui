@@ -37,9 +37,6 @@ export namespace Checkbox {
     set checked(value: boolean) {
       const oldValue = this._checked;
       this._checked = value;
-      if (!this.indeterminate) {
-        this.setAttribute("aria-checked", `${value}`);
-      }
       this.requestUpdate("checked", oldValue);
     }
 
@@ -51,7 +48,6 @@ export namespace Checkbox {
     set indeterminate(value: boolean) {
       const oldValue = this._indeterminate;
       this._indeterminate = value;
-      this.setAttribute("aria-checked", "mixed");
       this.requestUpdate("indeterminate", oldValue);
     }
 
@@ -63,7 +59,6 @@ export namespace Checkbox {
     set disabled(value: boolean) {
       const oldValue = this._disabled;
       this._disabled = value;
-      this.setAttribute("aria-disabled", `${value}`);
       if (value) {
         this.tabIndex = -1;
       } else {
@@ -145,10 +140,23 @@ export namespace Checkbox {
       this.removeEventListener("click", this.handleClick);
     }
 
-    protected update(changedProperties: PropertyValues) {
-      super.update(changedProperties);
-      if (changedProperties.has("indeterminate")) {
-        this.checked = false;
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
+      if (changedProperties.has("indeterminate") && this.indeterminate) {
+        this._checked = false;
+      }
+
+      // Set ARIA attributes before update
+      if (changedProperties.has("checked") || changedProperties.has("indeterminate")) {
+        if (this.indeterminate) {
+          this.setAttribute("aria-checked", "mixed");
+        } else {
+          this.setAttribute("aria-checked", `${this.checked}`);
+        }
+      }
+
+      if (changedProperties.has("disabled")) {
+        this.setAttribute("aria-disabled", `${this.disabled}`);
       }
     }
 

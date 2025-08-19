@@ -4,7 +4,7 @@ import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import "@lit-labs/virtualizer";
 import { LitElement, PropertyValues, TemplateResult, html } from "lit";
-import { property, query, queryAll, state } from "lit/decorators.js";
+import { property, query, state } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace AdvanceList {
@@ -27,7 +27,7 @@ export namespace AdvanceList {
     @property({ type: Array }) disabledItems: string[] = [];
     @property({ type: Number }) totalRecords = 0;
     @property({ type: Boolean }) isNonSelectable = false;
-    @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
+
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
 
     @state()
@@ -72,27 +72,34 @@ export namespace AdvanceList {
       this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
-    updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
-        this.requestUpdate();
-        this.updateComplete.then(() => {
-          this.selectedItemsIds = this.value;
-          this.updateSelectedState();
-        });
+        this.selectedItemsIds = this.value;
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
           this.selectedItemsIds = this.items
             .filter((item) => !this.disabledItems.includes(item.id))
             .map((item) => item.id);
-          this.updateSelectedState();
-          this.notifySelectedChange();
         }
       }
       if (changedProperties.has("focusReset")) {
         if (this.focusReset) {
           this.activeId = "";
+        }
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
+        this.updateSelectedState();
+      }
+      if (changedProperties.has("selectAllItems")) {
+        if (this.selectAllItems) {
+          this.updateSelectedState();
+          this.notifySelectedChange();
         }
       }
     }

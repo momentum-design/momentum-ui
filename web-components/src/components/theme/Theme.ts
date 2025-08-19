@@ -172,6 +172,13 @@ export namespace Theme {
       }
     }
 
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
+      if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
+        this.activeTheme = this.setTheme();
+      }
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
@@ -186,9 +193,8 @@ export namespace Theme {
             }
           })
         );
+        this.applyStyle();
       }
-      this.activeTheme = this.setTheme();
-      this.applyStyle();
     }
 
     handleVirtualTooltipCreate(event: CustomEvent<TooltipEvent>) {

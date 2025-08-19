@@ -108,8 +108,8 @@ export namespace Avatar {
       }
     }
 
-    updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       if (
         presenceValue &&
@@ -123,6 +123,10 @@ export namespace Avatar {
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
       }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
       if (changedProperties.has("role")) {
         this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
       }

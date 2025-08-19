@@ -1106,7 +1106,6 @@ export namespace Tabs {
         this.initializeSortable();
       }
       this.manageOverflow();
-      this.requestUpdate();
     }
 
     connectedCallback() {
@@ -1188,21 +1187,11 @@ export namespace Tabs {
       }
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
 
-      if (changedProperties.has("direction")) {
-        if (changedProperties.get("direction") !== this.direction) {
-          this.onDirectionChanged();
-        }
-      }
-
-      if (changedProperties.has("slotted")) {
-        this.initializeTabs();
-      }
-
-      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
-        this.initializeSortable();
+      if (changedProperties.has("selectedIndex")) {
+        this.selected = this.selectedIndex;
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
@@ -1253,13 +1242,30 @@ export namespace Tabs {
           }
         }
       }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+
+      if (changedProperties.has("direction")) {
+        if (changedProperties.get("direction") !== this.direction) {
+          this.onDirectionChanged();
+        }
+      }
+
+      if (changedProperties.has("slotted")) {
+        this.initializeTabs();
+      }
+
+      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
+        this.initializeSortable();
+      }
 
       if (changedProperties.has("tabsId")) {
         this.selectTabFromStorage();
       }
 
       if (changedProperties.has("selectedIndex")) {
-        this.selected = this.selectedIndex;
         this.updateSelectedTab(this.selectedIndex, false);
       }
 

@@ -211,7 +211,6 @@ export namespace Icon {
       this.svgIcon?.setAttribute("part", "icon");
 
       this.setSvgIconAttributes();
-      this.requestUpdate();
     }
 
     setSvgIconAttributes() {

@@ -1,6 +1,6 @@
-export { FormControl } from './FormControl';
-export { FormGroup } from './FormGroup';
-export { FormArray } from './FormArray';
-export { Validators } from './validators';
-export { AbstractControl } from './Form.types';
-export { ValidationError } from './Form.types';
+export { AbstractControl, ValidationError } from "./Form.types";
+export { FormArray } from "./FormArray";
+export { FormControl } from "./FormControl";
+export { FormGroup } from "./FormGroup";
+export { Validators } from "./validators";
+

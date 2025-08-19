@@ -42,8 +42,8 @@ export namespace RadioGroup {
       this.setAttribute("aria-label", this.label);
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       if (changedProperties.has("slotted") || changedProperties.has("checked")) {
         this.setFirstChecked();
       }

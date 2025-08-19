@@ -37,13 +37,15 @@ export namespace AlertBanner {
 
     connectedCallback() {
       super.connectedCallback();
-      this.requestUpdate("show");
     }
 
     onHide() {
       this.show = !this.show;
       this.dispatchEvent(new CustomEvent("alertBanner-hide"));
-      this.requestUpdate("show");
+    }
+
+    onRefreshClick() {
+      this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"));
     }
 
     handleKeyDown(event: KeyboardEvent) {
@@ -107,8 +109,8 @@ export namespace AlertBanner {
             hasRemoveStyle
             circle
             ariaLabel=${this.closeAriaLabel}
-            @click="${this.onHide}"
-            @keydown="${this.handleKeyDown}"
+            @click=${this.onHide}
+            @keydown=${this.handleKeyDown}
           >
             <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
           </md-button>
@@ -121,7 +123,7 @@ export namespace AlertBanner {
     }
 
     render() {
-      const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : null;
+      const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : nothing;
       const textContentStyle = this.showBannerTypeIcon || this.titleText ? "with-icon" : "";
       const leftOfTextSlot = this.showBannerTypeIcon
         ? html`
@@ -142,7 +144,7 @@ export namespace AlertBanner {
       const rightOfTextSlot = this.showRefreshButton
         ? html` <md-button
             class="${refreshButtonClass}"
-            @click="${() => this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"))}"
+            @click=${this.onRefreshClick}
             variant="ghostInheritTextColor"
             circle
             size="20"
@@ -173,7 +175,7 @@ export namespace AlertBanner {
                   </div>
                 </div>
               `
-            : null}
+            : nothing}
         `;
       } else {
         return html`
@@ -191,7 +193,7 @@ export namespace AlertBanner {
                   ${closeBtn}
                 </div>
               `
-            : null}
+            : nothing}
         `;
       }
     }

@@ -246,7 +246,7 @@ export namespace FloatingMinimizedModal {
               <div
                 class="md-floating ${!this.minimize ? "hide" : ""} md-floating-minimize"
                 @click=${this.handleMinimize}
-                @keydown="${this.handleKeyDown}"
+                @keydown=${this.handleKeyDown}
                 role="dialog"
                 tabindex="-1"
                 part="floating-minimized"
@@ -278,7 +278,7 @@ export namespace FloatingMinimizedModal {
                     aria-label="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}
-                    @keydown="${this.handleKeyDownClose}"
+                    @keydown=${this.handleKeyDownClose}
                   >
                     <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </md-button>

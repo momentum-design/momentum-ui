@@ -156,13 +156,7 @@ export namespace Alert {
           ${this.closable
             ? html`
                 <div class="md-alert__button">
-                  <md-button
-                    ariaLabel="${this.btnlabel}"
-                    hasRemoveStyle
-                    color="color-none"
-                    circle
-                    @click="${() => this.close()}"
-                  >
+                  <md-button ariaLabel="${this.btnlabel}" hasRemoveStyle color="color-none" circle @click=${this.close}>
                     <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
                   </md-button>
                 </div>
@@ -250,7 +244,7 @@ export namespace Alert {
                       hasRemoveStyle
                       color="color-none"
                       circle
-                      @click="${() => this.close()}"
+                      @click=${this.close}
                     >
                       <md-icon slot="icon" name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                     </md-button>

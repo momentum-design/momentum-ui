@@ -117,6 +117,7 @@ describe("TimePicker Component", () => {
 
     expect(timeChangeSpy).toHaveBeenCalled();
     expect(hourInput.value).toEqual("12");
+
     expect(minuteInput.hasAttribute("focus-visible")).toBeTruthy();
   });
 
@@ -151,7 +152,9 @@ describe("TimePicker Component", () => {
 
   describe("Placeholders and Default Values", () => {
     test("should show placeholders when showDefaultNowTime is false and no value is set", async () => {
-      const element = await fixture<TimePicker.ELEMENT>(html`<md-timepicker .showDefaultNowTime=${false}></md-timepicker>`);
+      const element = await fixture<TimePicker.ELEMENT>(
+        html`<md-timepicker .showDefaultNowTime=${false}></md-timepicker>`
+      );
 
       const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
       const hourNativeInput = hourInput?.shadowRoot?.querySelector("input");
@@ -226,7 +229,9 @@ describe("TimePicker Component", () => {
     });
 
     test("should not show placeholder if showDefaultNowTime is true", async () => {
-      const element = await fixture<TimePicker.ELEMENT>(html`<md-timepicker .showDefaultNowTime=${true}></md-timepicker>`);
+      const element = await fixture<TimePicker.ELEMENT>(
+        html`<md-timepicker .showDefaultNowTime=${true}></md-timepicker>`
+      );
 
       const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
       expect(hourInput.value).not.toBe("");

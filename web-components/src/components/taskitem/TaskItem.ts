@@ -226,7 +226,7 @@ export namespace TaskItem {
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
           <div class="md-taskitem__addition ${classMap({ empty_addition: this.additionEmptyMargin })}">
-            <slot @slotchange="${this.handleAdditionSlotChange}"></slot>
+            <slot @slotchange=${this.handleAdditionSlotChange}></slot>
             ${renderChatCount(this.quantity, this.isRestyle, this)}
           </div>
         </div>

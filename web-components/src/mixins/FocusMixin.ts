@@ -55,11 +55,7 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
     protected setFocus(force: boolean) {
-      if (this.isUpdatePending) {
-        requestAnimationFrame(() => this.toggleAttribute("focus-visible", force));
-      } else {
-        this.toggleAttribute("focus-visible", force);
-      }
+      this.toggleAttribute("focus-visible", force);
     }
 
     protected handleFocusIn(event: Event) {

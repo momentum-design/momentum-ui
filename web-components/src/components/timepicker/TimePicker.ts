@@ -447,9 +447,9 @@ export namespace TimePicker {
           max=${ifDefined(unitProperties.max)}
           maxLength=${2}
           placeholder="${timePlaceholders[unit]}"
-          @input-change="${(e: CustomEvent) => this.handleTimeChange(e, unit)}"
-          @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
-          @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, unit)}"
+          @input-change=${(e: CustomEvent) => this.handleTimeChange(e, unit)}
+          @input-keydown=${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}
+          @input-blur=${(e: CustomEvent) => this.handleTimeBlur(e, unit)}
           .messageArr=${[{ message: "", type: this.messageType(this.timeValidity[unit]) } as Input.Message]}
           .ariaLabel="${unit}-input"
           ariaInvalid="${!this.timeValidity[unit]}"
@@ -471,7 +471,7 @@ export namespace TimePicker {
           no-clear-icon
           .inputValue=${this.timeValue[TIME_UNIT.AM_PM]}
           .ariaLabel=${this.timeValue[TIME_UNIT.AM_PM]}
-          @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
+          @change-selected=${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}
         >
         </md-combobox>
       `;

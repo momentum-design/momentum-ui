@@ -63,11 +63,7 @@ export namespace Label {
 
     render() {
       return html`
-        <label
-          @click="${() => this.handleClick()}"
-          class="md-label ${classMap(this.labelClassMap)}"
-          for="${this.htmlFor}"
-        >
+        <label @click=${this.handleClick} class="md-label ${classMap(this.labelClassMap)}" for="${this.htmlFor}">
           ${this.label ? html` <span>${this.label}</span> ` : html` <slot></slot> `}
         </label>
       `;

@@ -134,7 +134,7 @@ export namespace CountryCodePicker {
             ariaLabel=${this.ariaLabel}
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
-            @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            @change-selected=${(e: CustomEvent) => this.handleCountryChange(e)}
             with-custom-content
             ?newMomentum=${this.newMomentum}
             ?is-dropdown-arrow=${this.isDropdownArrow}

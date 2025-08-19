@@ -487,7 +487,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot @slotchange="${this.handleTriggerSlotChange}" name="menu-trigger"></slot>
+          <slot @slotchange=${this.handleTriggerSlotChange} name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

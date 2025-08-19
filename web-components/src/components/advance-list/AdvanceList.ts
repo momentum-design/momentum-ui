@@ -29,6 +29,7 @@ export namespace AdvanceList {
     @property({ type: Boolean }) isNonSelectable = false;
 
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
+    @query("lit-virtualizer") virtualizer?: any;
 
     @state()
     private scrollIndex = -1;
@@ -219,11 +220,15 @@ export namespace AdvanceList {
           if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
             this.scrollIndex = currentIndex + 1;
             this.activeId = this.items[this.scrollIndex].id;
+            // Scroll to the new active item
+            this.virtualizer?.scrollToIndex(this.scrollIndex, "start");
           }
         } else if (currentIndex > 0) {
           // isArrowUp
           this.scrollIndex = currentIndex - 1;
           this.activeId = this.items[this.scrollIndex].id;
+          // Scroll to the new active item
+          this.virtualizer?.scrollToIndex(this.scrollIndex, "start");
         }
       } else if (isTab) {
         if (this.activeId === "" && this.value.length > 0) {

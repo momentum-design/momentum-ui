@@ -429,7 +429,7 @@ export namespace AudioPlayer {
                 <md-button
                   hasRemoveStyle
                   class="play-btn"
-                  @click="${this.togglePlay}"
+                  @click=${this.togglePlay}
                   aria-label="${this.isPlaying ? this.labelMap.pauseBtn.ariaLabel : this.labelMap.playBtn.ariaLabel}"
                 >
                   ${this.isPlaying
@@ -452,7 +452,7 @@ export namespace AudioPlayer {
             </div>
             <div class="timeline-container">
               <md-tooltip placement="top" message="${this.labelMap.timeline.tooltipText}">
-                <div class="timeline" @click="${this.setTime}" aria-label="${this.labelMap.timeline.ariaLabel}">
+                <div class="timeline" @click=${this.setTime} aria-label="${this.labelMap.timeline.ariaLabel}">
                   <div class="progress-bar" style="width: ${(this.currentTime / this.duration) * 100}%"></div>
                   <div class="buffer-bar" style="width: ${(this.bufferedRange / this.duration) * 100}%"></div>
                 </div>
@@ -460,8 +460,8 @@ export namespace AudioPlayer {
             </div>
             <div
               class="volume-container"
-              @mouseleave="${() => this.toggleVolumeExpand(false)}"
-              @mouseenter="${() => this.toggleVolumeExpand(true)}"
+              @mouseleave=${() => this.toggleVolumeExpand(false)}
+              @mouseenter=${() => this.toggleVolumeExpand(true)}
               aria-label="${this.labelMap.volumeSlider.ariaLabel}"
             >
               <md-tooltip
@@ -470,7 +470,7 @@ export namespace AudioPlayer {
               >
                 <div
                   class="volume"
-                  @mousedown="${this.handleVolumeChange}"
+                  @mousedown=${this.handleVolumeChange}
                   aria-label="${this.labelMap.volumeSlider.ariaLabel} ${Math.trunc(this.volume * 100)}%"
                 >
                   <div class="volume-slider" style="width: ${this.isMuted ? 0 : this.volume * 100}%"></div>
@@ -481,7 +481,7 @@ export namespace AudioPlayer {
                   hasRemoveStyle
                   class="volume-btn"
                   aria-label="${this.labelMap.volumeBtn.ariaLabel}"
-                  @click="${this.toggleSoundMute}"
+                  @click=${this.toggleSoundMute}
                 >
                   ${this.isMuted
                     ? html`
@@ -493,7 +493,7 @@ export namespace AudioPlayer {
             </div>
             <div class="speed-icon-container" aria-label="${this.labelMap.playbackSpeedBtn.ariaLabel}">
               <md-tooltip placement="top" message="${this.labelMap.playbackSpeedBtn.tooltipText}">
-                <md-button hasRemoveStyle id="speed-btn" @click="${this.toggleSpeedPopup}">
+                <md-button hasRemoveStyle id="speed-btn" @click=${this.toggleSpeedPopup}>
                   <md-icon slot="icon" name="too-fast-bold" size="16" iconSet="momentumDesign"></md-icon>
                 </md-button>
               </md-tooltip>
@@ -505,7 +505,7 @@ export namespace AudioPlayer {
                     return html`
                       <li
                         class=${isCurrentlySelected ? "speed-popup-selected-speed" : ""}
-                        @click="${() => this.setPlaybackSpeed(speed.value)}"
+                        @click=${() => this.setPlaybackSpeed(speed.value)}
                       >
                         <span>${speed.label}</span>
                         ${this.playbackSpeed == speed.value

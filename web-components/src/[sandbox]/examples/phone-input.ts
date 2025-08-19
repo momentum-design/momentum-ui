@@ -9,10 +9,10 @@ export const phoneInputTemplate = html`
         show-flags
         errorMessage="This phone number is invalid"
         .value=${"9997770100"}
-        @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-        @phoneinput-blur="${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-        @phoneinput-change="${(e: CustomEvent) =>
-          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+        @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+        @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+        @phoneinput-change=${(e: CustomEvent) =>
+          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
       ></md-phone-input>
     </div>
     <div class="row">
@@ -21,11 +21,10 @@ export const phoneInputTemplate = html`
           showErrorMessage
           errorMessage="This phone number is invalid"
           .value=${"9997770100"}
-          @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-          @phoneinput-blur="${(e: CustomEvent) =>
-            console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-          @phoneinput-change="${(e: CustomEvent) =>
-            console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+          @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+          @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+          @phoneinput-change=${(e: CustomEvent) =>
+            console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
         ></md-phone-input>
       </md-form>
     </div>
@@ -33,10 +32,10 @@ export const phoneInputTemplate = html`
       <md-phone-input
         disabled
         errorMessage="This phone number is invalid"
-        @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-        @phoneinput-blur="${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-        @phoneinput-change="${(e: CustomEvent) =>
-          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+        @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+        @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+        @phoneinput-change=${(e: CustomEvent) =>
+          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
       ></md-phone-input>
     </div>
     <div class="row">
@@ -45,10 +44,10 @@ export const phoneInputTemplate = html`
         errorMessage="This phone number is invalid"
         codePlaceholder="+7"
         numberPlaceholder="5555555555"
-        @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-        @phoneinput-blur="${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-        @phoneinput-change="${(e: CustomEvent) =>
-          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+        @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+        @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+        @phoneinput-change=${(e: CustomEvent) =>
+          console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
       ></md-phone-input>
     </div>
     <div>
@@ -62,11 +61,11 @@ export const phoneInputTemplate = html`
             .countryCodeAriaLabel=${"International Dialing Code"}
             .dialNumberAriaLabel=${"Dial Number"}
             .numberPlaceholder=${"Enter The Phone Number"}
-            @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-            @phoneinput-blur="${(e: CustomEvent) =>
-              console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-            @phoneinput-change="${(e: CustomEvent) =>
-              console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+            @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+            @phoneinput-blur=${(e: CustomEvent) =>
+              console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+            @phoneinput-change=${(e: CustomEvent) =>
+              console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
           ></md-phone-input>
         </md-form>
       </div>
@@ -82,7 +81,7 @@ export const phoneInputTemplate = html`
             .countryCodeAriaLabel=${"International Dialing Code"}
             .dialNumberAriaLabel=${"Dial Number"}
             .numberPlaceholder=${"Enter The Phone Number"}
-            @phoneinput-blur="${(e: CustomEvent) => console.log("blur: ", e.detail)}"
+            @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail)}
           ></md-phone-input>
         </md-form>
       </div>
@@ -100,11 +99,10 @@ export const phoneInputTemplate = html`
           .countryCodeAriaLabel=${"International Dialing Code"}
           .dialNumberAriaLabel=${"Dial Number"}
           .numberPlaceholder=${"Enter The Phone Number"}
-          @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
-          @phoneinput-blur="${(e: CustomEvent) =>
-            console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
-          @phoneinput-change="${(e: CustomEvent) =>
-            console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+          @phoneinput-keydown=${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}
+          @phoneinput-blur=${(e: CustomEvent) => console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}
+          @phoneinput-change=${(e: CustomEvent) =>
+            console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}
         ></md-phone-input>
       </md-form>
     </div>

@@ -143,7 +143,7 @@ export namespace Checkbox {
     protected willUpdate(changedProperties: PropertyValues): void {
       super.willUpdate?.(changedProperties);
       if (changedProperties.has("indeterminate") && this.indeterminate) {
-        this._checked = false;
+        this.checked = false;
       }
 
       // Set ARIA attributes before update

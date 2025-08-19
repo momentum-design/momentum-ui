@@ -45,8 +45,8 @@ export namespace MdFetchError {
                 inline
                 class="infinite-scroll-retry-link"
                 aria-label="${this.commonTryAgain}"
-                @click="${this.onRetry}"
-                @keydown="${this.onRetry}"
+                @click=${this.onRetry}
+                @keydown=${this.onRetry}
                 tag="span"
                 data-testid="retry-page"
               >

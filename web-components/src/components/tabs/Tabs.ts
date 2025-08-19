@@ -1334,7 +1334,7 @@ export namespace Tabs {
               id="${this.getCopyTabId(tab)}"
               aria-label=${tab.ariaLabel}
               aria-controls="${this.getAriaControlId(tab)}"
-              @click="${() => this.handleOverlayClose()}"
+              @click=${this.handleOverlayClose}
               tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
               role="menuitem"
               ?newMomentum=${this.newMomentum}
@@ -1362,8 +1362,8 @@ export namespace Tabs {
             "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
           })}"
           placement="bottom-end"
-          @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
-          @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
+          @menu-overlay-open=${() => (this.isMoreTabMenuOpen = true)}
+          @menu-overlay-close=${() => (this.isMoreTabMenuOpen = false)}
         >
           ${this.moreMenuButtonTemplate}
           <div

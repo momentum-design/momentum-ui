@@ -485,7 +485,7 @@ export namespace DatePicker {
                 auxiliaryContentPosition="before"
                 ?required=${this.required}
                 @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
-                @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
                 ?disabled=${this.disabled}
                 ?hide-message=${!this.errorMessage || this.isValueValid()}
                 ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
@@ -529,7 +529,7 @@ export namespace DatePicker {
                   auxiliaryContentPosition="before"
                   ?required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
-                  @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                  @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
                   ?disabled=${this.disabled}
                   ?hide-message=${!this.errorMessage || this.isValueValid()}
                   ariaInvalid=${!!this.errorMessage || !this.isValueValid()}

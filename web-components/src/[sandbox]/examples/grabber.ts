@@ -181,7 +181,7 @@ export class GrabberTemplateSandbox extends LitElement {
             id="grabberToggle"
             alignment="leading"
             ?shadow=${this.shadow}
-            @grabber-toggled="${this.toggleWidth.bind(this)}"
+            @grabber-toggled=${this.toggleWidth.bind(this)}
           ></md-grabber>
         </div>
       </div>

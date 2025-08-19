@@ -616,7 +616,7 @@ export namespace Input {
               secondaryLabel
               .htmlFor=${this.htmlId}
               .label=${this.secondaryLabel}
-              @label-click="${() => this.handleLabelClick()}"
+              @label-click=${() => this.handleLabelClick()}
             ></md-label>
           `
         : nothing;
@@ -660,7 +660,7 @@ export namespace Input {
               class="md-input__label ${classMap({ disabled: this.disabled, newMomentum: this.newMomentum })}"
               .htmlFor=${this.htmlId}
               .label=${this.label}
-              @label-click="${() => this.handleLabelClick()}"
+              @label-click=${() => this.handleLabelClick()}
             ></md-label>
           `
         : nothing;

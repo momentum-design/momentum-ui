@@ -818,7 +818,7 @@ export namespace Dropdown {
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
                   ?disabled="${this.disabled}"
-                  @click="${() => this.onLabelClick()}"
+                  @click=${this.onLabelClick}
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"

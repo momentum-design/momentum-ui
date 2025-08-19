@@ -654,6 +654,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
         this.triggerElement.style.zIndex = `${this.zIndex}`;
       }
 
+      this.utils.handleAppendTo(true);
       this.positionPopover();
       await this.handleCreatePopoverFirstUpdate();
 
@@ -680,6 +681,9 @@ export class Popover extends FocusTrapMixin(LitElement) {
       }
 
       popoverStack.removeItem(this);
+
+      // Handle appendTo cleanup - move popover back to original position
+      this.utils.handleAppendTo(false);
 
       if (this.backdropElement) {
         this.backdropElement?.remove();
@@ -833,6 +837,23 @@ export class Popover extends FocusTrapMixin(LitElement) {
   private isMouseOverTrigger(event: Event): boolean {
     const { clientX, clientY } = event instanceof MouseEvent ? event : { clientX: 0, clientY: 0 };
     return this.isRectOverTrigger(clientX, clientY);
+  }
+
+  /**
+   * Override setFocusableElements to include trigger element when using appendTo.
+   */
+  override setFocusableElements() {
+    super.setFocusableElements?.();
+
+    const triggerElement = this.triggerElement;
+
+    // Only add trigger to focusable elements if appendTo is used and focus trap is active
+    if (this.appendTo && this.activeFocusTrap && triggerElement && this.focusableElements) {
+      // Check if trigger is not already in the list
+      if (!this.focusableElements.includes(triggerElement)) {
+        this.focusableElements.push(triggerElement);
+      }
+    }
   }
 
   /**

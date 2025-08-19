@@ -2,6 +2,8 @@ import "@/components/avatar/Avatar";
 import "@/components/button/Button";
 import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
+import "@/components/list/List";
+import "@/components/list/ListItem";
 import "@/components/popover/Popover";
 import { PopoverController } from "@/components/popover/Popover";
 import "@/components/radio/Radio";
@@ -248,93 +250,181 @@ export class PopoverTemplateSandbox extends LitElement {
           </md-radiogroup>
         </md-popover>
       </div>
-
-      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
-        <md-button id="sort-button-lit-popover-child" circle variant="secondary" size="28" ariaLabel="Sort">
-          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
-          <span slot="text">Sort</span>
+      <!-- Complex nested popover example with appendTo -->
+      <div style="margin: 20px 0;">
+        <h3>Nested Popover with appendTo (Focus Test)</h3>
+        <md-button id="actions-trigger" variant="secondary" size="32">
+          <span slot="text">Actions</span>
+          <md-icon slot="icon" name="more-adr-bold" iconSet="momentumDesign"></md-icon>
         </md-button>
 
         <md-popover
-          placement="bottom"
-          triggerID="sort-button-lit-popover-child"
+          id="main-popover"
+          triggerID="actions-trigger"
           trigger="click"
-          hide-on-escape
-          hide-on-blur
+          placement="bottom-start"
           interactive
-          show-arrow
           hide-on-outside-click
-          focus-trap
           focus-back-to-trigger
-          @shown=${() => {
-            this.isButtonWithTooltipPopoverOpen = true;
-          }}
-          @hidden=${() => {
-            this.isButtonWithTooltipPopoverOpen = false;
-          }}
-        >
-          <test-popover-element></test-popover-element>
-        </md-popover>
-      </div>
-
-      <div style="width: 100px; overflow: hidden; margin-top: 12px;">
-        <md-button id="append-to-popover-2" circle variant="secondary" size="28" ariaLabel="Sort">
-          <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
-          <span slot="text">Sort</span>
-        </md-button>
-        <md-popover
-          placement="right"
-          triggerID="append-to-popover-2"
-          trigger="click"
-          append-to="app-theme"
+          focus-trap
           hide-on-escape
-          interactive
           show-arrow
-          hide-on-outside-click
-          focus-trap
-          focus-back-to-trigger
-          .controller=${this.popoverController}
+          z-index="1000"
+          append-to="body"
         >
-          <div style="width: 400px; height: 200px;">
-            <md-button @click="${() => this.popoverController.hide()}">Assign to me</md-button>
-            <md-button id="nested-copy">copy</md-button>
-            <span>information text</span>
+          <div class="menu-container">
+            <md-list label="Actions Menu">
+              <md-list-item id="being-monitored-trigger" slot="list-item">
+                <span>Being Monitored</span>
+                <md-icon name="arrow-right-bold" iconSet="momentumDesign"></md-icon>
+              </md-list-item>
+              <md-list-item id="review-monitor-trigger" slot="list-item">
+                <span>Review and Monitor</span>
+                <md-icon name="arrow-right-bold" iconSet="momentumDesign"></md-icon>
+              </md-list-item>
+              <md-list-item slot="list-item">
+                <span>Delete</span>
+              </md-list-item>
+            </md-list>
           </div>
         </md-popover>
-      </div>
-      <div>
-        <md-button
-          id="button-t1"
-          variant="secondary"
-          @focus=${() => this.setTriggerId("button-t1")}
-          @mouseenter=${() => this.setTriggerId("button-t1")}
-          ><span>Trigger 1</span></md-button
-        >
-        <md-button
-          id="button-t2"
-          variant="secondary"
-          @focus=${() => this.setTriggerId("button-t2")}
-          @mouseenter=${() => this.setTriggerId("button-t2")}
-          ><span>Trigger 2</span></md-button
-        >
 
+        <!-- Being Monitored Submenu -->
         <md-popover
-          triggerID=${this.currentTriggerId}
-          trigger="mouseenter"
-          hide-on-escape
+          triggerID="being-monitored-trigger"
+          trigger="click"
+          placement="right-start"
           interactive
-          show-arrow
+          hide-on-outside-click
+          focus-back-to-trigger
+          hide-on-escape
+          z-index="1001"
+        >
+          <md-list label="Being Monitored Options">
+            <md-list-item slot="list-item" aria-label="Start Monitoring">
+              <span>Start Monitoring</span>
+            </md-list-item>
+            <md-list-item slot="list-item" aria-label="View Details">
+              <span>View Details</span>
+            </md-list-item>
+            <md-list-item slot="list-item" aria-label="Configure Alerts">
+              <span>Configure Alerts</span>
+            </md-list-item>
+          </md-list>
+        </md-popover>
+
+        <!-- Review and Monitor Submenu -->
+        <md-popover
+          triggerID="review-monitor-trigger"
+          trigger="click"
+          placement="right-start"
+          interactive
           hide-on-outside-click
           focus-trap
-          focus-back-to-trigger
-          ><md-button>test</md-button>
+          hide-on-escape
+          z-index="1001"
+        >
+          <md-list label="Review and Monitor Options">
+            <md-list-item slot="list-item" aria-label="Review Performance">
+              <span>Review Performance</span>
+            </md-list-item>
+            <md-list-item slot="list-item" aria-label="Monitor Activity">
+              <span>Monitor Activity</span>
+            </md-list-item>
+            <md-list-item slot="list-item" aria-label="Generate Report">
+              <span>Generate Report</span>
+            </md-list-item>
+          </md-list>
         </md-popover>
+
+        <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+          <md-button id="sort-button-lit-popover-child" circle variant="secondary" size="28" ariaLabel="Sort">
+            <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+            <span slot="text">Sort</span>
+          </md-button>
+
+          <md-popover
+            placement="bottom"
+            triggerID="sort-button-lit-popover-child"
+            trigger="click"
+            hide-on-escape
+            hide-on-blur
+            interactive
+            show-arrow
+            hide-on-outside-click
+            focus-trap
+            focus-back-to-trigger
+            @shown=${() => {
+              this.isButtonWithTooltipPopoverOpen = true;
+            }}
+            @hidden=${() => {
+              this.isButtonWithTooltipPopoverOpen = false;
+            }}
+          >
+            <test-popover-element></test-popover-element>
+          </md-popover>
+        </div>
+
+        <div style="width: 100px; overflow: hidden; margin-top: 12px;">
+          <md-button id="append-to-popover-2" circle variant="secondary" size="28" ariaLabel="Sort">
+            <md-icon slot="icon" iconSet="momentumDesign" name="unsorted-bold" size="16" ariaHidden="true"></md-icon>
+            <span slot="text">Sort</span>
+          </md-button>
+          <md-popover
+            placement="right"
+            triggerID="append-to-popover-2"
+            trigger="click"
+            append-to="app-theme"
+            hide-on-escape
+            interactive
+            show-arrow
+            hide-on-outside-click
+            focus-trap
+            focus-back-to-trigger
+            .controller=${this.popoverController}
+          >
+            <div style="width: 400px; height: 200px;">
+              <md-button @click="${() => this.popoverController.hide()}">Assign to me</md-button>
+              <md-button id="nested-copy">copy</md-button>
+              <span>information text</span>
+            </div>
+          </md-popover>
+        </div>
+        <div>
+          <md-button
+            id="button-t1"
+            variant="secondary"
+            @focus=${() => this.setTriggerId("button-t1")}
+            @mouseenter=${() => this.setTriggerId("button-t1")}
+            ><span>Trigger 1</span></md-button
+          >
+          <md-button
+            id="button-t2"
+            variant="secondary"
+            @focus=${() => this.setTriggerId("button-t2")}
+            @mouseenter=${() => this.setTriggerId("button-t2")}
+            ><span>Trigger 2</span></md-button
+          >
+
+          <md-popover
+            triggerID=${this.currentTriggerId}
+            trigger="click"
+            hide-on-escape
+            interactive
+            show-arrow
+            hide-on-outside-click
+            focus-trap
+            focus-back-to-trigger
+            ><md-button>test</md-button>
+          </md-popover>
+        </div>
       </div>
     `;
   }
 }
 
 export const popoverTemplate = html`
+  <div id="popover-div"></div>
   <div class="row md-margin__bottom"><h3>md-coachmark-popover</h3></div>
   <popover-template-sandbox></popover-template-sandbox>
 `;

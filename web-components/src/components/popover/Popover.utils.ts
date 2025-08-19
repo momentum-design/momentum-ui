@@ -119,8 +119,11 @@ export class PopoverUtils {
 
         appendToElement.appendChild(this.popover);
 
-        // Re-setup the trigger listeners after moving to new location
+        // Re-setup the trigger listeners after moving to new container
         this.popover.setupTriggerListener();
+
+        // Re-attach focus/blur listeners for elements after DOM move
+        this.reattachFocusListeners();
 
         // Re-establish event listeners or other DOM-dependent features
         if (this.popover.trigger.includes("mouseenter")) {
@@ -144,6 +147,27 @@ export class PopoverUtils {
       // Re-setup the trigger listeners after returning to original position
       this.popover.setupTriggerListener();
     }
+  }
+
+  /**
+   * Re-attaches focus/blur event listeners for any components with FocusMixin after DOM move.
+   */
+  private reattachFocusListeners() {
+    // Find all elements within the popover that might have FocusMixin
+    const allElements = this.popover.querySelectorAll("*");
+    allElements.forEach((element) => {
+      // Check if the element has FocusMixin methods
+      const focusElement = element as any;
+      if (focusElement.handleFocusIn && focusElement.handleFocusOut) {
+        // Remove existing listeners to avoid duplicates
+        focusElement.removeEventListener("focus", focusElement.handleFocusIn);
+        focusElement.removeEventListener("blur", focusElement.handleFocusOut);
+
+        // Re-add the listeners
+        focusElement.addEventListener("focus", focusElement.handleFocusIn);
+        focusElement.addEventListener("blur", focusElement.handleFocusOut);
+      }
+    });
   }
 
   /**

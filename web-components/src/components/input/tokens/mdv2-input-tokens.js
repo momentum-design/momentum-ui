@@ -23,7 +23,7 @@ const input = {
     },
     "read-only": {
       "bg-color": {
-        common: "$mds-color-theme-background-primary-disabled"
+        common: "$mds-color-theme-background-input-disabled"
       },
       "border-color": {
         common: "$mds-color-theme-outline-primary-disabled"
@@ -70,7 +70,7 @@ const input = {
   },
   disabled: {
     "bg-color": {
-      common: "$mds-color-theme-background-primary-disabled"
+      common: "$mds-color-theme-background-input-disabled"
     },
     "text-color": {
       common: "$mds-color-theme-text-primary-disabled"

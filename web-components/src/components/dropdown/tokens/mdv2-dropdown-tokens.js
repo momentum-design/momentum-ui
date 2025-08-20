@@ -20,7 +20,7 @@ const dropdown = {
       common: "$mds-color-theme-background-primary-active"
     },
     disabled: {
-      common: "$mds-color-theme-background-primary-disabled"
+      common: "$mds-color-theme-background-input-disabled"
     },
     focus: {
       common: "$mds-color-theme-background-primary-active"

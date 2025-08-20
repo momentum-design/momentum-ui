@@ -396,7 +396,7 @@
 
   .md-new-dropdown {
     &-label {
-      background-color: transparent;
+      background-color: var(--dropdown-bg-color-disabled, transparent);
       border-color: var(--dropdown-border-color-disabled, $md-gray-40);
       outline: none !important;
       box-shadow: none;
@@ -413,7 +413,7 @@
 
       &:hover,
       &:active {
-        background-color: transparent;
+        background-color: var(--dropdown-bg-color-disabled, transparent);
         pointer-events: none;
         outline: none !important;
         box-shadow: none;

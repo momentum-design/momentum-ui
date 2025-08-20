@@ -359,9 +359,9 @@ export namespace CoachmarkPopover {
           focus-back-to-trigger
           placement=${this.placement}
           hide-on-escape
-          @hidden="${() => {
+          @hidden=${() => {
             this.notifyCoachClose();
-          }}"
+          }}
         >
           <div class="md-coachmark__popper" tabindex="-1">
             ${this.renderHeader()} ${this.renderBody()} ${this.renderFooter()}

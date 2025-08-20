@@ -887,11 +887,11 @@ export namespace Dropdown {
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"
                   ?selected="${o.key === this.selectedKey}"
-                  @click="${() => {
+                  @click=${() => {
                     this.focusToIndexWithOption(o);
                     this.select();
                     this.collapse();
-                  }}"
+                  }}
                 >
                   <span class="select-label" part="label">
                     <span>${o.value}</span>

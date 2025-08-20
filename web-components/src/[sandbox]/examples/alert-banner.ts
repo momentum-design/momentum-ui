@@ -82,9 +82,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         <md-dropdown
           .options="${Object.values(BannerType)}"
           .defaultOption="${BannerType.Default}"
-          @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+          @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
             this.iconBannerType = e.detail.option as BannerType;
-          }}"
+          }}
         ></md-dropdown>
         <md-checkboxgroup group-label="group_process" alignment="horizontal">
           <md-checkbox

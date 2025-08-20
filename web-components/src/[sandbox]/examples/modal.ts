@@ -178,9 +178,9 @@ export class ModalTemplateSandbox extends LitElement {
             <md-checkbox 
               slot="checkbox"
               .checked="${true}"
-              @checkbox-change="${() => {
+              @checkbox-change=${() => {
                 this.handleFormatChange();
-              }}"
+              }}
             >
               International dialing format
             </md-checkbox>
@@ -213,15 +213,15 @@ export class ModalTemplateSandbox extends LitElement {
                     numberPlaceholder="station Login"
                     .autofocus="${true}"
                     newMomentum
-                    @phoneinput-keydown="${(e: CustomEvent) => {
+                    @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-change="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-change=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-blur="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-blur=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
+                    }}
                   ></md-input>
                 `
               : html`
@@ -234,15 +234,15 @@ export class ModalTemplateSandbox extends LitElement {
                     numberPlaceholder="station Login"
                     newMomentum
                     .autofocus="${true}"
-                    @phoneinput-keydown="${(e: CustomEvent) => {
+                    @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-change="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-change=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-blur="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-blur=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
+                    }}
                   ></md-phone-input>
                 `
           }

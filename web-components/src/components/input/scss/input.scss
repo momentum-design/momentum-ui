@@ -254,8 +254,8 @@
 
     &.md-new-momentum {
       @include input-color(
-        $background-color: transparent,
-        $background-color-disabled: transparent,
+        $background-color: var(--input-default-new-bg-color),
+        $background-color-disabled: var(--input-disabled-bg-color),
         $background-color-hover: var(--input-default-hover-bg-color),
         $background-color-active: var(--input-default-pressed-bg-color),
         $border-color: var(--input-default-new-border-color),
@@ -334,7 +334,7 @@
           $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-warning-border-color, var(--input-warning-border-color)),
           $color-message: var(--input-success-text-color, var(--md-alert-warning-text-color)),
-          $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))          
+          $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))
         );
       }
 
@@ -387,7 +387,7 @@
       align-items: center;
       justify-content: center;
       padding: 0;
-      padding-inline-end: 1px;
+      padding-inline-end: 2px;
       margin: 0;
 
       &:hover {
@@ -408,7 +408,6 @@
         }
       }
 
-      // Icon styles
       .md-input__dropdown-icon {
         transition: transform 0.15s linear;
         color: var(--md-primary-text-color);
@@ -419,10 +418,7 @@
       }
     }
 
-    // NEW MOMENTUM STYLES ONLY
     &.md-new-momentum {
-      // ...existing new momentum styles...
-
       .md-input__dropdown-button {
         border-inline-start-color: var(--input-default-new-border-color);
 
@@ -443,67 +439,69 @@
       }
 
       // Error state
-      &.md-error {
-        .md-input__dropdown-button {
-          border-inline-start-color: var(--input-error-border-color);
-
-          &:hover {
-            background-color: var(--input-error-hover-bg-color, $md-red-20);
+      &:not(.md-read-only) {
+        &.md-error {
+          .md-input__dropdown-button {
             border-inline-start-color: var(--input-error-border-color);
-          }
 
-          &:focus {
-            outline-color: var(--input-error-focus-border-color);
-          }
+            &:hover {
+              background-color: var(--input-error-hover-bg-color, $md-red-20);
+              border-inline-start-color: var(--input-error-border-color);
+            }
 
-          &:disabled {
-            border-inline-start-color: var(--input-default-new-disabled-color);
+            &:focus {
+              outline-color: var(--input-error-focus-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
           }
         }
-      }
 
-      // Warning state
-      &.md-warning {
-        .md-input__dropdown-button {
-          border-inline-start-color: var(--input-warning-border-color);
-
-          &:hover {
-            background-color: var(--input-warning-hover-bg-color);
+        // Warning state
+        &.md-warning {
+          .md-input__dropdown-button {
             border-inline-start-color: var(--input-warning-border-color);
-          }
 
-          &:disabled {
-            border-inline-start-color: var(--input-default-new-disabled-color);
+            &:hover {
+              background-color: var(--input-warning-hover-bg-color);
+              border-inline-start-color: var(--input-warning-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
           }
         }
-      }
 
-      // Success state
-      &.md-success {
-        .md-input__dropdown-button {
-          border-inline-start-color: var(--input-success-border-color);
-
-          &:hover {
-            background-color: var(--input-success-hover-bg-color);
+        // Success state
+        &.md-success {
+          .md-input__dropdown-button {
             border-inline-start-color: var(--input-success-border-color);
-          }
 
-          &:disabled {
-            border-inline-start-color: var(--input-default-new-disabled-color);
+            &:hover {
+              background-color: var(--input-success-hover-bg-color);
+              border-inline-start-color: var(--input-success-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
           }
         }
-      }
 
-      // Priority state
-      &.md-priority {
-        .md-input__dropdown-button {
-          border-inline-start-color: var(--input-default-outline-color);
-
-          &:hover {
+        // Priority state
+        &.md-priority {
+          .md-input__dropdown-button {
             border-inline-start-color: var(--input-default-outline-color);
-          }
-          &:disabled {
-            border-inline-start-color: var(--input-default-new-disabled-color);
+
+            &:hover {
+              border-inline-start-color: var(--input-default-outline-color);
+            }
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
           }
         }
       }

@@ -731,7 +731,11 @@ export namespace Tabs {
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
       const currentTabsOrder = this.currentTabsLayout;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
-      const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+      let newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+
+      if (newIndex === -1) {
+        newIndex = newSelectedIndex;
+      }
 
       const newTabArrangement: string[] = [];
       currentTabsOrder.forEach((tabElement) => {

@@ -37,7 +37,7 @@ const combobox = {
   },
   disabled: {
     "bg-color": {
-      common: "$mds-color-theme-background-primary-disabled"
+      common: "$mds-color-theme-background-input-disabled"
     },
     "border-color": {
       common: "$mds-color-theme-outline-primary-disabled"

@@ -57,6 +57,7 @@ import {
   progressBarTemplate,
   radioGroupTemplate,
   sliderTemplate,
+  sortableListTemplate,
   spinnerTemplate,
   tableAdvancedTemplate,
   tableTemplate,
@@ -402,6 +403,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
           ${this.getTabTemplate("Skeleton", "md-skeleton", "skeleton", skeletonTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}
+          ${this.getTabTemplate("Sortable List", "md-sortable-list", "sortable-list", sortableListTemplate)}
           ${this.getTabTemplate("Spinner", "md-spinner", "spinner", spinnerTemplate)}
           ${this.getTabTemplate("Table", "md-table", "table", tableTemplate)}
           ${this.getTabTemplate("Table Advanced", "md-table-advanced", "table-advanced", tableAdvancedTemplate)}

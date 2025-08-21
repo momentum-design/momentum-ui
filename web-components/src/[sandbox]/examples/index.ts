@@ -48,6 +48,7 @@ export { presenceTemplate } from "./presence";
 export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";
+export { sortableListTemplate } from "./sortable-list";
 export { spinnerTemplate } from "./spinner";
 export { tableTemplate } from "./table";
 export { tableAdvancedTemplate } from "./table-advanced";

@@ -77,34 +77,8 @@ export class DefaultSortableListSandbox extends LitElement {
           [1, 2, 3, 4, 5],
           (i) => i,
           (item) =>
-            html`<md-sortable-list-item label="Item ${item}" expandable>
+            html`<md-sortable-list-item label="Item ${item}">
               <md-icon slot="dragger" name="dragger-horizontal-bold" iconSet="momentumDesign" size="14"></md-icon>
-              <span slot="trailing-controls">${item * 20} / 100</span>
-              <md-card
-                slot="panel"
-                .menuOptions=${cardMenuItems}
-                id="123456789"
-                title="Team A Report - Q1"
-                subtitle="Updated 2 hours ago"
-                info="Lorem Ipsum is simply sample text of the printing and typesetting industry."
-              >
-                <div slot="content">
-                  <img
-                    style="width: 100%;"
-                    src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
-                    alt=""
-                  />
-                </div>
-
-                <md-badge slot="footer" color="violet" small>Active</md-badge>
-                <md-badge slot="footer" color="mint" small>Stock Report</md-badge>
-                <md-badge slot="footer" color="gold" small>Team Report</md-badge>
-                <md-badge slot="footer" color="lime" small>Team A</md-badge>
-                <md-badge slot="footer" color="blue" small>TA</md-badge>
-                <md-badge slot="footer" color="orange" small>Team B</md-badge>
-                <md-badge slot="footer" color="blue" small>Some long long label</md-badge>
-                <md-badge slot="footer" color="pink" small>Confidential</md-badge>
-              </md-card>
             </md-sortable-list-item>`
         )}
       </md-sortable-list>

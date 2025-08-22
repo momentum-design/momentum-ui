@@ -1,10 +1,10 @@
+import { Key } from "@/constants";
+import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
+import { html, LitElement, PropertyValues } from "lit-element";
 import "./Radio";
 import { Radio } from "./Radio";
 import "./RadioGroup";
 import { RadioGroup } from "./RadioGroup";
-import { Key } from "@/constants";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
@@ -183,7 +183,7 @@ describe("RadioGroup", () => {
 
   test("disable check on radio group", async () => {
     const el = await fixture<RadioGroup.ELEMENT>(html`
-      <md-radiogroup disabled="true" group-label="recommendations">
+      <md-radiogroup disabled group-label="recommendations">
         <md-radio slot="radio" value="developing">Developing</md-radio>
         <md-radio slot="radio" value="linting">Linting</md-radio>
         <md-radio slot="radio" value="testing">Testing</md-radio>

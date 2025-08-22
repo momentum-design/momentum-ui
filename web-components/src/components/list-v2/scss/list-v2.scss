@@ -1,0 +1,28 @@
+:host {
+  --gap: 0;
+  --orientation: column;
+}
+
+:host([orientation="horizontal"]) {
+  --orientation: row;
+}
+
+:host([gap="sm"]) {
+  --gap: 4px;
+}
+
+:host([gap="md"]) {
+  --gap: 8px;
+}
+
+:host([gap="lg"]) {
+  --gap: 12px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}

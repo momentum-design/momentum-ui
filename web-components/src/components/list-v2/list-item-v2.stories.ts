@@ -122,7 +122,9 @@ export const OverrideStyles: Story = {
 * `--list-item-bg-color`\n\
 * `--list-item-expand-duration`\n\
 * `--list-item-hover-bg-color`\n\
-* `--list-item-active-bg-color`"
+* `--list-item-active-bg-color`\n\
+* `--list-item-text-color`\n\
+* `--list-item-disabled-text-color`"
       }
     }
   }

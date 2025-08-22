@@ -4,6 +4,10 @@
 
   --list-item-hover-bg-color: var(--md-button-secondary-hover-bg-color);
   --list-item-active-bg-color: var(--md-button-secondary-pressed-bg-color);
+  --list-item-disabled-bg-color: none;
+
+  --list-item-text-color: var(--md-textColor-primary);
+  --list-item-disabled-text-color: var(--md-textColor-disabled);
   
   --list-item-bg-color: none;
 
@@ -16,6 +20,11 @@
 
 :host([variant="inset-pill"]) {
   --list-item-border-radius: 3.125rem;
+}
+
+:host([disabled]) {
+  --list-item-text-color: var(--list-item-disabled-text-color);
+  --list-item-bg-color: var(--list-item-disabled-bg-color);
 }
 
 .list-item {
@@ -33,7 +42,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--list-item-bg-color);
-  color: var(--md-textColor-primary);
+  color: var(--list-item-text-color);
 
   &:hover:not(:disabled) {
     background-color: var(--list-item-hover-bg-color);

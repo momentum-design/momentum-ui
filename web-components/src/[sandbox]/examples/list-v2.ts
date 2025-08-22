@@ -1,4 +1,4 @@
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { customElement, html, internalProperty, LitElement } from "lit-element";
 import "@/components/button/Button";
 import "@/components/list-v2/list-v2";
 import "@/components/list-v2/list-item-v2";
@@ -80,16 +80,6 @@ export class DefaultListV2Sandbox extends LitElement {
           <button slot="trailing-controls">Action</button>
         </md-list-item-v2>
       </md-list-v2> `;
-  }
-
-  static get styles() {
-    return css`
-      md-sortable-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-    `;
   }
 }
 

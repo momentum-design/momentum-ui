@@ -9,7 +9,6 @@ export namespace ListV2 {
   export class ELEMENT extends LitElement {
     @property({ type: String }) gap: Gap = "none";
     @property({ type: String }) orientation: Orientation = "vertical";
-    @property({ type: String }) role = "list";
 
     override render() {
       return html` <ul>

@@ -356,45 +356,59 @@ describe("MenuOverlay", () => {
   test("should test customWidth property", async () => {
     const customWidth = "800px";
     const element = await fixtureFactory(true, true, "bottom", customWidth, "", "large");
-    const styles = element["getStyles"]();
-    const hasStyle = styles.values.includes(`width: ${customWidth};`);
-    expect(hasStyle).toBeTruthy();
+    await elementUpdated(element);
+    const widthProperty = element.style.getPropertyValue("--md-menu-overlay-width");
+    expect(widthProperty).toBe(customWidth);
     element.isOpen = false;
   });
 
   test("should test default maxHeight", async () => {
-    const maxHeight = `max-height: calc(100vh - 48px);`;
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
-    const styles = element["getStyles"]().values;
-    const hasStyle = styles.includes(maxHeight);
-    expect(hasStyle).toBeTruthy();
+    await elementUpdated(element);
+    const maxHeightProperty = element.style.getPropertyValue("--md-menu-overlay-max-height");
+    expect(maxHeightProperty).toBe("calc(100vh - 48px)");
     element.isOpen = false;
   });
 
   test("should test maxHeight property", async () => {
     const maxHeight = "calc(100vh - 200px)";
     const element = await fixtureFactory(true, true, "bottom", "", maxHeight, "large");
-    const styles = element["getStyles"]().values;
-    const hasStyle = styles.includes(`max-height: ${maxHeight};`);
-    expect(hasStyle).toBeTruthy();
+    await elementUpdated(element);
+    const maxHeightProperty = element.style.getPropertyValue("--md-menu-overlay-max-height");
+    expect(maxHeightProperty).toBe(maxHeight);
     element.isOpen = false;
   });
 
   test("should test default size property", async () => {
-    const defaultSize = `width: ${OverlaySizes.large};`;
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
-    const styles = element["getStyles"]().values;
-    const hasStyle = styles.includes(defaultSize);
-    expect(hasStyle).toBeTruthy();
+    await elementUpdated(element);
+    const widthProperty = element.style.getPropertyValue("--md-menu-overlay-width");
+    expect(widthProperty).toBe(OverlaySizes.large);
     element.isOpen = false;
   });
 
   test("should test small size property", async () => {
-    const smallSize = `width: ${OverlaySizes.small};`;
     const element = await fixtureFactory(true, true, "bottom", "", "", "small");
-    const styles = element["getStyles"]().values;
-    const hasStyle = styles.includes(smallSize);
-    expect(hasStyle).toBeTruthy();
+    await elementUpdated(element);
+    const widthProperty = element.style.getPropertyValue("--md-menu-overlay-width");
+    expect(widthProperty).toBe(OverlaySizes.small);
+    element.isOpen = false;
+  });
+
+  test("should test overflow-y property for date picker", async () => {
+    const element = await fixtureFactory(true, true, "bottom", "", "", "large");
+    element.isDatePicker = true;
+    await elementUpdated(element);
+    const overflowProperty = element.style.getPropertyValue("--md-menu-overlay-overflow-y");
+    expect(overflowProperty).toBe("visible");
+    element.isOpen = false;
+  });
+
+  test("should test default overflow-y property", async () => {
+    const element = await fixtureFactory(true, true, "bottom", "", "", "large");
+    await elementUpdated(element);
+    const overflowProperty = element.style.getPropertyValue("--md-menu-overlay-overflow-y");
+    expect(overflowProperty).toBe("auto");
     element.isOpen = false;
   });
 

@@ -17,7 +17,7 @@ import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { html, LitElement, PropertyValues } from "lit";
+import { css, html, LitElement, PropertyValues } from "lit";
 import { property, query, queryAssignedNodes } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
@@ -86,40 +86,43 @@ export namespace MenuOverlay {
     private popperInstance: Instance | null = null;
     private triggerElement: HTMLElement | null = null;
 
-    private renderMaxHeight() {
-      return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
-    }
-
-    private renderOverflowY() {
-      return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
-    }
-
-    private renderWidth() {
-      if (this.customWidth) {
-        return `width: ${this.customWidth};`;
-      } else if (this.size === "small") {
-        return `width: ${OverlaySizes.small};`;
-      } else {
-        return `width: ${OverlaySizes.large};`;
-      }
-    }
-
-    private getStyles() {
-      return html`
-        <style>
-          :host .md-menu-overlay .overlay-content {
-            ${this.renderMaxHeight()};
-            ${this.renderWidth()};
-            ${this.renderOverflowY()};
+    static get styles() {
+      return [
+        styles,
+        css`
+          .md-menu-overlay .overlay-content {
+            max-height: var(--md-menu-overlay-max-height, calc(100vh - 48px));
+            width: var(--md-menu-overlay-width, 370px);
+            overflow-y: var(--md-menu-overlay-overflow-y, auto);
           }
-        </style>
-      `;
+        `
+      ];
     }
+
+    private updateCSSProperties() {
+      const maxHeight = this.maxHeight || "calc(100vh - 48px)";
+      const overflowY = this.isDatePicker ? "visible" : "auto";
+
+      let width: string;
+      if (this.customWidth) {
+        width = this.customWidth;
+      } else if (this.size === "small") {
+        width = OverlaySizes.small;
+      } else {
+        width = OverlaySizes.large;
+      }
+
+      this.style.setProperty("--md-menu-overlay-max-height", maxHeight);
+      this.style.setProperty("--md-menu-overlay-width", width);
+      this.style.setProperty("--md-menu-overlay-overflow-y", overflowY);
+    }
+
     updateActiveMenuOverlayOpened = (event: Event) => {
       if (this === event.target) {
         MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
       }
     };
+
     updateActiveMenuOverlayClosed = (event: Event) => {
       const index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
       if (this === event.target && index !== -1) {
@@ -134,6 +137,52 @@ export namespace MenuOverlay {
         }
       }
     };
+
+    firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+      this.updateCSSProperties();
+    }
+
+    updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+
+      // Update CSS properties when relevant properties change
+      if (
+        changedProperties.has("maxHeight") ||
+        changedProperties.has("customWidth") ||
+        changedProperties.has("size") ||
+        changedProperties.has("isDatePicker")
+      ) {
+        this.updateCSSProperties();
+      }
+
+      if (changedProperties.has("isOpen")) {
+        const previousValue = changedProperties.get("isOpen");
+
+        if (this.isOpen) {
+          this.activateFocusTrap!();
+          this.dispatchMenuOpen();
+          document.addEventListener("menu-item-click", this.handleTriggerClick as EventListener);
+          requestAnimationFrame(() => {
+            document.addEventListener("click", this.handleOutsideOverlayClick);
+          });
+          this.updateTriggerElementAriaExpanded();
+        } else if (previousValue === true) {
+          // Only fire close event if it was actually open before
+          this.deactivateFocusTrap!();
+          this.dispatchMenuClose();
+          document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
+          document.removeEventListener("click", this.handleOutsideOverlayClick);
+          this.updateTriggerElementAriaExpanded();
+        }
+      }
+
+      if (changedProperties.has("showArrow")) {
+        if (this.arrow) {
+          this.arrow.toggleAttribute("data-show", this.showArrow);
+        }
+      }
+    }
 
     connectedCallback() {
       super.connectedCallback();
@@ -244,39 +293,6 @@ export namespace MenuOverlay {
 
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
-      if (changedProperties.has("isOpen")) {
-        if (this.isOpen) {
-          this.activateFocusTrap!();
-          document.addEventListener("menu-item-click", this.handleTriggerClick as EventListener);
-        } else {
-          this.deactivateFocusTrap!();
-          document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
-        }
-      }
-
-      if (changedProperties.has("showArrow")) {
-        if (this.arrow) {
-          this.arrow.toggleAttribute("data-show", this.showArrow);
-        }
-      }
-    }
-
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
-      if (changedProperties.has("isOpen")) {
-        if (this.isOpen) {
-          this.dispatchMenuOpen();
-          requestAnimationFrame(() => {
-            document.addEventListener("click", this.handleOutsideOverlayClick);
-          });
-
-          this.updateTriggerElementAriaExpanded();
-        } else {
-          this.dispatchMenuClose();
-          document.removeEventListener("click", this.handleOutsideOverlayClick);
-          this.updateTriggerElementAriaExpanded();
-        }
-      }
     }
 
     private dispatchMenuOpen() {
@@ -479,13 +495,8 @@ export namespace MenuOverlay {
       }
     }
 
-    static get styles() {
-      return [styles];
-    }
-
     render() {
       return html`
-        ${this.getStyles()}
         <div class="md-menu-overlay">
           <slot @slotchange=${this.handleTriggerSlotChange} name="menu-trigger"></slot>
           <div

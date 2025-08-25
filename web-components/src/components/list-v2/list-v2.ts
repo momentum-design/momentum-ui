@@ -10,10 +10,13 @@ export namespace ListV2 {
     @property({ type: String }) gap: Gap = "none";
     @property({ type: String }) orientation: Orientation = "vertical";
 
+    connectedCallback(): void {
+      super.connectedCallback();
+      this.setAttribute("role", "list");
+    }
+
     override render() {
-      return html` <div role="list">
-        <slot></slot>
-      </div>`;
+      return html` <slot></slot>`;
     }
 
     static get styles() {

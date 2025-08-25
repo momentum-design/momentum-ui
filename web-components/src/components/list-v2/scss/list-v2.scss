@@ -1,6 +1,11 @@
 :host {
   --gap: 0;
   --orientation: column;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: var(--orientation);
+  gap: var(--gap);
 }
 
 :host([orientation="horizontal"]) {
@@ -17,12 +22,4 @@
 
 :host([gap="lg"]) {
   --gap: 12px;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: var(--orientation);
-  gap: var(--gap);
 }

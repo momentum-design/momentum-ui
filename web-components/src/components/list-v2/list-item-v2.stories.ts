@@ -2,6 +2,7 @@ import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { Meta, StoryObj, StoryFn } from "@storybook/web-components";
 import "./list-item-v2";
+import "./list-v2";
 import "@/components/chip/Chip";
 import { ListItemV2 } from "./list-item-v2";
 
@@ -45,15 +46,17 @@ const PanelContentTemplate = () => html`
 `;
 
 const Template: StoryFn = ({ disabled, expandable, label, expanded, variant }) => html`
-  <md-list-item-v2
-    label=${label}
-    ?disabled=${disabled}
-    ?expandable=${expandable}
-    ?expanded=${expanded}
-    variant=${ifDefined(variant)}
-  >
-    ${PanelContentTemplate()}
-  </md-list-item-v2>
+  <md-list-v2>
+    <md-list-item-v2
+      label=${label}
+      ?disabled=${disabled}
+      ?expandable=${expandable}
+      ?expanded=${expanded}
+      variant=${ifDefined(variant)}
+    >
+      ${PanelContentTemplate()}
+    </md-list-item-v2>
+  </md-list-v2>
 `;
 
 export const Default: Story = {
@@ -73,16 +76,18 @@ export const Disabled: Story = {
 
 export const ExpandableWithTrailingChip: Story = {
   render: ({ disabled, expandable, label, expanded, variant }) => html`
-    <md-list-item-v2
-      label=${ifDefined(label)}
-      ?disabled=${disabled}
-      ?expandable=${expandable}
-      ?expanded=${expanded}
-      variant=${ifDefined(variant)}
-    >
-      <md-chip slot="trailing-controls" value="Complete" color="positive"></md-chip>
-      ${PanelContentTemplate()}
-    </md-list-item-v2>
+    <md-list-v2>
+      <md-list-item-v2
+        label=${ifDefined(label)}
+        ?disabled=${disabled}
+        ?expandable=${expandable}
+        ?expanded=${expanded}
+        variant=${ifDefined(variant)}
+      >
+        <md-chip slot="trailing-controls" value="Complete" color="positive" decorative></md-chip>
+        ${PanelContentTemplate()}
+      </md-list-item-v2>
+    </md-list-v2>
   `,
   args: {
     label: "Expandable List Item",

@@ -21,7 +21,7 @@ export namespace ListItemV2 {
       const ariaExpanded = this.expandable ? this.expanded : undefined;
 
       return html`
-        <li class="list-item" aria-label=${this.label} aria-disabled=${this.disabled}>
+        <div role="listitem" class="list-item" aria-label=${this.label} aria-disabled=${this.disabled}>
           <slot name="content">
             <button
               class="header"
@@ -37,7 +37,7 @@ export namespace ListItemV2 {
               </div>
             </div>
           </slot>
-        </li>
+        </div>
       `;
     }
 

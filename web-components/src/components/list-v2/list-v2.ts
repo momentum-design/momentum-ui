@@ -11,9 +11,9 @@ export namespace ListV2 {
     @property({ type: String }) orientation: Orientation = "vertical";
 
     override render() {
-      return html` <ul>
+      return html` <div role="list">
         <slot></slot>
-      </ul>`;
+      </div>`;
     }
 
     static get styles() {

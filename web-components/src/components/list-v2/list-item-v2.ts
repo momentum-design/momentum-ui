@@ -18,19 +18,16 @@ export namespace ListItemV2 {
     @property({ type: String }) variant: Variant = "full-width";
 
     render() {
-      const ariaExpanded = this.expandable ? this.expanded : undefined;
-
       return html`
         <div role="listitem" class="list-item" aria-label=${this.label} aria-disabled=${this.disabled}>
           <slot name="content">
-            <button
-              class="header"
-              ?disabled=${this.disabled}
-              aria-expanded=${ifDefined(ariaExpanded)}
-              @click=${this._handleClick}
-            >
-              ${this.renderHeaderContent()}
-            </button>
+            <div class="header">
+              <div part="header-leading">
+                ${this.expandable ? this.renderExpandButton() : nothing} ${this.renderLeadingControls()}
+                <span>${this.label}</span>
+              </div>
+              <div part="header-trailing">${this.renderTrailingControls()}</div>
+            </div>
             <div class="panel-container">
               <div class="expandable-content">
                 <slot name="panel"></slot>
@@ -41,24 +38,24 @@ export namespace ListItemV2 {
       `;
     }
 
-    private renderHeaderContent() {
-      return html`
-        <div part="header-leading">
-          <slot name="dragger"></slot>
-          ${this.expandable
-            ? html`<md-icon
-                class="expand-icon"
-                iconSet="momentumDesign"
-                name="arrow-right-bold"
-                size="14"
-                ariaHidden="true"
-              ></md-icon>`
-            : nothing}
-          ${this.renderLeadingControls()}
-          <span>${this.label}</span>
-        </div>
-        <div part="header-trailing">${this.renderTrailingControls()}</div>
-      `;
+    private renderExpandButton() {
+      return html`<md-button
+        circle
+        size="24"
+        @button-click=${this._handleClick}
+        ?disabled=${this.disabled}
+        aria-expanded=${ifDefined(this.expanded)}
+        ariaLabel="Expand"
+      >
+        <md-icon
+          slot="icon"
+          class="expand-icon"
+          iconSet="momentumDesign"
+          name="arrow-right-bold"
+          size="14"
+          ariaHidden="true"
+        ></md-icon>
+      </md-button>`;
     }
 
     private renderLeadingControls() {

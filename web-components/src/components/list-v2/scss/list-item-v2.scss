@@ -8,7 +8,7 @@
 
   --list-item-text-color: var(--md-textColor-primary);
   --list-item-disabled-text-color: var(--md-textColor-disabled);
-  
+
   --list-item-bg-color: none;
 
   border-radius: var(--list-item-border-radius);
@@ -34,7 +34,6 @@
 }
 
 .header {
-  width: 100%;
   border: none;
   border-radius: var(--list-item-border-radius);
   padding: 0.5rem;

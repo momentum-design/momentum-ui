@@ -15,7 +15,7 @@ const template = ({ gap, orientation }: ListV2Args) => {
   return html`
     <md-list-v2 gap=${gap} orientation=${orientation}>
       <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
-          <md-list-v2 slot="panel">
+          <md-list-v2 slot="panel" @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
             <md-list-item-v2 label="Sub-item 1"></md-list-item-v2>
             <md-list-item-v2 label="Sub-item 2"></md-list-item-v2>
           </md-list-v2>

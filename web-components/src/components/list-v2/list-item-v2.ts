@@ -50,7 +50,7 @@ export namespace ListItemV2 {
         size="24"
         @button-click=${this._handleExpand}
         ?disabled=${this.disabled}
-        aria-expanded=${ifDefined(this.expanded)}
+        ariaExpanded=${this.expanded}
         ariaLabel="Expand"
       >
         <md-icon

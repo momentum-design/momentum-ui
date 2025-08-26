@@ -815,8 +815,8 @@ export namespace Dropdown {
                   aria-label="${this.title}"
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
-                  ?disabled="${this.disabled}"
-                  @click="${() => this.onLabelClick()}"
+                  ?disabled=${this.disabled}
+                  @click=${() => this.onLabelClick()}
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"
@@ -885,11 +885,11 @@ export namespace Dropdown {
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"
                   ?selected="${o.key === this.selectedKey}"
-                  @click="${() => {
+                  @click=${() => {
                     this.focusToIndexWithOption(o);
                     this.select();
                     this.collapse();
-                  }}"
+                  }}
                 >
                   <span class="select-label" part="label">
                     <span>${o.value}</span>

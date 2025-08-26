@@ -30,9 +30,9 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import { Popover, PopoverController } from "../popover/Popover";
 import { StrategyType } from "../popover/Popover.types";
 import styles from "./scss/module.scss";
-import { Popover, PopoverController } from "../popover/Popover";
 export interface DatePickerControlButton {
   value: string;
   ariaLabel?: string;
@@ -484,7 +484,7 @@ export namespace DatePicker {
                 auxiliaryContentPosition="before"
                 ?required=${this.required}
                 @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
-                @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
                 ?disabled=${this.disabled}
                 ?hide-message=${!this.errorMessage || this.isValueValid()}
                 ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
@@ -528,7 +528,7 @@ export namespace DatePicker {
                   auxiliaryContentPosition="before"
                   ?required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
-                  @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                  @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
                   ?disabled=${this.disabled}
                   ?hide-message=${!this.errorMessage || this.isValueValid()}
                   ariaInvalid=${!!this.errorMessage || !this.isValueValid()}

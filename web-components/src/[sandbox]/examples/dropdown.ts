@@ -107,18 +107,18 @@ export const dropdownTemplate = html`
   <h3>Strings Options</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
 
   <h3>passing left icon with out searchable props</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
     left-icon="search-bold"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
 
   <h3>Strings Options (Disabled)</h3>
@@ -127,58 +127,58 @@ export const dropdownTemplate = html`
   <md-dropdown
     .options="${dropdownStringOptions}"
     allow-unselected
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options (Allow unselected)] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
   <h3>Strings Long Options (Preselected)</h3>
   <md-dropdown
     .options="${dropdownStringLongOptions}"
     .defaultOption="${dropdownStringLongOptions[29]}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Long Options (Preselected)] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
   <h3>Single KeyValue Objects Options</h3>
   <md-dropdown
     .options="${dropdownObjectKeyValueOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Single KeyValue Objects Options] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
   <h3>Multi KeyValue Objects Options</h3>
   <md-dropdown
     .options="${dropdownObjectOptions}"
     option-id="user_id"
     option-value="full_name"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Multi KeyValue Objects Options] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
   <h3>Multi KeyValue Objects Long Options</h3>
   <md-dropdown
     .options="${dropdownObjectLongOptions}"
     option-id="id"
     option-value="country"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Multi KeyValue Objects Long Options] Selected: ", e.detail);
-    }}"
+    }}
   ></md-dropdown>
   <div class="pills-dropdown">
     <h3>Pill shaped dropdown</h3>
     <md-dropdown
       .options="${dropdownStringOptions}"
-      @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+      @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
         console.log("[Strings Options] Selected: ", e.detail);
-      }}"
+      }}
     ></md-dropdown>
   </div>
   <h3>Dropdown Icon Searchable</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     left-icon="search-bold"
     helpText="This is help text"
     searchable
@@ -186,9 +186,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Icon Searchable Disabled</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     left-icon="search-bold"
     helpText="This is help text"
     searchable
@@ -198,9 +198,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Default (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     newMomentum
   ></md-dropdown>
   <h3>Dropdown Disabled (New Momentum)</h3>
@@ -208,9 +208,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Searchable (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     helpText="This is help text"
     searchable
     newMomentum
@@ -218,9 +218,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Icon Searchable (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     left-icon="search-bold"
     helpText="This is help text"
     searchable
@@ -240,9 +240,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Searchable Success Text (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     htmlId="dropDownSuccess"
     .messageArr=${[{ ...messageArr } as Dropdown.Message]}
     searchable
@@ -251,9 +251,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Searchable Warning Text (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     htmlId="dropDownWarning"
     .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as Dropdown.Message]}
     searchable
@@ -262,9 +262,9 @@ export const dropdownTemplate = html`
   <h3>Dropdown Searchable Error Text (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+    @dropdown-selected=${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
-    }}"
+    }}
     htmlId="dropDownError"
     .messageArr=${[{ ...messageArr, ...{ type: "error" } } as Dropdown.Message]}
     searchable

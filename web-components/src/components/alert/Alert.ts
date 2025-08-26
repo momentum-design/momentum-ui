@@ -161,7 +161,7 @@ export namespace Alert {
                     hasRemoveStyle
                     color="color-none"
                     circle
-                    @click="${() => this.close()}"
+                    @click=${() => this.close()}
                   >
                     <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
                   </md-button>
@@ -250,7 +250,7 @@ export namespace Alert {
                       hasRemoveStyle
                       color="color-none"
                       circle
-                      @click="${() => this.close()}"
+                      @click=${() => this.close()}
                     >
                       <md-icon slot="icon" name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                     </md-button>

@@ -384,7 +384,7 @@ export class PopoverTemplateSandbox extends LitElement {
             .controller=${this.popoverController}
           >
             <div style="width: 400px; height: 200px;">
-              <md-button @click="${() => this.popoverController.hide()}">Assign to me</md-button>
+              <md-button @click=${() => this.popoverController.hide()}>Assign to me</md-button>
               <md-button id="nested-copy">copy</md-button>
               <span>information text</span>
             </div>

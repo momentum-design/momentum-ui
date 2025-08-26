@@ -8,7 +8,7 @@ const minDate = now().minus({ day: 5 }).toISODate();
 const maxDate = now().plus({ day: 5 }).toISODate();
 
 @customElement("date-time-picker-sandbox")
-class DateTimePickerSandbox extends LitElement {
+export class DateTimePickerSandbox extends LitElement {
   static get styles() {
     return [
       css`

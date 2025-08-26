@@ -29,7 +29,7 @@ describe("Presence", () => {
     expect(element.title).toEqual("active");
   });
 
-    test("should set presence type property", async () => {
+  test("should set presence type property", async () => {
     const element = await fixture<Presence.ELEMENT>(html`
       <md-presence title="active" presence-type="active"></md-presence>
     `);

@@ -55,7 +55,8 @@ export class DateRangePickerExample extends LitElement {
       <md-date-range-picker
         .ariaLabel=${`Custom aria label. Currently selected range is ${this.startDate} to ${this.endDate}`}
         .startDate=${this.startDate}
-        .endDate=${this.endDate}>
+        .endDate=${this.endDate}
+      >
       </md-date-range-picker>
       <h3>date range picker with accept and cancel buttons</h3>
       <md-date-range-picker

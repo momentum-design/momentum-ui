@@ -107,8 +107,8 @@ export namespace AlertBanner {
             hasRemoveStyle
             circle
             ariaLabel=${this.closeAriaLabel}
-            @click="${this.onHide}"
-            @keydown="${this.handleKeyDown}"
+            @click=${this.onHide}
+            @keydown=${this.handleKeyDown}
           >
             <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
           </md-button>
@@ -142,7 +142,7 @@ export namespace AlertBanner {
       const rightOfTextSlot = this.showRefreshButton
         ? html` <md-button
             class="${refreshButtonClass}"
-            @click="${() => this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"))}"
+            @click=${() => this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"))}
             variant="ghostInheritTextColor"
             circle
             size="20"

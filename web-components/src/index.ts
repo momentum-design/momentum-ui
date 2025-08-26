@@ -46,9 +46,9 @@ export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
 export {
-    FloatingButtonActionGroup,
-    FloatingButtonBar,
-    FloatingButtonBarAction
+  FloatingButtonActionGroup,
+  FloatingButtonBar,
+  FloatingButtonBarAction
 } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
@@ -94,11 +94,10 @@ export { iconUrlManager } from "./managers/IconUrlManager";
 export { registerThemeManagerGlobally, ThemeManager, themeManager } from "./managers/ThemeManager";
 
 export type {
-    Events,
-    IPopoverController,
-    PopoverColor,
-    PopoverPlacement,
-    PopoverStrategy,
-    PopoverTrigger
+  Events,
+  IPopoverController,
+  PopoverColor,
+  PopoverPlacement,
+  PopoverStrategy,
+  PopoverTrigger
 } from "./components/popover/Popover.types";
-

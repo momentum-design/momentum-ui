@@ -125,14 +125,14 @@ export class ModalTemplateSandbox extends LitElement {
           variant="secondary"
           ariaLabel="Cancel"
           type="reset"
-          @click="${this.toggleSignoutModal}"
+          @click=${this.toggleSignoutModal}
         >
           Cancel
         </md-button>
         <md-button
           class="signout-submit"
           variant="primary"
-          @click="${this.toggleSignoutModal}"
+          @click=${this.toggleSignoutModal}
           type="submit"
           ariaLabel="Sign out"
         >
@@ -152,7 +152,7 @@ export class ModalTemplateSandbox extends LitElement {
       >
         <p>Notification body message</p>
         <div slot="footer">
-          <md-button variant="primary" @click="${this.toggleNotificationModal}" type="submit" ariaLabel="OK">
+          <md-button variant="primary" @click=${this.toggleNotificationModal} type="submit" ariaLabel="OK">
             OK
           </md-button>
         </div>
@@ -171,15 +171,15 @@ export class ModalTemplateSandbox extends LitElement {
       <md-button @click=${this.toggleSignoutModal} variant="secondary">Open Sign Out Modal</md-button>
       <md-button @click=${this.toggleNotificationModal} variant="secondary">Open Notification Modal</md-button>
     </div>
-      <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal="${this.closeStationLogin}">
+      <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal=${this.closeStationLogin}>
         <md-form class="form-class" id="international-form">
           <div class="international-checkbox-wrapper">
             <md-checkbox 
               slot="checkbox"
-              .checked="${true}"
-              @checkbox-change="${() => {
+              .checked=${true}
+              @checkbox-change=${() => {
                 this.handleFormatChange();
-              }}"
+              }}
             >
               International dialing format
             </md-checkbox>
@@ -210,17 +210,17 @@ export class ModalTemplateSandbox extends LitElement {
                     value="88997755664"
                     countryCallingCode="+91"
                     numberPlaceholder="station Login"
-                    .autofocus="${true}"
+                    .autofocus=${true}
                     newMomentum
-                    @phoneinput-keydown="${(e: CustomEvent) => {
+                    @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-change="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-change=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-blur="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-blur=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
+                    }}
                   ></md-input>
                 `
               : html`
@@ -232,16 +232,16 @@ export class ModalTemplateSandbox extends LitElement {
                     countryCallingCode="+91"
                     numberPlaceholder="station Login"
                     newMomentum
-                    .autofocus="${true}"
-                    @phoneinput-keydown="${(e: CustomEvent) => {
+                    .autofocus=${true}
+                    @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-change="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-change=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
-                    @phoneinput-blur="${(e: CustomEvent) => {
+                    }}
+                    @phoneinput-blur=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
-                    }}"
+                    }}
                   ></md-phone-input>
                 `
           }
@@ -259,7 +259,7 @@ export class ModalTemplateSandbox extends LitElement {
         backdropClickExit
         showCloseButton
         noExitOnEsc
-        @close-modal="${this.closeModal}"
+        @close-modal=${this.closeModal}
       >
         <div slot="header">
           <span>Test Slot Header</span>
@@ -311,7 +311,7 @@ export class ModalTemplateSandbox extends LitElement {
         ></md-dropdown>
 
         <md-button slot="footer" type="reset" variant="secondary">Reset</md-button>
-        <md-button slot="footer" @click="${this.closeModal}" type="submit" variant="primary">Submit</md-button>
+        <md-button slot="footer" @click=${this.closeModal} type="submit" variant="primary">Submit</md-button>
       </md-modal>
 
       <md-modal
@@ -321,7 +321,7 @@ export class ModalTemplateSandbox extends LitElement {
         size="dialog"
         closeBtnName="Ok"
         showCloseButton
-        @close-modal="${this.closeDialog}"
+        @close-modal=${this.closeDialog}
       >
         <md-input type="text" newMomentum placeholder="Type Text" style="margin-top: 4px;"></md-input>
         <p>
@@ -330,7 +330,7 @@ export class ModalTemplateSandbox extends LitElement {
         </p>
       </md-modal>
 
-      <md-modal ?show=${this.isComplexModalOpen} closeBtnName="Submit This" @close-modal="${this.closeComplexModal}">
+      <md-modal ?show=${this.isComplexModalOpen} closeBtnName="Submit This" @close-modal=${this.closeComplexModal}>
         <md-tabs>
           <md-tab slot="tab">
             <span>Contact History</span>
@@ -362,7 +362,7 @@ export class ModalTemplateSandbox extends LitElement {
         size="small"
         hideFooter
         hideHeader
-        @close-modal="${this.closeComplexTabsModal}"
+        @close-modal=${this.closeComplexTabsModal}
       >
         <div slot="header">
           <h3 class="sl-form-label">Station Login</h3>
@@ -403,7 +403,7 @@ export class ModalTemplateSandbox extends LitElement {
           </md-tabs>
         </md-form>
         <div class="sl-footer" slot="footer">
-          <md-button class="footer-btn" aria-label="Cancel" variant="secondary" @click="${this.closeComplexTabsModal}">
+          <md-button class="footer-btn" aria-label="Cancel" variant="secondary" @click=${this.closeComplexTabsModal}>
             Cancel
           </md-button>
           <md-button
@@ -411,7 +411,7 @@ export class ModalTemplateSandbox extends LitElement {
             variant="primary"
             aria-label="Submit"
             type="submit"
-            @click="${this.closeComplexTabsModal}"
+            @click=${this.closeComplexTabsModal}
           >
             Submit
           </md-button>

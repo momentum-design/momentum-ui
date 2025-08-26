@@ -29,7 +29,7 @@ export const TimePickerWithoutDefaultTime: StoryObj = {
   args: {
     theTimeSpecificity: TIME_UNIT.SECOND,
     locale: "en-US",
-    showDefaultNowTime: false,
+    showDefaultNowTime: false
     // No value passed - this will show empty placeholders
   },
   render: render

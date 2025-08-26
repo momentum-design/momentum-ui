@@ -65,7 +65,6 @@ export const DatePicker: StoryObj = {
   }
 };
 
-
 // Sub-story focusing on placeholder behavior
 export const Placeholder: StoryObj = {
   name: "With Placeholder",
@@ -82,7 +81,7 @@ export const Placeholder: StoryObj = {
     maxDate: "",
     positioningStrategy: undefined
   },
-  
+
   render: (args: Args) => {
     return html`
       <md-datepicker

@@ -953,7 +953,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
             size="20"
             circle
             ariaLabel=${ifDefined(this.closeButtonAriaLabel) || ""}
-            @button-click="${this.hidePopover}"
+            @button-click=${this.hidePopover}
           >
             <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
           </md-button>`

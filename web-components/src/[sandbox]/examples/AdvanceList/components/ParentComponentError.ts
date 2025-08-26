@@ -114,7 +114,7 @@ export namespace ParentComponentError {
                 commonTryAgain="Try Again"
                 trackingId="12345"
                 trackingIdInputLabel="Tracking ID:"
-                @retry="${this.handleRetry}"
+                @retry=${this.handleRetry}
               >
               </md-fetch-error>
             `

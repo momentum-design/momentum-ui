@@ -233,10 +233,10 @@ export const VerticalTab: StoryObj = {
       <h3>Pill Tab (NewMomentum)</h3>
       ${moreTabs({ alignment: "vertical", type: "pill", newMomentum: true, size: args.size })}
       <h3>Rounded Primary Tab (NewMomentum)</h3>
-      ${moreTabs({ 
-        alignment: "vertical", 
-        type: "rounded", 
-        variant: "primary", 
+      ${moreTabs({
+        alignment: "vertical",
+        type: "rounded",
+        variant: "primary",
         newMomentum: true,
         size: args.size
       })}

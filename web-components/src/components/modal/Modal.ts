@@ -190,8 +190,8 @@ export namespace Modal {
                 size="20"
                 circle
                 class="md-close md-modal__close"
-                @click="${this.hideModal}"
-                @keydown="${this.handleKeyDown}"
+                @click=${this.hideModal}
+                @keydown=${this.handleKeyDown}
                 ariaLabel=${this.ariaLabelClose}
               >
                 <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -231,8 +231,8 @@ export namespace Modal {
             <div part="modal-footer" class="md-modal__footer">
               <md-button
                 aria-label=${this.ariaLabelCancel}
-                @click="${this.handleFooterClick}"
-                @keydown="${this.handleKeyDown}"
+                @click=${this.handleFooterClick}
+                @keydown=${this.handleKeyDown}
                 variant="secondary"
               >
                 <span>Cancel</span>
@@ -241,8 +241,8 @@ export namespace Modal {
                 type="submit"
                 variant="primary"
                 aria-label=${this.ariaLabelSubmit}
-                @click="${this.handleFooterClick}"
-                @keydown="${this.handleKeyDown}"
+                @click=${this.handleFooterClick}
+                @keydown=${this.handleKeyDown}
               >
                 <span>${this.closeBtnName}</span>
               </md-button>
@@ -270,7 +270,7 @@ export namespace Modal {
           ? html`
               <div part="modal-backdrop" class="md-modal__backdrop fade ${classMap(this.modalBackDropClassMap)}">
                 ${this.backdropClickExit
-                  ? html` <div class="md-modal_overlay" @click="${this.handleCloseBackdrop}"></div> `
+                  ? html` <div class="md-modal_overlay" @click=${this.handleCloseBackdrop}></div> `
                   : nothing}
 
                 <div

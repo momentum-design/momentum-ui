@@ -229,12 +229,12 @@ export namespace Grabber {
             aria-label=${ifDefined(this.label.length ? this.label : undefined)}
             type="button"
             role="button"
-            @click="${() => this.handleMouseDown()}"
-            @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
-            @mouseenter="${() => this.handleMouseEnter()}"
-            @mouseleave="${() => this.handleMouseLeave()}"
-            @focus="${() => this.handleFocus()}"
-            @blur="${() => this.handleBlur()}"
+            @click=${() => this.handleMouseDown()}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            @mouseenter=${() => this.handleMouseEnter()}
+            @mouseleave=${() => this.handleMouseLeave()}
+            @focus=${() => this.handleFocus()}
+            @blur=${() => this.handleBlur()}
           >
             <md-icon name="${this.iconName}" size="${this.iconSize}" iconSet="momentumDesign"></md-icon>
           </button>

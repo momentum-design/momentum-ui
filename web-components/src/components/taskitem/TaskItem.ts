@@ -11,13 +11,13 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, internalProperty } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
 import { getTaskTypeTemplate, renderChatCount, renderStatus } from "./TaskItem.utils";
 import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace TaskItem {
   export type TaskItemStatus = (typeof TaskItemStatus)[keyof typeof TaskItemStatus];
@@ -191,7 +191,9 @@ export namespace TaskItem {
                     ><md-tooltip placement="bottom" slot-to-tooltip>${this.itemTitle}</md-tooltip></span
                   >
                 `
-              : html` <span class="md-taskitem__content_popover_title popover-item-title"><slot name="title"></slot></span> `}
+              : html`
+                  <span class="md-taskitem__content_popover_title popover-item-title"><slot name="title"></slot></span>
+                `}
             <div class="md-taskitem__content_inner">
               ${this.displayOnlyTitle
                 ? nothing
@@ -224,7 +226,7 @@ export namespace TaskItem {
             ${!this.lastmessage ? html` <slot name="lastmessage"></slot> ` : nothing}
           </div>
           <div class="md-taskitem__addition ${classMap({ empty_addition: this.additionEmptyMargin })}">
-            <slot @slotchange="${this.handleAdditionSlotChange}"></slot>
+            <slot @slotchange=${this.handleAdditionSlotChange}></slot>
             ${renderChatCount(this.quantity, this.isRestyle, this)}
           </div>
         </div>

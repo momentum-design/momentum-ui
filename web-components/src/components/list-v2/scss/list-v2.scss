@@ -1,25 +1,25 @@
 :host {
-  --gap: 0;
-  --orientation: column;
+  --md-list-v2-gap: 0;
+  --md-list-v2-orientation: column;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: var(--orientation);
-  gap: var(--gap);
+  flex-direction: var(--md-list-v2-orientation);
+  gap: var(--md-list-v2-gap);
 }
 
 :host([orientation="horizontal"]) {
-  --orientation: row;
+  --md-list-v2-orientation: row;
 }
 
 :host([gap="sm"]) {
-  --gap: 4px;
+  --md-list-v2-gap: 0.25rem;
 }
 
 :host([gap="md"]) {
-  --gap: 8px;
+  --md-list-v2-gap: 0.5rem;
 }
 
 :host([gap="lg"]) {
-  --gap: 12px;
+  --md-list-v2-gap: 1rem;
 }

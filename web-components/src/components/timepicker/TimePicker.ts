@@ -274,7 +274,7 @@ export namespace TimePicker {
             this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
             this.dispatchTimeChangeEvent();
           }
-        } catch (error) {
+        } catch (_error) {
           console.warn("Failed to construct time object:");
         }
       } else if (this.timeObject && this.timeValidity[unit]) {

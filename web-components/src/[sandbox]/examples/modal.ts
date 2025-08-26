@@ -177,7 +177,7 @@ export class ModalTemplateSandbox extends LitElement {
           <div class="international-checkbox-wrapper">
             <md-checkbox 
               slot="checkbox"
-              .checked="${true}"
+              .checked=${true}
               @checkbox-change=${() => {
                 this.handleFormatChange();
               }}
@@ -211,7 +211,7 @@ export class ModalTemplateSandbox extends LitElement {
                     value="88997755664"
                     countryCallingCode="+91"
                     numberPlaceholder="station Login"
-                    .autofocus="${true}"
+                    .autofocus=${true}
                     newMomentum
                     @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
@@ -233,7 +233,7 @@ export class ModalTemplateSandbox extends LitElement {
                     countryCallingCode="+91"
                     numberPlaceholder="station Login"
                     newMomentum
-                    .autofocus="${true}"
+                    .autofocus=${true}
                     @phoneinput-keydown=${(e: CustomEvent) => {
                       e.stopImmediatePropagation();
                     }}

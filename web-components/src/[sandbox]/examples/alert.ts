@@ -103,7 +103,8 @@ export const alertTemplate = html`
       show
       newMomentum
     >
-      <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient"> </md-icon>
+      <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient">
+      </md-icon>
     </md-alert>
   </div>
   <h3>New Momentum with slotted footer</h3>
@@ -114,7 +115,8 @@ export const alertTemplate = html`
     show
     newMomentum
   >
-    <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient"> </md-icon>
+    <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient">
+    </md-icon>
     <div slot="alert-footer">
       <md-button variant="primary">
         <span slot="text">primary</span>

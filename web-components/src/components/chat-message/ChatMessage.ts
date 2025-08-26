@@ -53,10 +53,12 @@ export namespace ChatMessage {
     }
 
     private timeStampClicked() {
-      this.dispatchEvent(new CustomEvent('timestamp-clicked', {
-        bubbles: true,
-        composed: true
-      }));
+      this.dispatchEvent(
+        new CustomEvent("timestamp-clicked", {
+          bubbles: true,
+          composed: true
+        })
+      );
     }
 
     static get styles() {
@@ -80,14 +82,16 @@ export namespace ChatMessage {
               <div class="md-chat-message_title">
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>
               </div>
-              ${this.clickableTimestamp 
-                ? html`<md-link class="md-chat-message_time" 
-                          @click=${(e: Event) => {
-                            e.preventDefault();
-                            this.timeStampClicked();
-                          }}>${this.time}</md-link>`
-                : html`<div class="md-chat-message_time">${this.time}</div>`
-                }
+              ${this.clickableTimestamp
+                ? html`<md-link
+                    class="md-chat-message_time"
+                    @click=${(e: Event) => {
+                      e.preventDefault();
+                      this.timeStampClicked();
+                    }}
+                    >${this.time}</md-link
+                  >`
+                : html`<div class="md-chat-message_time">${this.time}</div>`}
               <div class="md-chat-message_status">${this.status}</div>
               <div class="md-chat-message_custom_content">
                 <slot name="custom-content"></slot>

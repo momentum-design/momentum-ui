@@ -32,9 +32,13 @@ export namespace Presence {
       };
     }
 
-    render() {      
+    render() {
       if (this.presenceType) {
-        const { presenceIcon, presenceColor } = getPresenceIconColor(this.presenceType, this.failurePresence, this.newMomentum);
+        const { presenceIcon, presenceColor } = getPresenceIconColor(
+          this.presenceType,
+          this.failurePresence,
+          this.newMomentum
+        );
         this.name = presenceIcon!;
         this.color = presenceColor!;
       }

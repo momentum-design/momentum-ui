@@ -183,7 +183,7 @@ describe("RadioGroup", () => {
 
   test("disable check on radio group", async () => {
     const el = await fixture<RadioGroup.ELEMENT>(html`
-      <md-radiogroup disabled="true" group-label="recommendations">
+      <md-radiogroup disabled group-label="recommendations">
         <md-radio slot="radio" value="developing">Developing</md-radio>
         <md-radio slot="radio" value="linting">Linting</md-radio>
         <md-radio slot="radio" value="testing">Testing</md-radio>

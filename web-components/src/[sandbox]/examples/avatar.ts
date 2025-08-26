@@ -235,7 +235,7 @@ export class AvatarTemplateSandbox extends LitElement {
         state="rest"
         newMomentum
       ></md-avatar>
-       <md-avatar
+      <md-avatar
         title="Channel Call"
         type="channel-call"
         size="24"

@@ -77,7 +77,7 @@ export namespace Radio {
             tabindex="-1"
             id="radio-label"
           />
-          <label for="radio-label" class="md-radio-label" part="radio-label">
+          <label for="radio-label" class="md-radio-label" part="radio-label" @click=${(e: Event) => e.preventDefault()}>
             <slot></slot>
           </label>
         </div>

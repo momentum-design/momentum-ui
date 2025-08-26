@@ -84,6 +84,7 @@ export namespace DateRangePicker {
     };
 
     // empty overload to stop prevent super's value change
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     setSelected() {}
 
     dateToSqlTranslate(date: DateTime) {

@@ -19,7 +19,13 @@ export namespace ListItemV2 {
 
     render() {
       return html`
-        <div role="listitem" class="list-item" aria-label=${this.label} aria-disabled=${this.disabled}>
+        <div
+          role="listitem"
+          class="list-item"
+          aria-label=${this.label}
+          aria-disabled=${this.disabled}
+          @click=${this._handleListItemClick}
+        >
           <slot name="content">
             <div class="header">
               <div part="header-leading">
@@ -42,7 +48,7 @@ export namespace ListItemV2 {
       return html`<md-button
         circle
         size="24"
-        @button-click=${this._handleClick}
+        @button-click=${this._handleExpand}
         ?disabled=${this.disabled}
         aria-expanded=${ifDefined(this.expanded)}
         ariaLabel="Expand"
@@ -82,10 +88,14 @@ export namespace ListItemV2 {
       }
     }
 
-    private _handleClick() {
+    private _handleExpand(e: MouseEvent) {
+      e.stopPropagation();
       if (this.expandable) {
         this.expanded = !this.expanded;
       }
+    }
+
+    private _handleListItemClick() {
       this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
     }
 

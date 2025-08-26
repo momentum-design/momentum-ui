@@ -5,6 +5,7 @@ import "./list-item-v2";
 import "./list-v2";
 import "@/components/chip/Chip";
 import { ListItemV2 } from "./list-item-v2";
+import { action } from "@storybook/addon-actions";
 
 type ListItemV2Args = {
   disabled?: boolean;
@@ -29,7 +30,8 @@ const meta = {
     expandable: { control: "boolean" },
     expanded: { control: "boolean" }
   },
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  decorators: (story) => html`<div @list-item-click=${action("list-item-click")}>${story()}</div>`
 } satisfies Meta<ListItemV2Args>;
 export default meta;
 

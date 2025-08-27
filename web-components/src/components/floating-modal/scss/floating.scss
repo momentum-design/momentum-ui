@@ -50,7 +50,7 @@
       flex: 2 1 auto;
       font-family: $body-font-family;
       font-size: $font-size-large;
-      line-height: $font-size-large;
+      line-height: $line-height-computed;
       text-align: left;
     }
   }
@@ -77,9 +77,15 @@
 }
 
 .md-floating-min-parent {
-  bottom: 0;
+  bottom: $floating-min-modal-margin;
   height: 3rem;
   position: absolute;
-  right: 0;
+  right: $floating-min-modal-margin;
   width: 223px;
+}
+
+.md-floating__header-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

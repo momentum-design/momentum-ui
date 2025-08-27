@@ -260,7 +260,9 @@ export namespace FloatingMinimizedModal {
               >
                 <div tabindex="-1" class="md-floating__header ${this.minimize ? "md-floating__header-minimize" : ""}">
                   <div class="md-floating__header-text">
-                    ${this.heading ? html` ${this.heading} ` : html` <slot></slot> `}
+                    ${this.heading
+                      ? html` <md-tooltip placement="bottom" slot-to-tooltip>${this.heading}</md-tooltip> `
+                      : html` <slot></slot> `}
                   </div>
                   <md-button
                     color="color-none"

@@ -14,6 +14,7 @@ $list-item-focus-shadow: 0 0 0 rem-calc(2) var(--list-focus-border-color);
   --list-item-bg-color: none;
 
   border-radius: var(--list-item-border-radius);
+  background-color: var(--list-item-bg-color);
 }
 
 :host(:focus-visible) {
@@ -33,19 +34,12 @@ $list-item-focus-shadow: 0 0 0 rem-calc(2) var(--list-focus-border-color);
   --list-item-bg-color: var(--list-item-disabled-bg-color);
 }
 
-.list-item {
-  background-color: var(--list-item-bg-color);
-  border-radius: var(--list-item-border-radius);
-  list-style: none;
-}
-
 .header {
   border-radius: var(--list-item-border-radius);
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--list-item-bg-color);
   color: var(--list-item-text-color);
 
   &:hover:not(:disabled) {

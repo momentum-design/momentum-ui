@@ -5,6 +5,7 @@ import style from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
 import { isActionKey } from "@/utils/keyboard";
+import { Key } from "@/constants";
 
 export namespace ListItemV2 {
   export type Variant = "full-width" | "inset-pill" | "inset-rectangle";
@@ -16,31 +17,24 @@ export namespace ListItemV2 {
     @property({ type: Boolean, reflect: true }) expanded = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: String }) variant: Variant = "full-width";
+    @property({ type: String, attribute: "expand-label" }) expandLabel?: string;
 
     render() {
       return html`
-        <div
-          role="listitem"
-          class="list-item"
-          aria-label=${this.label}
-          aria-disabled=${this.disabled}
-          @click=${this._handleListItemClick}
-        >
-          <slot name="content">
-            <div class="header">
-              <div part="header-leading">
-                ${this.expandable ? this.renderExpandButton() : nothing} ${this.renderLeadingControls()}
-                <span>${this.label}</span>
-              </div>
-              <div part="header-trailing">${this.renderTrailingControls()}</div>
+        <slot name="content">
+          <div class="header">
+            <div part="header-leading">
+              ${this.expandable ? this.renderExpandButton() : nothing} ${this.renderLeadingControls()}
+              <span>${this.label}</span>
             </div>
-            <div class="panel-container">
-              <div class="expandable-content">
-                <slot name="panel"></slot>
-              </div>
+            <div part="header-trailing">${this.renderTrailingControls()}</div>
+          </div>
+          <div class="panel-container">
+            <div class="expandable-content">
+              <slot name="panel"></slot>
             </div>
-          </slot>
-        </div>
+          </div>
+        </slot>
       `;
     }
 
@@ -51,7 +45,8 @@ export namespace ListItemV2 {
         @button-click=${this._handleExpand}
         ?disabled=${this.disabled}
         ariaExpanded=${this.expanded}
-        ariaLabel="Expand"
+        ariaLabel=${this.expandLabel ?? "Expand"}
+        ariaLive="polite"
       >
         <md-icon
           slot="icon"
@@ -82,21 +77,59 @@ export namespace ListItemV2 {
       ></slot>`;
     }
 
+    private isExpandKey(key: string): boolean {
+      return key === Key.ArrowLeft || key === Key.ArrowRight;
+    }
+
     protected stopEventPropagation(event: Event): void {
-      if ((event instanceof KeyboardEvent && isActionKey(event.key)) || event instanceof MouseEvent) {
+      if ((event instanceof KeyboardEvent && (isActionKey(event.key) || this.isExpandKey(event.key))) 
+          || event instanceof MouseEvent) {
         event.stopPropagation();
       }
     }
 
-    private _handleExpand(e: MouseEvent) {
-      e.stopPropagation();
+    private setExpanded(expanded: boolean) {
+      this.expanded = expanded;
+      this.setAttribute("aria-expanded", String(this.expanded));
+      this.dispatchEvent(new CustomEvent<boolean>("list-item-expanded", { bubbles: true, detail: this.expanded }));
+    }
+
+    private _handleExpand(event: Event) {
+      event.stopPropagation();
       if (this.expandable) {
-        this.expanded = !this.expanded;
+        this.setExpanded(!this.expanded);
       }
     }
 
     private _handleListItemClick() {
       this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
+    }
+
+    private _handleArrowKeyExpand(event: KeyboardEvent) {
+      if (event.key === Key.ArrowRight && !this.expanded) {
+        event.stopPropagation();
+        this.setExpanded(true);
+      } else if (event.key === Key.ArrowLeft && this.expanded) {
+        event.stopPropagation();
+        this.setExpanded(false);
+      }
+    }
+
+    connectedCallback(): void {
+      super.connectedCallback();
+      this.setAttribute("role", "listitem");
+      this.setAttribute("tabindex", "0");
+      this.addEventListener("click", this._handleListItemClick);
+      if (this.expandable) {
+        this.addEventListener("keydown", this._handleArrowKeyExpand);
+      }
+    }
+
+    disconnectedCallback(): void {
+      super.disconnectedCallback();
+      this.removeEventListener("click", this._handleListItemClick);
+      // Remove regardless of expandable - could be added initially but expandable could be disabled later
+      this.removeEventListener("keydown", this._handleArrowKeyExpand);
     }
 
     static get styles() {

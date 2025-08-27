@@ -179,7 +179,7 @@ export namespace PhoneInput {
             ariaLabel=${this.countryCodeAriaLabel}
             codePlaceholder="${this.codePlaceholder}"
             .countryCallingCode="${this.countryCallingCode}"
-            @country-code-changed="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            @country-code-changed=${(e: CustomEvent) => this.handleCountryChange(e)}
             ?newMomentum=${this.newMomentum}
             ?isDropdownArrow=${true}
             .clearAriaLabel="${this.clearCountryCodeAriaLabel}"
@@ -191,9 +191,9 @@ export namespace PhoneInput {
             placeholder=${this.numberPlaceholder}
             .ariaInvalid=${!this.isValid ? "true" : "false"}
             .ariaLabel=${`${this.dialNumberAriaLabel}`}
-            @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
-            @input-blur="${(e: Event) => this.handleBlur(e)}"
-            @input-keydown="${(e: Event) => this.handleKeydown(e)}"
+            @input-change=${(e: CustomEvent) => this.handlePhoneChange(e)}
+            @input-blur=${(e: Event) => this.handleBlur(e)}
+            @input-keydown=${(e: Event) => this.handleKeydown(e)}
             shape="${this.pill ? "pill" : "none"}"
             .ariaControls=${this.id}
             clear

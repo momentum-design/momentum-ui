@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.25.3",
+  "version": "2.25.5",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -115,6 +115,7 @@
     "cssstats": "^4.0.5",
     "eslint": "^9.23.0",
     "eslint-formatter-pretty": "^6.0.1",
+    "eslint-plugin-lit": "^2.1.1",
     "eslint-plugin-prettier": "^5.2.6",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.2.0",

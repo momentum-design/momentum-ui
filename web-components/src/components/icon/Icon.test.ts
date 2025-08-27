@@ -129,10 +129,16 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should set the color style to what the mocked getColorValue function returns", async () => {
+    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /**/
+    });
+
     const element = await fixture(
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.color).toEqual("rgb(201, 244, 255)");
+    expect(consoleWarnSpy).toBeCalledTimes(1);
+    consoleWarnSpy.mockRestore();
   });
 
   test("should throw console.warn when color is defined by a hex color", async () => {
@@ -149,7 +155,7 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {
-    const element = await fixture(`<md-icon .iconSet=${"momentumDesign"} name="youtube-circle_24"></md-icon>`);
+    const element = await fixture(`<md-icon .iconSet="momentumDesign" name="youtube-circle_24"></md-icon>`);
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.contains("search-bold")).toBe(false);
   });
@@ -160,8 +166,8 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should return correct icon name", async () => {
-    const element = await fixture<Icon.ELEMENT>(`<md-icon name="icon-search"></md-icon>`);
-    expect(element.getIconName()).toEqual("search");
+    const element = await fixture<Icon.ELEMENT>(`<md-icon name="icon-search_16"></md-icon>`);
+    expect(element.getIconName()).toEqual("search_16");
   });
 
   test("should handle icon click", async () => {

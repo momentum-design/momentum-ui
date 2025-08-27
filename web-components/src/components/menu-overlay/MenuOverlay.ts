@@ -263,6 +263,7 @@ export namespace MenuOverlay {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("isOpen")) {
+        const previousValue = changedProperties.get("isOpen");
         if (this.isOpen) {
           this.dispatchMenuOpen();
           requestAnimationFrame(() => {
@@ -270,7 +271,7 @@ export namespace MenuOverlay {
           });
 
           this.updateTriggerElementAriaExpanded();
-        } else {
+        } else if (previousValue === true) {
           this.dispatchMenuClose();
           document.removeEventListener("click", this.handleOutsideOverlayClick);
           this.updateTriggerElementAriaExpanded();
@@ -486,7 +487,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot @slotchange="${this.handleTriggerSlotChange}" name="menu-trigger"></slot>
+          <slot @slotchange=${this.handleTriggerSlotChange} name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

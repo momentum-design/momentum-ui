@@ -196,10 +196,9 @@ describe("Card-v2 component", () => {
   });
 
   it("should increment rendered data at 1 sec intervals when active", async () => {
-    
     const fixedDate = new Date("2023-10-01T00:00:00Z");
     jest.setSystemTime(fixedDate);
-      
+
     const element: CardV2.ELEMENT = await fixture(html`
       <md-card-v2
         state=${CardState.ACTIVE}
@@ -211,11 +210,11 @@ describe("Card-v2 component", () => {
         .expandable=${true}
       >
       </md-card-v2>
-    `)
+    `);
 
     expect(element.createdTime).toBe(1696118400000);
     expect(element.active).toBe(true);
-    
+
     const data = element.shadowRoot?.querySelector(".md-card-v2-content h2");
     expect(data).not.toBeNull();
     expect(data?.textContent).toBe("00:00:00");
@@ -223,7 +222,7 @@ describe("Card-v2 component", () => {
     // Simulate the passage of time
     jest.advanceTimersByTime(61000); // 61 seconds
     await elementUpdated(element);
-    expect(data?.textContent).toBe("00:01:01");    
+    expect(data?.textContent).toBe("00:01:01");
   });
 
   it("should show extra-info", async () => {
@@ -251,13 +250,12 @@ describe("Card-v2 component", () => {
           <span>54.0</span>
         </div>
       </md-card-v2>
- `);
+    `);
     const extraInfo = element.shadowRoot?.querySelector(".md-card-v2-content-extra-info");
     expect(extraInfo).not.toBeNull();
     const extraInfoSlot = element.shadowRoot?.querySelector('slot[name="card-extra-info"]');
     expect(extraInfoSlot).not.toBeNull();
     const footerSlot = element.shadowRoot?.querySelector('slot[name="card-footer-content"]');
     expect(footerSlot).not.toBeNull();
-
   });
 });

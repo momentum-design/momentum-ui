@@ -11,32 +11,27 @@ import { html } from "lit";
 import "./Presence";
 
 const render = (args: Args) => {
-    return html`
-    <md-presence    
-        size=${args.size}
-        title=${args.title}
-        presence-type=${args.type}
-        .newMomentum=${args.newMomentum}
-    >
+  return html`
+    <md-presence size=${args.size} title=${args.title} presence-type=${args.type} .newMomentum=${args.newMomentum}>
     </md-presence>
   `;
 };
 
 export const Presence: StoryObj = {
-    args: {
-        size: 34,
-        title: "active",
-        type: "active",
-        newMomentum: true
-    },
-    render: render
+  args: {
+    size: 34,
+    title: "active",
+    type: "active",
+    newMomentum: true
+  },
+  render: render
 };
 
 const meta: Meta = {
-    title: "Components/Presence",
-    component: "md-presence",
-    argTypes: { size: { control: { type: "number" } } },
-    parameters: { a11y: { element: "md-presence" } }
+  title: "Components/Presence",
+  component: "md-presence",
+  argTypes: { size: { control: { type: "number" } } },
+  parameters: { a11y: { element: "md-presence" } }
 };
 
 export default meta;

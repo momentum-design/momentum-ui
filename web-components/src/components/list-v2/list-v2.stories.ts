@@ -1,9 +1,11 @@
 import "@/components/icon/Icon";
+import "@/components/avatar/Avatar";
+import "@/components/checkbox/Checkbox";
+import "@/components/chip/Chip";
 import { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "./list-v2";
 import "./list-item-v2";
-import "@/components/chip/Chip";
 import { ListV2 } from "./list-v2";
 
 type ListV2Args = {
@@ -15,14 +17,21 @@ const template = ({ gap, orientation }: ListV2Args) => {
   return html`
     <md-list-v2 gap=${gap} orientation=${orientation}>
       <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
+          <md-checkbox slot="leading-controls"></md-checkbox>
+          <md-avatar slot="leading-controls" size="24" title="Tom Smith" newMomentum></md-avatar>
           <md-list-v2 slot="panel" @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
             <md-list-item-v2 label="Sub-item 1"></md-list-item-v2>
             <md-list-item-v2 label="Sub-item 2"></md-list-item-v2>
           </md-list-v2>
         </div>
       </md-list-item-v2>
-      <md-list-item-v2 label="Item 2" expandable></md-list-item-v2>
+      <md-list-item-v2 label="Item 2" expandable>
+        <md-checkbox slot="leading-controls"></md-checkbox>
+        <md-avatar slot="leading-controls" size="24" title="Joe Bloggs" newMomentum></md-avatar>
+      </md-list-item-v2>
       <md-list-item-v2 label="Item 3">
+        <md-checkbox slot="leading-controls"></md-checkbox>
+        <md-avatar slot="leading-controls" size="24" title="Hey Wood" newMomentum></md-avatar>
         <md-chip slot="trailing-controls" value="Completed" color="positive" small></md-chip>
       </md-list-item-v2>
     </md-list-v2>

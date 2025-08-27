@@ -1,11 +1,10 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import { customElement, html, LitElement, property } from "lit-element";
-import style from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
-import { isActionKey } from "@/utils/keyboard";
 import { Key } from "@/constants";
+import { isActionKey } from "@/utils/keyboard";
+import { customElement, html, LitElement, property } from "lit-element";
+import { nothing } from "lit-html";
+import style from "./scss/module.scss";
 
 export namespace ListItemV2 {
   export type Variant = "full-width" | "inset-pill" | "inset-rectangle";
@@ -43,6 +42,7 @@ export namespace ListItemV2 {
         circle
         size="24"
         @button-click=${this._handleExpand}
+        @click=${this.stopEventPropagation /* Stop click event from bubbling to list-item-click */}
         ?disabled=${this.disabled}
         ariaExpanded=${this.expanded}
         ariaLabel=${this.expandLabel ?? "Expand"}
@@ -82,8 +82,10 @@ export namespace ListItemV2 {
     }
 
     protected stopEventPropagation(event: Event): void {
-      if ((event instanceof KeyboardEvent && (isActionKey(event.key) || this.isExpandKey(event.key))) 
-          || event instanceof MouseEvent) {
+      if (
+        (event instanceof KeyboardEvent && (isActionKey(event.key) || this.isExpandKey(event.key))) ||
+        event instanceof MouseEvent
+      ) {
         event.stopPropagation();
       }
     }

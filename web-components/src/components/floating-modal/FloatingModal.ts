@@ -90,8 +90,8 @@ export namespace FloatingModal {
     }
 
     private setInitialTargetPosition() {
-      if (this.container && this.isNewPositionNotSame()) {
-        this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
+      if (this.container && this.position && this.isNewPositionNotSame()) {
+        this.setTargetPosition(this.container, Number(this.position.x), Number(this.position.y));
       }
     }
 
@@ -354,7 +354,7 @@ export namespace FloatingModal {
                   <slot></slot>
                 </div>
               </div>
-              ${this.minimizable
+              ${this.minimizable && this.minimize
                 ? html` <div class="md-floating-min-parent" part="minimize-floating" tabindex="-1">
                     <md-floating-modal-minimized
                       class="float-modal-min"

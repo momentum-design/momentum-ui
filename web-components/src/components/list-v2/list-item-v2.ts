@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { isActionKey } from "@/utils/keyboard";
+import { isActionKey, isNavigationKey } from "@/utils/keyboard";
 import { customElement, html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import style from "./scss/module.scss";
@@ -30,7 +30,12 @@ export namespace ListItemV2 {
           </div>
           <div class="panel-container">
             <div class="expandable-content">
-              <slot name="panel"></slot>
+              <slot
+                name="panel"
+                @click=${this.stopEventPropagation}
+                @keyup=${this.stopEventPropagation}
+                @keydown=${this.stopEventPropagation}
+              ></slot>
             </div>
           </div>
         </slot>
@@ -77,13 +82,10 @@ export namespace ListItemV2 {
       ></slot>`;
     }
 
-    private isExpandKey(key: string): boolean {
-      return key === Key.ArrowLeft || key === Key.ArrowRight;
-    }
-
     protected stopEventPropagation(event: Event): void {
+      // Stop list moving to another list item when using arrow keys, e.g. up or down
       if (
-        (event instanceof KeyboardEvent && (isActionKey(event.key) || this.isExpandKey(event.key))) ||
+        (event instanceof KeyboardEvent && (isActionKey(event.key) || isNavigationKey(event.key))) ||
         event instanceof MouseEvent
       ) {
         event.stopPropagation();

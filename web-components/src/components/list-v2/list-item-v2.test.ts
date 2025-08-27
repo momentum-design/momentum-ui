@@ -36,6 +36,38 @@ describe("<md-list-item-v2>", () => {
     expect(screen.getByShadowText(label)).not.toBeNull();
   });
 
+  describe("slotted panel content", () => {
+    it("should not dispatch click events", async () => {
+      listItem = await fixture(
+        html`<md-list-item-v2>
+          <md-button slot="panel">Content Button</md-button>
+        </md-list-item-v2>`
+      );
+      const clickHandler = jest.fn();
+      listItem.addEventListener("list-item-click", clickHandler);
+
+      fireEvent.click(screen.getByShadowRole("button", { name: "Content Button" }));
+      await listItem.updateComplete;
+
+      expect(clickHandler).not.toHaveBeenCalled();
+    });
+
+    it("should not dispatch arrow key down event", async () => {
+      listItem = await fixture(
+        html`<md-list-item-v2>
+          <md-button slot="panel">Content Button</md-button>
+        </md-list-item-v2>`
+      );
+      const keyDownHandler = jest.fn();
+      listItem.addEventListener("list-item-expanded", keyDownHandler);
+
+      fireEvent.keyDown(screen.getByShadowRole("button", { name: "Content Button" }), { key: Key.ArrowDown });
+      await listItem.updateComplete;
+
+      expect(keyDownHandler).not.toHaveBeenCalled();
+    });
+  });
+
   describe("when expandable", () => {
     beforeEach(async () => {
       listItem = await fixture(html`<md-list-item-v2 expandable></md-list-item-v2>`);

@@ -1,11 +1,12 @@
-import "@/components/icon/Icon";
 import "@/components/avatar/Avatar";
 import "@/components/checkbox/Checkbox";
 import "@/components/chip/Chip";
+import "@/components/icon/Icon";
+import "@/components/input/Input";
 import { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import "./list-v2";
 import "./list-item-v2";
+import "./list-v2";
 import { ListV2 } from "./list-v2";
 
 type ListV2Args = {
@@ -28,6 +29,9 @@ const template = ({ gap, orientation }: ListV2Args) => {
       <md-list-item-v2 label="Item 2" expandable>
         <md-checkbox slot="leading-controls"></md-checkbox>
         <md-avatar slot="leading-controls" size="24" title="Joe Bloggs" newMomentum></md-avatar>
+        <div slot="panel">
+          <md-input multiline></md-input>
+        </div>
       </md-list-item-v2>
       <md-list-item-v2 label="Item 3">
         <md-checkbox slot="leading-controls"></md-checkbox>

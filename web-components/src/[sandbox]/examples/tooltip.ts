@@ -190,4 +190,9 @@ export const tooltipTemplate = html`
     </div>
     <tooltip-animation-sandbox></tooltip-animation-sandbox>
   </div>
+  <div class="row md-padding__vertical">
+    <md-tooltip placement="right">
+      <md-button variant="secondary">No tooltip message should not show</md-button>
+    </md-tooltip>
+  </div>
 `;

@@ -1,8 +1,8 @@
 .md-floating {
-  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-light);
+  background-color: var(--floating-modal-main-bg-color);
   border: $floating-main-border;
   border-radius: 8px;
-  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
+  box-shadow: var(--floating-modal-main-box-shadow);
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -24,7 +24,7 @@
   }
 
   &.md-floating-minimize {
-    background: var(--floating-modal-main-bg-color-alternate, $lm-floating-modal-main-bg-color-alternate-light);
+    background: var(--floating-modal-main-bg-color-alternate);
     border-radius: 8px;
     width: 100%;
   }
@@ -34,10 +34,15 @@
     outline: none;
   }
 
-  .md-floating__header {
+  .md-floating__header-button {
     align-items: center;
-    border-bottom: $floating-header-border;
-    color: var(--floating-modal-main-text-color, $lm-floating-modal-main-text-color-light);
+    display: inline-flex;
+  }
+
+  .md-floating__header {
+    align-items: center;    
+    border-bottom: none;
+    color: var(--floating-modal-main-text-color);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -45,10 +50,11 @@
     max-height: $floating-header-max-height;
     padding: $floating-header-padding;
     width: 100%;
+    gap: 0.5rem;
 
     &-text {
       flex: 2 1 auto;
-      font-family: $body-font-family;
+      font-family: $brand-font-bold;
       font-size: $font-size-large;
       line-height: $font-size-large;
       text-align: left;
@@ -59,6 +65,7 @@
     height: calc(100% - 3rem);
     overflow: auto;
     padding: $floating-body-padding;
+    padding-top: 0;
   }
 
   .md-floating-body-minimize {
@@ -69,7 +76,7 @@
 
   .md-floating__header-minimize {
     border-bottom: 0;
-    color: var(--floating-modal-main-text-color-alternate, $lm-floating-modal-main-text-color-alternate-light);
+    color: var(--floating-modal-main-text-color-alternate);
     font-size: 16px;
     line-height: 24px;
     width: 100%;

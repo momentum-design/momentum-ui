@@ -61,6 +61,8 @@ export { InputFile } from "./components/input-file/InputFile";
 export { Input } from "./components/input/Input";
 export { Label } from "./components/label/Label";
 export { Link } from "./components/link/Link";
+export { ListItemV2 } from "./components/list-v2/list-item-v2";
+export { ListV2 } from "./components/list-v2/list-v2";
 export { List } from "./components/list/List";
 export { ListItem } from "./components/list/ListItem";
 export { Loading } from "./components/loading/Loading";

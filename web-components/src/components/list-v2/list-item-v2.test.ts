@@ -208,6 +208,21 @@ describe("<md-list-item-v2>", () => {
 
         expect(clickHandler).toHaveBeenCalled();
       });
+
+      describe("and disabled", () => {
+        it("should not emit list-item-click event", async () => {
+          listItem.disabled = true;
+          await listItem.updateComplete;
+
+          const clickHandler = jest.fn();
+          listItem.addEventListener("list-item-click", clickHandler);
+
+          fireEvent.click(listItem);
+          await listItem.updateComplete;
+
+          expect(clickHandler).not.toHaveBeenCalled();
+        });
+      });
     });
 
     describe("when expandable", () => {

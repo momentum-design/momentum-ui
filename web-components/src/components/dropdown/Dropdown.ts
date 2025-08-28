@@ -22,8 +22,8 @@ import styles from "./scss/module.scss";
 const EMPTY_KEY = "";
 
 export namespace Dropdown {
-  type OptionMember = { [key: string]: string };
-  type Option = string | OptionMember;
+  export type OptionMember = { [key: string]: string };
+  export type Option = string | OptionMember;
   type RenderOptionMember = { key: string; value: string; option?: Option };
 
   export type EventDetail = {
@@ -908,5 +908,14 @@ export namespace Dropdown {
 declare global {
   interface HTMLElementTagNameMap {
     "md-dropdown": Dropdown.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "dropdown-focus-in": CustomEvent<undefined>;
+    "dropdown-focus-out": CustomEvent<undefined>;
+    "dropdown-selected": CustomEvent<{ option: Dropdown.Option }>;
+    "dropdown-input": CustomEvent<{ value: string }>;
+    "combobox-on-expand": CustomEvent<undefined>;
+    "remove-all-selected": CustomEvent<undefined>;
   }
 }

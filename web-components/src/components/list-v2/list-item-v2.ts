@@ -11,12 +11,46 @@ export namespace ListItemV2 {
 
   @customElement("md-list-item-v2")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) label = "";
+    /**
+     * The primary label of the list item.
+     * This appears on the leading side of the list item.
+     */
+    @property({ type: String, reflect: true }) label?: string;
+
+    /**
+     * Secondary label of the list item.
+     * This appears on the trailing side of the list item, under the primary label
+     */
+    @property({ type: String, reflect: true, attribute: "secondary-label" }) secondaryLabel?: string;
+    /**
+     * Tertiary label of the list item.
+     * This appears on the leading side of the list item, under the secondary label.
+     */
+    @property({ type: String, reflect: true, attribute: "tertiary-label" }) tertiaryLabel?: string;
+
+    /**
+     * Make the list item expandable.
+     * This will allow the content inside the "panel" slot to be collapsible.
+     * It will render an expand button before the leading controls
+     */
     @property({ type: Boolean }) expandable = false;
+
+    /**
+     * Whether the list item is expanded.
+     * @default false
+     */
     @property({ type: Boolean, reflect: true }) expanded = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
+
+    /**
+     * The visual style variant of the list item. This can be a pill, rectangle or a full-width
+     */
     @property({ type: String }) variant: Variant = "full-width";
-    @property({ type: String, attribute: "expand-label" }) expandLabel?: string;
+
+    /**
+     * The ARIA label for the expand button. Only use if `expandable` is true.
+     */
+    @property({ type: String, attribute: "expand-label" }) expandLabel = "Expand";
 
     render() {
       return html`
@@ -24,7 +58,11 @@ export namespace ListItemV2 {
           <div class="header">
             <div part="header-leading">
               ${this.expandable ? this.renderExpandButton() : nothing} ${this.renderLeadingControls()}
-              <span>${this.label}</span>
+              <div part="leading-text">
+                ${this.label ? html`<span part="primary-label">${this.label}</span>` : nothing}
+                ${this.secondaryLabel ? html`<span part="secondary-label">${this.secondaryLabel}</span>` : nothing}
+                ${this.tertiaryLabel ? html`<span part="tertiary-label">${this.tertiaryLabel}</span>` : nothing}
+              </div>
             </div>
             <div part="header-trailing">${this.renderTrailingControls()}</div>
           </div>
@@ -50,7 +88,7 @@ export namespace ListItemV2 {
         @click=${this.stopEventPropagation /* Stop click event from bubbling to list-item-click */}
         ?disabled=${this.disabled}
         ariaExpanded=${this.expanded}
-        ariaLabel=${this.expandLabel ?? "Expand"}
+        ariaLabel=${this.expandLabel}
         ariaLive="polite"
       >
         <md-icon

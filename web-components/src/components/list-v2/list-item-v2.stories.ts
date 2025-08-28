@@ -1,19 +1,22 @@
+import "@/components/chip/Chip";
+import { action } from "@storybook/addon-actions";
+import { Meta, StoryFn, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { Meta, StoryObj, StoryFn } from "@storybook/web-components";
 import "./list-item-v2";
-import "./list-v2";
-import "@/components/chip/Chip";
 import { ListItemV2 } from "./list-item-v2";
-import { action } from "@storybook/addon-actions";
+import "./list-v2";
 
-type ListItemV2Args = {
-  disabled?: boolean;
-  expandable?: boolean;
-  label?: string;
-  expanded?: boolean;
-  variant?: ListItemV2.Variant;
-};
+type ListItemV2Args = Partial<{
+  disabled: boolean;
+  expandable: boolean;
+  label: string;
+  "secondary-label": string;
+  "tertiary-label": string;
+  "expand-label": string;
+  expanded: boolean;
+  variant: ListItemV2.Variant;
+}>;
 
 const meta = {
   title: "Components/List Item V2",
@@ -24,11 +27,21 @@ const meta = {
       control: { type: "select" },
       options: ["full-width", "inset-rectangle", "inset-pill"]
     },
-    label: {
-      control: { type: "text" }
-    },
     expandable: { control: "boolean" },
-    expanded: { control: "boolean" }
+    expanded: { control: "boolean" },
+    label: { control: "text" },
+    "secondary-label": {
+      control: "text",
+      name: "secondary-label"
+    },
+    "expand-label": {
+      control: "text",
+      name: "expand-label"
+    },
+    "tertiary-label": {
+      control: "text",
+      name: "tertiary-label"
+    }
   },
   tags: ["autodocs"],
   decorators: (story) => html`<div @list-item-click=${action("list-item-click")}>${story()}</div>`
@@ -47,10 +60,13 @@ const PanelContentTemplate = () => html`
   </div>
 `;
 
-const Template: StoryFn = ({ disabled, expandable, label, expanded, variant }) => html`
+const Template: StoryFn = ({ disabled, expandable, label, expanded, variant, ...rest }) => html`
   <md-list-v2>
     <md-list-item-v2
       label=${label}
+      secondary-label=${rest["secondary-label"]}
+      tertiary-label=${rest["tertiary-label"]}
+      expand-label=${rest["expand-label"]}
       ?disabled=${disabled}
       ?expandable=${expandable}
       ?expanded=${expanded}
@@ -64,7 +80,9 @@ const Template: StoryFn = ({ disabled, expandable, label, expanded, variant }) =
 export const Default: Story = {
   render: Template,
   args: {
-    label: "List Item"
+    label: "List Item",
+    "secondary-label": "Secondary Label",
+    "tertiary-label": "Tertiary Label"
   }
 };
 
@@ -77,10 +95,13 @@ export const Disabled: Story = {
 };
 
 export const ExpandableWithTrailingChip: Story = {
-  render: ({ disabled, expandable, label, expanded, variant }) => html`
+  render: ({ disabled, expandable, label, expanded, variant, ...rest }) => html`
     <md-list-v2>
       <md-list-item-v2
         label=${ifDefined(label)}
+        secondary-label=${ifDefined(rest["secondary-label"])}
+        tertiary-label=${ifDefined(rest["tertiary-label"])}
+        expand-label=${ifDefined(rest["expand-label"])}
         ?disabled=${disabled}
         ?expandable=${expandable}
         ?expanded=${expanded}
@@ -131,7 +152,12 @@ export const OverrideStyles: Story = {
 * `--list-item-hover-bg-color`\n\
 * `--list-item-active-bg-color`\n\
 * `--list-item-text-color`\n\
-* `--list-item-disabled-text-color`"
+* `--list-item-disabled-text-color`\n\
+* `--list-item-primary-label-color`\n\
+* `--list-item-secondary-label-color`\n\
+* `--list-item-tertiary-label-color`\n\
+* `--list-item-primary-label-font-size`\n\
+* `--list-item-secondary-label-font-size`"
       }
     }
   }

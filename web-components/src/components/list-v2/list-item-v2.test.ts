@@ -31,9 +31,13 @@ describe("<md-list-item-v2>", () => {
   it("should render label attribute", async () => {
     const label = "Test Label";
     listItem.label = label;
+    listItem.secondaryLabel = "Test Secondary Label";
+    listItem.tertiaryLabel = "Test Tertiary Label";
     await listItem.updateComplete;
 
-    expect(screen.getByShadowText(label)).not.toBeNull();
+    expect(screen.getByShadowText(label)).toBeVisible();
+    expect(screen.getByShadowText("Test Secondary Label")).toBeVisible();
+    expect(screen.getByShadowText("Test Tertiary Label")).toBeVisible();
   });
 
   describe("slotted panel content", () => {

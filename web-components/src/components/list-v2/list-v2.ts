@@ -9,6 +9,9 @@ export namespace ListV2 {
 
   @customElement("md-list-v2")
   export class ELEMENT extends LitElement {
+    /**
+     * The gap between list items.
+     */
     @property({ type: String }) gap: Gap = "none";
     @property({ type: String }) orientation: Orientation = "vertical";
 

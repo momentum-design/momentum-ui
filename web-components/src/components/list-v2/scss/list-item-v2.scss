@@ -46,6 +46,7 @@ $list-item-focus-shadow: 0 0 0 rem-calc(2) var(--list-focus-border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   &:hover:not(:disabled) {
     background-color: var(--list-item-hover-bg-color);

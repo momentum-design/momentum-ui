@@ -11,7 +11,7 @@ import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, nothing } from "lit";
+import { html, LitElement, nothing, PropertyValues } from "lit";
 import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
@@ -210,8 +210,31 @@ export namespace Button {
     @property({ type: String, attribute: "aria-describedby" }) ariaDescribedBy?: string;
     @property({ attribute: false }) clickFunction?: () => void;
     @property({ type: Boolean, attribute: "is-placeholder-text" }) isPlaceholderText?: boolean;
+    @property({ type: Boolean, reflect: true }) autofocus = false;
 
     @query(".md-button") button!: HTMLButtonElement;
+
+    protected firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+
+      if (this.autofocus) {
+        requestAnimationFrame(() => {
+          this.manageAutoFocus();
+        });
+      }
+    }
+
+    manageAutoFocus(element: HTMLElement = this) {
+      element.focus();
+    }
+
+    focus() {
+      this.button?.focus();
+    }
+
+    blur() {
+      this.button?.blur();
+    }
 
     renderWidth = () => {
       return this.width ? `width: ${this.width};` : nothing;

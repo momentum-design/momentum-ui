@@ -316,18 +316,20 @@ export namespace FloatingModal {
                   ${this.minimizable
                     ? html` <md-button
                         color="color-none"
-                        class="md-floating__minimize"
+                        size="20"
+                        class="md-floating__minimize md-floating__header-button"
                         ariaLabel="${this.minimizeAriaLabel}"
                         circle
                         @click=${this.handleMinimize}
                       >
-                        <md-icon name="minus-bold" size="16" iconSet="momentumDesign"></md-icon>
+                        <md-icon name="minus-bold" size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
                       </md-button>`
                     : nothing}
                   ${!this.minimize && this.maximizable
                     ? html` <md-button
                         color="color-none"
-                        class="md-floating__resize"
+                        size="20"
+                        class="md-floating__resize md-floating__header-button"
                         ariaLabel="${this.full ? this.resizeAriaLabel : this.maximizeScreenLabel}"
                         circle
                         @click=${this.handleToggleExpandCollapse}
@@ -342,7 +344,8 @@ export namespace FloatingModal {
 
                   <md-button
                     color="color-none"
-                    class="md-floating__close"
+                    size="20"
+                    class="md-floating__close md-floating__header-button"
                     ariaLabel="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}

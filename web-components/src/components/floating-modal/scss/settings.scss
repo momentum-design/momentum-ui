@@ -1,5 +1,5 @@
-$floating-header-border: 1px solid var(--floating-modal-main-border-color, $lm-floating-modal-main-border-color-light);
-$floating-main-border: 1px solid var(--floating-modal-outer-border-color, $lm-floating-modal-outer-border-color-light);
-$floating-header-padding: rem-calc(8) rem-calc(8) rem-calc(8) rem-calc(12);
-$floating-body-padding: rem-calc(12) rem-calc(20);
+$floating-header-border: 1px solid var(--floating-modal-main-border-color);
+$floating-main-border: 1px solid var(--floating-modal-outer-border-color);
+$floating-header-padding: rem-calc(16);
+$floating-body-padding: rem-calc(12) rem-calc(16);
 $floating-header-max-height: rem-calc(48);

@@ -9,7 +9,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement } from "lit";
-import { property } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
@@ -66,12 +66,31 @@ export namespace Link {
       this.requestUpdate("tabIndex", oldValue);
     }
 
+    @property({ type: Boolean }) autofocus = false;
+    @query(".md-link") linkRef!: HTMLElement;
+
     static get styles() {
       return [reset, styles];
     }
 
-    render() {
-      const linkClassNamesInfo = {
+    firstUpdated() {
+      if (this.autofocus) {
+        requestAnimationFrame(() => {
+          this.focus();
+        });
+      }
+    }
+
+    focus() {
+      this.linkRef?.focus();
+    }
+
+    blur() {
+      this.linkRef?.blur();
+    }
+
+    private get linkClassNamesInfo() {
+      return {
         [`md-link--${this.color}`]: this.color,
         [`md-link--inline`]: this.inline,
         [`md-link--inline-style-${this.inlineStyle}`]: !!this.inlineStyle,
@@ -79,54 +98,57 @@ export namespace Link {
         inverted: this.inverted === true,
         disabled: this.disabled
       };
+    }
 
-      const linkElement = () => {
-        switch (this.tag) {
-          case "div":
-            return html`
-              <div
-                class="md-link ${classMap(linkClassNamesInfo)}"
-                tabindex=${this.tabIndex}
-                aria-label=${ifDefined(this.ariaLabel || undefined)}
-                aria-disabled=${ifDefined(this.disabled || undefined)}
-                role=${this.ariaRole}
-                part="link"
-              >
-                <slot></slot>
-              </div>
-            `;
-          case "span":
-            return html`
-              <span
-                class="md-link ${classMap(linkClassNamesInfo)}"
-                tabindex=${this.tabIndex}
-                aria-label=${ifDefined(this.ariaLabel || undefined)}
-                aria-disabled=${ifDefined(this.disabled || undefined)}
-                role=${this.ariaRole}
-                part="link"
-              >
-                <slot></slot>
-              </span>
-            `;
+    private get linkElement() {
+      switch (this.tag) {
+        case "div":
+          return html`
+            <div
+              class="md-link ${classMap(this.linkClassNamesInfo)}"
+              tabindex=${this.tabIndex}
+              aria-label=${ifDefined(this.ariaLabel || undefined)}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
+              role=${this.ariaRole}
+              part="link"
+            >
+              <slot></slot>
+            </div>
+          `;
+        case "span":
+          return html`
+            <span
+              class="md-link ${classMap(this.linkClassNamesInfo)}"
+              tabindex=${this.tabIndex}
+              aria-label=${ifDefined(this.ariaLabel || undefined)}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
+              role=${this.ariaRole}
+              part="link"
+            >
+              <slot></slot>
+            </span>
+          `;
 
-          default:
-            return html`
-              <a
-                class="md-link ${classMap(linkClassNamesInfo)}"
-                .target="${this.target}"
-                href=${ifDefined(!this.disabled ? this.href : undefined)}
-                tabindex=${this.tabIndex}
-                aria-label=${ifDefined(this.ariaLabel || undefined)}
-                aria-disabled=${ifDefined(this.disabled || undefined)}
-                role=${this.ariaRole}
-                part="link"
-              >
-                <slot></slot>
-              </a>
-            `;
-        }
-      };
-      return html` ${linkElement()} `;
+        default:
+          return html`
+            <a
+              class="md-link ${classMap(this.linkClassNamesInfo)}"
+              .target="${this.target}"
+              href=${ifDefined(!this.disabled ? this.href : undefined)}
+              tabindex=${this.tabIndex}
+              aria-label=${ifDefined(this.ariaLabel || undefined)}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
+              role=${this.ariaRole}
+              part="link"
+            >
+              <slot></slot>
+            </a>
+          `;
+      }
+    }
+
+    render() {
+      return html` ${this.linkElement} `;
     }
   }
 }

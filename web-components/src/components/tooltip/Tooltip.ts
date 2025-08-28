@@ -54,6 +54,18 @@ export namespace Tooltip {
       }
     };
 
+    private hasMessage() {
+      return this.message && this.message.trim().length > 0;
+    }
+
+    private hasSlotContent() {
+      return this.slotContent && this.slotContent.length > 0;
+    }
+
+    private get hasTooltipContent() {
+      return this.hasMessage() || this.hasSlotContent();
+    }
+
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("keydown", this._keyDownListener);
@@ -161,7 +173,7 @@ export namespace Tooltip {
     }
 
     notifyTooltipCreate() {
-      if (!this.disabled) {
+      if (!this.disabled && this.hasTooltipContent) {
         this.opened = true;
       }
     }

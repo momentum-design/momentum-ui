@@ -264,7 +264,8 @@ export namespace FloatingMinimizedModal {
                   </div>
                   <md-button
                     color="color-none"
-                    class="md-floating__resize"
+                    size="20"
+                    class="md-floating__resize md-floating__header-button"
                     ariaLabel="${this.maximizeIconAriaLabel}"
                     circle
                     @click=${this.handleMinimize}
@@ -274,7 +275,8 @@ export namespace FloatingMinimizedModal {
 
                   <md-button
                     color="color-none"
-                    class="md-floating__close"
+                    size="20"
+                    class="md-floating__close md-floating__header-button"
                     aria-label="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}

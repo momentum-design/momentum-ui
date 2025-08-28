@@ -46,6 +46,7 @@ import {
   labelTemplate,
   linkTemplate,
   listTemplate,
+  listV2Template,
   loadingTemplate,
   meetingAlertTemplate,
   menuItemTemplate,
@@ -390,6 +391,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Link", "md-link", "link", linkTemplate)}
           ${this.getTabTemplate("List", "md-list", "list", listTemplate)}
           ${this.getTabTemplate("Advanced List", "md-advance-list", "list", advanceListTemplate)}
+          ${this.getTabTemplate("List V2", "md-list-v2", "list-v2", listV2Template)}
           ${this.getTabTemplate("Loading", "md-loading", "loading", loadingTemplate)}
           ${this.getTabTemplate("Meeting Alert", "md-meeting-alert", "meeting-alert", meetingAlertTemplate)}
           ${this.getTabTemplate("Menu", "md-menu", "menu", menuItemTemplate)}

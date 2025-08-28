@@ -21,7 +21,7 @@ const template = ({ gap, orientation }: ListV2Args) => {
       <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
           <md-checkbox slot="leading-controls"></md-checkbox>
           <md-avatar slot="leading-controls" size="24" title="Tom Smith" newMomentum></md-avatar>
-          <md-list-v2 slot="panel" @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
+          <md-list-v2 slot="panel">
             <md-list-item-v2 label="Sub-item 1"></md-list-item-v2>
             <md-list-item-v2 label="Sub-item 2"></md-list-item-v2>
           </md-list-v2>
@@ -71,4 +71,53 @@ export const Example: Story = {
     gap: "sm",
     orientation: "vertical"
   }
+};
+
+export const NestedExpandables: Story = {
+  render: ({ gap, orientation }) => html`
+    <md-list-v2 gap=${gap} orientation=${orientation} @list-item-click=${action("list-item-click")}>
+      <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
+          <md-checkbox slot="leading-controls"></md-checkbox>
+
+          <md-list-v2 slot="panel">
+            <md-list-item-v2 expandable label="Sub-item 1">
+              <md-input multiline slot="panel"></md-input>
+            </md-list-item-v2>
+
+            <md-list-item-v2 expandable label="Sub-item 2">
+              <div slot="panel">
+                <h3>Lorem Ipsum</h3>
+                <p>laboris in et deserunt exercitation cupidatat amet est laboris minim</p>
+              </div>
+            </md-list-item-v2>
+          </md-list-v2>
+
+        </div>
+      </md-list-item-v2>
+
+      <md-list-item-v2 label="Item 2" expandable>
+        <md-checkbox slot="leading-controls"></md-checkbox>
+        <div slot="panel">
+          <md-input multiline></md-input>
+        </div>
+      </md-list-item-v2>
+
+      <md-list-item-v2 label="Item 3">
+        <md-checkbox slot="leading-controls"></md-checkbox>
+        <md-chip slot="trailing-controls" value="Completed" color="positive" small></md-chip>
+      </md-list-item-v2>
+    </md-list-v2>
+  `,
+  args: {
+    gap: "sm"
+  }
+};
+
+export const DisabledItems: Story = {
+  render: ({ gap, orientation }) =>
+    html` <md-list-v2 gap=${gap} orientation=${orientation} @list-item-click=${action("list-item-click")}>
+      <md-list-item-v2 label="Item 1"></md-list-item-v2>
+      <md-list-item-v2 label="Item 2" disabled></md-list-item-v2>
+      <md-list-item-v2 label="Item 3"></md-list-item-v2>
+    </md-list-v2>`
 };

@@ -1,7 +1,7 @@
-import { customElement, html, LitElement, property, queryAssignedNodes } from "lit-element";
-import style from "./scss/module.scss";
-import { ListItemV2 } from "./list-item-v2";
 import { Key } from "@/constants";
+import { customElement, html, LitElement, property, queryAssignedNodes } from "lit-element";
+import { ListItemV2 } from "./list-item-v2";
+import style from "./scss/module.scss";
 
 export namespace ListV2 {
   export type Gap = "none" | "sm" | "md" | "lg";
@@ -24,8 +24,10 @@ export namespace ListV2 {
       return html` <slot @click=${this.handleMouseClick}></slot>`;
     }
 
-    private get listItems() {
-      return Array.from(this.assignedNodes).filter((node) => node instanceof ListItemV2.ELEMENT);
+    private get listItems(): ListItemV2.ELEMENT[] {
+      return Array.from(this.assignedNodes).filter(
+        (node) => node instanceof ListItemV2.ELEMENT && !node.disabled
+      ) as ListItemV2.ELEMENT[];
     }
 
     private handleMouseClick(event: MouseEvent) {

@@ -115,7 +115,9 @@ export namespace ListItemV2 {
     }
 
     private _handleListItemClick() {
-      this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
+      if (!this.disabled) {
+        this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
+      }
     }
 
     private _handleArrowKeyExpand(event: KeyboardEvent) {

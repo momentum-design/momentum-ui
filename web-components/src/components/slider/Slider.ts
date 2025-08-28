@@ -10,6 +10,14 @@ import { styleMap } from "lit-html/directives/style-map";
 import styles from "./scss/module.scss";
 
 export namespace Slider {
+  export interface SliderChangeEventDetail {
+    value: number;
+  }
+
+  export interface SliderChangingEventDetail {
+    oldValue: number;
+    newValue: number;
+  }
   @customElementWithCheck("md-slider")
   export class ELEMENT extends FocusMixin(LitElement) {
     private _disabled = false;
@@ -296,5 +304,10 @@ export namespace Slider {
 declare global {
   interface HTMLElementTagNameMap {
     "md-slider": Slider.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "slider-change": CustomEvent<Slider.SliderChangeEventDetail>;
+    "slider-changing": CustomEvent<Slider.SliderChangingEventDetail>;
   }
 }

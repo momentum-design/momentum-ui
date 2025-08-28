@@ -33,8 +33,8 @@ export namespace ListItemV2 {
               <slot
                 name="panel"
                 @click=${this.stopEventPropagation}
-                @keyup=${this.stopEventPropagation}
-                @keydown=${this.stopEventPropagation}
+                @keyup=${this.stopArrowKeyEventPropagation}
+                @keydown=${this.stopArrowKeyEventPropagation}
               ></slot>
             </div>
           </div>
@@ -82,10 +82,19 @@ export namespace ListItemV2 {
       ></slot>`;
     }
 
+    private stopArrowKeyEventPropagation(event: Event) {
+      if (event instanceof KeyboardEvent && isNavigationKey(event.key)) {
+        event.stopPropagation();
+      }
+    }
+
+    private isExpandCollapseKey(key: string): boolean {
+      return key === Key.ArrowRight || key === Key.ArrowLeft;
+    }
+
     protected stopEventPropagation(event: Event): void {
-      // Stop list moving to another list item when using arrow keys, e.g. up or down
       if (
-        (event instanceof KeyboardEvent && (isActionKey(event.key) || isNavigationKey(event.key))) ||
+        (event instanceof KeyboardEvent && (isActionKey(event.key) || this.isExpandCollapseKey(event.key))) ||
         event instanceof MouseEvent
       ) {
         event.stopPropagation();

@@ -159,7 +159,8 @@ export namespace ListItemV2 {
 
     private _handleListItemClick(event: MouseEvent) {
       const path = event.composedPath();
-      if (path.includes(this.header) && !this.disabled) {
+      const originalTarget = path[0];
+      if ((path.includes(this.header) || originalTarget === this) && !this.disabled) {
         this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
       }
     }

@@ -40,6 +40,17 @@ describe("<md-list-v2>", () => {
   });
 
   describe("when navigating with keyboard", () => {
+    describe("And there are no items", () => {
+      it("should not throw an error", async () => {
+        const emptyList = await fixture(html`<md-list-v2></md-list-v2>`);
+        expect(emptyList).toBeVisible();
+
+        expect(() => {
+          fireEvent.keyDown(emptyList, { key: Key.ArrowDown });
+        }).not.toThrow();
+      });
+    });
+
     describe("and first item is focused", () => {
       beforeEach(() => {
         firstItem.focus();

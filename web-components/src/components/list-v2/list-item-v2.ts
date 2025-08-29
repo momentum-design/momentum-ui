@@ -9,6 +9,10 @@ import style from "./scss/module.scss";
 export namespace ListItemV2 {
   export type Variant = "full-width" | "inset-pill" | "inset-rectangle";
 
+  /**
+   * @fires list-item-click
+   * @fires list-item-expanded
+   */
   @customElement("md-list-item-v2")
   export class ELEMENT extends LitElement {
     /**

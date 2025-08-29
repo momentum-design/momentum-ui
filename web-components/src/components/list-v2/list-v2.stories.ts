@@ -19,8 +19,8 @@ const template = ({ gap, orientation }: ListV2Args) => {
   return html`
     <md-list-v2 gap=${gap} orientation=${orientation} @list-item-click=${action("list-item-click")}>
       <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
-          <md-checkbox slot="leading-controls"></md-checkbox>
-          <md-avatar slot="leading-controls" size="24" title="Tom Smith" newMomentum></md-avatar>
+          <md-checkbox slot="leading-controls" label="Invite" aria-checked=${false}></md-checkbox>
+          <md-avatar slot="leading-controls" size="24" title="Tom Smith" label="Tom Smith" newMomentum></md-avatar>
           <md-list-v2 slot="panel">
             <md-list-item-v2 label="Sub-item 1"></md-list-item-v2>
             <md-list-item-v2 label="Sub-item 2"></md-list-item-v2>
@@ -28,15 +28,15 @@ const template = ({ gap, orientation }: ListV2Args) => {
         </div>
       </md-list-item-v2>
       <md-list-item-v2 label="Item 2" expandable>
-        <md-checkbox slot="leading-controls"></md-checkbox>
-        <md-avatar slot="leading-controls" size="24" title="Joe Bloggs" newMomentum></md-avatar>
+        <md-checkbox slot="leading-controls" label="Invite" aria-checked=${false}></md-checkbox>
+        <md-avatar slot="leading-controls" size="24" title="Joe Bloggs" label="Joe Bloggs" newMomentum></md-avatar>
         <div slot="panel">
           <md-input multiline></md-input>
         </div>
       </md-list-item-v2>
       <md-list-item-v2 label="Item 3">
-        <md-checkbox slot="leading-controls"></md-checkbox>
-        <md-avatar slot="leading-controls" size="24" title="Hey Wood" newMomentum></md-avatar>
+        <md-checkbox slot="leading-controls" label="Invite" aria-checked=${false}></md-checkbox>
+        <md-avatar slot="leading-controls" size="24" title="Hey Wood" label="Hey Wood" newMomentum></md-avatar>
         <md-chip slot="trailing-controls" value="Completed" color="positive" small></md-chip>
       </md-list-item-v2>
     </md-list-v2>
@@ -77,7 +77,7 @@ export const NestedExpandables: Story = {
   render: ({ gap, orientation }) => html`
     <md-list-v2 gap=${gap} orientation=${orientation} @list-item-click=${action("list-item-click")}>
       <md-list-item-v2 label="Item 1" expandable variant="inset-rectangle">
-          <md-checkbox slot="leading-controls"></md-checkbox>
+          <md-checkbox slot="leading-controls" aria-checked=${false} label="Invite"></md-checkbox>
 
           <md-list-v2 slot="panel">
             <md-list-item-v2 expandable label="Sub-item 1">
@@ -96,14 +96,14 @@ export const NestedExpandables: Story = {
       </md-list-item-v2>
 
       <md-list-item-v2 label="Item 2" expandable>
-        <md-checkbox slot="leading-controls"></md-checkbox>
+        <md-checkbox slot="leading-controls" aria-checked=${false} label="Invite"></md-checkbox>
         <div slot="panel">
           <md-input multiline></md-input>
         </div>
       </md-list-item-v2>
 
       <md-list-item-v2 label="Item 3">
-        <md-checkbox slot="leading-controls"></md-checkbox>
+        <md-checkbox slot="leading-controls" aria-checked=${false} label="Invite"></md-checkbox>
         <md-chip slot="trailing-controls" value="Completed" color="positive" small></md-chip>
       </md-list-item-v2>
     </md-list-v2>

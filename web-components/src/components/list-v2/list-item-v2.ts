@@ -2,7 +2,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { isActionKey, isNavigationKey } from "@/utils/keyboard";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import style from "./scss/module.scss";
 
@@ -56,6 +56,8 @@ export namespace ListItemV2 {
      */
     @property({ type: String, attribute: "expand-label" }) expandLabel = "Expand";
 
+    @query(".header") header!: HTMLElement;
+
     render() {
       return html`
         <slot name="content">
@@ -74,7 +76,6 @@ export namespace ListItemV2 {
             <div class="expandable-content">
               <slot
                 name="panel"
-                @click=${this.stopEventPropagation}
                 @keyup=${this.stopArrowKeyEventPropagation}
                 @keydown=${this.stopArrowKeyEventPropagation}
               ></slot>
@@ -156,8 +157,9 @@ export namespace ListItemV2 {
       }
     }
 
-    private _handleListItemClick() {
-      if (!this.disabled) {
+    private _handleListItemClick(event: MouseEvent) {
+      const path = event.composedPath();
+      if (path.includes(this.header) && !this.disabled) {
         this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
       }
     }

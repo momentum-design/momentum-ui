@@ -202,7 +202,7 @@ describe("<md-list-item-v2>", () => {
       listItem = await fixture(html`<md-list-item-v2 expandable></md-list-item-v2>`);
     });
 
-    describe("when clicked", () => {
+    describe("when header is clicked", () => {
       it("should emit list-item-click event", async () => {
         const clickHandler = jest.fn();
         listItem.addEventListener("list-item-click", clickHandler);
@@ -238,6 +238,23 @@ describe("<md-list-item-v2>", () => {
         await listItem.updateComplete;
 
         expect(expandHandler).toHaveBeenCalled();
+      });
+
+      describe("and panel content is clicked", () => {
+        it("should not emit list-item-click event", async () => {
+          listItem = await fixture(
+            html`<md-list-item-v2 expandable>
+              <div slot="panel">Panel Content</div>
+            </md-list-item-v2>`
+          );
+          const clickHandler = jest.fn();
+          listItem.addEventListener("list-item-click", clickHandler);
+
+          fireEvent.click(screen.getByShadowText("Panel Content"));
+          await listItem.updateComplete;
+
+          expect(clickHandler).not.toHaveBeenCalled();
+        });
       });
 
       describe("and interacting with the keyboard", () => {

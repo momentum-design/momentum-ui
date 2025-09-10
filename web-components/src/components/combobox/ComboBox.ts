@@ -1666,7 +1666,7 @@ export namespace ComboBox {
       }
     }
 
-    readonly renderItem = (option: OptionMember | string, index: number): TemplateResult => {
+    renderItem(option: OptionMember | string, index: number): TemplateResult {
       const count = this.allowSelectAll ? index + 2 : index + 1;
       const total = this.allowSelectAll ? this.options.length + 1 : this.options.length;
       const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : "";
@@ -1683,7 +1683,7 @@ export namespace ComboBox {
             ? this.getOptionId(option)
             : this.getOptionValue(option)}${ariaLabelForCount}"
           tabindex="-1"
-          @click=${this.handleListClick}
+          @click=${(event: MouseEvent) => this.handleListClick(event)}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
         >
           ${this.isMulti
@@ -1698,7 +1698,7 @@ export namespace ComboBox {
           </span>
         </div>
       `;
-    };
+    }
 
     inputTitle() {
       if (this.isMulti) {

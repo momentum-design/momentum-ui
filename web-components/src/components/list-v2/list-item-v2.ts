@@ -3,12 +3,16 @@ import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { isActionKey, isNavigationKey } from "@/utils/keyboard";
 import { html, LitElement, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import style from "./scss/module.scss";
 
 export namespace ListItemV2 {
   export type Variant = "full-width" | "inset-pill" | "inset-rectangle";
 
+  /**
+   * @fires list-item-click
+   * @fires list-item-expanded
+   */
   @customElement("md-list-item-v2")
   export class ELEMENT extends LitElement {
     /**
@@ -52,6 +56,8 @@ export namespace ListItemV2 {
      */
     @property({ type: String, attribute: "expand-label" }) expandLabel = "Expand";
 
+    @query(".header") header!: HTMLElement;
+
     render() {
       return html`
         <slot name="content">
@@ -70,7 +76,6 @@ export namespace ListItemV2 {
             <div class="expandable-content">
               <slot
                 name="panel"
-                @click=${this.stopEventPropagation}
                 @keyup=${this.stopArrowKeyEventPropagation}
                 @keydown=${this.stopArrowKeyEventPropagation}
               ></slot>
@@ -152,8 +157,10 @@ export namespace ListItemV2 {
       }
     }
 
-    private _handleListItemClick() {
-      if (!this.disabled) {
+    private _handleListItemClick(event: MouseEvent) {
+      const path = event.composedPath();
+      const originalTarget = path[0];
+      if ((path.includes(this.header) || originalTarget === this) && !this.disabled) {
         this.dispatchEvent(new CustomEvent("list-item-click", { bubbles: true }));
       }
     }

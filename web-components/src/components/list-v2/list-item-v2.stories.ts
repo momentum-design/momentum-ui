@@ -1,4 +1,6 @@
+import "@/components/button/Button";
 import "@/components/chip/Chip";
+import "@/components/menu-overlay/MenuOverlay";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryFn, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
@@ -94,7 +96,7 @@ export const Disabled: Story = {
   }
 };
 
-export const ExpandableWithTrailingChip: Story = {
+export const ExpandableWithMenuButton: Story = {
   render: ({ disabled, expandable, label, expanded, variant, ...rest }) => html`
     <md-list-v2>
       <md-list-item-v2
@@ -107,7 +109,15 @@ export const ExpandableWithTrailingChip: Story = {
         ?expanded=${expanded}
         variant=${ifDefined(variant)}
       >
-        <md-chip slot="trailing-controls" value="Complete" color="positive" decorative></md-chip>
+        <md-menu-overlay slot="trailing-controls">
+          <md-button circle variant="ghost" slot="menu-trigger">
+            <md-icon name="more-adr-bold" size="16" iconSet="momentumDesign"></md-icon>
+          </md-button>
+          <md-list-v2>
+            <md-list-item-v2 label="Option 1" variant="inset-rectangle"></md-list-item-v2>
+            <md-list-item-v2 label="Option 2" variant="inset-rectangle"></md-list-item-v2>
+          </md-list-v2>
+        </md-menu-overlay>
         ${PanelContentTemplate()}
       </md-list-item-v2>
     </md-list-v2>

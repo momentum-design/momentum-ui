@@ -87,7 +87,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
         options: {
           sourceMap: isDev,
           sassOptions: {
-            silenceDeprecations: ["global-builtin", "legacy-js-api", "import", "mixed-decls"],
+            silenceDeprecations: ["global-builtin", "legacy-js-api", "import"],
             outputStyle: "compressed"
           }
         }

@@ -108,7 +108,7 @@ export const nestedLevel = [0, 1, 2, 3];
 export const ariaInvalidType = ["grammar", "false", "spelling", "true"];
 
 export namespace Input {
-  export type Type = "text" | "number" | "password" | "email" | "tel" | "checkbox";
+  export type Type = "text" | "number" | "password" | "email" | "tel" | "checkbox" | "search";
   export type MessageType = "error" | "success" | "warning" | "priority";
   export type Message = {
     type: MessageType;
@@ -121,6 +121,7 @@ export namespace Input {
   export type InputType = typeof inputSize;
   export type shape = typeof inputShape;
   export type AriaInvalidType = (typeof ariaInvalidType)[number];
+  export type Autocomplete = "on" | "off";
 
   export class MessageController {
     determineMessageType(array: Input.Message[]) {
@@ -212,6 +213,7 @@ export namespace Input {
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Object }) control?: FormControl<unknown>;
     @property({ type: Boolean }) disableUserTextInput = false;
+    @property({ type: String }) autocomplete?: Autocomplete = undefined;
 
     @property({ type: Boolean }) showDropdown = false;
     @property({ type: Boolean }) dropdownExpanded = false;
@@ -487,6 +489,7 @@ export namespace Input {
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
               maxlength=${ifDefined(this.maxLength)}
+              autocomplete=${ifDefined(this.autocomplete)}
             ></textarea>
           `
         : html`
@@ -518,6 +521,7 @@ export namespace Input {
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}
               aria-haspopup=${ifDefined(this.showDropdown ? "true" : undefined)}
+              autocomplete=${ifDefined(this.autocomplete)}
             />
           `;
     }

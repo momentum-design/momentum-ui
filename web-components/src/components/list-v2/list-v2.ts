@@ -73,7 +73,7 @@ export namespace ListV2 {
       const currentIndex = this.getCurrentIndex(event.target);
       const newIndex = this.getNewIndexBasedOnKey(event.key, currentIndex, this.listItems.length);
       if (newIndex !== undefined) {
-        this.listItems[newIndex].focus();
+        this.listItems[newIndex]?.focus();
         this.resetTabIndexAndSetActiveTabIndex(newIndex);
       }
     }

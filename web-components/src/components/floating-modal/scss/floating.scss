@@ -40,7 +40,7 @@
   }
 
   .md-floating__header {
-    align-items: center;    
+    align-items: center;
     border-bottom: none;
     color: var(--floating-modal-main-text-color);
     display: flex;
@@ -58,6 +58,9 @@
       font-size: $font-size-large;
       line-height: $font-size-large;
       text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: auto;
     }
   }
 

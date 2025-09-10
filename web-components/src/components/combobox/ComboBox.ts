@@ -290,6 +290,14 @@ export namespace ComboBox {
           this.setInitialValue();
         }
       }
+      if (changedProperties.has("options")) {
+        if (this.expanded && this.checkForVirtualScroll()) {
+          // For virtual scroll, wait for DOM updates before resizing
+          this.updateOnNextFrame(() => {
+            this.resizeListbox();
+          });
+        }
+      }
       if (changedProperties.has("customOptions")) {
         if (this.isCustomContent) {
           this.setOptionCustomContent();
@@ -625,6 +633,7 @@ export namespace ComboBox {
         let labelHeight = 0;
         let virtualizerHeight = 0;
         const verticalPadding: number = this.getListBoxVerticalPadding();
+
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter((list) => list.offsetHeight !== 0)
@@ -642,6 +651,7 @@ export namespace ComboBox {
                   .slice(0, this.visibleOptions)
                   .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
+
         if (this.labels) {
           labelHeight = [...this.labels]
             .slice(0, this.visibleOptions)

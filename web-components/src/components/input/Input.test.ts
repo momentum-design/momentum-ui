@@ -105,7 +105,7 @@ describe("Input Component", () => {
 
     const event = new KeyboardEvent("keydown");
 
-    element.input.dispatchEvent(event);
+    element.input?.dispatchEvent(event);
     expect(spyKeyDownHandler).toHaveBeenCalled();
 
     const keydownPromise = oneEvent(element, "input-keydown");
@@ -121,7 +121,7 @@ describe("Input Component", () => {
 
     const event = new FocusEvent("focus");
 
-    element.input.dispatchEvent(event);
+    element.input?.dispatchEvent(event);
     expect(spyFocusHandler).toHaveBeenCalled();
 
     const inputFocusPromise = oneEvent(element, "input-focus");
@@ -138,7 +138,7 @@ describe("Input Component", () => {
 
     const event = new MouseEvent("mousedown");
 
-    element.input.dispatchEvent(event);
+    element.input?.dispatchEvent(event);
     expect(spyMouseDownHandler).toHaveBeenCalled();
 
     const mouseDownPromise = oneEvent(element, "input-mousedown");
@@ -169,7 +169,7 @@ describe("Input Component", () => {
 
     const event = new InputEvent("input");
 
-    element.input.dispatchEvent(event);
+    element.input?.dispatchEvent(event);
     expect(mockInputHandler).toHaveBeenCalled();
 
     const inputChangePromise = oneEvent(element, "input-change");
@@ -186,7 +186,7 @@ describe("Input Component", () => {
 
     const event = new FocusEvent("blur");
 
-    element.input.dispatchEvent(event);
+    element.input?.dispatchEvent(event);
     expect(spyBlurHandler).toHaveBeenCalled();
 
     const blurPromise = oneEvent(element, "input-blur");
@@ -196,7 +196,7 @@ describe("Input Component", () => {
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
 
-    element.input.focus();
+    element.focus();
     const eventListener = (event: MouseEvent) => {
       element.handleOutsideClick(event);
     };

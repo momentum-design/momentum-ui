@@ -219,7 +219,7 @@ export namespace Input {
     @property({ type: Boolean }) dropdownExpanded = false;
     @property({ type: String }) dropdownAriaLabel = "Show options";
 
-    @query(".md-input") input!: HTMLInputElement;
+    @query(".md-input") input?: HTMLInputElement;
 
     @internalProperty() private isEditing = false;
 
@@ -242,11 +242,11 @@ export namespace Input {
     }
 
     public select() {
-      this.input.select();
+      this.input?.select();
     }
 
     public focus() {
-      this.input.focus();
+      this.input?.focus();
     }
 
     handleOutsideClick(event: MouseEvent) {
@@ -255,7 +255,7 @@ export namespace Input {
       if (path.length) {
         insideInputClick = !!path.find((element) => element === this);
         if (!insideInputClick) {
-          this.input.blur();
+          this.input?.blur();
           this.isEditing = false;
         }
       }
@@ -353,7 +353,7 @@ export namespace Input {
         event.stopPropagation();
       }
 
-      this.input.focus();
+      this.input?.focus();
       this.dispatchEvent(
         new CustomEvent("input-clear", {
           bubbles: true,
@@ -368,7 +368,7 @@ export namespace Input {
     }
 
     handleLabelClick() {
-      this.input.focus();
+      this.input?.focus();
     }
 
     handleRighSlotChange() {

@@ -81,7 +81,7 @@ export namespace AdvanceList {
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
           this.selectedItemsIds = this.items
-            .filter((item) => !this.disabledItems.includes(item.id))
+            .filter((item) => item && item.id && !this.disabledItems.includes(item.id))
             .map((item) => item.id);
         }
       }
@@ -312,25 +312,42 @@ export namespace AdvanceList {
     }
 
     readonly renderItem = (item: any, index: number): TemplateResult => {
-      if (item.id === "status-indicator") {
-        return html`
-          <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
-        `;
+      // Defensive programming: handle null/undefined items
+      if (!item) {
+        //`AdvanceList.renderItem: item is null/undefined at index ${index}`
+        return html`<div class="default-wrapper-error">Invalid item</div>`;
       }
-      return html`
-        <div
-          class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
-          part="advance-list-item-wrapper"
-          aria-setsize="${this.totalRecords}"
-          aria-posinset="${index + 1}"
-          role="${this.ariaRoleListItem}"
-          aria-label=${item.name}
-          id="${prefixId}${item.id}"
-          index="${index}"
-        >
-          ${item.template(item, index)}
-        </div>
-      `;
+
+      if (!item.id) {
+        console.warn(`AdvanceList.renderItem: item missing id at index ${index}`, item);
+        return html`<div class="default-wrapper-error">Item missing ID</div>`;
+      }
+
+      try {
+        if (item.id === "status-indicator") {
+          return html`
+            <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
+          `;
+        }
+
+        return html`
+          <div
+            class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
+            part="advance-list-item-wrapper"
+            aria-setsize="${this.totalRecords}"
+            aria-posinset="${index + 1}"
+            role="${this.ariaRoleListItem as any}"
+            aria-label=${item.name || "Unknown item"}
+            id="${prefixId}${item.id}"
+            data-index="${index}"
+          >
+            ${item.template(item, index)}
+          </div>
+        `;
+      } catch (error) {
+        console.error(`AdvanceList.renderItem: Error rendering item ${item.id} at index ${index}:`, error, item);
+        return html`<div class="default-wrapper-error">Error rendering item</div>`;
+      }
     };
 
     getActiveDescendant() {

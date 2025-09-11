@@ -44,6 +44,9 @@ export namespace ParentComponentWithMdOverlay {
     @state()
     private overlayTriggerPlaceholder = "Search field with tabs";
 
+    @state()
+    private searchFilter = "";
+
     private counter = 0;
     constructor() {
       super();
@@ -111,23 +114,41 @@ export namespace ParentComponentWithMdOverlay {
           id,
           index: i,
           ariaLabel: itemName,
-          template: (data: any, index: number) =>
-            html`<div
+          template: (data: any, index: number) => html`
+            <div
               style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row nowrap;justify-content:flex-start;align-items:center;line-height:26px;"
               ?disabled=${disabled}
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox ?disabled=${disabled === "true"}>${data.name}</md-checkbox>
-            </div>`
+              <md-checkbox ?disabled=${disabled === "true"} ?checked=${this.value.includes(data.id)}>
+                ${data.name}
+              </md-checkbox>
+            </div>
+          `
         };
       });
     }
 
+    getFilteredItems() {
+      let filteredItems = this.items;
+
+      // Apply search filter if exists
+      if (this.searchFilter.trim()) {
+        filteredItems = this.items.filter((item: any) =>
+          item.name.toLowerCase().includes(this.searchFilter.toLowerCase())
+        );
+      }
+
+      return filteredItems;
+    }
+
     getOrderedItems() {
+      const filteredItems = this.getFilteredItems();
+
       if (this.groupOnMultiSelect) {
-        const selectedItems = this.items.filter((item: any) => this.value.includes(item.id));
-        const unselectedItems = this.items.filter((item: any) => !this.value.includes(item.id));
+        const selectedItems = filteredItems.filter((item: any) => this.value.includes(item.id));
+        const unselectedItems = filteredItems.filter((item: any) => !this.value.includes(item.id));
 
         selectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
         unselectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
@@ -139,7 +160,7 @@ export namespace ParentComponentWithMdOverlay {
         }
         return [...selectedItems, ...unselectedItems];
       } else {
-        return [...this.items].sort((a, b) => this.naturalSort(a.name, b.name));
+        return [...filteredItems].sort((a, b) => this.naturalSort(a.name, b.name));
       }
     }
 
@@ -182,6 +203,12 @@ export namespace ParentComponentWithMdOverlay {
     resetFilter() {
       this.selectAllItems = false;
       this.value = [];
+      this.searchFilter = "";
+    }
+
+    handleSearchInput(event: Event) {
+      const input = event.target as HTMLInputElement;
+      this.searchFilter = input.value;
     }
 
     getSelectAllLabel() {
@@ -220,7 +247,14 @@ export namespace ParentComponentWithMdOverlay {
           </md-input>
 
           <div style="margin:0.5rem; width: 100%">
-            <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
+            <md-input
+              placeholder="Search..."
+              shape="pill"
+              clear
+              autoFocus
+              .value=${this.searchFilter}
+              @input-change=${this.handleSearchInput}
+            ></md-input>
             <div style="margin-top:0.5rem; width: 100%">
               <div style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);">
                 <md-checkbox
@@ -233,7 +267,7 @@ export namespace ParentComponentWithMdOverlay {
               </div>
               ${this.isMenuOverlayOpen
                 ? html` <md-advance-list
-                    .items=${this.items}
+                    .items=${this.getOrderedItems()}
                     .isLoading=${this.isLoading}
                     .isError=${this.isError}
                     .value=${this.value}

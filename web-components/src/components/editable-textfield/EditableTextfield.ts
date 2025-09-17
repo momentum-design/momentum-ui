@@ -251,9 +251,8 @@ export namespace EditableTextfield {
           aria-invalid=${ifDefined(!this.disabled ? (this.alert ? "true" : "false") : undefined)}
           aria-label=${ifDefined(!this.disabled ? this.ariaLabel : undefined)}
           aria-describedby=${ifDefined(!this.disabled ? this.ariaDescribedBy : undefined)}
-        >
-          <span>${this.content}</span>
-        </div>
+          .innerText=${this.content}
+        ></div>
         ${this.messagesTemplate()}
       `;
     }

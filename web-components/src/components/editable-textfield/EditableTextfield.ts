@@ -172,7 +172,11 @@ export namespace EditableTextfield {
         this.editableField?.scrollTo(0, 0);
       }
       // Add null check before accessing innerText
-      this.content = this.editableField?.innerText?.trim() || "";
+      const rawContent = this.editableField?.innerText?.trim() || "";
+      const purifiedContent = dompurify.sanitize(rawContent);
+      if (purifiedContent !== this.content) {
+        this.content = purifiedContent;
+      }
       this.alert = false;
       this.handleValidation();
     };
@@ -248,7 +252,7 @@ export namespace EditableTextfield {
           aria-label=${ifDefined(!this.disabled ? this.ariaLabel : undefined)}
           aria-describedby=${ifDefined(!this.disabled ? this.ariaDescribedBy : undefined)}
         >
-          ${dompurify.sanitize(this.content)}
+          <span>${this.content}</span>
         </div>
         ${this.messagesTemplate()}
       `;

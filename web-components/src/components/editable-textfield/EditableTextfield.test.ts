@@ -109,7 +109,7 @@ describe("Editable Textfield component", () => {
   test("should render default text", async () => {
     const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     const editableDiv = element.shadowRoot?.querySelector<HTMLElement>(".md-editable-textfield");
-    expect(editableDiv?.innerHTML?.trim()).toEqual(element.content);
+    expect(editableDiv?.innerText?.trim()).toEqual(element.content);
   });
   test("should reset the alert when renewing validation", async () => {
     const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);

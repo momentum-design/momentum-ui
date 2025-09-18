@@ -15,6 +15,7 @@ export namespace ChatMessage {
     @property({ type: String }) label = "Avatar";
     @property({ type: String }) status = "";
     @property({ type: Boolean }) clickableTimestamp = false;
+    @property({ type: Boolean }) isSelected = false;
 
     @property({ type: String, reflect: true, attribute: "self-label" })
     selfLabel?: string;
@@ -67,16 +68,18 @@ export namespace ChatMessage {
     render() {
       return html`
         <div class="md-chat-message">
-          <md-avatar
-            type=${ifDefined(this.computedAvatarType)}
-            title=${this.self ? "self" : this.title}
-            label="${this.label}"
-            src=${ifDefined(this.self ? undefined : this.src)}
-            color=${ifDefined(this.avatarColor)}
-            size=${ifDefined(this.avatarSize)}
-          ></md-avatar>
+          <div class="md-chat-message_avatar">
+            <md-avatar
+              type=${ifDefined(this.computedAvatarType)}
+              title=${this.self ? "self" : this.title}
+              label="${this.label}"
+              src=${ifDefined(this.self ? undefined : this.src)}
+              color=${ifDefined(this.avatarColor)}
+              size=${ifDefined(this.avatarSize)}
+            ></md-avatar>
+          </div>
 
-          <div class="md-chat-message_content">
+          <div class="md-chat-message_content ${this.isSelected ? 'selected' : ''}">
             <div class="md-chat-message_heading">
               <div class="md-chat-message_title">
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>

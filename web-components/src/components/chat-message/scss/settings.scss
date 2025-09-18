@@ -1,7 +1,10 @@
-$chat-message-indent: rem-calc(12) !default;
+
+$chat-message-indent: rem-calc(8) !default;
 $chat-message-font-size: rem-calc(14) !default;
 $chat-message-line-height: rem-calc(22) !default;
 $chat-message_heading-font-size: rem-calc(12) !default;
 $chat-message_heading-line-height: rem-calc(16) !default;
 $chat-message-color: var(--chat-message-color) !default;
 $chat-message_heading-color: var(--chat-message-color-heading) !default;
+$chat-message_background-hover: var(--chat-message-hover) !default;
+$chat-message_background-selected: var(--chat-message-active) !default;

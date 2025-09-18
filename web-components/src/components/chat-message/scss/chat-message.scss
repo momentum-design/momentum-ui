@@ -11,11 +11,20 @@
     line-height: $chat-message-line-height;
     margin: $chat-message-indent 0;
     gap: 0.25rem;
+    padding: 8px;
+
+    &_avatar {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-start; 
+      margin-top: $chat-message-indent;
+    }
 
     &_content {
       display: flex;
       flex-direction: column;
-      padding-left: $chat-message-indent;
+      padding: $chat-message-indent;
+      width: 100%;
     }
 
     &_heading {
@@ -45,6 +54,18 @@
     }
     &_custom_content {
       margin-left: calc(#{$chat-message-indent} * 1);
+    }
+      
+    &:hover {
+      .md-chat-message_content {
+        background-color: $chat-message_background-hover;
+        border-radius: 8px;
+      }
+    }
+
+    & .selected {
+      background-color: $chat-message_background-selected;
+      border-radius: 8px;
     }
   }
 }

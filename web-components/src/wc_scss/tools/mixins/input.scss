@@ -135,6 +135,21 @@
       color: var(--input-error-message-text-color);
     }
   }
+
+  .md-input__all-sub-labels-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .md-input__info-and-error-labels-container {
+    flex: 1 1 auto;
+  }
+
+  .md-input__character-count-label-container {
+    margin-top: 18px;
+    flex: none;
+  }
 }
 
 @mixin input-icon($color: null) {

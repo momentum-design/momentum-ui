@@ -128,6 +128,13 @@
   .md-input__secondary-label {
     color: $color-help;
   }
+
+  .md-input__character-count-label {
+    color: var(--label-secondary);
+    &.error {
+      color: var(--input-error-message-text-color);
+    }
+  }
 }
 
 @mixin input-icon($color: null) {

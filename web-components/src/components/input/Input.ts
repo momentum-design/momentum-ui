@@ -613,7 +613,7 @@ export namespace Input {
         : nothing;
     }
 
-    private characterCountTemplate() {
+    private characterCountLabelTemplate() {
       return this.maxLength && this.displayCharacterCount && !this.disabled && !this.readOnly
         ? html`<div class="md-input__character-count-label-container">
             <span class="md-input__character-count-label ${classMap({ error: this.value.length >= this.maxLength })}"
@@ -696,7 +696,7 @@ export namespace Input {
             <div class="md-input__info-and-error-labels-container">
               ${this.messagesTemplate()} ${this.secondaryLabelTemplate()} ${this.helpTextTemplate()}
             </div>
-            ${this.characterCountTemplate()}
+            ${this.characterCountLabelTemplate()}
           </div>
         </div>
       `;

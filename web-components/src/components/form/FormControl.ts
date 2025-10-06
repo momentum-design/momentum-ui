@@ -6,6 +6,7 @@ export class FormControl<ValueType> extends ObservableControl<ValueType> impleme
   private validationErrors: ValidationError[] = [];
   private touched = false;
   private readonly validators: ValidatorFn<ValueType>[];
+  private groupErrors: ValidationError[] = [];
 
   constructor(initialValue: ValueType, validators: ValidatorFn<ValueType>[] = []) {
     super();
@@ -24,11 +25,26 @@ export class FormControl<ValueType> extends ObservableControl<ValueType> impleme
   }
 
   get valid(): boolean {
-    return this.validationErrors.length === 0;
+    return this.validationErrors.length === 0 && this.groupErrors.length === 0;
   }
 
   get errors(): ValidationError[] {
-    return this.touched ? this.validationErrors : [];
+    const internal = this.touched ? this.validationErrors : [];
+    return [...internal, ...this.groupErrors];
+  }
+
+  addGroupError(error: ValidationError): void {
+    const uniqueErrors = this.groupErrors.filter((e) => e.type !== error.type);
+    this.groupErrors = [...uniqueErrors, error];
+    this.emitChange();
+  }
+
+  clearGroupErrorsByType(type: string): void {
+    const next = this.groupErrors.filter((e) => e.type !== type);
+    if (next.length !== this.groupErrors.length) {
+      this.groupErrors = next;
+      this.emitChange();
+    }
   }
 
   setValue(value: ValueType): void {

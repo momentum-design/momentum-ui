@@ -12,6 +12,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
+import { nothing } from "lit-html";
 
 export namespace Radio {
   @customElementWithCheck("md-radio")
@@ -19,6 +20,8 @@ export namespace Radio {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String }) label = "";
     @property({ type: String }) value = "";
+    @property({ type: String }) message = "";
+    @property({ type: Boolean }) hideMessage = false;
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
@@ -58,6 +61,18 @@ export namespace Radio {
       return [reset, styles];
     }
 
+    messagesTemplate() {
+      return this.message
+        ? html`
+            <div class="md-radio__messages" style="display: ${this.hideMessage ? "none" : "block"}">
+              <md-help-text class="help-text-radio" newMomentum role="alert" aria-live="assertive">
+                ${this.message}
+              </md-help-text>
+            </div>
+          `
+        : nothing;
+    }
+
     render() {
       return html`
         <div class="md-radio-wrapper" part="radio-wrapper">
@@ -80,6 +95,7 @@ export namespace Radio {
             <slot></slot>
           </label>
         </div>
+        ${this.messagesTemplate()}
       `;
     }
   }

@@ -49,6 +49,11 @@
       @include text-dots;
     }
   }
+
+  .help-text-radio {
+    padding-top: 0;
+    padding-left: 1.5rem;
+  }
 }
 
 :host(:focus) {

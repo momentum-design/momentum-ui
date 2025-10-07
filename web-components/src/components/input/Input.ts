@@ -218,7 +218,7 @@ export namespace Input {
     @property({ type: Boolean }) showDropdown = false;
     @property({ type: Boolean }) dropdownExpanded = false;
     @property({ type: String }) dropdownAriaLabel = "Show options";
-    @property({ type: Boolean }) displayCharacterCount = false;
+    @property({ type: Number }) maxSuggestedLength: number | undefined = undefined;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -614,10 +614,13 @@ export namespace Input {
     }
 
     private characterCountLabelTemplate() {
-      return this.maxLength && this.displayCharacterCount && !this.disabled && !this.readOnly
+      return this.maxSuggestedLength && !this.disabled && !this.readOnly
         ? html`<div class="md-input__character-count-label-container">
-            <span class="md-input__character-count-label ${classMap({ error: this.value.length >= this.maxLength })}"
-              >${this.value.length}/${this.maxLength}</span
+            <span
+              class="md-input__character-count-label ${classMap({
+                error: this.value.length > this.maxSuggestedLength
+              })}"
+              >${this.value.length}/${this.maxSuggestedLength}</span
             >
           </div> `
         : nothing;

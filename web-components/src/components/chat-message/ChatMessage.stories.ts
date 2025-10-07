@@ -25,13 +25,14 @@ export default {
     selfLabel: { control: "text" },
     avatarType: { control: { type: "select" }, options: AvatarType },
     avatarColor: { control: { type: "select" }, options: avatarColorOptions },
-    avatarSize: { control: { type: "select" }, options: AvatarSize }
+    avatarSize: { control: { type: "select" }, options: AvatarSize },
+    isSelected: { control: "boolean" }
   },
   parameters: { a11y: { element: "md-chat-message" } }
 };
 
 export const ChatMessage: StoryObj = {
-  args: { title: "John Doe", message: "I have issue with my silencer", selfMode: false, status: "Sent" },
+  args: { title: "John Doe", message: "I have issue with my silencer", selfMode: false, status: "Sent", avatarSize: "32", isSelected: false },
 
   render: (args: Args) => {
     return html`
@@ -44,6 +45,7 @@ export const ChatMessage: StoryObj = {
         avatar-color=${ifDefined(args.avatarColor)}
         avatar-size=${ifDefined(args.avatarSize)}
         self-label=${ifDefined(args.selfLabel)}
+        ?isSelected=${args.isSelected}
       >
         <span slot="custom-content">
           <md-tooltip message="Content restricted as it violates the company data security policy" placement="top">

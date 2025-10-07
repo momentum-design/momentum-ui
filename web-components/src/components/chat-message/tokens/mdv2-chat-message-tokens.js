@@ -8,6 +8,12 @@ const chatMessage = {
   },
   "color-heading": {
     common: "$mds-color-theme-text-secondary-normal"
+  },
+  hover: {
+    common: "$mds-color-theme-background-primary-hover"
+  },
+  active: {
+    common: "$mds-color-theme-background-primary-active"
   }
 };
 

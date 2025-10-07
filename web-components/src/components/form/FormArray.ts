@@ -1,11 +1,19 @@
 import { AbstractControl } from "./Form.types";
 import { ObservableControl } from "./ObservableControl";
-
+export type ArrayValidatorFn<ItemType> = (arr: FormArray<ItemType>) => void;
 export class FormArray<ItemType> extends ObservableControl<ItemType[]> implements AbstractControl<ItemType[]> {
-  constructor(private readonly controls: AbstractControl<ItemType>[]) {
+  private inArrayValidation = false;
+  constructor(
+    private readonly controls: AbstractControl<ItemType>[],
+    private readonly arrayValidators: ReadonlyArray<ArrayValidatorFn<ItemType>> = []
+  ) {
     super();
+    this.arrayValidators = arrayValidators;
     for (const child of this.controls) {
-      child.onChange?.(() => this.emitChange());
+      child.onChange?.(() => {
+        this.childChanged();
+      });
+      this.childChanged();
     }
   }
 
@@ -13,15 +21,38 @@ export class FormArray<ItemType> extends ObservableControl<ItemType[]> implement
     return this.controls[index];
   }
 
+  private runArrayValidators(): void {
+    if (!this.arrayValidators.length) {
+      return;
+    }
+    this.inArrayValidation = true;
+    try {
+      for (const validatorFn of this.arrayValidators) {
+        validatorFn(this);
+      }
+    } finally {
+      this.inArrayValidation = false;
+    }
+  }
+
   push(control: AbstractControl<ItemType>): void {
     this.controls.push(control);
-    control.onChange?.(() => this.emitChange());
-    this.emitChange();
+    control.onChange?.(() => {
+      this.childChanged();
+    });
+    this.childChanged();
   }
+
+  private childChanged = (): void => {
+    if (!this.inArrayValidation) {
+      this.runArrayValidators();
+    }
+    this.emitChange();
+  };
 
   removeAt(index: number): void {
     this.controls.splice(index, 1);
-    this.emitChange();
+    this.childChanged();
   }
 
   get value(): ItemType[] {
@@ -42,7 +73,7 @@ export class FormArray<ItemType> extends ObservableControl<ItemType[]> implement
 
   validate(): void {
     this.controls.forEach((control) => control.validate());
-    this.emitChange();
+    this.childChanged();
   }
 
   markAllAsTouched(): void {

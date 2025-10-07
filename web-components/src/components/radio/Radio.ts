@@ -11,6 +11,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
@@ -45,16 +46,18 @@ export namespace Radio {
     checked = false;
 
     private get inputAriaLabel(): string | undefined {
+      const helpText = this.message?.length ? ` - ${this.message}` : "";
+
       if (this.ariaLabel?.length) {
         return this.ariaLabel;
       }
 
       if (this.label?.length) {
-        return this.label;
+        return this.label + helpText;
       }
 
       const textContent = this.textContent?.trim();
-      return textContent?.length ? textContent : undefined;
+      return textContent?.length ? textContent + helpText : helpText;
     }
 
     static get styles() {
@@ -62,9 +65,12 @@ export namespace Radio {
     }
 
     messagesTemplate() {
-      return this.message
+      const classes = {
+        "md-radio-help-text--hide": this.hideMessage
+      };
+      return this.message?.length
         ? html`
-            <div class="md-radio__messages" style="display: ${this.hideMessage ? "none" : "block"}">
+            <div class="${classMap(classes)}">
               <md-help-text class="help-text-radio" newMomentum role="alert" aria-live="assertive">
                 ${this.message}
               </md-help-text>

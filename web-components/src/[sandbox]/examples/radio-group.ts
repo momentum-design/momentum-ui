@@ -90,7 +90,7 @@ export class RadioGroupTemplateSandbox extends LitElement {
             <span>All</span>
           </div>
         </md-radio>
-        <md-radio slot="radio" value="Ai only">
+        <md-radio slot="radio" hideMessage value="testing" value="Ai only">
           <div style="display: flex; align-items: center; gap: 0.25rem;">
             <span>AI Assistant only</span>
           </div>

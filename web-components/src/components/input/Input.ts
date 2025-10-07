@@ -243,11 +243,11 @@ export namespace Input {
     }
 
     public select() {
-      this.input.select();
+      this.input?.select();
     }
 
     public focus() {
-      this.input.focus();
+      this.input?.focus();
     }
 
     handleOutsideClick(event: MouseEvent) {

@@ -64,13 +64,16 @@ export namespace Radio {
       return [reset, styles];
     }
 
-    messagesTemplate() {
-      const classes = {
+    private get helpTextClassMap() {
+      return {
         "md-radio-help-text--hide": this.hideMessage
       };
+    }
+
+    messagesTemplate() {
       return this.message?.length
         ? html`
-            <div class="${classMap(classes)}">
+            <div class="${classMap(this.helpTextClassMap)}">
               <md-help-text class="help-text-radio" newMomentum role="alert" aria-live="assertive">
                 ${this.message}
               </md-help-text>

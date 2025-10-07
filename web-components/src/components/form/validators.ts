@@ -18,5 +18,12 @@ export const Validators = {
     return (value: string): ValidationError | null => {
       return value.length > max ? { type: "maxLength", count: max } : null;
     };
+  },
+
+  nonNegative: (): ValidatorFn<number> => {
+    return (value: number): ValidationError | null => {
+      if (value === null || value === undefined) return null;
+      return value < 0 ? { type: "nonNegative" } : null;
+    };
   }
 };

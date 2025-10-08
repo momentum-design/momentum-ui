@@ -406,7 +406,7 @@ export namespace ComboBox {
     }
 
     private getOptionValue(option: string | OptionMember) {
-      return this.isOptionObject(option) ? (option as OptionMember)[this.optionValue] : (option as string);
+      return this.isOptionObject(option) ? String((option as OptionMember)[this.optionValue]) : (option as string);
     }
 
     private getOptionGroupName(option: any) {
@@ -414,7 +414,7 @@ export namespace ComboBox {
     }
 
     private getOptionId(option: string | OptionMember) {
-      return this.isOptionObject(option) ? (option as OptionMember)[this.optionId] : (option as string);
+      return this.isOptionObject(option) ? String((option as OptionMember)[this.optionId]) : (option as string);
     }
 
     private getFocusedItem(focusedIndex: number) {

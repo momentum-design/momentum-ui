@@ -48,6 +48,15 @@
       vertical-align: middle;
       @include text-dots;
     }
+
+    &-help-text--hide {
+      display: none;
+    }
+  }
+
+  .help-text-radio {
+    padding-top: 0;
+    padding-left: 1.5rem;
   }
 }
 

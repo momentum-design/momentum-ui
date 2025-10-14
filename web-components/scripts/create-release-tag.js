@@ -28,7 +28,7 @@ function createReleaseTag() {
 
     const tagName = `${packageName}@${version}`;
 
-    if (!/^[@a-zA-Z0-9._\/-]+$/.test(tagName)) {
+    if (!/^[@a-zA-Z0-9._/-]+$/.test(tagName)) {
       console.error(`Error: Invalid tag name "${tagName}"`);
       process.exit(1);
     }

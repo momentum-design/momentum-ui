@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       # github workflows only run from root directory
       # the wc-dist build command is run from root but accesses the web-components directory 

@@ -17,6 +17,8 @@
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
     "npm:publish:local": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' ",
     "npm:publish:external": "yarn npm:publish:local && cd ./publish && npm publish",
+    "npm:publish:tag": "node scripts/create-release-tag.js",
+    "npm:publish:bot": "yarn npm:publish:external && yarn npm:publish:tag",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --runInBand",

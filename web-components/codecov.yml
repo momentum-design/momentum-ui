@@ -1,3 +1,7 @@
+comment:
+  branches:
+    - main
+
 coverage:
   range: 80..100
   round: down
@@ -5,6 +9,7 @@ coverage:
   status:
     project:
       default:
-        # basic
         target: 80%
         threshold: 5%
+        branches:
+          - main

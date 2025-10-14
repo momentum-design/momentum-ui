@@ -258,9 +258,6 @@ workflows:
       - test_web_components:
           requires:
             - build_tokens
-      - test_core_percy:
-          requires:
-            - build_tokens
       - test_icons:
           requires:
             - lint

@@ -16,12 +16,22 @@ const path = require("path");
  */
 function createReleaseTag() {
   try {
-    // Read version and name from package.json
     const packageJsonPath = path.join(__dirname, "../package.json");
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
     const version = packageJson.version;
     const packageName = packageJson.name;
+
+    if (!packageName || !version) {
+      console.error("Error: package.json must contain 'name' and 'version' fields");
+      process.exit(1);
+    }
+
     const tagName = `${packageName}@${version}`;
+
+    if (!/^[@a-zA-Z0-9._\/-]+$/.test(tagName)) {
+      console.error(`Error: Invalid tag name "${tagName}"`);
+      process.exit(1);
+    }
 
     console.log(`\nPackage: ${packageName}`);
     console.log(`Version: ${version}`);

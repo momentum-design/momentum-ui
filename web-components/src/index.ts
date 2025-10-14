@@ -52,7 +52,15 @@ export {
 } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
-export { AbstractControl, FormArray, FormControl, FormGroup, ValidationError, Validators } from "./components/form";
+export {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  ValidationError,
+  Validators,
+  ArrayValidators
+} from "./components/form";
 export { Form } from "./components/form/Form";
 export { Grabber } from "./components/grabber/Grabber";
 export { HelpText } from "./components/help-text/HelpText";

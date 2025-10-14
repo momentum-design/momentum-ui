@@ -103,6 +103,41 @@ export const inputTemplate = html`
         ></md-input>
       </div>
     </div>
+    <div class="row">
+      <div class="column">
+        <md-input
+          label="Normal with character count"
+          containerSize="small-12"
+          shape="pill"
+          maxSuggestedLength="20"
+          clear
+          autofocus
+        ></md-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <md-input
+          label="Multi Line with character count"
+          value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by ..."
+          multiline
+          containerSize="small-12"
+          shape="pill"
+          maxSuggestedLength="200"
+        ></md-input>
+      </div>
+      <div class="column">
+        <md-input
+          label="Multi Line ReadOnly with character count (we don't show character count if readonly)"
+          value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by ..."
+          multiline
+          containerSize="small-12"
+          shape="pill"
+          readOnly
+          maxSuggestedLength="200"
+        ></md-input>
+      </div>
+    </div>
   </section>
 
   <h3>Rectangle Shape</h3>
@@ -235,6 +270,7 @@ export const inputTemplate = html`
           .messageArr=${[{ ...messageArr, ...{ type: "error" } } as Input.Message]}
           value="Error Text"
           placeholder="Enter Text"
+          maxSuggestedLength="30"
         ></md-input>
       </div>
     </div>
@@ -243,6 +279,7 @@ export const inputTemplate = html`
         <md-input
           label="Error"
           containerSize="small-12"
+          maxSuggestedLength="30"
           .messageArr=${[
             {
               ...messageArr,
@@ -371,6 +408,7 @@ export const inputTemplate = html`
     placeholder="Enter Text"
     secondaryLabel="Secondary Label"
     helpText="Help Text"
+    maxSuggestedLength="30"
   >
   </md-input>
   <md-input

@@ -218,6 +218,7 @@ export namespace Input {
     @property({ type: Boolean }) showDropdown = false;
     @property({ type: Boolean }) dropdownExpanded = false;
     @property({ type: String }) dropdownAriaLabel = "Show options";
+    @property({ type: Number }) maxSuggestedLength: number | undefined = undefined;
 
     @query(".md-input") input?: HTMLInputElement;
 
@@ -612,6 +613,19 @@ export namespace Input {
         : nothing;
     }
 
+    private characterCountLabelTemplate() {
+      return this.maxSuggestedLength && !this.disabled && !this.readOnly
+        ? html`<div class="md-input__character-count-label-container">
+            <span
+              class="md-input__character-count-label ${classMap({
+                error: this.value.length > this.maxSuggestedLength
+              })}"
+              >${this.value.length}/${this.maxSuggestedLength}</span
+            >
+          </div> `
+        : nothing;
+    }
+
     secondaryLabelTemplate() {
       return this.secondaryLabel
         ? html`
@@ -681,7 +695,12 @@ export namespace Input {
           <div class="md-input__wrapper ${classMap(this.inputWrapperClassMap)}">
             ${this.inputLeftTemplate()} ${this.inputTemplate()} ${this.inputRightTemplate()}
           </div>
-          ${this.messagesTemplate()} ${this.secondaryLabelTemplate()} ${this.helpTextTemplate()}
+          <div class="md-input__all-sub-labels-container">
+            <div class="md-input__info-and-error-labels-container">
+              ${this.messagesTemplate()} ${this.secondaryLabelTemplate()} ${this.helpTextTemplate()}
+            </div>
+            ${this.characterCountLabelTemplate()}
+          </div>
         </div>
       `;
     }

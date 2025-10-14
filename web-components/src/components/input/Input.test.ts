@@ -422,3 +422,70 @@ describe("Input Component", () => {
     expect(document.activeElement).not.toBe(clearButton);
   });
 });
+
+test("should display character count when maxSuggestedLength is set", async () => {
+  const maxLength = 10;
+  const value = "abc";
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input
+      label="With Character Count"
+      containerSize="small-12"
+      .maxSuggestedLength=${maxLength}
+      .value=${value}
+    ></md-input>`
+  );
+
+  const characterCountLabel = element.shadowRoot!.querySelector(".md-input__character-count-label");
+  expect(characterCountLabel).not.toBeNull();
+  expect(characterCountLabel!.textContent).toBe(`${value.length}/${maxLength}`);
+});
+
+test("should not display character count if maxSuggestedLength is not set", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="No Max Length" containerSize="small-12" value="abc"></md-input>`
+  );
+
+  const characterCountLabel = element.shadowRoot!.querySelector(".md-input__character-count-label");
+  expect(characterCountLabel).toBeNull();
+});
+
+test("should not display character count if input is disabled", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="Disabled" containerSize="small-12" .maxSuggestedLength=${10} value="abc" disabled></md-input>`
+  );
+
+  const characterCountLabel = element.shadowRoot!.querySelector(".md-input__character-count-label");
+  expect(characterCountLabel).toBeNull();
+});
+
+test("should not display character count if input is readOnly", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input
+      label="Read Only"
+      containerSize="small-12"
+      .maxSuggestedLength=${10}
+      value="abc"
+      .readOnly=${true}
+    ></md-input>`
+  );
+
+  const characterCountLabel = element.shadowRoot!.querySelector(".md-input__character-count-label");
+  expect(characterCountLabel).toBeNull();
+});
+
+test("should display error style when value length equals maxLength", async () => {
+  const maxLength = 3;
+  const value = "abcd";
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input
+      label="Error Style"
+      containerSize="small-12"
+      .maxSuggestedLength=${maxLength}
+      .value=${value}
+    ></md-input>`
+  );
+
+  const errorLabel = element.shadowRoot!.querySelector(".md-input__character-count-label.error");
+  expect(errorLabel).not.toBeNull();
+  expect(errorLabel!.textContent).toBe(`${value.length}/${maxLength}`);
+});

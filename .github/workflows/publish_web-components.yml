@@ -1,0 +1,35 @@
+name: Publish Web Components
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:          
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ./web-components
+
+      - name: Configure Git User
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "github-actions@github.com"
+
+      - name: Publish to npm
+        run: yarn npm:publish:bot
+        working-directory: ./web-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

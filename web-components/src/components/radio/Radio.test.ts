@@ -73,4 +73,19 @@ describe("Radio", () => {
     expect(radioInput).toBeTruthy();
     expect(radioInput.getAttribute("aria-label")).toEqual(labelValue);
   });
+
+  test("should render message when provided", async () => {
+    const messageText = "Help Message";
+    const labelValue = "Test Label";
+    const element = await fixture(`<md-radio label="${labelValue}" message="${messageText}"></md-radio>`);
+    await elementUpdated(element);
+
+    const radio = screen.getByShadowRole("radio", { name: labelValue + " - " + messageText });
+    expect(radio).toBeTruthy();
+    expect(radio.getAttribute("aria-label")).toEqual(labelValue + " - " + messageText);
+
+    const helpText = element.shadowRoot?.querySelector(".help-text-radio");
+    expect(helpText).toBeTruthy();
+    expect(helpText?.textContent?.trim()).toEqual(messageText);
+  });
 });

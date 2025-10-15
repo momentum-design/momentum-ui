@@ -42,6 +42,21 @@ export default defineConfig([
     }
   },
 
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        require: "readonly",
+        __dirname: "readonly",
+        process: "readonly",
+        console: "readonly"
+      }
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off"
+    }
+  },
+
   {    
     files: ["packages/**/*.ts"],
     ignores: ["**/*.test.ts", "**/*.test.tsx"],

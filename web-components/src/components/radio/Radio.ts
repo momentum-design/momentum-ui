@@ -10,7 +10,9 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement } from "lit";
+import { nothing } from "lit-html";
 import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
@@ -20,6 +22,8 @@ export namespace Radio {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String }) label = "";
     @property({ type: String }) value = "";
+    @property({ type: String }) message = "";
+    @property({ type: Boolean }) hideMessage = false;
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
@@ -43,20 +47,40 @@ export namespace Radio {
     checked = false;
 
     private get inputAriaLabel(): string | undefined {
+      const helpText = this.message?.length ? ` - ${this.message}` : "";
+
       if (this.ariaLabel?.length) {
         return this.ariaLabel;
       }
 
       if (this.label?.length) {
-        return this.label;
+        return this.label + helpText;
       }
 
       const textContent = this.textContent?.trim();
-      return textContent?.length ? textContent : undefined;
+      return textContent?.length ? textContent + helpText : helpText;
     }
 
     static get styles() {
       return [reset, styles];
+    }
+
+    private get helpTextClassMap() {
+      return {
+        "md-radio-help-text--hide": this.hideMessage
+      };
+    }
+
+    messagesTemplate() {
+      return this.message?.length
+        ? html`
+            <div class="${classMap(this.helpTextClassMap)}">
+              <md-help-text class="help-text-radio" newMomentum role="alert" aria-live="assertive">
+                ${this.message}
+              </md-help-text>
+            </div>
+          `
+        : nothing;
     }
 
     render() {
@@ -81,6 +105,7 @@ export namespace Radio {
             <slot></slot>
           </label>
         </div>
+        ${this.messagesTemplate()}
       `;
     }
   }

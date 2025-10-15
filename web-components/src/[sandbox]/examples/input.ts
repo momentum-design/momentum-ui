@@ -109,8 +109,7 @@ export const inputTemplate = html`
           label="Normal with character count"
           containerSize="small-12"
           shape="pill"
-          maxLength="20"
-          displayCharacterCount
+          maxSuggestedLength="20"
           clear
           autofocus
         ></md-input>
@@ -124,8 +123,7 @@ export const inputTemplate = html`
           multiline
           containerSize="small-12"
           shape="pill"
-          maxLength="200"
-          displayCharacterCount
+          maxSuggestedLength="200"
         ></md-input>
       </div>
       <div class="column">
@@ -136,8 +134,7 @@ export const inputTemplate = html`
           containerSize="small-12"
           shape="pill"
           readOnly
-          maxLength="200"
-          displayCharacterCount
+          maxSuggestedLength="200"
         ></md-input>
       </div>
     </div>
@@ -273,8 +270,7 @@ export const inputTemplate = html`
           .messageArr=${[{ ...messageArr, ...{ type: "error" } } as Input.Message]}
           value="Error Text"
           placeholder="Enter Text"
-          displayCharacterCount
-          maxLength="30"
+          maxSuggestedLength="30"
         ></md-input>
       </div>
     </div>
@@ -283,7 +279,7 @@ export const inputTemplate = html`
         <md-input
           label="Error"
           containerSize="small-12"
-          maxLength="30"
+          maxSuggestedLength="30"
           .messageArr=${[
             {
               ...messageArr,
@@ -296,7 +292,6 @@ export const inputTemplate = html`
           ]}
           value="Error Text"
           placeholder="Enter Text"
-          displayCharacterCount
         ></md-input>
       </div>
     </div>
@@ -413,8 +408,7 @@ export const inputTemplate = html`
     placeholder="Enter Text"
     secondaryLabel="Secondary Label"
     helpText="Help Text"
-    maxLength="30"
-    displayCharacterCount
+    maxSuggestedLength="30"
   >
   </md-input>
   <md-input

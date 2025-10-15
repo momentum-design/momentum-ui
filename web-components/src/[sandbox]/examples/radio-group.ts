@@ -82,6 +82,25 @@ export class RadioGroupTemplateSandbox extends LitElement {
             </md-tooltip>
           </div>
         </md-radio>
+      </md-radiogroup>
+
+      <h3>Radio buttons with helper text</h3>
+      <md-radiogroup group-label="group_process" style="max-width: 400px;">
+        <md-radio slot="radio" value="All" message="New messages, AI Assistant suggestions, status changes, and more">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>All</span>
+          </div>
+        </md-radio>
+        <md-radio slot="radio" hideMessage message="testing" value="Ai only">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>AI Assistant only</span>
+          </div>
+        </md-radio>
+        <md-radio slot="radio" value="None">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>None</span>
+          </div>
+        </md-radio>
       </md-radiogroup>`;
   }
 }

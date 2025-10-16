@@ -3,7 +3,8 @@ import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { Dropdown } from "@/components/dropdown/Dropdown";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { nothing } from "lit-html";
 
 enum BannerType {
   Default = "default",
@@ -25,8 +26,22 @@ export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) showLeftIcon = true;
   @property({ type: Boolean }) showRefreshButton = true;
 
+  @property({ type: Boolean }) wrapUpIsError = false;
+  @property({ type: Boolean }) wrapUpShowCancel = true;
+
   @internalProperty()
   private showErrorExpandBanner = false;
+
+  static get styles() {
+    return [
+      css`
+        .timer {
+          font-size: 14px;
+          font-weight: 800;
+        }
+      `
+    ];
+  }
 
   async openAlert(kind: string) {
     switch (kind) {
@@ -267,6 +282,41 @@ export class AlertBannerTemplateSandbox extends LitElement {
     </div>`;
   }
 
+  private get renderWrapUpInteraction() {
+    const bannerType = this.wrapUpIsError ? "error" : "default";
+    const iconName = this.wrapUpIsError ? "alert-active-bold" : "recents-bold";
+    const timerValue = this.wrapUpIsError ? "00:27" : "01:00";
+
+    return html`<h2>Wrap Up Interaction Example</h2>
+      <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 16px;">
+        <md-checkboxgroup group-label="wrap_up_controls" alignment="horizontal">
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.wrapUpIsError}
+            @checkbox-change=${() => (this.wrapUpIsError = !this.wrapUpIsError)}
+            >Show as error</md-checkbox
+          >
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.wrapUpShowCancel}
+            @checkbox-change=${() => (this.wrapUpShowCancel = !this.wrapUpShowCancel)}
+            >Show cancel button</md-checkbox
+          >
+        </md-checkboxgroup>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <md-alert-banner show type="${bannerType}" alignment="leading">
+          <md-icon slot="left" name="${iconName}" iconSet="momentumDesign"></md-icon>
+          <span><span class="timer">${timerValue}</span> Wrap up interaction</span>
+          ${this.wrapUpShowCancel
+            ? html`<md-button slot="right" variant="secondary" size="24">
+                <span>Cancel</span>
+              </md-button>`
+            : nothing}
+        </md-alert-banner>
+      </div>`;
+  }
+
   render() {
     return html`
       <h2>Alert Banner</h2>
@@ -314,6 +364,7 @@ export class AlertBannerTemplateSandbox extends LitElement {
       ${this.renderBannerWithTitle1} ${this.renderBannerWithTitle2} ${this.renderBannerWithTitle3}
       ${this.renderBannerWithTitle4} ${this.renderBannerWithTitle5} ${this.renderAlertBannerWithIcons}
       ${this.renderWarningAlertBannerWithSlot} ${this.renderErrorWithExpandButton} ${this.renderPromotionalBanner}
+      ${this.renderWrapUpInteraction}
     `;
   }
 }

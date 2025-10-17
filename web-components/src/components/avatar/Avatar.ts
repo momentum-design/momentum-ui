@@ -178,6 +178,7 @@ export namespace Avatar {
       "channel-call": "handset-filled",
       "channel-call-inbound": "incoming-call-legacy-filled",
       "channel-callback": "outgoing-call-legacy-filled",
+      "channel-callback-v2": "outgoing-call-legacy-bold",
       "channel-headset": "headset-filled",
       "channel-campaign": "campaign-management-bold",
       "channel-emoji": "emoji-happy-filled",

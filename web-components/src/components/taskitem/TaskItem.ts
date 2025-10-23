@@ -161,7 +161,6 @@ export namespace TaskItem {
           part="task-item-container"
           class="md-taskitem ${classMap({ selected: this.selected })}"
           tabindex=${this.sanitizedTabIndexForContainer}
-          aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           aria-label=${this.getAriaLabel()}

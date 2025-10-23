@@ -39,6 +39,7 @@ export namespace ListItem {
     set selected(value: boolean) {
       const oldValue = this._selected;
       this._selected = value;
+      this.setAttribute("aria-selected", `${value}`);
       this.requestUpdate("selected", oldValue);
     }
 

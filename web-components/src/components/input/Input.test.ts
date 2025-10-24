@@ -489,3 +489,36 @@ test("should display error style when value length equals maxLength", async () =
   expect(errorLabel).not.toBeNull();
   expect(errorLabel!.textContent).toBe(`${value.length}/${maxLength}`);
 });
+
+test("should set role attribute when ariaRole is provided", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="With Role" containerSize="small-12" ariaRole="combobox"></md-input>`
+  );
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("role")).toBe("combobox");
+});
+
+test("should not set role attribute when ariaRole is undefined", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="Without Role" containerSize="small-12"></md-input>`
+  );
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.hasAttribute("role")).toBe(false);
+});
+
+test("should update role attribute when ariaRole changes", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="Dynamic Role" containerSize="small-12" ariaRole="textbox"></md-input>`
+  );
+
+  let inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("role")).toBe("textbox");
+
+  element.ariaRole = "searchbox";
+  await elementUpdated(element);
+
+  inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("role")).toBe("searchbox");
+});

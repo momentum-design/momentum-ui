@@ -219,4 +219,43 @@ describe("List", () => {
 
     expect(detail).toBeDefined();
   });
+
+  test("should set role='none' on internal ul when role='none' is provided", async () => {
+    const element = await fixture<List.ELEMENT>(html`
+      <md-list role="none" label="Test List">
+        <md-list-item slot="list-item">Item 1</md-list-item>
+        <md-list-item slot="list-item">Item 2</md-list-item>
+      </md-list>
+    `);
+
+    const ulElement = element.shadowRoot?.querySelector("ul");
+    expect(ulElement?.getAttribute("role")).toEqual("none");
+  });
+
+  test("should not set aria-label when role='none'", async () => {
+    const element = await fixture<List.ELEMENT>(html`
+      <md-list role="none" label="Test List">
+        <md-list-item slot="list-item">Item 1</md-list-item>
+        <md-list-item slot="list-item">Item 2</md-list-item>
+      </md-list>
+    `);
+
+    expect(element.hasAttribute("aria-label")).toBeFalsy();
+  });
+
+  test("should not update aria-label when label changes if role='none'", async () => {
+    const element = await fixture<List.ELEMENT>(html`
+      <md-list role="none" label="Initial Label">
+        <md-list-item slot="list-item">Item 1</md-list-item>
+        <md-list-item slot="list-item">Item 2</md-list-item>
+      </md-list>
+    `);
+
+    expect(element.hasAttribute("aria-label")).toBeFalsy();
+
+    element.label = "Updated Label";
+    await elementUpdated(element);
+
+    expect(element.hasAttribute("aria-label")).toBeFalsy();
+  });
 });

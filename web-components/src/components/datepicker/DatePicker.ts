@@ -471,7 +471,7 @@ export namespace DatePicker {
                 id="date-trigger"
                 class="date-input"
                 slot="menu-trigger"
-                role="combobox"
+                ariaRole="combobox"
                 ?newMomentum=${this.computedNewMomentum}
                 placeholder=${this.getPlaceHolderString()}
                 value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
@@ -515,7 +515,7 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
-                  role="combobox"
+                  ariaRole="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
                   value=${this.displayValue ?? ifDefined(this.value ?? undefined)}

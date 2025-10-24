@@ -322,7 +322,7 @@ export namespace AdvanceList {
     getActiveDescendant() {
       if (this.activeId) {
         return `${prefixId}${this.activeId}`;
-      } else if (this.value) {
+      } else if (this.value && this.value.length > 0 && this.value[0]) {
         return `${prefixId}${this.value[0]}`;
       } else {
         return "";

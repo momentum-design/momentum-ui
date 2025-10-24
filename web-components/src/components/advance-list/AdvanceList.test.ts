@@ -396,6 +396,35 @@ describe("advanceList Component", () => {
         const loadMoreEvent = dispatchSpy.mock.calls.find((call) => call[0]?.type === "load-more")?.[0] as CustomEvent;
         expect(loadMoreEvent).toBeDefined();
       });
+
+      test("should return correct aria-activedescendant via getActiveDescendant method", async () => {
+        const testItems = createItems(1, 5);
+        el.items = testItems;
+        await el.updateComplete;
+
+        el.activeId = testItems[2].id;
+        el.value = [testItems[0].id];
+        expect(el.getActiveDescendant()).toBe("item-d-3");
+
+        el.activeId = "";
+        el.value = [testItems[1].id, testItems[3].id];
+        expect(el.getActiveDescendant()).toBe("item-d-2");
+
+        el.activeId = "";
+        el.value = [];
+        expect(el.getActiveDescendant()).toBe("");
+
+        el.activeId = "";
+        el.value = [""];
+        expect(el.getActiveDescendant()).toBe("");
+
+        el.activeId = testItems[1].id;
+        el.requestUpdate();
+        await el.updateComplete;
+
+        const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
+        expect(wrapper?.getAttribute("aria-activedescendant")).toBe("item-d-2");
+      });
     });
   });
 });

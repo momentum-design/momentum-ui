@@ -111,6 +111,7 @@ export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
     (params.minDate?.startOf("day") && day.startOf("day") < params.minDate?.startOf("day")) ||
     (params.maxDate?.startOf("day") && day.startOf("day") > params.maxDate?.startOf("day")) ||
     params.filterDate?.(day) ||
+    params.filterDate?.(day.toISODate()) ||
     false
   );
 }

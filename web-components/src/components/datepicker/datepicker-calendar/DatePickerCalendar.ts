@@ -8,6 +8,7 @@
 
 import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/icon/Icon";
+import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addDays,
@@ -35,8 +36,13 @@ export namespace DatePickerCalendar {
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
+    @property({ attribute: false }) retryFunction: (() => void) | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
+    @property({ type: Object, attribute: false }) campaignCallbackLocalisedStrings: Record<string, string> = {};
     @property({ type: Boolean, reflect: true, attribute: "short-day" }) shortDay = false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
+      false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
 
     @internalProperty() viewAnchorDate: DateTime = now();
     @internalProperty()
@@ -87,6 +93,12 @@ export namespace DatePickerCalendar {
       const { handleMonthChange } = this;
       const { viewAnchorDate: date } = this;
       this.setDate(subtractMonths(date, 1), () => handleMonthChange && handleMonthChange(event, this.viewAnchorDate));
+    };
+
+    handleRetryClick = () => {
+      if (this.retryFunction) {
+        this.retryFunction();
+      }
     };
 
     renderMonthName = () => {
@@ -150,7 +162,50 @@ export namespace DatePickerCalendar {
       );
     };
 
-    renderMonth = () => {
+    private renderLoader() {
+      return html`
+        <div class="md-datepicker__loading">
+          <div class="md-datepicker__loading-text">${this.campaignCallbackLocalisedStrings.LOADING}</div>
+          <md-spinner size="32"></md-spinner>
+        </div>
+      `;
+    }
+
+    private renderDateError() {
+      return html`
+        <div class="md-datepicker__error-container">
+          <md-icon name="error-legacy-bold" size="24" iconSet="momentumDesign" class="md-datepicker__error-icon">
+          </md-icon>
+          <div class="md-datepicker__error-header">${this.campaignCallbackLocalisedStrings.HEADER}</div>
+          <div class="md-datepicker__error-text">${this.campaignCallbackLocalisedStrings.TEXT}</div>
+          <md-button variant="secondary" size="24" @click=${this.handleRetryClick}>
+            <md-icon slot="icon" name="refresh-bold" size="14" iconSet="momentumDesign"></md-icon>
+            <span slot="text">${this.campaignCallbackLocalisedStrings.RETRY}</span>
+          </md-button>
+        </div>
+      `;
+    }
+
+    private renderMonthContent() {
+      if (this.isDatePickerMonthError) {
+        return this.renderDateError();
+      }
+
+      if (this.isDatePickerMonthLoading) {
+        return this.renderLoader();
+      }
+
+      return html`
+        <md-datepicker-month
+          .day=${this.viewAnchorDate}
+          .filterParams=${this.filterParams}
+          .datePickerProps=${this.datePickerProps}
+        >
+        </md-datepicker-month>
+      `;
+    }
+
+    private renderMonth() {
       return html`
         <div class="md-datepicker__month-container">
           <div class="md-datepicker__header">
@@ -162,14 +217,10 @@ export namespace DatePickerCalendar {
             </div>
             <div class="md-datepicker__day--names">${this.header()}</div>
           </div>
-          <md-datepicker-month
-            .day=${this.viewAnchorDate}
-            .filterParams=${this.filterParams}
-            .datePickerProps=${this.datePickerProps}
-          ></md-datepicker-month>
+          ${this.renderMonthContent()}
         </div>
       `;
-    };
+    }
 
     static get styles() {
       return [reset, styles];

@@ -84,10 +84,16 @@ export namespace DatePicker {
     @property({ type: String, attribute: "triggerID" }) triggerID = "date-trigger";
     @property({ type: Boolean, reflect: true, attribute: "animation-frame" })
     animationFrame: boolean = false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
+      false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
+    @property({ type: Object, attribute: false }) campaignCallbackLocalisedStrings: Record<string, string> = {};
+
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    @internalProperty() filterDate: Function | undefined = undefined;
+    @property() filterDate: Function | undefined = undefined;
+    @property({ attribute: false }) retryFunction: (() => void) | undefined = undefined;
     @internalProperty() maxDateData: DateTime | undefined = undefined;
     @internalProperty() minDateData: DateTime | undefined = undefined;
 
@@ -362,7 +368,7 @@ export namespace DatePicker {
     }
 
     private renderControlButtons(): TemplateResult {
-      if (!this.controlButtons) {
+      if (!this.controlButtons || this.isDatePickerMonthLoading || this.isDatePickerMonthError) {
         return html``;
       }
 
@@ -454,6 +460,10 @@ export namespace DatePicker {
                 weekStart: this.weekStart
               }}
               ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .campaignCallbackLocalisedStrings=${this.campaignCallbackLocalisedStrings}
+              .retryFunction=${this.retryFunction}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>
@@ -550,6 +560,10 @@ export namespace DatePicker {
                 weekStart: this.weekStart
               }}
               ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .campaignCallbackLocalisedStrings=${this.campaignCallbackLocalisedStrings}
+              .retryFunction=${this.retryFunction}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>

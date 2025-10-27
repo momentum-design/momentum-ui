@@ -16,12 +16,12 @@ describe("TaskItem Utils", () => {
 
     it("should return the correct avatar for PROGRESSIVE_CAMPAIGN", () => {
       const result = renderTaskType(TaskItemMediaType.PROGRESSIVE_CAMPAIGN, true, "active", "");
-      expect(result).toEqual(getChannelAvatar(true, "active", "channel-call"));
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-callback-v2"));
     });
 
     it("should return the correct avatar for CALLBACK", () => {
       const result = renderTaskType(TaskItemMediaType.CALLBACK, true, "active", "");
-      expect(result).toEqual(getChannelAvatar(true, "active", "channel-call"));
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-callback-v2"));
     });
 
     it("should return the correct avatar for OUTBOUND_TELEPHONY", () => {

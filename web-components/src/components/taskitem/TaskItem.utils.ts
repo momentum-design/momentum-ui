@@ -35,6 +35,7 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
   switch (mediaType.toLowerCase()) {
     case TaskItemMediaType.PROGRESSIVE_CAMPAIGN:
     case TaskItemMediaType.CALLBACK:
+      return getChannelAvatar(selected, status, "channel-callback-v2");
     case TaskItemMediaType.TELEPHONY:
       return getChannelAvatar(selected, status, "channel-call");
     case TaskItemMediaType.OUTBOUND_TELEPHONY:

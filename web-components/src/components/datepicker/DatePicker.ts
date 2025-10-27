@@ -87,13 +87,13 @@ export namespace DatePicker {
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
       false;
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
-    @property({ type: Object, attribute: false }) localisedStrings: Record<string, string> = {};
+    @property({ type: Object, attribute: false }) errorMessages: Record<string, string> = {};
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     @property() filterDate: Function | undefined = undefined;
-    @property({ attribute: false }) retryFunction: (() => void) | undefined = undefined;
+    @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
     @internalProperty() maxDateData: DateTime | undefined = undefined;
     @internalProperty() minDateData: DateTime | undefined = undefined;
 
@@ -462,8 +462,8 @@ export namespace DatePicker {
               ?short-day=${this.computedNewMomentum}
               ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
               ?is-date-picker-month-error=${this.isDatePickerMonthError}
-              .localisedStrings=${this.localisedStrings}
-              .retryFunction=${this.retryFunction}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>
@@ -562,8 +562,8 @@ export namespace DatePicker {
               ?short-day=${this.computedNewMomentum}
               ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
               ?is-date-picker-month-error=${this.isDatePickerMonthError}
-              .localisedStrings=${this.localisedStrings}
-              .retryFunction=${this.retryFunction}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>

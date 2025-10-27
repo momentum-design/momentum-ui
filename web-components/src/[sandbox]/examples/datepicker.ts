@@ -91,7 +91,7 @@ export class DatePickerSandbox extends LitElement {
       <md-datepicker
         .shouldCloseOnSelect=${true}
         .isDatePickerMonthLoading=${true}
-        .localisedStrings=${{
+        .errorMessages=${{
           HEADER: "Error",
           TEXT: "Trouble loading active window.",
           LOADING: "Loading...",
@@ -105,13 +105,13 @@ export class DatePickerSandbox extends LitElement {
       <md-datepicker
         .shouldCloseOnSelect=${true}
         .isDatePickerMonthError=${true}
-        .localisedStrings=${{
+        .errorMessages=${{
           HEADER: "Error",
           TEXT: "Trouble loading active window.",
           LOADING: "Loading...",
           RETRY: "Retry"
         }}
-        .retryFunction=${() => console.log("Retry clicked")}
+        .onRetry=${() => console.log("Retry clicked")}
         value="2021-01-31"
         newMomentum
       ></md-datepicker>`;

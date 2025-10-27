@@ -311,29 +311,29 @@ describe("DatePicker Component with menu-overlay", () => {
     expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
   });
 
-  test("should handle localisedStrings and retryFunction properties", async () => {
-    const localisedStrings = { error: "Custom Error", retry: "Custom Retry" };
+  test("should handle errorMessages and onRetry properties", async () => {
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
       <md-datepicker
-        .localisedStrings=${localisedStrings}
-        .retryFunction=${mockRetryFunction}
+        .errorMessages=${errorMessages}
+        .onRetry=${mockRetryFunction}
       ></md-datepicker>
     `);
 
-    expect(el.localisedStrings).toEqual(localisedStrings);
-    expect(el.retryFunction).toBe(mockRetryFunction);
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
   });
 
-  test("should pass localisedStrings and retryFunction to calendar in menu-overlay", async () => {
-    const localisedStrings = { LOADING: "Loading...", HEADER: "Error Header", TEXT: "Error Text", RETRY: "Retry" };
+  test("should pass errorMessages and onRetry to calendar in menu-overlay", async () => {
+    const errorMessages = { LOADING: "Loading...", HEADER: "Error Header", TEXT: "Error Text", RETRY: "Retry" };
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
       <md-datepicker
-        .localisedStrings=${localisedStrings}
-        .retryFunction=${mockRetryFunction}
+        .errorMessages=${errorMessages}
+        .onRetry=${mockRetryFunction}
       ></md-datepicker>
     `);
 
@@ -345,9 +345,9 @@ describe("DatePicker Component with menu-overlay", () => {
     const calendar = el.shadowRoot!.querySelector("md-datepicker-calendar");
     expect(calendar).toBeTruthy();
 
-    // Test that localisedStrings and retryFunction are properly passed to calendar
-    expect((calendar as any)?.localisedStrings).toEqual(localisedStrings);
-    expect((calendar as any)?.retryFunction).toBe(mockRetryFunction);
+    // Test that errorMessages and onRetry are properly passed to calendar
+    expect((calendar as any)?.errorMessages).toEqual(errorMessages);
+    expect((calendar as any)?.onRetry).toBe(mockRetryFunction);
   });
 
   test.each([
@@ -860,24 +860,24 @@ describe("DatePicker Component with popover", () => {
     expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
   });
 
-  test("should handle localisedStrings and retryFunction properties", async () => {
-    const localisedStrings = { error: "Custom Error", retry: "Custom Retry" };
+  test("should handle errorMessages and onRetry properties", async () => {
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
       <md-datepicker
         use-popover
-        .localisedStrings=${localisedStrings}
-        .retryFunction=${mockRetryFunction}
+        .errorMessages=${errorMessages}
+        .onRetry=${mockRetryFunction}
       ></md-datepicker>
     `);
 
-    expect(el.localisedStrings).toEqual(localisedStrings);
-    expect(el.retryFunction).toBe(mockRetryFunction);
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
   });
 
   test("should handle new properties with popover - loading/error states and localized strings", async () => {
-    const localisedStrings = { error: "Custom Error", retry: "Custom Retry" };
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
@@ -885,16 +885,16 @@ describe("DatePicker Component with popover", () => {
         use-popover
         is-date-picker-month-loading
         is-date-picker-month-error
-        .localisedStrings=${localisedStrings}
-        .retryFunction=${mockRetryFunction}
+        .errorMessages=${errorMessages}
+        .onRetry=${mockRetryFunction}
       ></md-datepicker>
     `);
 
     // Test properties are set
     expect(el.isDatePickerMonthLoading).toBe(true);
     expect(el.isDatePickerMonthError).toBe(true);
-    expect(el.localisedStrings).toEqual(localisedStrings);
-    expect(el.retryFunction).toBe(mockRetryFunction);
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
 
     // Test attributes are reflected
     expect(el.hasAttribute("is-date-picker-month-loading")).toBe(true);
@@ -909,9 +909,9 @@ describe("DatePicker Component with popover", () => {
     expect(calendar?.hasAttribute("is-date-picker-month-loading")).toBe(true);
     expect(calendar?.hasAttribute("is-date-picker-month-error")).toBe(true);
 
-    // Test that localisedStrings is properly passed to calendar
-    expect((calendar as any)?.localisedStrings).toEqual(localisedStrings);
-    expect((calendar as any)?.retryFunction).toBe(mockRetryFunction);
+    // Test that errorMessages is properly passed to calendar
+    expect((calendar as any)?.errorMessages).toEqual(errorMessages);
+    expect((calendar as any)?.onRetry).toBe(mockRetryFunction);
   });
 
   test.each([

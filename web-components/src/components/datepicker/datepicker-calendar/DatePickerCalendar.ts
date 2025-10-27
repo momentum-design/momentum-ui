@@ -36,9 +36,9 @@ export namespace DatePickerCalendar {
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
-    @property({ attribute: false }) retryFunction: (() => void) | undefined = undefined;
+    @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
-    @property({ type: Object, attribute: false }) localisedStrings: Record<string, string> = {};
+    @property({ type: Object, attribute: false }) errorMessages: Record<string, string> = {};
     @property({ type: Boolean, reflect: true, attribute: "short-day" }) shortDay = false;
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
       false;
@@ -96,8 +96,8 @@ export namespace DatePickerCalendar {
     };
 
     handleRetryClick = () => {
-      if (this.retryFunction) {
-        this.retryFunction();
+      if (this.onRetry) {
+        this.onRetry();
       }
     };
 
@@ -165,7 +165,7 @@ export namespace DatePickerCalendar {
     private renderLoader() {
       return html`
         <div class="md-datepicker__loading">
-          <div class="md-datepicker__loading-text">${this.localisedStrings.LOADING}</div>
+          <div class="md-datepicker__loading-text">${this.errorMessages.LOADING}</div>
           <md-spinner size="32"></md-spinner>
         </div>
       `;
@@ -176,11 +176,11 @@ export namespace DatePickerCalendar {
         <div class="md-datepicker__error-container">
           <md-icon name="error-legacy-bold" size="24" iconSet="momentumDesign" class="md-datepicker__error-icon">
           </md-icon>
-          <div class="md-datepicker__error-header">${this.localisedStrings.HEADER}</div>
-          <div class="md-datepicker__error-text">${this.localisedStrings.TEXT}</div>
+          <div class="md-datepicker__error-header">${this.errorMessages.HEADER}</div>
+          <div class="md-datepicker__error-text">${this.errorMessages.TEXT}</div>
           <md-button variant="secondary" size="24" @click=${this.handleRetryClick}>
             <md-icon slot="icon" name="refresh-bold" size="14" iconSet="momentumDesign"></md-icon>
-            <span slot="text">${this.localisedStrings.RETRY}</span>
+            <span slot="text">${this.errorMessages.RETRY}</span>
           </md-button>
         </div>
       `;

@@ -62,8 +62,8 @@ describe("DatePickerCalendar Component", () => {
 
     expect(el.isDatePickerMonthLoading).toBe(false);
     expect(el.isDatePickerMonthError).toBe(false);
-    expect(el.localisedStrings).toEqual({});
-    expect(el.retryFunction).toBeUndefined();
+    expect(el.errorMessages).toEqual({});
+    expect(el.onRetry).toBeUndefined();
   });
 
   test("should reflect boolean properties to attributes", async () => {
@@ -84,29 +84,29 @@ describe("DatePickerCalendar Component", () => {
     expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
   });
 
-  test("should set localisedStrings object property", async () => {
-    const localisedStrings = {
-      LOADING: "Custom Loading",
-      HEADER: "Custom Error",
-      TEXT: "Custom Error Text",
-      RETRY: "Custom Retry"
+  test("should set errorMessages object property", async () => {
+    const errorMessages = {
+      LOADING: "Loading...",
+      HEADER: "Error Header",
+      TEXT: "Error Text",
+      RETRY: "Retry"
     };
 
     const el: DatePickerCalendar.ELEMENT = await fixture(html`
-      <md-datepicker-calendar .localisedStrings=${localisedStrings}></md-datepicker-calendar>
+      <md-datepicker-calendar .errorMessages=${errorMessages}></md-datepicker-calendar>
     `);
 
-    expect(el.localisedStrings).toEqual(localisedStrings);
-  });
+    expect(el.errorMessages).toEqual(errorMessages);
+  })
 
-  test("should set retryFunction property", async () => {
+  test("should set onRetry property", async () => {
     const mockRetryFunction = jest.fn();
 
     const el: DatePickerCalendar.ELEMENT = await fixture(html`
-      <md-datepicker-calendar .retryFunction=${mockRetryFunction}></md-datepicker-calendar>
+      <md-datepicker-calendar .onRetry=${mockRetryFunction}></md-datepicker-calendar>
     `);
 
-    expect(el.retryFunction).toBe(mockRetryFunction);
+    expect(el.onRetry).toBe(mockRetryFunction);
   });
 
   test.each([
@@ -115,7 +115,7 @@ describe("DatePickerCalendar Component", () => {
     { loading: true, error: true, expectedContent: "error", expectedClass: "md-datepicker__error-container" }, // Error takes priority
     { loading: false, error: false, expectedContent: "month", expectedClass: "md-datepicker-month" }
   ])("should render correct content based on loading/error states", async ({ loading, error, expectedContent }) => {
-    const localisedStrings = {
+    const errorMessages = {
       LOADING: "Test Loading",
       HEADER: "Test Error",
       TEXT: "Test Error Text",
@@ -126,7 +126,7 @@ describe("DatePickerCalendar Component", () => {
       <md-datepicker-calendar
         ?is-date-picker-month-loading=${loading}
         ?is-date-picker-month-error=${error}
-        .localisedStrings=${localisedStrings}
+        .errorMessages=${errorMessages}
       ></md-datepicker-calendar>
     `);
 
@@ -154,10 +154,11 @@ describe("DatePickerCalendar Component", () => {
     }
   });
 
-  test("should execute retryFunction when handleRetryClick is called", async () => {
+  test("should execute onRetry when handleRetryClick is called", async () => {
     const mockRetryFunction = jest.fn();
-    const localisedStrings = {
-      HEADER: "Error",
+    const errorMessages = {
+      LOADING: "Loading...",
+      HEADER: "Error Header",
       TEXT: "Error Text",
       RETRY: "Retry"
     };
@@ -165,8 +166,8 @@ describe("DatePickerCalendar Component", () => {
     const el: DatePickerCalendar.ELEMENT = await fixture(html`
       <md-datepicker-calendar
         is-date-picker-month-error
-        .retryFunction=${mockRetryFunction}
-        .localisedStrings=${localisedStrings}
+        .onRetry=${mockRetryFunction}
+        .errorMessages=${errorMessages}
       ></md-datepicker-calendar>
     `);
 
@@ -179,12 +180,12 @@ describe("DatePickerCalendar Component", () => {
     expect(mockRetryFunction).toHaveBeenCalledTimes(1);
   });
 
-  test("should handle retryFunction being undefined gracefully", async () => {
+  test("should handle onRetry being undefined gracefully", async () => {
     const el: DatePickerCalendar.ELEMENT = await fixture(html`
       <md-datepicker-calendar is-date-picker-month-error></md-datepicker-calendar>
     `);
 
-    // Should not throw error when retryFunction is undefined
+    // Should not throw error when onRetry is undefined
     expect(() => el.handleRetryClick()).not.toThrow();
   });
 });

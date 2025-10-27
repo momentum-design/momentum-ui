@@ -62,7 +62,7 @@ describe("DatePickerCalendar Component", () => {
 
     expect(el.isDatePickerMonthLoading).toBe(false);
     expect(el.isDatePickerMonthError).toBe(false);
-    expect(el.campaignCallbackLocalisedStrings).toEqual({});
+    expect(el.localisedStrings).toEqual({});
     expect(el.retryFunction).toBeUndefined();
   });
 
@@ -84,7 +84,7 @@ describe("DatePickerCalendar Component", () => {
     expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
   });
 
-  test("should set campaignCallbackLocalisedStrings object property", async () => {
+  test("should set localisedStrings object property", async () => {
     const localisedStrings = {
       LOADING: "Custom Loading",
       HEADER: "Custom Error",
@@ -93,10 +93,10 @@ describe("DatePickerCalendar Component", () => {
     };
 
     const el: DatePickerCalendar.ELEMENT = await fixture(html`
-      <md-datepicker-calendar .campaignCallbackLocalisedStrings=${localisedStrings}></md-datepicker-calendar>
+      <md-datepicker-calendar .localisedStrings=${localisedStrings}></md-datepicker-calendar>
     `);
 
-    expect(el.campaignCallbackLocalisedStrings).toEqual(localisedStrings);
+    expect(el.localisedStrings).toEqual(localisedStrings);
   });
 
   test("should set retryFunction property", async () => {
@@ -126,7 +126,7 @@ describe("DatePickerCalendar Component", () => {
       <md-datepicker-calendar
         ?is-date-picker-month-loading=${loading}
         ?is-date-picker-month-error=${error}
-        .campaignCallbackLocalisedStrings=${localisedStrings}
+        .localisedStrings=${localisedStrings}
       ></md-datepicker-calendar>
     `);
 
@@ -166,7 +166,7 @@ describe("DatePickerCalendar Component", () => {
       <md-datepicker-calendar
         is-date-picker-month-error
         .retryFunction=${mockRetryFunction}
-        .campaignCallbackLocalisedStrings=${localisedStrings}
+        .localisedStrings=${localisedStrings}
       ></md-datepicker-calendar>
     `);
 

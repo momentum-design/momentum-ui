@@ -38,7 +38,7 @@ export namespace DatePickerCalendar {
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
     @property({ attribute: false }) retryFunction: (() => void) | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
-    @property({ type: Object, attribute: false }) campaignCallbackLocalisedStrings: Record<string, string> = {};
+    @property({ type: Object, attribute: false }) localisedStrings: Record<string, string> = {};
     @property({ type: Boolean, reflect: true, attribute: "short-day" }) shortDay = false;
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
       false;
@@ -165,7 +165,7 @@ export namespace DatePickerCalendar {
     private renderLoader() {
       return html`
         <div class="md-datepicker__loading">
-          <div class="md-datepicker__loading-text">${this.campaignCallbackLocalisedStrings.LOADING}</div>
+          <div class="md-datepicker__loading-text">${this.localisedStrings.LOADING}</div>
           <md-spinner size="32"></md-spinner>
         </div>
       `;
@@ -176,11 +176,11 @@ export namespace DatePickerCalendar {
         <div class="md-datepicker__error-container">
           <md-icon name="error-legacy-bold" size="24" iconSet="momentumDesign" class="md-datepicker__error-icon">
           </md-icon>
-          <div class="md-datepicker__error-header">${this.campaignCallbackLocalisedStrings.HEADER}</div>
-          <div class="md-datepicker__error-text">${this.campaignCallbackLocalisedStrings.TEXT}</div>
+          <div class="md-datepicker__error-header">${this.localisedStrings.HEADER}</div>
+          <div class="md-datepicker__error-text">${this.localisedStrings.TEXT}</div>
           <md-button variant="secondary" size="24" @click=${this.handleRetryClick}>
             <md-icon slot="icon" name="refresh-bold" size="14" iconSet="momentumDesign"></md-icon>
-            <span slot="text">${this.campaignCallbackLocalisedStrings.RETRY}</span>
+            <span slot="text">${this.localisedStrings.RETRY}</span>
           </md-button>
         </div>
       `;

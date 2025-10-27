@@ -91,7 +91,7 @@ export class DatePickerSandbox extends LitElement {
       <md-datepicker
         .shouldCloseOnSelect=${true}
         .isDatePickerMonthLoading=${true}
-        .campaignCallbackLocalisedStrings=${{
+        .localisedStrings=${{
           HEADER: "Error",
           TEXT: "Trouble loading active window.",
           LOADING: "Loading...",
@@ -105,7 +105,7 @@ export class DatePickerSandbox extends LitElement {
       <md-datepicker
         .shouldCloseOnSelect=${true}
         .isDatePickerMonthError=${true}
-        .campaignCallbackLocalisedStrings=${{
+        .localisedStrings=${{
           HEADER: "Error",
           TEXT: "Trouble loading active window.",
           LOADING: "Loading...",

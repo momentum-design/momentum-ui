@@ -87,7 +87,7 @@ export namespace DatePicker {
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
       false;
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
-    @property({ type: Object, attribute: false }) campaignCallbackLocalisedStrings: Record<string, string> = {};
+    @property({ type: Object, attribute: false }) localisedStrings: Record<string, string> = {};
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -462,7 +462,7 @@ export namespace DatePicker {
               ?short-day=${this.computedNewMomentum}
               ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
               ?is-date-picker-month-error=${this.isDatePickerMonthError}
-              .campaignCallbackLocalisedStrings=${this.campaignCallbackLocalisedStrings}
+              .localisedStrings=${this.localisedStrings}
               .retryFunction=${this.retryFunction}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
@@ -562,7 +562,7 @@ export namespace DatePicker {
               ?short-day=${this.computedNewMomentum}
               ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
               ?is-date-picker-month-error=${this.isDatePickerMonthError}
-              .campaignCallbackLocalisedStrings=${this.campaignCallbackLocalisedStrings}
+              .localisedStrings=${this.localisedStrings}
               .retryFunction=${this.retryFunction}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>

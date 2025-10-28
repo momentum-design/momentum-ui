@@ -82,6 +82,38 @@ export class DatePickerSandbox extends LitElement {
         .shouldCloseOnSelect=${true}
         value="2021-01-31"
         newMomentum
+      ></md-datepicker>
+
+      <h3>date picker with min and max dates</h3>
+      <md-datepicker value=${"2025-04-10"} minDate="2025-04-01" maxDate="2025-05-15"></md-datepicker>
+
+      <h3>date picker loader</h3>
+      <md-datepicker
+        .shouldCloseOnSelect=${true}
+        .isDatePickerMonthLoading=${true}
+        .errorMessages=${{
+          HEADER: "Error",
+          TEXT: "Trouble loading active window.",
+          LOADING: "Loading...",
+          RETRY: "Retry"
+        }}
+        value="2021-01-31"
+        newMomentum
+      ></md-datepicker>
+
+      <h3>date picker Error</h3>
+      <md-datepicker
+        .shouldCloseOnSelect=${true}
+        .isDatePickerMonthError=${true}
+        .errorMessages=${{
+          HEADER: "Error",
+          TEXT: "Trouble loading active window.",
+          LOADING: "Loading...",
+          RETRY: "Retry"
+        }}
+        .onRetry=${() => console.log("Retry clicked")}
+        value="2021-01-31"
+        newMomentum
       ></md-datepicker>`;
   }
 }

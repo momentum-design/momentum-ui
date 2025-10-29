@@ -316,10 +316,7 @@ describe("DatePicker Component with menu-overlay", () => {
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker
-        .errorMessages=${errorMessages}
-        .onRetry=${mockRetryFunction}
-      ></md-datepicker>
+      <md-datepicker .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
     `);
 
     expect(el.errorMessages).toEqual(errorMessages);
@@ -331,10 +328,7 @@ describe("DatePicker Component with menu-overlay", () => {
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker
-        .errorMessages=${errorMessages}
-        .onRetry=${mockRetryFunction}
-      ></md-datepicker>
+      <md-datepicker .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
     `);
 
     // Open the menu overlay
@@ -865,11 +859,7 @@ describe("DatePicker Component with popover", () => {
     const mockRetryFunction = jest.fn();
 
     const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker
-        use-popover
-        .errorMessages=${errorMessages}
-        .onRetry=${mockRetryFunction}
-      ></md-datepicker>
+      <md-datepicker use-popover .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
     `);
 
     expect(el.errorMessages).toEqual(errorMessages);

@@ -97,7 +97,7 @@ describe("DatePickerCalendar Component", () => {
     `);
 
     expect(el.errorMessages).toEqual(errorMessages);
-  })
+  });
 
   test("should set onRetry property", async () => {
     const mockRetryFunction = jest.fn();

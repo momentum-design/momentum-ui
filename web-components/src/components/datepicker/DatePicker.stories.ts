@@ -34,6 +34,14 @@ export default {
       table: {
         type: { summary: "(date: string) => boolean" }
       }
+    },
+    onRetry: {
+      control: "object",
+      description:
+        "Callback function that gets triggered when the user clicks the retry button during error state in calendar",
+      table: {
+        type: { summary: "() => void" }
+      }
     }
   },
   parameters: {
@@ -135,6 +143,9 @@ export const campaignCallbackDatePicker: StoryObj = {
     filterDate: (date: string) => {
       const tomorrow = now().plus({ days: 1 }).toISODate();
       return date === tomorrow;
+    },
+    onRetry: () => {
+      console.log("Retry button clicked - reloading calendar data");
     }
   },
 
@@ -151,6 +162,7 @@ export const campaignCallbackDatePicker: StoryObj = {
         .maxDate=${args.maxDate}
         .errorMessages=${args.errorMessages}
         .filterDate=${args.filterDate}
+        .onRetry=${args.onRetry}
         ?is-date-picker-month-error=${args["is-date-picker-month-error"]}
         ?is-date-picker-month-loading=${args["is-date-picker-month-loading"]}
       >

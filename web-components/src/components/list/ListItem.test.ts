@@ -56,4 +56,22 @@ describe("ListItem", () => {
     expect(listItem?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => listItem?.classList?.contains(className))).toBe(true);
   });
+
+  test("should only set aria-selected when role is option", async () => {
+    const optionElement = await fixture<ListItem.ELEMENT>(`<md-list-item selected>Option</md-list-item>`);
+    expect(optionElement.getAttribute("role")).toEqual("option");
+    expect(optionElement.getAttribute("aria-selected")).toEqual("true");
+
+    const listItemElement = await fixture<ListItem.ELEMENT>(
+      `<md-list-item role="listitem" selected>List Item</md-list-item>`
+    );
+    expect(listItemElement.getAttribute("role")).toEqual("listitem");
+    expect(listItemElement.hasAttribute("aria-selected")).toBe(false);
+
+    const menuItemElement = await fixture<ListItem.ELEMENT>(
+      `<md-list-item role="menuitem" selected>Menu Item</md-list-item>`
+    );
+    expect(menuItemElement.getAttribute("role")).toEqual("menuitem");
+    expect(menuItemElement.hasAttribute("aria-selected")).toBe(false);
+  });
 });

@@ -1426,7 +1426,6 @@ export namespace Tabs {
                 name="${tab.name}"
                 id="${this.getCopyTabId(tab)}"
                 aria-label=${tab.ariaLabel}
-                aria-controls="${this.getAriaControlId(tab)}"
                 .isCrossVisible=${true}
                 tabIndex="${this.getTabIndex(tab)}"
                 .newMomentum=${this.newMomentum}

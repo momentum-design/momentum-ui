@@ -2,7 +2,7 @@ import { action, observable } from "mobx";
 
 class IconUrlManager {
   @observable
-  svgIconUrl = "assets/icons/svg";
+  svgIconUrl = "/assets/icons/svg";
 
   constructor(other?: Partial<IconUrlManager>) {
     if (other) {

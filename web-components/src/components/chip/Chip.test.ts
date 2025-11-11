@@ -137,6 +137,11 @@ describe("Chip component", () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content that is too long" tooltipText="More Info about the Chip"></md-chip>
     `);
+
+    component.getTextWidth = () => 1000;
+    component.requestUpdate();
+    await elementUpdated(component);
+
     const expectedResult = "chip text content that is too long, More Info about the Chip";
     expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
   });

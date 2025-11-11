@@ -100,6 +100,9 @@ export const chipTemplate = html`
   <md-chip tooltipText="more info on filter2" value="Test Agent Filter 2" tooltipPlacement="right">
     <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
   </md-chip>
+  <md-chip tooltipText="more info on filter2" value="エージェントの状態: ログアウトしました" tooltipPlacement="right">
+    <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
+  </md-chip>
   <h3>Chip List</h3>
   <ul role="list">
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip1"></md-chip>

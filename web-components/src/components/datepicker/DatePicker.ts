@@ -137,9 +137,6 @@ export namespace DatePicker {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (this.value && changedProperties.has("value")) {
-        if (closestElement("md-date-range-picker", this)) {
-          return;
-        }
         if (this.useISOFormat) {
           this.selectedDate = dateStringToDateTime(this.value);
         } else {

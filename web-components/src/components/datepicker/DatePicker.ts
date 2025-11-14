@@ -23,7 +23,6 @@ import {
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
-import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
@@ -85,10 +84,16 @@ export namespace DatePicker {
     @property({ type: String, attribute: "triggerID" }) triggerID = "date-trigger";
     @property({ type: Boolean, reflect: true, attribute: "animation-frame" })
     animationFrame: boolean = false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
+      false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
+    @property({ type: Object, attribute: false }) errorMessages: Record<string, string> = {};
+
     @state() selectedDate: DateTime = now();
     @state() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    @state() filterDate: Function | undefined = undefined;
+    @property() filterDate: Function | undefined = undefined;
+    @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
     @state() maxDateData: DateTime | undefined = undefined;
     @state() minDateData: DateTime | undefined = undefined;
 
@@ -132,9 +137,6 @@ export namespace DatePicker {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (this.value && changedProperties.has("value")) {
-        if (closestElement("md-date-range-picker", this)) {
-          return;
-        }
         if (this.useISOFormat) {
           this.selectedDate = dateStringToDateTime(this.value);
         } else {
@@ -363,7 +365,7 @@ export namespace DatePicker {
     }
 
     private renderControlButtons(): TemplateResult | typeof nothing {
-      if (!this.controlButtons) {
+      if (!this.controlButtons || this.isDatePickerMonthLoading || this.isDatePickerMonthError) {
         return nothing;
       }
 
@@ -455,6 +457,10 @@ export namespace DatePicker {
                 weekStart: this.weekStart
               }}
               ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>
@@ -472,7 +478,7 @@ export namespace DatePicker {
                 id="date-trigger"
                 class="date-input"
                 slot="menu-trigger"
-                role="combobox"
+                ariaRole="combobox"
                 ?newMomentum=${this.computedNewMomentum}
                 placeholder=${this.getPlaceHolderString()}
                 value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
@@ -516,7 +522,7 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
-                  role="combobox"
+                  ariaRole="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
                   value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
@@ -551,6 +557,10 @@ export namespace DatePicker {
                 weekStart: this.weekStart
               }}
               ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>

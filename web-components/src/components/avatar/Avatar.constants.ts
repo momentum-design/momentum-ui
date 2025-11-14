@@ -13,6 +13,7 @@ const AvatarChannelType = [
   "channel-call-inbound",
   "channel-social",
   "channel-callback",
+  "channel-callback-v2",
   "channel-headset",
   "channel-campaign",
   "channel-emoji",

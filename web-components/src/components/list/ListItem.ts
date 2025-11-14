@@ -16,7 +16,7 @@ import styles from "./scss/module.scss";
 export namespace ListItem {
   @customElementWithCheck("md-list-item")
   export class ELEMENT extends FocusMixin(LitElement) {
-    @property({ type: String, reflect: true }) role: "listitem" | "option" = "option";
+    @property({ type: String, reflect: true }) role: "listitem" | "option" | "menuitem" = "option";
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, reflect: true }) shape: "pill" | "rounded" = "rounded";
 
@@ -40,6 +40,9 @@ export namespace ListItem {
     set selected(value: boolean) {
       const oldValue = this._selected;
       this._selected = value;
+      if (this.role === "option") {
+        this.setAttribute("aria-selected", `${value}`);
+      }
       this.requestUpdate("selected", oldValue);
     }
 

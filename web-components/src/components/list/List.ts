@@ -25,12 +25,14 @@ export namespace List {
 
     @query("slot[name='list-item']") listItemSlot?: HTMLSlotElement;
 
-    private _role: "list" | "listbox" = "listbox";
+    private _role: "list" | "listbox" | "none" = "listbox";
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      this.setAttribute("aria-label", this.label);
+      if (this._role !== "none") {
+        this.setAttribute("aria-label", this.label);
+      }
     }
 
     private notifySelectedChange() {
@@ -57,7 +59,8 @@ export namespace List {
 
     connectedCallback() {
       super.connectedCallback();
-      this._role = (this.getAttribute("role") as "list" | "listbox") || "listbox"; // Capture the role attribute value or use default "listbox"
+      const roleAttr = this.getAttribute("role") as "list" | "listbox" | "none" | null; // Capture the role attribute value or use default "listbox"
+      this._role = roleAttr || "listbox";
       this.removeAttribute("role"); // Ensure the role attribute is not set on the host element
       this.addEventListener("keydown", this.handleKeyDown);
       this.addEventListener("click", this.handleClick);
@@ -111,7 +114,7 @@ export namespace List {
       if (changedProperties.has("activated")) {
         this.setActivated(this.activated);
       }
-      if (changedProperties.has("label")) {
+      if (changedProperties.has("label") && this._role !== "none") {
         this.setAttribute("aria-label", this.label);
       }
     }

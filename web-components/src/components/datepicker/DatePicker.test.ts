@@ -291,6 +291,91 @@ describe("DatePicker Component with menu-overlay", () => {
     expect(menuOverlay?.getAttribute("positioning-strategy")).toBe("fixed");
   });
 
+  test("should handle loading/error properties with defaults and attribute reflection", async () => {
+    // Test default values
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+
+    expect(el.isDatePickerMonthLoading).toBe(false);
+    expect(el.isDatePickerMonthError).toBe(false);
+    expect(el.hasAttribute("is-date-picker-month-loading")).toBe(false);
+    expect(el.hasAttribute("is-date-picker-month-error")).toBe(false);
+
+    // Test setting via attributes
+    const elWithAttrs: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker is-date-picker-month-loading is-date-picker-month-error></md-datepicker>
+    `);
+
+    expect(elWithAttrs.isDatePickerMonthLoading).toBe(true);
+    expect(elWithAttrs.isDatePickerMonthError).toBe(true);
+    expect(elWithAttrs.hasAttribute("is-date-picker-month-loading")).toBe(true);
+    expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
+  });
+
+  test("should handle errorMessages and onRetry properties", async () => {
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
+    const mockRetryFunction = jest.fn();
+
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
+    `);
+
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
+  });
+
+  test("should pass errorMessages and onRetry to calendar in menu-overlay", async () => {
+    const errorMessages = { LOADING: "Loading...", HEADER: "Error Header", TEXT: "Error Text", RETRY: "Retry" };
+    const mockRetryFunction = jest.fn();
+
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
+    `);
+
+    // Open the menu overlay
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+    await elementUpdated(el);
+
+    const calendar = el.shadowRoot!.querySelector("md-datepicker-calendar");
+    expect(calendar).toBeTruthy();
+
+    // Test that errorMessages and onRetry are properly passed to calendar
+    expect((calendar as any)?.errorMessages).toEqual(errorMessages);
+    expect((calendar as any)?.onRetry).toBe(mockRetryFunction);
+  });
+
+  test.each([
+    { loading: true, error: false, shouldHideButtons: true },
+    { loading: false, error: true, shouldHideButtons: true },
+    { loading: true, error: true, shouldHideButtons: true },
+    { loading: false, error: false, shouldHideButtons: false }
+  ])(
+    "should control button visibility based on loading/error states",
+    async ({ loading, error, shouldHideButtons }) => {
+      const el: DatePicker.ELEMENT = await createFixture(html`
+        <md-datepicker
+          ?is-date-picker-month-loading=${loading}
+          ?is-date-picker-month-error=${error}
+          .controlButtons=${{ cancel: { value: "CANCEL" }, apply: { value: "APPLY" } }}
+        ></md-datepicker>
+      `);
+
+      const input = el.shadowRoot!.querySelector("md-input");
+      input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(el);
+
+      const controlButtonsDiv = el.shadowRoot!.querySelector(".control-buttons");
+
+      if (shouldHideButtons) {
+        expect(controlButtonsDiv).toBeNull();
+      } else {
+        expect(controlButtonsDiv).toBeTruthy();
+        expect(el.shadowRoot!.querySelector("md-button.cancel-button")).toBeTruthy();
+        expect(el.shadowRoot!.querySelector("md-button.apply-button")).toBeTruthy();
+      }
+    }
+  );
+
   describe("Localised + ISO format testing", () => {
     test.each([{ useISOFormat: true }, { useISOFormat: false }])(
       "should use ISO format unless useISOFormat ($useISOFormat) is set to false",
@@ -748,6 +833,107 @@ describe("DatePicker Component with popover", () => {
     const popover = el.shadowRoot!.querySelector("md-popover");
     expect(popover?.getAttribute("strategy")).toBe("fixed");
   });
+
+  test("should handle loading/error properties with defaults and attribute reflection", async () => {
+    // Test default values
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
+
+    expect(el.isDatePickerMonthLoading).toBe(false);
+    expect(el.isDatePickerMonthError).toBe(false);
+    expect(el.hasAttribute("is-date-picker-month-loading")).toBe(false);
+    expect(el.hasAttribute("is-date-picker-month-error")).toBe(false);
+
+    // Test setting via attributes
+    const elWithAttrs: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker use-popover is-date-picker-month-loading is-date-picker-month-error></md-datepicker>
+    `);
+
+    expect(elWithAttrs.isDatePickerMonthLoading).toBe(true);
+    expect(elWithAttrs.isDatePickerMonthError).toBe(true);
+    expect(elWithAttrs.hasAttribute("is-date-picker-month-loading")).toBe(true);
+    expect(elWithAttrs.hasAttribute("is-date-picker-month-error")).toBe(true);
+  });
+
+  test("should handle errorMessages and onRetry properties", async () => {
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
+    const mockRetryFunction = jest.fn();
+
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker use-popover .errorMessages=${errorMessages} .onRetry=${mockRetryFunction}></md-datepicker>
+    `);
+
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
+  });
+
+  test("should handle new properties with popover - loading/error states and localized strings", async () => {
+    const errorMessages = { error: "Custom Error", retry: "Custom Retry" };
+    const mockRetryFunction = jest.fn();
+
+    const el: DatePicker.ELEMENT = await createFixture(html`
+      <md-datepicker
+        use-popover
+        is-date-picker-month-loading
+        is-date-picker-month-error
+        .errorMessages=${errorMessages}
+        .onRetry=${mockRetryFunction}
+      ></md-datepicker>
+    `);
+
+    // Test properties are set
+    expect(el.isDatePickerMonthLoading).toBe(true);
+    expect(el.isDatePickerMonthError).toBe(true);
+    expect(el.errorMessages).toEqual(errorMessages);
+    expect(el.onRetry).toBe(mockRetryFunction);
+
+    // Test attributes are reflected
+    expect(el.hasAttribute("is-date-picker-month-loading")).toBe(true);
+    expect(el.hasAttribute("is-date-picker-month-error")).toBe(true);
+
+    // Test calendar receives properties when opened
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+    await elementUpdated(el.popoverElement);
+
+    const calendar = el.shadowRoot!.querySelector("md-datepicker-calendar");
+    expect(calendar?.hasAttribute("is-date-picker-month-loading")).toBe(true);
+    expect(calendar?.hasAttribute("is-date-picker-month-error")).toBe(true);
+
+    // Test that errorMessages is properly passed to calendar
+    expect((calendar as any)?.errorMessages).toEqual(errorMessages);
+    expect((calendar as any)?.onRetry).toBe(mockRetryFunction);
+  });
+
+  test.each([
+    { loading: true, error: false, shouldHideButtons: true },
+    { loading: false, error: true, shouldHideButtons: true },
+    { loading: true, error: true, shouldHideButtons: true },
+    { loading: false, error: false, shouldHideButtons: false }
+  ])(
+    "should control button visibility in popover based on loading/error states",
+    async ({ loading, error, shouldHideButtons }) => {
+      const el: DatePicker.ELEMENT = await createFixture(html`
+        <md-datepicker
+          use-popover
+          ?is-date-picker-month-loading=${loading}
+          ?is-date-picker-month-error=${error}
+          .controlButtons=${{ cancel: { value: "CANCEL" }, apply: { value: "APPLY" } }}
+        ></md-datepicker>
+      `);
+
+      const input = el.shadowRoot!.querySelector("md-input");
+      input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(el.popoverElement);
+
+      const controlButtonsDiv = el.shadowRoot!.querySelector(".control-buttons");
+
+      if (shouldHideButtons) {
+        expect(controlButtonsDiv).toBeNull();
+      } else {
+        expect(controlButtonsDiv).toBeTruthy();
+      }
+    }
+  );
 
   describe("Localised + ISO format testing", () => {
     test.each([{ useISOFormat: true }, { useISOFormat: false }])(

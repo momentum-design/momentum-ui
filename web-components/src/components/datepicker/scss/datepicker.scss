@@ -55,6 +55,35 @@
     padding: $calendar-heading-padding;
   }
 
+  &__loading, &__error-container {
+    margin: rem-calc(40) 0;
+    height: rem-calc(132);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &__loading-text {
+    font-family: var(--brand-font-bold, inherit);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  &__error-header {
+    font-family: var(--brand-font-bold, inherit);
+    font-weight: bold;
+    font-size: var(--brand-font-midsize, rem-calc(14));
+  }
+
+  &__error-text {
+    opacity: 0.7;
+  }
+
+  &__error-icon {
+    color: var(--badge-status-negative-text-color);
+  }
+
   &__day--names {
     display: flex;
   }

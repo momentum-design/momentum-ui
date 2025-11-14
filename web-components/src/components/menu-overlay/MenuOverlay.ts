@@ -85,6 +85,7 @@ export namespace MenuOverlay {
 
     private popperInstance: Instance | null = null;
     private triggerElement: HTMLElement | null = null;
+    private _componentAddedAriaExpanded = false;
 
     static get styles() {
       return [
@@ -217,18 +218,30 @@ export namespace MenuOverlay {
     }
 
     private updateTriggerElementAriaExpanded() {
-      if (this.triggerElement) {
+      if (!this.triggerElement) return;
+
+      const hasAriaExpanded = this.triggerElement.hasAttribute("aria-expanded");
+
+      if (!hasAriaExpanded && !this._componentAddedAriaExpanded) {
+        // First time: attribute absent, add and track
+        this.triggerElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
+        this._componentAddedAriaExpanded = true;
+      } else if (this._componentAddedAriaExpanded) {
+        // We added it; remove it when closing
         if (this.isOpen) {
           this.triggerElement.setAttribute("aria-expanded", "true");
-          if (this.triggerElement.hasAttribute("ariaexpanded")) {
-            this.triggerElement.setAttribute("ariaexpanded", "true");
-          }
         } else {
           this.triggerElement.removeAttribute("aria-expanded");
-          if (this.triggerElement.hasAttribute("ariaexpanded")) {
-            this.triggerElement.setAttribute("ariaexpanded", "false");
-          }
+          this._componentAddedAriaExpanded = false;
         }
+      } else {
+        // User supplied; just toggle value
+        this.triggerElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
+      }
+
+      // Mirror legacy attribute
+      if (this.triggerElement.hasAttribute("ariaexpanded")) {
+        this.triggerElement.setAttribute("ariaexpanded", this.isOpen ? "true" : "false");
       }
     }
 

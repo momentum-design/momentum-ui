@@ -228,31 +228,34 @@ describe("Momentum Icon Component", () => {
       return svgElement;
     };
 
-      const element = await fixture<Icon.ELEMENT>(
-        `<md-icon iconSet="svg" name="social-facebook-color" size="20"></md-icon>`
-      );
+    const element = await fixture<Icon.ELEMENT>(
+      `<md-icon iconSet="svg" name="social-facebook-color" size="20"></md-icon>`
+    );
 
-      expect(deferredResolvers.has("social-facebook-color")).toBe(true);
+    expect(deferredResolvers.has("social-facebook-color")).toBe(true);
 
-      element.iconSet = "preferMomentumDesign";
-      element.name = "social-twitter-color";
-      await elementUpdated(element);
+    element.iconSet = "preferMomentumDesign";
+    element.name = "social-twitter-color";
+    await elementUpdated(element);
 
-      expect(deferredResolvers.has("social-twitter-color")).toBe(false);
+    expect(deferredResolvers.has("social-twitter-color")).toBe(false);
 
-      deferredResolvers.get("social-facebook-color")?.(createSvgElement("social-facebook-color"));
-      await Promise.resolve();
-      await elementUpdated(element);
+    deferredResolvers.get("social-facebook-color")?.(createSvgElement("social-facebook-color"));
+    await Promise.resolve();
+    await elementUpdated(element);
 
-      const getRenderedIcon = () =>
-        element.shadowRoot?.querySelector(".svg-icon-container .icon") as HTMLElement | null;
+    const getRenderedIcon = () => element.shadowRoot?.querySelector(".svg-icon-container .icon") as HTMLElement | null;
 
-      const latestIcon = getRenderedIcon();
-      expect(latestIcon).not.toBeNull();
-      expect(latestIcon!.classList.contains("social-twitter-color")).toBe(true);
+    const latestIcon = getRenderedIcon();
+    expect(latestIcon).not.toBeNull();
+    expect(latestIcon!.classList.contains("social-twitter-color")).toBe(true);
 
-      expect(consoleWarnSpy).toHaveBeenCalledWith(expect.stringContaining("The name changed to 'icon social-twitter-color' before the SVG icon 'social-facebook-color' finished loading; skipping outdated result."));
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        "The name changed to 'icon social-twitter-color' before the SVG icon 'social-facebook-color' finished loading; skipping outdated result."
+      )
+    );
 
-      jest.restoreAllMocks();
+    jest.restoreAllMocks();
   });
 });

@@ -196,12 +196,21 @@ export namespace Icon {
         return;
       }
 
+      const previousIconName = this.svgIcon?.getAttribute("class");
+
       const importedIcon =
         this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg"
           ? await fetchSVG(this.computedSvgPath, iconName, "svg")
           : await getMomentumDesignIconContent(iconName);
 
       if (!importedIcon) {
+        return;
+      }
+
+      // Check if the icon name has changed during the async operation
+      const currentIconName = this.svgIcon?.getAttribute("class");
+      if (previousIconName !== currentIconName) {
+        this.consoleHandler("name-changed", [currentIconName ?? "", iconName]);
         return;
       }
 
@@ -303,7 +312,7 @@ export namespace Icon {
       };
     }
 
-    consoleHandler = (message: string, data: string) => {
+    consoleHandler = (message: string, data: string | string[]) => {
       switch (message) {
         case "color-warn":
           console.warn(
@@ -315,6 +324,11 @@ export namespace Icon {
           console.warn(
             `[@momentum-ui/web-component] Icon: Icon ${data} does not exist in the design system.` +
               ` Visit https://momentum.design/icons for a list of available icons or to request a new icon.`
+          );
+          break;
+        case "name-changed":
+          console.warn(
+            `[@momentum-ui/web-component] Icon: The name changed to '${data[0]}' before the SVG icon '${data[1]}' finished loading; skipping outdated result.`
           );
           break;
       }

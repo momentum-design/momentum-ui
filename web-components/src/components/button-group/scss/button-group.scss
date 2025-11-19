@@ -7,7 +7,7 @@
   display: flex;
 
   .md-button-group {
-    @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
+    @include flex($display: inline-flex, $ac: flex-start, $jc: flex-start);
     background: var(--button-group-bg-color);
     border-radius: $button-group-border-radius;
     font-size: $font-size-small;
@@ -46,14 +46,66 @@
     }
 
     ::slotted(:hover) {
-      background: var(--button-group-color-hover, none);
+      background: var(--button-group-bg-color-hover, none);
       color: var(--button-group-color-active);
     }
-    
+
     ::slotted([selected]) {
       background: var(--button-group-bg-color-active);
       box-shadow: $button-group-btn-shadow;
       color: var(--button-group-color-active);
+    }
+  }
+}
+
+:host([newMomentum]) {
+  .md-button-group {
+    background: transparent;
+    border-radius: none;
+    padding: 0;
+    transition: none;
+    height: $button-group-btn-height-new;
+    font-size: $font-size-base;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:active {
+      background: transparent;
+    }
+
+    ::slotted(button) {
+      border-radius: 0;
+      height: $button-group-btn-height-new;
+      color: var(--button-group-color-active);
+    }
+
+    ::slotted(button:first-of-type) {
+      border-start-start-radius: $button-group-border-radius-new;
+      border-end-start-radius: $button-group-border-radius-new;
+    }
+
+    ::slotted(button:last-of-type) {
+      border-start-end-radius: $button-group-border-radius-new;
+      border-end-end-radius: $button-group-border-radius-new;
+    }
+
+    ::slotted(button:not(:last-of-type))::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      inset-inline-start: 100%;
+    }
+
+    ::slotted(:active) {
+      background: var(--button-group-bg-color-active);
+      font-weight: var(--brand-font-weight-bold) !important;
+    }
+
+    ::slotted([selected]) {
+      box-shadow: none;
+      font-weight: var(--brand-font-weight-bold) !important;
     }
   }
 }
@@ -71,25 +123,23 @@
   }
 }
 
+@media (forced-colors: active) {
+  :host(md-button-group) {
+    .md-button-group {
+      outline: 1px solid CanvasText;
+      background: Canvas;
 
-@media (forced-colors:active) {
-    :host(md-button-group) {
-      .md-button-group {
-        outline: 1px solid CanvasText; 
-        background: Canvas;
-  
-        ::slotted([selected]) {
-          forced-color-adjust: none;
-          outline: 1px solid Highlight;
-          background: Highlight;
-          color:HighlightText;
-        }
+      ::slotted([selected]) {
+        forced-color-adjust: none;
+        outline: 1px solid Highlight;
+        background: Highlight;
+        color: HighlightText;
       }
     }
-    :host([focus-visible]:not([disabled])) {
-      .md-button-group {
-        outline: 2px solid Highlight; 
-      }
+  }
+  :host([focus-visible]:not([disabled])) {
+    .md-button-group {
+      outline: 2px solid Highlight;
     }
-
+  }
 }

@@ -63,4 +63,38 @@ export const buttonGroupTemplate = html`
       <button slot="button" type="button" value="Option C">Option C</button>
     </md-button-group>
   </div>
+  <div class="column">
+    <h3>NewMomentum 3 opotions</h3>
+    <md-button-group newMomentum>
+      <button slot="button" type="button" value="Option A">Option A</button>
+      <button slot="button" type="button" value="Option B">Option B</button>
+      <button slot="button" type="button" value="Option C">Option C</button>
+    </md-button-group>
+  </div>
+  <div class="column">
+    <h3>NewMomentum Appearance Mode</h3>
+    <md-button-group newMomentum>
+      <button slot="button" type="button" value="Light">
+        <md-icon name="brightness-high-bold" size="16" iconSet="momentumDesign" style="margin-right:6px;"></md-icon
+        >Light
+      </button>
+      <button slot="button" type="button" value="Dark">
+        <md-icon name="quiet-hours-presence-bold" size="16" iconSet="momentumDesign" style="margin-right:6px;"></md-icon
+        >Dark
+      </button>
+    </md-button-group>
+  </div>
+  <div class="column">
+    <h3>NewMomentum Disabled</h3>
+    <md-button-group newMomentum disabled>
+      <button slot="button" type="button" value="Light">
+        <md-icon name="brightness-high-bold" size="16" iconSet="momentumDesign" style="margin-right:6px;"></md-icon
+        >Light
+      </button>
+      <button slot="button" type="button" value="Dark">
+        <md-icon name="quiet-hours-presence-bold" size="16" iconSet="momentumDesign" style="margin-right:6px;"></md-icon
+        >Dark
+      </button>
+    </md-button-group>
+  </div>
 `;

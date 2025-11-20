@@ -18,10 +18,10 @@
 :host([alignment="horizontal"]) div {
   display: inline-flex;
   flex-direction: row;
-}
-
-:host([alignment="horizontal"]) div ::slotted(md-radio) {
-  margin-inline-end: calc(#{$radio-main-indent} * 8);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: calc(#{$radio-main-indent} * 4);
+  row-gap: calc(#{$radio-main-indent} * 3);
 }
 
 :host([disabled]) div ::slotted(md-radio) {

@@ -84,25 +84,33 @@ export namespace Radio {
 
     render() {
       return html`
-        <div class="md-radio-wrapper" part="radio-wrapper">
-          <div class="md-radio-icon"></div>
-          <input
-            class="md-radio-input"
-            part="radio-input"
-            type="radio"
-            role="radio"
-            aria-label=${ifDefined(this.inputAriaLabel)}
-            aria-checked=${this.checked ? "true" : "false"}
-            .value=${this.value}
-            ?checked=${this.checked}
-            ?autofocus=${this.autofocus}
-            ?disabled=${this.disabled}
-            tabindex="-1"
-            id="radio-label"
-          />
-          <label for="radio-label" class="md-radio-label" part="radio-label" @click=${(e: Event) => e.preventDefault()}>
-            <slot></slot>
-          </label>
+        <div>
+          <slot name="image"></slot>
+          <div class="md-radio-wrapper" part="radio-wrapper">
+            <div class="md-radio-icon"></div>
+            <input
+              class="md-radio-input"
+              part="radio-input"
+              type="radio"
+              role="radio"
+              aria-label=${ifDefined(this.inputAriaLabel)}
+              aria-checked=${this.checked ? "true" : "false"}
+              .value=${this.value}
+              ?checked=${this.checked}
+              ?autofocus=${this.autofocus}
+              ?disabled=${this.disabled}
+              tabindex="-1"
+              id="radio-label"
+            />
+            <label
+              for="radio-label"
+              class="md-radio-label"
+              part="radio-label"
+              @click=${(e: Event) => e.preventDefault()}
+            >
+              <slot></slot>
+            </label>
+          </div>
         </div>
         ${this.messagesTemplate()}
       `;

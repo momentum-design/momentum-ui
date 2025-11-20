@@ -19,10 +19,13 @@ Please follow these guidelines to help decide appropriate  scenarios for publish
 * When dependant projects need bug or feature updates ahead of normal release timeline
 
 ## To publish a new release
+
+See [PUBLISHING.md](PUBLISHING.md) for the automated publishing process using GitHub Actions.
+
+**Quick summary:**
 1. Merge changes that share the same version semantic (i.e. two bug fix PRs)
-2. Increment the related version numeral from within the momentum-ui/web-components dir (best practice use `npm version [patch|minor|major]` unless making a `dev` release, then you can directly edit the package.json `version` property.)
-3. Run `npm login` to ensure you are connected to NPMjs. NOTE: you must be logged in to your NPMjs account that has the rights of a maintainer on @momentum-ui packages in order for it to publish. Do not use you Cisco credentials. 
-4. If not already authorized, run `yarn npm:auth` (This will allow publish internally on Artifactory as well as on npmjs)
-5. `yarn npm:publish` (This command will publish on Artifactory as well as on npmjs)
+2. Update the version in `package.json` following the semantic versioning guidelines above
+3. Commit and push to `main`
+4. Manually trigger the "Publish Web Components" workflow in GitHub Actions
 
 If a combination of semantic scenarios are ready for merge at the same time, merge and release all Patch change PRs first, then Minor change PRs.

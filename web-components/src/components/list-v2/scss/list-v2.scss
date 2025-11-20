@@ -1,0 +1,25 @@
+:host {
+  --md-list-v2-gap: 0;
+  --md-list-v2-orientation: column;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: var(--md-list-v2-orientation);
+  gap: var(--md-list-v2-gap);
+}
+
+:host([orientation="horizontal"]) {
+  --md-list-v2-orientation: row;
+}
+
+:host([gap="sm"]) {
+  --md-list-v2-gap: 0.25rem;
+}
+
+:host([gap="md"]) {
+  --md-list-v2-gap: 0.5rem;
+}
+
+:host([gap="lg"]) {
+  --md-list-v2-gap: 1rem;
+}

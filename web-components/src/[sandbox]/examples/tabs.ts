@@ -557,8 +557,8 @@ export class TabsTemplateSandbox extends LitElement {
               <span>Close Tab Confirmation</span>
             </div>
             <p>Are you sure you want to close the Tab?</p>
-            <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
-            <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
+            <md-button slot="footer" @click=${() => (this.isModalOpen = false)}>Cancel</md-button>
+            <md-button slot="footer" @click=${this.closeTab} type="submit">Confirm</md-button>
           </md-modal>
         </div>
       </div>
@@ -753,6 +753,7 @@ export class AddingAndRemovingTabsTemplate extends LitElement {
         variant="primary"
         selected-index=${this.selectedTabIndex}
         @selected-changed=${(e: CustomEvent) => this.selectedTabChanged(e)}
+        roving-prevent-focus
       >
         ${repeat(
           this.filteredTabs,

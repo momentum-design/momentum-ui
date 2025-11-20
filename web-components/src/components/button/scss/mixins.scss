@@ -22,6 +22,7 @@
     @include flex;
     max-width: 100%;
     flex: 1;
+    gap: 0.5rem;
   }
 
   + .#{$button__class} {

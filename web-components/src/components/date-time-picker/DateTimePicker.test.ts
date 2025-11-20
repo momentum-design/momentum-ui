@@ -113,7 +113,7 @@ describe("DateTimePicker Component", () => {
 
       if (includeApplyButton) {
         expect(applyButton).not.toBeNull();
-        applyButton?.dispatchEvent(new MouseEvent("click"));
+        applyButton?.dispatchEvent(new MouseEvent("button-click"));
         await elementUpdated(el);
         expect(dateTime2.equals(dateStringToDateTime(el.value))).toBe(true);
       } else {

@@ -50,6 +50,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
   --font-lineheight-heading-small: 1.75rem;
   --font-lineheight-body-large: 1.5rem;
+  --font-lineheight-body-small: 1rem;
   --body-primary-line-height: 1.5rem;
   --list-line-height: rem-calc(20);
 
@@ -123,6 +124,10 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
   --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
   --md-backdrop-filter: 10px;
+
+  --md-focus-inner-color: #{$mds-color-theme-focus-default-0};
+  --md-focus-middle-color: #{$mds-color-theme-focus-default-1};
+  --md-focus-outer-color: #{$mds-color-theme-focus-default-2};
 
   --md-nav-divider-primary: linear-gradient(
     0deg,

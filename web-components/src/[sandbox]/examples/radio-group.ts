@@ -46,6 +46,7 @@ export class RadioGroupTemplateSandbox extends LitElement {
       >
         <span slot="text">Clear selection</span>
       </md-button>
+
       <h3>Disabled</h3>
       <md-radiogroup group-label="group_process" checked="2">
         <md-radio slot="radio" value="Option">Option</md-radio>
@@ -53,17 +54,51 @@ export class RadioGroupTemplateSandbox extends LitElement {
         <md-radio slot="radio" value="Option 2 ">Option 2 [Preselected]</md-radio>
         <md-radio slot="radio" value="Disabled 2" disabled>Disabled 2</md-radio>
       </md-radiogroup>
+
       <h3>Radio buttons with icons</h3>
       <md-radiogroup group-label="group_process">
         <md-radio slot="radio" value="Option 1">
-          Option 1
-          <md-icon name="info-badge-filled" size="16" iconSet="momentumDesign"></md-icon>
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span> Option 1 </span>
+            <md-icon name="info-badge-filled" size="16" iconSet="momentumDesign"></md-icon>
+          </div>
         </md-radio>
         <md-radio slot="radio" value="Option 2">
-          Option 2
-          <md-tooltip message="Tooltip message" placement="top">
-            <md-icon name="info-badge-filled" size="16" iconSet="momentumDesign"></md-icon>
-          </md-tooltip>
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span> Option 2 </span>
+            <md-tooltip message="Tooltip message" placement="top">
+              <md-icon name="info-badge-filled" size="16" iconSet="momentumDesign"></md-icon>
+            </md-tooltip>
+          </div>
+        </md-radio>
+        <md-radio slot="radio" value="Option 2">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span> Option 2 </span>
+            <md-tooltip message="Tooltip message" placement="top">
+              <md-button variant="ghost" circle size="20">
+                <md-icon name="info-badge-filled" size="16" iconSet="momentumDesign"></md-icon>
+              </md-button>
+            </md-tooltip>
+          </div>
+        </md-radio>
+      </md-radiogroup>
+
+      <h3>Radio buttons with helper text</h3>
+      <md-radiogroup group-label="group_process" style="max-width: 400px;">
+        <md-radio slot="radio" value="All" message="New messages, AI Assistant suggestions, status changes, and more">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>All</span>
+          </div>
+        </md-radio>
+        <md-radio slot="radio" hideMessage message="testing" value="Ai only">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>AI Assistant only</span>
+          </div>
+        </md-radio>
+        <md-radio slot="radio" value="None">
+          <div style="display: flex; align-items: center; gap: 0.25rem;">
+            <span>None</span>
+          </div>
         </md-radio>
       </md-radiogroup>`;
   }

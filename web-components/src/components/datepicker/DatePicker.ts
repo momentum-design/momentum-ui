@@ -30,6 +30,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import { Popover, PopoverController } from "../popover/Popover";
 import { StrategyType } from "../popover/Popover.types";
 import styles from "./scss/module.scss";
 export interface DatePickerControlButton {
@@ -45,6 +46,7 @@ export interface DatePickerControlButtons {
 
 const DEFAULT_ARIA_LABEL = "Choose Date";
 const DEFAULT_ARIA_LABEL_DATE_SELECTED = "Choose Date, selected date is ";
+const DEFAULT_POPOVER_OFFSET = 15;
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -66,25 +68,39 @@ export namespace DatePicker {
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "";
     @property({ type: String }) ariaLabel: string | null = null;
+    @property({ type: String }) displayValue: string | null = null;
     @property({ type: Boolean }) required = false;
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
+    @property({ type: Boolean }) disableUserTextInput = false;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
     @property({ type: Object, attribute: false }) controlButtons?: DatePickerControlButtons = undefined;
     @property({ type: String, attribute: "positioning-strategy" })
     positioningStrategy?: StrategyType = undefined;
     @property({ type: Boolean, attribute: "show-default-now-date" }) showDefaultNowDate = true;
+    @property({ type: Boolean, attribute: "use-popover" }) usePopover = false;
+    @property({ type: String, attribute: "triggerID" }) triggerID = "date-trigger";
+    @property({ type: Boolean, reflect: true, attribute: "animation-frame" })
+    animationFrame: boolean = false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-loading" }) isDatePickerMonthLoading =
+      false;
+    @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
+    @property({ type: Object, attribute: false }) errorMessages: Record<string, string> = {};
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    @internalProperty() filterDate: Function | undefined = undefined;
+    @property() filterDate: Function | undefined = undefined;
+    @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
     @internalProperty() maxDateData: DateTime | undefined = undefined;
     @internalProperty() minDateData: DateTime | undefined = undefined;
 
+    private popoverController: PopoverController | null = null;
+
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
+    @query("md-popover") popoverElement!: Popover;
     get computedNewMomentum() {
       if (this.newMomentum !== undefined) {
         return this.newMomentum;
@@ -105,6 +121,9 @@ export namespace DatePicker {
       if (this.maxDate) {
         this.maxDateData = dateStringToDateTime(this.maxDate);
       }
+      if (this.usePopover) {
+        this.popoverController = new PopoverController();
+      }
     }
 
     firstUpdated(changedProperties: PropertyValues) {
@@ -118,9 +137,6 @@ export namespace DatePicker {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (this.value && changedProperties.has("value")) {
-        if (closestElement("md-date-range-picker", this)) {
-          return;
-        }
         if (this.useISOFormat) {
           this.selectedDate = dateStringToDateTime(this.value);
         } else {
@@ -138,6 +154,9 @@ export namespace DatePicker {
       }
       if (this.maxDate && changedProperties.has("maxDate")) {
         this.maxDateData = dateStringToDateTime(this.maxDate);
+      }
+      if (!this.usePopover && changedProperties.has("usePopover")) {
+        this.popoverController = new PopoverController();
       }
     }
 
@@ -160,7 +179,15 @@ export namespace DatePicker {
     };
 
     setOpen = (open: boolean) => {
-      this.menuOverlay.isOpen = open;
+      if (this.usePopover) {
+        if (open) {
+          this.popoverController?.show();
+        } else {
+          this.popoverController?.hide();
+        }
+      } else {
+        this.menuOverlay.isOpen = open;
+      }
       this.isMenuOverlayOpen = open;
     };
 
@@ -338,7 +365,7 @@ export namespace DatePicker {
     }
 
     private renderControlButtons(): TemplateResult {
-      if (!this.controlButtons) {
+      if (!this.controlButtons || this.isDatePickerMonthLoading || this.isDatePickerMonthError) {
         return html``;
       }
 
@@ -350,7 +377,7 @@ export namespace DatePicker {
                   class="cancel-button"
                   aria-label=${ifDefined(this.controlButtons.cancel?.ariaLabel)}
                   ?disabled=${this.controlButtons.cancel?.disabled ?? false}
-                  @click=${this.onCancelClick}
+                  @button-click=${this.onCancelClick}
                   variant="secondary"
                 >
                   ${this.controlButtons.cancel.value}
@@ -363,7 +390,7 @@ export namespace DatePicker {
                   class="apply-button"
                   aria-label=${ifDefined(this.controlButtons.apply?.ariaLabel)}
                   ?disabled=${this.controlButtons.apply?.disabled ?? false}
-                  @click=${this.onApplyClick}
+                  @button-click=${this.onApplyClick}
                   variant="primary"
                 >
                   ${this.controlButtons.apply.value}
@@ -404,7 +431,80 @@ export namespace DatePicker {
       return this.isMenuOverlayOpen ? "true" : "false";
     }
 
-    render() {
+    renderPopover() {
+      return html`
+        <md-popover
+          trigger="click"
+          .triggerID=${this.triggerID}
+          placement="bottom"
+          strategy=${ifDefined(this.positioningStrategy)}
+          hide-on-escape
+          hide-on-outside-click
+          focus-trap
+          focus-back-to-trigger
+          .controller=${this.popoverController}
+          ?animation-frame=${this.animationFrame}
+          .offset=${DEFAULT_POPOVER_OFFSET}
+        >
+          <div class="date-overlay-content">
+            <md-datepicker-calendar
+              @day-select=${(e: CustomEvent) => this.handleSelect(e)}
+              @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
+              .datePickerProps=${{
+                locale: this.locale,
+                selected: this.selectedDate,
+                focused: this.focusedDate,
+                weekStart: this.weekStart
+              }}
+              ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
+              .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
+            ></md-datepicker-calendar>
+            <slot name="time-picker"></slot>
+            ${this.renderControlButtons()}
+          </div>
+        </md-popover>
+        ${this.customTrigger
+          ? html`
+              <span slot="menu-trigger">
+                <slot name="date-trigger"></slot>
+              </span>
+            `
+          : html`
+              <md-input
+                id="date-trigger"
+                class="date-input"
+                slot="menu-trigger"
+                ariaRole="combobox"
+                ?newMomentum=${this.computedNewMomentum}
+                placeholder=${this.getPlaceHolderString()}
+                value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
+                .disableUserTextInput=${this.disableUserTextInput}
+                htmlId=${this.htmlId}
+                label=${this.label}
+                ariaLabel=${this.getAriaLabel()}
+                ariaExpanded=${this.isAriaExpanded}
+                ariaControls="date-overlay-content"
+                auxiliaryContentPosition="before"
+                ?required=${this.required}
+                @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
+                @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
+                ?disabled=${this.disabled}
+                ?hide-message=${!this.errorMessage || this.isValueValid()}
+                ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
+                .messageArr=${this.messageArray}
+                ?compact=${this.compactInput}
+              >
+                <md-icon slot="input-section" name="calendar-month-bold" size="16" iconSet="momentumDesign"></md-icon>
+              </md-input>
+            `}
+      `;
+    }
+
+    renderMenuOverlay() {
       return html`
         <md-menu-overlay
           is-date-picker
@@ -422,10 +522,11 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
-                  role="combobox"
+                  ariaRole="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.getPlaceHolderString()}
-                  value=${ifDefined(this.value ?? undefined)}
+                  value=${this.displayValue ?? ifDefined(this.value ?? undefined)}
+                  .disableUserTextInput=${this.disableUserTextInput}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.getAriaLabel()}
@@ -434,7 +535,7 @@ export namespace DatePicker {
                   auxiliaryContentPosition="before"
                   ?required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
-                  @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                  @input-change=${(e: CustomEvent) => this.handleDateInputChange(e)}
                   ?disabled=${this.disabled}
                   ?hide-message=${!this.errorMessage || this.isValueValid()}
                   ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
@@ -456,6 +557,10 @@ export namespace DatePicker {
                 weekStart: this.weekStart
               }}
               ?short-day=${this.computedNewMomentum}
+              ?is-date-picker-month-loading=${this.isDatePickerMonthLoading}
+              ?is-date-picker-month-error=${this.isDatePickerMonthError}
+              .errorMessages=${this.errorMessages}
+              .onRetry=${this.onRetry}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>
@@ -463,6 +568,14 @@ export namespace DatePicker {
           </div>
         </md-menu-overlay>
       `;
+    }
+
+    render() {
+      if (this.usePopover) {
+        return this.renderPopover();
+      } else {
+        return this.renderMenuOverlay();
+      }
     }
   }
 }

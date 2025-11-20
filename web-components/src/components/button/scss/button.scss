@@ -577,6 +577,51 @@
       }
     }
   }
+
+  ::slotted([slot="notification"]) {
+    // Styles for the notification slot
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    inset-inline-end: 0;
+  }
+
+  @each $size in (20, 24, 28, 32, 36, 40, 44, 52, 56, 64, 68, 72, 84) {
+    .md-button.md-button--#{$size} {
+      $top-offset: 0px;
+      $horizontal-offset: 0px;
+
+      // Define offsets based on button size
+      @if $size <= 28 {
+        $top-offset: -6px;
+        $horizontal-offset: -6px;
+      } @else if $size <= 32 {
+        $top-offset: -4px;
+        $horizontal-offset: -4px;
+      } @else if $size <= 40 {
+        $top-offset: -4px;
+        $horizontal-offset: -4px;
+      } @else if $size <= 52 {
+        $top-offset: -6px;
+        $horizontal-offset: -6px;
+      } @else {
+        $top-offset: -2px;
+        $horizontal-offset: -2px;
+      }
+
+      // Standard positioning (LTR)
+      ::slotted([slot="notification"]) {
+        top: $top-offset;
+        inset-inline-end: $horizontal-offset;
+      }
+
+      // Dot type with smaller offset
+      ::slotted([slot="notification"][type="dot"]) {
+        top: $top-offset + 2;
+        inset-inline-end: $horizontal-offset + 2;
+      }     
+    }
+  }
 }
 
 // --------------------------------------------------------------
@@ -682,7 +727,7 @@
 
 :host([variant="inverted-ghost"]) .md-button {
   background-color: var(--button-inverted-secondary-bg-color);
-  color: var(--button-inverted-secondary-text-color);  
+  color: var(--button-inverted-secondary-text-color);
 
   &:hover {
     background-color: var(--button-inverted-secondary-hover-bg-color);
@@ -696,7 +741,7 @@
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-inverted-secondary-disabled-bg-color);    
+    background-color: var(--button-inverted-secondary-disabled-bg-color);
     color: var(--button-inverted-secondary-disabled-text-color);
   }
 }
@@ -743,7 +788,7 @@
 
   &.isActive {
     background-color: var(--button-secondary-active-normal-bg-color);
-    color: var(--button-secondary-text-color);    
+    color: var(--button-secondary-text-color);
     font-family: var(--brand-font-bold, "CiscoSansTT Bold");
 
     &:hover {
@@ -758,7 +803,7 @@
 
     &:disabled,
     &.disabled {
-      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));      
+      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));
       color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color));
     }
   }
@@ -1152,21 +1197,12 @@
   white-space: nowrap;
 }
 
-::slotted(*:not(:first-child)) {
-  display: inline-block;
-  margin-left: 0.5rem;
-}
-
 ::slotted(md-icon) {
   line-height: normal;
 }
 
 md-spinner {
   display: flex;
-}
-
-md-spinner + ::slotted(*) {
-  margin-left: 0.5rem;
 }
 
 @media (forced-colors: active) {

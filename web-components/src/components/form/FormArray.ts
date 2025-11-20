@@ -1,54 +1,85 @@
 import { AbstractControl } from "./Form.types";
 import { ObservableControl } from "./ObservableControl";
-
+export type ArrayValidatorFn<ItemType> = (arr: FormArray<ItemType>) => void;
 export class FormArray<ItemType> extends ObservableControl<ItemType[]> implements AbstractControl<ItemType[]> {
-    constructor(private readonly controls: AbstractControl<ItemType>[]) {
-        super();
-        for (const child of this.controls) {
-            child.onChange?.(() => this.emitChange());
-        }
+  private inArrayValidation = false;
+  constructor(
+    private readonly controls: AbstractControl<ItemType>[],
+    private readonly arrayValidators: ReadonlyArray<ArrayValidatorFn<ItemType>> = []
+  ) {
+    super();
+    this.arrayValidators = arrayValidators;
+    for (const child of this.controls) {
+      child.onChange?.(() => {
+        this.childChanged();
+      });
+      this.childChanged();
     }
+  }
 
-    at(index: number): AbstractControl<ItemType> {
-        return this.controls[index];
-    }
+  at(index: number): AbstractControl<ItemType> {
+    return this.controls[index];
+  }
 
-    push(control: AbstractControl<ItemType>): void {
-        this.controls.push(control);
-        control.onChange?.(() => this.emitChange());
-        this.emitChange();
+  private runArrayValidators(): void {
+    if (!this.arrayValidators.length) {
+      return;
     }
+    this.inArrayValidation = true;
+    try {
+      for (const validatorFn of this.arrayValidators) {
+        validatorFn(this);
+      }
+    } finally {
+      this.inArrayValidation = false;
+    }
+  }
 
-    removeAt(index: number): void {
-        this.controls.splice(index, 1);
-        this.emitChange();
-    }
+  push(control: AbstractControl<ItemType>): void {
+    this.controls.push(control);
+    control.onChange?.(() => {
+      this.childChanged();
+    });
+    this.childChanged();
+  }
 
-    get value(): ItemType[] {
-        return this.controls.map((control) => control.value);
+  private childChanged = (): void => {
+    if (!this.inArrayValidation) {
+      this.runArrayValidators();
     }
+    this.emitChange();
+  };
 
-    get valid(): boolean {
-        return this.controls.every((control) => control.valid);
-    }
+  removeAt(index: number): void {
+    this.controls.splice(index, 1);
+    this.childChanged();
+  }
 
-    get length(): number {
-        return this.controls.length;
-    }
+  get value(): ItemType[] {
+    return this.controls.map((control) => control.value);
+  }
 
-    getControls(): AbstractControl<ItemType>[] {
-        return this.controls;
-    }
+  get valid(): boolean {
+    return this.controls.every((control) => control.valid);
+  }
 
-    validate(): void {
-        this.controls.forEach((control) => control.validate());
-        this.emitChange();
-    }
+  get length(): number {
+    return this.controls.length;
+  }
 
-    markAllAsTouched(): void {
-        this.controls.forEach((control) => {
-            control.markAllAsTouched?.();
-            control.markAsTouched?.();
-        });
-    }
+  getControls(): AbstractControl<ItemType>[] {
+    return this.controls;
+  }
+
+  validate(): void {
+    this.controls.forEach((control) => control.validate());
+    this.childChanged();
+  }
+
+  markAllAsTouched(): void {
+    this.controls.forEach((control) => {
+      control.markAllAsTouched?.();
+      control.markAsTouched?.();
+    });
+  }
 }

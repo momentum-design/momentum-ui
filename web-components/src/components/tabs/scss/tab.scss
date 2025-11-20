@@ -154,7 +154,7 @@
 
 :host([vertical]) {
   .md-tab-content {
-    text-align: left !important;
+    text-align: start !important;
     justify-content: flex-start;
 
     .tab-slot {
@@ -217,7 +217,7 @@
   height: auto !important;
   pointer-events: none;
   position: absolute;
-  right: 0;
+  inset-inline-end: 0;
   top: 0;
   visibility: hidden;
   width: auto !important;
@@ -255,7 +255,7 @@ slot {
 
     md-icon,
     img {
-      margin-right: 0.5rem;
+      margin-inline-end: 0.5rem;
     }
 
     img {
@@ -269,7 +269,7 @@ slot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: calc(#{$tab-base-indent} * 4);
+  margin-inline-start: calc(#{$tab-base-indent} * 4);
   height: 16px;
   width: 16px;
 

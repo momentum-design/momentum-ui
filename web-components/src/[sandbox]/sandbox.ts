@@ -45,6 +45,7 @@ import {
   labelTemplate,
   linkTemplate,
   listTemplate,
+  listV2Template,
   loadingTemplate,
   meetingAlertTemplate,
   menuItemTemplate,
@@ -66,6 +67,7 @@ import {
   toggleSwitchTemplate,
   tooltipTemplate
 } from "./examples";
+import { skeletonTemplate } from "./examples/skeleton";
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends MobxLitElement {
@@ -77,6 +79,9 @@ export class Sandbox extends MobxLitElement {
 
   @internalProperty()
   private tabsOrientation: "horizontal" | "vertical" = "vertical";
+
+  @internalProperty()
+  private isRtl = false;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -135,6 +140,11 @@ export class Sandbox extends MobxLitElement {
     if (storedTabsOrientation && this.tabsOrientation !== storedTabsOrientation) {
       this.tabsOrientation = storedTabsOrientation as "horizontal" | "vertical";
     }
+
+    const storedRtl = localStorage.getItem("is-rtl-enabled");
+    if (storedRtl) {
+      this.isRtl = JSON.parse(storedRtl);
+    }
   }
 
   toggleSetting(event: MouseEvent) {
@@ -153,6 +163,16 @@ export class Sandbox extends MobxLitElement {
     }
   }
 
+  toggleDarkMode() {
+    themeManager.setDarkMode(!themeManager.isDarkMode);
+    localStorage.setItem("darkTheme", JSON.stringify(themeManager.isDarkMode));
+  }
+
+  toggleRtl() {
+    this.isRtl = !this.isRtl;
+    localStorage.setItem("is-rtl-enabled", JSON.stringify(this.isRtl));
+  }
+
   toggleVisualRebrandEnabled() {
     themeManager.setVisualRebrandEnabled(!themeManager.isVisualRebrandEnabled);
     localStorage.setItem("is-visual-rebrand-enabled", JSON.stringify(themeManager.isVisualRebrandEnabled));
@@ -166,28 +186,9 @@ export class Sandbox extends MobxLitElement {
   themeToggle() {
     return html`
       <div class="toggle-container">
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="theme-switch"
-            class="theme-switch"
-            data-aspect="darkTheme"
-            @click=${this.toggleSetting}
-            ?checked=${themeManager.isDarkMode}
-          />
+        <md-checkbox @checkbox-change=${this.toggleDarkMode} ?checked=${themeManager.isDarkMode}>
           Dark Mode
-        </label>
-        <label class="switch">
-          <input
-            type="radio"
-            name="theme-switch"
-            class="momentum-switch"
-            data-aspect="momentum"
-            @click=${this.toggleSetting}
-            ?checked=${themeManager.themeName === "momentum"}
-          />
-          Momentum
-        </label>
+        </md-checkbox>
         <label class="switch">
           <input
             type="radio"
@@ -210,28 +211,17 @@ export class Sandbox extends MobxLitElement {
           />
           MomentumV2
         </label>
-        <label class="switch">
-          <input
-            type="checkbox"
-            name="theme-switch"
-            class="visual-rebrand-switch"
-            data-aspect="visual-rebrand"
-            @click=${this.toggleVisualRebrandEnabled}
-            ?checked=${themeManager.isVisualRebrandEnabled}
-          />
-          Visual rebrand
-        </label>
-        <label class="switch">
-          <input
-            type="checkbox"
-            name="selectedTabRender"
-            class="visual-rebrand-switch"
-            data-aspect="selected-tab-render"
-            @click=${this.toggleSelectedTabPanelRender}
-            ?checked=${this.renderSelectedTabPanelOnly}
-          />
+        <md-checkbox
+          @checkbox-change=${this.toggleVisualRebrandEnabled}
+          ?checked=${themeManager.isVisualRebrandEnabled}
+        >
+          Visual Rebrand
+        </md-checkbox>
+
+        <md-checkbox @checkbox-change=${this.toggleSelectedTabPanelRender} ?checked=${this.renderSelectedTabPanelOnly}>
           Only render selected tab panel
-        </label>
+        </md-checkbox>
+        <md-checkbox @checkbox-change=${this.toggleRtl} ?checked=${this.isRtl}> RTL </md-checkbox>
         <md-button variant="secondary" size="28" @click=${this.toggleTabsOrientation}
           >Toggle Tabs Orientation</md-button
         >
@@ -339,6 +329,7 @@ export class Sandbox extends MobxLitElement {
         id="app-theme"
         ?darkTheme=${themeManager.isDarkMode}
         theme=${themeManager.themeName}
+        dir=${this.isRtl ? "rtl" : "ltr"}
       >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
@@ -399,6 +390,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Link", "md-link", "link", linkTemplate)}
           ${this.getTabTemplate("List", "md-list", "list", listTemplate)}
           ${this.getTabTemplate("Advanced List", "md-advance-list", "list", advanceListTemplate)}
+          ${this.getTabTemplate("List V2", "md-list-v2", "list-v2", listV2Template)}
           ${this.getTabTemplate("Loading", "md-loading", "loading", loadingTemplate)}
           ${this.getTabTemplate("Meeting Alert", "md-meeting-alert", "meeting-alert", meetingAlertTemplate)}
           ${this.getTabTemplate("Menu", "md-menu", "menu", menuItemTemplate)}
@@ -410,6 +402,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Presence", "md-presence", "presence", presenceTemplate)}
           ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
+          ${this.getTabTemplate("Skeleton", "md-skeleton", "skeleton", skeletonTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}
           ${this.getTabTemplate("Spinner", "md-spinner", "spinner", spinnerTemplate)}
           ${this.getTabTemplate("Table", "md-table", "table", tableTemplate)}

@@ -84,6 +84,7 @@ export namespace MenuOverlay {
 
     private popperInstance: Instance | null = null;
     private triggerElement: HTMLElement | null = null;
+    private _componentAddedAriaExpanded = false;
 
     private renderMaxHeight() {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
@@ -138,7 +139,6 @@ export namespace MenuOverlay {
       super.connectedCallback();
       this.handleWindowBlurEvent = this.handleWindowBlurEvent.bind(this);
       window.addEventListener("blur", this.handleWindowBlurEvent);
-      document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.addEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
@@ -168,18 +168,30 @@ export namespace MenuOverlay {
     }
 
     private updateTriggerElementAriaExpanded() {
-      if (this.triggerElement) {
+      if (!this.triggerElement) return;
+
+      const hasAriaExpanded = this.triggerElement.hasAttribute("aria-expanded");
+
+      if (!hasAriaExpanded && !this._componentAddedAriaExpanded) {
+        // First time: attribute absent, add and track
+        this.triggerElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
+        this._componentAddedAriaExpanded = true;
+      } else if (this._componentAddedAriaExpanded) {
+        // We added it; remove it when closing
         if (this.isOpen) {
           this.triggerElement.setAttribute("aria-expanded", "true");
-          if (this.triggerElement.hasAttribute("ariaexpanded")) {
-            this.triggerElement.setAttribute("ariaexpanded", "true");
-          }
         } else {
           this.triggerElement.removeAttribute("aria-expanded");
-          if (this.triggerElement.hasAttribute("ariaexpanded")) {
-            this.triggerElement.setAttribute("ariaexpanded", "false");
-          }
+          this._componentAddedAriaExpanded = false;
         }
+      } else {
+        // User supplied; just toggle value
+        this.triggerElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
+      }
+
+      // Mirror legacy attribute
+      if (this.triggerElement.hasAttribute("ariaexpanded")) {
+        this.triggerElement.setAttribute("ariaexpanded", this.isOpen ? "true" : "false");
       }
     }
 
@@ -187,6 +199,17 @@ export namespace MenuOverlay {
       this.removeTriggerEventListeners();
       this.setupTriggerEventListeners();
       this.updateTriggerElementAriaExpanded();
+
+      if (this.popperInstance) {
+        this.destroy();
+      }
+
+      if (this.isOpen) {
+        this.create();
+        if (this.overlayContainer) {
+          this.overlayContainer.toggleAttribute("data-show", this.isOpen);
+        }
+      }
     }
 
     private removeTriggerEventListeners() {
@@ -218,6 +241,10 @@ export namespace MenuOverlay {
           this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
         }
 
+        if (this.arrow && this.showArrow) {
+          this.arrow.toggleAttribute("data-show", true);
+        }
+
         if (!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
@@ -238,16 +265,28 @@ export namespace MenuOverlay {
           document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
         }
       }
+
+      if (changedProperties.has("showArrow")) {
+        if (this.arrow) {
+          this.arrow.toggleAttribute("data-show", this.showArrow);
+        }
+      }
     }
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("isOpen")) {
+        const previousValue = changedProperties.get("isOpen");
         if (this.isOpen) {
           this.dispatchMenuOpen();
+          requestAnimationFrame(() => {
+            document.addEventListener("click", this.handleOutsideOverlayClick);
+          });
+
           this.updateTriggerElementAriaExpanded();
-        } else {
+        } else if (previousValue === true) {
           this.dispatchMenuClose();
+          document.removeEventListener("click", this.handleOutsideOverlayClick);
           this.updateTriggerElementAriaExpanded();
         }
       }
@@ -461,7 +500,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot @slotchange="${this.handleTriggerSlotChange}" name="menu-trigger"></slot>
+          <slot @slotchange=${this.handleTriggerSlotChange} name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

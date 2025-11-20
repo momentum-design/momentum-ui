@@ -31,14 +31,14 @@
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;
-  padding-left: $tab-base-indent;
+  padding-inline-start: $tab-base-indent;
   padding-top: $tab-base-indent;
   text-align: center;
   width: 100%;
 
   .md-menu-overlay__more {
     height: 100%;
-    margin-left: auto;
+    margin-inline-start: auto;
     width: auto;
     max-width: 128.5px;
 
@@ -88,10 +88,18 @@
     overflow-x: hidden;
 
     md-tab {
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        display: inline-block;
+      }
+
       &::part(tab) {
-        text-align: left;
-        padding-left: 16px;
-        padding-right: 16px;
+        text-align: start;
+        padding-inline-start: 16px;
+        padding-inline-end: 16px;
         box-shadow: none;
         justify-content: flex-start;
       }
@@ -104,15 +112,14 @@
 
   &.tab-new-momentum {
     .md-menu-overlay__more_tab {
-   
       &[size="28"] {
         height: $tab-height-28;
         min-height: $tab-height-28;
       }
-  
+
       &[size="32"] {
         height: $tab-height-32;
-        min-height: $tab-height-32; 
+        min-height: $tab-height-32;
       }
     }
   }
@@ -131,13 +138,13 @@
   }
 
   &[size="32"] {
-    height: $tab-height-32; 
+    height: $tab-height-32;
     min-height: $tab-height-32;
   }
 
   md-icon,
   img {
-    margin-right: 0rem !important;
+    margin-inline-end: 0rem !important;
   }
 }
 
@@ -178,7 +185,7 @@ md-menu-overlay {
 .visible-tabs-container.md-tab__justified {
   display: flex;
   justify-content: space-between;
-  padding-right: $tab-base-indent;
+  padding-inline-end: $tab-base-indent;
 
   md-tab {
     display: inline-block;
@@ -249,11 +256,11 @@ md-menu-overlay {
     height: calc($tab-height-28 + $new-tab-padding);
 
     .tabs-left-arrow {
-      margin-right: rem-calc(12);
+      margin-inline-end: rem-calc(12);
     }
 
     .tabs-right-arrow {
-      margin-left: rem-calc(12);
+      margin-inline-start: rem-calc(12);
     }
 
     .md-tab__list {
@@ -273,10 +280,10 @@ md-menu-overlay {
 
       &[size="32"] {
         height: calc($tab-height-32 + $new-tab-padding + 2px);
-        padding: rem-calc(5);   
+        padding: rem-calc(5);
       }
     }
-    
+
     .md-tab__list::-webkit-scrollbar {
       display: none;
     }
@@ -294,7 +301,7 @@ md-menu-overlay {
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100%; 
+    height: 100%;
     gap: 0.25rem;
     width: auto;
 
@@ -318,14 +325,13 @@ md-menu-overlay {
 
       &[size="32"] ::slotted([slot="tab"]) {
         height: $tab-height-32;
-        min-height: $tab-height-32; 
+        min-height: $tab-height-32;
       }
     }
-    
   }
 
   .md-tab__content ::slotted([slot="panel"]) {
-    padding-left: calc($tab-base-indent * 5);
+    padding-inline-start: calc($tab-base-indent * 5);
   }
 }
 

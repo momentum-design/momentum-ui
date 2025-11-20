@@ -22,8 +22,8 @@ import styles from "./scss/module.scss";
 const EMPTY_KEY = "";
 
 export namespace Dropdown {
-  type OptionMember = { [key: string]: string };
-  type Option = string | OptionMember;
+  export type OptionMember = { [key: string]: string };
+  export type Option = string | OptionMember;
   type RenderOptionMember = { key: string; value: string; option?: Option };
 
   export type EventDetail = {
@@ -815,8 +815,8 @@ export namespace Dropdown {
                   aria-label="${this.title}"
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
-                  ?disabled="${this.disabled}"
-                  @click="${() => this.onLabelClick()}"
+                  ?disabled=${this.disabled}
+                  @click=${() => this.onLabelClick()}
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"
@@ -885,11 +885,11 @@ export namespace Dropdown {
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"
                   ?selected="${o.key === this.selectedKey}"
-                  @click="${() => {
+                  @click=${() => {
                     this.focusToIndexWithOption(o);
                     this.select();
                     this.collapse();
-                  }}"
+                  }}
                 >
                   <span class="select-label" part="label">
                     <span>${o.value}</span>
@@ -908,5 +908,14 @@ export namespace Dropdown {
 declare global {
   interface HTMLElementTagNameMap {
     "md-dropdown": Dropdown.ELEMENT;
+  }
+
+  interface HTMLElementEventMap {
+    "dropdown-focus-in": CustomEvent<undefined>;
+    "dropdown-focus-out": CustomEvent<undefined>;
+    "dropdown-selected": CustomEvent<{ option: Dropdown.Option }>;
+    "dropdown-input": CustomEvent<{ value: string }>;
+    "combobox-on-expand": CustomEvent<undefined>;
+    "remove-all-selected": CustomEvent<undefined>;
   }
 }

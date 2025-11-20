@@ -17,6 +17,7 @@ export { Avatar } from "./components/avatar/Avatar";
 export { AvatarType } from "./components/avatar/Avatar.constants";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { Badge } from "./components/badge/Badge";
+export { NotificationBadge } from "./components/badge/NotificationBadge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
@@ -45,12 +46,21 @@ export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
 export {
-    FloatingButtonActionGroup,
-    FloatingButtonBar,
-    FloatingButtonBarAction
+  FloatingButtonActionGroup,
+  FloatingButtonBar,
+  FloatingButtonBarAction
 } from "./components/floating-button-bar/FloatingButtonBar";
 export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
+export {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  ValidationError,
+  Validators,
+  ArrayValidators
+} from "./components/form";
 export { Form } from "./components/form/Form";
 export { Grabber } from "./components/grabber/Grabber";
 export { HelpText } from "./components/help-text/HelpText";
@@ -59,6 +69,8 @@ export { InputFile } from "./components/input-file/InputFile";
 export { Input } from "./components/input/Input";
 export { Label } from "./components/label/Label";
 export { Link } from "./components/link/Link";
+export { ListItemV2 } from "./components/list-v2/list-item-v2";
+export { ListV2 } from "./components/list-v2/list-v2";
 export { List } from "./components/list/List";
 export { ListItem } from "./components/list/ListItem";
 export { Loading } from "./components/loading/Loading";
@@ -75,6 +87,7 @@ export type { PresenceState } from "./components/presence/Presence.utils";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
+export { Skeleton } from "./components/skeleton/Skeleton";
 export { Slider } from "./components/slider/Slider";
 export { Spinner } from "./components/spinner/Spinner";
 export { TableAdvanced } from "./components/table-advanced/TableAdvanced";
@@ -88,15 +101,13 @@ export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
 export { iconUrlManager } from "./managers/IconUrlManager";
-export { ThemeManager, themeManager } from "./managers/ThemeManager";
-export { FormGroup, FormArray, FormControl, Validators, AbstractControl, ValidationError } from "./components/form";
+export { registerThemeManagerGlobally, ThemeManager, themeManager } from "./managers/ThemeManager";
 
 export type {
-    Events,
-    IPopoverController,
-    PopoverColor,
-    PopoverPlacement,
-    PopoverStrategy,
-    PopoverTrigger
+  Events,
+  IPopoverController,
+  PopoverColor,
+  PopoverPlacement,
+  PopoverStrategy,
+  PopoverTrigger
 } from "./components/popover/Popover.types";
-

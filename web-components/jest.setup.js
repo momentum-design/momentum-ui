@@ -1,3 +1,5 @@
+import "@testing-library/jest-dom";
+
 /* eslint-disable no-undef */
 class ResizeObserverMock {
   observe = jest.fn();

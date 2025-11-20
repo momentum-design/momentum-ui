@@ -53,14 +53,7 @@
   }
 }
 
-@mixin chip-sentiment-style(
-  $bg-color,
-  $text-color,
-  $icon-color,
-  $border-color,
-  $hover-bg-color,
-  $active-bg-color
-) {
+@mixin chip-sentiment-style($bg-color, $text-color, $icon-color, $border-color, $hover-bg-color, $active-bg-color) {
   gap: rem-calc(4);
   padding: 0px 4px;
   font-weight: 500;
@@ -74,12 +67,25 @@
     color: $icon-color;
   }
 
-  &:hover {
-    background-color: $hover-bg-color;
-  }
+  &.md-chip--interactive {
+    &:hover {
+      background-color: $hover-bg-color;
+    }
 
-  &:active {
-    background-color: $active-bg-color;
+    &:active {
+      background-color: $active-bg-color;
+    }
+  }
+  &:not(.md-chip--interactive) {
+    &:hover {
+      background-color: $bg-color;
+    }
+
+    &:active {
+      background-color: $bg-color;
+    }
+
+    cursor: default;
   }
 }
 

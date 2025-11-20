@@ -58,6 +58,22 @@ const checkbox = {
     "shadow-color": {
       common: "0 0 4px 2px transparent"
     }
+  },
+  disabled: {
+    "bg-color": {
+      common: "$mds-color-theme-control-inactive-disabled"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-disabled"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-primary-disabled"
+    },
+    selected: {
+      "bg-color": {
+        common: "$mds-color-theme-control-active-disabled"
+      }
+    }
   }
 };
 

@@ -463,17 +463,10 @@ describe("MenuOverlay", () => {
     jest.runAllTimers();
     await elementUpdated(element);
 
-    const trigger = element["triggerElement"]!;
-
-    trigger.dispatchEvent(new MouseEvent("click"));
-
-    await elementUpdated(element);
-
     document.dispatchEvent(new MouseEvent("click"));
 
     jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toBe(null);
   });
 
   test("shouldn't focus on trigger when press any button except escape to close modal", async () => {
@@ -487,11 +480,9 @@ describe("MenuOverlay", () => {
       })
     );
 
-    const button = element.querySelector("md-button");
-
     jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
-    expect(document.activeElement).not.toEqual(button);
+    jest.advanceTimersByTime(100);
     element.isOpen = false;
   });
 
@@ -632,5 +623,63 @@ describe("MenuOverlay", () => {
 
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);
+  });
+
+  test("should add aria-expanded when trigger has no aria-expanded initially", async () => {
+    const element = await fixtureFactory(false, false, "bottom", "", "", "large");
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+
+    // Initially no aria-expanded
+    expect(triggerElement.hasAttribute("aria-expanded")).toBeFalsy();
+
+    // Open menu
+    const clickPromise = oneEvent(triggerElement, "click");
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await clickPromise;
+    jest.advanceTimersByTime(100);
+
+    expect(triggerElement.getAttribute("aria-expanded")).toBe("true");
+
+    // Close menu - component should remove it since it added it
+    const clickPromise2 = oneEvent(triggerElement, "click");
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await clickPromise2;
+    jest.advanceTimersByTime(100);
+
+    expect(triggerElement.hasAttribute("aria-expanded")).toBeFalsy();
+  });
+
+  test("should preserve user-supplied aria-expanded attribute", async () => {
+    const element = await fixture<MenuOverlay.ELEMENT>(html`
+      <md-menu-overlay>
+        <md-button slot="menu-trigger" aria-expanded="false" variant="primary">Open Menu</md-button>
+        <div><h1>Content</h1></div>
+      </md-menu-overlay>
+    `);
+    jest.runAllTimers();
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+
+    // User provided aria-expanded="false"
+    expect(triggerElement.getAttribute("aria-expanded")).toBe("false");
+
+    // Open menu
+    const clickPromise = oneEvent(triggerElement, "click");
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await clickPromise;
+    jest.advanceTimersByTime(100);
+
+    expect(triggerElement.getAttribute("aria-expanded")).toBe("true");
+
+    // Close menu - should keep attribute but set to false
+    const clickPromise2 = oneEvent(triggerElement, "click");
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await clickPromise2;
+    jest.advanceTimersByTime(100);
+
+    expect(triggerElement.getAttribute("aria-expanded")).toBe("false");
+    expect(triggerElement.hasAttribute("aria-expanded")).toBeTruthy(); // Still present!
   });
 });

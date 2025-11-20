@@ -60,5 +60,10 @@ export const checkboxTemplate = html`
       <md-checkbox slot="checkbox" checked>Checked Option</md-checkbox>
       <md-checkbox slot="checkbox">Option 2</md-checkbox>
     </md-checkboxgroup>
+    <h3>No label</h3>
+    <md-checkboxgroup group-label="no-label">
+      <md-checkbox slot="checkbox" checked></md-checkbox>
+      <md-checkbox slot="checkbox"></md-checkbox>      
+    </md-checkboxgroup>
   </h3>
 `;

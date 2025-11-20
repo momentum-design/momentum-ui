@@ -1,7 +1,7 @@
+import { Button } from "@/components/button/Button";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import "./FloatingMinimizedModal";
 import { FloatingMinimizedModal } from "./FloatingMinimizedModal";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
-import { Button } from "@/components/button/Button";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -98,7 +98,5 @@ describe("Floating Modal Component", () => {
     const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
     expect(mdButton.getAttribute("arialabel")).toEqual("Maximize Modal");
     expect(mdButton).toBeDefined();
-  }
-  );
-  
+  });
 });

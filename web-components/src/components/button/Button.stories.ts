@@ -6,6 +6,7 @@
  *
  */
 
+import "@/components/badge/NotificationBadge";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { action } from "@storybook/addon-actions";
@@ -16,7 +17,8 @@ import mdx from "./Button.mdx";
 
 const render = (args: Args) => html`
   <md-button
-    @button-click=${action("detail")}
+    @button-click=${action("click")}
+    @button-keydown=${action("keydown")}
     variant=${args.variant}
     .color=${args.color}
     .disabled=${args.disabled}
@@ -36,7 +38,7 @@ const render = (args: Args) => html`
     .value=${args.value}
     .outline=${args.outline}
     .hasRemoveStyle=${args.hasRemoveStyle}
-    role=${args.role}
+    .role=${args.role}
   >
     ${args.circle
       ? html` <md-icon slot="icon" name="search-bold" size="12" iconSet="momentumDesign"></md-icon> `
@@ -82,6 +84,62 @@ const meta: Meta = {
       page: mdx,
       description: {
         component: "Button Documentation"
+      }
+    }
+  }
+};
+
+export const Notification: StoryObj = {
+  render: () => html`
+    <div style="display: flex; gap: 1.5rem; align-items: center; padding: 1rem;">
+      <md-button
+        variant="secondary"
+        circle
+        size="28"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
+        <md-icon slot="icon" name="sign-out-bold" iconSet="momentumDesign"></md-icon>
+        <md-notification-badge slot="notification" type="success" overlay></md-notification-badge>
+      </md-button>
+      <md-button
+        variant="secondary"
+        circle
+        size="32"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
+        <md-icon slot="icon" name="chat-filled" iconSet="momentumDesign"></md-icon>
+        <md-notification-badge slot="notification" type="dot" overlay></md-notification-badge>
+      </md-button>
+      <md-button
+        variant="secondary"
+        circle
+        size="40"
+        @button-click=${action("click")}
+        @button-keydown=${action("keydown")}
+      >
+        <md-icon slot="icon" name="chat-filled" iconSet="momentumDesign" size="24"></md-icon>
+        <md-notification-badge slot="notification" type="error" overlay></md-notification-badge>
+      </md-button>
+      <md-button variant="secondary" size="28" @button-click=${action("click")} @button-keydown=${action("keydown")}>
+        <span slot="text">Pill Button</span>
+        <md-notification-badge slot="notification" type="warning" overlay></md-notification-badge>
+      </md-button>
+      <md-button variant="secondary" size="32" @button-click=${action("click")} @button-keydown=${action("keydown")}>
+        <span slot="text">Another Pill</span>
+        <md-notification-badge slot="notification" type="error" overlay></md-notification-badge>
+      </md-button>
+      <md-button variant="secondary" size="40" @button-click=${action("click")} @button-keydown=${action("keydown")}>
+        <span slot="text">Another Pill</span>
+        <md-notification-badge slot="notification" type="dot" overlay></md-notification-badge>
+      </md-button>
+    </div>
+  `,
+  parameters: {
+    docs: {
+      description: {
+        story: "Displays secondary buttons in circle and pill (rounded) shapes with various notification badges."
       }
     }
   }

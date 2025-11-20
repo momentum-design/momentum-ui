@@ -166,18 +166,30 @@
     &.md-warning {
       @include input-color(
         $background-color: var(--input-warning-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
-        $background-color-hover:
-          var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
-        $background-color-active:
-          var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
-        $border-color:
-          var(--input-warning-border-color, var(--input-warning-border-color, $input__border-color--warning)),
-        $border-color-active:
-          var(--input-warning-border-color, var(--input-warning-border-color, $input__border-color--warning)),
-        $color-message:
-          var(--input-success-text-color, var(--md-alert-warning-text-color, $input__message__font-color--warning)),
-        $focus-background-color:
-          var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color, $input__background--warning))
+        $background-color-hover: var(
+            --input-warning-hover-bg-color,
+            var(--md-alert-warning-bg-color, $input__background--warning)
+          ),
+        $background-color-active: var(
+            --input-warning-pressed-bg-color,
+            var(--md-alert-warning-bg-color, $input__background--warning)
+          ),
+        $border-color: var(
+            --input-warning-border-color,
+            var(--input-warning-border-color, $input__border-color--warning)
+          ),
+        $border-color-active: var(
+            --input-warning-border-color,
+            var(--input-warning-border-color, $input__border-color--warning)
+          ),
+        $color-message: var(
+            --input-success-text-color,
+            var(--md-alert-warning-text-color, $input__message__font-color--warning)
+          ),
+        $focus-background-color: var(
+            --input-warning-pressed-bg-color,
+            var(--md-alert-warning-bg-color, $input__background--warning)
+          )
       );
 
       .md-input {
@@ -192,20 +204,34 @@
     // Success
     &.md-success {
       @include input-color(
-        $background-color:
-          var(--input-success-bg-color, var(--md-alert-success-bg-color, $input__background--success--hover)),
-        $background-color-hover:
-          var(--input-success-hover-bg-color, var(--md-alert-success-bg-color, $input__background--success--hover)),
-        $background-color-active:
-          var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color, $input__background--success)),
-        $border-color:
-          var(--input-success-border-color, var(--input-success-border-color, $input__border-color--success)),
-        $border-color-active:
-          var(--input-success-border-color, var(--input-success-border-color, $input__border-color--success)),
-        $color-message:
-          var(--input-success-text-color, var(--md-success-text-color, $input__message__font-color--success)),
-        $focus-background-color:
-          var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color, $input__background--success))
+        $background-color: var(
+            --input-success-bg-color,
+            var(--md-alert-success-bg-color, $input__background--success--hover)
+          ),
+        $background-color-hover: var(
+            --input-success-hover-bg-color,
+            var(--md-alert-success-bg-color, $input__background--success--hover)
+          ),
+        $background-color-active: var(
+            --input-success-pressed-bg-color,
+            var(--md-alert-success-bg-color, $input__background--success)
+          ),
+        $border-color: var(
+            --input-success-border-color,
+            var(--input-success-border-color, $input__border-color--success)
+          ),
+        $border-color-active: var(
+            --input-success-border-color,
+            var(--input-success-border-color, $input__border-color--success)
+          ),
+        $color-message: var(
+            --input-success-text-color,
+            var(--md-success-text-color, $input__message__font-color--success)
+          ),
+        $focus-background-color: var(
+            --input-success-pressed-bg-color,
+            var(--md-alert-success-bg-color, $input__background--success)
+          )
       );
 
       .md-input {
@@ -228,8 +254,8 @@
 
     &.md-new-momentum {
       @include input-color(
-        $background-color: transparent,
-        $background-color-disabled: transparent,
+        $background-color: var(--input-default-new-bg-color),
+        $background-color-disabled: var(--input-disabled-bg-color),
         $background-color-hover: var(--input-default-hover-bg-color),
         $background-color-active: var(--input-default-pressed-bg-color),
         $border-color: var(--input-default-new-border-color),
@@ -278,9 +304,12 @@
       // Error
       &.md-error {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $background-color: var(--input-default-new-bg-color, var(--input-error-bg-color)),
           $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
           $border-color: var(--input-error-border-color),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-error-border-color),
           $background-color-active: var(--input-error-pressed-bg-color),
           $color-message: var(--input-error-message-text-color),
@@ -296,46 +325,42 @@
       // Warning
       &.md-warning {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $background-color: var(--input-default-new-bg-color, var(--md-alert-warning-bg-color)),
-          $background-color-hover:
-            var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-colorg)),
-          $background-color-active:
-            var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color)),
-          $border-color:
-            var(--input-warning-border-color, var(--input-warning-border-color)),
-          $border-color-active:
-            var(--input-warning-border-color, var(--input-warning-border-color)),
-          $color-message:
-            var(--input-success-text-color, var(--md-alert-warning-text-color)),
-          $focus-background-color:
-            var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))
+          $background-color-hover: var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-color)),
+          $background-color-active: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color)),
+          $border-color: var(--input-warning-border-color, var(--input-warning-border-color)),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
+          $border-color-active: var(--input-warning-border-color, var(--input-warning-border-color)),
+          $color-message: var(--input-success-text-color, var(--md-alert-warning-text-color)),
+          $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color))
         );
       }
 
       // Success
       &.md-success {
         @include input-color(
-          $background-color:
-            var(--input-default-new-bg-color, var(--md-alert-success-bg-color)),
-          $background-color-hover:
-            var(--input-success-hover-bg-color, var(--md-alert-success-bg-color)),
-          $background-color-active:
-            var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color)),
-          $border-color:
-            var(--input-success-border-color, var(--input-success-border-color)),
-          $border-color-active:
-            var(--input-success-border-color, var(--input-success-border-color)),
-          $color-message:
-            var(--input-success-text-color, var(--md-success-text-color)),
-          $focus-background-color:
-            var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color))
+          $color-disabled: var(--input-default-new-disabled-color),
+          $background-color: var(--input-default-new-bg-color, var(--md-alert-success-bg-color)),
+          $background-color-hover: var(--input-success-hover-bg-color, var(--md-alert-success-bg-color)),
+          $background-color-active: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color)),
+          $border-color: var(--input-success-border-color, var(--input-success-border-color)),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
+          $border-color-active: var(--input-success-border-color, var(--input-success-border-color)),
+          $color-message: var(--input-success-text-color, var(--md-success-text-color)),
+          $focus-background-color: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color))
         );
       }
 
       // Priority
       &.md-priority {
         @include input-color(
+          $color-disabled: var(--input-default-new-disabled-color),
           $border-color: var(--input-default-outline-color),
+          $border-color-disabled: var(--input-default-new-disabled-color),
+          $border-color-read-only: var(--input-default-new-disabled-color),
           $border-color-active: var(--input-default-outline-color)
         );
 
@@ -343,6 +368,139 @@
           &__message {
             &::before {
               @include icon-warning_16;
+            }
+          }
+        }
+      }
+    }
+
+    .md-input__dropdown-button {
+      background: none;
+      border: none;
+      border-inline-start: 1px solid var(--input-default-border-color);
+      border-start-end-radius: 8px;
+      border-end-end-radius: 8px;
+      display: flex;
+      width: 2rem;
+      height: calc(100% - 2px);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      padding-inline-end: 2px;
+      margin: 0;
+
+      &:hover {
+        background-color: var(--input-default-hover-bg-color);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        border-inline-start-color: var(--input-default-new-disabled-color);
+
+        .md-input__dropdown-icon {
+          color: var(--input-default-new-disabled-color);
+        }
+      }
+
+      .md-input__dropdown-icon {
+        transition: transform 0.15s linear;
+        color: var(--md-primary-text-color);
+
+        &.expanded {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &.md-new-momentum {
+      .md-input__dropdown-button {
+        border-inline-start-color: var(--input-default-new-border-color);
+
+        &:hover {
+          background-color: var(--input-default-hover-bg-color);
+          border-inline-start-color: var(--input-default-new-border-color);
+        }
+
+        &:focus {
+          background-color: var(--input-default-focus-background-color);
+          outline: 2px solid var(--input-default-outline-color);
+          outline-offset: 0.125rem;
+        }
+
+        &:disabled {
+          border-inline-start-color: var(--input-default-new-disabled-color);
+        }
+      }
+
+      // Error state
+      &:not(.md-read-only) {
+        &.md-error {
+          .md-input__dropdown-button {
+            border-inline-start-color: var(--input-error-border-color);
+
+            &:hover {
+              background-color: var(--input-error-hover-bg-color, $md-red-20);
+              border-inline-start-color: var(--input-error-border-color);
+            }
+
+            &:focus {
+              outline-color: var(--input-error-focus-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
+          }
+        }
+
+        // Warning state
+        &.md-warning {
+          .md-input__dropdown-button {
+            border-inline-start-color: var(--input-warning-border-color);
+
+            &:hover {
+              background-color: var(--input-warning-hover-bg-color);
+              border-inline-start-color: var(--input-warning-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
+          }
+        }
+
+        // Success state
+        &.md-success {
+          .md-input__dropdown-button {
+            border-inline-start-color: var(--input-success-border-color);
+
+            &:hover {
+              background-color: var(--input-success-hover-bg-color);
+              border-inline-start-color: var(--input-success-border-color);
+            }
+
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
+            }
+          }
+        }
+
+        // Priority state
+        &.md-priority {
+          .md-input__dropdown-button {
+            border-inline-start-color: var(--input-default-outline-color);
+
+            &:hover {
+              border-inline-start-color: var(--input-default-outline-color);
+            }
+            &:disabled {
+              border-inline-start-color: var(--input-default-new-disabled-color);
             }
           }
         }
@@ -361,24 +519,28 @@
     width: 100%;
 
     &.md-dirty {
-      padding-right: rem-calc(8);
+      padding-inline-end: rem-calc(8);
     }
 
     &.md-dirty.md-has-right-icon {
-      padding-right: rem-calc(34);
+      padding-inline-end: $input__padding-side--icon;
+
+      &:has(~ .md-input__after > *:nth-child(2)) {
+        padding-inline-end: rem-calc(56);
+      }
     }
 
     &--nested {
       &-1 {
-        padding-left: 2rem;
+        padding-inline-start: 2rem;
       }
 
       &-2 {
-        padding-left: 4rem;
+        padding-inline-start: 4rem;
       }
 
       &-3 {
-        padding-left: 6rem;
+        padding-inline-start: 6rem;
       }
     }
 
@@ -409,8 +571,8 @@
 
     // Elements
     &__after {
-      left: auto;
-      right: 0;
+      inset-inline-start: auto;
+      inset-inline-end: 0;
 
       &.hidden {
         display: none;
@@ -418,8 +580,8 @@
     }
 
     &__before {
-      left: 0;
-      right: auto;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
 
     &__after,
@@ -428,10 +590,16 @@
       height: 100%;
       position: absolute;
       top: 0;
+      gap: 0.5rem;
       width: $input__padding-side--icon;
 
       md-icon::part(icon) {
         display: flex;
+      }
+
+      &:has(> *:nth-child(2)) {
+        width: auto;
+        min-width: $input__padding-side--icon;
       }
     }
 
@@ -450,7 +618,7 @@
       display: none;
       font-size: $input__message__font-size;
       line-height: $input__message__line-height;
-      padding-left: rem-calc(16);
+      padding-inline-start: rem-calc(16);
       padding-top: rem-calc(8);
     }
 
@@ -460,14 +628,14 @@
       width: 100%;
 
       md-icon {
-        margin-right: 0.5em;
+        margin-inline-end: 0.5em;
       }
 
       &--error {
         color: var(--input-error-mesage-text-color, $md-red-50);
         font-size: $input__message__font-size;
         line-height: $input__message__line-height;
-        padding-left: 1rem;
+        padding-inline-start: 1rem;
         position: relative;
         top: -0.5rem;
 
@@ -480,7 +648,7 @@
         float: left;
         font-family: $icon-font-name;
         font-size: $input__message__icon__font-size;
-        margin-right: rem-calc(8);
+        margin-inline-end: rem-calc(8);
       }
     }
 
@@ -495,11 +663,11 @@
 
     // Modifiers
     &--after {
-      padding-right: $input__padding-side--icon;
+      padding-inline-end: $input__padding-side--icon;
     }
 
     &--before {
-      padding-left: $input__padding-side--icon;
+      padding-inline-start: $input__padding-side--icon;
     }
 
     &--pill {
@@ -509,7 +677,7 @@
     // MUST REMAIN BELOW --PILL TO OVERWRITE RADIUS
     &--multiline {
       min-height: rem-calc(69);
-      padding-right: rem-calc(44);
+      padding-inline-end: rem-calc(44);
     }
 
     &__icon-clear {
@@ -547,7 +715,7 @@
 
 .md-input__message {
   md-icon {
-    margin-right: 0.5em;
+    margin-inline-end: 0.5em;
   }
 }
 
@@ -569,4 +737,28 @@
       }
     }
   }
+}
+
+.md-input__character-count-label {
+  font-family: $brand-font-regular;
+  font-size: var(--rem-base);
+  color: var(--label-secondary);
+  &.error {
+    color: var(--input-error-message-text-color);
+  }
+}
+
+.md-input__all-sub-labels-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.md-input__info-and-error-labels-container {
+  flex: 1 1 auto;
+}
+
+.md-input__character-count-label-container {
+  margin-top: 18px;
+  flex: none;
 }

@@ -1,6 +1,7 @@
 import { type Icon } from "@/components/icon/Icon";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Icon";
+import * as IconUtils from "./Icon.utils";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
 
@@ -129,10 +130,16 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should set the color style to what the mocked getColorValue function returns", async () => {
+    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /**/
+    });
+
     const element = await fixture(
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.color).toEqual("rgb(201, 244, 255)");
+    expect(consoleWarnSpy).toBeCalledTimes(1);
+    consoleWarnSpy.mockRestore();
   });
 
   test("should throw console.warn when color is defined by a hex color", async () => {
@@ -149,7 +156,7 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {
-    const element = await fixture(`<md-icon .iconSet=${"momentumDesign"} name="youtube-circle_24"></md-icon>`);
+    const element = await fixture(`<md-icon .iconSet="momentumDesign" name="youtube-circle_24"></md-icon>`);
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.contains("search-bold")).toBe(false);
   });
@@ -160,8 +167,8 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should return correct icon name", async () => {
-    const element = await fixture<Icon.ELEMENT>(`<md-icon name="icon-search"></md-icon>`);
-    expect(element.getIconName()).toEqual("search");
+    const element = await fixture<Icon.ELEMENT>(`<md-icon name="icon-search_16"></md-icon>`);
+    expect(element.getIconName()).toEqual("search_16");
   });
 
   test("should handle icon click", async () => {
@@ -190,5 +197,65 @@ describe("Momentum Icon Component", () => {
     const element = await fixture<Icon.ELEMENT>(`<md-icon iconSet="svg" name="sample-svg"></md-icon>`);
     await elementUpdated(element);
     expect(element.shadowRoot?.querySelector(".svg-icon-container")).not.toBeNull();
+  });
+
+  test("should ignore stale fetchSVG results when the icon name changes", async () => {
+    const mockGetMomentumDesignIconContent = jest.spyOn(IconUtils, "getMomentumDesignIconContent");
+    const mockFetchSVG = jest.spyOn(IconUtils, "fetchSVG");
+    const actualIconUtils = jest.requireActual<typeof import("./Icon.utils")>("./Icon.utils");
+    const deferredResolvers = new Map<string, (value: HTMLElement | null) => void>();
+
+    mockGetMomentumDesignIconContent.mockImplementation(async (iconName: string) => {
+      const svgElement = document.createElement("svg");
+      svgElement.setAttribute("data-immediate-icon", iconName);
+      return svgElement;
+    });
+
+    mockFetchSVG.mockImplementation(
+      (_url: string, iconName: string) =>
+        new Promise<HTMLElement | null>((resolve) => {
+          deferredResolvers.set(iconName, resolve);
+        })
+    );
+
+    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /**/
+    });
+
+    const createSvgElement = (iconName: string) => {
+      const svgElement = document.createElement("svg");
+      svgElement.setAttribute("data-test-icon", iconName);
+      return svgElement;
+    };
+
+    const element = await fixture<Icon.ELEMENT>(
+      `<md-icon iconSet="svg" name="social-facebook-color" size="20"></md-icon>`
+    );
+
+    expect(deferredResolvers.has("social-facebook-color")).toBe(true);
+
+    element.iconSet = "preferMomentumDesign";
+    element.name = "social-twitter-color";
+    await elementUpdated(element);
+
+    expect(deferredResolvers.has("social-twitter-color")).toBe(false);
+
+    deferredResolvers.get("social-facebook-color")?.(createSvgElement("social-facebook-color"));
+    await Promise.resolve();
+    await elementUpdated(element);
+
+    const getRenderedIcon = () => element.shadowRoot?.querySelector(".svg-icon-container .icon") as HTMLElement | null;
+
+    const latestIcon = getRenderedIcon();
+    expect(latestIcon).not.toBeNull();
+    expect(latestIcon!.classList.contains("social-twitter-color")).toBe(true);
+
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        "The name changed to 'icon social-twitter-color' before the SVG icon 'social-facebook-color' finished loading; skipping outdated result."
+      )
+    );
+
+    jest.restoreAllMocks();
   });
 });

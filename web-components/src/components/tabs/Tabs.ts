@@ -67,6 +67,10 @@ export namespace Tabs {
       return this._selectedIndex;
     }
     set selectedIndex(value: number) {
+      if (value === -1) {
+        return;
+      }
+
       const oldValue = this._selectedIndex;
       this._selectedIndex = value;
 
@@ -121,6 +125,10 @@ export namespace Tabs {
 
     @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
     @query("#tabs-more-list") hiddenTabsContainerElement?: HTMLElement;
+
+    private get isRtl(): boolean {
+      return getComputedStyle(this).direction === "rtl";
+    }
 
     private generateOptions() {
       return {
@@ -710,7 +718,7 @@ export namespace Tabs {
         );
       }
 
-      if (newSelectedIndex >= 0) {
+      if (newSelectedIndex >= 0 && newSelectedIndex < tabs.length) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
         const currentTabsConfiguration = this.currentTabsLayout;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
@@ -955,7 +963,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab || this.scrollArrow) {
             event.stopPropagation();
-            this.moveFocusToAdjacentTab(elementId, PREVIOUS);
+            this.moveFocusToAdjacentTab(elementId, this.isRtl ? NEXT : PREVIOUS);
           } else if (isHiddenTab) {
             //
           }
@@ -966,7 +974,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab || this.scrollArrow) {
             event.stopPropagation();
-            this.moveFocusToAdjacentTab(elementId, NEXT);
+            this.moveFocusToAdjacentTab(elementId, this.isRtl ? PREVIOUS : NEXT);
           } else if (isHiddenTab) {
             //
           }
@@ -1320,7 +1328,7 @@ export namespace Tabs {
               id="${this.getCopyTabId(tab)}"
               aria-label=${tab.ariaLabel}
               aria-controls="${this.getAriaControlId(tab)}"
-              @click="${() => this.handleOverlayClose()}"
+              @click=${() => this.handleOverlayClose()}
               tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
               role="menuitem"
               ?newMomentum=${this.newMomentum}
@@ -1348,8 +1356,8 @@ export namespace Tabs {
             "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
           })}"
           placement="bottom-end"
-          @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
-          @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
+          @menu-overlay-open=${() => (this.isMoreTabMenuOpen = true)}
+          @menu-overlay-close=${() => (this.isMoreTabMenuOpen = false)}
         >
           ${this.moreMenuButtonTemplate}
           <div
@@ -1382,7 +1390,7 @@ export namespace Tabs {
         circle
         ariaLabel="${ariaLabel}"
       >
-        <md-icon slot="icon" name="arrow-${direction}-regular" iconSet="momentumDesign"></md-icon>
+        <md-icon slot="icon" name="arrow-${direction}-bold" iconSet="momentumDesign"></md-icon>
       </md-button>`;
     }
 
@@ -1418,7 +1426,6 @@ export namespace Tabs {
                 name="${tab.name}"
                 id="${this.getCopyTabId(tab)}"
                 aria-label=${tab.ariaLabel}
-                aria-controls="${this.getAriaControlId(tab)}"
                 .isCrossVisible=${true}
                 tabIndex="${this.getTabIndex(tab)}"
                 .newMomentum=${this.newMomentum}
@@ -1440,7 +1447,7 @@ export namespace Tabs {
     render() {
       return html`
         <div class="md-tabs-wrapper" part="tabs-wrapper">
-          ${this.scrollArrow && this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
+          ${this.scrollArrow && this.showLeftArrow ? this.tabsButtonArrow(this.isRtl ? "right" : "left") : nothing}
           <div
             part="tabs-list"
             class="md-tab__list ${classMap({
@@ -1459,7 +1466,7 @@ export namespace Tabs {
               <slot name="settings"></slot>
             </div>
           </div>
-          ${this.scrollArrow && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
+          ${this.scrollArrow && this.showRightArrow ? this.tabsButtonArrow(this.isRtl ? "left" : "right") : nothing}
         </div>
         <div
           part="tabs-content"

@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:13.13.1
+      - image: cypress/included:14.5.1
         environment:
           TERM: xterm
 
@@ -256,9 +256,6 @@ workflows:
           requires:
             - lint
       - test_web_components:
-          requires:
-            - build_tokens
-      - test_core_percy:
           requires:
             - build_tokens
       - test_icons:

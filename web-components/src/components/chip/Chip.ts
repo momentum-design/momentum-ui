@@ -45,6 +45,7 @@ export namespace Chip {
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
     @property({ type: Boolean }) decorative = false;
+    @property({ type: Boolean }) shouldTruncateValue = true;
 
     @property({
       type: String,
@@ -74,28 +75,74 @@ export namespace Chip {
       this.truncStringPortion(this.value);
     }
 
-    // String truncation parameters
-    MAX_LENGTH = 18;
-    PRE_TRUNC_CHARS = 6;
-    POST_TRUNC_CHARS = 9;
-    DOT_COUNT = 3;
+    getTextWidth(text: string, font = getComputedStyle(this).font) {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return 0;
+      ctx.font = font;
+      return ctx.measureText(text).width;
+    }
 
-    truncStringPortion(
-      str: string,
-      firstCharCount = this.PRE_TRUNC_CHARS,
-      endCharCount = this.POST_TRUNC_CHARS,
-      dotCount = this.DOT_COUNT
-    ): void {
-      if (this.value.length > this.MAX_LENGTH) {
-        let convertedStr = "";
-        convertedStr += str.substring(0, firstCharCount);
-        convertedStr += ".".repeat(dotCount);
-        convertedStr += str.substring(str.length - endCharCount, str.length);
-        this.renderedText = convertedStr;
-        this.textOverflow = true;
-      } else {
-        this.renderedText = this.value;
+    MAXWIDTH = 115;
+
+    public truncStringPortion(text: string) {
+      const textWidth = this.getTextWidth(text);
+      const ellipsis = "…";
+      console.log("Text width:", textWidth);
+      if (!this.shouldTruncateValue || textWidth < this.MAXWIDTH) {
+        this.renderedText = text;
+        this.textOverflow = false;
+        return;
       }
+
+      const graphemes = Array.from(text);
+
+      const headMin = 4;
+      const tailMin = 5;
+
+      let headCount = Math.min(headMin, graphemes.length);
+      let tailCount = Math.min(tailMin, Math.max(0, graphemes.length - headCount - 1));
+
+      let head = graphemes.slice(0, headCount).join("");
+      let tail = graphemes.slice(-tailCount).join("");
+      let combined = `${head}${ellipsis}${tail}`;
+
+      if (this.getTextWidth(combined) > this.MAXWIDTH) {
+        this.renderedText = combined;
+        this.textOverflow = true;
+        return;
+      }
+
+      while (headCount + tailCount < graphemes.length) {
+        let expanded = false;
+
+        if (headCount + tailCount < graphemes.length) {
+          const nextHead = head + graphemes[headCount];
+          const tmp = `${nextHead}${ellipsis}${tail}`;
+          if (this.getTextWidth(tmp) <= this.MAXWIDTH) {
+            head = nextHead;
+            headCount += 1;
+            combined = tmp;
+            expanded = true;
+          }
+        }
+
+        if (headCount + tailCount < graphemes.length) {
+          const nextTail = graphemes[graphemes.length - tailCount - 1] + tail;
+          const tmp = `${head}${ellipsis}${nextTail}`;
+          if (this.getTextWidth(tmp) <= this.MAXWIDTH) {
+            tail = nextTail;
+            tailCount += 1;
+            combined = tmp;
+            expanded = true;
+          }
+        }
+
+        if (!expanded) break;
+      }
+
+      this.renderedText = combined;
+      this.textOverflow = true;
     }
 
     protected selectionChange = (newState: boolean) => {
@@ -246,7 +293,7 @@ export namespace Chip {
     }
 
     private get textContentTemplate() {
-      return html`<span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
+      return html`<span part="text-content" class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>`;
     }
 
     render() {
@@ -254,7 +301,8 @@ export namespace Chip {
         "md-chip--small": this.small,
         "md-chip--disabled": this.disabled,
         [`md-chip--${this.color}`]: this.color,
-        "suppress-max-width": this.suppressDefaultMaxWidth
+        "suppress-max-width": this.suppressDefaultMaxWidth,
+        "md-chip--interactive": !this.decorative
       };
 
       const ariaPressed = !this.decorative ? (this.selected ? "true" : "false") : undefined;
@@ -264,6 +312,7 @@ export namespace Chip {
         <md-tooltip
           ?disabled=${!this.tooltipText && !this.textOverflow}
           message="${this.getToolTipContent()}"
+          part="tooltip"
           placement="${this.tooltipPlacement}"
         >
           <span

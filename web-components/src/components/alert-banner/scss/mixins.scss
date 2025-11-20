@@ -6,6 +6,10 @@
   md-icon {
     color: $border-color;
   }
+
+  ::slotted(md-icon[slot="left"]) {
+    color: $border-color;
+  }
 }
 
 @mixin alert-banner-color-gradient($background, $text-color, $border-color) {
@@ -14,6 +18,10 @@
   color: $text-color;
 
   md-icon {
+    color: $border-color;
+  }
+
+  ::slotted(md-icon[slot="left"]) {
     color: $border-color;
   }
 }

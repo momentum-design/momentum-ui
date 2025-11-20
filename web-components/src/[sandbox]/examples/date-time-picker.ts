@@ -55,6 +55,16 @@ export class DateTimePickerSandbox extends LitElement {
         .shouldCloseOnSelect=${true}
         .showDefaultNowDate=${false}
       ></md-date-time-picker>
+
+      <h3>date time picker with custom placeholder</h3>
+      <md-date-time-picker
+        placeholder=${"Select date and time"}
+        .showDefaultNowDate=${false}
+        .useISOFormat=${false}
+        .disableDateValidation=${true}
+        .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
+        .shouldCloseOnSelect=${true}
+      ></md-date-time-picker>
     `;
   }
 }

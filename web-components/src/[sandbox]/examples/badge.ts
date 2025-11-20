@@ -1,4 +1,5 @@
 import "@/components/badge/Badge";
+import "@/components/badge/NotificationBadge";
 import "@/components/icon/Icon";
 import { css, customElement, html, LitElement } from "lit-element";
 
@@ -26,8 +27,7 @@ export class BadgeTemplateSandbox extends LitElement {
   }
 
   render() {
-    return html`
-      <md-badge tabIndexing="0" aria-label="my aria-label"> Default </md-badge>
+    return html` <md-badge tabIndexing="0" aria-label="my aria-label"> Default </md-badge>
       <md-badge color="blue"> Blue </md-badge>
       <md-badge color="red"> Red </md-badge>
       <md-badge color="yellow"> Yellow </md-badge>
@@ -275,7 +275,16 @@ export class BadgeTemplateSandbox extends LitElement {
         <md-icon name="call-hold-filled" iconSet="momentumDesign"></md-icon>
         On hold - 00:00
       </md-badge>
-    `;
+
+      <h3 class="sandbox-header">Notification badges</h3>
+      <md-notification-badge type="dot"></md-notification-badge>
+      <md-notification-badge type="icon" icon-name="chat-filled"></md-notification-badge>
+      <md-notification-badge type="counter" .counter=${5}></md-notification-badge>
+      <md-notification-badge type="success"></md-notification-badge>
+      <md-notification-badge type="warning"></md-notification-badge>
+      <md-notification-badge type="error"></md-notification-badge>
+      <md-notification-badge type="icon" icon-name="alert-muted-bold" variant="secondary"></md-notification-badge>
+      <md-notification-badge type="error" overlay></md-notification-badge>`;
   }
 }
 

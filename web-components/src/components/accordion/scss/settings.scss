@@ -3,12 +3,16 @@
 
 $accordion-font-size: var(--font-size-body-midsize, settings.$font-size-base);
 $accordion-base-indent: core.rem-calc(8);
-$accordion-border-radius: core.rem-calc(4);
+$accordion-border-radius: core.rem-calc(8);
 $accordion-btn-border-radius: core.rem-calc(3);
 
 $accordion-border_focus-width: core.rem-calc(2);
 $accordion-border_focus: var(--md-default-focus-outline-color);
+$accordion-border_color: var(--accordion-border-color);
+$accordion-bg-color: var(--accordion-default-background);
+$accordion-bg-color-expanded: var(--md-glass-overlay-bg-color);
 $accordion-bg_focus: var(--accordion-bg-focus);
-$accordion_hover: var(--accordion-hover);
+$accordion-bg_hover: var(--accordion-hover-background);
 $accordion-disabled: var(--md-disabled-text-color);
-$accordion-active: var(--accordion-active);
+$accordion-bg_active: var(--accordion-active-background);
+$accordion-text_active: var(--accordion-active-text-color);

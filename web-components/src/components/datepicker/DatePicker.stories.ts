@@ -17,11 +17,31 @@ export default {
     maxDate: { control: { type: "text" } },
     showDefaultNowDate: { control: "boolean", defaultValue: true },
     value: { control: { type: "text" } },
+    displayValue: { control: { type: "text" } },
     newMomentum: { control: { type: "select" }, options: [undefined, "true", "false"] },
     compactInput: { control: { type: "select" }, options: [undefined, "true", "false"] },
     positioningStrategy: {
       control: { type: "select" },
       options: [undefined, "absolute", "fixed"]
+    },
+    "is-date-picker-month-loading": { control: "boolean", defaultValue: false },
+    "is-date-picker-month-error": { control: "boolean", defaultValue: false },
+    errorMessages: { control: "object" },
+    filterDate: {
+      control: "object",
+      description:
+        "Function that takes a date string (YYYY-MM-DD) and returns boolean. Return true to disable the date.",
+      table: {
+        type: { summary: "(date: string) => boolean" }
+      }
+    },
+    onRetry: {
+      control: "object",
+      description:
+        "Callback function that gets triggered when the user clicks the retry button during error state in calendar",
+      table: {
+        type: { summary: "() => void" }
+      }
     }
   },
   parameters: {
@@ -47,6 +67,7 @@ export const DatePicker: StoryObj = {
         ?disabled=${args.disabled}
         ?should-close-on-select=${args.shouldCloseOnSelect}
         value=${args.value}
+        displayValue=${args.value}
         weekStart=${args.weekStart}
         locale=${args.locale}
         placeholder=${args.placeholder}
@@ -62,7 +83,6 @@ export const DatePicker: StoryObj = {
     `;
   }
 };
-
 
 // Sub-story focusing on placeholder behavior
 export const Placeholder: StoryObj = {
@@ -80,7 +100,7 @@ export const Placeholder: StoryObj = {
     maxDate: "",
     positioningStrategy: undefined
   },
-  
+
   render: (args: Args) => {
     return html`
       <md-datepicker
@@ -94,6 +114,57 @@ export const Placeholder: StoryObj = {
         minDate=${args.minDate}
         maxDate=${args.maxDate}
         positioning-strategy=${args.positioningStrategy}
+      >
+      </md-datepicker>
+    `;
+  }
+};
+
+export const campaignCallbackDatePicker: StoryObj = {
+  name: "Campaign Callback Date Picker",
+  args: {
+    label: "Date",
+    locale: "en-US",
+    placeholder: "Select date",
+    showDefaultNowDate: false,
+    weekStart: "Monday",
+    value: "",
+    minDate: now().toISODate(),
+    maxDate: now().plus({ days: 30 }).toISODate(),
+    shouldCloseOnSelect: true,
+    errorMessages: {
+      HEADER: "Error",
+      TEXT: "Trouble loading active window.",
+      LOADING: "Loading...",
+      RETRY: "Retry"
+    },
+    "is-date-picker-month-loading": false,
+    "is-date-picker-month-error": false,
+    filterDate: (date: string) => {
+      const tomorrow = now().plus({ days: 1 }).toISODate();
+      return date === tomorrow;
+    },
+    onRetry: () => {
+      console.log("Retry button clicked - reloading calendar data");
+    }
+  },
+
+  render: (args: Args) => {
+    return html`
+      <md-datepicker
+        ?disabled=${args.disabled}
+        ?should-close-on-select=${args.shouldCloseOnSelect}
+        weekStart=${args.weekStart}
+        locale=${args.locale}
+        placeholder=${args.placeholder}
+        .showDefaultNowDate=${args.showDefaultNowDate}
+        .minDate=${args.minDate}
+        .maxDate=${args.maxDate}
+        .errorMessages=${args.errorMessages}
+        .filterDate=${args.filterDate}
+        .onRetry=${args.onRetry}
+        ?is-date-picker-month-error=${args["is-date-picker-month-error"]}
+        ?is-date-picker-month-loading=${args["is-date-picker-month-loading"]}
       >
       </md-datepicker>
     `;

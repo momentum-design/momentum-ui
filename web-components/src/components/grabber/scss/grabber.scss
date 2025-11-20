@@ -18,21 +18,24 @@
     box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);
   }
 
-  //Set the border radius for the focus ring
   &.leading {
-    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;    
+    border-start-end-radius: var(--grabber-border-radius);
+    border-end-end-radius: var(--grabber-border-radius);
   }
 
   &.trailing {
-    border-radius: var(--grabber-border-radius) 0 0 var(--grabber-border-radius);
+    border-start-start-radius: var(--grabber-border-radius);
+    border-end-start-radius: var(--grabber-border-radius);
   }
 
   &.top {
-    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
+    border-end-start-radius: var(--grabber-border-radius);
+    border-end-end-radius: var(--grabber-border-radius);
   }
 
   &.bottom {
-    border-radius: var(--grabber-border-radius) var(--grabber-border-radius) 0 0;
+    border-start-start-radius: var(--grabber-border-radius);
+    border-start-end-radius: var(--grabber-border-radius);
   }
 }
 
@@ -68,9 +71,10 @@
   &--trailing {
     width: var(--grabber-width, 20px);
     height: 40px;
-    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
+    border-start-end-radius: var(--grabber-border-radius);
+    border-end-end-radius: var(--grabber-border-radius);
     border: 1px solid var(--grabber-border-color);
-    border-left-width: 0;
+    border-inline-start-width: 0;
 
     &.md-grabber--dragger {
       cursor: ew-resize;
@@ -78,6 +82,10 @@
 
     &:not(.visible) {
       transform: translate3d(-100%, 0, 0);
+
+      &.md-grabber--rtl {
+        transform: translate3d(100%, 0, 0);
+      }
     }
   }
 
@@ -89,9 +97,10 @@
   &--bottom {
     width: 40px;
     height: var(--grabber-width, 20px);
-    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
+    border-end-start-radius: var(--grabber-border-radius);
+    border-end-end-radius: var(--grabber-border-radius);
     border: 1px solid var(--grabber-border-color);
-    border-top-width: 0;
+    border-block-start-width: 0;
 
     &.md-grabber--dragger {
       cursor: ns-resize;
@@ -99,6 +108,10 @@
 
     &:not(.visible) {
       transform: translate3d(0, -100%, 0);
+
+      &.md-grabber--rtl {
+        transform: translate3d(0, 100%, 0);
+      }
     }
   }
 

@@ -12,6 +12,7 @@ export default {
   argTypes: {
     weekStart: { control: { type: "select" }, options: DatePicker.weekStartDays },
     locale: { control: "text", defaultValue: "en-US" },
+    useISOFormat: { control: "boolean", defaultValue: true },
     disabled: { control: "boolean" },
     controlButtons: { control: "boolean" },
     minDate: { control: { type: "text" } },
@@ -47,6 +48,7 @@ export const DateTimePicker: StoryObj = {
         maxDate=${args.maxDate}
         .controlButtons=${controlButtons}
         locale=${args.locale}
+        .useISOFormat=${args.useISOFormat}
         weekStart=${args.weekStart}
         ?two-digit-auto-tab=${args.twoDigitAutoTab}
         ?twenty-four-hour-format=${args.twentyFourHourFormat}

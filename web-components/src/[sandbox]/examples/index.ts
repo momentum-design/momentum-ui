@@ -48,6 +48,7 @@ export { presenceTemplate } from "./presence";
 export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";
+export { listV2Template } from "./list-v2";
 export { spinnerTemplate } from "./spinner";
 export { tableTemplate } from "./table";
 export { tableAdvancedTemplate } from "./table-advanced";
@@ -56,4 +57,3 @@ export { taskItemTemplate } from "./task-item";
 export { timePickerTemplate } from "./timepicker";
 export { toggleSwitchTemplate } from "./toggle-switch";
 export { tooltipTemplate } from "./tooltip";
-// eslint-disable-next-line prettier/prettier

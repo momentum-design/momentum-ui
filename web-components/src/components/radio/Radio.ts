@@ -9,9 +9,11 @@
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, property } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
+import { nothing } from "lit-html";
 
 export namespace Radio {
   @customElementWithCheck("md-radio")
@@ -19,6 +21,8 @@ export namespace Radio {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String }) label = "";
     @property({ type: String }) value = "";
+    @property({ type: String }) message = "";
+    @property({ type: Boolean }) hideMessage = false;
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
@@ -30,7 +34,6 @@ export namespace Radio {
     set disabled(value: boolean) {
       const oldValue = this._disabled;
       this._disabled = value;
-      this.setAttribute("aria-disabled", `${value}`);
       if (value) {
         this.tabIndex = -1;
       } else {
@@ -39,49 +42,69 @@ export namespace Radio {
       this.requestUpdate("disabled", oldValue);
     }
 
-    private _checked = false;
-    @property({ type: Boolean, attribute: false })
-    get checked() {
-      return this._checked;
-    }
-    set checked(value: boolean) {
-      const oldValue = this._checked;
-      this._checked = value;
-      this.setAttribute("aria-checked", `${value}`);
-      this.requestUpdate("checked", oldValue);
-    }
+    @property({ type: Boolean, reflect: true })
+    checked = false;
 
-    protected firstUpdated(changedProperties: PropertyValues) {
-      super.firstUpdated(changedProperties);
+    private get inputAriaLabel(): string | undefined {
+      const helpText = this.message?.length ? ` - ${this.message}` : "";
 
-      this.setAttribute("role", "radio");
-
-      if (this.label) {
-        this.setAttribute("aria-label", this.label);
+      if (this.ariaLabel?.length) {
+        return this.ariaLabel;
       }
+
+      if (this.label?.length) {
+        return this.label + helpText;
+      }
+
+      const textContent = this.textContent?.trim();
+      return textContent?.length ? textContent + helpText : helpText;
     }
 
     static get styles() {
       return [reset, styles];
     }
 
+    private get helpTextClassMap() {
+      return {
+        "md-radio-help-text--hide": this.hideMessage
+      };
+    }
+
+    messagesTemplate() {
+      return this.message?.length
+        ? html`
+            <div class="${classMap(this.helpTextClassMap)}">
+              <md-help-text class="help-text-radio" newMomentum role="alert" aria-live="assertive">
+                ${this.message}
+              </md-help-text>
+            </div>
+          `
+        : nothing;
+    }
+
     render() {
       return html`
         <div class="md-radio-wrapper" part="radio-wrapper">
+          <div class="md-radio-icon"></div>
           <input
             class="md-radio-input"
+            part="radio-input"
             type="radio"
-            aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
+            role="radio"
+            aria-label=${ifDefined(this.inputAriaLabel)}
             aria-checked=${this.checked ? "true" : "false"}
             .value=${this.value}
             ?checked=${this.checked}
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
-            aria-hidden="true"
+            tabindex="-1"
             id="radio-label"
           />
-          <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
+          <label for="radio-label" class="md-radio-label" part="radio-label" @click=${(e: Event) => e.preventDefault()}>
+            <slot></slot>
+          </label>
         </div>
+        ${this.messagesTemplate()}
       `;
     }
   }

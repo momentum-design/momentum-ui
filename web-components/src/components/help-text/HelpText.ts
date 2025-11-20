@@ -12,6 +12,7 @@ import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
+import { nothing } from "lit-html";
 
 export namespace HelpText {
   @customElementWithCheck("md-help-text")
@@ -54,7 +55,9 @@ export namespace HelpText {
           aria-live=${this.ariaLive}
           role="alert"
         >
-          <md-icon name="${this.getIconName()}" size="14" iconSet="momentumDesign"></md-icon>
+          ${this.messageType
+            ? html`<md-icon name="${this.getIconName()}" size="14" iconSet="momentumDesign"></md-icon>`
+            : nothing}
           <slot>${this.message}</slot>
         </div>
       `;

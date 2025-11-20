@@ -13,7 +13,7 @@
   "lit-plugin.strict": true,
   "lit-plugin.rules.no-unknown-event": "warning",
 
-  "jest.autoEnable": false,
+  
 
   "path-autocomplete.extensionOnImport": true,
   "path-autocomplete.pathMappings": {
@@ -29,5 +29,9 @@
   "cSpell.words": [
     "lumos",
     "slotchange"
+  ],
+  "lit-plugin.globalEvents": [
+    "focusin",
+    "focusout"
   ]
 }

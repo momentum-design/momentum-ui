@@ -1,0 +1,123 @@
+$list-item-focus-shadow: 0 0 0 rem-calc(2) var(--list-focus-border-color);
+
+:host {
+  --list-item-border-radius: 0;
+  --list-item-expand-duration: 400ms;
+
+  --list-item-hover-bg-color: var(--md-button-secondary-hover-bg-color);
+  --list-item-active-bg-color: var(--md-button-secondary-pressed-bg-color);
+  --list-item-disabled-bg-color: none;
+
+  --list-item-disabled-text-color: var(--md-textColor-disabled);
+
+  --list-item-primary-label-color: var(--md-textColor-primary);
+  --list-item-secondary-label-color: var(--md-textColor-secondary);
+
+  --list-item-primary-label-font-size: 14px;
+  --list-item-secondary-label-font-size: 12px;
+
+  --list-item-bg-color: none;
+
+  border-radius: var(--list-item-border-radius);
+  background-color: var(--list-item-bg-color);
+}
+
+:host(:focus-visible) {
+  box-shadow: none !important;
+}
+
+:host([variant="inset-rectangle"]) {
+  --list-item-border-radius: 0.5rem;
+}
+
+:host([variant="inset-pill"]) {
+  --list-item-border-radius: 3.125rem;
+}
+
+:host([disabled]) {
+  --list-item-primary-label-color: var(--list-item-disabled-text-color);
+  --list-item-secondary-label-color: var(--list-item-disabled-text-color);
+  --list-item-bg-color: var(--list-item-disabled-bg-color);
+}
+
+.header {
+  border-radius: var(--list-item-border-radius);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: var(--list-item-hover-bg-color);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--list-item-active-bg-color);
+  }
+}
+
+:host(:focus-visible) .header {
+  box-shadow: $list-item-focus-shadow;
+}
+
+:host::part(header-leading),
+:host::part(header-trailing) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:host::part(primary-label), :host::part(secondary-label), :host::part(tertiary-label) {
+  display: block;
+  line-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:host::part(primary-label) {
+  font-size: var(--list-item-primary-label-font-size);
+  color: var(--list-item-primary-label-color);
+}
+
+:host::part(secondary-label), :host::part(tertiary-label) {
+  font-size: var(--list-item-secondary-label-font-size);
+  color: var(--list-item-secondary-label-color);
+}
+
+.expand-icon {
+  transition: transform var(--list-item-expand-duration);
+}
+
+.panel-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--list-item-expand-duration) ease-out;
+}
+
+.expandable-content {
+  min-height: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  margin: 0 10px;
+  transition: all var(--list-item-expand-duration);
+}
+
+:host([expanded]) {
+  .panel-container {
+    padding-top: 0;
+    grid-template-rows: 1fr;
+  }
+
+  .expandable-content {
+    visibility: visible;
+    transform: translateY(0);
+    margin: 10px;
+  }
+
+  .expand-icon {
+    transform: rotate(90deg);
+  }
+}

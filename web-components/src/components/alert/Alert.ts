@@ -236,8 +236,8 @@ export namespace Alert {
               ${this.title && this.title !== ""
                 ? html` <div class="md-new-alert__title" role="heading" aria-level="1">${this.title}</div> `
                 : nothing}
-              <div class="md-new-alert__message" title="${this.message}">
-                ${this.message}
+              <div class="md-new-alert__message" part="message" title="${this.message?.trim()}">
+                <span class="md-new-alert__message_span" part="text">${this.message?.trim()}</span>
                 <slot name="alert-body"></slot>
                 ${this.showMore ? html`<md-link href=${this.href} inline>Show more...</md-link>` : nothing}
               </div>

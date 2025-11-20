@@ -290,4 +290,13 @@ describe("New Alert", () => {
     const elementFooter = await element.shadowRoot!.querySelector(".md-new-alert__footer.is-empty");
     expect(elementFooter).not.toBeNull();
   });
+  test("should render  Alert component with set message & title props", async () => {
+    const myMessage = "This is my message";
+
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert .message=${myMessage} show newMomentum></md-alert> `);
+
+    const messageContent = await element.shadowRoot!.querySelector(".md-new-alert__message_span");
+
+    expect(messageContent?.textContent?.trim()).toEqual(myMessage);
+  });
 });

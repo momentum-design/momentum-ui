@@ -288,6 +288,15 @@ export class AvatarTemplateSandbox extends LitElement {
         size="88"
         newMomentum
       ></md-avatar>
+      <md-avatar
+        title="Channel Work item"
+        type="channel-work-item"
+        avatar-style="default"
+        presence-type="idle"
+        state="rest"
+        size="88"
+        newMomentum
+      ></md-avatar>
 
       <h3>Icon Avatar Channel with Custom Icon</h3>
       <md-avatar title="Custom Channel" type="channel-custom" avatar-style="table" state="rest">

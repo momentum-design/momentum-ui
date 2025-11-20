@@ -3,7 +3,7 @@ md-theme {
   color: var(--md-primary-text-color);
 
   &.is-visual-rebrand {
-    background: url("/images/brand-visuals/backgrounds/operation-pop-background-light.png");
+    background: url("/images/brand-visuals/png/operation-pop-background-light.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -15,7 +15,7 @@ md-theme[darkTheme] {
   color: var(--md-primary-text-color);
 
   &.is-visual-rebrand {
-    background: url("/images/brand-visuals/backgrounds/operation-pop-background-dark.png");
+    background: url("/images/brand-visuals/png/operation-pop-background-dark.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -61,15 +61,14 @@ md-theme[darkTheme] {
   height: calc(100vh - 1.75rem);
 }
 
-
 .explorer[direction="vertical"] {
   &::part(tabs-list) {
     overflow-y: auto;
-    height: calc(100vh - 1.75rem);    
-    flex-shrink: 0; 
-    padding-inline-end:5px;
-    padding-inline-start:5px;
-    gap:0.25rem;
+    height: calc(100vh - 1.75rem);
+    flex-shrink: 0;
+    padding-inline-end: 5px;
+    padding-inline-start: 5px;
+    gap: 0.25rem;
   }
 }
 

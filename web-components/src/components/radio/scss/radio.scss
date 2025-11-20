@@ -1,4 +1,9 @@
 :host(md-radio) {
+  ::slotted([slot="image"]) {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
   .md-radio {
     &-wrapper {
       position: relative;

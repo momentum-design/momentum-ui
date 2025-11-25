@@ -19,7 +19,7 @@ const buttonGroup = {
   "bg-color": {
     common: "$mds-color-theme-button-secondary-normal",
     hover: {
-      common: "$mds-color-theme-button-secondary-normal"
+      common: "$mds-color-theme-button-secondary-hover"
     },
     pressed: {
       common: "$mds-color-theme-button-secondary-normal"

@@ -196,7 +196,8 @@ export namespace Avatar {
       "channel-whats-app": "social-whatsapp-color",
       "channel-we-chat": "social-wechat-color",
       "channel-spam": "participant-unknown-bold",
-      "channel-monitoring": "monitoring-bold"
+      "channel-monitoring": "monitoring-bold",
+      "channel-work-item": "custom-task-ind-regular"
     };
 
     private getIconName(type: string): string {

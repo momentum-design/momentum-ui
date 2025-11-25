@@ -20,6 +20,7 @@ export namespace ButtonGroup {
   export class ELEMENT extends SlottedMixin(FocusMixin(LitElement)) {
     @property({ type: Number, reflect: true }) active = 0;
     @property({ type: Number, reflect: true }) tabIndex = 0;
+    @property({ type: Boolean, reflect: true }) newMomentum = false;
     @query("slot[name='button']") buttonSlot?: HTMLSlotElement;
 
     private _disabled = false;

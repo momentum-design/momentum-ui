@@ -3,6 +3,9 @@ import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import { html } from "lit";
 
+const nextLineMessage =
+  "You couldn’t take this call because of a country-specific regulation. Your availability state is now set to Idle. \n\nReach out to your supervisor or administrator to help get it resolved. You can switch back to Available anytime.";
+
 export const alertTemplate = html`
   <md-alert
     title="EXPLORE NEW HORIZONS Maecenas fermentum est ut elementum vulputate."
@@ -115,6 +118,23 @@ export const alertTemplate = html`
     show
     newMomentum
   >
+    <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient">
+    </md-icon>
+    <div slot="alert-footer">
+      <md-button variant="primary">
+        <span slot="text">primary</span>
+      </md-button>
+      <md-button variant="secondary">
+        <span slot="text">secondary</span>
+      </md-button>
+      <md-button variant="secondary">
+        <span slot="text">secondary</span>
+      </md-button>
+    </div>
+  </md-alert>
+
+  <h3>New Momentum Loading Alert with new line string</h3>
+  <md-alert title="Ready to pause and recharge?" message=${nextLineMessage} closable show newMomentum>
     <md-icon slot="alert-icon" size="24" iconSet="momentumBrandVisuals" name="cisco-ai-assistant-color-gradient">
     </md-icon>
     <div slot="alert-footer">

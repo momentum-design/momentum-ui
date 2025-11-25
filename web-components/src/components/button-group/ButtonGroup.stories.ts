@@ -12,7 +12,7 @@ import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
 const render = (args: Args) => html`
-  <md-button-group ?disabled=${args.disabled}>
+  <md-button-group ?disabled=${args.disabled} ?newMomentum=${args.newMomentum}>
     <button slot="button" type="button">
       <md-icon name="table-bold" size="16" iconSet="momentumDesign"></md-icon>
     </button>

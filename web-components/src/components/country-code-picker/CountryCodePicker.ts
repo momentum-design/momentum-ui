@@ -42,7 +42,7 @@ export namespace CountryCodePicker {
     @property({ type: Boolean }) isDropdownArrow = true;
 
     @internalProperty() private countryCode: CountryCode = "US";
-    @internalProperty() private codeList = [];
+    @internalProperty() private codeList: CountryCodePicker.Country[] = [];
 
     @query("md-combobox") combobox!: HTMLElement;
 
@@ -117,6 +117,9 @@ export namespace CountryCodePicker {
     static get styles() {
       return [reset, styles];
     }
+    get sortedCodeList(): CountryCodePicker.Country[] {
+      return [...this.codeList].sort((a, b) => a.name.localeCompare(b.name));
+    }
 
     render() {
       return html`
@@ -141,7 +144,7 @@ export namespace CountryCodePicker {
             .clearAriaLabel="${this.clearAriaLabel}"
           >
             ${repeat(
-              this.codeList,
+              this.sortedCodeList,
               (country: CountryCodePicker.Country) => country.name,
               (country: CountryCodePicker.Country, index) => this.countryCodeOptionTemplate(country, index)
             )}

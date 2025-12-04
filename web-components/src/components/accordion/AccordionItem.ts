@@ -102,7 +102,7 @@ export namespace AccordionItem {
       return [reset, styles];
     }
 
-    handleMouseDown(event: MouseEvent) {
+    dispatchAccordionClick(event: MouseEvent) {
       if (!this.disabled) {
         this.dispatchEvent(
           new CustomEvent<AccordionEvent>("accordion-item-click", {
@@ -145,7 +145,7 @@ export namespace AccordionItem {
               id="header-${this.uniqueId}"
               part="accordion-button"
               tabindex=${ifDefined(this.disabled ? -1 : undefined)}
-              @mousedown=${this.handleMouseDown}
+              @dblclick=${this.dispatchAccordionClick}
               @keydown=${this.handleKeyDown}
             >
               <slot name="header-content">

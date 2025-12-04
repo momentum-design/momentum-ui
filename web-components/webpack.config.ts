@@ -17,7 +17,7 @@ const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
-const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg");
+const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg");
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
@@ -122,7 +122,7 @@ export const commonDev = merge(common, {
         { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
         { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
-        { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
+        { from: `node_modules/@momentum-design/brand-visuals/dist/`, to: "images/brand-visuals/" }
       ]
     })
   ]

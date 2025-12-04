@@ -101,7 +101,43 @@ export class RadioGroupTemplateSandbox extends LitElement {
             <span>None</span>
           </div>
         </md-radio>
-      </md-radiogroup>`;
+      </md-radiogroup>
+
+      <h3>Radio buttons with background setting</h3>
+      <div style="max-width: 366px;">
+        <md-radiogroup group-label="group_process" alignment="horizontal">
+          <md-radio slot="radio" value="All">
+            <div
+              slot="image"
+              style="width:172px;height:108px; border-radius: 8.6px;
+            background: url(${"/images/brand-visuals/svg/simple-background-dark.svg"});
+            background-size: cover;
+          "
+            ></div>
+            <span>Default</span>
+          </md-radio>
+          <md-radio slot="radio" value="Ai only">
+            <div
+              slot="image"
+              style="width:172px;height:108px; border-radius: 8.6px;
+            background: url(${"/images/brand-visuals/png/operation-pop-background-dark.png"});
+            background-size: cover;
+          "
+            ></div>
+            <span>Serene</span>
+          </md-radio>
+          <md-radio slot="radio" value="None">
+            <div
+              slot="image"
+              style="width:172px;height:108px; border-radius: 8.6px;
+            background: url(${"/images/brand-visuals/svg/gradient-background-dark.svg"});
+            background-size: cover;
+          "
+            ></div>
+            <span>Aurora</span></md-radio
+          >
+        </md-radiogroup>
+      </div>`;
   }
 }
 

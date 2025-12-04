@@ -76,6 +76,8 @@
     align-items: center;
     display: flex;
     justify-content: space;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
 
     :nth-child(3) {
       margin-inline-start: 1rem;

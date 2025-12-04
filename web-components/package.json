@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "3.0.0-beta.13",
+  "version": "3.0.0-beta.14",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -74,7 +74,7 @@
     "@babel/preset-env": "^7.26.9",
     "@eslint/js": "^9.23.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-design/brand-visuals": "0.16.0",
+    "@momentum-design/brand-visuals": "0.25.0",
     "@momentum-design/tokens": "0.7.1",
     "@momentum-ui/core": "19.16.0",
     "@momentum-ui/icons": "8.28.5",

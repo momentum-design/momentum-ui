@@ -33,6 +33,12 @@ const MORE_MENU_WIDTH = "226px"; // Designed width
 const MORE_MENU_HEIGHT = "288px"; // Designed height
 
 export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
+
+// Shadow DOM ID prefixes for ARIA relationships
+// These IDs exist within Shadow DOM so aria-controls/aria-labelledby work correctly
+const SHADOW_TAB_ID_PREFIX = "shadow-tab-";
+const SHADOW_PANEL_ID_PREFIX = "shadow-panel-";
+const SHADOW_TAB_ID_REGEX = /^shadow-tab-(\d+)$/;
 const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
@@ -73,10 +79,8 @@ export namespace Tabs {
 
       const oldValue = this._selectedIndex;
       this._selectedIndex = value;
-
-      if (oldValue !== value && this.tabs?.length) {
-        this.updateSelectedTab(value);
-      }
+      // Request update to trigger the updated() lifecycle which handles tab selection
+      this.requestUpdate("selectedIndex", oldValue);
     }
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -174,6 +178,30 @@ export namespace Tabs {
       } else {
         return tab.id;
       }
+    }
+
+    /**
+     * Generates a Shadow DOM tab ID for ARIA relationships.
+     * Shadow tabs are copies rendered in Shadow DOM that can properly reference shadow panel IDs.
+     */
+    private getShadowTabId(index: number): string {
+      return `${SHADOW_TAB_ID_PREFIX}${index}`;
+    }
+
+    /**
+     * Generates a Shadow DOM panel wrapper ID for ARIA relationships.
+     * These wrapper divs contain slots for the actual panels and can be referenced by aria-controls.
+     */
+    private getShadowPanelId(index: number): string {
+      return `${SHADOW_PANEL_ID_PREFIX}${index}`;
+    }
+
+    /**
+     * Finds the original index of a tab in the tabs array.
+     * Used to map between visible tab copies and their corresponding panels.
+     */
+    private getTabOriginalIndex(tab: Tab.ELEMENT): number {
+      return this.tabs.findIndex((t) => t.id === tab.id);
     }
 
     private getTabIndex(tab: Tab.ELEMENT) {
@@ -428,6 +456,8 @@ export namespace Tabs {
         if (panel) {
           panel.setAttribute("id", panelId);
           panel.setAttribute("aria-labelledby", tabId);
+          // Assign unique slot name for dynamic projection
+          panel.setAttribute("slot", `panel-${index}`);
           panel.selected = tabSelectedIndex === index;
           if (tab.disabled) {
             panel.hidden = true;
@@ -586,8 +616,24 @@ export namespace Tabs {
       this.handleNewSelectedTab(id);
     }
 
+    /**
+     * Resolves a tab ID to its corresponding Tab element.
+     * Handles both shadow tab IDs (shadow-tab-X) from visible tab copies
+     * and original tab IDs from the Light DOM.
+     */
+    private getTabFromId(id: string): Tab.ELEMENT | undefined {
+      // Check if this is a shadow tab ID (from visible tab copies in the shadow DOM)
+      const shadowTabMatch = id.match(SHADOW_TAB_ID_REGEX);
+      if (shadowTabMatch) {
+        const index = parseInt(shadowTabMatch[1], 10);
+        return this.tabs[index];
+      }
+      // Otherwise look up in the hash by normalized ID
+      return this.tabsHash[this.getNormalizedTabId(id)];
+    }
+
     handleNewSelectedTab(id: string, setFocus: boolean = true) {
-      const tab = this.tabsHash[this.getNormalizedTabId(id)];
+      const tab = this.getTabFromId(id);
       if (tab && !tab.disabled) {
         const newIndex = this.tabsIdxHash[tab.id];
 
@@ -1056,9 +1102,8 @@ export namespace Tabs {
       if (this.tabSlotElement) {
         this.tabs = this.tabSlotElement.assignedElements() as Tab.ELEMENT[];
       }
-      if (this.panelSlotElement) {
-        this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
-      }
+      // Query panels directly from the host element since their slot names change dynamically
+      this.panels = Array.from(this.querySelectorAll('md-tab-panel')) as TabPanel.ELEMENT[];
 
       this.defaultTabsOrderArray = this.tabs.map((tab) => tab.name);
     }
@@ -1249,8 +1294,12 @@ export namespace Tabs {
       }
 
       if (changedProperties.has("selectedIndex")) {
-        this.selected = this.selectedIndex;
-        this.updateSelectedTab(this.selectedIndex, false);
+        const oldSelectedIndex = changedProperties.get("selectedIndex") as number | undefined;
+        // Only update if we have tabs and the value actually changed
+        if (this.tabs?.length && oldSelectedIndex !== this.selectedIndex) {
+          this.selected = this.selectedIndex;
+          this.updateSelectedTab(this.selectedIndex, false);
+        }
       }
 
       if (changedProperties.has("overflowLabel")) {
@@ -1407,26 +1456,30 @@ export namespace Tabs {
           ${repeat(
             this.tabsFilteredAsVisibleList,
             (tab, index) => `${tab.id}-${index}`,
-            (tab) => html`
-              <md-tab
-                .closable="${tab.closable}"
-                .disabled="${tab.disabled}"
-                .selected="${tab.selected}"
-                name="${tab.name}"
-                id="${this.getCopyTabId(tab)}"
-                aria-label=${tab.ariaLabel}
-                .isCrossVisible=${true}
-                tabIndex="${this.getTabIndex(tab)}"
-                .newMomentum=${this.newMomentum}
-                size="${ifDefined(this.newMomentum ? this.size : undefined)}"
-                variant=${this.variant}
-                type=${this.type}
-                .onlyIcon="${tab.onlyIcon}"
-                visible-tab
-              >
-                ${unsafeHTML(tab.innerHTML)}
-              </md-tab>
-            `
+            (tab) => {
+              const originalIndex = this.getTabOriginalIndex(tab);
+              return html`
+                <md-tab
+                  .closable="${tab.closable}"
+                  .disabled="${tab.disabled}"
+                  .selected="${tab.selected}"
+                  name="${tab.name}"
+                  id="${this.getShadowTabId(originalIndex)}"
+                  aria-label=${tab.ariaLabel}
+                  aria-controls="${this.getShadowPanelId(originalIndex)}"
+                  .isCrossVisible=${true}
+                  tabIndex="${this.getTabIndex(tab)}"
+                  .newMomentum=${this.newMomentum}
+                  size="${ifDefined(this.newMomentum ? this.size : undefined)}"
+                  variant=${this.variant}
+                  type=${this.type}
+                  .onlyIcon="${tab.onlyIcon}"
+                  visible-tab
+                >
+                  ${unsafeHTML(tab.innerHTML)}
+                </md-tab>
+              `;
+            }
           )}
         </div>
         ${this.moreMenuTemplate}
@@ -1463,7 +1516,21 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
         >
-          <slot name="panel"></slot>
+          ${this.panels.length > 0
+            ? this.panels.map(
+                (panel, index) => html`
+                  <div
+                    id="${this.getShadowPanelId(index)}"
+                    role="tabpanel"
+                    aria-labelledby="${this.getShadowTabId(index)}"
+                    class="shadow-panel-wrapper"
+                    ?hidden=${index !== this._selectedIndex}
+                  >
+                    <slot name="panel-${index}"></slot>
+                  </div>
+                `
+              )
+            : html`<slot name="panel"></slot>`}
         </div>
       `;
     }

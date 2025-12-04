@@ -114,7 +114,7 @@ describe("AccordionItem", () => {
   test("should handle click event", async () => {
     const mouseDown = new MouseEvent("mousedown");
     const itemClickPromise = oneEvent(accordionItems[1], "accordion-item-click");
-    accordionItems[1].handleMouseDown(mouseDown);
+    accordionItems[1].dispatchAccordionClick(mouseDown);
 
     const { detail } = await itemClickPromise;
 

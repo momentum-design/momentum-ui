@@ -79,8 +79,10 @@ export namespace Tabs {
 
       const oldValue = this._selectedIndex;
       this._selectedIndex = value;
-      // Request update to trigger the updated() lifecycle which handles tab selection
-      this.requestUpdate("selectedIndex", oldValue);
+
+      if (oldValue !== value && this.tabs?.length) {
+        this.updateSelectedTab(value);
+      }
     }
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -752,6 +754,12 @@ export namespace Tabs {
           getElementSafe(panels, newSelectedIndex),
           true
         );
+      }
+
+      // Update _selectedIndex directly to trigger shadow panel wrapper visibility update
+      if (this._selectedIndex !== newSelectedIndex) {
+        this._selectedIndex = newSelectedIndex;
+        this.requestUpdate();
       }
 
       if (newSelectedIndex >= 0 && newSelectedIndex < tabs.length) {

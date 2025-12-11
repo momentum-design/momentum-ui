@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { TemplateResult } from "lit-element";
+import { TemplateResult } from "lit";
 import { DateTime, Settings } from "luxon";
 import "../button/Button";
 import "../popover/Popover";

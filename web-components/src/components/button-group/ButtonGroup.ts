@@ -9,7 +9,8 @@
 import { Key } from "@/constants";
 import { customElementWithCheck, FocusMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 type CustomHTMLButtonElement = HTMLButtonElement & { selected: boolean };

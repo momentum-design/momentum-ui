@@ -2,8 +2,9 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
-import { scroll } from "lit-virtualizer";
+import "@lit-labs/virtualizer";
+import { LitElement, PropertyValues, TemplateResult, html } from "lit";
+import { property, query, state } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace AdvanceList {
@@ -26,19 +27,20 @@ export namespace AdvanceList {
     @property({ type: Array }) disabledItems: string[] = [];
     @property({ type: Number }) totalRecords = 0;
     @property({ type: Boolean }) isNonSelectable = false;
-    @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
-    @query(".virtual-scroll") listContainer?: HTMLDivElement;
 
-    @internalProperty()
+    @query(".virtual-scroll") listContainer?: HTMLDivElement;
+    @query("lit-virtualizer") virtualizer?: any;
+
+    @state()
     private scrollIndex = -1;
 
-    @internalProperty()
+    @state()
     activeId = "";
 
-    @internalProperty()
+    @state()
     selectedItemsIds: string[] = [];
 
-    @internalProperty()
+    @state()
     private isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
 
     connectedCallback(): void {
@@ -71,26 +73,34 @@ export namespace AdvanceList {
       this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
-    updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
-        this.requestUpdate().then(() => {
-          this.selectedItemsIds = this.value;
-          this.updateSelectedState();
-        });
+        this.selectedItemsIds = this.value;
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
           this.selectedItemsIds = this.items
-            .filter((item) => !this.disabledItems.includes(item.id))
+            .filter((item) => item && item.id && !this.disabledItems.includes(item.id))
             .map((item) => item.id);
-          this.updateSelectedState();
-          this.notifySelectedChange();
         }
       }
       if (changedProperties.has("focusReset")) {
         if (this.focusReset) {
           this.activeId = "";
+        }
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
+        this.updateSelectedState();
+      }
+      if (changedProperties.has("selectAllItems")) {
+        if (this.selectAllItems) {
+          this.updateSelectedState();
+          this.notifySelectedChange();
         }
       }
     }
@@ -210,11 +220,15 @@ export namespace AdvanceList {
           if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
             this.scrollIndex = currentIndex + 1;
             this.activeId = this.items[this.scrollIndex].id;
+            // Scroll to the new active item
+            this.virtualizer?.scrollToIndex(this.scrollIndex, "start");
           }
         } else if (currentIndex > 0) {
           // isArrowUp
           this.scrollIndex = currentIndex - 1;
           this.activeId = this.items[this.scrollIndex].id;
+          // Scroll to the new active item
+          this.virtualizer?.scrollToIndex(this.scrollIndex, "start");
         }
       } else if (isTab) {
         if (this.activeId === "" && this.value.length > 0) {
@@ -297,27 +311,44 @@ export namespace AdvanceList {
       );
     }
 
-    renderItem(item: any, index: number) {
-      if (item.id === "status-indicator") {
-        return html`
-          <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
-        `;
+    readonly renderItem = (item: any, index: number): TemplateResult => {
+      // Defensive programming: handle null/undefined items
+      if (!item) {
+        //`AdvanceList.renderItem: item is null/undefined at index ${index}`
+        return html`<div class="default-wrapper-error">Invalid item</div>`;
       }
-      return html`
-        <div
-          class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
-          part="advance-list-item-wrapper"
-          aria-setsize="${this.totalRecords}"
-          aria-posinset="${index + 1}"
-          role="${this.ariaRoleListItem}"
-          aria-label=${item.name}
-          id="${prefixId}${item.id}"
-          index="${index}"
-        >
-          ${item.template(item, index)}
-        </div>
-      `;
-    }
+
+      if (!item.id) {
+        console.warn(`AdvanceList.renderItem: item missing id at index ${index}`, item);
+        return html`<div class="default-wrapper-error">Item missing ID</div>`;
+      }
+
+      try {
+        if (item.id === "status-indicator") {
+          return html`
+            <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
+          `;
+        }
+
+        return html`
+          <div
+            class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
+            part="advance-list-item-wrapper"
+            aria-setsize="${this.totalRecords}"
+            aria-posinset="${index + 1}"
+            role="${this.ariaRoleListItem as any}"
+            aria-label=${item.name || "Unknown item"}
+            id="${prefixId}${item.id}"
+            data-index="${index}"
+          >
+            ${item.template(item, index)}
+          </div>
+        `;
+      } catch (error) {
+        console.error(`AdvanceList.renderItem: Error rendering item ${item.id} at index ${index}:`, error, item);
+        return html`<div class="default-wrapper-error">Error rendering item</div>`;
+      }
+    };
 
     getActiveDescendant() {
       if (this.activeId) {
@@ -341,17 +372,10 @@ export namespace AdvanceList {
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}
         >
-          ${scroll({
-            items: this.items,
-            renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
-            useShadowDOM: true,
-            scrollToIndex: this.isUserNavigated
-              ? {
-                  index: this.scrollIndex,
-                  position: this.scrollIndex === 0 ? "start" : "center"
-                }
-              : undefined
-          })}
+          <lit-virtualizer
+            .items=${this.items}
+            .renderItem=${(item: any, index: number) => this.renderItem(item, index)}
+          ></lit-virtualizer>
         </div>
       `;
     }

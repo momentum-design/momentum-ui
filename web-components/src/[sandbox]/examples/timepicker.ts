@@ -1,6 +1,6 @@
 import "@/components/timepicker/TimePicker";
 import "@/index";
-import { html } from "lit-element";
+import { html } from "lit";
 import { DateTime } from "luxon";
 
 export const timePickerTemplate = html`

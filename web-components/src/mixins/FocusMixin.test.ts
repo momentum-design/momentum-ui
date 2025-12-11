@@ -1,5 +1,6 @@
 import { defineCE, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { AnyConstructor, FocusClass, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {

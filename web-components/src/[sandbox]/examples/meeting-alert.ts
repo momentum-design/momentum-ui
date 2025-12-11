@@ -2,7 +2,7 @@ import "@/components//meeting-alert/MeetingAlert";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import svgWhatsapp from "@img/whatsapp.svg";
-import { html } from "lit-element";
+import { html } from "lit";
 import { querySelectorDeep } from "query-selector-shadow-dom";
 
 let isMeetingAlertOpenAttr = false;

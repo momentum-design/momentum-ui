@@ -8,7 +8,7 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getLocaleDateFormat } from "@/utils/dateUtils";
-import { property } from "lit-element";
+import { property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 

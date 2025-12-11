@@ -8,7 +8,8 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
 import { score } from "wcag-color";
 
 @customElementWithCheck("sass-stats")

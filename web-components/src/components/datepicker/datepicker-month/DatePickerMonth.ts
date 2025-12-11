@@ -10,7 +10,8 @@ import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addWeeks, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import styles from "../scss/module.scss";

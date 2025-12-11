@@ -13,10 +13,10 @@ import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export namespace Chip {
@@ -55,13 +55,13 @@ export namespace Chip {
     })
     value = "";
 
-    @internalProperty({
+    @state({
       hasChanged(newVal, oldVal) {
         return newVal !== oldVal;
       }
     })
     private textOverflow = false;
-    @internalProperty()
+    @state()
     private renderedText = "";
 
     connectedCallback() {
@@ -88,7 +88,6 @@ export namespace Chip {
     public truncStringPortion(text: string) {
       const textWidth = this.getTextWidth(text);
       const ellipsis = "…";
-      console.log("Text width:", textWidth);
       if (!this.shouldTruncateValue || textWidth < this.MAXWIDTH) {
         this.renderedText = text;
         this.textOverflow = false;

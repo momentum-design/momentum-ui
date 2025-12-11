@@ -250,7 +250,7 @@ describe("Dropdown Component", () => {
 
       await elementUpdated(dropdown);
 
-      expect(dropdown["renderOptions"].length).toBe(4);
+      expect(dropdown["dropdownRenderOptions"].length).toBe(4);
 
       consoleSpy.mockRestore();
     });

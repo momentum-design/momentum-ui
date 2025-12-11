@@ -9,9 +9,9 @@
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
 
@@ -35,8 +35,8 @@ export namespace Table {
     @property({ type: Array }) warning: (any | Warn)[] = [];
     @property({ type: Array }) errors: (any | Warn)[] = [];
 
-    @internalProperty() private sort = { columnName: "", sortting: false };
-    @internalProperty() csvData: any = undefined;
+    @state() private sort = { columnName: "", sortting: false };
+    @state() csvData: any = undefined;
 
     @queryAll('.md-table__body tr[role="row"]') rowTable?: HTMLTableRowElement[];
 
@@ -175,7 +175,7 @@ export namespace Table {
 
     render() {
       return html`
-        <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : nothing}`}>
+        <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : ""}`}>
           ${this.csvData.length != 0
             ? html`
                 <table

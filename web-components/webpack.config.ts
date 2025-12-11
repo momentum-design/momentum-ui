@@ -77,7 +77,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   return {
     test: /\.scss$/,
     use: [
-      { loader: "lit1-scss-loader", options: { minify: !isDev } },
+      { loader: "lit-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },

@@ -13,13 +13,13 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { scroll } from "lit-virtualizer";
+import { LitVirtualizer } from "@lit-labs/virtualizer";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 
@@ -92,7 +92,7 @@ export namespace ComboBox {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty()
+    @state()
     private ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
@@ -129,9 +129,9 @@ export namespace ComboBox {
 
     private readonly messageController = new MessageController();
 
-    @internalProperty()
+    @state()
     private isOptGroup = false;
-    @internalProperty()
+    @state()
     private isSelectAllChecked = false;
     get focusedIndex() {
       return this._focusedIndex;
@@ -159,6 +159,19 @@ export namespace ComboBox {
         }
         if (newList) {
           newList?.toggleAttribute("focused", true);
+        }
+
+        const virtualizer = this.shadowRoot?.querySelector<LitVirtualizer>("lit-virtualizer");
+        if (virtualizer) {
+          if (index === -1) {
+            virtualizer.element(index)?.scrollIntoView({
+              block: "start"
+            });
+          } else {
+            virtualizer.element(index)?.scrollIntoView({
+              block: "center"
+            });
+          }
         }
       } else {
         if (this.lists) {
@@ -275,6 +288,14 @@ export namespace ComboBox {
       if (changedProperties.has("value")) {
         if (this.selectedOptions.length === 0) {
           this.setInitialValue();
+        }
+      }
+      if (changedProperties.has("options")) {
+        if (this.expanded && this.checkForVirtualScroll()) {
+          // For virtual scroll, wait for DOM updates before resizing
+          this.updateOnNextFrame(() => {
+            this.resizeListbox();
+          });
         }
       }
       if (changedProperties.has("customOptions")) {
@@ -612,6 +633,7 @@ export namespace ComboBox {
         let labelHeight = 0;
         let virtualizerHeight = 0;
         const verticalPadding: number = this.getListBoxVerticalPadding();
+
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter((list) => list.offsetHeight !== 0)
@@ -629,6 +651,7 @@ export namespace ComboBox {
                   .slice(0, this.visibleOptions)
                   .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
+
         if (this.labels) {
           labelHeight = [...this.labels]
             .slice(0, this.visibleOptions)
@@ -1643,7 +1666,7 @@ export namespace ComboBox {
       }
     }
 
-    renderItem(option: OptionMember | string, index: number) {
+    renderItem(option: OptionMember | string, index: number): TemplateResult {
       const count = this.allowSelectAll ? index + 2 : index + 1;
       const total = this.allowSelectAll ? this.options.length + 1 : this.options.length;
       const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : "";
@@ -1660,7 +1683,7 @@ export namespace ComboBox {
             ? this.getOptionId(option)
             : this.getOptionValue(option)}${ariaLabelForCount}"
           tabindex="-1"
-          @click=${this.handleListClick}
+          @click=${(event: MouseEvent) => this.handleListClick(event)}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
         >
           ${this.isMulti
@@ -1748,6 +1771,17 @@ export namespace ComboBox {
       return html`${showClearButton ? this.clearButtonTemplate() : this.arrowButtonTemplate()}`;
     }
 
+    private get renderVirtualScroll(): TemplateResult {
+      return html`
+        <div class="virtual-scroll" @rangeChanged=${this.rangeChanged}>
+          <lit-virtualizer
+            .items=${this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)}
+            .renderItem=${(item: string | OptionMember, index: number) => this.renderItem(item, index)}
+          ></lit-virtualizer>
+        </div>
+      `;
+    }
+
     render() {
       return html`
         <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
@@ -1814,22 +1848,7 @@ export namespace ComboBox {
                     : this.options.length !== 0 &&
                         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                           .length > 0
-                      ? html`
-                          <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
-                            ${scroll({
-                              items: this.filterOptions(
-                                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                              ),
-                              renderItem: (item: string | OptionMember, index?: number) =>
-                                this.renderItem(item, index || 0),
-                              useShadowDOM: false,
-                              scrollToIndex: {
-                                index: this.focusedIndex,
-                                position: this.focusedIndex === -1 ? "start" : "center"
-                              }
-                            })}
-                          </div>
-                        `
+                      ? this.renderVirtualScroll
                       : nothing}
                   ${this.options.length &&
                   this.filteredOptions.length === 0 &&

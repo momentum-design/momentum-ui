@@ -2,11 +2,12 @@ import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import "@/components/toggle-switch/ToggleSwitch";
 import svg from "@img/profile.svg";
-import { LitElement, customElement, html, internalProperty } from "lit-element";
+import { LitElement, html } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 @customElement("avatar-template-sandbox")
 export class AvatarTemplateSandbox extends LitElement {
-  @internalProperty()
+  @state()
   private isNewMomentumEnabled = false;
 
   private readonly toggleMomentum = () => {

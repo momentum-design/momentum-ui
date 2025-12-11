@@ -1,7 +1,7 @@
 import "@/components/alert/Alert";
 import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
-import { html } from "lit-element";
+import { html } from "lit";
 
 const nextLineMessage =
   "You couldn’t take this call because of a country-specific regulation. Your availability state is now set to Idle. \n\nReach out to your supervisor or administrator to help get it resolved. You can switch back to Available anytime.";

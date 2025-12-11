@@ -1,5 +1,5 @@
 import "@/components/skeleton/Skeleton";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const skeletonTemplate = html`
   <style>

@@ -9,7 +9,7 @@
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html, LitElement } from "lit-element";
+import { html, LitElement } from "lit";
 import "./ButtonGroup";
 import { type ButtonGroup } from "./ButtonGroup";
 

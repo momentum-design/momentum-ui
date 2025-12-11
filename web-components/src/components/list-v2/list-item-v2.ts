@@ -2,8 +2,8 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { isActionKey, isNavigationKey } from "@/utils/keyboard";
-import { customElement, html, LitElement, property, query } from "lit-element";
-import { nothing } from "lit-html";
+import { html, LitElement, nothing } from "lit";
+import { customElement, property, query } from "lit/decorators.js";
 import style from "./scss/module.scss";
 
 export namespace ListItemV2 {

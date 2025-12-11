@@ -1,6 +1,7 @@
 import "@/components/presence/Presence";
 import { TaskItemStatus } from "@/components/taskitem/TaskItem.constants";
-import { css, customElement, html, LitElement } from "lit-element";
+import { css, html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
 import { PresenceState, PresenceType } from "../../components/presence/Presence.utils";
 
 @customElement("presence-template-sandbox")

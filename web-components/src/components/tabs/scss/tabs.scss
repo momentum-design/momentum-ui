@@ -216,23 +216,23 @@ md-menu-overlay {
   box-shadow: none;
 }
 
-.md-tab__content ::slotted([slot="panel"]) {
+.md-tab__content ::slotted([slot^="panel"]) {
   display: none;
   visibility: hidden;
 }
 
-.md-tab__content ::slotted([slot="panel"][selected]) {
+.md-tab__content ::slotted([slot^="panel"][selected]) {
   display: block;
   visibility: visible;
 }
 
-.md-tab__content ::slotted([slot="panel"][selected][focus-visible]:focus-visible) {
+.md-tab__content ::slotted([slot^="panel"][selected][focus-visible]:focus-visible) {
   outline: $tab-main-focus-border;
   outline-offset: calc(#{$tab-border} * -2);
   outline-style: solid;
 }
 
-.md-tab__content ::slotted([slot="panel"][selected][focus-visible]:not(:focus-visible)) {
+.md-tab__content ::slotted([slot^="panel"][selected][focus-visible]:not(:focus-visible)) {
   outline: none;
   outline-offset: none;
   outline-style: none;
@@ -241,6 +241,15 @@ md-menu-overlay {
 .md-tab__content {
   display: block;
   flex: 1 1 auto;
+}
+
+.shadow-panel-wrapper {
+  display: none;
+  height: 100%;
+
+  &:not([hidden]) {
+    display: block;
+  }
 }
 
 .no-tabs-visible {
@@ -330,7 +339,7 @@ md-menu-overlay {
     }
   }
 
-  .md-tab__content ::slotted([slot="panel"]) {
+  .md-tab__content ::slotted([slot^="panel"]) {
     padding-inline-start: calc($tab-base-indent * 5);
   }
 }

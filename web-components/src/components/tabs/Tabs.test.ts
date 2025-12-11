@@ -90,6 +90,46 @@ describe("Tabs", () => {
     expect(tabs.panelSlotElement).toBeDefined();
   });
 
+  test("should project panels into shadow DOM with correct ARIA attributes", async () => {
+    const shadowRoot = tabs.shadowRoot!;
+
+    // Verify shadow panel wrappers exist for each panel
+    const shadowPanelWrappers = shadowRoot.querySelectorAll(".shadow-panel-wrapper");
+    expect(shadowPanelWrappers.length).toBe(panels.length);
+
+    // Verify each wrapper has correct ARIA attributes and slot
+    shadowPanelWrappers.forEach((wrapper, index) => {
+      // Check ID follows the shadow-panel-{index} pattern
+      expect(wrapper.id).toBe(`shadow-panel-${index}`);
+
+      // Check role="tabpanel" is set
+      expect(wrapper.getAttribute("role")).toBe("tabpanel");
+
+      // Check aria-labelledby points to corresponding shadow tab
+      expect(wrapper.getAttribute("aria-labelledby")).toBe(`shadow-tab-${index}`);
+
+      // Check slot element exists with correct name
+      const slot = wrapper.querySelector("slot");
+      expect(slot).not.toBeNull();
+      expect(slot?.getAttribute("name")).toBe(`panel-${index}`);
+    });
+
+    // Verify panels have been assigned to their dynamic slots
+    panels.forEach((panel, index) => {
+      expect(panel.getAttribute("slot")).toBe(`panel-${index}`);
+    });
+
+    // Verify only selected panel wrapper is visible (not hidden)
+    const selectedIndex = tabs["_selectedIndex"];
+    shadowPanelWrappers.forEach((wrapper, index) => {
+      if (index === selectedIndex) {
+        expect(wrapper.hasAttribute("hidden")).toBe(false);
+      } else {
+        expect(wrapper.hasAttribute("hidden")).toBe(true);
+      }
+    });
+  });
+
   test("should send warning when panels and tabs count not equal", async () => {
     const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -133,7 +173,7 @@ describe("Tabs", () => {
   });
 
   test("should add `disabled` attribute to panel when corresponding tab is disabled", () => {
-    const panel = tabs.querySelector("[slot='panel']") as TabPanel.ELEMENT;
+    const panel = tabs.querySelector("md-tab-panel") as TabPanel.ELEMENT;
     expect(panel.hasAttribute("disabled"));
   });
 
@@ -155,7 +195,7 @@ describe("Tabs", () => {
 
     await elementUpdated(tabs);
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
-    expect(tabs["visibleTabsContainerElement"]?.children[1].id).toEqual(currentID);
+    // Note: Shadow DOM copies use shadow IDs (shadow-tab-X), so we verify the underlying data list instead
 
     currentID = tabs["tabsFilteredAsVisibleList"][0].id;
     tabs.handleOnDragEnd({

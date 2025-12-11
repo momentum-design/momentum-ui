@@ -203,7 +203,6 @@ export namespace MenuOverlay {
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
       window.removeEventListener("blur", this.handleWindowBlurEvent);
-
       this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
 
@@ -382,7 +381,7 @@ export namespace MenuOverlay {
             {
               name: "computeStyles",
               options: {
-                adaptive: false // this will recompute popper position
+                adaptive: true // this will recompute popper position
               }
             }
           ]

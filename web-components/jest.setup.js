@@ -20,3 +20,9 @@ global.fetch = jest.fn(() =>
     json: () => Promise.resolve({})
   })
 );
+
+// Mock canvas getContext for text measurement in jsdom
+HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
+  measureText: jest.fn(() => ({ width: 100 })),
+  font: ""
+}));

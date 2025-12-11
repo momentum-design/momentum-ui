@@ -88,7 +88,6 @@ export namespace Chip {
     public truncStringPortion(text: string) {
       const textWidth = this.getTextWidth(text);
       const ellipsis = "…";
-      console.log("Text width:", textWidth);
       if (!this.shouldTruncateValue || textWidth < this.MAXWIDTH) {
         this.renderedText = text;
         this.textOverflow = false;

@@ -1,9 +1,9 @@
 import { customElementWithCheck } from "@/mixins";
 import type { CSSResult, CSSResultArray, PropertyValues, TemplateResult } from "lit";
 import { html, LitElement } from "lit";
-import { classMap } from "lit-html/directives/class-map.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
 import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import "../icon/Icon";
 import { TYPE as BADGE_TYPE, DEFAULTS, ICON_NAMES_LIST, ICON_STATE, ICON_VARIANT } from "./badge.constants";
 import type { BadgeType, IconVariant } from "./badge.types";

@@ -117,6 +117,7 @@ describe("TimePicker Component", () => {
 
     expect(timeChangeSpy).toHaveBeenCalled();
     expect(hourInput.value).toEqual("12");
+
     expect(minuteInput.hasAttribute("focus-visible")).toBeTruthy();
   });
 

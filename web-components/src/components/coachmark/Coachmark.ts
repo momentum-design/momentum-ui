@@ -12,8 +12,9 @@ import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, html, property, query } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { LitElement, PropertyValues, html } from "lit";
+import { property, query } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"];

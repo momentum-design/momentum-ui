@@ -1,15 +1,16 @@
-import { customElement, html, internalProperty, LitElement } from "lit-element";
 import "@/components/button/Button";
-import "@/components/list-v2/list-v2";
 import "@/components/list-v2/list-item-v2";
-import "@/components/menu-overlay/MenuOverlay";
+import "@/components/list-v2/list-v2";
 import "@/components/list/List";
+import "@/components/menu-overlay/MenuOverlay";
+import { html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 export const cardMenuItems = ["Edit", "View", "Duplicate", "Delete"];
 
 @customElement("list-v2-sandbox")
 export class DefaultListV2Sandbox extends LitElement {
-  @internalProperty() lastClickedText = "";
+  @state() lastClickedText = "";
 
   render() {
     return html`<h4>Default - Expandable items</h4>

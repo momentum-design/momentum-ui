@@ -12,14 +12,14 @@ import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { templateContent } from "lit-html/directives/template-content";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
-import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
+import { debounce, Evt, evt, TemplateCallback, TemplateInfo } from "./src/decorators";
 import { Filter } from "./src/filter";
 
 const IMG = document.createElement("img");
@@ -38,23 +38,23 @@ export namespace TableAdvanced {
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
 
-    @internalProperty() tableConfig!: Config;
-    @internalProperty() tableData!: Data;
+    @state() tableConfig!: Config;
+    @state() tableData!: Data;
 
-    @internalProperty() private error = "";
+    @state() private error = "";
 
-    @internalProperty() private COLS: Col[] = [];
-    @internalProperty() private ROWS: Cell[][] = [];
-    private updCols = () => this.requestUpdate("COLS");
-    private updRows = () => this.requestUpdate("ROWS");
+    @state() private COLS: Col[] = [];
+    @state() private ROWS: Cell[][] = [];
+    private readonly updCols = () => this.requestUpdate("COLS");
+    private readonly updRows = () => this.requestUpdate("ROWS");
 
-    @internalProperty() private dragRow = -1;
-    @internalProperty() private dropRow = -1;
-    @internalProperty() private drops: [number, number][] = [];
+    @state() private dragRow = -1;
+    @state() private dropRow = -1;
+    @state() private drops: [number, number][] = [];
     private dragRowElem: HTMLElement | null = null;
 
-    @internalProperty() private dragCol = -1;
-    @internalProperty() private dropCol = -1;
+    @state() private dragCol = -1;
+    @state() private dropCol = -1;
 
     private isResizing = false;
     private isSelectable = false;
@@ -552,7 +552,7 @@ export namespace TableAdvanced {
     }
 
     private renderHead() {
-      let groups = nothing;
+      let groups: TemplateResult | symbol = nothing;
       const hasGroup = this.COLS.reduce((acc, col) => (acc = col.group ? true : acc), false);
       if (hasGroup) {
         let gName = "";
@@ -843,6 +843,45 @@ export namespace TableAdvanced {
       `;
     }
 
+    private processTemplate(template: HTMLTemplateElement): string {
+      const fragment = document.importNode(template.content, true);
+      return Array.from(fragment.childNodes)
+        .map((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            return (node as Element).outerHTML;
+          } else if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent || "";
+          }
+          return "";
+        })
+        .join("");
+    }
+
+    private processTemplateCallback(
+      templateInfo: TemplateInfo & { template: HTMLTemplateElement; cb: TemplateCallback }
+    ): string {
+      const fragment = document.importNode(templateInfo.template.content, true);
+
+      templateInfo.cb({
+        content: templateInfo.content,
+        row: templateInfo.row,
+        col: templateInfo.col,
+        insertIndex: templateInfo.insertIndex,
+        fragment
+      });
+
+      return Array.from(fragment.childNodes)
+        .map((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            return (node as Element).outerHTML;
+          } else if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent || "";
+          }
+          return "";
+        })
+        .join("");
+    }
+
     private renderRow(row: Row, rowsLen: number) {
       const isSelected = Object.prototype.hasOwnProperty.call(this.selected, row.idx);
       const rowStyles = classMap({
@@ -868,17 +907,17 @@ export namespace TableAdvanced {
             const t = cell.template;
             if (t) {
               content = t.templateCb
-                ? html`
-                    ${templateCallback({
+                ? html`${unsafeHTML(
+                    this.processTemplateCallback({
                       cb: t.templateCb,
                       insertIndex: t.insertIndex,
                       template: t.template,
                       content: cell.text,
                       row: row.idx,
                       col: j
-                    })}
-                  `
-                : html` ${templateContent(t.template)} `;
+                    })
+                  )}`
+                : html`${unsafeHTML(this.processTemplate(t.template))}`;
               if (t.insertIndex != -1) {
                 content = html`
                   ${t.insertIndex > 0 ? cell.text.substring(0, t.insertIndex) : nothing} ${content}

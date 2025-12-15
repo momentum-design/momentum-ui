@@ -1,6 +1,6 @@
 import "@/components/chip/Chip";
 import "@/components/list/List";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const chipTemplate = html`
   <h3 class="sandbox-header">Default Chip</h3>

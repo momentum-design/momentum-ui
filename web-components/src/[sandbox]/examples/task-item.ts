@@ -3,11 +3,12 @@ import "@/components/checkbox/Checkbox";
 import "@/components/icon/Icon";
 import "@/components/taskitem/TaskItem";
 import svgWxm from "@img/wxm.svg";
-import { customElement, html, internalProperty, LitElement } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 @customElement("task-item-sandbox")
 export class TaskItemSandbox extends LitElement {
-  @internalProperty()
+  @state()
   private isRestyled = false;
 
   render() {

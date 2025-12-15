@@ -16,8 +16,7 @@ First and foremost, follow the instructions in order to get the create-react-app
 Add resolutions & devDependencies, then modify the scripts section to match the following: <br>
   ```json
   "resolutions": {
-    "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit":"^3.0.0",
     "jest": "26.6.0"
   },
   "devDependencies": {
@@ -27,8 +26,7 @@ Add resolutions & devDependencies, then modify the scripts section to match the 
     "@momentum-ui/utils": "^6.2.7",
     "@momentum-ui/web-components": "2.1.2",
     "copy-webpack-plugin": "^6.3.2",
-    "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit":"^3.0.0",
     "react-app-rewired": "^2.1.8"
   },
   "scripts": {

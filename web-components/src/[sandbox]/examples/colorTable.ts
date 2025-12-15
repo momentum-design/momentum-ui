@@ -7,6 +7,6 @@
  */
 
 import "@/internal-components/color-table/ColorTable";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const colorTableTemplate = html` <color-table></color-table> `;

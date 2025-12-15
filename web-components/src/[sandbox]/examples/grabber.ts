@@ -1,26 +1,27 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/grabber/Grabber";
-import { Grabber } from "@/components/grabber/Grabber";
-import { customElement, html, internalProperty, LitElement, PropertyValues, query } from "lit-element";
+import { type Grabber } from "@/components/grabber/Grabber";
+import { html, LitElement, PropertyValues } from "lit";
+import { customElement, query, state } from "lit/decorators.js";
 
 @customElement("grabber-template-sandbox")
 export class GrabberTemplateSandbox extends LitElement {
   @query("#grabberLeading")
-  private grabberLeading!: Grabber.ELEMENT;
+  private readonly grabberLeading!: Grabber.ELEMENT;
 
   @query("#grabberTrailing")
-  private grabberTrailing!: Grabber.ELEMENT;
+  private readonly grabberTrailing!: Grabber.ELEMENT;
 
   @query("#grabberTop")
-  private grabberTop!: Grabber.ELEMENT;
+  private readonly grabberTop!: Grabber.ELEMENT;
 
   @query("#grabberBottom")
-  private grabberBottom!: Grabber.ELEMENT;
+  private readonly grabberBottom!: Grabber.ELEMENT;
 
   @query("#grabberToggle")
-  private grabberToggle!: Grabber.ELEMENT;
+  private readonly grabberToggle!: Grabber.ELEMENT;
 
-  @internalProperty()
+  @state()
   private shadow = false;
 
   constructor() {

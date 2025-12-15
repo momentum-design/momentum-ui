@@ -14,13 +14,13 @@ import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin 
 import { getElementSafe } from "@/utils/helpers";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import Sortable from "sortablejs";
 import { setTimeout } from "timers";
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
@@ -102,22 +102,22 @@ export namespace Tabs {
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
     @property({ type: Number }) size: TabSize = 28;
 
-    @internalProperty() private isMoreTabMenuVisible = false;
-    @internalProperty() private isMoreTabMenuMeasured = false;
-    @internalProperty() private isMoreTabMenuOpen = false;
-    @internalProperty() private isMoreTabMenuSelected = false;
-    @internalProperty() private isMoreTabMenuScrollable = false;
-    @internalProperty() private moreTabMenuOffsetWidth = 0;
-    @internalProperty() private moreTabMenuMaxHeight: string | null = null;
-    @internalProperty() private tabsViewportDataList: TabsViewportDataList = [];
-    @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
-    @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
-    @internalProperty() private noTabsVisible = false;
-    @internalProperty() private defaultTabsOrderArray: string[] = [];
-    @internalProperty() private tabsOrderPrefsArray: string[] = [];
-    @internalProperty() private isMoreTabTruncated = false;
-    @internalProperty() private showLeftArrow = false;
-    @internalProperty() private showRightArrow = false;
+    @state() private isMoreTabMenuVisible = false;
+    @state() private isMoreTabMenuMeasured = false;
+    @state() private isMoreTabMenuOpen = false;
+    @state() private isMoreTabMenuSelected = false;
+    @state() private isMoreTabMenuScrollable = false;
+    @state() private moreTabMenuOffsetWidth = 0;
+    @state() private moreTabMenuMaxHeight: string | null = null;
+    @state() private tabsViewportDataList: TabsViewportDataList = [];
+    @state() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
+    @state() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
+    @state() private noTabsVisible = false;
+    @state() private defaultTabsOrderArray: string[] = [];
+    @state() private tabsOrderPrefsArray: string[] = [];
+    @state() private isMoreTabTruncated = false;
+    @state() private showLeftArrow = false;
+    @state() private showRightArrow = false;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -775,7 +775,11 @@ export namespace Tabs {
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
       const currentTabsOrder = this.currentTabsLayout;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
-      const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+      let newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+
+      if (newIndex === -1) {
+        newIndex = newSelectedIndex;
+      }
 
       const newTabArrangement: string[] = [];
       currentTabsOrder.forEach((tabElement) => {
@@ -1149,7 +1153,6 @@ export namespace Tabs {
         this.initializeSortable();
       }
       this.manageOverflow();
-      this.requestUpdate();
     }
 
     connectedCallback() {
@@ -1231,21 +1234,11 @@ export namespace Tabs {
       }
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
 
-      if (changedProperties.has("direction")) {
-        if (changedProperties.get("direction") !== this.direction) {
-          this.onDirectionChanged();
-        }
-      }
-
-      if (changedProperties.has("slotted")) {
-        this.initializeTabs();
-      }
-
-      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
-        this.initializeSortable();
+      if (changedProperties.has("selectedIndex")) {
+        this.selected = this.selectedIndex;
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
@@ -1295,6 +1288,24 @@ export namespace Tabs {
             }
           }
         }
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+
+      if (changedProperties.has("direction")) {
+        if (changedProperties.get("direction") !== this.direction) {
+          this.onDirectionChanged();
+        }
+      }
+
+      if (changedProperties.has("slotted")) {
+        this.initializeTabs();
+      }
+
+      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
+        this.initializeSortable();
       }
 
       if (changedProperties.has("tabsId")) {

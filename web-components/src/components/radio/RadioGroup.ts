@@ -10,7 +10,8 @@ import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
 import { Radio } from "./Radio";
 import styles from "./scss/module.scss";
 
@@ -41,8 +42,8 @@ export namespace RadioGroup {
       this.setAttribute("aria-label", this.label);
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       if (changedProperties.has("slotted") || changedProperties.has("checked")) {
         this.setFirstChecked();
       }

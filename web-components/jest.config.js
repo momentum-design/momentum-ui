@@ -1,9 +1,9 @@
 const ignoreAllButTheseModules =
   "/node_modules/(?!" +
   "(@open-wc|" +
-  "lit-element|" +
-  "lit-html|" +
-  "lit-virtualizer|" +
+  "lit|" +
+  "@lit|" +
+  "@lit-labs/virtualizer|" +
   "query-selector-shadow-dom|" +
   "@popperjs|" +
   "@interactjs|" +

@@ -8,9 +8,10 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Spinner {

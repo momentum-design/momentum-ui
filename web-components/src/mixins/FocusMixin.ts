@@ -29,7 +29,8 @@
  * }
  * */
 
-import { LitElement, property, PropertyValues } from "lit-element";
+import { LitElement, PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

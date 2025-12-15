@@ -1,9 +1,10 @@
 import "@/components/icon/Icon";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
-import { RadioGroup } from "@/components/radio/RadioGroup";
+import { type RadioGroup } from "@/components/radio/RadioGroup";
 import "@/components/tooltip/Tooltip";
-import { customElement, html, LitElement } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
 
 @customElement("radiogroup-template-sandbox")
 export class RadioGroupTemplateSandbox extends LitElement {

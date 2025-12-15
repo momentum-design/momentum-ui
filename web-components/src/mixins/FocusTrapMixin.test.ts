@@ -10,7 +10,8 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { LitElement, PropertyValues, customElement, html, property, query } from "lit-element";
+import { LitElement, PropertyValues, html } from "lit";
+import { customElement, property, query } from "lit/decorators.js";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 
 Object.defineProperties(Element.prototype, {

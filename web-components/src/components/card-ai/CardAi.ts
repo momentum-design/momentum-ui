@@ -10,9 +10,9 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { html, LitElement, nothing } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export enum CardAiVariant {
@@ -29,9 +29,9 @@ export namespace CardAi {
     @property({ type: String }) timestamp = "";
     @property({ type: Boolean }) summariseMoreVisible = false;
     @property({ type: String }) variant: CardAiVariant = CardAiVariant.RESPONSE;
-    @internalProperty() private copyChecked = false;
-    @internalProperty() private thumbsUpChecked = false;
-    @internalProperty() private thumbsDownChecked = false;
+    @state() private copyChecked = false;
+    @state() private thumbsUpChecked = false;
+    @state() private thumbsDownChecked = false;
 
     static get styles() {
       return [reset, styles];

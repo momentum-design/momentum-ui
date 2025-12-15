@@ -1,5 +1,6 @@
 import { Key } from "@/constants";
-import { customElement, html, LitElement, property, queryAssignedNodes } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, property, queryAssignedNodes } from "lit/decorators.js";
 import { ListItemV2 } from "./list-item-v2";
 import style from "./scss/module.scss";
 

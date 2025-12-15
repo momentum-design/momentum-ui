@@ -11,9 +11,9 @@ import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { CSSResultArray, html, LitElement, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export const alertBannerType = ["default", "accent", "warning", "error", "success", "default-momentum", "promotional"];
@@ -37,13 +37,15 @@ export namespace AlertBanner {
 
     connectedCallback() {
       super.connectedCallback();
-      this.requestUpdate("show");
     }
 
     onHide() {
       this.show = !this.show;
       this.dispatchEvent(new CustomEvent("alertBanner-hide"));
-      this.requestUpdate("show");
+    }
+
+    onRefreshClick() {
+      this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"));
     }
 
     handleKeyDown(event: KeyboardEvent) {
@@ -121,7 +123,7 @@ export namespace AlertBanner {
     }
 
     render() {
-      const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : null;
+      const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : nothing;
       const textContentStyle = this.showBannerTypeIcon || this.titleText ? "with-icon" : "";
       const leftOfTextSlot = this.showBannerTypeIcon
         ? html`
@@ -142,7 +144,7 @@ export namespace AlertBanner {
       const rightOfTextSlot = this.showRefreshButton
         ? html` <md-button
             class="${refreshButtonClass}"
-            @click=${() => this.dispatchEvent(new CustomEvent("alertBanner-refresh-button-click"))}
+            @click=${this.onRefreshClick}
             variant="ghostInheritTextColor"
             circle
             size="20"
@@ -173,7 +175,7 @@ export namespace AlertBanner {
                   </div>
                 </div>
               `
-            : null}
+            : nothing}
         `;
       } else {
         return html`
@@ -191,7 +193,7 @@ export namespace AlertBanner {
                   ${closeBtn}
                 </div>
               `
-            : null}
+            : nothing}
         `;
       }
     }

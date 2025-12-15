@@ -10,7 +10,8 @@ import { tableWarns } from "@/[sandbox]/sandbox.mock";
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import "@/components/table/Table";
-import { css, customElement, html, internalProperty, LitElement, query, TemplateResult } from "lit-element";
+import { css, html, LitElement, TemplateResult } from "lit";
+import { customElement, query, state } from "lit/decorators.js";
 
 const tableError = [
   { row: 4, col: 3 },
@@ -22,10 +23,10 @@ const data =
 
 @customElement("table-template-sandbox")
 export class TableTemplateSandbox extends LitElement {
-  @internalProperty() private clean = false;
-  @internalProperty() private noBorders = false;
-  @internalProperty() private stripped = false;
-  @internalProperty() private sorting = false;
+  @state() private clean = false;
+  @state() private noBorders = false;
+  @state() private stripped = false;
+  @state() private sorting = false;
 
   @query("#clean") cleanCheckbox!: HTMLInputElement;
   @query("#noBorders") noBordersCheckbox!: HTMLInputElement;

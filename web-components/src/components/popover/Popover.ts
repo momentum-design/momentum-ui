@@ -12,9 +12,8 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { closestElement, getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
-import { html, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined.js";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
 import { COLOR, DEFAULTS, POPOVER_PLACEMENT, TRIGGER } from "./Popover.constants";
 import { PopoverEventManager } from "./Popover.events";
 import { popoverStack } from "./Popover.stack";
@@ -952,7 +951,7 @@ export class Popover extends FocusTrapMixin(LitElement) {
             hasRemoveStyle
             size="20"
             circle
-            ariaLabel=${ifDefined(this.closeButtonAriaLabel) || ""}
+            .ariaLabel=${this.closeButtonAriaLabel}
             @button-click=${this.hidePopover}
           >
             <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>

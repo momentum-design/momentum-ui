@@ -1,9 +1,9 @@
-import "./Form";
-import "@/components/input/Input";
 import "@/components/button/Button";
-import { Form } from "./Form";
+import "@/components/input/Input";
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { querySelectorDeep } from "query-selector-shadow-dom";
+import "./Form";
+import { Form } from "./Form";
 
 describe("Form Component", () => {
   let element: Form.ELEMENT;

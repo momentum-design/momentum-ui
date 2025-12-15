@@ -5,7 +5,8 @@ import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import "@/index";
 import { now } from "@/utils/dateUtils";
-import { LitElement, customElement, html, property } from "lit-element";
+import { LitElement, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 
 const minDate = now().minus({ day: 5 }).toISODate();

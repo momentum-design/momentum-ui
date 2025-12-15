@@ -1,7 +1,6 @@
-import { html } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
 import { Avatar } from "@/components/avatar/Avatar";
-import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
+import { html, nothing, TemplateResult } from "lit";
+import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
 
 export const getTaskTypeTemplate = (
   isRestyle: boolean,

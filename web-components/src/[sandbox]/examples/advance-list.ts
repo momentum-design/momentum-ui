@@ -1,5 +1,5 @@
 import "@/components/list/ListItem";
-import { html } from "lit-element";
+import { html } from "lit";
 import "./AdvanceList/components/ParentComponentError";
 import "./AdvanceList/components/ParentComponentGeneric";
 import "./AdvanceList/components/ParentComponentPreSelect";

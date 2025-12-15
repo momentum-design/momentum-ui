@@ -1,5 +1,5 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues } from "lit-element";
+import { PropertyValues } from "lit";
 import "./TabPanel";
 import { TabPanel } from "./TabPanel";
 

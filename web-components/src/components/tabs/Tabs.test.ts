@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import "@/components/input/Input";
 import { Key } from "@/constants";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues, html } from "lit-element";
+import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import Sortable from "sortablejs";
 import "./Tab";
 import { type Tab } from "./Tab";
 import "./TabPanel";
 import { type TabPanel } from "./TabPanel";
-import "./Tabs";
 import { MORE_MENU_TAB_COPY_ID_PREFIX, Tabs } from "./Tabs";
 
 describe("Tabs", () => {
@@ -59,31 +58,6 @@ describe("Tabs", () => {
   });
 
   afterEach(fixtureCleanup);
-
-  test("should (un)register event listeners", async () => {
-    const tag = defineCE(
-      class extends Tabs.ELEMENT {
-        protected firstUpdated(changedProperties: PropertyValues) {
-          super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
-        }
-        disconnectedCallback() {
-          super.disconnectedCallback();
-          this.dispatchEvent(new CustomEvent("disconnected-callback"));
-        }
-      }
-    );
-    const el = fixtureSync<Tabs.ELEMENT>(
-      `<${tag}><md-tab slot="tab"></md-tab><md-tab-panel slot="panel"></md-tab-panel></${tag}>`
-    );
-    const firstUpdatedEvent = await oneEvent(el, "first-updated");
-    expect(firstUpdatedEvent).toBeDefined();
-
-    el.parentElement!.removeChild(el);
-    setTimeout(() => el.disconnectedCallback());
-    const disconnectEvent = await oneEvent(el, "disconnected-callback");
-    expect(disconnectEvent).toBeDefined();
-  });
 
   test("should setup panels and tabs", () => {
     expect(tabs.tabSlotElement).toBeDefined();

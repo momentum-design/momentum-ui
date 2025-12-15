@@ -25,11 +25,42 @@ export namespace DateRangePicker {
     @property({ type: String, attribute: "end-date", reflect: true })
     endDate: string | undefined | null = undefined;
 
+    @property({ type: Number, attribute: "max-range-length" })
+    maxRangeLength: number | undefined = undefined;
+
+    private originalFilterDate: Function | undefined = undefined;
+
     connectedCallback() {
       super.connectedCallback();
       super.render();
       this.addEventListener("date-pre-selection-change", this.handleDateSelection);
       this.updateValue();
+      
+      if (this.maxRangeLength) {
+        this.originalFilterDate = this.filterDate;
+        this.filterDate = this.createCombinedFilter();
+      }
+    }
+
+    private createCombinedFilter(): (day: DateTime) => boolean {
+      return (day: DateTime) => {
+        if (this.originalFilterDate && this.originalFilterDate(day)) {
+          return true;
+        }
+
+        const dayDateTime = typeof day === "string" ? DateTime.fromISO(day) : day;
+
+        if (this.maxRangeLength === undefined || !this.startDate || this.endDate) {
+          return false;
+        }
+
+        const startDateTime = DateTime.fromISO(this.startDate);
+        const maxEndDate = startDateTime.plus({ days: this.maxRangeLength - 1 }).startOf("day");
+        const minStartDate = startDateTime.minus({ days: this.maxRangeLength - 1 }).startOf("day");
+        const dayStart = dayDateTime.startOf("day");
+
+        return dayStart > maxEndDate || dayStart < minStartDate;
+      };
     }
 
     disconnectedCallback() {

@@ -44,6 +44,19 @@ export class DateRangePickerExample extends LitElement {
       <md-date-range-picker locale="en-US" .useISOFormat=${false}></md-date-range-picker>
       <h3>date range picker with min / max filters</h3>
       <md-date-range-picker value=${this.datePickerValue} minDate=${minDate} maxDate=${maxDate}></md-date-range-picker>
+      <h3>date range picker with max range length (7 days max)</h3>
+      <md-date-range-picker
+        minDate=${now().minus({ months: 12 }).toISODate()}
+        maxDate=${now().toISODate()}
+        max-range-length="7"
+      ></md-date-range-picker>
+      <h3>date range picker with max range length (7 days max) and Wednesdays disabled</h3>
+      <md-date-range-picker
+        minDate=${now().minus({ months: 12 }).toISODate()}
+        maxDate=${now().toISODate()}
+        max-range-length="7"
+        .filterDate=${(day: DateTime) => day.weekday === 3}
+      ></md-date-range-picker>
       <h3>date range picker with Monday start week start</h3>
       <md-date-range-picker value=${this.datePickerValue} weekStart="Monday"></md-date-range-picker>
       <h3>date range picker with initial value</h3>

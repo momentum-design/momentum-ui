@@ -46,6 +46,14 @@ describe("ThemeManager", () => {
     expect(themeManager.themeName).toBe("lumos");
   });
 
+  test("should set background mode correctly", () => {
+    themeManager.setBackgroundMode("SERENE");
+    expect(themeManager.backgroundMode).toBe("SERENE");
+
+    themeManager.setBackgroundMode("AURORA");
+    expect(themeManager.backgroundMode).toBe("AURORA");
+  });
+
   test("should set visual rebrand enabled correctly", () => {
     themeManager.setVisualRebrandEnabled(true);
     expect(themeManager.isVisualRebrandEnabled).toBe(true);

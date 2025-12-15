@@ -41,7 +41,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   font-weight: var(--brand-font-weight-regular);
 
   --body-primary-font-size: 1rem;
-  --body-secondary-font-size: 0.875rem;  
+  --body-secondary-font-size: 0.875rem;
 
   --font-size-heading-small: 1.25rem;
   --font-size-body-large: 1rem;
@@ -71,6 +71,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   //Override the light and dark theme colors vars
   --main-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   --md-default-focus-outline-color: #{$mds-color-theme-outline-theme-normal};
+
+  --md-ghost-bg-color: #{$mds-color-theme-background-primary-ghost};
 
   --md-primary-text-color: #{$mds-color-theme-text-primary-normal};
   --md-secondary-text-color: #{$mds-color-theme-text-secondary-normal};
@@ -116,13 +118,19 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
   --md-header-separator-color: transparent;
   --md-glass-bg-color: #{$mds-color-theme-background-glass-normal};
-  --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-overlay-normal};
-  --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-overlay-inactive};
+  --md-glass-bg-color-light: #{$mds-color-theme-background-glass-light};
+  --md-glass-bg-color-active: #{$mds-color-theme-background-glass-active};
+  --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-normal};
+  --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-light};
+  --md-glass-outline-color: #{$mds-color-theme-outline-glass-normal};
 
-  --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
-  --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);
-  --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
-  --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
+  --md-glass-radial-0: #{$mds-color-theme-background-glass-radial-0};
+  --md-glass-radial-1: #{$mds-color-theme-background-glass-radial-1};
+
+  --md-elevation-1: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  --md-elevation-2: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  --md-elevation-3: 0px 6px 24px rgba(0, 0, 0, 0.25);
+  --md-elevation-4: 0px 12px 48px rgba(0, 0, 0, 0.25);
   --md-backdrop-filter: 10px;
 
   --md-focus-inner-color: #{$mds-color-theme-focus-default-0};
@@ -137,7 +145,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
     #{$mds-color-theme-button-secondary-disabled} 100%
   );
   --md-nav-divider-primary-hover: var(--md-nav-divider-primary);
-  
   --md-nav-h-divider-primary: #{$mds-color-theme-gradientdivider-default-normal};
   --md-nav-h-divider-primary-hover: #{$mds-color-theme-gradientdivider-default-hover};
 
@@ -162,4 +169,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-pinned-bg-color: #{$mds-color-theme-background-solid-primary-normal};
 
   --md-inverted-primary-bg-color: #{$mds-color-theme-inverted-background-normal};
+
+  --md-subtle-bg-color: #{$mds-color-theme-background-secondary-subtle};
 }

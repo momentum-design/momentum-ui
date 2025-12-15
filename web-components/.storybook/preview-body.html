@@ -18,25 +18,47 @@
     height: 100%;
     padding: 1rem;
     width: 100%;
+  }
 
-    &.is-visual-rebrand {
-      background: url("/images/brand-visuals/png/operation-pop-background-light.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
+  md-theme.theme-toggle.is-visual-rebrand {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.DEFAULT {
+    background-image: url("/images/brand-visuals/svg/simple-background-light.svg");
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.SERENE {
+    background-image: url("/images/brand-visuals/png/operation-pop-background-light.png");
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.AURORA {
+    background-image: url("/images/brand-visuals/svg/gradient-background-light.svg");
   }
 
   md-theme.theme-toggle[darktheme] {
     background-color: #000;
     color: #f7f7f7;
+  }
 
-    &.is-visual-rebrand {
-      background: url("/images/brand-visuals/png/operation-pop-background-dark.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
+  md-theme.theme-toggle[darktheme].is-visual-rebrand {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.DEFAULT {
+    background-image: url("/images/brand-visuals/svg/simple-background-dark.svg");
+  }
+
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.SERENE {
+    background-image: url("/images/brand-visuals/png/operation-pop-background-dark.png");
+  }
+
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.AURORA {
+    background-image: url("/images/brand-visuals/svg/gradient-background-dark.svg");
   }
 
   .sorting {

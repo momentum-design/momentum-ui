@@ -38,6 +38,8 @@ declare global {
 
 export type ThemeName = "momentum" | "lumos" | "momentumV2";
 export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2"];
+export const BackgroundModeValues = ["DEFAULT", "SERENE", "AURORA"];
+export type BackgroundMode = (typeof BackgroundModeValues)[number];
 
 export namespace Theme {
   export type Attributes = {

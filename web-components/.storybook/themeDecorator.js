@@ -7,13 +7,17 @@ export const withThemeDecorator = (story, context) => {
   const isDark = context.globals.isDark === true;
   const theme = context.globals.theme;
   const isVisualRebrand = context.globals.isVisualRebrand === true;
+  const backgroundMode = context.globals.backgroundMode ?? "DEFAULT";
 
   themeManager.setDarkMode(isDark);
   themeManager.setThemeName(theme);
   themeManager.setVisualRebrandEnabled(isVisualRebrand);
+  themeManager.setBackgroundMode(backgroundMode);
+
+  const modeClasses = isVisualRebrand ? { [backgroundMode]: true } : {};
 
   return html` <md-theme
-    class=${classMap({ "theme-toggle": true, "is-visual-rebrand": isVisualRebrand })}
+    class=${classMap({ "theme-toggle": true, "is-visual-rebrand": isVisualRebrand, ...modeClasses })}
     ?darkTheme=${themeManager.isDarkMode}
     theme=${themeManager.themeName}
   >

@@ -92,7 +92,7 @@ export namespace DatePicker {
     @state() selectedDate: DateTime = now();
     @state() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    @property() filterDate: Function | undefined = undefined;
+    @property({ attribute: false }) filterDate: Function | undefined = undefined;
     @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
     @state() maxDateData: DateTime | undefined = undefined;
     @state() minDateData: DateTime | undefined = undefined;

@@ -87,6 +87,8 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
         "channel-custom",
         html`<img height="20px" width="20px" src="${iconSrc}" />`
       );
+    case TaskItemMediaType.WORKITEM:
+      return getChannelAvatar(selected, status, "channel-work-item");
     default:
       return getChannelAvatar(selected, status, "channel-custom", html`<slot name="task-type"></slot>`);
   }
@@ -197,6 +199,15 @@ export const renderLegacyTaskType = (mediaType: string, selected: boolean, iconS
         <md-badge color="blue" circle>
           <md-icon name="chat-outbound-filled" size="20" iconSet="momentumDesign"></md-icon>
         </md-badge>
+      `;
+    case TaskItemMediaType.WORKITEM:
+      return html`
+        <md-avatar
+          title="Channel Work Item"
+          type="channel-work-item"
+          avatar-style="default"
+          state=${selected ? "active" : "rest"}
+        ></md-avatar>
       `;
     default:
       return html` <slot name="task-type"></slot> `;

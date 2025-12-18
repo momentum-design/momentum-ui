@@ -82,7 +82,16 @@ export class TaskItemSandbox extends LitElement {
         >
           <div>01:08:00</div>
         </md-task-item>
-
+        <md-task-item
+          mediaType="workitem"
+          popovertitle="Work Item"
+          queue="Work Item Queue"
+          selected
+          lastmessage="Time Left 00:20"
+          ?is-restyle=${this.isRestyled}
+        >
+          <div>01:10:30</div>
+        </md-task-item>
         <md-task-item
           mediaType="progressive_campaign"
           item-title="Media Type progressive_campaign"

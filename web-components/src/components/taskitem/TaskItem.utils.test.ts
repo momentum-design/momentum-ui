@@ -125,6 +125,11 @@ describe("TaskItem Utils", () => {
       );
     });
 
+    it("should return the correct avatar for WORKITEM", () => {
+      const result = renderTaskType(TaskItemMediaType.WORKITEM, true, "active", "");
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-work-item"));
+    });
+
     it("should return the default avatar for unsupported mediaType", () => {
       const result = renderTaskType("UNSUPPORTED_TYPE", false, null, "");
       expect(result).toEqual(getChannelAvatar(false, null, "channel-custom", html`<slot name="task-type"></slot>`));

@@ -8,9 +8,13 @@
 
   --md-default-focus-outline-color: #{$md-blue-40};
 
-  --md-glass-bg-color: #{$black-60};  
+  --md-glass-bg-color: #{$black-60};
+  --md-glass-bg-color-light: #{$black-40};
+  --md-glass-bg-color-active: #{$black-80};
   --md-glass-overlay-bg-color: #{$black-80};
   --md-glass-overlay-inactive-bg-color: #{$black-40};
+
+  --md-glass-outline-color: #{$white-20};
 
   // New Backgrounds
   --md-primary-bg-color: #{$md-gray-100};
@@ -125,10 +129,10 @@
   --md-table-pinned-border-color: #{$md-gray-80};
   --md-table-pinned-bg-color: var(--md-primary-bg-color);
 
-  --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
-  --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);
-  --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
-  --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
+  --md-elevation-1: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  --md-elevation-2: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  --md-elevation-3: 0px 6px 24px rgba(0, 0, 0, 0.25);
+  --md-elevation-4: 0px 12px 48px rgba(0, 0, 0, 0.25);
   --md-backdrop-filter: 10px;
 
   --md-focus-inner-color: #{$mds-color-theme-focus-default-0};

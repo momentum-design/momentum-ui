@@ -95,7 +95,8 @@ export namespace AdvanceList {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
-        this.updateSelectedState();
+        // Use requestAnimationFrame to ensure lit-virtualizer has rendered its items
+        requestAnimationFrame(() => this.updateSelectedState());
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {

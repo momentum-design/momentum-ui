@@ -557,6 +557,31 @@ describe("DatePicker Component", () => {
       expect(el.filterDate!(outsideNewRange)).toBe(true);
     });
 
+    test("should update filter to use current startDate when date selection changes", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      const firstStart = DateTime.fromObject({ year: 2025, month: 4, day: 10 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: firstStart } }));
+      await el.updateComplete;
+
+      // A date 10 days after first start should be filtered
+      const testDate = firstStart.plus({ days: 10 });
+      expect(el.filterDate!(testDate)).toBe(true);
+
+      // Now select a new start date closer to testDate
+      const secondStart = DateTime.fromObject({ year: 2025, month: 4, day: 15 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart } }));
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart.plus({ days: 1 }) } }));
+      // Start a new range
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart } }));
+      await el.updateComplete;
+
+      // The same testDate should now NOT be filtered (it's within 7 days of secondStart)
+      expect(el.filterDate!(testDate)).toBe(false);
+    });
+
     test("should allow selecting dates before start date within range", async () => {
       const el: DateRangePicker.ELEMENT = await fixture(html`
         <md-date-range-picker max-range-length="7"></md-date-range-picker>

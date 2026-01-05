@@ -35,11 +35,18 @@ export namespace DateRangePicker {
       super.render();
       this.addEventListener("date-pre-selection-change", this.handleDateSelection);
       this.updateValue();
-      
+
       if (this.maxRangeLength) {
         this.originalFilterDate = this.filterDate;
-        this.filterDate = this.createCombinedFilter();
+        this.updateFilterDate();
       }
+    }
+
+    private updateFilterDate(): void {
+      if (!this.maxRangeLength) {
+        return;
+      }
+      this.filterDate = this.createCombinedFilter();
     }
 
     private createCombinedFilter(): (day: DateTime) => boolean {
@@ -50,7 +57,7 @@ export namespace DateRangePicker {
 
         const dayDateTime = typeof day === "string" ? DateTime.fromISO(day) : day;
 
-        if (this.maxRangeLength === undefined || !this.startDate || this.endDate) {
+        if (!this.maxRangeLength || !this.startDate || this.endDate) {
           return false;
         }
 
@@ -166,6 +173,8 @@ export namespace DateRangePicker {
         this.startDate = this.dateToSqlTranslate(selection);
         this.endDate = undefined;
       }
+
+      this.updateFilterDate();
 
       if (this.controlButtons?.apply) {
         return;

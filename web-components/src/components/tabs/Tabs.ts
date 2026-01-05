@@ -154,6 +154,7 @@ export namespace Tabs {
     private tabsCopyHash: Record<TabId, Tab.ELEMENT> = {};
 
     private tabsIdxHash: Record<TabId, number> = {};
+    private tabPanelHash: Record<TabId, TabPanel.ELEMENT> = {};
 
     private tabsVisibleIdxHash: Record<TabId, number> = {};
     private tabsHiddenIdxHash: Record<TabId, number> = {};
@@ -372,6 +373,43 @@ export namespace Tabs {
       this.isMoreTabMenuSelected = !!this.tabsFilteredAsHiddenList.find((tab) => tab.selected);
     }
 
+    /**
+     * Updates ariaControlsElements on shadow DOM tab copies to establish proper
+     * aria-controls relationships across shadow DOM boundaries.
+     *
+     * This uses the ariaControlsElements API which allows referencing elements
+     * from parent DOM (light DOM panels) within shadow DOM elements, avoiding
+     * the accessibility violation that occurs when using aria-controls attribute
+     * with ID references across shadow DOM boundaries.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaControlsElements
+     */
+    private updateAriaControlsElements() {
+      // Update visible tab copies in shadow DOM
+      if (this.visibleTabsContainerElement) {
+        const visibleTabCopies = this.visibleTabsContainerElement.querySelectorAll("md-tab");
+        visibleTabCopies.forEach((tabCopy) => {
+          const originalTabId = this.getNormalizedTabId(tabCopy.id);
+          const panel = this.tabPanelHash[originalTabId];
+          if (panel && "ariaControlsElements" in tabCopy) {
+            tabCopy.ariaControlsElements = [panel];
+          }
+        });
+      }
+
+      // Update hidden tab copies in the more menu
+      if (this.hiddenTabsContainerElement) {
+        const hiddenTabCopies = this.hiddenTabsContainerElement.querySelectorAll("md-tab");
+        hiddenTabCopies.forEach((tabCopy) => {
+          const originalTabId = this.getNormalizedTabId(tabCopy.id);
+          const panel = this.tabPanelHash[originalTabId];
+          if (panel && "ariaControlsElements" in tabCopy) {
+            tabCopy.ariaControlsElements = [panel];
+          }
+        });
+      }
+    }
+
     private updateHiddenIdPositiveTabIndex(hiddenTab?: Tab.ELEMENT) {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
@@ -470,6 +508,17 @@ export namespace Tabs {
           return acc;
         },
         {} as Record<TabId, number>
+      );
+
+      // Store tab-to-panel mapping for ariaControlsElements
+      this.tabPanelHash = this.tabs.reduce(
+        (acc, tab, idx) => {
+          if (panels[idx]) {
+            acc[tab.id] = panels[idx];
+          }
+          return acc;
+        },
+        {} as Record<TabId, TabPanel.ELEMENT>
       );
     }
 
@@ -1280,6 +1329,14 @@ export namespace Tabs {
       if (changedProperties.has("scrollArrow")) {
         this.onDirectionChanged();
       }
+
+      // Update ariaControlsElements for shadow DOM tab copies.
+      // This needs to run after any update that might re-render the tab copies,
+      // ensuring proper aria-controls relationships across shadow DOM boundaries.
+      // Using requestAnimationFrame to ensure DOM is fully rendered.
+      if (this.visibleTabsContainerElement || this.hiddenTabsContainerElement) {
+        requestAnimationFrame(() => this.updateAriaControlsElements());
+      }
     }
 
     private scrollTabs(direction: "left" | "right") {
@@ -1337,7 +1394,6 @@ export namespace Tabs {
               name="${tab.name}"
               id="${this.getCopyTabId(tab)}"
               aria-label=${tab.ariaLabel}
-              aria-controls="${this.getAriaControlId(tab)}"
               @click=${this.handleOverlayClose}
               tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
               role="menuitem"

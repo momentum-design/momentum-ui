@@ -1,4 +1,4 @@
-import { ThemeName } from "@/components/theme/Theme";
+import { ThemeName, BackgroundMode } from "@/components/theme/Theme";
 import { action, computed, makeObservable, observable } from "mobx";
 
 /**
@@ -17,6 +17,11 @@ class ThemeManager {
    * Observable property to store the current theme name
    */
   themeName: ThemeName = "lumos";
+
+  /**
+   * Observable property to store the current background mode
+   */
+  backgroundMode: BackgroundMode = "DEFAULT";
 
   /**
    * Observable property to indicate if visual rebrand is enabled
@@ -43,11 +48,13 @@ class ThemeManager {
     makeObservable(this, {
       isDarkMode: observable,
       themeName: observable,
+      backgroundMode: observable,
       isVisualRebrandEnabled: observable,
       isMomentumAvatarEnabled: observable,
       isMomentumV2Enabled: computed,
       setDarkMode: action,
       setThemeName: action,
+      setBackgroundMode: action,
       setVisualRebrandEnabled: action,
       setMomentumAvatar: action,
       update: action
@@ -69,6 +76,9 @@ class ThemeManager {
     }
     if (other.themeName !== undefined) {
       this.themeName = other.themeName;
+    }
+    if (other.backgroundMode !== undefined) {
+      this.backgroundMode = other.backgroundMode;
     }
     if (other.isVisualRebrandEnabled !== undefined) {
       this.isVisualRebrandEnabled = other.isVisualRebrandEnabled;
@@ -92,6 +102,14 @@ class ThemeManager {
    */
   setThemeName(value: ThemeName) {
     this.themeName = value;
+  }
+
+  /**
+   * Action to set the theme name.
+   * @param {ThemeName} value - The new theme name.
+   */
+  setBackgroundMode(value: BackgroundMode) {
+    this.backgroundMode = value;
   }
 
   /**

@@ -1,5 +1,5 @@
 import { setCustomElements } from "@storybook/web-components";
-import { ThemeNameValues } from "../src/components/theme/Theme";
+import { BackgroundModeValues, ThemeNameValues } from "../src/components/theme/Theme";
 import customElements from "./custom-elements.json";
 import { withThemeDecorator } from "./themeDecorator";
 
@@ -74,6 +74,16 @@ export const globalTypes = {
         { value: false, title: "Off", icon: "eyeclose" },
         { value: true, title: "On", icon: "eye" }
       ],
+      dynamicTitle: true
+    }
+  },
+  backgroundMode: {
+    description: "Visual rebrand background mode",
+    defaultValue: "DEFAULT",
+    toolbar: {
+      title: "Background",
+      icon: "photo",
+      items: BackgroundModeValues,
       dynamicTitle: true
     }
   }

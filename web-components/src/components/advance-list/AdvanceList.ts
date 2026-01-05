@@ -371,11 +371,11 @@ export namespace AdvanceList {
           aria-multiselectable=${this.isMulti}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
-          @rangechange=${this.handleRangeChange}
         >
           <lit-virtualizer
             .items=${this.items}
             .renderItem=${(item: any, index: number) => this.renderItem(item, index)}
+            @rangeChanged=${this.handleRangeChange}
           ></lit-virtualizer>
         </div>
       `;

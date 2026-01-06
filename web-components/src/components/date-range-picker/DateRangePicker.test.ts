@@ -470,4 +470,233 @@ describe("DatePicker Component", () => {
       }
     );
   });
+
+  describe("maxRangeLength functionality", () => {
+    test("should apply filter when start date is selected and maxRangeLength is set", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      expect(el.startDate).toBe(DATE1.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+      expect(el.filterDate).toBeDefined();
+
+      // Test that dates within range are not filtered
+      const withinRange = DATE1.plus({ days: 3 });
+      expect(el.filterDate!(withinRange)).toBe(false);
+
+      // Test that dates outside range are filtered
+      const outsideRange = DATE1.plus({ days: 10 });
+      expect(el.filterDate!(outsideRange)).toBe(true);
+    });
+
+    test("should reset filter behavior when end date is selected", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      expect(el.filterDate).toBeDefined();
+      
+      // Verify filter is active - dates outside range should be filtered
+      const outsideRange = DATE1.plus({ days: 10 });
+      expect(el.filterDate!(outsideRange)).toBe(true);
+
+      // Select end date within range
+      const endDate = DATE1.plus({ days: 3 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: endDate } }));
+      await el.updateComplete;
+
+      expect(el.startDate).toBe(DATE1.toSQLDate());
+      expect(el.endDate).toBe(endDate.toSQLDate());
+      
+      // Filter should now return false for all dates (no longer restricting)
+      expect(el.filterDate!(outsideRange)).toBe(false);
+    });
+
+    test("should re-apply filter when starting a new range selection", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      // Select first range
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+      const endDate = DATE1.plus({ days: 3 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: endDate } }));
+      await el.updateComplete;
+
+      // Verify range is complete and filter is not restricting
+      expect(el.startDate).toBe(DATE1.toSQLDate());
+      expect(el.endDate).toBe(endDate.toSQLDate());
+      const farDate = DATE1.plus({ days: 20 });
+      expect(el.filterDate!(farDate)).toBe(false);
+
+      // Start new range selection
+      const newStartDate = DateTime.fromObject({ year: 2025, month: 5, day: 10 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: newStartDate } }));
+      await el.updateComplete;
+
+      // Verify new range started and filter is active again
+      expect(el.startDate).toBe(newStartDate.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+
+      // Dates within 7 days of new start should not be filtered
+      const withinNewRange = newStartDate.plus({ days: 5 });
+      expect(el.filterDate!(withinNewRange)).toBe(false);
+
+      // Dates outside 7 days of new start should be filtered
+      const outsideNewRange = newStartDate.plus({ days: 10 });
+      expect(el.filterDate!(outsideNewRange)).toBe(true);
+    });
+
+    test("should update filter to use current startDate when date selection changes", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      const firstStart = DateTime.fromObject({ year: 2025, month: 4, day: 10 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: firstStart } }));
+      await el.updateComplete;
+
+      // A date 10 days after first start should be filtered
+      const testDate = firstStart.plus({ days: 10 });
+      expect(el.filterDate!(testDate)).toBe(true);
+
+      // Now select a new start date closer to testDate
+      const secondStart = DateTime.fromObject({ year: 2025, month: 4, day: 15 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart } }));
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart.plus({ days: 1 }) } }));
+      // Start a new range
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: secondStart } }));
+      await el.updateComplete;
+
+      // The same testDate should now NOT be filtered (it's within 7 days of secondStart)
+      expect(el.filterDate!(testDate)).toBe(false);
+    });
+
+    test("should allow selecting dates before start date within range", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      // Test that dates before start date within range are not filtered
+      const beforeStartWithinRange = DATE1.minus({ days: 3 });
+      expect(el.filterDate!(beforeStartWithinRange)).toBe(false);
+
+      // Test that dates before start date outside range are filtered
+      const beforeStartOutsideRange = DATE1.minus({ days: 10 });
+      expect(el.filterDate!(beforeStartOutsideRange)).toBe(true);
+    });
+
+    test("should combine with original filterDate function", async () => {
+      const originalFilter = (day: DateTime | string) => {
+        const dayDateTime = typeof day === "string" ? DateTime.fromISO(day) : day;
+        // Filter out Sundays
+        return dayDateTime.weekday === 7;
+      };
+
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7" .filterDate=${originalFilter}></md-date-range-picker>
+      `);
+
+      // Select start date (not a Sunday)
+      const startDate = DateTime.fromObject({ year: 2025, month: 4, day: 14 }); // Monday
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: startDate } }));
+      await el.updateComplete;
+
+      // Test that a Sunday within range is still filtered
+      const sunday = DateTime.fromObject({ year: 2025, month: 4, day: 20 }); // Sunday
+      expect(el.filterDate!(sunday)).toBe(true);
+
+      // Test that a non-Sunday within range is not filtered
+      const monday = DateTime.fromObject({ year: 2025, month: 4, day: 15 }); // Tuesday
+      expect(el.filterDate!(monday)).toBe(false);
+
+      // Test that a non-Sunday outside range is filtered
+      const outsideRange = DateTime.fromObject({ year: 2025, month: 4, day: 25 }); // Friday, 11 days away
+      expect(el.filterDate!(outsideRange)).toBe(true);
+    });
+
+    test("should not apply range filter when maxRangeLength is not set", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      expect(el.startDate).toBe(DATE1.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+      
+      // filterDate should be undefined when maxRangeLength is not set
+      expect(el.filterDate).toBeUndefined();
+    });
+
+    test("should not apply range filter when maxRangeLength is 0", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="0"></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      expect(el.startDate).toBe(DATE1.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+      
+      // filterDate should be undefined when maxRangeLength is not set
+      expect(el.filterDate).toBeUndefined();
+    });
+
+    test("should handle maxRangeLength of 1 (single day)", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="1"></md-date-range-picker>
+      `);
+
+      // Select start date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+      await el.updateComplete;
+
+      // Only the start date itself should be selectable
+      expect(el.filterDate!(DATE1)).toBe(false);
+      expect(el.filterDate!(DATE1.plus({ days: 1 }))).toBe(true);
+      expect(el.filterDate!(DATE1.minus({ days: 1 }))).toBe(true);
+    });
+
+    test("should handle selecting end date before start date with maxRangeLength", async () => {
+      const el: DateRangePicker.ELEMENT = await fixture(html`
+        <md-date-range-picker max-range-length="7"></md-date-range-picker>
+      `);
+
+      // Select a date that will become the end date
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE2 } }));
+      await el.updateComplete;
+
+      // Select an earlier date within range - this should become the start date
+      const earlierDate = DATE2.minus({ days: 3 });
+      el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: earlierDate } }));
+      await el.updateComplete;
+
+      // The earlier date should be start, later date should be end
+      expect(el.startDate).toBe(earlierDate.toSQLDate());
+      expect(el.endDate).toBe(DATE2.toSQLDate());
+      
+      // Filter should no longer restrict since both dates are set
+      const farDate = DATE2.plus({ days: 20 });
+      expect(el.filterDate!(farDate)).toBe(false);
+    });
+  });
 });

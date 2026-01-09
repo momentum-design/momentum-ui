@@ -141,7 +141,7 @@
     "lodash-es": "^4.17.11",
     "mini-css-extract-plugin": "0.8.0",
     "mockdate": "~2.0.1",
-    "mongoose": "^5.1.5",
+    "mongoose": "^6.13.6",
     "mongoose-findorcreate": "^3.0.0",
     "mongoose-unique-validator": "^2.0.1",    
     "sass": "^1.77.8",

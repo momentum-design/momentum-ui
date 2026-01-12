@@ -94,13 +94,13 @@ export namespace ChatMessage {
                     }}
                     >${this.time}</md-link
                   >`
-                : html`<div class="md-chat-message_time">${this.time}</div>`}
-              <div class="md-chat-message_status">${this.status}</div>
-              <div class="md-chat-message_custom_content">
+                : html`<div class="md-chat-message_time" title="">${this.time}</div>`}
+              <div class="md-chat-message_status" title="">${this.status}</div>
+              <div class="md-chat-message_custom_content" title="">
                 <slot name="custom-content"></slot>
               </div>
             </div>
-            <div class="md-chat-message_text">
+            <div class="md-chat-message_text" title="">
               <slot name="message"></slot>
             </div>
           </div>

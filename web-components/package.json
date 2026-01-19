@@ -143,7 +143,7 @@
     "sass-loader": "^10.5.2",
     "shadow-dom-testing-library": "^1.12.0",
     "sonarqube-scanner": "^2.8.1",
-    "storybook": "8.6.14",
+    "storybook": "8.6.15",
     "storybook-addon-rtl": "^1.0.1",
     "string-replace-loader": "^3.1.0",
     "strip-css-comments": "^4.1.0",

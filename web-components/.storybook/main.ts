@@ -12,11 +12,7 @@ const pCss = path.resolve(__dirname, "../src/assets/styles");
 const pImg = path.resolve(__dirname, "../src/assets/images");
 
 const config: StorybookConfig = {
-  stories: [
-    "../src/components/**/*.stories.ts",
-    "../src/components/**/*.mdx",
-    "../src/internal-components/color-table/ColorTable.stories.ts"
-  ],
+  stories: ["../src/components/**/*.stories.ts", "../src/internal-components/color-table/ColorTable.stories.ts"],
 
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "storybook-addon-rtl"],
 

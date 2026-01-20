@@ -7,10 +7,9 @@
  */
 
 import "@/components/favorite/Favorite";
-import { action } from "storybook/actions";
 import { Args } from "@storybook/web-components";
 import { html } from "lit";
-import mdx from "./Favorite.mdx";
+import { action } from "storybook/actions";
 
 export default {
   title: "Components/Favorite",
@@ -20,12 +19,10 @@ export default {
     autofocus: { table: { disable: true } },
     value: { control: "text", defaultValue: "Select favorite" }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: {
       element: "md-favorite"
-    },
-    docs: {
-      page: mdx
     }
   }
 };

@@ -10,7 +10,6 @@ import { alertBannerType } from "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import mdx from "./AlertBanner.mdx";
 
 const render = (args: Args) => html`
   <md-alert-banner
@@ -47,12 +46,12 @@ const meta: Meta = {
     type: { control: { type: "select" }, options: alertBannerType },
     alignment: { control: { type: "select" }, options: ["leading", "center"] }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: {
       element: "md-alert-banner"
     },
     docs: {
-      page: mdx,
       description: {
         component: "A typical usage of Alert Banner, with text added within the element tags or message attribute"
       }

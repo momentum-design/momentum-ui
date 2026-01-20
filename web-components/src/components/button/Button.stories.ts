@@ -9,11 +9,10 @@
 import "@/components/badge/NotificationBadge";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { action } from "storybook/actions";
 import { buttonColor, buttonRoles, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
-import mdx from "./Button.mdx";
 
 const render = (args: Args) => html`
   <md-button
@@ -76,12 +75,12 @@ const meta: Meta = {
     type: { control: { type: "select" }, options: buttonType },
     role: { control: { type: "select" }, options: buttonRoles }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: {
       element: "md-button"
     },
     docs: {
-      page: mdx,
       description: {
         component: "Button Documentation"
       }

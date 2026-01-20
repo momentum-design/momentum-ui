@@ -1,9 +1,8 @@
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "./Accordion";
-import mdx from "./Accordion.mdx";
-import "./AccordionItem";
 import { Accordion as AccordionEl } from "./Accordion";
+import "./AccordionItem";
 
 const Template = ({ disabled, expanded, multiple, suppressContainerFocus }: Args) => {
   return html`<md-accordion ?multiple=${multiple} ?suppress-container-focus=${suppressContainerFocus}>
@@ -41,12 +40,10 @@ const meta: Meta = {
   title: "Components/Accordion",
   component: "md-accordion",
   argTypes: {},
+  tags: ["autodocs"],
   parameters: {
     a11y: {
       element: "md-accordion"
-    },
-    docs: {
-      page: mdx
     }
   }
 };

@@ -251,7 +251,7 @@ const commonDist = merge(common, {
           { folder: "./dist/types", method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p), recursive: true }
         ]
       }
-    })
+    }) as unknown as webpack.WebpackPluginInstance
   ]
 });
 

@@ -1,18 +1,32 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "3.0.8",
+  "version": "3.1.0",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
   "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/*.js"
+    }
+  },
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack serve --config ./webpack.config.dev.server.ts",
     "dev:build": "webpack --config-name=dev",
-    "dist": "webpack --config-name=distProd",
-    "dist:dev": "webpack --config-name=distDev",
+    "dist": "webpack --config-name=distProd && webpack --config-name=distEsmProd",
+    "dist:dev": "webpack --config-name=distDev && webpack --config-name=distEsmDev",
     "dist:watch": "webpack --config-name=distDevWatch",
+    "dist:esm": "webpack --config-name=distEsmProd",
+    "dist:esm:dev": "webpack --config-name=distEsmDev",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
     "npm:publish:local": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' ",

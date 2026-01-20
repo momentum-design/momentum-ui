@@ -33,6 +33,7 @@ module.exports.createPackageJson = function () {
     license: p.license,
     repository: p.repository,
     main: p.main,
+    module: p.module,
     types: p.types,
     exports: p.exports,
     dependencies: p.dependencies,

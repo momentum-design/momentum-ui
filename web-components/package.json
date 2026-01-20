@@ -22,7 +22,7 @@
     "start": "npm run dev",
     "dev": "webpack serve --config ./webpack.config.dev.server.ts",
     "dev:build": "webpack --config-name=dev",
-    "dist": "webpack --config-name=distProd && webpack --config-name=distEsmProd",
+    "dist": "NODE_OPTIONS='--max-old-space-size=4096' webpack --config-name=distProd && NODE_OPTIONS='--max-old-space-size=4096' webpack --config-name=distEsmProd",
     "dist:dev": "webpack --config-name=distDev && webpack --config-name=distEsmDev",
     "dist:watch": "webpack --config-name=distDevWatch",
     "dist:esm": "webpack --config-name=distEsmProd",

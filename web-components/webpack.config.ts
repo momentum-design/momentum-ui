@@ -291,7 +291,7 @@ const commonDistEsm = merge(common, {
     splitChunks: { chunks: "all", maxInitialRequests: Infinity, maxAsyncRequests: Infinity, minSize: 0 }
   },
   externals: [nodeExternals({ modulesFromFile: true, importType: "module" })],
-  plugins: [new WebpackLoadChunksPlugin({ trimNameEnd: 6 })]
+  plugins: [new WebpackLoadChunksPlugin({ trimNameEnd: 6, useEsm: true })]
 });
 
 const distEsmDev = merge(commonDistEsm, {

@@ -202,7 +202,6 @@ describe("Momentum Icon Component", () => {
   test("should ignore stale fetchSVG results when the icon name changes", async () => {
     const mockGetMomentumDesignIconContent = jest.spyOn(IconUtils, "getMomentumDesignIconContent");
     const mockFetchSVG = jest.spyOn(IconUtils, "fetchSVG");
-    const actualIconUtils = jest.requireActual<typeof import("./Icon.utils")>("./Icon.utils");
     const deferredResolvers = new Map<string, (value: HTMLElement | null) => void>();
 
     mockGetMomentumDesignIconContent.mockImplementation(async (iconName: string) => {

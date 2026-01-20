@@ -9,7 +9,7 @@
 import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/card/Card";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html, nothing } from "lit";
 

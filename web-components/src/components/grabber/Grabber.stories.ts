@@ -7,7 +7,7 @@
  */
 
 import "@/components/grabber/Grabber";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 

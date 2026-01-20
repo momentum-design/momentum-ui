@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import "@/components/chip/Chip";
 import "@/components/menu-overlay/MenuOverlay";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Meta, StoryFn, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";

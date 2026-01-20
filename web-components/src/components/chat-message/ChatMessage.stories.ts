@@ -32,7 +32,14 @@ export default {
 };
 
 export const ChatMessage: StoryObj = {
-  args: { title: "John Doe", message: "I have issue with my silencer", selfMode: false, status: "Sent", avatarSize: "32", isSelected: false },
+  args: {
+    title: "John Doe",
+    message: "I have issue with my silencer",
+    selfMode: false,
+    status: "Sent",
+    avatarSize: "32",
+    isSelected: false
+  },
 
   render: (args: Args) => {
     return html`

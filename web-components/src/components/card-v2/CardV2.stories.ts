@@ -7,7 +7,7 @@
  */
 
 import { CardState } from "@/components/card-v2/CardV2";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 

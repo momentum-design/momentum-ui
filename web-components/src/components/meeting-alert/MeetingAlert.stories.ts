@@ -7,7 +7,7 @@
  */
 
 import "@/components/meeting-alert/MeetingAlert";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path

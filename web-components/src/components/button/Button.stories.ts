@@ -9,7 +9,7 @@
 import "@/components/badge/NotificationBadge";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { buttonColor, buttonRoles, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path

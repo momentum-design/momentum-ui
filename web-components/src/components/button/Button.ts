@@ -224,8 +224,8 @@ export namespace Button {
       }
     }
 
-    manageAutoFocus(element: HTMLElement = this) {
-      element.focus();
+    manageAutoFocus(element?: HTMLElement) {
+      (element ?? this).focus();
     }
 
     focus() {

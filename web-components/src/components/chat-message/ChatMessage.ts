@@ -80,7 +80,7 @@ export namespace ChatMessage {
             ></md-avatar>
           </div>
 
-          <div class="md-chat-message_content ${this.isSelected ? 'selected' : ''}">
+          <div class="md-chat-message_content ${this.isSelected ? "selected" : ""}">
             <div class="md-chat-message_heading">
               <div class="md-chat-message_title">
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>

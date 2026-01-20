@@ -8,7 +8,7 @@
 
 import "@/components/form/Form";
 import "@/components/input/Input";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 

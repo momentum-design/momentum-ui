@@ -38,6 +38,7 @@ function isSVGPath(importedIcon: string | object): boolean {
 }
 
 function decodeIfBase64EncodedSvg(data: string): string {
+  // Handle base64-encoded SVG data URIs
   const base64DataRegex = /data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/;
   const base64DataMatch = base64DataRegex.exec(data);
   if (base64DataMatch?.[1]) {
@@ -45,6 +46,14 @@ function decodeIfBase64EncodedSvg(data: string): string {
     const decodedData = atob(base64Data);
     return decodedData;
   }
+
+  // Handle URL-encoded SVG data URIs (Vite returns these)
+  const urlEncodedRegex = /data:image\/svg\+xml,(.+)/;
+  const urlEncodedMatch = urlEncodedRegex.exec(data);
+  if (urlEncodedMatch?.[1]) {
+    return decodeURIComponent(urlEncodedMatch[1]);
+  }
+
   return data;
 }
 

@@ -199,11 +199,11 @@ describe("RadioGroup", () => {
     await elementUpdated(element);
     expect(detail).toBeDefined();
     const notifyEvent = jest.spyOn(el, "notifySelectedChange" as never);
-    expect(notifyEvent).toBeCalledTimes(0);
+    expect(notifyEvent).toHaveBeenCalledTimes(0);
 
     const keyboardEvent = new KeyboardEvent("keydown");
     el.handleKeyDown(keyboardEvent);
     await elementUpdated(element);
-    expect(notifyEvent).toBeCalledTimes(0);
+    expect(notifyEvent).toHaveBeenCalledTimes(0);
   });
 });

@@ -66,8 +66,14 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
 }
 
 async function getMomentumDesignIconContent(iconName: string) {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+  let importedIcon;
+  try {
+    const module = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+    importedIcon = module.default ?? module;
+  } catch {
+    console.error(`Icon: ${iconName} does not exist in the design system.`);
+    return;
+  }
 
   if (!importedIcon) {
     console.error(`Icon: ${iconName} does not exist in the design system.`);

@@ -138,7 +138,7 @@ describe("Momentum Icon Component", () => {
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.color).toEqual("rgb(201, 244, 255)");
-    expect(consoleWarnSpy).toBeCalledTimes(1);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     consoleWarnSpy.mockRestore();
   });
 
@@ -151,7 +151,7 @@ describe("Momentum Icon Component", () => {
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.fontSize).toEqual("16px");
-    expect(consoleWarnSpy).toBeCalledTimes(1);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     consoleWarnSpy.mockRestore();
   });
 

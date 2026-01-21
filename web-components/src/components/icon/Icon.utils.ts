@@ -77,7 +77,12 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
 async function getMomentumDesignIconContent(iconName: string) {
   let importedIcon;
   try {
-    const module = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+    //This is to mimic the behavior of the old webpack config with require.
+    //the /* webpackMode: "eager" */ comment tells webpack to load the module eagerly
+    const module = await import(
+      /* webpackMode: "eager" */
+      `@momentum-design/icons/dist/svg/${iconName}.svg`
+    );
     importedIcon = module.default ?? module;
   } catch {
     console.error(`Icon: ${iconName} does not exist in the design system.`);

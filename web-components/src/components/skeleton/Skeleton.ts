@@ -1,5 +1,6 @@
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import style from "./scss/module.scss";
 
 export const skeletonAnimationTypes = ["none", "pulse"] as const;
@@ -9,7 +10,7 @@ export namespace Skeleton {
   export type AnimationType = (typeof skeletonAnimationTypes)[number];
   export type Variant = (typeof skeletonVariants)[number];
 
-  @customElement("md-skeleton")
+  @customElementWithCheck("md-skeleton")
   export class ELEMENT extends LitElement {
     @property({ type: String }) width?: string;
     @property({ type: String }) height?: string;

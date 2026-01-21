@@ -38,6 +38,7 @@ function isSVGPath(importedIcon: string | object): boolean {
 }
 
 function decodeIfBase64EncodedSvg(data: string): string {
+  // Handle base64-encoded SVG data URIs
   const base64DataRegex = /data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/;
   const base64DataMatch = base64DataRegex.exec(data);
   if (base64DataMatch?.[1]) {
@@ -45,6 +46,14 @@ function decodeIfBase64EncodedSvg(data: string): string {
     const decodedData = atob(base64Data);
     return decodedData;
   }
+
+  // Handle URL-encoded SVG data URIs (Vite returns these)
+  const urlEncodedRegex = /data:image\/svg\+xml,(.+)/;
+  const urlEncodedMatch = urlEncodedRegex.exec(data);
+  if (urlEncodedMatch?.[1]) {
+    return decodeURIComponent(urlEncodedMatch[1]);
+  }
+
   return data;
 }
 
@@ -66,8 +75,14 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
 }
 
 async function getMomentumDesignIconContent(iconName: string) {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+  let importedIcon;
+  try {
+    const module = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+    importedIcon = module.default ?? module;
+  } catch {
+    console.error(`Icon: ${iconName} does not exist in the design system.`);
+    return;
+  }
 
   if (!importedIcon) {
     console.error(`Icon: ${iconName} does not exist in the design system.`);

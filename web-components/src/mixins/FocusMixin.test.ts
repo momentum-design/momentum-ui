@@ -47,7 +47,7 @@ describe("Focus Mixin", () => {
     const el = fixtureSync(`<${tag}></${tag}>`);
     const event = await oneEvent(el, "first-updated");
     expect(event).toBeTruthy();
-    expect(mockEventListener).toBeCalledTimes(2);
+    expect(mockEventListener).toHaveBeenCalledTimes(2);
   });
   test("should set/remove focus-visible attribute", async () => {
     const tag = defineCE(class extends FocusMixin(CustomElement) {});

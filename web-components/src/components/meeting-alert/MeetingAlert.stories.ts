@@ -7,11 +7,10 @@
  */
 
 import "@/components/meeting-alert/MeetingAlert";
-import { action } from "@storybook/addon-actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { action } from "storybook/actions";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
-import mdx from "./MeetingAlert.mdx";
 
 const MEETING_ALERT_SRC = "https://api.adorable.io/avatars/285/abott@adorable.png";
 const defaultAttendee = [
@@ -37,10 +36,10 @@ const meta: Meta = {
     userStyles: { control: "text" },
     withAttendees: { control: "boolean" }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: { element: "md-meeting-alert" },
     docs: {
-      page: mdx,
       description: { component: "A typical usage of Meeting Alert, with different variations as individual stories" }
     }
   }

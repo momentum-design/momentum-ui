@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2016",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "removeComments": false,
     "esModuleInterop": true,

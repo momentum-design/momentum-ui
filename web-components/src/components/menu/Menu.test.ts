@@ -27,8 +27,7 @@ const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
   `);
 };
 
-describe("Menu component", () => {  
-
+describe("Menu component", () => {
   afterEach(() => {
     fixtureCleanup();
   });

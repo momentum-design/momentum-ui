@@ -163,9 +163,7 @@ describe("DatePicker Component with menu-overlay", () => {
   test("should navigate focus with keydown events", async () => {
     // Use a date mid-year to avoid year boundary issues with ordinal calculations
     const startDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
-    const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker></md-datepicker>
-    `);
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
     el.focusedDate = startDate;
     await elementUpdated(el);
     const navLeft = keyNavEvent("ArrowLeft", startDate);
@@ -697,9 +695,7 @@ describe("DatePicker Component with popover", () => {
   test("should navigate focus with keydown events", async () => {
     // Use a date mid-year to avoid year boundary issues with ordinal calculations
     const startDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
-    const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker use-popover></md-datepicker>
-    `);
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
     el.focusedDate = startDate;
     await elementUpdated(el);
     const navLeft = keyNavEvent("ArrowLeft", startDate);

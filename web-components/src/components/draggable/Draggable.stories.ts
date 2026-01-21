@@ -12,7 +12,6 @@ import "@/components/icon/Icon";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { GroupOptions } from "sortablejs";
-import mdx from "./Draggable.mdx";
 
 const meta: Meta = {
   title: "Components/Draggable",
@@ -63,14 +62,12 @@ const meta: Meta = {
     ghostClass: { control: "color", description: "Class name for the drop placeholder" },
     chooseClass: { control: "color", description: "Class name for the chosen item" }
   },
+  tags: ["autodocs"],
   parameters: {
-    docs: {
-      page: mdx
-    },
     a11y: {
       element: "md-draggable"
     },
-    parameters: {
+    docs: {
       description: {
         component: "For more information please look: https://sortablejs.github.io/Sortable/"
       }

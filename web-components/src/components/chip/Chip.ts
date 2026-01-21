@@ -75,11 +75,12 @@ export namespace Chip {
       this.truncStringPortion(this.value);
     }
 
-    getTextWidth(text: string, font = getComputedStyle(this).font) {
+    getTextWidth(text: string, font?: string) {
+      const resolvedFont = font ?? getComputedStyle(this).font;
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       if (!ctx) return 0;
-      ctx.font = font;
+      ctx.font = resolvedFont;
       return ctx.measureText(text).width;
     }
 

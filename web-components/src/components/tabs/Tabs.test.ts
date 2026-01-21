@@ -549,7 +549,7 @@ describe("Tabs", () => {
     const toggleSpy = jest.spyOn(HTMLElement.prototype, "toggleAttribute");
     (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
 
-    expect(toggleSpy).not.toBeCalledTimes(2);
+    expect(toggleSpy).not.toHaveBeenCalledTimes(2);
     toggleSpy.mockRestore();
   });
 
@@ -574,7 +574,7 @@ describe("Tabs", () => {
     tabs["manageOverflow"] = mockManageOverflow;
     await tabs["linkPanelsAndTabs"]();
     tabs["manageOverflow"]();
-    expect(mockManageOverflow).toBeCalled();
+    expect(mockManageOverflow).toHaveBeenCalled();
   });
 
   test("should manage overflow", async () => {

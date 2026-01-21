@@ -104,7 +104,7 @@ describe("PhoneInput Component", () => {
 
     const event: Event = new CustomEvent("input-blur", {});
     phoneInput?.dispatchEvent(event);
-    expect(mockFunc).toBeCalled();
+    expect(mockFunc).toHaveBeenCalled();
   });
 
   test("should trigger a Phone Change event", async () => {

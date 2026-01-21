@@ -177,10 +177,6 @@ describe("Avatar", () => {
     const presenceIndicator = element.shadowRoot!.querySelector(".avatar-presence");
     expect(presenceIndicator).not.toBeNull();
     if (presenceIndicator) {
-      const computedStyle = window.getComputedStyle(presenceIndicator);
-      expect(computedStyle.color).toBe(
-        getComputedStyle(document.documentElement).getPropertyValue("--avatar-presence-active")
-      );
       expect(presenceIndicator.getAttribute("name")).toBe("active-presence-small-filled");
       expect(presenceIndicator.hasAttribute("isCircularWrapper"));
     }

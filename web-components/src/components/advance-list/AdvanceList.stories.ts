@@ -1,6 +1,6 @@
 import "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import type { Args, Meta } from "@storybook/web-components";
 import { html } from "lit";
 

@@ -138,7 +138,7 @@ describe("Momentum Icon Component", () => {
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.color).toEqual("rgb(201, 244, 255)");
-    expect(consoleWarnSpy).toBeCalledTimes(1);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     consoleWarnSpy.mockRestore();
   });
 
@@ -151,7 +151,7 @@ describe("Momentum Icon Component", () => {
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.fontSize).toEqual("16px");
-    expect(consoleWarnSpy).toBeCalledTimes(1);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     consoleWarnSpy.mockRestore();
   });
 
@@ -202,7 +202,6 @@ describe("Momentum Icon Component", () => {
   test("should ignore stale fetchSVG results when the icon name changes", async () => {
     const mockGetMomentumDesignIconContent = jest.spyOn(IconUtils, "getMomentumDesignIconContent");
     const mockFetchSVG = jest.spyOn(IconUtils, "fetchSVG");
-    const actualIconUtils = jest.requireActual<typeof import("./Icon.utils")>("./Icon.utils");
     const deferredResolvers = new Map<string, (value: HTMLElement | null) => void>();
 
     mockGetMomentumDesignIconContent.mockImplementation(async (iconName: string) => {

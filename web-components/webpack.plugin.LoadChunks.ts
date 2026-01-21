@@ -5,7 +5,7 @@ import { Compiler, sources } from "webpack";
 const webpack = require("webpack");
 const { RawSource } = sources;
 
-type Options = { trimNameEnd: number };
+type Options = { trimNameEnd: number; useEsm?: boolean };
 
 export default class WebpackLoadChunksPlugin {
   readonly options: Options;
@@ -46,10 +46,18 @@ export default class WebpackLoadChunksPlugin {
         .filter((file) => path.extname(file).substring(1) === "js")
         .map((file) => {
           const importPath = `${filePath}${file.substring(0, file.length - 3)}`;
-          if (importPath.endsWith("-entry")) {
-            return `module.exports = require("${importPath}");`;
+          if (this.options.useEsm) {
+            if (importPath.endsWith("-entry")) {
+              return `export * from "${importPath}.js";`;
+            } else {
+              return `import "${importPath}.js";`;
+            }
           } else {
-            return `require("${importPath}");`;
+            if (importPath.endsWith("-entry")) {
+              return `module.exports = require("${importPath}");`;
+            } else {
+              return `require("${importPath}");`;
+            }
           }
         });
 

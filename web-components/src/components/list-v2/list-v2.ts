@@ -1,6 +1,7 @@
 import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement } from "lit";
-import { customElement, property, queryAssignedNodes } from "lit/decorators.js";
+import { property, queryAssignedNodes } from "lit/decorators.js";
 import { ListItemV2 } from "./list-item-v2";
 import style from "./scss/module.scss";
 
@@ -8,7 +9,7 @@ export namespace ListV2 {
   export type Gap = "none" | "sm" | "md" | "lg";
   export type Orientation = "vertical" | "horizontal";
 
-  @customElement("md-list-v2")
+  @customElementWithCheck("md-list-v2")
   export class ELEMENT extends LitElement {
     /**
      * The gap between list items.

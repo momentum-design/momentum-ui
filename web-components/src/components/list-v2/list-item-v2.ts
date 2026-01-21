@@ -1,9 +1,10 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey, isNavigationKey } from "@/utils/keyboard";
 import { html, LitElement, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import style from "./scss/module.scss";
 
 export namespace ListItemV2 {
@@ -13,7 +14,7 @@ export namespace ListItemV2 {
    * @fires list-item-click
    * @fires list-item-expanded
    */
-  @customElement("md-list-item-v2")
+  @customElementWithCheck("md-list-item-v2")
   export class ELEMENT extends LitElement {
     /**
      * The primary label of the list item.

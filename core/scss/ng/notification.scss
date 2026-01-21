@@ -4,7 +4,7 @@
 // @import  '../typography/settings';
 // @import  '../alert/settings';
 // @import  '../tools/mixins/spacing';
-// @import  '~@momentum-ui/icons/scss/mixins';
+// @import  '../../../icons/scss/mixins';
 
 @include exports('ng-notifications') {
   #toast-container {

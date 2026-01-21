@@ -2,11 +2,11 @@
 @import 'tools/mixins/core';
 
 // Settings
-@import '~@momentum-ui/icons/scss/variables';
+@import '../../icons/scss/variables';
 @import 'settings/settings';
 
 // Tools
-@import '~@momentum-ui/icons/scss/mixins';
+@import '../../icons/scss/mixins';
 @import 'tools/mixins/background-variant';
 @import 'tools/mixins/baseline';
 @import 'tools/mixins/border-radius';
@@ -67,7 +67,7 @@
 @import 'typography/placeholders';
 @import 'components/loader/placeholders';
 
-@import '~@momentum-ui/icons/scss/momentum-ui-icons';
+@import '../../icons/scss/momentum-ui-icons';
 
 @import 'generic/components';
 

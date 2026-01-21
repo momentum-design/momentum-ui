@@ -14,7 +14,7 @@ class ScrollSpy extends React.Component {
     window.addEventListener('scroll', this.handleSpy);
   }
 
-  componentWillReceiveProps () {
+  UNSAFE_componentWillReceiveProps () {
     this.initFromProps();
   }
 

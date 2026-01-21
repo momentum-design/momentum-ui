@@ -21,7 +21,7 @@ class IconViewer extends React.Component {
     selectedIconClass: '',
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentIcon) {
       const { currentIcon } = nextProps;
       const { sizes, colors, defaultSize, name } = currentIcon;

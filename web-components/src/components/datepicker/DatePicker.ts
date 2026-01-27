@@ -28,10 +28,10 @@ import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { Input } from "../input/Input"; // Keep type import as a relative path
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
-import { Popover, PopoverController } from "../popover/Popover";
-import { StrategyType } from "../popover/Popover.types";
+import { Input } from "@/components/input/Input";
+import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
+import { Popover, PopoverController } from "@/components/popover/Popover";
+import { StrategyType } from "@/components/popover/Popover.types";
 import styles from "./scss/module.scss";
 export interface DatePickerControlButton {
   value: string;

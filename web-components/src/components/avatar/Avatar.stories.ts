@@ -6,6 +6,7 @@
  *
  */
 
+import "@/components/avatar/Avatar";
 import { Avatar as AvatarComponent } from "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import { avatarColorOptions } from "@/utils/enums";

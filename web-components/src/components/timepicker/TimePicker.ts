@@ -11,7 +11,7 @@ import { property, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { TIME_UNIT } from "../../constants";
+import { TIME_UNIT } from "@/constants";
 import styles from "./scss/module.scss";
 
 export const timeUnits = [TIME_UNIT.HOUR, TIME_UNIT.MINUTE, TIME_UNIT.SECOND, TIME_UNIT.AM_PM] as const;

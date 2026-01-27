@@ -14,7 +14,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, PropertyValues } from "lit";
 import { property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import { Tabs } from "./Tabs";
+import type { TabSize, TabsType, TabVariant } from "./Tabs.types";
 import styles from "./scss/module.scss";
 
 export const TAB_CROSS_WIDTH = 22;
@@ -38,12 +38,12 @@ export namespace Tab {
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
     @property({ type: String, attribute: "role", reflect: true }) role = "tab";
-    @property({ type: String, reflect: true }) type: Tabs.TabsType = "line";
+    @property({ type: String, reflect: true }) type: TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;
-    @property({ type: String }) variant: Tabs.TabVariant = "ghost";
+    @property({ type: String }) variant: TabVariant = "ghost";
     @property({ type: Boolean, attribute: "visible-tab", reflect: true }) visibleTab = false;
-    @property({ type: Number }) size?: Tabs.TabSize = 28;
+    @property({ type: Number }) size?: TabSize = 28;
 
     private _disabled = false;
 

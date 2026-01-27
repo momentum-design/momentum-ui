@@ -2,7 +2,7 @@ import "@/components/date-range-picker/DateRangePicker";
 import { now } from "@/utils/dateUtils";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
+import { DatePicker as DP } from "@/components/datepicker/DatePicker";
 import "../theme/Theme";
 
 const meta: Meta = {

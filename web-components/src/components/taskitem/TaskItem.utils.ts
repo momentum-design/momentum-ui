@@ -1,6 +1,8 @@
-import { Avatar } from "@/components/avatar/Avatar";
+import { AvatarChannelType } from "@/components/avatar/Avatar.constants";
 import { html, nothing, TemplateResult } from "lit";
 import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
+
+type ChannelType = (typeof AvatarChannelType)[number];
 
 export const getTaskTypeTemplate = (
   isRestyle: boolean,
@@ -17,7 +19,7 @@ export const getTaskTypeTemplate = (
 export const getChannelAvatar = (
   selected: boolean,
   status: string | null,
-  type: Avatar.ChannelType,
+  type: ChannelType,
   slot?: TemplateResult
 ) => {
   return html`<md-avatar

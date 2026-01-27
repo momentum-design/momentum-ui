@@ -8,6 +8,7 @@
 
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
+import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
@@ -23,7 +24,6 @@ import { styleMap } from "lit/directives/style-map.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import Sortable from "sortablejs";
 import { setTimeout } from "timers";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";

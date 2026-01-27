@@ -9,6 +9,7 @@
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import "@/components/presence/Presence";
+import { getPresenceIconColor, PresenceState, PresenceType } from "@/components/presence/Presence.utils";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
@@ -18,7 +19,6 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { until } from "lit/directives/until.js";
-import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import styles from "./scss/module.scss";
 

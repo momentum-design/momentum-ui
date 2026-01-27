@@ -1,7 +1,6 @@
 import type { StorybookConfig } from "@storybook/web-components-vite";
 import path from "path";
 import { fileURLToPath } from "url";
-import dynamicImport from "vite-plugin-dynamic-import";
 import litCss from "vite-plugin-lit-css";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,8 +26,9 @@ const config: StorybookConfig = {
     { from: "../node_modules/@momentum-ui/icons/fonts", to: "/css/fonts" },
     { from: "../node_modules/@momentum-ui/icons/fonts", to: "/fonts" },
     { from: "../node_modules/@momentum-ui/icons/fonts", to: "/icons/fonts" },
-    { from: "../node_modules/@momentum-design/brand-visuals/dist/svg", to: "/assets/icons/svg" },
-    { from: "../node_modules/@momentum-design/brand-visuals/dist", to: "/images/brand-visuals" },
+    { from: "../node_modules/@momentum-design/brand-visuals/dist/svg", to: "/icons/svg" },
+    { from: "./assets/backgrounds", to: "/images/backgrounds" },
+    { from: "../node_modules/@momentum-design/icons/dist/svg", to: "/icons/svg" },
     { from: "../src/assets/styles", to: "/css" }
   ],
 
@@ -41,6 +41,29 @@ const config: StorybookConfig = {
       "@img": pImg,
       timers: "timers-browserify"
     };
+
+    // Force dedupe for lit packages
+    config.resolve.dedupe = ["lit", "lit-html", "lit-element", "@lit/reactive-element"];
+
+    // Prevent duplicate module instances from symlinks
+    config.resolve.preserveSymlinks = true;
+
+    // Pre-bundle Lit packages together to avoid duplicates
+    config.optimizeDeps = config.optimizeDeps ?? {};
+    config.optimizeDeps.include = [
+      ...(config.optimizeDeps.include ?? []),
+      "lit",
+      "lit/decorators.js",
+      "lit/directives/class-map.js",
+      "lit/directives/if-defined.js",
+      "lit/directives/repeat.js",
+      "lit/directives/style-map.js",
+      "lit/directive.js",
+      "lit/directive-helpers.js",
+      "lit-html",
+      "lit-element",
+      "@lit/reactive-element"
+    ];
 
     // Configure SCSS preprocessor with proper import paths
     config.css = config.css ?? {};
@@ -66,7 +89,6 @@ const config: StorybookConfig = {
     };
 
     config.plugins = config.plugins ?? [];
-    config.plugins.push(dynamicImport());
     config.plugins.push(litCss({ include: /\.scss$/ }));
     return config;
   }

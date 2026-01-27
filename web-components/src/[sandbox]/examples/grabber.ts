@@ -1,7 +1,7 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/grabber/Grabber";
 import { type Grabber } from "@/components/grabber/Grabber";
-import { html, LitElement, PropertyValues } from "lit";
+import { html, LitElement } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 
 @customElement("grabber-template-sandbox")
@@ -23,6 +23,9 @@ export class GrabberTemplateSandbox extends LitElement {
 
   @state()
   private shadow = false;
+
+  @state()
+  private grabberStatesUpdated = 0;
 
   constructor() {
     super();
@@ -57,19 +60,11 @@ export class GrabberTemplateSandbox extends LitElement {
   }
 
   grabberToggled() {
-    this.requestUpdate();
+    this.grabberStatesUpdated++;
   }
 
   grabberHovered() {
-    this.requestUpdate();
-  }
-
-  protected firstUpdated(_changedProperties: PropertyValues): void {
-    super.firstUpdated(_changedProperties);
-
-    //After the first update the query properties will
-    //no longer be null so request an other update
-    this.requestUpdate();
+    this.grabberStatesUpdated++;
   }
 
   grabberDetailTemplate(grabber: Grabber.ELEMENT | null | undefined) {

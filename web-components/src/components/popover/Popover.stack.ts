@@ -1,4 +1,4 @@
-import { type Popover } from "./Popover";
+import type { Popover } from "./Popover";
 
 /**
  * Manages a stack of popovers to control their order and lifecycle.

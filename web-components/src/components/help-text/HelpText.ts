@@ -11,7 +11,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import { Input } from "../input/Input"; // Keep type import as a relative path
+import { Input } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export namespace HelpText {

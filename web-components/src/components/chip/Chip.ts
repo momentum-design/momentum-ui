@@ -70,9 +70,11 @@ export namespace Chip {
       this.setAttribute("role", this.role);
     }
 
-    updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
-      this.truncStringPortion(this.value);
+    protected willUpdate(changedProperties: PropertyValues) {
+      super.willUpdate(changedProperties);
+      if (changedProperties.has("value") || changedProperties.has("shouldTruncateValue")) {
+        this.truncStringPortion(this.value);
+      }
     }
 
     getTextWidth(text: string, font?: string) {

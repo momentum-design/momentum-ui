@@ -183,6 +183,27 @@ export namespace Icon {
     @state()
     private svgIcon: HTMLElement | null = null;
 
+    private abortController: AbortController | null = null;
+
+    /**
+     * Creates a new AbortController and returns its signal.
+     * Aborts any previous pending request.
+     */
+    private renewSignal(): AbortSignal {
+      // Abort any pending request
+      this.abortController?.abort();
+      // Create new controller
+      this.abortController = new AbortController();
+      return this.abortController.signal;
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      // Abort any pending requests when component is removed
+      this.abortController?.abort();
+      this.abortController = null;
+    }
+
     isSvgAlreadyLoaded(iconName: string) {
       if (!this.svgIcon) {
         return false;
@@ -198,11 +219,15 @@ export namespace Icon {
 
       const previousIconName = this.svgIcon?.getAttribute("class");
 
+      // Get a fresh abort signal for this request
+      const signal = this.renewSignal();
+
       const importedIcon =
-        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg"
-          ? await fetchSVG(this.computedSvgPath, iconName, "svg")
+        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg" || iconUrlManager.useFetchForMomentumDesign
+          ? await fetchSVG(this.computedSvgPath, iconName, "svg", signal)
           : await getMomentumDesignIconContent(iconName);
 
+      // If aborted, importedIcon will be null and we should exit silently
       if (!importedIcon) {
         return;
       }

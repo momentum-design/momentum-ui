@@ -55,7 +55,8 @@ describe("Chip component", () => {
 
     const spy = jest.spyOn(component, "truncStringPortion");
 
-    component.requestUpdate();
+    // Change value to trigger truncStringPortion in willUpdate
+    component.value = "another chip text content that is way tooooooo long";
     await elementUpdated(component);
 
     expect(spy).toHaveBeenCalled();
@@ -139,7 +140,10 @@ describe("Chip component", () => {
     `);
 
     component.getTextWidth = () => 1000;
-    component.requestUpdate();
+    // First change value to something different, then change back to trigger willUpdate
+    component.value = "";
+    await elementUpdated(component);
+    component.value = "chip text content that is too long";
     await elementUpdated(component);
 
     const expectedResult = "chip text content that is too long, More Info about the Chip";

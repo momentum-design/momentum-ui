@@ -14,17 +14,38 @@ function parseSvgContent(svgContent: string): HTMLElement | null {
   return doc.documentElement;
 }
 
-const fetchSVG = async (url: string, name: string, fileExtension = "svg"): Promise<HTMLElement | null> => {
+/**
+ * Fetches a dynamic SVG icon based on the provided `url`, `name` and `fileExtension`.
+ * The fetch is aborted if the signal is aborted.
+ *
+ * @param url - The base url of the icon
+ * @param name - The name of the icon
+ * @param fileExtension - The file extension of the icon (default: "svg")
+ * @param signal - The signal to abort the fetch
+ *
+ * @returns Parsed SVG element or null if fetch fails/is aborted
+ */
+const fetchSVG = async (
+  url: string,
+  name: string,
+  fileExtension = "svg",
+  signal?: AbortSignal
+): Promise<HTMLElement | null> => {
   try {
-    const response = await fetch(`${url}/${name}.${fileExtension}`);
+    const fullUrl = `${url}/${name}.${fileExtension}`;
+    const response = await fetch(fullUrl, { signal });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch SVG: ${name}`);
+      throw new Error(`Failed to fetch SVG: ${response.status} ${response.statusText}`);
     }
 
-    const iconResponse = await response.text();
-    return parseSvgContent(iconResponse);
+    const svgContent = await response.text();
+    return parseSvgContent(svgContent);
   } catch (error) {
+    // Don't log abort errors as they are expected
+    if (error instanceof Error && error.name === "AbortError") {
+      return null;
+    }
     console.error(`Error fetching SVG "${name}":`, error);
     return null;
   }
@@ -77,10 +98,13 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
 async function getMomentumDesignIconContent(iconName: string) {
   let importedIcon;
   try {
-    //This is to mimic the behavior of the old webpack config with require.
-    //the /* webpackMode: "eager" */ comment tells webpack to load the module eagerly
+    // This is to mimic the behavior of the old webpack config with require.
+    // The /* webpackMode: "eager" */ comment tells webpack to load the module eagerly.
+    // The /* @vite-ignore */ comment suppresses Vite's dynamic import warning since
+    // Storybook uses fetch-based loading (useFetchForMomentumDesign: true) instead.
     const module = await import(
       /* webpackMode: "eager" */
+      /* @vite-ignore */
       `@momentum-design/icons/dist/svg/${iconName}.svg`
     );
     importedIcon = module.default ?? module;

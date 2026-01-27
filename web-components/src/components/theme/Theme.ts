@@ -12,7 +12,7 @@ import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperj
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { html, LitElement, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
-import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
+import { Tooltip, TooltipEvent } from "@/components/tooltip/Tooltip";
 import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {

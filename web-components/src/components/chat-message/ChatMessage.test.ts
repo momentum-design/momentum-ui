@@ -1,6 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit";
-import { Avatar } from "../avatar/Avatar"; // Keep type import as a relative path
+import { Avatar } from "@/components/avatar/Avatar";
 import "./ChatMessage";
 import { type ChatMessage } from "./ChatMessage";
 

@@ -412,7 +412,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate(
             "Floating Button Bar",
             "md-floating-button-bar",
-            "Floating Button Bar",
+            "floating-button-bar",
             floatingButtonBarTemplate
           )}
           ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}

@@ -16,8 +16,8 @@ import { property, query, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
-import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
+import { DatePickerProps, DayFilters } from "@/utils/dateUtils";
+import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {

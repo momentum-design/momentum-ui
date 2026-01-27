@@ -7,10 +7,10 @@ import { html, LitElement, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
-import { DatePicker, type DatePickerControlButtons } from "../datepicker/DatePicker";
-import { StrategyType } from "../popover/Popover.types";
-import { TimePicker } from "../timepicker/TimePicker";
+import { TIME_UNIT } from "@/constants";
+import { DatePicker, type DatePickerControlButtons } from "@/components/datepicker/DatePicker";
+import { StrategyType } from "@/components/popover/Popover.types";
+import { TimePicker } from "@/components/timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
 export namespace DateTimePicker {

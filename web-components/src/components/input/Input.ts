@@ -21,7 +21,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { FormControl } from "../form";
+import { FormControl } from "@/components/form";
 import styles from "./scss/module.scss";
 
 export const containerSize = [

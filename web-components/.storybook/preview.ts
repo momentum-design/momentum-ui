@@ -1,5 +1,6 @@
+import { BackgroundModeValues, ThemeNameValues } from "@/components/theme/Theme";
+import { iconUrlManager } from "@/managers/IconUrlManager";
 import { setCustomElements } from "@storybook/web-components";
-import { BackgroundModeValues, ThemeNameValues } from "../src/components/theme/Theme";
 import customElements from "./custom-elements.json";
 import { withThemeDecorator } from "./themeDecorator";
 
@@ -9,6 +10,9 @@ import { withThemeDecorator } from "./themeDecorator";
  */
 
 setCustomElements(customElements);
+
+iconUrlManager.setSvgIconUrl("/icons/svg");
+iconUrlManager.setUseFetchForMomentumDesign(true);
 
 export const parameters = {
   docs: {

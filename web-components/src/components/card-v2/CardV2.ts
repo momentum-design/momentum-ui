@@ -72,8 +72,8 @@ export namespace CardV2 {
       return this.state === CardState.ACTIVE;
     }
 
-    protected update(changedProperties: PropertyValues): void {
-      super.update(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate(changedProperties);
       if (changedProperties.has("active") || changedProperties.has("data") || changedProperties.has("createdTime")) {
         this.calculateRenderedData();
       }

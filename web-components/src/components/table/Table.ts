@@ -58,8 +58,6 @@ export namespace Table {
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
-      this.requestUpdate("tabledata");
-      this.linkCellItems();
     }
 
     get rowItem() {
@@ -136,12 +134,18 @@ export namespace Table {
       this.requestUpdate("csvData");
     }
 
-    protected update(changedProperties: PropertyValues) {
-      super.update(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues) {
+      super.willUpdate(changedProperties);
       if (changedProperties.has("tabledata")) {
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("tabledata")) {
         this.linkCellItems();
       }
     }

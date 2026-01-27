@@ -1,9 +1,10 @@
 import "@/components/theme/Theme";
 import { themeManager } from "@/managers/ThemeManager";
+import type { Decorator } from "@storybook/web-components";
 import { html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 
-export const withThemeDecorator = (story, context) => {
+export const withThemeDecorator: Decorator = (story, context) => {
   const isDark = context.globals.isDark === true;
   const theme = context.globals.theme;
   const isVisualRebrand = context.globals.isVisualRebrand === true;

@@ -1,7 +1,6 @@
-import { TaskItem } from "../taskitem/TaskItem";
-import { TaskItemStatus } from "../taskitem/TaskItem.constants";
+import { TaskItemStatus } from "@/components/taskitem/TaskItem.constants";
 
-export type PresenceState = (typeof PresenceType)[number] | TaskItem.TaskItemStatus;
+export type PresenceState = (typeof PresenceType)[number] | (typeof TaskItemStatus)[keyof typeof TaskItemStatus];
 
 type ReturnType = {
   presenceIcon: string | undefined;

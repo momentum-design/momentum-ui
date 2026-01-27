@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html, TemplateResult } from "lit";
-import { Presence } from "../presence/Presence";
+import { Presence } from "@/components/presence/Presence";
 import "./Avatar";
 import { type Avatar } from "./Avatar";
 

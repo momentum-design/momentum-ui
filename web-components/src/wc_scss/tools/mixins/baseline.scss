@@ -23,8 +23,13 @@
 
   @if $fontSize < $from {
     // child baseline or vertical center
-    $baseline-ratio: if($baseline, 3, 2);
-    $baseline-offset: if($baseline, $_lineHeightOffset * 2, $_lineHeightOffset);
+    $baseline-ratio: 2;
+    $baseline-offset: $_lineHeightOffset;
+
+    @if $baseline {
+      $baseline-ratio: 3;
+      $baseline-offset: $_lineHeightOffset * 2;
+    }
 
     padding-top: rem(round-to(math.div($baseline-offset, $baseline-ratio), 0.5) - $border / 2);
     padding-bottom: rem(round-to(math.div($_lineHeightOffset, $baseline-ratio), 0.5) - $border / 2);

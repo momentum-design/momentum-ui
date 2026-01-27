@@ -15,8 +15,8 @@ import { CSSResultArray, html, LitElement, nothing, PropertyValues } from "lit";
 import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
-import { Input } from "../input/Input"; // Keep type import as a relative path
+import { numInputTypes } from "@/utils/enums";
+import { Input } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;

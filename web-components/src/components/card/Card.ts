@@ -17,7 +17,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing } from "lit";
 import { repeat } from "lit/directives/repeat.js";
-import { Key } from "../../constants"; // Keep type import as a relative path
+import { Key } from "@/constants";
 import styles from "./scss/module.scss";
 import { property } from "lit/decorators.js";
 

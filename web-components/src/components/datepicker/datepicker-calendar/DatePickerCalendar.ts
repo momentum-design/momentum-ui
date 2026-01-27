@@ -27,7 +27,7 @@ import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, TemplateResult, html } from "lit";
 import { property, state } from "lit/decorators.js";
 import { DateTime } from "luxon";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
+import { DatePickerProps, DayFilters } from "@/utils/dateUtils";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {

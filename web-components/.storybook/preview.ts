@@ -12,7 +12,6 @@ import { withThemeDecorator } from "./themeDecorator";
 setCustomElements(customElements);
 
 iconUrlManager.setSvgIconUrl("/icons/svg");
-iconUrlManager.setUseFetchForMomentumDesign(true);
 
 export const parameters = {
   docs: {

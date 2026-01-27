@@ -78,13 +78,6 @@ function decodeIfBase64EncodedSvg(data: string): string {
   return data;
 }
 
-async function getSvgContentFromFile(importedIcon: string): Promise<HTMLElement | null> {
-  const response = await fetch(importedIcon);
-  const responseText = await response.text();
-
-  return getSvgContentFromInline(responseText);
-}
-
 function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLElement | null {
   let svgContent = "";
   if (typeof importedIcon === "object" && "data" in importedIcon) {
@@ -95,34 +88,4 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
   return parseSvgContent(svgContent);
 }
 
-async function getMomentumDesignIconContent(iconName: string) {
-  let importedIcon;
-  try {
-    // The /* webpackMode: "lazy" */ comment tells webpack to create separate chunks
-    // for each icon that are only loaded on-demand when the icon is actually used.
-    // The /* @vite-ignore */ comment suppresses Vite's dynamic import warning since
-    // Storybook uses fetch-based loading (useFetchForMomentumDesign: true) instead.
-    const module = await import(
-      /* webpackMode: "lazy" */
-      /* @vite-ignore */
-      `@momentum-design/icons/dist/svg/${iconName}.svg`
-    );
-    importedIcon = module.default ?? module;
-  } catch {
-    console.error(`Icon: ${iconName} does not exist in the design system.`);
-    return;
-  }
-
-  if (!importedIcon) {
-    console.error(`Icon: ${iconName} does not exist in the design system.`);
-    return;
-  }
-
-  if (isSVGPath(importedIcon)) {
-    return await getSvgContentFromFile(importedIcon);
-  } else {
-    return getSvgContentFromInline(importedIcon);
-  }
-}
-
-export { fetchSVG, getMomentumDesignIconContent, getSvgContentFromInline, isSVGPath };
+export { fetchSVG, getSvgContentFromInline, isSVGPath };

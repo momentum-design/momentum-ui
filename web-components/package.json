@@ -38,7 +38,7 @@
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --runInBand",
     "storybook:resource": "npx web-component-analyzer src/*components/**/*.ts --outFile .storybook/custom-elements.json",
-    "storybook:dist": "npm run storybook:resource && storybook build -c .storybook -o .out",
+    "storybook:dist": "STORYBOOK_BASE=/momentum-ui/ npm run storybook:resource && storybook build -c .storybook -o .out",
     "storybook": "npm run storybook:resource && storybook dev -p 1234",
     "snapshot": "npm run storybook:resource && storybook build && percy snapshot ./storybook-static",
     "postinstall": "npm run build:tokens",

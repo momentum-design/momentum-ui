@@ -57,7 +57,9 @@ export namespace InputFile {
 
     private async importLanguage(language: string) {
       try {
-        const { default: importLanguage } = await import(`highlight.js/lib/languages/${language}`);
+        const { default: importLanguage } = await import(
+          /* webpackIgnore: true */ `highlight.js/lib/languages/${language}`
+        );
         hljs.registerLanguage(`${language}`, importLanguage);
         this.setAcceptTypes();
       } catch {

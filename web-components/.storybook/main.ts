@@ -33,6 +33,11 @@ const config: StorybookConfig = {
   ],
 
   viteFinal: async (config) => {
+    // Set base URL for GitHub Pages deployment (when STORYBOOK_BASE env var is set)
+    if (process.env.STORYBOOK_BASE) {
+      config.base = process.env.STORYBOOK_BASE;
+    }
+
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...config.resolve.alias,

@@ -11,7 +11,8 @@ import { withThemeDecorator } from "./themeDecorator";
 
 setCustomElements(customElements);
 
-iconUrlManager.setSvgIconUrl("/icons/svg");
+// Use Vite's BASE_URL to handle different deploy paths
+iconUrlManager.setSvgIconUrl(`${import.meta.env.BASE_URL}icons/svg`);
 
 export const parameters = {
   docs: {

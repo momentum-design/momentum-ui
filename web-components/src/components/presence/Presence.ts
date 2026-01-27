@@ -1,10 +1,10 @@
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import { AvatarSize } from "@/components/avatar/Avatar.constants";
+import { AvatarSize } from "../avatar/Avatar.constants";
 import { getPresenceIconColor, PresenceState } from "./Presence.utils";
 import styles from "./scss/module.scss";
 

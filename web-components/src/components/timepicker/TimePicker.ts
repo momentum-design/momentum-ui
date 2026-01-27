@@ -1,6 +1,6 @@
-import "@/components/combobox/ComboBox";
-import "@/components/input/Input";
-import { type Input } from "@/components/input/Input";
+import "../combobox/ComboBox";
+import "../input/Input";
+import { type Input } from "../input/Input";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";

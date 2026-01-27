@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/help-text/HelpText";
-import "@/components/icon/Icon";
+import "../help-text/HelpText";
+import "../icon/Icon";
 import { ATTRIBUTES, Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

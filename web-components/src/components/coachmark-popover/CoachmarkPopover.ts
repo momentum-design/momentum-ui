@@ -6,10 +6,10 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/popover/Popover";
-import { PlacementType } from "@/components/popover/Popover.types";
+import "../button/Button";
+import "../icon/Icon";
+import "../popover/Popover";
+import { PlacementType } from "../popover/Popover.types";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, html } from "lit";

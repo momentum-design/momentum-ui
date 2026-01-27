@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/button/Button";
+import "../../button/Button";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getDate, isDayDisabled, isSameDay, localizeDate, now } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
@@ -17,7 +17,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { DatePickerProps, DayFilters } from "@/utils/dateUtils";
-import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
+import { DateRangePicker } from "../../date-range-picker/DateRangePicker";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {

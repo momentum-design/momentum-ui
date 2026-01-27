@@ -98,12 +98,12 @@ function getSvgContentFromInline(importedIcon: string | { data: string }): HTMLE
 async function getMomentumDesignIconContent(iconName: string) {
   let importedIcon;
   try {
-    // This is to mimic the behavior of the old webpack config with require.
-    // The /* webpackMode: "eager" */ comment tells webpack to load the module eagerly.
+    // The /* webpackMode: "lazy" */ comment tells webpack to create separate chunks
+    // for each icon that are only loaded on-demand when the icon is actually used.
     // The /* @vite-ignore */ comment suppresses Vite's dynamic import warning since
     // Storybook uses fetch-based loading (useFetchForMomentumDesign: true) instead.
     const module = await import(
-      /* webpackMode: "eager" */
+      /* webpackMode: "lazy" */
       /* @vite-ignore */
       `@momentum-design/icons/dist/svg/${iconName}.svg`
     );

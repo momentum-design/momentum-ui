@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/datepicker/datepicker-month/DatePickerMonth";
-import "@/components/icon/Icon";
-import "@/components/spinner/Spinner";
+import "../../datepicker/datepicker-month/DatePickerMonth";
+import "../../icon/Icon";
+import "../../spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addDays,

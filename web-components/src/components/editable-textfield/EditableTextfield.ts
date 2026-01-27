@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/input/Input";
+import "../input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
@@ -16,7 +16,7 @@ import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { numInputTypes } from "@/utils/enums";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;

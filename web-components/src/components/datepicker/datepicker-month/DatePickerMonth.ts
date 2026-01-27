@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/datepicker/datepicker-week/DatePickerWeek";
+import "../../datepicker/datepicker-week/DatePickerWeek";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addWeeks, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";

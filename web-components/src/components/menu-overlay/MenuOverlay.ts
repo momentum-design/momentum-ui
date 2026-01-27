@@ -6,7 +6,7 @@
  *
  */
 
-import { Placement as PopoverPlacement, StrategyType } from "@/components/popover/Popover.types";
+import { Placement as PopoverPlacement, StrategyType } from "../popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";

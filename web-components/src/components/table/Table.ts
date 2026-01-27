@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";

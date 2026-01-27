@@ -6,10 +6,10 @@
  *
  */
 
-import { Icon } from "@/components/icon/Icon";
-import { PlacementType } from "@/components/popover/Popover.types";
-import "@/components/progress-bar/ProgressBar";
-import "@/components/tooltip/Tooltip";
+import { Icon } from "../icon/Icon";
+import { PlacementType } from "../popover/Popover.types";
+import "../progress-bar/ProgressBar";
+import "../tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";

@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { closestElement, getDeepActiveElement, querySelectorDeep } from "@/utils/helpers";

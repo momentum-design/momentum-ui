@@ -6,9 +6,9 @@
  *
  */
 
-import { buttonColor, buttonVariant } from "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/link/Link";
+import { buttonColor, buttonVariant } from "../button/Button";
+import "../icon/Icon";
+import "../link/Link";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing, TemplateResult } from "lit";

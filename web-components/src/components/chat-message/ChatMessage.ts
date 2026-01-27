@@ -1,5 +1,5 @@
-import "@/components/avatar/Avatar";
-import { type Avatar } from "@/components/avatar/Avatar";
+import "../avatar/Avatar";
+import { type Avatar } from "../avatar/Avatar";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement } from "lit";

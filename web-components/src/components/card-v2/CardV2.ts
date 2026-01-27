@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/tooltip/Tooltip";
+import "../button/Button";
+import "../icon/Icon";
+import "../tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing, PropertyValues } from "lit";

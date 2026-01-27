@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";

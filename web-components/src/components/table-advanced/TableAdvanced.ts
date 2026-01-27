@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
+import "../button/Button";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import reset from "@/wc_scss/reset.scss";

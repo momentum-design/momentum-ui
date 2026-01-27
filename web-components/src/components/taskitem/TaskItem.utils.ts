@@ -1,4 +1,4 @@
-import { AvatarChannelType } from "@/components/avatar/Avatar.constants";
+import { AvatarChannelType } from "../avatar/Avatar.constants";
 import { html, nothing, TemplateResult } from "lit";
 import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
 

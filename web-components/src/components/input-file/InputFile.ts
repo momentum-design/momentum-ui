@@ -1,4 +1,4 @@
-import "@/components/button/Button";
+import "../button/Button";
 import { customElementWithCheck } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import hljs from "highlight.js/lib/core";

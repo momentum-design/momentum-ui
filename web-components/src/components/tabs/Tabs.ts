@@ -6,10 +6,10 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
-import "@/components/tooltip/Tooltip";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
+import "../tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import { getElementSafe } from "@/utils/helpers";

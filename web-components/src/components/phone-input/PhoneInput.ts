@@ -1,12 +1,12 @@
-import "@/components/combobox/ComboBox";
-import "@/components/country-code-picker/CountryCodePicker";
-import "@/components/input/Input";
+import "../combobox/ComboBox";
+import "../country-code-picker/CountryCodePicker";
+import "../input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
 import { LitElement, html } from "lit";
 import { property, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input";
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
   export type Attributes = {

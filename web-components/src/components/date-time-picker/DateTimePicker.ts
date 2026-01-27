@@ -1,5 +1,5 @@
-import "@/components/input/Input";
-import "@/components/menu-overlay/MenuOverlay";
+import "../input/Input";
+import "../menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
@@ -8,9 +8,9 @@ import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "@/constants";
-import { DatePicker, type DatePickerControlButtons } from "@/components/datepicker/DatePicker";
-import { StrategyType } from "@/components/popover/Popover.types";
-import { TimePicker } from "@/components/timepicker/TimePicker";
+import { DatePicker, type DatePickerControlButtons } from "../datepicker/DatePicker";
+import { StrategyType } from "../popover/Popover.types";
+import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
 export namespace DateTimePicker {

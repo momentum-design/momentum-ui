@@ -6,8 +6,8 @@
  *
  */
 
-import activityButtonStyles from "@/components/activity-button/scss/module.scss";
-import "@/components/spinner/Spinner";
+import activityButtonStyles from "../activity-button/scss/module.scss";
+import "../spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";

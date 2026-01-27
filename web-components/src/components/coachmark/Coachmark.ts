@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/button/Button";
-import { Theme } from "@/components/theme/Theme";
+import "../button/Button";
+import { Theme } from "../theme/Theme";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { closestElement } from "@/utils/helpers";

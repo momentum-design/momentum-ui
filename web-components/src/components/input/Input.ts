@@ -6,10 +6,10 @@
  *
  */
 
-import "@/components/help-text/HelpText";
-import "@/components/icon/Icon";
-import "@/components/label/Label";
-import "@/components/spinner/Spinner";
+import "../help-text/HelpText";
+import "../icon/Icon";
+import "../label/Label";
+import "../spinner/Spinner";
 import { ARIA_INVALID, Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
@@ -21,7 +21,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { FormControl } from "@/components/form";
+import { FormControl } from "../form";
 import styles from "./scss/module.scss";
 
 export const containerSize = [

@@ -1,4 +1,4 @@
-import "@/components/combobox/ComboBox";
+import "../combobox/ComboBox";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";

@@ -10,7 +10,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getLocaleDateFormat } from "@/utils/dateUtils";
 import { property } from "lit/decorators.js";
 import { DateTime } from "luxon";
-import { DatePicker } from "@/components/datepicker/DatePicker";
+import { DatePicker } from "../datepicker/DatePicker";
 
 const DATE_RANGE_SEPARATOR = " - ";
 const DEFAULT_ARIA_LABEL = "Choose Date Range";

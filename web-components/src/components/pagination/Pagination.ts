@@ -1,5 +1,5 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, nothing } from "lit";

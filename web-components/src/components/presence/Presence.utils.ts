@@ -1,4 +1,4 @@
-import { TaskItemStatus } from "@/components/taskitem/TaskItem.constants";
+import { TaskItemStatus } from "../taskitem/TaskItem.constants";
 
 export type PresenceState = (typeof PresenceType)[number] | (typeof TaskItemStatus)[keyof typeof TaskItemStatus];
 

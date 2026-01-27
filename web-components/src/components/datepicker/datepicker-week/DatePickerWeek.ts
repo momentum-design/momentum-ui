@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/datepicker/datepicker-day/DatePickerDay";
+import "../../datepicker/datepicker-day/DatePickerDay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";

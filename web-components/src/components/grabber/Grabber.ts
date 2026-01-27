@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { themeManager } from "@/managers/ThemeManager";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

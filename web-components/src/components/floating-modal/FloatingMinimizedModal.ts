@@ -1,5 +1,5 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

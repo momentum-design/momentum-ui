@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { ATTRIBUTES, Key } from "@/constants";
 import { customElementWithCheck, FocusMixin } from "@/mixins";
 import { debounce } from "@/utils/helpers";

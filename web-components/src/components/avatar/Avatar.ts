@@ -6,10 +6,10 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/loading/Loading";
-import "@/components/presence/Presence";
-import { getPresenceIconColor, PresenceState, PresenceType } from "@/components/presence/Presence.utils";
+import "../icon/Icon";
+import "../loading/Loading";
+import "../presence/Presence";
+import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";

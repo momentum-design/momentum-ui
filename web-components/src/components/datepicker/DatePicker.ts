@@ -6,9 +6,6 @@
  *
  */
 
-import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
-import "@/components/input/Input";
-import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -28,10 +25,13 @@ import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { Input } from "@/components/input/Input";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
-import { Popover, PopoverController } from "@/components/popover/Popover";
-import { StrategyType } from "@/components/popover/Popover.types";
+import "../input/Input";
+import { Input } from "../input/Input";
+import "../menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
+import { Popover, PopoverController } from "../popover/Popover";
+import { StrategyType } from "../popover/Popover.types";
+import "./datepicker-calendar/DatePickerCalendar";
 import styles from "./scss/module.scss";
 export interface DatePickerControlButton {
   value: string;
@@ -101,6 +101,7 @@ export namespace DatePicker {
 
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
     @query("md-popover") popoverElement!: Popover;
+
     get computedNewMomentum() {
       if (this.newMomentum !== undefined) {
         return this.newMomentum;

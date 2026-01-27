@@ -1,10 +1,10 @@
-import "@/components/badge/Badge";
-import "@/components/button/Button";
 import { customElementWithCheck } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import hljs from "highlight.js/lib/core";
 import { html, LitElement, PropertyValues } from "lit";
 import { property, query, queryAssignedNodes, state } from "lit/decorators.js";
+import "../badge/Badge";
+import "../button/Button";
 import styles from "./scss/module.scss";
 
 export type Method = "get" | "post";

@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+    "types": ["vite/client"],
     "baseUrl": "../src",
     "paths": {
       "@/*": ["./*"],

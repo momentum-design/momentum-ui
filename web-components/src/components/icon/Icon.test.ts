@@ -33,9 +33,10 @@ describe("Momentum Icon Component", () => {
   });
 
   test("preferMomentumDesign icon size from legacy name", async () => {
-    const element = await fixture(
+    const element = await fixture<Icon.ELEMENT>(
       `<md-icon class="test-class" name="accessories_16" size="24" iconSet="preferMomentumDesign" color="red"></md-icon>`
     );
+    await elementUpdated(element);
 
     expect(getSvgElementAttribute(element, "width")).toEqual("24px");
     expect(getSvgElementAttribute(element, "height")).toEqual("24px");
@@ -67,9 +68,10 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should set aria-label attribute from title prop for preferMomentumDesign", async () => {
-    const element = await fixture(
+    const element = await fixture<Icon.ELEMENT>(
       `<md-icon title="Icon Component" iconSet="preferMomentumDesign" name="accessibility_16"></md-icon>`
     );
+    await elementUpdated(element);
     expect(element.shadowRoot!.querySelector("div")!.getAttribute("aria-label")).toEqual("Icon Component");
   });
 
@@ -81,9 +83,10 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should set title attribute from title prop for preferMomentumDesign", async () => {
-    const element = await fixture(
+    const element = await fixture<Icon.ELEMENT>(
       `<md-icon title="Icon Component" iconSet="preferMomentumDesign" name="accessibility_16"></md-icon>`
     );
+    await elementUpdated(element);
     expect(element.shadowRoot!.querySelector("div")!.getAttribute("title")).toEqual("Icon Component");
   });
 
@@ -95,9 +98,10 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should set aria-label attribute from description prop for preferMomentumDesign", async () => {
-    const element = await fixture(
+    const element = await fixture<Icon.ELEMENT>(
       `<md-icon description="Test Description" iconSet="preferMomentumDesign" name="accessibility_16"></md-icon>`
     );
+    await elementUpdated(element);
     expect(element.shadowRoot!.querySelector("div")!.getAttribute("aria-label")).toEqual("Test Description");
   });
 
@@ -113,7 +117,7 @@ describe("Momentum Icon Component", () => {
   test("should set aria-label attribute from title & description props for preferMomentumDesign", async () => {
     const title = "Test Title";
     const description = "Test Description";
-    const element = await fixture(html`
+    const element = await fixture<Icon.ELEMENT>(html`
       <md-icon
         title="${title}"
         description="${description}"
@@ -121,6 +125,7 @@ describe("Momentum Icon Component", () => {
         name="accessibility_16"
       ></md-icon>
     `);
+    await elementUpdated(element);
     expect(element.shadowRoot!.querySelector("div")!.getAttribute("aria-label")).toEqual(`${title} ${description}`);
   });
 

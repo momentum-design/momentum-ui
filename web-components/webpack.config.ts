@@ -51,14 +51,6 @@ const common: webpack.Configuration = {
         test: /\.(png|svg|jpe?g)$/,
         use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
         include: pSrc
-      },
-      {
-        test: /\.svg$/,
-        use: {
-          loader: "url-loader",
-          options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
-        },
-        include: [path.resolve("node_modules/@momentum-design/icons/dist/svg")]
       }
     ]
   }

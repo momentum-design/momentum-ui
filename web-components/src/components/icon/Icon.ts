@@ -23,7 +23,7 @@ export const iconType = ["", "white"] as const;
 export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals", "svg"] as const;
 
 import { iconUrlManager } from "@/managers/IconUrlManager";
-import { fetchSVG, getMomentumDesignIconContent } from "./Icon.utils";
+import { fetchSVG } from "./Icon.utils";
 
 export namespace Icon {
   export type Size = (typeof iconSize)[number];
@@ -222,10 +222,7 @@ export namespace Icon {
       // Get a fresh abort signal for this request
       const signal = this.renewSignal();
 
-      const importedIcon =
-        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg" || iconUrlManager.useFetchForMomentumDesign
-          ? await fetchSVG(this.computedSvgPath, iconName, "svg", signal)
-          : await getMomentumDesignIconContent(iconName);
+      const importedIcon = await fetchSVG(this.computedSvgPath, iconName, "svg", signal);
 
       // If aborted, importedIcon will be null and we should exit silently
       if (!importedIcon) {

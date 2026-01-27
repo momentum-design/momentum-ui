@@ -200,26 +200,23 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should ignore stale fetchSVG results when the icon name changes", async () => {
-    const mockGetMomentumDesignIconContent = jest.spyOn(IconUtils, "getMomentumDesignIconContent");
     const mockFetchSVG = jest.spyOn(IconUtils, "fetchSVG");
-    const deferredResolvers = new Map<string, (value: HTMLElement | null) => void>();
-
-    mockGetMomentumDesignIconContent.mockImplementation(async (iconName: string) => {
-      const svgElement = document.createElement("svg");
-      svgElement.setAttribute("data-immediate-icon", iconName);
-      return svgElement;
-    });
+    const deferredResolvers = new Map<string, { resolve: (value: HTMLElement | null) => void; signal?: AbortSignal }>();
 
     mockFetchSVG.mockImplementation(
-      (_url: string, iconName: string) =>
+      (_url: string, iconName: string, _ext?: string, signal?: AbortSignal) =>
         new Promise<HTMLElement | null>((resolve) => {
-          deferredResolvers.set(iconName, resolve);
+          deferredResolvers.set(iconName, { resolve, signal });
+          // If signal is already aborted, resolve with null immediately
+          if (signal?.aborted) {
+            resolve(null);
+          }
+          // Listen for abort
+          signal?.addEventListener("abort", () => {
+            resolve(null);
+          });
         })
     );
-
-    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
-      /**/
-    });
 
     const createSvgElement = (iconName: string) => {
       const svgElement = document.createElement("svg");
@@ -233,13 +230,15 @@ describe("Momentum Icon Component", () => {
 
     expect(deferredResolvers.has("social-facebook-color")).toBe(true);
 
-    element.iconSet = "preferMomentumDesign";
+    // Change the icon name - this should abort the first fetch
     element.name = "social-twitter-color";
     await elementUpdated(element);
 
-    expect(deferredResolvers.has("social-twitter-color")).toBe(false);
+    expect(deferredResolvers.has("social-twitter-color")).toBe(true);
 
-    deferredResolvers.get("social-facebook-color")?.(createSvgElement("social-facebook-color"));
+    // The first fetch should have been aborted (resolved with null via abort listener)
+    // Now resolve the second (current) fetch
+    deferredResolvers.get("social-twitter-color")?.resolve(createSvgElement("social-twitter-color"));
     await Promise.resolve();
     await elementUpdated(element);
 
@@ -248,12 +247,6 @@ describe("Momentum Icon Component", () => {
     const latestIcon = getRenderedIcon();
     expect(latestIcon).not.toBeNull();
     expect(latestIcon!.classList.contains("social-twitter-color")).toBe(true);
-
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        "The name changed to 'icon social-twitter-color' before the SVG icon 'social-facebook-color' finished loading; skipping outdated result."
-      )
-    );
 
     jest.restoreAllMocks();
   });

@@ -29,7 +29,7 @@ const config: StorybookConfig = {
     { from: "../node_modules/@momentum-design/brand-visuals/dist/svg", to: "/icons/svg" },
     { from: "./assets/backgrounds", to: "/images/backgrounds" },
     { from: "../node_modules/@momentum-design/icons/dist/svg", to: "/icons/svg" },
-    { from: "../src/assets/styles", to: "/css" }
+    { from: "./assets", to: "/css" }
   ],
 
   viteFinal: async (config) => {

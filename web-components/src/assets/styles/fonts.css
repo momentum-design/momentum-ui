@@ -3,8 +3,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/momentum-ui-icons.woff2?27aa89755dc2f86c019a4442ba367e9b") format("woff2"),
-    url("../../fonts/momentum-ui-icons.woff?5362a53c7633b3998906e7a67cd384ec") format("woff");
+    url("fonts/momentum-ui-icons.woff2?27aa89755dc2f86c019a4442ba367e9b") format("woff2"),
+    url("fonts/momentum-ui-icons.woff?5362a53c7633b3998906e7a67cd384ec") format("woff");
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: 400;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: 300;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -31,7 +31,7 @@
   font-style: normal;
   font-weight: 700;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -40,7 +40,7 @@
   font-style: normal;
   font-weight: 200;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -49,7 +49,7 @@
   font-style: oblique;
   font-weight: 400;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -58,7 +58,7 @@
   font-style: normal;
   font-weight: 250;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -67,7 +67,7 @@
   font-style: italic;
   font-weight: 250;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -76,7 +76,7 @@
   font-style: italic;
   font-weight: 300;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -85,7 +85,7 @@
   font-style: italic;
   font-weight: 400;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -94,7 +94,7 @@
   font-style: normal;
   font-weight: 500;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -103,7 +103,7 @@
   font-style: italic;
   font-weight: 700;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -112,7 +112,7 @@
   font-style: normal;
   font-weight: 800;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -121,7 +121,7 @@
   font-style: italic;
   font-weight: 800;
   font-feature-settings: "ss02";
-  src: url("../../fonts/Inter.var.woff2") format("woff2");
+  src: url("fonts/Inter.var.woff2") format("woff2");
 }
 
 @font-face {
@@ -130,8 +130,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTThin.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTThin.woff") format("woff");
+    url("fonts/CiscoSansTTThin.woff2") format("woff2"),
+    url("fonts/CiscoSansTTThin.woff") format("woff");
 }
 
 @font-face {
@@ -140,8 +140,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTThinOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTThinOblique.woff") format("woff");
+    url("fonts/CiscoSansTTThinOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTThinOblique.woff") format("woff");
 }
 
 @font-face {
@@ -150,8 +150,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTExtraLight.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTExtraLight.woff") format("woff");
+    url("fonts/CiscoSansTTExtraLight.woff2") format("woff2"),
+    url("fonts/CiscoSansTTExtraLight.woff") format("woff");
 }
 
 @font-face {
@@ -160,8 +160,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTExtraLightOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTExtraLightOblique.woff") format("woff");
+    url("fonts/CiscoSansTTExtraLightOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTExtraLightOblique.woff") format("woff");
 }
 
 @font-face {
@@ -170,8 +170,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTLight.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTLight.woff") format("woff");
+    url("fonts/CiscoSansTTLight.woff2") format("woff2"),
+    url("fonts/CiscoSansTTLight.woff") format("woff");
 }
 
 @font-face {
@@ -180,8 +180,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTLightOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTLightOblique.woff") format("woff");
+    url("fonts/CiscoSansTTLightOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTLightOblique.woff") format("woff");
 }
 
 @font-face {
@@ -190,8 +190,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTRegular.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTRegular.woff") format("woff");
+    url("fonts/CiscoSansTTRegular.woff2") format("woff2"),
+    url("fonts/CiscoSansTTRegular.woff") format("woff");
 }
 
 @font-face {
@@ -200,8 +200,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTRegular.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTRegular.woff") format("woff");
+    url("fonts/CiscoSansTTRegular.woff2") format("woff2"),
+    url("fonts/CiscoSansTTRegular.woff") format("woff");
 }
 
 @font-face {
@@ -210,8 +210,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTRegularOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTRegularOblique.woff") format("woff");
+    url("fonts/CiscoSansTTRegularOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTRegularOblique.woff") format("woff");
 }
 
 @font-face {
@@ -220,8 +220,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTBold.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTBold.woff") format("woff");
+    url("fonts/CiscoSansTTBold.woff2") format("woff2"),
+    url("fonts/CiscoSansTTBold.woff") format("woff");
 }
 
 @font-face {
@@ -230,8 +230,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTBoldOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTBoldOblique.woff") format("woff");
+    url("fonts/CiscoSansTTBoldOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTBoldOblique.woff") format("woff");
 }
 
 @font-face {
@@ -240,8 +240,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTHeavy.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTHeavy.woff") format("woff");
+    url("fonts/CiscoSansTTHeavy.woff2") format("woff2"),
+    url("fonts/CiscoSansTTHeavy.woff") format("woff");
 }
 
 @font-face {
@@ -250,6 +250,6 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url("../../fonts/CiscoSansTTHeavyOblique.woff2") format("woff2"),
-    url("../../fonts/CiscoSansTTHeavyOblique.woff") format("woff");
+    url("fonts/CiscoSansTTHeavyOblique.woff2") format("woff2"),
+    url("fonts/CiscoSansTTHeavyOblique.woff") format("woff");
 }

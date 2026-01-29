@@ -643,8 +643,6 @@ export class Popover extends FocusTrapMixin(LitElement) {
         popoverStack.push(this);
       }
 
-      super.preventScroll = this.preventScroll;
-
       if (this.focusTrap) {
         this.activateFocusTrap?.();
       }

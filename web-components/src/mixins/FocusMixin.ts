@@ -57,7 +57,8 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
     return base as T & AnyConstructor<FocusClass>;
   }
 
-  class Focus extends base {
+  // Cast base to include FocusClass methods for super calls (they may or may not exist at runtime)
+  class Focus extends (base as unknown as AnyConstructor<FocusClass>) {
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
     protected setFocus(force: boolean) {
@@ -65,6 +66,10 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
     }
 
     protected handleFocusIn(event: Event) {
+      if (super.handleFocusIn) {
+        super.handleFocusIn(event);
+      }
+
       this.setFocus(true);
 
       this.dispatchEvent(
@@ -79,6 +84,9 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
     }
 
     protected handleFocusOut(event: Event) {
+      if (super.handleFocusOut) {
+        super.handleFocusOut(event);
+      }
       this.setFocus(false);
 
       this.dispatchEvent(
@@ -98,8 +106,8 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      this.addEventListener("focus", (e: Event) => this.handleFocusIn(e));
-      this.addEventListener("blur", (e: Event) => this.handleFocusOut(e));
+      this.addEventListener("focus", this.handleFocusIn);
+      this.addEventListener("blur", this.handleFocusOut);
 
       if (this.autofocus) {
         requestAnimationFrame(() => {
@@ -122,6 +130,12 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
 
     protected isElementFocused(element: HTMLElement) {
       return this.getDeepActiveElement() !== element;
+    }
+
+    disconnectedCallback(): void {
+      super.disconnectedCallback();
+      this.removeEventListener("focus", this.handleFocusIn);
+      this.removeEventListener("blur", this.handleFocusOut);
     }
   }
 

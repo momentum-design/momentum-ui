@@ -54,8 +54,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): T
     return base as T & AnyConstructor<FocusTrapClass>;
   }
   class FocusTrap extends FocusMixin(base) {
-    @state() focusableElements: HTMLElement[] = [];
-    @state() initialFocusComplete = false;
+    @state() protected focusableElements: HTMLElement[] = [];
+    @state() protected initialFocusComplete = false;
 
     @state() private focusableTimer: ReturnType<typeof setTimeout> | null = null;
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;

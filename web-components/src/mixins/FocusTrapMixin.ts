@@ -26,13 +26,24 @@ import { Key } from "@/constants";
 import { LitElement, PropertyValues } from "lit";
 import { property, state } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
-import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
+import { FocusClass, FocusClassInterface, FocusEventDetail, FocusMixin, FocusMixinReturnType } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 /**
- * Abstract class describing the methods added by FocusTrapMixin.
- * Used as the constraint and return type for the mixin.
+ * Interface describing the public properties added by FocusTrapMixin.
+ * Protected methods are intentionally omitted to allow subclasses to override with protected visibility.
+ */
+export interface FocusTrapClassInterface extends FocusClassInterface {
+  activeFocusTrap: boolean;
+  preventClickOutside: boolean;
+  preventScroll: boolean;
+  focusTrapIndex: number;
+}
+
+/**
+ * Abstract class used internally for super calls within the mixin implementation.
+ * Also used in tests via bracket notation to access protected methods.
  */
 export abstract class FocusTrapClass extends FocusClass {
   declare activeFocusTrap: boolean;
@@ -49,11 +60,16 @@ export abstract class FocusTrapClass extends FocusClass {
   protected setFocusOnDeepestNestedElement?(element?: HTMLElement): void;
 }
 
-export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): T & AnyConstructor<FocusTrapClass> => {
+export type FocusTrapMixinReturnType<T extends AnyConstructor<LitElement>> = FocusMixinReturnType<T> &
+  AnyConstructor<FocusTrapClassInterface & FocusTrapClass>;
+
+export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): FocusTrapMixinReturnType<T> => {
   if (wasApplied(FocusTrapMixin, base)) {
-    return base as T & AnyConstructor<FocusTrapClass>;
+    return base as FocusTrapMixinReturnType<T>;
   }
-  class FocusTrap extends FocusMixin(base) {
+  // Cast to include FocusClass methods for internal use
+  const FocusMixedBase = FocusMixin(base) as unknown as AnyConstructor<FocusClass>;
+  class FocusTrap extends FocusMixedBase {
     @state() protected focusableElements: HTMLElement[] = [];
     @state() protected initialFocusComplete = false;
 
@@ -554,5 +570,5 @@ export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): T
 
   DedupeMixin(FocusTrapMixin, FocusTrap);
 
-  return FocusTrap as unknown as T & AnyConstructor<FocusTrapClass>;
+  return FocusTrap as unknown as FocusTrapMixinReturnType<T>;
 };

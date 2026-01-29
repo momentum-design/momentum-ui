@@ -38,8 +38,16 @@ export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 export type FocusEventDetail = { sourceEvent: Event };
 
 /**
- * Abstract class describing the methods added by FocusMixin.
- * Used as the constraint and return type for the mixin.
+ * Interface describing the public properties added by FocusMixin.
+ * Protected methods are intentionally omitted to allow subclasses to override with protected visibility.
+ */
+export interface FocusClassInterface {
+  autofocus: boolean;
+}
+
+/**
+ * Abstract class used internally for super calls within the mixin implementation.
+ * Also used in tests via bracket notation to access protected methods.
  */
 export abstract class FocusClass extends LitElement {
   declare autofocus: boolean;
@@ -52,9 +60,12 @@ export abstract class FocusClass extends LitElement {
   protected getActiveElement?(): Element | null;
 }
 
-export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & AnyConstructor<FocusClass> => {
+export type FocusMixinReturnType<T extends AnyConstructor<LitElement>> = T &
+  AnyConstructor<FocusClassInterface & FocusClass>;
+
+export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): FocusMixinReturnType<T> => {
   if (wasApplied(FocusMixin, base)) {
-    return base as T & AnyConstructor<FocusClass>;
+    return base as FocusMixinReturnType<T>;
   }
 
   // Cast base to include FocusClass methods for super calls (they may or may not exist at runtime)
@@ -141,5 +152,5 @@ export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & A
 
   DedupeMixin(FocusMixin, Focus);
 
-  return Focus as unknown as T & AnyConstructor<FocusClass>;
+  return Focus as unknown as FocusMixinReturnType<T>;
 };

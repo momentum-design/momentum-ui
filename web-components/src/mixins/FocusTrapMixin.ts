@@ -30,31 +30,32 @@ import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
-export abstract class FocusTrapClass extends LitElement {
-  protected deactivateFocusTrap?(): void;
-  protected activateFocusTrap?(): void;
+/**
+ * Abstract class describing the methods added by FocusTrapMixin.
+ * Used as the constraint and return type for the mixin.
+ */
+export abstract class FocusTrapClass extends FocusClass {
+  declare activeFocusTrap: boolean;
+  declare preventClickOutside: boolean;
+  declare preventScroll: boolean;
+  declare focusTrapIndex: number;
   protected focusableElements?: HTMLElement[];
   protected initialFocusComplete?: boolean;
+  protected deactivateFocusTrap?(): void;
+  protected activateFocusTrap?(): void;
   protected setFocusableElements?(): void;
   protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
-  protected setFocusOnTrigger?(triggerEleement?: HTMLElement): void;
+  protected setFocusOnTrigger?(triggerElement?: HTMLElement): void;
   protected setFocusOnDeepestNestedElement?(element?: HTMLElement): void;
 }
-export interface FocusTrapInterface {
-  activeFocusTrap: boolean;
-  preventClickOutside: boolean;
-  preventScroll: boolean;
-  focusTrapIndex: number;
-}
-export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapClass>>(
-  base: T
-): T & AnyConstructor<FocusTrapClass & FocusTrapInterface & FocusClass> => {
+
+export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): T & AnyConstructor<FocusTrapClass> => {
   if (wasApplied(FocusTrapMixin, base)) {
-    return base as ReturnType<() => T & AnyConstructor<FocusTrapClass & FocusTrapInterface & FocusClass>>;
+    return base as T & AnyConstructor<FocusTrapClass>;
   }
   class FocusTrap extends FocusMixin(base) {
-    @state() protected focusableElements: HTMLElement[] = [];
-    @state() protected initialFocusComplete = false;
+    @state() focusableElements: HTMLElement[] = [];
+    @state() initialFocusComplete = false;
 
     @state() private focusableTimer: ReturnType<typeof setTimeout> | null = null;
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
@@ -553,5 +554,5 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
   DedupeMixin(FocusTrapMixin, FocusTrap);
 
-  return FocusTrap;
+  return FocusTrap as unknown as T & AnyConstructor<FocusTrapClass>;
 };

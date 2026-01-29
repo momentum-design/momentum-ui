@@ -34,23 +34,29 @@ import { property } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AnyConstructor<A = LitElement> = new (...input: any[]) => A;
+export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 export type FocusEventDetail = { sourceEvent: Event };
 
+/**
+ * Abstract class describing the methods added by FocusMixin.
+ * Used as the constraint and return type for the mixin.
+ */
 export abstract class FocusClass extends LitElement {
+  declare autofocus: boolean;
   protected setFocus?(force: boolean): void;
   protected handleFocusIn?(event: Event): void;
   protected handleFocusOut?(event: Event): void;
   protected getDeepActiveElement?(): Element;
   protected isElementFocused?(element: HTMLElement): boolean;
-  protected manageAutoFocus?(element?: Element): void;
+  protected manageAutoFocus?(element?: HTMLElement): void;
   protected getActiveElement?(): Element | null;
 }
 
-export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & AnyConstructor<FocusClass> => {
+export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): T & AnyConstructor<FocusClass> => {
   if (wasApplied(FocusMixin, base)) {
-    return base as ReturnType<() => T & AnyConstructor<FocusClass>>;
+    return base as T & AnyConstructor<FocusClass>;
   }
+
   class Focus extends base {
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
@@ -59,10 +65,6 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     }
 
     protected handleFocusIn(event: Event) {
-      if (super.handleFocusIn) {
-        super.handleFocusIn(event);
-      }
-
       this.setFocus(true);
 
       this.dispatchEvent(
@@ -77,9 +79,6 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     }
 
     protected handleFocusOut(event: Event) {
-      if (super.handleFocusOut) {
-        super.handleFocusOut(event);
-      }
       this.setFocus(false);
 
       this.dispatchEvent(
@@ -99,8 +98,8 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      this.addEventListener("focus", this.handleFocusIn);
-      this.addEventListener("blur", this.handleFocusOut);
+      this.addEventListener("focus", (e: Event) => this.handleFocusIn(e));
+      this.addEventListener("blur", (e: Event) => this.handleFocusOut(e));
 
       if (this.autofocus) {
         requestAnimationFrame(() => {
@@ -124,14 +123,9 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     protected isElementFocused(element: HTMLElement) {
       return this.getDeepActiveElement() !== element;
     }
-
-    disconnectedCallback(): void {
-      this.removeEventListener("focus", this.handleFocusIn);
-      this.removeEventListener("blur", this.handleFocusOut);
-    }
   }
 
   DedupeMixin(FocusMixin, Focus);
 
-  return Focus;
+  return Focus as unknown as T & AnyConstructor<FocusClass>;
 };

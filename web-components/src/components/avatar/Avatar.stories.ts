@@ -76,7 +76,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-avatar"
+      context: "md-avatar"
     }
   }
 };

@@ -65,7 +65,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-draggable"
+      context: "md-draggable"
     },
     docs: {
       description: {

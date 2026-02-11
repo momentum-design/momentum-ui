@@ -52,7 +52,7 @@ const meta: Meta = {
     alignment: { control: { type: "select" }, options: alignmentOptions },
     shape: { control: { type: "select" }, options: ["pill", "rounded"] }
   },
-  parameters: { a11y: { element: "md-list" } }
+  parameters: { a11y: { context: "md-list" } }
 };
 
 export default meta;

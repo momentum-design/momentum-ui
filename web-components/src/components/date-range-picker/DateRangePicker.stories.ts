@@ -22,7 +22,7 @@ const meta: Meta = {
     startDate: { control: "text", defaultValue: now().minus({ day: 2 }).toISODate() },
     endDate: { control: "text", defaultValue: now().toISODate() }
   },
-  parameters: { a11y: { element: "md-date-range-picker" } }
+  parameters: { a11y: { context: "md-date-range-picker" } }
 };
 
 export default meta;

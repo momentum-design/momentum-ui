@@ -38,7 +38,7 @@ const meta: Meta = {
   },
   tags: ["autodocs"],
   parameters: {
-    a11y: { element: "md-meeting-alert" },
+    a11y: { context: "md-meeting-alert" },
     docs: {
       description: { component: "A typical usage of Meeting Alert, with different variations as individual stories" }
     }

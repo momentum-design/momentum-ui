@@ -150,7 +150,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-table-advanced"
+      context: "md-table-advanced"
     }
   }
 };

@@ -33,7 +33,7 @@ export default {
     "avatar-type": { control: { type: "select" }, options: AvatarType },
     "self-label": { control: "text" }
   },
-  parameters: { a11y: { element: "md-chat-message" } }
+  parameters: { a11y: { context: "md-chat-message" } }
 };
 
 export const ChatMessage: StoryObj = {

@@ -293,7 +293,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-tabs"
+      context: "md-tabs"
     }
   }
 };

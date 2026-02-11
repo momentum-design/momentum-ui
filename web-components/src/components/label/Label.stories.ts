@@ -26,7 +26,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-label"
+      context: "md-label"
     }
   }
 };

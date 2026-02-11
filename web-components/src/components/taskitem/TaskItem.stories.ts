@@ -44,7 +44,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-task-item"
+      context: "md-task-item"
     }
   }
 };

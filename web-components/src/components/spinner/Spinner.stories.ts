@@ -19,7 +19,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-spinner"
+      context: "md-spinner"
     }
   }
 };

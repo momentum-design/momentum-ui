@@ -69,7 +69,7 @@ const meta: Meta = {
   title: "Components/CardV2",
   component: "md-card-v2",
   argTypes: { state: { control: { type: "select" }, options: Object.values(CardState) } },
-  parameters: { a11y: { element: "md-card-v2" } }
+  parameters: { a11y: { context: "md-card-v2" } }
 };
 
 export default meta;

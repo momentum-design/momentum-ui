@@ -31,7 +31,7 @@ const meta: Meta = {
   title: "Components/Presence",
   component: "md-presence",
   argTypes: { size: { control: { type: "number" } } },
-  parameters: { a11y: { element: "md-presence" } }
+  parameters: { a11y: { context: "md-presence" } }
 };
 
 export default meta;

@@ -10,7 +10,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-input-file"
+      context: "md-input-file"
     }
   }
 };

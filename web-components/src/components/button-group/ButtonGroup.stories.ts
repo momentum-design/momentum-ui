@@ -37,7 +37,7 @@ const meta: Meta = {
   argTypes: {},
   parameters: {
     a11y: {
-      element: "md-button-group"
+      context: "md-button-group"
     }
   }
 };

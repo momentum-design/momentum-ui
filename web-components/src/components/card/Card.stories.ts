@@ -76,7 +76,7 @@ const meta: Meta = {
     avatar: { description: "Change Favorite Icon in header on slot - 'card-header-icon'" },
     slotTitle: { description: "Add custom Title in slot - 'card-header-title'" }
   },
-  parameters: { a11y: { element: "md-card" } }
+  parameters: { a11y: { context: "md-card" } }
 };
 
 export default meta;

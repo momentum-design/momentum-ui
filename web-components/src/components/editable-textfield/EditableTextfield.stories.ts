@@ -86,7 +86,7 @@ const meta: Meta = {
     inputType: { control: { type: "select" }, options: numInputTypes },
     regexString: { control: "text", description: "Regex String" }
   },
-  parameters: { a11y: { element: "md-editable-field" } }
+  parameters: { a11y: { context: "md-editable-field" } }
 };
 
 export default meta;

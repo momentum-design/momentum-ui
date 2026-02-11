@@ -51,7 +51,7 @@ const meta: Meta = {
   title: "Components/Card Ai",
   component: "md-card-ai",
   argTypes: { variant: { control: { type: "select" }, options: Object.values(CardAiVariant) } },
-  parameters: { a11y: { element: "md-card-ai" } }
+  parameters: { a11y: { context: "md-card-ai" } }
 };
 
 export default meta;

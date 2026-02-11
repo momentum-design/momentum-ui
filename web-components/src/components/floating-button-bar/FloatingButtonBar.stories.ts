@@ -64,7 +64,7 @@ const meta: Meta = {
   argTypes: {},
   parameters: {
     a11y: {
-      element: "md-floating-button-bar"
+      context: "md-floating-button-bar"
     }
   }
 };

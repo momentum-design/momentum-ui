@@ -40,7 +40,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-menu-overlay"
+      context: "md-menu-overlay"
     }
   }
 };

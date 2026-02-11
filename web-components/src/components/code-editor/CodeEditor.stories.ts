@@ -12,7 +12,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-code-editor"
+      context: "md-code-editor"
     }
   }
 };

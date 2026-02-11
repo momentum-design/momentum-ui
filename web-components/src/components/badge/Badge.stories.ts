@@ -205,7 +205,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-badge"
+      context: "md-badge"
     }
   }
 };

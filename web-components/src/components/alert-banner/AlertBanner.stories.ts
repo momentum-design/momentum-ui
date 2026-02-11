@@ -49,7 +49,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-alert-banner"
+      context: "md-alert-banner"
     },
     docs: {
       description: {

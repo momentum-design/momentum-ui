@@ -6,12 +6,12 @@
  *
  */
 
-import styles from "../tooltip/scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { html, LitElement, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
+import styles from "../tooltip/scss/module.scss";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip";
 import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
@@ -398,7 +398,7 @@ export namespace Theme {
           </style>
           <slot></slot>
           <div class="md-tooltip" data-virtual-global-popper></div>
-          <div data-virtual-global-reference aria-describedby="tooltip"></div>
+          <div data-virtual-global-reference></div>
         </div>
       `;
     }

@@ -13,7 +13,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-pagination"
+      context: "md-pagination"
     }
   }
 };

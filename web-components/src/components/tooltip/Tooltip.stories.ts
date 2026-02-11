@@ -47,7 +47,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-tooltip"
+      context: "md-tooltip"
     }
   }
 };

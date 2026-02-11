@@ -93,6 +93,6 @@ const meta: Meta = {
     selectedItemsIds: { table: { disable: true } },
     selectAllItems: { table: { disable: true } }
   },
-  parameters: { a11y: { element: "md-advance-list" } }
+  parameters: { a11y: { context: "md-advance-list" } }
 };
 export default meta;

@@ -81,7 +81,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-icon"
+      context: "md-icon"
     }
   }
 };

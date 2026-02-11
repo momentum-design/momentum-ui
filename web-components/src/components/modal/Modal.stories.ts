@@ -77,7 +77,7 @@ const meta: Meta = {
     backdropClickExit: { control: "boolean" },
     alignment: { control: { type: "select" }, options: [undefined, "leading", "center"] }
   },
-  parameters: { a11y: { element: "md-modal" } }
+  parameters: { a11y: { context: "md-modal" } }
 };
 
 export default meta;

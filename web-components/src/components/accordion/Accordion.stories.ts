@@ -43,7 +43,7 @@ const meta: Meta = {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-accordion"
+      context: "md-accordion"
     }
   }
 };

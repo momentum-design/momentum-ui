@@ -292,7 +292,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-input"
+      context: "md-input"
     }
   }
 };

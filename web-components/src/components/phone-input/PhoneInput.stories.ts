@@ -17,7 +17,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-phone-input"
+      context: "md-phone-input"
     }
   }
 };

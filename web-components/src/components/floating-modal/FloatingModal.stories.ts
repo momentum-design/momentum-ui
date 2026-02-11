@@ -39,7 +39,7 @@ export default {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-floating-modal"
+      context: "md-floating-modal"
     },
     docs: {
       description: {

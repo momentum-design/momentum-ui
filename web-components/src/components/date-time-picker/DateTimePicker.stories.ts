@@ -24,7 +24,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-date-time-picker"
+      context: "md-date-time-picker"
     }
   }
 };

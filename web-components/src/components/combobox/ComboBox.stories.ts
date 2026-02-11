@@ -36,7 +36,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-combobox"
+      context: "md-combobox"
     }
   }
 };

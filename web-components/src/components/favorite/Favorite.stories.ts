@@ -22,7 +22,7 @@ export default {
   tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-favorite"
+      context: "md-favorite"
     }
   }
 };

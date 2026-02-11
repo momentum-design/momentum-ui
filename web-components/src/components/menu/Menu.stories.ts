@@ -23,7 +23,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-menu"
+      context: "md-menu"
     }
   }
 };

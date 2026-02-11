@@ -25,7 +25,7 @@ const meta: Meta = {
   argTypes: {},
   parameters: {
     a11y: {
-      element: "md-audio-player"
+      context: "md-audio-player"
     }
   }
 };

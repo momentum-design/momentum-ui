@@ -27,7 +27,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-slider"
+      context: "md-slider"
     }
   }
 };

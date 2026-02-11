@@ -54,12 +54,14 @@ export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMini
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export {
   AbstractControl,
+  ArrayValidators,
   FormArray,
   FormControl,
   FormGroup,
+  Subscription,
   ValidationError,
-  Validators,
-  ArrayValidators
+  ValidatorFn,
+  Validators
 } from "./components/form";
 export { Form } from "./components/form/Form";
 export { Grabber } from "./components/grabber/Grabber";

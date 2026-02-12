@@ -107,7 +107,6 @@ export namespace AccordionItem {
       if (this.disabled) return;
 
       const isDoubleClick = event.type === "dblclick";
-      // Only handle the event if it matches the expected click type
       if (this.doubleClickToExpand === isDoubleClick) {
         this.dispatchEvent(
           new CustomEvent<AccordionEvent>("accordion-item-click", {

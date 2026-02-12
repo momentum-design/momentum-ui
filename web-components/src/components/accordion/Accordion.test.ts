@@ -124,18 +124,18 @@ describe("Accordion", () => {
   });
 
   test("should correct select accordion item by click", async () => {
-    const mouseDown = new MouseEvent("mousedown");
-    accordionItems[1].header.dispatchEvent(mouseDown);
+    const click = new MouseEvent("click");
+    accordionItems[1].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[1].expanded).toBeFalsy();
 
-    accordionItems[3].header.dispatchEvent(mouseDown);
+    accordionItems[3].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeTruthy();
 
-    accordionItems[4].header.dispatchEvent(mouseDown);
+    accordionItems[4].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeFalsy();
@@ -144,15 +144,44 @@ describe("Accordion", () => {
     accordion.multiple = true;
     await elementUpdated(accordion);
 
-    accordionItems[0].header.dispatchEvent(mouseDown);
+    accordionItems[0].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeTruthy();
     expect(accordionItems[4].expanded).toBeTruthy();
 
-    accordionItems[0].header.dispatchEvent(mouseDown);
+    accordionItems[0].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeFalsy();
+  });
+
+  test("should propagate doubleClickToExpand to accordion items", async () => {
+    const dblClickAccordion = await fixture<Accordion.ELEMENT>(html`
+      <md-accordion double-click-to-expand>
+        <md-accordion-item slot="accordion-item" label="Header №1">
+          <div>Panel №1</div>
+        </md-accordion-item>
+        <md-accordion-item slot="accordion-item" label="Header №2">
+          <div>Panel №2</div>
+        </md-accordion-item>
+      </md-accordion>
+    `);
+    jest.runAllTimers();
+    const items = dblClickAccordion.slotted as AccordionItem.ELEMENT[];
+
+    items.forEach((item) => {
+      expect(item.doubleClickToExpand).toBeTruthy();
+    });
+
+    const click = new MouseEvent("click");
+    items[0].header.dispatchEvent(click);
+    jest.advanceTimersByTime(100);
+    expect(items[0].expanded).toBeFalsy();
+
+    const dblclick = new MouseEvent("dblclick");
+    items[0].header.dispatchEvent(dblclick);
+    jest.advanceTimersByTime(100);
+    expect(items[0].expanded).toBeTruthy();
   });
 });

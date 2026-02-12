@@ -29,6 +29,7 @@ export namespace AccordionItem {
 
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Boolean, attribute: "double-click-to-expand" }) doubleClickToExpand = false;
     @property({ type: Boolean, reflect: true })
     get expanded() {
       return this._expanded;
@@ -103,8 +104,11 @@ export namespace AccordionItem {
       return [reset, styles];
     }
 
-    handleMouseDown(event: MouseEvent) {
-      if (!this.disabled) {
+    private handleClickEvent(event: MouseEvent) {
+      if (this.disabled) return;
+
+      const isDoubleClick = event.type === "dblclick";
+      if (this.doubleClickToExpand === isDoubleClick) {
         this.dispatchEvent(
           new CustomEvent<AccordionEvent>("accordion-item-click", {
             detail: {
@@ -146,7 +150,8 @@ export namespace AccordionItem {
               id="header-${this.uniqueId}"
               part="accordion-button"
               tabindex=${ifDefined(this.disabled ? -1 : undefined)}
-              @mousedown=${this.handleMouseDown}
+              @click=${this.handleClickEvent}
+              @dblclick=${this.handleClickEvent}
               @keydown=${this.handleKeyDown}
             >
               <slot name="header-content">

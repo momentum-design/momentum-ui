@@ -19,6 +19,7 @@ export namespace Accordion {
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) multiple = false;
     @property({ type: Boolean, attribute: "suppress-container-focus" }) suppressContainerFocus = false;
+    @property({ type: Boolean, attribute: "double-click-to-expand" }) doubleClickToExpand = false;
 
     @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
 
@@ -152,11 +153,18 @@ export namespace Accordion {
       }
     }
 
+    private propagateDoubleClickSetting() {
+      this.slotted.forEach((item) => {
+        (item as AccordionItem.ELEMENT).doubleClickToExpand = this.doubleClickToExpand;
+      });
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("slotted")) {
         this.setupExpandedAccordionItems();
         this.setupFocusAccordionItems();
+        this.propagateDoubleClickSetting();
       }
     }
 

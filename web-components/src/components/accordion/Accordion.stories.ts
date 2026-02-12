@@ -6,7 +6,11 @@ import "./AccordionItem";
 import { Accordion as AccordionEl } from "./Accordion";
 
 const Template = ({ disabled, expanded, multiple, suppressContainerFocus, doubleClickToExpand }: Args) => {
-  return html`<md-accordion ?multiple=${multiple} ?suppress-container-focus=${suppressContainerFocus} ?double-click-to-expand=${doubleClickToExpand}>
+  return html`<md-accordion
+    ?multiple=${multiple}
+    ?suppress-container-focus=${suppressContainerFocus}
+    ?double-click-to-expand=${doubleClickToExpand}
+  >
     <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
       <div>Panel №1</div>
     </md-accordion-item>

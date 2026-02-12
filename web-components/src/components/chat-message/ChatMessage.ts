@@ -1,9 +1,10 @@
-import "@/components/avatar/Avatar";
-import { type Avatar } from "@/components/avatar/Avatar";
+import "../avatar/Avatar";
+import { type Avatar } from "../avatar/Avatar";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export namespace ChatMessage {
@@ -79,7 +80,7 @@ export namespace ChatMessage {
             ></md-avatar>
           </div>
 
-          <div class="md-chat-message_content ${this.isSelected ? 'selected' : ''}">
+          <div class="md-chat-message_content ${this.isSelected ? "selected" : ""}">
             <div class="md-chat-message_heading">
               <div class="md-chat-message_title">
                 <span>${this.isSelfType ? this.computedYouLabel : this.title}</span>
@@ -93,13 +94,13 @@ export namespace ChatMessage {
                     }}
                     >${this.time}</md-link
                   >`
-                : html`<div class="md-chat-message_time">${this.time}</div>`}
-              <div class="md-chat-message_status">${this.status}</div>
-              <div class="md-chat-message_custom_content">
+                : html`<div class="md-chat-message_time" title="">${this.time}</div>`}
+              <div class="md-chat-message_status" title="">${this.status}</div>
+              <div class="md-chat-message_custom_content" title="">
                 <slot name="custom-content"></slot>
               </div>
             </div>
-            <div class="md-chat-message_text">
+            <div class="md-chat-message_text" title="">
               <slot name="message"></slot>
             </div>
           </div>

@@ -6,14 +6,15 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/popover/Popover";
-import { PlacementType } from "@/components/popover/Popover.types";
+import "../button/Button";
+import "../icon/Icon";
+import "../popover/Popover";
+import { PlacementType } from "../popover/Popover.types";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, html, property, query } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { LitElement, PropertyValues, html } from "lit";
+import { property, query } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 export namespace CoachmarkPopover {
   /**

@@ -8,7 +8,7 @@
 
 import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
@@ -44,7 +44,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-task-item"
+      context: "md-task-item"
     }
   }
 };

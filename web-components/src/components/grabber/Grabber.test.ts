@@ -1,5 +1,6 @@
 import "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { screen } from "shadow-dom-testing-library";
 import "./Grabber";
 import { type Grabber } from "./Grabber";
 
@@ -72,69 +73,67 @@ describe("Grabber component", () => {
     mockEnterClick.mockRestore();
   });
 
-  test("should handle mouse down", async () => {
+  test("should handle click", async () => {
     const component = await fixtureFactory();
-    const button = component.shadowRoot?.querySelector("button");
 
-    const mockMouseDown = jest.spyOn(component, "handleMouseDown");
-    button?.dispatchEvent(new MouseEvent("click"));
+    let button = screen.getByShadowRole("button");
+    expect(button.getAttribute("aria-pressed")).toBe("false");
+
+    button.click();
     await elementUpdated(component);
 
-    expect(mockMouseDown).toHaveBeenCalled();
-
-    mockMouseDown.mockRestore();
+    button = screen.getByShadowRole("button");
+    expect(button.getAttribute("aria-pressed")).toBe("true");
   });
 
   test("should handle mouse enter", async () => {
     const component = await fixtureFactory();
-    const button = component.shadowRoot?.querySelector("button");
 
-    const mockMouseEnter = jest.spyOn(component, "handleMouseEnter");
-    button?.dispatchEvent(new MouseEvent("mouseenter"));
+    const button = screen.getByShadowRole("button");
+    expect(component.hovered).toBe(false);
+
+    button.dispatchEvent(new MouseEvent("mouseenter"));
     await elementUpdated(component);
 
-    expect(mockMouseEnter).toHaveBeenCalled();
-
-    mockMouseEnter.mockRestore();
+    expect(component.hovered).toBe(true);
   });
 
   test("should handle mouse leave", async () => {
     const component = await fixtureFactory();
-    const button = component.shadowRoot?.querySelector("button");
+    component.hovered = true;
 
-    const mockMouseLeave = jest.spyOn(component, "handleMouseLeave");
-    button?.dispatchEvent(new MouseEvent("mouseleave"));
+    const button = screen.getByShadowRole("button");
+    expect(component.hovered).toBe(true);
+
+    button.dispatchEvent(new MouseEvent("mouseleave"));
     await elementUpdated(component);
 
-    expect(mockMouseLeave).toHaveBeenCalled();
-
-    mockMouseLeave.mockRestore();
+    expect(component.hovered).toBe(false);
   });
 
   test("should handle focus", async () => {
     const component = await fixtureFactory();
-    const button = component.shadowRoot?.querySelector("button");
 
-    const mockFocus = jest.spyOn(component, "handleFocus");
-    button?.dispatchEvent(new FocusEvent("focus"));
+    const button = screen.getByShadowRole("button");
+    expect(component.focused).toBe(false);
+
+    button.dispatchEvent(new FocusEvent("focus"));
     await elementUpdated(component);
 
-    expect(mockFocus).toHaveBeenCalled();
-
-    mockFocus.mockRestore();
+    expect(component.focused).toBe(true);
   });
 
   test("should handle blur", async () => {
     const component = await fixtureFactory();
-    const button = component.shadowRoot?.querySelector("button");
+    component.focused = true;
 
-    const mockBlur = jest.spyOn(component, "handleBlur");
-    button?.dispatchEvent(new FocusEvent("blur"));
+    const button = screen.getByShadowRole("button");
+    expect(component.focused).toBe(true);
+
+    button.dispatchEvent(new FocusEvent("blur"));
     await elementUpdated(component);
 
-    expect(mockBlur).toHaveBeenCalled();
-
-    mockBlur.mockRestore();
+    expect(component.focused).toBe(false);
   });
 
   test("should dispatch hover event on mouse enter", async () => {

@@ -1,5 +1,5 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -11,9 +11,9 @@ import "@interactjs/auto-start";
 import interact from "@interactjs/interact/index";
 import "@interactjs/modifiers";
 import * as Interact from "@interactjs/types";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export namespace FloatingMinimizedModal {
@@ -37,8 +37,8 @@ export namespace FloatingMinimizedModal {
     @query(".md-floating__header") header!: HTMLDivElement;
 
     // To distinguish between click and drag
-    @internalProperty() private dragOccured: boolean | false = false;
-    @internalProperty() private containerTransform = "";
+    @state() private dragOccured: boolean | false = false;
+    @state() private containerTransform = "";
 
     private applyInitialPosition = true;
 

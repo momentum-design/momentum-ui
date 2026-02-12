@@ -12,10 +12,10 @@
     }
 
     &-item {
-        margin-bottom: $accordion-base-indent;
-        border-radius: $accordion-border-radius;
-        border: 1px solid $accordion-border_color;
-        background-color: $accordion-bg-color
+      margin-bottom: $accordion-base-indent;
+      border-radius: $accordion-border-radius;
+      border: 1px solid $accordion-border_color;
+      background-color: $accordion-bg-color;
     }
 
     &-expander {
@@ -29,6 +29,7 @@
         display: flex;
         margin: 0;
         margin-inline-start: auto;
+        color: $accordion-text_active;
       }
 
       &-label {
@@ -54,9 +55,9 @@
       background-color: $accordion-bg_color;
     }
   }
-  
+
   .md-accordion-header {
-      background-color: $accordion-bg-color;
+    background-color: $accordion-bg-color;
   }
   .md-accordion-panel {
     display: block;
@@ -68,9 +69,9 @@
 }
 
 :host(md-accordion-item[focus-visible]) {
-    .md-accordion-item {
-      box-shadow: 0 0 0 core.rem-calc(2) $accordion-border_focus;
-      border-radius: $accordion-border-radius;
+  .md-accordion-item {
+    box-shadow: 0 0 0 core.rem-calc(2) $accordion-border_focus;
+    border-radius: $accordion-border-radius;
 
     .md-accordion-header {
       background-color: $accordion-bg_active;
@@ -79,11 +80,9 @@
 }
 
 :host(md-accordion-item[focus-visible][expanded]) {
-
   .md-accordion-header {
-      background-color: $accordion-bg-color;
+    background-color: $accordion-bg-color;
   }
-  
 }
 
 :host(md-accordion-item) {
@@ -98,11 +97,13 @@
   .md-accordion-expander {
     color: $accordion-disabled;
     cursor: not-allowed;
+    md-icon {
+      color: $accordion-disabled;
+    }
   }
 }
 
-
-@media(forced-colors: active) {
+@media (forced-colors: active) {
   :host(md-accordion-item[focus-visible]) {
     .md-accordion-expander {
       outline: core.rem-calc(2) solid Highlight;

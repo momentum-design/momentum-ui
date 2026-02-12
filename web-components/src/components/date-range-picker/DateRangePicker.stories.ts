@@ -2,7 +2,7 @@ import "@/components/date-range-picker/DateRangePicker";
 import { now } from "@/utils/dateUtils";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
+import { DatePicker as DP } from "@/components/datepicker/DatePicker";
 import "../theme/Theme";
 
 const meta: Meta = {
@@ -15,13 +15,14 @@ const meta: Meta = {
     validateDate: { control: "boolean", defaultValue: true },
     controlButtons: { control: "boolean" },
     disabled: { control: "boolean" },
-    minDate: { control: "text", defaultValue: now().minus({ day: 5 }).toISODate() },
-    maxDate: { control: "text", defaultValue: now().plus({ day: 30 }).toISODate() },
+    minDate: { control: "text" },
+    maxDate: { control: "text" },
+    maxRangeLength: { control: "number" },
     value: { control: "text", defaultValue: `${now().minus({ day: 2 }).toISODate()} - ${now().toISODate()}` },
     startDate: { control: "text", defaultValue: now().minus({ day: 2 }).toISODate() },
     endDate: { control: "text", defaultValue: now().toISODate() }
   },
-  parameters: { a11y: { element: "md-date-range-picker" } }
+  parameters: { a11y: { context: "md-date-range-picker" } }
 };
 
 export default meta;
@@ -40,6 +41,7 @@ const render = (args: Args) => {
       .validateDate=${args.validateDate}
       minDate=${args.minDate}
       maxDate=${args.maxDate}
+      max-range-length=${args.maxRangeLength}
       start-date=${args.startDate}
       .controlButtons=${controlButtons}
       end-date=${args.endDate}
@@ -49,6 +51,13 @@ const render = (args: Args) => {
 };
 
 export const DateRangePicker: StoryObj = {
-  args: { disabled: false, shouldCloseOnSelect: false, locale: "en-US" },
+  args: {
+    disabled: false,
+    shouldCloseOnSelect: false,
+    locale: "en-US",
+    minDate: now().minus({ months: 12 }).toISODate(),
+    maxDate: now().toISODate(),
+    maxRangeLength: 7
+  },
   render: render
 };

@@ -2,17 +2,17 @@
 
 So you want to contribute to Momentum-UI Web Components? Join the club! Web Components are quickly becoming one of the strongest standards of the modern web, and with the help of savvy developers such as yourself Momentum-UI has the potential to be a first class UI kit that makes the most of this next-generation technology.
 
-Web Components is a somewhat broad topic and I encourage first-timers to read [this great primer](https://css-tricks.com/an-introduction-to-web-components/) on the basics of web components from CSS Tricks. This introduction to the basic concepts and vanilla JavaScript application lays a good foundation to better uderstand and appreciate the Momentum approach that leverages LitElement, TypeScript, and some of our home-grown standards to make for a better Dev Experience and create complex functionality.
+Web Components is a somewhat broad topic and I encourage first-timers to read [this great primer](https://css-tricks.com/an-introduction-to-web-components/) on the basics of web components from CSS Tricks. This introduction to the basic concepts and vanilla JavaScript application lays a good foundation to better understand and appreciate the Momentum approach that leverages Lit 3, TypeScript, and some of our home-grown standards to make for a better Dev Experience and create complex functionality.
 
 #### [READ: CSS Tricks Intro to Web Components](https://css-tricks.com/an-introduction-to-web-components/)
 
-_**Note:** don't fret a deep understanding of the `<template>` and `document.importNode` usage. Many of these basics are abstracted away by LitElement, and a high-level understanding of vanilla Web Components is good enough to appreciate how LitElement improves developer experience._
+_**Note:** don't fret a deep understanding of the `<template>` and `document.importNode` usage. Many of these basics are abstracted away by Lit, and a high-level understanding of vanilla Web Components is good enough to appreciate how Lit improves developer experience._
 
 <hr>
 
 ## Main Concepts (the short version)
 #### 1. Extending the `HTMLElement` base class
-Yep, you are basically just building on top of the native `HTMLElement` class and adding your own additions, like attributes and properties, methods, lifecycle control, HTML templates and CSS styles. In our library, we extend the `LitElement` class that provides more abstraction layers, but climb just a few steps up the prototype inheritance chain and you'll find `HTMLElement` right there providing the backbone.
+Yep, you are basically just building on top of the native `HTMLElement` class and adding your own additions, like attributes and properties, methods, lifecycle control, HTML templates and CSS styles. In our library, we extend the `LitElement` class from Lit 3 that provides more abstraction layers, but climb just a few steps up the prototype inheritance chain and you'll find `HTMLElement` right there providing the backbone.
 #### 2. Registering a Custom Element
 Once you have set up your new class with customizations, you must tell the browser to register your new component as a new HTML custom element. As a rule of the road, this must have at least one hyphen in it so `<my-custom-element>` is **good** but `<myelement>` is **bad**.
 
@@ -34,9 +34,9 @@ Your new custom element can be configured with its own `shadowRoot`, establishin
 
 ---
 
-Those are the "Big Three" ideas, each with their own tooling and best practices, but LitElement helps limit boilerplate and best practices used in the Momentum-UI library.
+Those are the "Big Three" ideas, each with their own tooling and best practices, but Lit helps limit boilerplate and best practices used in the Momentum-UI library.
 
-We will now go into more depth, using some examples to show handy aspects of LitElement, TypeScript, CSS Constructable Stylesheets, `part()` selectors, CSS Variables for theming, home-grown helper mixins, and more.
+We will now go into more depth, using some examples to show handy aspects of Lit, TypeScript, CSS Constructable Stylesheets, `part()` selectors, CSS Variables for theming, home-grown helper mixins, and more.
 <br>
 <br>
 
@@ -53,7 +53,7 @@ We will now go into more depth, using some examples to show handy aspects of Lit
 9. LitHTML, LitCSS
 
 ### TypeScript Decorators
-LitELement with Typescript enables the use of decorators that abstract away much of the boilerplate operations that are necessary in vanilla web component development. Here are some common cases.
+Lit with TypeScript enables the use of decorators that abstract away much of the boilerplate operations that are necessary in vanilla web component development. Here are some common cases.
 
 
 #### `@property()`
@@ -64,13 +64,13 @@ Explore the TS intellisense to see more control `@property()` offers, like setti
 ##### Example
 `@property({ type: String, attribute: "alt-text" }) altText : string = "default"`
 
-#### `@internalProperty()`
-The `@internalProperty()` decorator serves a similar function, but does not expose an attribute interface for users. It could be accessed as an element property unless marked as `private`. Properties initialized with this decorator are good for a component's internal logic
+#### `@state()`
+The `@state()` decorator serves a similar function, but does not expose an attribute interface for users. It could be accessed as an element property unless marked as `private`. Properties initialized with this decorator are good for a component's internal logic
 
 ##### Example
-`@internalProperty() loadingState : boolean = false`
+`@state() loadingState : boolean = false`
 
-**NOTE:** you _can_ declare ordinary properties right within the class without a decorator, however `@property()` and `@internalProperty()` are wired to LitElement's lifecycle functions, and make it easier to trigger re-renders when those properties are updated.
+**NOTE:** you _can_ declare ordinary properties right within the class without a decorator, however `@property()` and `@state()` are wired to Lit's reactive update cycle, and make it easier to trigger re-renders when those properties are updated.
 
 #### `@query()`
 The `@query()` decorator is a convenient way to grab a reference to an element that is within your web component's shadow root.
@@ -81,10 +81,10 @@ The `@query()` decorator is a convenient way to grab a reference to an element t
 <hr>
 
 ### Lifecycle Methods
-Vanilla JavaScript provides some elemental lifecycle methods, and LitElement provides even further assistance to ensure fine control over a web component's update and render cycle. We will give brief explanations of the most common ones here, but [read the docs for more details about their calling order and sample cases.](https://lit-element.polymer-project.org/guide/lifecycle)
+Vanilla JavaScript provides some elemental lifecycle methods, and Lit provides even further assistance to ensure fine control over a web component's update and render cycle. We will give brief explanations of the most common ones here, but [read the docs for more details about their calling order and sample cases.](https://lit.dev/docs/components/lifecycle/)
 
 **NOTE:** All lifecycle methods must call `super()` to function.
-```javascript=
+```javascript
 connectedCallback() {
   super.connectedCallback()
 
@@ -95,17 +95,23 @@ connectedCallback() {
 #### `constructor()`
 Although many of the constructor's main duties are taken care of by property setting decorators discussed above, there may sometimes be special cases when you need to execute logic before the component has parsed any attributes or properties passed into it.
 #### `connectedCallback()`
-This is invoked when a component is added to the document’s DOM. A n example use case is when you need to add event listeners when LitElement binding patterns won't do.
+This is invoked when a component is added to the document's DOM. An example use case is when you need to add event listeners when Lit binding patterns won't do.
 #### `disconnectedCallback()`
-Invoked when a component is removed from the document’s DOM. A good time to remove event listeners, for example
+Invoked when a component is removed from the document's DOM. A good time to remove event listeners, for example.
 #### `render()`
-Renders the HTML template within the web component's shadow DOM. *This method is an exception to the 'must call `super()`' rule*
-#### `firstUpdated()`
-This is called after the element’s DOM has been updated the first time, immediately before `updated` is called.
-#### `updated()`
-Called when the element’s DOM has been updated and rendered. Implement to perform some task after an update.
+Renders the HTML template within the web component's shadow DOM. *This method is an exception to the 'must call `super()`' rule.*
+#### `willUpdate(changedProperties)`
+Called before `update()` and can be used to compute values needed during the update. This is the ideal place to derive state from other reactive properties without triggering an additional update cycle.
+#### `update(changedProperties)`
+Called to update the component's DOM. Generally, you should not need to override this method.
+#### `firstUpdated(changedProperties)`
+This is called after the element's DOM has been updated the first time, immediately before `updated()` is called. Useful for one-time setup that requires access to rendered DOM.
+#### `updated(changedProperties)`
+Called when the element's DOM has been updated and rendered. Implement to perform tasks after an update, such as focusing an element. Avoid setting reactive properties here as it triggers another update cycle.
 
-[Read this to see the exact execution order LitElement enforces for the lifecycle methods.](https://lit-element.polymer-project.org/guide/lifecycle#reference)
+**Important:** Setting reactive properties (`@property()` or `@state()`) in `updated()` or `firstUpdated()` will trigger another update cycle and cause a warning. Use `willUpdate()` for derived state calculations instead.
+
+[Read this to see the exact execution order Lit enforces for the lifecycle methods.](https://lit.dev/docs/components/lifecycle/)
 
 <hr>
 
@@ -243,13 +249,13 @@ And I will receiver the hue that is currently set to that property in the higher
 `<md-theme>` works by swapping out the CSS file that is loaded, changing the CSS custom property values that are declared, but keeping the property values unchanged.
 
 ### Constructable Stylesheets
-**Brief:** By using Webpack to load the SMACSS based style system and LitElement's `static get styles()` method, Styles are added to the CSS Object Module only once and adopted for each component instance, saving the browser from repeating and styles in the resulting DOM and improving performance. Chrome and Edge fully supported, Firefox and Safari polyfilled.
+**Brief:** By using Webpack to load the SMACSS based style system and Lit's `static styles` property, styles are added to the CSS Object Model only once and adopted for each component instance, saving the browser from repeating styles in the resulting DOM and improving performance. All modern browsers now fully support Constructable Stylesheets.
 ### Momentum-UI Mixins / Abstract Classes
 **Brief:** Utility components like `FocusTrap` are abstract classes that can be used as the extension basis of a new component. They can provide a set of methods and properties for common component scenarios, like Focus Trapping, De Duping, Roving Tab Index, and more.
 ### CustomEvents
 **Brief:** Creating Custom Events in a LitElement component is easy, and can be a helpful tool for making complex components or micro front ends that need to have finer control of binding data up the DOM tree through ShadowDOM. Be aware of caveats in React when a custom event is expected to be publicly visible.
-### LitHTML, LitCSS
-**Brief:** LitElement makes full leverage of template strings to make writing HTML templates for shadow DOM rendering super simple and native. LitHTML is ideal for writing true native HTML with interpolation using `${someVariable}`. Likewise, litCSS provides the same specifically for native composed CSS.
+### Lit HTML and CSS
+**Brief:** Lit makes full leverage of tagged template literals to make writing HTML templates for shadow DOM rendering super simple and native. The `html` tagged template is ideal for writing true native HTML with interpolation using `${someVariable}`. Likewise, the `css` tagged template provides the same specifically for native composed CSS.
 
 
 THIS IS A LIVING DOCUMENT . . . if you have any feedback, requests for further information, or corrections please feel free to create an Issue ticket, or send an email to kehyde@cisco.com

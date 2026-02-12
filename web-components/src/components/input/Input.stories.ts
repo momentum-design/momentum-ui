@@ -10,7 +10,7 @@
 
 import "@/components/icon/Icon";
 import "@/components/input/Input";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import {
@@ -292,7 +292,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-input"
+      context: "md-input"
     }
   }
 };

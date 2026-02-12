@@ -12,7 +12,7 @@ Either you are internal to Cisco or not, feel free to reach out to the repositor
 If you wand to add new component to `src/components`:  
 
 1. Use unique html tag with `md-` prefix
-2. To register custom element, use `@customElementWithCheck("md-my-comp")` decorator instead of `@customElement("md-my-comp")` from "lit-element" framework
+2. To register custom element, use `@customElementWithCheck("md-my-comp")` decorator instead of `@customElement("md-my-comp")` from "lit" framework
 
     **Note**: `customElementWithCheck` will not throw error if "custom element" name is already registered by another component, so please make sure your new component name, e.g. `"md-my-comp"`, is not already being used by another component in this library.
 

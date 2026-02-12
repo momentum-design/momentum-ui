@@ -8,7 +8,7 @@
 
 import "@/components/badge/Badge";
 import { CardAiVariant } from "@/components/card-ai/CardAi";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
@@ -51,7 +51,7 @@ const meta: Meta = {
   title: "Components/Card Ai",
   component: "md-card-ai",
   argTypes: { variant: { control: { type: "select" }, options: Object.values(CardAiVariant) } },
-  parameters: { a11y: { element: "md-card-ai" } }
+  parameters: { a11y: { context: "md-card-ai" } }
 };
 
 export default meta;

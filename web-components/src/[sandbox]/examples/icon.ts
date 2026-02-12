@@ -1,5 +1,5 @@
 import "@/components/icon/Icon";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const iconTemplate = html`
   <md-icon name="icon-arrow-up_16" class="testClass"></md-icon>

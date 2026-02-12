@@ -1,5 +1,6 @@
 import "@/components/favorite/Favorite";
-import { customElement, html, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("favorite-template-sandbox")
 export class FavoriteTemplateSandbox extends LitElement {

@@ -6,19 +6,19 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/loading/Loading";
-import "@/components/presence/Presence";
+import "../icon/Icon";
+import "../loading/Loading";
+import "../presence/Presence";
+import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { styleMap } from "lit-html/directives/style-map";
-import { until } from "lit-html/directives/until.js";
-import { getPresenceIconColor, PresenceState, PresenceType } from "../presence/Presence.utils";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { until } from "lit/directives/until.js";
 import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import styles from "./scss/module.scss";
 
@@ -82,10 +82,10 @@ export namespace Avatar {
     @property({ type: String })
     state: State = "rest";
 
-    @internalProperty() private imageLoaded = false;
-    @internalProperty() private imageErrored = false;
-    @internalProperty() private presenceColor = "";
-    @internalProperty() private presenceIcon = "";
+    @state() private imageLoaded = false;
+    @state() private imageErrored = false;
+    @state() private presenceColor = "";
+    @state() private presenceIcon = "";
 
     static get styles() {
       return [reset, styles];
@@ -108,8 +108,8 @@ export namespace Avatar {
       }
     }
 
-    updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
       const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       if (
         presenceValue &&
@@ -123,6 +123,10 @@ export namespace Avatar {
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
       }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
       if (changedProperties.has("role")) {
         this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
       }

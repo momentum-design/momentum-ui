@@ -29,28 +29,47 @@
  * }
  * */
 
-import { LitElement, property, PropertyValues } from "lit-element";
+import { LitElement, PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AnyConstructor<A = LitElement> = new (...input: any[]) => A;
+export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 export type FocusEventDetail = { sourceEvent: Event };
 
+/**
+ * Interface describing the public properties added by FocusMixin.
+ * Protected methods are intentionally omitted to allow subclasses to override with protected visibility.
+ */
+export interface FocusClassInterface {
+  autofocus: boolean;
+}
+
+/**
+ * Abstract class used internally for super calls within the mixin implementation.
+ * Also used in tests via bracket notation to access protected methods.
+ */
 export abstract class FocusClass extends LitElement {
+  declare autofocus: boolean;
   protected setFocus?(force: boolean): void;
   protected handleFocusIn?(event: Event): void;
   protected handleFocusOut?(event: Event): void;
   protected getDeepActiveElement?(): Element;
   protected isElementFocused?(element: HTMLElement): boolean;
-  protected manageAutoFocus?(element?: Element): void;
+  protected manageAutoFocus?(element?: HTMLElement): void;
   protected getActiveElement?(): Element | null;
 }
 
-export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & AnyConstructor<FocusClass> => {
+export type FocusMixinReturnType<T extends AnyConstructor<LitElement>> = T &
+  AnyConstructor<FocusClassInterface & FocusClass>;
+
+export const FocusMixin = <T extends AnyConstructor<LitElement>>(base: T): FocusMixinReturnType<T> => {
   if (wasApplied(FocusMixin, base)) {
-    return base as ReturnType<() => T & AnyConstructor<FocusClass>>;
+    return base as FocusMixinReturnType<T>;
   }
-  class Focus extends base {
+
+  // Cast base to include FocusClass methods for super calls (they may or may not exist at runtime)
+  class Focus extends (base as unknown as AnyConstructor<FocusClass>) {
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
     protected setFocus(force: boolean) {
@@ -125,6 +144,7 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     }
 
     disconnectedCallback(): void {
+      super.disconnectedCallback();
       this.removeEventListener("focus", this.handleFocusIn);
       this.removeEventListener("blur", this.handleFocusOut);
     }
@@ -132,5 +152,5 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
 
   DedupeMixin(FocusMixin, Focus);
 
-  return Focus;
+  return Focus as unknown as FocusMixinReturnType<T>;
 };

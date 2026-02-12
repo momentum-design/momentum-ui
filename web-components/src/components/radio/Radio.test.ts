@@ -1,6 +1,6 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import "@testing-library/jest-dom";
-import { PropertyValues } from "lit-element";
+import { PropertyValues } from "lit";
 import { screen } from "shadow-dom-testing-library";
 import { Radio } from "./Radio";
 

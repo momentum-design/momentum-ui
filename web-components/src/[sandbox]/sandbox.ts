@@ -4,8 +4,9 @@ import { ThemeName } from "@/components/theme/Theme";
 import { themeManager } from "@/managers/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
 import { MobxLitElement } from "@adobe/lit-mobx";
-import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { html, PropertyValues, TemplateResult } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import {
   accordionTemplate,
   advanceListTemplate,
@@ -71,16 +72,16 @@ import { skeletonTemplate } from "./examples/skeleton";
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends MobxLitElement {
-  @internalProperty()
+  @state()
   private selectedTab = "Accordion";
 
-  @internalProperty()
+  @state()
   private renderSelectedTabPanelOnly = true;
 
-  @internalProperty()
+  @state()
   private tabsOrientation: "horizontal" | "vertical" = "vertical";
 
-  @internalProperty()
+  @state()
   private isRtl = false;
 
   connectedCallback(): void {
@@ -126,6 +127,11 @@ export class Sandbox extends MobxLitElement {
     const storedVisualRebrand = localStorage.getItem("is-visual-rebrand-enabled");
     if (storedVisualRebrand) {
       themeManager.setVisualRebrandEnabled(JSON.parse(storedVisualRebrand));
+    }
+
+    const storedBackgroundMode = localStorage.getItem("backgroundMode");
+    if (storedBackgroundMode) {
+      themeManager.setBackgroundMode(JSON.parse(storedBackgroundMode));
     }
 
     const storedRenderSelectedTabOnly = localStorage.getItem("is-render-selected-tab-only-enabled");
@@ -234,13 +240,32 @@ export class Sandbox extends MobxLitElement {
     localStorage.setItem("sandbox-tabs-orientation", this.tabsOrientation);
   }
 
+  backgroundModeOptionTemplate() {
+    return html`
+      <div class="bg-mode-options">
+        <label for="bg-dropdown">background mode:</label>
+        <select
+          id="bg-dropdown"
+          name="bg-mode"
+          .value=${themeManager.backgroundMode}
+          @change=${this.handleBackgroundModeChange}
+        >
+          <option value="DEFAULT">Default</option>
+          <option value="SERENE">Serene</option>
+          <option value="AURORA">Aurora</option>
+        </select>
+      </div>
+    `;
+  }
+
   containerColorOptionTemplate() {
     return html`
       <div class="container-color-bg-color-options">
         <label for="color-dropdown">container color:</label>
         <select id="color-dropdown" name="colors" @change=${this.handleContainerColorChange}>
           <option value="--md-glass-bg-color">--md-glass-bg-color</option>
-          <option value="--md-glass-overlay-bg-color">--md-glass-overlay-bg-color</option>
+          <option value="--md-glass-bg-color-light">--md-glass-bg-color-light</option>
+          <option value="--md-glass-bg-color-active">--md-glass-bg-color-active</option>
           <option value="transparent">transparent</option>
           <option value="--md-primary-bg-color">--md-primary-bg-color</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
@@ -265,6 +290,13 @@ export class Sandbox extends MobxLitElement {
         containerElement.style.background = `var(${selectedColor})`;
       }
     });
+  }
+
+  handleBackgroundModeChange() {
+    const bgDropdown = this.shadowRoot?.getElementById("bg-dropdown") as HTMLSelectElement;
+    const selectedMode = bgDropdown.value;
+    themeManager.setBackgroundMode(selectedMode);
+    localStorage.setItem("backgroundMode", JSON.stringify(themeManager.backgroundMode));
   }
 
   static get styles() {
@@ -318,7 +350,8 @@ export class Sandbox extends MobxLitElement {
   get themeClassMap() {
     return {
       "theme-toggle": true,
-      "is-visual-rebrand": themeManager.isVisualRebrandEnabled
+      "is-visual-rebrand": themeManager.isVisualRebrandEnabled,
+      [themeManager.backgroundMode]: true
     };
   }
 
@@ -331,7 +364,9 @@ export class Sandbox extends MobxLitElement {
         theme=${themeManager.themeName}
         dir=${this.isRtl ? "rtl" : "ltr"}
       >
-        <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
+        <div class="header-controls">
+          ${this.themeToggle()} ${this.backgroundModeOptionTemplate()} ${this.containerColorOptionTemplate()}
+        </div>
 
         <md-tabs
           direction=${this.tabsOrientation}
@@ -377,7 +412,7 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate(
             "Floating Button Bar",
             "md-floating-button-bar",
-            "Floating Button Bar",
+            "floating-button-bar",
             floatingButtonBarTemplate
           )}
           ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}

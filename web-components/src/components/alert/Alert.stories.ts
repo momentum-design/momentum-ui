@@ -12,7 +12,6 @@ import { alertTypes } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "../badge/Badge";
-import mdx from "./Alert.mdx";
 
 const render = (args: Args) => html`
   <md-alert
@@ -71,10 +70,10 @@ const meta: Meta = {
     primaryButtonVariant: { control: { type: "select" }, options: buttonVariant },
     primaryButtonColor: { control: { type: "select" }, options: buttonColor }
   },
+  tags: ["autodocs"],
   parameters: {
-    a11y: { element: "md-alert" },
+    a11y: { context: "md-alert" },
     docs: {
-      page: mdx,
       description: {
         component: "A typical usage of Alert, with text added within the element tags or message attribute"
       }

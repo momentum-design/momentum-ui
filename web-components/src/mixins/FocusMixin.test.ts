@@ -1,5 +1,6 @@
 import { defineCE, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { AnyConstructor, FocusClass, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {
@@ -46,7 +47,7 @@ describe("Focus Mixin", () => {
     const el = fixtureSync(`<${tag}></${tag}>`);
     const event = await oneEvent(el, "first-updated");
     expect(event).toBeTruthy();
-    expect(mockEventListener).toBeCalledTimes(2);
+    expect(mockEventListener).toHaveBeenCalledTimes(2);
   });
   test("should set/remove focus-visible attribute", async () => {
     const tag = defineCE(class extends FocusMixin(CustomElement) {});

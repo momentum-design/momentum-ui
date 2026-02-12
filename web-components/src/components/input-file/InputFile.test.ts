@@ -1,6 +1,6 @@
 import { Button } from "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
+import { html } from "lit";
 import "./InputFile";
 import { type InputFile } from "./InputFile";
 

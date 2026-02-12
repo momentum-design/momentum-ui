@@ -8,7 +8,7 @@
 
 import "@/components/input/Input";
 import "@/components/label/Label";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
@@ -26,7 +26,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-label"
+      context: "md-label"
     }
   }
 };

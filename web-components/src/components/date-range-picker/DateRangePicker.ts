@@ -8,7 +8,7 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getLocaleDateFormat } from "@/utils/dateUtils";
-import { property } from "lit-element";
+import { property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 
@@ -25,11 +25,49 @@ export namespace DateRangePicker {
     @property({ type: String, attribute: "end-date", reflect: true })
     endDate: string | undefined | null = undefined;
 
+    @property({ type: Number, attribute: "max-range-length" })
+    maxRangeLength: number | undefined = undefined;
+
+    private originalFilterDate: Function | undefined = undefined;
+
     connectedCallback() {
       super.connectedCallback();
       super.render();
       this.addEventListener("date-pre-selection-change", this.handleDateSelection);
       this.updateValue();
+
+      if (this.maxRangeLength) {
+        this.originalFilterDate = this.filterDate;
+        this.updateFilterDate();
+      }
+    }
+
+    private updateFilterDate(): void {
+      if (!this.maxRangeLength) {
+        return;
+      }
+      this.filterDate = this.createCombinedFilter();
+    }
+
+    private createCombinedFilter(): (day: DateTime) => boolean {
+      return (day: DateTime) => {
+        if (this.originalFilterDate && this.originalFilterDate(day)) {
+          return true;
+        }
+
+        const dayDateTime = typeof day === "string" ? DateTime.fromISO(day) : day;
+
+        if (!this.maxRangeLength || !this.startDate || this.endDate) {
+          return false;
+        }
+
+        const startDateTime = DateTime.fromISO(this.startDate);
+        const maxEndDate = startDateTime.plus({ days: this.maxRangeLength - 1 }).startOf("day");
+        const minStartDate = startDateTime.minus({ days: this.maxRangeLength - 1 }).startOf("day");
+        const dayStart = dayDateTime.startOf("day");
+
+        return dayStart > maxEndDate || dayStart < minStartDate;
+      };
     }
 
     disconnectedCallback() {
@@ -135,6 +173,8 @@ export namespace DateRangePicker {
         this.startDate = this.dateToSqlTranslate(selection);
         this.endDate = undefined;
       }
+
+      this.updateFilterDate();
 
       if (this.controlButtons?.apply) {
         return;

@@ -6,14 +6,14 @@
  *
  */
 
-import { buttonColor, buttonVariant } from "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/link/Link";
+import { buttonColor, buttonVariant } from "../button/Button";
+import "../icon/Icon";
+import "../link/Link";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, query, TemplateResult } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement, nothing, TemplateResult } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Alert {
@@ -46,7 +46,7 @@ export namespace Alert {
     @query('slot[name="alert-footer"]')
     private readonly alertFooterSlot!: HTMLSlotElement;
 
-    @internalProperty()
+    @state()
     private hasFooterSlotContent = false;
 
     connectedCallback(): void {

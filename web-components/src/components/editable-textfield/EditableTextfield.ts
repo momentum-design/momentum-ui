@@ -6,17 +6,17 @@
  *
  */
 
-import "@/components/input/Input";
+import "../input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
-import { CSSResultArray, html, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
-import { Input } from "../input/Input"; // Keep type import as a relative path
+import { CSSResultArray, html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { numInputTypes } from "@/utils/enums";
+import { Input } from "../input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
@@ -57,7 +57,7 @@ export namespace EditableTextfield {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      if (this.innerText && this.innerText.length > 0) {
+      if (this.innerText && this.innerText.trim().length > 0 && this.innerText.trim() !== this.content) {
         this.content = this.innerText.trim();
       }
     }

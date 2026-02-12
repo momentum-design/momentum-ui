@@ -2,7 +2,7 @@ import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } f
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
-import { repeat } from "lit-html/directives/repeat";
+import { repeat } from "lit/directives/repeat.js";
 import "./ComboBox";
 import { type ComboBox } from "./ComboBox";
 
@@ -294,7 +294,7 @@ describe("Combobox Component", () => {
       el.listBox!.style.maxHeight = mock();
 
       expect(el.expanded).toBeTruthy();
-      expect(mock).toBeCalled();
+      expect(mock).toHaveBeenCalled();
 
       el.expanded = false;
 
@@ -305,7 +305,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(escape);
 
       expect(el.expanded).toBeFalsy();
-      expect(mock).not.toBeCalled();
+      expect(mock).not.toHaveBeenCalled();
     });
 
     test("should handle keyDown event", async () => {
@@ -1459,7 +1459,7 @@ describe("Combobox Component", () => {
       el.listBox!.style.maxHeight = mock();
 
       expect(el.expanded).toBeTruthy();
-      expect(mock).toBeCalled();
+      expect(mock).toHaveBeenCalled();
 
       el.expanded = false;
 
@@ -1470,7 +1470,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(escape);
 
       expect(el.expanded).toBeFalsy();
-      expect(mock).not.toBeCalled();
+      expect(mock).not.toHaveBeenCalled();
     });
     test("should set initial value for multi", async () => {
       const el = await fixture<ComboBox.ELEMENT>(html`

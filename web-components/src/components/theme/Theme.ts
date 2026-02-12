@@ -6,12 +6,13 @@
  *
  */
 
-import styles from "@/components/tooltip/scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import styles from "../tooltip/scss/module.scss";
+import { Tooltip, TooltipEvent } from "../tooltip/Tooltip";
 import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
@@ -37,6 +38,8 @@ declare global {
 
 export type ThemeName = "momentum" | "lumos" | "momentumV2";
 export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2"];
+export const BackgroundModeValues = ["DEFAULT", "SERENE", "AURORA"];
+export type BackgroundMode = (typeof BackgroundModeValues)[number];
 
 export namespace Theme {
   export type Attributes = {
@@ -59,7 +62,7 @@ export namespace Theme {
     @property({ type: Boolean }) lumos = false;
     @property({ type: String }) theme?: ThemeName;
 
-    @internalProperty() private activeTheme = lumosLight;
+    @state() private activeTheme = lumosLight;
 
     @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
     @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
@@ -171,6 +174,13 @@ export namespace Theme {
       }
     }
 
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
+      if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
+        this.activeTheme = this.setTheme();
+      }
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
@@ -185,9 +195,8 @@ export namespace Theme {
             }
           })
         );
+        this.applyStyle();
       }
-      this.activeTheme = this.setTheme();
-      this.applyStyle();
     }
 
     handleVirtualTooltipCreate(event: CustomEvent<TooltipEvent>) {
@@ -389,7 +398,7 @@ export namespace Theme {
           </style>
           <slot></slot>
           <div class="md-tooltip" data-virtual-global-popper></div>
-          <div data-virtual-global-reference aria-describedby="tooltip"></div>
+          <div data-virtual-global-reference></div>
         </div>
       `;
     }

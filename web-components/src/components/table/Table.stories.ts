@@ -31,7 +31,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-table"
+      context: "md-table"
     },
     docs: {
       description: {

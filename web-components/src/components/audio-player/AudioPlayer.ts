@@ -6,15 +6,15 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/tooltip/Tooltip";
+import "../button/Button";
+import "../icon/Icon";
+import "../tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export type AudioEvent = {
@@ -108,20 +108,20 @@ export namespace AudioPlayer {
   export class ELEMENT extends LitElement {
     @property({ type: String }) src = "";
     @property({ type: Object }) labelMap: LabelMap;
-    @internalProperty() events: AudioEvent[] = [];
-    @internalProperty() audio: HTMLAudioElement;
-    @internalProperty() volumeElement!: HTMLElement;
-    @internalProperty() isPlaying = false;
-    @internalProperty() isMuted = false;
-    @internalProperty() duration = 0;
-    @internalProperty() volume = 100;
-    @internalProperty() currentTime = 0;
-    @internalProperty() showSpeedPopup = false;
-    @internalProperty() playbackSpeed = 1;
-    @internalProperty() volumeExpanded = false;
-    @internalProperty() bufferedRange = 0;
-    @internalProperty() selectedPlaybackSpeed = this.playbackSpeed;
-    @internalProperty() currentlySelectingPlaybackSpeed = false;
+    @state() events: AudioEvent[] = [];
+    @state() audio: HTMLAudioElement;
+    @state() volumeElement!: HTMLElement;
+    @state() isPlaying = false;
+    @state() isMuted = false;
+    @state() duration = 0;
+    @state() volume = 100;
+    @state() currentTime = 0;
+    @state() showSpeedPopup = false;
+    @state() playbackSpeed = 1;
+    @state() volumeExpanded = false;
+    @state() bufferedRange = 0;
+    @state() selectedPlaybackSpeed = this.playbackSpeed;
+    @state() currentlySelectingPlaybackSpeed = false;
     constructor() {
       super();
       this.audio = new Audio();

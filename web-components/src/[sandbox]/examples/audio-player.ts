@@ -1,5 +1,5 @@
 import "@/components/audio-player/AudioPlayer";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const audioPlayerTemplate = html`
   <div class="container" style="padding-top: 300px">

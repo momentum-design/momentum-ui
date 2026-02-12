@@ -6,9 +6,6 @@
  *
  */
 
-import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
-import "@/components/input/Input";
-import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -23,15 +20,18 @@ import {
   subtractDays,
   subtractWeeks
 } from "@/utils/dateUtils";
-import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
-import { html, internalProperty, LitElement, property, PropertyValues, query, TemplateResult } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
-import { Input } from "../input/Input"; // Keep type import as a relative path
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import "../input/Input";
+import { Input } from "../input/Input";
+import "../menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
 import { Popover, PopoverController } from "../popover/Popover";
 import { StrategyType } from "../popover/Popover.types";
+import "./datepicker-calendar/DatePickerCalendar";
 import styles from "./scss/module.scss";
 export interface DatePickerControlButton {
   value: string;
@@ -89,18 +89,19 @@ export namespace DatePicker {
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
     @property({ type: Object, attribute: false }) errorMessages: Record<string, string> = {};
 
-    @internalProperty() selectedDate: DateTime = now();
-    @internalProperty() focusedDate: DateTime = now();
+    @state() selectedDate: DateTime = now();
+    @state() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    @property() filterDate: Function | undefined = undefined;
+    @property({ attribute: false }) filterDate: Function | undefined = undefined;
     @property({ attribute: false }) onRetry: (() => void) | undefined = undefined;
-    @internalProperty() maxDateData: DateTime | undefined = undefined;
-    @internalProperty() minDateData: DateTime | undefined = undefined;
+    @state() maxDateData: DateTime | undefined = undefined;
+    @state() minDateData: DateTime | undefined = undefined;
 
     private popoverController: PopoverController | null = null;
 
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
     @query("md-popover") popoverElement!: Popover;
+
     get computedNewMomentum() {
       if (this.newMomentum !== undefined) {
         return this.newMomentum;
@@ -364,9 +365,9 @@ export namespace DatePicker {
       );
     }
 
-    private renderControlButtons(): TemplateResult {
+    private renderControlButtons(): TemplateResult | typeof nothing {
       if (!this.controlButtons || this.isDatePickerMonthLoading || this.isDatePickerMonthError) {
-        return html``;
+        return nothing;
       }
 
       return html`

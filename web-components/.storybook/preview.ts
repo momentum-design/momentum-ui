@@ -1,5 +1,6 @@
+import { BackgroundModeValues, ThemeNameValues } from "@/components/theme/Theme";
+import { iconUrlManager } from "@/managers/IconUrlManager";
 import { setCustomElements } from "@storybook/web-components";
-import { ThemeNameValues } from "../src/components/theme/Theme";
 import customElements from "./custom-elements.json";
 import { withThemeDecorator } from "./themeDecorator";
 
@@ -9,6 +10,9 @@ import { withThemeDecorator } from "./themeDecorator";
  */
 
 setCustomElements(customElements);
+
+// Use Vite's BASE_URL to handle different deploy paths
+iconUrlManager.setSvgIconUrl(`${import.meta.env.BASE_URL}icons/svg`);
 
 export const parameters = {
   docs: {
@@ -27,8 +31,11 @@ export const parameters = {
     expanded: true,
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/
+      date: /Date$/i
     }
+  },
+  backgrounds: {
+    disable: true
   },
   options: {
     storySort: {
@@ -74,6 +81,16 @@ export const globalTypes = {
         { value: false, title: "Off", icon: "eyeclose" },
         { value: true, title: "On", icon: "eye" }
       ],
+      dynamicTitle: true
+    }
+  },
+  backgroundMode: {
+    description: "Visual rebrand background mode",
+    defaultValue: "DEFAULT",
+    toolbar: {
+      title: "Background",
+      icon: "photo",
+      items: BackgroundModeValues,
       dynamicTitle: true
     }
   }

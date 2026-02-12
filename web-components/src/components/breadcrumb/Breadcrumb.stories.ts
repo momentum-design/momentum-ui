@@ -42,7 +42,7 @@ const meta: Meta = {
   argTypes: {},
   parameters: {
     a11y: {
-      element: "md-breadcrumb"
+      context: "md-breadcrumb"
     }
   }
 };

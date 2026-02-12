@@ -6,20 +6,20 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/favorite/Favorite";
-import "@/components/icon/Icon";
-import "@/components/list/List";
-import "@/components/list/ListItem";
-import "@/components/menu-overlay/MenuOverlay";
-import "@/components/tooltip/Tooltip";
+import "../button/Button";
+import "../favorite/Favorite";
+import "../icon/Icon";
+import "../list/List";
+import "../list/ListItem";
+import "../menu-overlay/MenuOverlay";
+import "../tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
-import { repeat } from "lit-html/directives/repeat";
-import { Key } from "../../constants"; // Keep type import as a relative path
+import { html, LitElement, nothing } from "lit";
+import { repeat } from "lit/directives/repeat.js";
+import { Key } from "@/constants";
 import styles from "./scss/module.scss";
+import { property } from "lit/decorators.js";
 
 export namespace Card {
   @customElementWithCheck("md-card")

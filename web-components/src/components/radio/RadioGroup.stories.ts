@@ -15,7 +15,7 @@ export default {
   title: "Components/Radio",
   component: "md-radio",
   argTypes: { alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] } },
-  parameters: { a11y: { element: "md-radiogroup" } }
+  parameters: { a11y: { context: "md-radiogroup" } }
 };
 
 const render = (args: Args) => {

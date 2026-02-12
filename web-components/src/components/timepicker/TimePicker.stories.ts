@@ -43,7 +43,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-timepicker"
+      context: "md-timepicker"
     }
   }
 };

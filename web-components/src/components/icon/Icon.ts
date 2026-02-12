@@ -6,16 +6,16 @@
  *
  */
 
-import "@/components/button/Button";
+import "../button/Button";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { styleMap } from "lit/directives/style-map.js";
 import designMapping from "./momentum-ui-to-design-icons.json";
 import styles from "./scss/module.scss";
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
@@ -23,7 +23,7 @@ export const iconType = ["", "white"] as const;
 export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals", "svg"] as const;
 
 import { iconUrlManager } from "@/managers/IconUrlManager";
-import { fetchSVG, getMomentumDesignIconContent } from "./Icon.utils";
+import { fetchSVG } from "./Icon.utils";
 
 export namespace Icon {
   export type Size = (typeof iconSize)[number];
@@ -180,8 +180,29 @@ export namespace Icon {
 
     private static readonly designLookup = new Map(Object.entries(designMapping));
 
-    @internalProperty()
+    @state()
     private svgIcon: HTMLElement | null = null;
+
+    private abortController: AbortController | null = null;
+
+    /**
+     * Creates a new AbortController and returns its signal.
+     * Aborts any previous pending request.
+     */
+    private renewSignal(): AbortSignal {
+      // Abort any pending request
+      this.abortController?.abort();
+      // Create new controller
+      this.abortController = new AbortController();
+      return this.abortController.signal;
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      // Abort any pending requests when component is removed
+      this.abortController?.abort();
+      this.abortController = null;
+    }
 
     isSvgAlreadyLoaded(iconName: string) {
       if (!this.svgIcon) {
@@ -198,11 +219,12 @@ export namespace Icon {
 
       const previousIconName = this.svgIcon?.getAttribute("class");
 
-      const importedIcon =
-        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg"
-          ? await fetchSVG(this.computedSvgPath, iconName, "svg")
-          : await getMomentumDesignIconContent(iconName);
+      // Get a fresh abort signal for this request
+      const signal = this.renewSignal();
 
+      const importedIcon = await fetchSVG(this.computedSvgPath, iconName, "svg", signal);
+
+      // If aborted, importedIcon will be null and we should exit silently
       if (!importedIcon) {
         return;
       }
@@ -220,7 +242,6 @@ export namespace Icon {
       this.svgIcon?.setAttribute("part", "icon");
 
       this.setSvgIconAttributes();
-      this.requestUpdate();
     }
 
     setSvgIconAttributes() {

@@ -6,13 +6,14 @@
  *
  */
 
-import "@/components/datepicker/datepicker-day/DatePickerDay";
+import "../../datepicker/datepicker-day/DatePickerDay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, now } from "@/utils/dateUtils";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
 import { DateTime } from "luxon";
+import { DatePickerProps, DayFilters } from "@/utils/dateUtils";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerWeek {

@@ -168,7 +168,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-chip"
+      context: "md-chip"
     }
   }
 };

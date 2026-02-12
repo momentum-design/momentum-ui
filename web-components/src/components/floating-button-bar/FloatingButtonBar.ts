@@ -1,9 +1,10 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/tooltip/Tooltip";
-import { customElement, html, LitElement, property } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
+import "../button/Button";
+import "../icon/Icon";
+import "../tooltip/Tooltip";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, nothing, TemplateResult } from "lit";
+import { property } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/floating-button-bar.styles.scss";
 
 export type FloatingButtonActionGroup = {
@@ -18,7 +19,7 @@ export type FloatingButtonBarAction = {
   action: () => void;
 };
 
-@customElement("md-floating-button-bar")
+@customElementWithCheck("md-floating-button-bar")
 export class FloatingButtonBar extends LitElement {
   @property({ type: String })
   leadingLabel: string = "";

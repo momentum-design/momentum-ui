@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["vite/client"],
+    "baseUrl": "../src",
+    "paths": {
+      "@/*": ["./*"],
+      "@css/*": ["./assets/styles/*"],
+      "@img/*": ["./assets/images/*"]
+    }
+  },
+  "include": ["./*.ts", "../src/**/*.ts"]
+}

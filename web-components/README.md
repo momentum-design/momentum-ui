@@ -19,9 +19,7 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 ### Base framework
 
-* [lit-element](https://github.com/Polymer/lit-element) - MIT
-
-* [lit-html](https://github.com/Polymer/lit-html) - MIT
+* [Lit](https://github.com/lit/lit) - BSD-3-Clause
 
 ### Momentum Design System Look & Feel
 

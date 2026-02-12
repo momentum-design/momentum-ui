@@ -6,14 +6,15 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export namespace Favorite {
@@ -24,8 +25,6 @@ export namespace Favorite {
     @property({ type: String }) value = "Select favorite";
     @property({ type: String }) id = "";
     @property({ type: String }) label = "Favorite";
-
-    @internalProperty() private customId = "";
 
     connectedCallback() {
       super.connectedCallback();

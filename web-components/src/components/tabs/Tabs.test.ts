@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import "@/components/input/Input";
 import { Key } from "@/constants";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues, html } from "lit-element";
+import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import Sortable from "sortablejs";
 import "./Tab";
 import { type Tab } from "./Tab";
 import "./TabPanel";
 import { type TabPanel } from "./TabPanel";
-import "./Tabs";
 import { MORE_MENU_TAB_COPY_ID_PREFIX, Tabs } from "./Tabs";
 
 describe("Tabs", () => {
@@ -59,31 +58,6 @@ describe("Tabs", () => {
   });
 
   afterEach(fixtureCleanup);
-
-  test("should (un)register event listeners", async () => {
-    const tag = defineCE(
-      class extends Tabs.ELEMENT {
-        protected firstUpdated(changedProperties: PropertyValues) {
-          super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
-        }
-        disconnectedCallback() {
-          super.disconnectedCallback();
-          this.dispatchEvent(new CustomEvent("disconnected-callback"));
-        }
-      }
-    );
-    const el = fixtureSync<Tabs.ELEMENT>(
-      `<${tag}><md-tab slot="tab"></md-tab><md-tab-panel slot="panel"></md-tab-panel></${tag}>`
-    );
-    const firstUpdatedEvent = await oneEvent(el, "first-updated");
-    expect(firstUpdatedEvent).toBeDefined();
-
-    el.parentElement!.removeChild(el);
-    setTimeout(() => el.disconnectedCallback());
-    const disconnectEvent = await oneEvent(el, "disconnected-callback");
-    expect(disconnectEvent).toBeDefined();
-  });
 
   test("should setup panels and tabs", () => {
     expect(tabs.tabSlotElement).toBeDefined();
@@ -575,7 +549,7 @@ describe("Tabs", () => {
     const toggleSpy = jest.spyOn(HTMLElement.prototype, "toggleAttribute");
     (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
 
-    expect(toggleSpy).not.toBeCalledTimes(2);
+    expect(toggleSpy).not.toHaveBeenCalledTimes(2);
     toggleSpy.mockRestore();
   });
 
@@ -600,7 +574,7 @@ describe("Tabs", () => {
     tabs["manageOverflow"] = mockManageOverflow;
     await tabs["linkPanelsAndTabs"]();
     tabs["manageOverflow"]();
-    expect(mockManageOverflow).toBeCalled();
+    expect(mockManageOverflow).toHaveBeenCalled();
   });
 
   test("should manage overflow", async () => {
@@ -698,5 +672,145 @@ describe("Tabs", () => {
 
     expect(getLeftArrow()).not.toBeNull();
     expect(getRightArrow()).not.toBeNull();
+  });
+
+  describe("ariaControlsElements for shadow DOM tab copies", () => {
+    test("should store tab-to-panel mapping in tabPanelHash", async () => {
+      await elementUpdated(tabs);
+
+      // Verify tabPanelHash contains mappings for all tabs
+      const tabPanelHash = tabs["tabPanelHash"];
+      expect(Object.keys(tabPanelHash).length).toBe(3);
+
+      // Verify each tab ID maps to the correct panel
+      tab.forEach((tabElement, index) => {
+        const panel = tabPanelHash[tabElement.id];
+        expect(panel).toBeDefined();
+        expect(panel).toBe(panels[index]);
+      });
+    });
+
+    test("should set ariaControlsElements on visible tab copies in shadow DOM", async () => {
+      // Set up visible and hidden tabs
+      tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+      tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+      await elementUpdated(tabs);
+
+      // Wait for requestAnimationFrame used in updateAriaControlsElements
+      await new Promise((r) => requestAnimationFrame(r));
+      await elementUpdated(tabs);
+
+      // Get visible tab copies from shadow DOM
+      const visibleTabsContainer = tabs["visibleTabsContainerElement"];
+      expect(visibleTabsContainer).toBeDefined();
+
+      const visibleTabCopies = visibleTabsContainer?.querySelectorAll("md-tab");
+      expect(visibleTabCopies?.length).toBe(2);
+
+      // Verify ariaControlsElements is set on each visible tab copy
+      visibleTabCopies?.forEach((tabCopy, index) => {
+        if ("ariaControlsElements" in tabCopy) {
+          const controlsElements = tabCopy.ariaControlsElements as readonly Element[] | null;
+          expect(controlsElements).toBeDefined();
+          expect(controlsElements?.length).toBe(1);
+          // The panel should be the corresponding light DOM panel
+          expect(controlsElements?.[0]).toBe(panels[index]);
+        }
+      });
+    });
+
+    test("should set ariaControlsElements on hidden tab copies in more menu", async () => {
+      // Set up visible and hidden tabs
+      tabs["tabsFilteredAsVisibleList"] = [tab[0]];
+      tabs["tabsFilteredAsHiddenList"] = [tab[1], tab[2]];
+      await elementUpdated(tabs);
+
+      // Wait for requestAnimationFrame used in updateAriaControlsElements
+      await new Promise((r) => requestAnimationFrame(r));
+      await elementUpdated(tabs);
+
+      // Get hidden tab copies from shadow DOM (more menu)
+      const hiddenTabsContainer = tabs["hiddenTabsContainerElement"];
+      expect(hiddenTabsContainer).toBeDefined();
+
+      const hiddenTabCopies = hiddenTabsContainer?.querySelectorAll("md-tab");
+      expect(hiddenTabCopies?.length).toBe(2);
+
+      // Verify ariaControlsElements is set on each hidden tab copy
+      hiddenTabCopies?.forEach((tabCopy, index) => {
+        if ("ariaControlsElements" in tabCopy) {
+          const controlsElements = tabCopy.ariaControlsElements as readonly Element[] | null;
+          expect(controlsElements).toBeDefined();
+          expect(controlsElements?.length).toBe(1);
+          // The panel should be the corresponding light DOM panel (offset by 1 since tab[0] is visible)
+          expect(controlsElements?.[0]).toBe(panels[index + 1]);
+        }
+      });
+    });
+
+    test("should update ariaControlsElements when tabs move between visible and hidden", async () => {
+      // Initially set up with 2 visible, 1 hidden
+      tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+      tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+      await elementUpdated(tabs);
+      await new Promise((r) => requestAnimationFrame(r));
+      await elementUpdated(tabs);
+
+      // Now change to 1 visible, 2 hidden
+      tabs["tabsFilteredAsVisibleList"] = [tab[0]];
+      tabs["tabsFilteredAsHiddenList"] = [tab[1], tab[2]];
+      await elementUpdated(tabs);
+      await new Promise((r) => requestAnimationFrame(r));
+      await elementUpdated(tabs);
+
+      // Verify hidden tabs now have correct ariaControlsElements
+      const hiddenTabsContainer = tabs["hiddenTabsContainerElement"];
+      const hiddenTabCopies = hiddenTabsContainer?.querySelectorAll("md-tab");
+
+      hiddenTabCopies?.forEach((tabCopy, index) => {
+        if ("ariaControlsElements" in tabCopy) {
+          const controlsElements = tabCopy.ariaControlsElements as readonly Element[] | null;
+          expect(controlsElements).toBeDefined();
+          expect(controlsElements?.length).toBe(1);
+          expect(controlsElements?.[0]).toBe(panels[index + 1]);
+        }
+      });
+    });
+
+    test("should not have aria-controls attribute on shadow DOM tab copies", async () => {
+      // Set up visible and hidden tabs
+      tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+      tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+      await elementUpdated(tabs);
+      await new Promise((r) => requestAnimationFrame(r));
+      await elementUpdated(tabs);
+
+      // Verify visible tab copies don't have aria-controls attribute
+      const visibleTabsContainer = tabs["visibleTabsContainerElement"];
+      const visibleTabCopies = visibleTabsContainer?.querySelectorAll("md-tab");
+      visibleTabCopies?.forEach((tabCopy) => {
+        // Shadow DOM copies should NOT have aria-controls attribute
+        // (we use ariaControlsElements instead)
+        expect(tabCopy.hasAttribute("aria-controls")).toBe(false);
+      });
+
+      // Verify hidden tab copies don't have aria-controls attribute
+      const hiddenTabsContainer = tabs["hiddenTabsContainerElement"];
+      const hiddenTabCopies = hiddenTabsContainer?.querySelectorAll("md-tab");
+      hiddenTabCopies?.forEach((tabCopy) => {
+        expect(tabCopy.hasAttribute("aria-controls")).toBe(false);
+      });
+    });
+
+    test("original light DOM tabs should still have aria-controls attribute", async () => {
+      await elementUpdated(tabs);
+
+      // Original tabs in light DOM should have aria-controls attribute
+      tab.forEach((tabElement, index) => {
+        expect(tabElement.hasAttribute("aria-controls")).toBe(true);
+        const ariaControls = tabElement.getAttribute("aria-controls");
+        expect(ariaControls).toBe(panels[index].id);
+      });
+    });
   });
 });

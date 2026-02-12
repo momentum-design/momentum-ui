@@ -1,6 +1,6 @@
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
 import { List } from "./List";
 import "./ListItem";
 import { type ListItem } from "./ListItem";

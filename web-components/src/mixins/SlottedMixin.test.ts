@@ -1,5 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, query } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, query } from "lit/decorators.js";
 import { SlotableInterface, SlottedMixin } from "./SlottedMixin";
 
 describe("SLotted Mixin", () => {

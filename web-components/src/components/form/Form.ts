@@ -6,8 +6,9 @@
  *
  */
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
-import { html, LitElement, property, query } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement } from "lit";
+import { property, query } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 export namespace Form {
   export type Method = "GET" | "get" | "POST" | "post" | "dialog";

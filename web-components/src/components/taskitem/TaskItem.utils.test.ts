@@ -1,6 +1,6 @@
-import { renderTaskType, getChannelAvatar, renderChatCount, renderLegacyTaskType } from "./TaskItem.utils";
+import { html } from "lit";
 import { TaskItemMediaType } from "./TaskItem.constants";
-import { html } from "lit-html";
+import { getChannelAvatar, renderChatCount, renderLegacyTaskType, renderTaskType } from "./TaskItem.utils";
 
 describe("TaskItem Utils", () => {
   let mockElement: HTMLElement;
@@ -123,6 +123,11 @@ describe("TaskItem Utils", () => {
       expect(result).toEqual(
         getChannelAvatar(false, "inactive", "channel-custom", html`<img height="20px" width="20px" src="${iconSrc}" />`)
       );
+    });
+
+    it("should return the correct avatar for WORKITEM", () => {
+      const result = renderTaskType(TaskItemMediaType.WORKITEM, true, "active", "");
+      expect(result).toEqual(getChannelAvatar(true, "active", "channel-work-item"));
     });
 
     it("should return the default avatar for unsupported mediaType", () => {

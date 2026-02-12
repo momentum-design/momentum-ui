@@ -6,12 +6,12 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
 
@@ -35,8 +35,8 @@ export namespace Table {
     @property({ type: Array }) warning: (any | Warn)[] = [];
     @property({ type: Array }) errors: (any | Warn)[] = [];
 
-    @internalProperty() private sort = { columnName: "", sortting: false };
-    @internalProperty() csvData: any = undefined;
+    @state() private sort = { columnName: "", sortting: false };
+    @state() csvData: any = undefined;
 
     @queryAll('.md-table__body tr[role="row"]') rowTable?: HTMLTableRowElement[];
 
@@ -58,8 +58,6 @@ export namespace Table {
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
-      this.requestUpdate("tabledata");
-      this.linkCellItems();
     }
 
     get rowItem() {
@@ -136,12 +134,18 @@ export namespace Table {
       this.requestUpdate("csvData");
     }
 
-    protected update(changedProperties: PropertyValues) {
-      super.update(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues) {
+      super.willUpdate(changedProperties);
       if (changedProperties.has("tabledata")) {
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("tabledata")) {
         this.linkCellItems();
       }
     }
@@ -175,7 +179,7 @@ export namespace Table {
 
     render() {
       return html`
-        <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : nothing}`}>
+        <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : ""}`}>
           ${this.csvData.length != 0
             ? html`
                 <table

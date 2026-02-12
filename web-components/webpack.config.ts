@@ -12,12 +12,14 @@ import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
 const pSrc = path.resolve("src");
 const pStats = path.resolve("stats");
 const pDist = path.resolve("dist");
+const pDistEsm = path.resolve("dist/esm");
 export const pBuild = path.resolve("build");
 const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg");
+const momentumDesignIcons = path.resolve("node_modules/@momentum-design/icons/dist/svg");
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
@@ -50,14 +52,6 @@ const common: webpack.Configuration = {
         test: /\.(png|svg|jpe?g)$/,
         use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
         include: pSrc
-      },
-      {
-        test: /\.svg$/,
-        use: {
-          loader: "url-loader",
-          options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
-        },
-        include: [path.resolve("node_modules/@momentum-design/icons/dist/svg")]
       }
     ]
   }
@@ -77,7 +71,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   return {
     test: /\.scss$/,
     use: [
-      { loader: "lit1-scss-loader", options: { minify: !isDev } },
+      { loader: "lit-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },
@@ -120,6 +114,7 @@ export const commonDev = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
         { from: `${brandVisualLogos}`, to: "assets/icons/svg" },
+        { from: `${momentumDesignIcons}`, to: "assets/icons/svg" },
         { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
         { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
         { from: `node_modules/@momentum-design/brand-visuals/dist/`, to: "images/brand-visuals/" }
@@ -133,84 +128,86 @@ const dev = merge(commonDev, { plugins: [new CleanWebpackPlugin()] });
 // DIST
 // ----------
 
+const distEntry = {
+  "index-entry": "./src/index.ts",
+  "comp/md-accordion-entry": "./src/components/accordion/Accordion",
+  "comp/md-accordion-item-entry": "./src/components/accordion/AccordionItem",
+  "comp/md-activity-button-entry": "./src/components/activity-button/ActivityButton",
+  "comp/md-advance-list-entry": "./src/components/advance-list/AdvanceList",
+  "comp/md-alert-entry": "./src/components/alert/Alert",
+  "comp/md-alert-banner-entry": "./src/components/alert-banner/AlertBanner",
+  "comp/md-audio-player-entry": "./src/components/audio-player/AudioPlayer",
+  "comp/md-avatar-entry": "./src/components/avatar/Avatar",
+  "comp/md-composite-avatar-entry": "./src/components/avatar/CompositeAvatar",
+  "comp/md-badge-entry": "./src/components/badge/Badge",
+  "comp/md-breadcrumb-entry": "./src/components/breadcrumb/Breadcrumb",
+  "comp/md-button-entry": "./src/components/button/Button",
+  "comp/md-button-group-entry": "./src/components/button-group/ButtonGroup",
+  "comp/md-card-entry": "./src/components/card/Card",
+  "comp/md-card-ai-entry": "./src/components/card-ai/CardAi",
+  "comp/md-card-v2-entry": "./src/components/card-v2/CardV2",
+  "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
+  "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
+  "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",
+  "comp/md-chip-entry": "./src/components/chip/Chip",
+  "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
+  "comp/md-coachmark-popover-entry": "./src/components/coachmark-popover/CoachmarkPopover",
+  "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
+  "comp/md-country-code-picker-entry": "./src/components/country-code-picker/CountryCodePicker",
+  "comp/md-date-range-picker-entry": "./src/components/date-range-picker/DateRangePicker",
+  "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
+  "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",
+  "comp/md-datepicker-calendar-entry": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
+  "comp/md-datepicker-day-entry": "./src/components/datepicker/datepicker-day/DatePickerDay",
+  "comp/md-datepicker-month-entry": "./src/components/datepicker/datepicker-month/DatePickerMonth",
+  "comp/md-datepicker-week-entry": "./src/components/datepicker/datepicker-week/DatePickerWeek",
+  "comp/md-dropdown-entry": "./src/components/dropdown/Dropdown",
+  "comp/md-draggable-entry": "./src/components/draggable/Draggable",
+  "comp/md-draggable-item-entry": "./src/components/draggable/DraggableItem",
+  "comp/md-editable-field-entry": "./src/components/editable-textfield/EditableTextfield",
+  "comp/md-favorite-entry": "./src/components/favorite/Favorite",
+  "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
+  "comp/md-floating-minimize-entry": "./src/components/floating-modal/FloatingMinimizedModal",
+  "comp/md-grabber-entry": "./src/components/grabber/Grabber",
+  "comp/md-help-text-entry": "./src/components/help-text/HelpText",
+  "comp/md-icon-entry": "./src/components/icon/Icon",
+  "comp/md-input-entry": "./src/components/input/Input",
+  "comp/md-input-file": "./src/components/input-file/InputFile",
+  "comp/md-label-entry": "./src/components/label/Label",
+  "comp/md-link-entry": "./src/components/link/Link",
+  "comp/md-list-entry": "./src/components/list/List",
+  "comp/md-list-item-entry": "./src/components/list/ListItem",
+  "comp/md-loading-entry": "./src/components/loading/Loading",
+  "comp/md-meeting-alert-entry": "./src/components/meeting-alert/MeetingAlert",
+  "comp/md-menu-entry": "./src/components/menu/Menu",
+  "comp/md-menu-item-entry": "./src/components/menu/MenuItem",
+  "comp/md-menu-overlay-entry": "./src/components/menu-overlay/MenuOverlay",
+  "comp/md-modal-entry": "./src/components/modal/Modal",
+  "comp/md-pagination-entry": "./src/components/pagination/Pagination",
+  "comp/md-phone-input-entry": "./src/components/phone-input/PhoneInput",
+  "comp/md-popover-entry": "./src/components/popover/Popover",
+  "comp/md-presence-entry": "./src/components/presence/Presence",
+  "comp/md-progress-bar-entry": "./src/components/progress-bar/ProgressBar",
+  "comp/md-radio-entry": "./src/components/radio/Radio",
+  "comp/md-radiogroup-entry": "./src/components/radio/RadioGroup",
+  "comp/md-slider-entry": "./src/components/slider/Slider",
+  "comp/md-spinner-entry": "./src/components/spinner/Spinner",
+  "comp/md-table-entry": "./src/components/table/Table",
+  "comp/md-table-advanced-entry": "./src/components/table-advanced/TableAdvanced",
+  "comp/md-tab-entry": "./src/components/tabs/Tab",
+  "comp/md-tab-panel-entry": "./src/components/tabs/TabPanel",
+  "comp/md-tabs-entry": "./src/components/tabs/Tabs",
+  "comp/md-task-item-entry": "./src/components/taskitem/TaskItem",
+  "comp/md-theme-entry": "./src/components/theme/Theme",
+  "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
+  "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
+  "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
+  "comp/md-form-entry": "./src/components/form/Form",
+  "managers/thememanager-entry": "./src/managers/ThemeManager"
+};
+
 const commonDist = merge(common, {
-  entry: {
-    "index-entry": "./src/index.ts",
-    "comp/md-accordion-entry": "./src/components/accordion/Accordion",
-    "comp/md-accordion-item-entry": "./src/components/accordion/AccordionItem",
-    "comp/md-activity-button-entry": "./src/components/activity-button/ActivityButton",
-    "comp/md-advance-list-entry": "./src/components/advance-list/AdvanceList",
-    "comp/md-alert-entry": "./src/components/alert/Alert",
-    "comp/md-alert-banner-entry": "./src/components/alert-banner/AlertBanner",
-    "comp/md-audio-player-entry": "./src/components/audio-player/AudioPlayer",
-    "comp/md-avatar-entry": "./src/components/avatar/Avatar",
-    "comp/md-composite-avatar-entry": "./src/components/avatar/CompositeAvatar",
-    "comp/md-badge-entry": "./src/components/badge/Badge",
-    "comp/md-breadcrumb-entry": "./src/components/breadcrumb/Breadcrumb",
-    "comp/md-button-entry": "./src/components/button/Button",
-    "comp/md-button-group-entry": "./src/components/button-group/ButtonGroup",
-    "comp/md-card-entry": "./src/components/card/Card",
-    "comp/md-card-ai-entry": "./src/components/card-ai/CardAi",
-    "comp/md-card-v2-entry": "./src/components/card-v2/CardV2",
-    "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
-    "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
-    "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",
-    "comp/md-chip-entry": "./src/components/chip/Chip",
-    "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
-    "comp/md-coachmark-popover-entry": "./src/components/coachmark-popover/CoachmarkPopover",
-    "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
-    "comp/md-country-code-picker-entry": "./src/components/country-code-picker/CountryCodePicker",
-    "comp/md-date-range-picker-entry": "./src/components/date-range-picker/DateRangePicker",
-    "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
-    "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",
-    "comp/md-datepicker-calendar-entry": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
-    "comp/md-datepicker-day-entry": "./src/components/datepicker/datepicker-day/DatePickerDay",
-    "comp/md-datepicker-month-entry": "./src/components/datepicker/datepicker-month/DatePickerMonth",
-    "comp/md-datepicker-week-entry": "./src/components/datepicker/datepicker-week/DatePickerWeek",
-    "comp/md-dropdown-entry": "./src/components/dropdown/Dropdown",
-    "comp/md-draggable-entry": "./src/components/draggable/Draggable",
-    "comp/md-draggable-item-entry": "./src/components/draggable/DraggableItem",
-    "comp/md-editable-field-entry": "./src/components/editable-textfield/EditableTextfield",
-    "comp/md-favorite-entry": "./src/components/favorite/Favorite",
-    "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
-    "comp/md-floating-minimize-entry": "./src/components/floating-modal/FloatingMinimizedModal",
-    "comp/md-grabber-entry": "./src/components/grabber/Grabber",
-    "comp/md-help-text-entry": "./src/components/help-text/HelpText",
-    "comp/md-icon-entry": "./src/components/icon/Icon",
-    "comp/md-input-entry": "./src/components/input/Input",
-    "comp/md-input-file": "./src/components/input-file/InputFile",
-    "comp/md-label-entry": "./src/components/label/Label",
-    "comp/md-link-entry": "./src/components/link/Link",
-    "comp/md-list-entry": "./src/components/list/List",
-    "comp/md-list-item-entry": "./src/components/list/ListItem",
-    "comp/md-loading-entry": "./src/components/loading/Loading",
-    "comp/md-meeting-alert-entry": "./src/components/meeting-alert/MeetingAlert",
-    "comp/md-menu-entry": "./src/components/menu/Menu",
-    "comp/md-menu-item-entry": "./src/components/menu/MenuItem",
-    "comp/md-menu-overlay-entry": "./src/components/menu-overlay/MenuOverlay",
-    "comp/md-modal-entry": "./src/components/modal/Modal",
-    "comp/md-pagination-entry": "./src/components/pagination/Pagination",
-    "comp/md-phone-input-entry": "./src/components/phone-input/PhoneInput",
-    "comp/md-popover-entry": "./src/components/popover/Popover",
-    "comp/md-presence-entry": "./src/components/presence/Presence",
-    "comp/md-progress-bar-entry": "./src/components/progress-bar/ProgressBar",
-    "comp/md-radio-entry": "./src/components/radio/Radio",
-    "comp/md-radiogroup-entry": "./src/components/radio/RadioGroup",
-    "comp/md-slider-entry": "./src/components/slider/Slider",
-    "comp/md-spinner-entry": "./src/components/spinner/Spinner",
-    "comp/md-table-entry": "./src/components/table/Table",
-    "comp/md-table-advanced-entry": "./src/components/table-advanced/TableAdvanced",
-    "comp/md-tab-entry": "./src/components/tabs/Tab",
-    "comp/md-tab-panel-entry": "./src/components/tabs/TabPanel",
-    "comp/md-tabs-entry": "./src/components/tabs/Tabs",
-    "comp/md-task-item-entry": "./src/components/taskitem/TaskItem",
-    "comp/md-theme-entry": "./src/components/theme/Theme",
-    "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
-    "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
-    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
-    "comp/md-form-entry": "./src/components/form/Form",
-    "managers/thememanager-entry": "./src/managers/ThemeManager"
-  },
+  entry: distEntry,
   output: {
     path: pDist,
     publicPath: "/",
@@ -248,7 +245,7 @@ const commonDist = merge(common, {
           { folder: "./dist/types", method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p), recursive: true }
         ]
       }
-    })
+    }) as unknown as webpack.WebpackPluginInstance
   ]
 });
 
@@ -267,4 +264,41 @@ const distProd = merge(commonDist, {
   module: { rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })] }
 });
 
-export default [dev, distDev, distDevWatch, distProd];
+// ESM DIST
+// ----------
+
+const commonDistEsm = merge(common, {
+  entry: distEntry,
+  output: {
+    path: pDistEsm,
+    publicPath: "/",
+    filename: "[name].js",
+    chunkFilename: "chunks/md-[id].js",
+    library: { type: "module" },
+    chunkLoadingGlobal: "momentum-web-components-esm-[id]",
+    module: true
+  },
+  experiments: {
+    outputModule: true
+  },
+  optimization: {
+    splitChunks: { chunks: "all", maxInitialRequests: Infinity, maxAsyncRequests: Infinity, minSize: 0 }
+  },
+  externals: [nodeExternals({ modulesFromFile: true, importType: "module" })],
+  plugins: [new WebpackLoadChunksPlugin({ trimNameEnd: 6, useEsm: true })]
+});
+
+const distEsmDev = merge(commonDistEsm, {
+  name: "distEsmDev",
+  mode: "development",
+  devtool: "source-map",
+  module: { rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })] }
+});
+
+const distEsmProd = merge(commonDistEsm, {
+  name: "distEsmProd",
+  mode: "production",
+  module: { rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })] }
+});
+
+export default [dev, distDev, distDevWatch, distProd, distEsmDev, distEsmProd];

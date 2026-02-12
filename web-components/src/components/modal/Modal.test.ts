@@ -179,8 +179,8 @@ describe("Modal Component", () => {
     await elementUpdated(element);
     jest.runAllTimers();
 
-    expect(mockTransitionPromise).toBeCalled();
-    expect(focusInsideModal).toBeCalled();
+    expect(mockTransitionPromise).toHaveBeenCalled();
+    expect(focusInsideModal).toHaveBeenCalled();
   });
 
   test("shouldn't call focusInsideModal in modal", async () => {
@@ -194,8 +194,8 @@ describe("Modal Component", () => {
     await elementUpdated(element);
     jest.runAllTimers();
 
-    expect(mockTransitionPromise).toBeCalled();
-    expect(focusInsideModal).not.toBeCalled();
+    expect(mockTransitionPromise).toHaveBeenCalled();
+    expect(focusInsideModal).not.toHaveBeenCalled();
   });
 
   test("should close modal when showCloseButton is true and X button is clicked", async () => {

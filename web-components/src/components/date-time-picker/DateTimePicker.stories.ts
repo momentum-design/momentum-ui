@@ -3,8 +3,8 @@ import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
-import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
+import { DatePicker } from "@/components/datepicker/DatePicker";
+import { timeSpecificity } from "@/components/timepicker/TimePicker";
 
 export default {
   title: "Components/Date Time Picker",
@@ -24,7 +24,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-date-time-picker"
+      context: "md-date-time-picker"
     }
   }
 };

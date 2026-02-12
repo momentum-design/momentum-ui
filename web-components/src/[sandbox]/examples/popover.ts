@@ -9,12 +9,13 @@ import { PopoverController } from "@/components/popover/Popover";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/tooltip/Tooltip";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
-import { repeat } from "lit-html/directives/repeat";
+import { css, html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
 
 @customElement("test-popover-element")
 export class TestPopoverElement extends LitElement {
-  @internalProperty()
+  @state()
   private isOpen = false;
 
   render() {
@@ -36,19 +37,19 @@ export class TestPopoverElement extends LitElement {
 
 @customElement("popover-template-sandbox")
 export class PopoverTemplateSandbox extends LitElement {
-  @internalProperty()
+  @state()
   private firstOpen = false;
 
-  @internalProperty()
+  @state()
   private secondOpen = false;
 
-  @internalProperty()
+  @state()
   private thirdOpen = false;
 
-  @internalProperty()
+  @state()
   private fourthOpen = false;
 
-  @internalProperty()
+  @state()
   private isButtonWithTooltipPopoverOpen = false;
 
   private openFirstCoach() {
@@ -69,7 +70,7 @@ export class PopoverTemplateSandbox extends LitElement {
 
   private popoverController = new PopoverController();
 
-  @internalProperty()
+  @state()
   private currentTriggerId = "button-t1";
 
   private setTriggerId(id: string) {

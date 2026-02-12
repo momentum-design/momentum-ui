@@ -10,7 +10,6 @@ import "@/components/table-advanced/TableAdvanced";
 import { Args, Meta } from "@storybook/web-components";
 import { html } from "lit";
 import { TableAdvanced as TableAdvancedType } from "./TableAdvanced"; // Keep type import as a relative path
-import mdx from "./TableAdvanced.mdx";
 
 export const TableAdvanced = (args: Args) => {
   const DefaultAdvancedTable: { config: TableAdvancedType.Config; data: TableAdvancedType.Data } = {
@@ -148,12 +147,10 @@ const meta: Meta = {
   argTypes: {
     customize: { control: "boolean", description: "Use custom template for replace", defaultValue: false }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-table-advanced"
-    },
-    docs: {
-      page: mdx
+      context: "md-table-advanced"
     }
   }
 };

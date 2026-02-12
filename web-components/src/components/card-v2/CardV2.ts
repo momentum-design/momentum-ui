@@ -6,14 +6,14 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/tooltip/Tooltip";
+import "../button/Button";
+import "../icon/Icon";
+import "../tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import { Duration } from "luxon";
 import styles from "./scss/module.scss";
 
@@ -41,10 +41,10 @@ export namespace CardV2 {
     @query('slot[name="card-extra-info"]')
     private readonly extraInfoSlot!: HTMLSlotElement;
 
-    @internalProperty()
+    @state()
     private interval: number | undefined;
 
-    @internalProperty()
+    @state()
     private renderedData = "";
 
     connectedCallback() {
@@ -72,8 +72,8 @@ export namespace CardV2 {
       return this.state === CardState.ACTIVE;
     }
 
-    protected update(changedProperties: PropertyValues): void {
-      super.update(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate(changedProperties);
       if (changedProperties.has("active") || changedProperties.has("data") || changedProperties.has("createdTime")) {
         this.calculateRenderedData();
       }

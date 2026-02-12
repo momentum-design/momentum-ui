@@ -1,7 +1,8 @@
 import "@/components/help-text/HelpText";
 import "@/components/link/Link";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
 import "./ErrorLoader.scss";
 export namespace MdFetchError {
   @customElementWithCheck("md-fetch-error")
@@ -13,10 +14,10 @@ export namespace MdFetchError {
     @property({ type: String }) trackingId = "";
     @property({ type: String }) trackingIdInputLabel = "";
 
-    @internalProperty()
+    @state()
     private readonly isLoading = false;
 
-    @internalProperty()
+    @state()
     private readonly hasError = false;
 
     private onRetry(_event: Event) {

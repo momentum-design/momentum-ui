@@ -21,7 +21,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-loading"
+      context: "md-loading"
     }
   }
 };

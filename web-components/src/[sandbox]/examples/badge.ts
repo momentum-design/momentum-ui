@@ -1,7 +1,8 @@
 import "@/components/badge/Badge";
 import "@/components/badge/NotificationBadge";
 import "@/components/icon/Icon";
-import { css, customElement, html, LitElement } from "lit-element";
+import { css, html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
 
 @customElement("badge-template-sandbox")
 export class BadgeTemplateSandbox extends LitElement {

@@ -1,9 +1,8 @@
 import "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import type { Args, Meta } from "@storybook/web-components";
 import { html } from "lit";
-import { html as lit1Html } from "lit-html";
 
 const render = (args: Args) => {
   return html`
@@ -31,13 +30,13 @@ export const AdvanceListWithLoader: any = {
       .map((n) => ({
         id: `${n}`,
         name: `Item ${n}`,
-        template: (item: any) => lit1Html`<div style="padding: 0.5rem">${item.name}</div>`
+        template: (item: any) => html`<div style="padding: 0.5rem">${item.name}</div>`
       }))
       .concat({
         id: "status-indicator",
         name: "loading",
         template: () =>
-          lit1Html`<div class="infinite-scroll-spinner" part="spinner"><md-spinner size="18"></md-spinner></div>`
+          html`<div class="infinite-scroll-spinner" part="spinner"><md-spinner size="18"></md-spinner></div>`
       }),
     isLoading: true,
     isMulti: false, // Default value
@@ -56,7 +55,7 @@ export const AdvanceList: any = {
     items: [1, 2, 3, 4, 5].map((n) => ({
       id: `${n}`,
       name: `Item ${n}`,
-      template: (item: any) => lit1Html`<div style="padding: 0.5rem">${item.name}</div>`
+      template: (item: any) => html`<div style="padding: 0.5rem">${item.name}</div>`
     })),
     isLoading: false,
     isMulti: false, // Default value
@@ -94,6 +93,6 @@ const meta: Meta = {
     selectedItemsIds: { table: { disable: true } },
     selectAllItems: { table: { disable: true } }
   },
-  parameters: { a11y: { element: "md-advance-list" } }
+  parameters: { a11y: { context: "md-advance-list" } }
 };
 export default meta;

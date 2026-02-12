@@ -1,9 +1,9 @@
 const ignoreAllButTheseModules =
   "/node_modules/(?!" +
   "(@open-wc|" +
-  "lit-element|" +
-  "lit-html|" +
-  "lit-virtualizer|" +
+  "lit|" +
+  "@lit|" +
+  "@lit-labs/virtualizer|" +
   "query-selector-shadow-dom|" +
   "@popperjs|" +
   "@interactjs|" +
@@ -15,6 +15,7 @@ module.exports = {
   testEnvironment: "jsdom",
   collectCoverage: true,
   coverageProvider: "v8",
+  maxWorkers: "50%",
   transform: {
     "^.+\\.ts$": [
       "ts-jest",
@@ -36,6 +37,9 @@ module.exports = {
     "/coverage/",
     "/stats",
     "/src/components/sass-stats/"
+  ],
+  modulePathIgnorePatterns: [
+    "<rootDir>/publish/"
   ],
   transformIgnorePatterns: [ignoreAllButTheseModules],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],

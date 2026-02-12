@@ -1,7 +1,8 @@
 import "@/components/date-time-picker/DateTimePicker";
 import { now } from "@/utils/dateUtils";
-import { css, customElement, html, LitElement } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { css, html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 const minDate = now().minus({ day: 5 }).toISODate();
 

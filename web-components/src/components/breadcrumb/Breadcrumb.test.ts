@@ -1,6 +1,6 @@
 import { breadCrumb } from "@/[sandbox]/sandbox.mock";
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
+import { html } from "lit";
 import "./Breadcrumb";
 import { type Breadcrumb } from "./Breadcrumb";
 

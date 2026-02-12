@@ -94,17 +94,8 @@ export class Evt<T extends Detail<V>, V = any> {
   }
 }
 
-// TEMPLATE decorator
+// TEMPLATE types - for template callback functionality
 // --------------------------------------
-
-import { directive, NodePart, Part } from "lit-html";
-
-interface PreviousValue {
-  readonly template: HTMLTemplateElement;
-  readonly fragment: DocumentFragment;
-}
-
-const previousValues = new WeakMap<NodePart, PreviousValue>();
 
 export type TemplateInfo = {
   content: string;
@@ -117,34 +108,4 @@ type TCallback = TemplateInfo & {
   fragment: DocumentFragment;
 };
 
-type TPayload = TemplateInfo & {
-  template: HTMLTemplateElement;
-  cb: TemplateCallback;
-};
-
 export type TemplateCallback = (p: TCallback) => void;
-
-export const templateCallback = directive((p: TPayload) => (part: Part): void => {
-  if (!(part instanceof NodePart)) {
-    throw new Error("templateCallback can only be used in text bindings");
-  }
-
-  const previousValue = previousValues.get(part);
-
-  if (previousValue !== undefined && p.template === previousValue.template && part.value === previousValue.fragment) {
-    return;
-  }
-
-  const fragment = document.importNode(p.template.content, true);
-
-  p.cb({
-    content: p.content,
-    row: p.row,
-    col: p.col,
-    insertIndex: p.insertIndex,
-    fragment
-  });
-
-  part.setValue(fragment);
-  previousValues.set(part, { template: p.template, fragment });
-});

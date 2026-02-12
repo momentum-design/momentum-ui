@@ -10,7 +10,7 @@ import "@/components/button/Button";
 import "@/components/theme/Theme";
 import "@/components/tooltip/Tooltip";
 import { tooltipPlacement } from "@/components/tooltip/Tooltip";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
@@ -47,7 +47,7 @@ const meta: Meta = {
   },
   parameters: {
     a11y: {
-      element: "md-tooltip"
+      context: "md-tooltip"
     }
   }
 };

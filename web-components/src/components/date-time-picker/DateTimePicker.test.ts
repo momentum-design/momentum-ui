@@ -3,7 +3,7 @@ import { DateTime, Settings } from "luxon";
 import "../timepicker/TimePicker";
 
 import "../datepicker/DatePicker";
-import { DatePicker } from "../datepicker/DatePicker";
+import { DatePicker } from "@/components/datepicker/DatePicker";
 import "./DateTimePicker";
 import { DateTimePicker } from "./DateTimePicker";
 

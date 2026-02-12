@@ -18,42 +18,47 @@
     height: 100%;
     padding: 1rem;
     width: 100%;
+  }
 
-    &.is-visual-rebrand {
-      background: url("/images/brand-visuals/png/operation-pop-background-light.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
+  md-theme.theme-toggle.is-visual-rebrand {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.DEFAULT {
+    background-image: url("/images/backgrounds/simple-background-light.svg");
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.SERENE {
+    background-image: url("/images/backgrounds/operation-pop-background-light.png");
+  }
+
+  md-theme.theme-toggle.is-visual-rebrand.AURORA {
+    background-image: url("/images/backgrounds/gradient-background-light.svg");
   }
 
   md-theme.theme-toggle[darktheme] {
     background-color: #000;
     color: #f7f7f7;
-
-    &.is-visual-rebrand {
-      background: url("/images/brand-visuals/png/operation-pop-background-dark.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
   }
 
-  .sorting {
-    opacity: 0.4;
-    border-style: dashed;
-    border-color: #333;
+  md-theme.theme-toggle[darktheme].is-visual-rebrand {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
-  .shared-draggable-wrapper {
-    display: flex;
-    justify-content: space-evenly;
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.DEFAULT {
+    background-image: url("/images/backgrounds/simple-background-dark.svg");
   }
 
-  .ghost {
-    opacity: 0.4;
-    border-style: dashed;
-    border-color: red;
-    background-color: yellow;
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.SERENE {
+    background-image: url("/images/backgrounds/operation-pop-background-dark.png");
   }
+
+  md-theme.theme-toggle[darktheme].is-visual-rebrand.AURORA {
+    background-image: url("/images/backgrounds/gradient-background-dark.svg");
+  }
+
 </style>

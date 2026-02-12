@@ -3,11 +3,12 @@ import "@/components/checkbox/Checkbox";
 import "@/components/icon/Icon";
 import "@/components/taskitem/TaskItem";
 import svgWxm from "@img/wxm.svg";
-import { customElement, html, internalProperty, LitElement } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 @customElement("task-item-sandbox")
 export class TaskItemSandbox extends LitElement {
-  @internalProperty()
+  @state()
   private isRestyled = false;
 
   render() {
@@ -81,7 +82,16 @@ export class TaskItemSandbox extends LitElement {
         >
           <div>01:08:00</div>
         </md-task-item>
-
+        <md-task-item
+          mediaType="workitem"
+          popovertitle="Work Item"
+          queue="Work Item Queue"
+          selected
+          lastmessage="Time Left 00:20"
+          ?is-restyle=${this.isRestyled}
+        >
+          <div>01:10:30</div>
+        </md-task-item>
         <md-task-item
           mediaType="progressive_campaign"
           item-title="Media Type progressive_campaign"

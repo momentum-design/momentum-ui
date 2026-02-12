@@ -14,7 +14,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-country-code-picker"
+      context: "md-country-code-picker"
     }
   }
 };

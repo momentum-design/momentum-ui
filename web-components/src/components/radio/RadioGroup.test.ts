@@ -1,6 +1,6 @@
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
 import "./Radio";
 import { Radio } from "./Radio";
 import "./RadioGroup";
@@ -199,11 +199,11 @@ describe("RadioGroup", () => {
     await elementUpdated(element);
     expect(detail).toBeDefined();
     const notifyEvent = jest.spyOn(el, "notifySelectedChange" as never);
-    expect(notifyEvent).toBeCalledTimes(0);
+    expect(notifyEvent).toHaveBeenCalledTimes(0);
 
     const keyboardEvent = new KeyboardEvent("keydown");
     el.handleKeyDown(keyboardEvent);
     await elementUpdated(element);
-    expect(notifyEvent).toBeCalledTimes(0);
+    expect(notifyEvent).toHaveBeenCalledTimes(0);
   });
 });

@@ -9,9 +9,9 @@
 import "@/components/editable-textfield/EditableTextfield";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
-import { Input } from "../input/Input"; // Keep type import as a relative path
-import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
+import { numInputTypes } from "@/utils/enums";
+import { Input } from "@/components/input/Input";
+import { alignment } from "./EditableTextfield";
 
 const successMessageArr: Input.Message = { message: "This is where the message would be.", type: "success" };
 const errorMessageArr: Input.Message = { message: "This is where the message would be.", type: "error" };
@@ -86,7 +86,7 @@ const meta: Meta = {
     inputType: { control: { type: "select" }, options: numInputTypes },
     regexString: { control: "text", description: "Regex String" }
   },
-  parameters: { a11y: { element: "md-editable-field" } }
+  parameters: { a11y: { context: "md-editable-field" } }
 };
 
 export default meta;

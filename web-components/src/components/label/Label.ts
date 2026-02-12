@@ -8,8 +8,9 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map.js";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Label {
@@ -62,11 +63,7 @@ export namespace Label {
 
     render() {
       return html`
-        <label
-          @click=${() => this.handleClick()}
-          class="md-label ${classMap(this.labelClassMap)}"
-          for="${this.htmlFor}"
-        >
+        <label @click=${this.handleClick} class="md-label ${classMap(this.labelClassMap)}" for="${this.htmlFor}">
           ${this.label ? html` <span>${this.label}</span> ` : html` <slot></slot> `}
         </label>
       `;

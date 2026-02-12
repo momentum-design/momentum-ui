@@ -16,7 +16,8 @@ import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
 import { debounce } from "@/utils/helpers";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, property, query } from "lit/decorators.js";
 import { dropdownObjectLongOptions } from "./dropdown";
 
 @customElement("modal-template-sandbox")

@@ -28,13 +28,7 @@ const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
 };
 
 describe("Menu component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
     fixtureCleanup();
   });
 

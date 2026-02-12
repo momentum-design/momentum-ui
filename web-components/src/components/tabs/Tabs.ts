@@ -6,24 +6,24 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
-import "@/components/tooltip/Tooltip";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
+import "../tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import { getElementSafe } from "@/utils/helpers";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import Sortable from "sortablejs";
 import { setTimeout } from "timers";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
@@ -96,22 +96,22 @@ export namespace Tabs {
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
     @property({ type: Number }) size: TabSize = 28;
 
-    @internalProperty() private isMoreTabMenuVisible = false;
-    @internalProperty() private isMoreTabMenuMeasured = false;
-    @internalProperty() private isMoreTabMenuOpen = false;
-    @internalProperty() private isMoreTabMenuSelected = false;
-    @internalProperty() private isMoreTabMenuScrollable = false;
-    @internalProperty() private moreTabMenuOffsetWidth = 0;
-    @internalProperty() private moreTabMenuMaxHeight: string | null = null;
-    @internalProperty() private tabsViewportDataList: TabsViewportDataList = [];
-    @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
-    @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
-    @internalProperty() private noTabsVisible = false;
-    @internalProperty() private defaultTabsOrderArray: string[] = [];
-    @internalProperty() private tabsOrderPrefsArray: string[] = [];
-    @internalProperty() private isMoreTabTruncated = false;
-    @internalProperty() private showLeftArrow = false;
-    @internalProperty() private showRightArrow = false;
+    @state() private isMoreTabMenuVisible = false;
+    @state() private isMoreTabMenuMeasured = false;
+    @state() private isMoreTabMenuOpen = false;
+    @state() private isMoreTabMenuSelected = false;
+    @state() private isMoreTabMenuScrollable = false;
+    @state() private moreTabMenuOffsetWidth = 0;
+    @state() private moreTabMenuMaxHeight: string | null = null;
+    @state() private tabsViewportDataList: TabsViewportDataList = [];
+    @state() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
+    @state() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
+    @state() private noTabsVisible = false;
+    @state() private defaultTabsOrderArray: string[] = [];
+    @state() private tabsOrderPrefsArray: string[] = [];
+    @state() private isMoreTabTruncated = false;
+    @state() private showLeftArrow = false;
+    @state() private showRightArrow = false;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -154,6 +154,7 @@ export namespace Tabs {
     private tabsCopyHash: Record<TabId, Tab.ELEMENT> = {};
 
     private tabsIdxHash: Record<TabId, number> = {};
+    private tabPanelHash: Record<TabId, TabPanel.ELEMENT> = {};
 
     private tabsVisibleIdxHash: Record<TabId, number> = {};
     private tabsHiddenIdxHash: Record<TabId, number> = {};
@@ -372,6 +373,43 @@ export namespace Tabs {
       this.isMoreTabMenuSelected = !!this.tabsFilteredAsHiddenList.find((tab) => tab.selected);
     }
 
+    /**
+     * Updates ariaControlsElements on shadow DOM tab copies to establish proper
+     * aria-controls relationships across shadow DOM boundaries.
+     *
+     * This uses the ariaControlsElements API which allows referencing elements
+     * from parent DOM (light DOM panels) within shadow DOM elements, avoiding
+     * the accessibility violation that occurs when using aria-controls attribute
+     * with ID references across shadow DOM boundaries.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaControlsElements
+     */
+    private updateAriaControlsElements() {
+      // Update visible tab copies in shadow DOM
+      if (this.visibleTabsContainerElement) {
+        const visibleTabCopies = this.visibleTabsContainerElement.querySelectorAll("md-tab");
+        visibleTabCopies.forEach((tabCopy) => {
+          const originalTabId = this.getNormalizedTabId(tabCopy.id);
+          const panel = this.tabPanelHash[originalTabId];
+          if (panel && "ariaControlsElements" in tabCopy) {
+            tabCopy.ariaControlsElements = [panel];
+          }
+        });
+      }
+
+      // Update hidden tab copies in the more menu
+      if (this.hiddenTabsContainerElement) {
+        const hiddenTabCopies = this.hiddenTabsContainerElement.querySelectorAll("md-tab");
+        hiddenTabCopies.forEach((tabCopy) => {
+          const originalTabId = this.getNormalizedTabId(tabCopy.id);
+          const panel = this.tabPanelHash[originalTabId];
+          if (panel && "ariaControlsElements" in tabCopy) {
+            tabCopy.ariaControlsElements = [panel];
+          }
+        });
+      }
+    }
+
     private updateHiddenIdPositiveTabIndex(hiddenTab?: Tab.ELEMENT) {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
@@ -470,6 +508,17 @@ export namespace Tabs {
           return acc;
         },
         {} as Record<TabId, number>
+      );
+
+      // Store tab-to-panel mapping for ariaControlsElements
+      this.tabPanelHash = this.tabs.reduce(
+        (acc, tab, idx) => {
+          if (panels[idx]) {
+            acc[tab.id] = panels[idx];
+          }
+          return acc;
+        },
+        {} as Record<TabId, TabPanel.ELEMENT>
       );
     }
 
@@ -731,7 +780,11 @@ export namespace Tabs {
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
       const currentTabsOrder = this.currentTabsLayout;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
-      const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+      let newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
+
+      if (newIndex === -1) {
+        newIndex = newSelectedIndex;
+      }
 
       const newTabArrangement: string[] = [];
       currentTabsOrder.forEach((tabElement) => {
@@ -1106,7 +1159,6 @@ export namespace Tabs {
         this.initializeSortable();
       }
       this.manageOverflow();
-      this.requestUpdate();
     }
 
     connectedCallback() {
@@ -1188,21 +1240,11 @@ export namespace Tabs {
       }
     }
 
-    protected updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
 
-      if (changedProperties.has("direction")) {
-        if (changedProperties.get("direction") !== this.direction) {
-          this.onDirectionChanged();
-        }
-      }
-
-      if (changedProperties.has("slotted")) {
-        this.initializeTabs();
-      }
-
-      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
-        this.initializeSortable();
+      if (changedProperties.has("selectedIndex")) {
+        this.selected = this.selectedIndex;
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
@@ -1253,13 +1295,30 @@ export namespace Tabs {
           }
         }
       }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+
+      if (changedProperties.has("direction")) {
+        if (changedProperties.get("direction") !== this.direction) {
+          this.onDirectionChanged();
+        }
+      }
+
+      if (changedProperties.has("slotted")) {
+        this.initializeTabs();
+      }
+
+      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
+        this.initializeSortable();
+      }
 
       if (changedProperties.has("tabsId")) {
         this.selectTabFromStorage();
       }
 
       if (changedProperties.has("selectedIndex")) {
-        this.selected = this.selectedIndex;
         this.updateSelectedTab(this.selectedIndex, false);
       }
 
@@ -1269,6 +1328,14 @@ export namespace Tabs {
 
       if (changedProperties.has("scrollArrow")) {
         this.onDirectionChanged();
+      }
+
+      // Update ariaControlsElements for shadow DOM tab copies.
+      // This needs to run after any update that might re-render the tab copies,
+      // ensuring proper aria-controls relationships across shadow DOM boundaries.
+      // Using requestAnimationFrame to ensure DOM is fully rendered.
+      if (this.visibleTabsContainerElement || this.hiddenTabsContainerElement) {
+        requestAnimationFrame(() => this.updateAriaControlsElements());
       }
     }
 
@@ -1327,8 +1394,7 @@ export namespace Tabs {
               name="${tab.name}"
               id="${this.getCopyTabId(tab)}"
               aria-label=${tab.ariaLabel}
-              aria-controls="${this.getAriaControlId(tab)}"
-              @click=${() => this.handleOverlayClose()}
+              @click=${this.handleOverlayClose}
               tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
               role="menuitem"
               ?newMomentum=${this.newMomentum}
@@ -1474,7 +1540,7 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
         >
-          <slot name="panel"></slot>
+          <slot name="panel" @slotchange=${this.initializeTabs}></slot>
         </div>
       `;
     }

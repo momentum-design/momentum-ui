@@ -11,7 +11,6 @@ import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import { Args } from "@storybook/web-components";
 import { html } from "lit";
-import mdx from "./Floating.mdx";
 
 export default {
   title: "Components/Floating Modal",
@@ -37,12 +36,12 @@ export default {
     minimizable: { control: "boolean", defaultValue: false },
     centered: { control: "boolean", defaultValue: false }
   },
+  tags: ["autodocs"],
   parameters: {
     a11y: {
-      element: "md-floating-modal"
+      context: "md-floating-modal"
     },
     docs: {
-      page: mdx,
       description: {
         component: "some component description"
       }

@@ -26,13 +26,25 @@ export default {
     avatarType: { control: { type: "select" }, options: AvatarType },
     avatarColor: { control: { type: "select" }, options: avatarColorOptions },
     avatarSize: { control: { type: "select" }, options: AvatarSize },
-    isSelected: { control: "boolean" }
+    isSelected: { control: "boolean" },
+    // Disable auto-inferred color control for avatar-color attribute
+    "avatar-color": { control: { type: "select" }, options: avatarColorOptions },
+    "avatar-size": { control: { type: "select" }, options: AvatarSize },
+    "avatar-type": { control: { type: "select" }, options: AvatarType },
+    "self-label": { control: "text" }
   },
-  parameters: { a11y: { element: "md-chat-message" } }
+  parameters: { a11y: { context: "md-chat-message" } }
 };
 
 export const ChatMessage: StoryObj = {
-  args: { title: "John Doe", message: "I have issue with my silencer", selfMode: false, status: "Sent", avatarSize: "32", isSelected: false },
+  args: {
+    title: "John Doe",
+    message: "I have issue with my silencer",
+    selfMode: false,
+    status: "Sent",
+    avatarSize: "32",
+    isSelected: false
+  },
 
   render: (args: Args) => {
     return html`

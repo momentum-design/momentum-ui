@@ -1,11 +1,12 @@
-import "@/components/combobox/ComboBox";
-import "@/components/country-code-picker/CountryCodePicker";
-import "@/components/input/Input";
+import "../combobox/ComboBox";
+import "../country-code-picker/CountryCodePicker";
+import "../input/Input";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { LitElement, html, internalProperty, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { Input } from "../input/Input"; // Keep type import as a relative path
+import { LitElement, html } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { Input } from "../input/Input";
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
   export type Attributes = {
@@ -37,9 +38,9 @@ export namespace PhoneInput {
     @property({ type: String }) id = "";
     @property({ type: Boolean }) newMomentum = false;
 
-    @internalProperty() private countryCode: CountryCode = "US";
-    @internalProperty() private formattedValue = "";
-    @internalProperty() private isValid = true;
+    @state() private countryCode: CountryCode = "US";
+    @state() private formattedValue = "";
+    @state() private isValid = true;
 
     private get isRtl(): boolean {
       try {

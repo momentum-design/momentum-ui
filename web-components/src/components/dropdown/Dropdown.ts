@@ -6,17 +6,17 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { ATTRIBUTES, Key } from "@/constants";
 import { customElementWithCheck, FocusMixin } from "@/mixins";
 import { debounce } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { html, nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
 const EMPTY_KEY = "";
@@ -101,14 +101,14 @@ export namespace Dropdown {
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
 
-    @internalProperty()
+    @state()
     private ariaLabelForDropdown = ""; // This internal property is used to conditionally set aria-label.
 
-    @internalProperty() private renderOptions: RenderOptionMember[] = [];
-    @internalProperty() private selectedKey: string = EMPTY_KEY;
+    @state() private dropdownRenderOptions: RenderOptionMember[] = [];
+    @state() private selectedKey: string = EMPTY_KEY;
 
-    @internalProperty() private expanded = false;
-    @internalProperty() private focusedIndex = -1;
+    @state() private expanded = false;
+    @state() private focusedIndex = -1;
 
     @query("label") label!: HTMLLabelElement;
     @query(".md-dropdown-input") input?: HTMLInputElement;
@@ -156,7 +156,7 @@ export namespace Dropdown {
           this.updateRenderOptions();
         }
         if (name === "selectedKey") {
-          const idx = this.renderOptions.findIndex((o) => o.key === this.selectedKey);
+          const idx = this.dropdownRenderOptions.findIndex((o) => o.key === this.selectedKey);
           if (idx !== -1) {
             this.focusToIndex(idx);
             if (this.searchable) {
@@ -200,7 +200,7 @@ export namespace Dropdown {
 
     private setInitialValue() {
       if (this.options.length) {
-        const foundOptionMember = this.renderOptions.find((o) => o.key === this.selectedKey);
+        const foundOptionMember = this.dropdownRenderOptions.find((o) => o.key === this.selectedKey);
         const option = foundOptionMember?.option;
         if (option) {
           this.setInputValue(this.getOptionValue(option));
@@ -252,7 +252,7 @@ export namespace Dropdown {
         });
       }
 
-      this.renderOptions = renderOptions;
+      this.dropdownRenderOptions = renderOptions;
     }
 
     async updateListDOM() {
@@ -322,9 +322,11 @@ export namespace Dropdown {
       const inputValue = this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue;
 
       if (!inputValue.trim()) {
-        return this.renderOptions;
+        return this.dropdownRenderOptions;
       }
-      const filtered = this.renderOptions.filter((o) => o.value.toLowerCase().includes(inputValue.toLowerCase()));
+      const filtered = this.dropdownRenderOptions.filter((o) =>
+        o.value.toLowerCase().includes(inputValue.toLowerCase())
+      );
 
       if (filtered.length === 0) {
         return [{ key: "no-result", value: "No Result", disabled: true }];
@@ -468,7 +470,7 @@ export namespace Dropdown {
 
     select() {
       if (this.focusedIndex !== -1) {
-        const renderOption = this.renderOptions[this.focusedIndex];
+        const renderOption = this.dropdownRenderOptions[this.focusedIndex];
 
         const nextSelectedKey = renderOption.key;
         const prevSelectedKey = this.selectedKey;
@@ -571,20 +573,20 @@ export namespace Dropdown {
     }
 
     focusFirst() {
-      if (this.renderOptions.length) {
+      if (this.dropdownRenderOptions.length) {
         this.focusedIndex = 0;
       }
     }
 
     focusLast() {
-      if (this.renderOptions.length) {
-        this.focusedIndex = this.renderOptions.length - 1;
+      if (this.dropdownRenderOptions.length) {
+        this.focusedIndex = this.dropdownRenderOptions.length - 1;
       }
     }
 
     focusNext() {
-      if (this.renderOptions.length) {
-        if (this.focusedIndex !== -1 && this.focusedIndex < this.renderOptions.length - 1) {
+      if (this.dropdownRenderOptions.length) {
+        if (this.focusedIndex !== -1 && this.focusedIndex < this.dropdownRenderOptions.length - 1) {
           this.focusedIndex++;
         } else {
           this.focusFirst();
@@ -593,7 +595,7 @@ export namespace Dropdown {
     }
 
     focusPrev() {
-      if (this.renderOptions.length) {
+      if (this.dropdownRenderOptions.length) {
         if (this.focusedIndex > 0) {
           this.focusedIndex--;
         } else {
@@ -603,17 +605,17 @@ export namespace Dropdown {
     }
 
     focusToIndex(n: number) {
-      if (this.renderOptions.length) {
-        if (n >= 0 && n <= this.renderOptions.length - 1) {
+      if (this.dropdownRenderOptions.length) {
+        if (n >= 0 && n <= this.dropdownRenderOptions.length - 1) {
           this.focusedIndex = n;
         }
       }
     }
 
     focusToIndexWithOption(o: RenderOptionMember) {
-      const n = this.renderOptions.findIndex((option) => option.key === o.key);
-      if (this.renderOptions.length) {
-        if (n >= 0 && n <= this.renderOptions.length - 1) {
+      const n = this.dropdownRenderOptions.findIndex((option) => option.key === o.key);
+      if (this.dropdownRenderOptions.length) {
+        if (n >= 0 && n <= this.dropdownRenderOptions.length - 1) {
           this.focusedIndex = n;
         }
       }
@@ -679,7 +681,7 @@ export namespace Dropdown {
 
     get labelTitle() {
       if (this.selectedKey) {
-        const option = this.renderOptions.find((o) => o.key === this.selectedKey);
+        const option = this.dropdownRenderOptions.find((o) => o.key === this.selectedKey);
         if (option) {
           return option.value;
         }
@@ -816,7 +818,7 @@ export namespace Dropdown {
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
                   ?disabled=${this.disabled}
-                  @click=${() => this.onLabelClick()}
+                  @click=${this.onLabelClick}
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"

@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/datepicker/datepicker-month/DatePickerMonth";
-import "@/components/icon/Icon";
-import "@/components/spinner/Spinner";
+import "../../datepicker/datepicker-month/DatePickerMonth";
+import "../../icon/Icon";
+import "../../spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addDays,
@@ -24,9 +24,10 @@ import {
   subtractMonths
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, TemplateResult, html, internalProperty, property } from "lit-element";
+import { LitElement, PropertyValues, TemplateResult, html } from "lit";
+import { property, state } from "lit/decorators.js";
 import { DateTime } from "luxon";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
+import { DatePickerProps, DayFilters } from "@/utils/dateUtils";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {
@@ -44,8 +45,8 @@ export namespace DatePickerCalendar {
       false;
     @property({ type: Boolean, reflect: true, attribute: "is-date-picker-month-error" }) isDatePickerMonthError = false;
 
-    @internalProperty() viewAnchorDate: DateTime = now();
-    @internalProperty()
+    @state() viewAnchorDate: DateTime = now();
+    @state()
     private localeMonth: string | undefined = undefined;
 
     connectedCallback() {

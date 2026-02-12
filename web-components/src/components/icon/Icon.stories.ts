@@ -9,7 +9,7 @@
 import momentumDesignManifest from "@/../node_modules/@momentum-design/icons/dist/manifest.json";
 import "@/components/icon/Icon";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { Args } from "@storybook/web-components";
 import { html } from "lit";
 import { iconSet, iconSize, iconType } from "./Icon";
@@ -81,7 +81,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-icon"
+      context: "md-icon"
     }
   }
 };

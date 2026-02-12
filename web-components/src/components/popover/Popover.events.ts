@@ -1,4 +1,4 @@
-import { type Popover } from "./Popover";
+import type { Popover } from "./Popover";
 
 export class PopoverEventManager {
   /**

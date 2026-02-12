@@ -3,10 +3,21 @@ md-theme {
   color: var(--md-primary-text-color);
 
   &.is-visual-rebrand {
-    background: url("/images/brand-visuals/png/operation-pop-background-light.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    &.DEFAULT {
+      background-image: url("/images/brand-visuals/svg/simple-background-light.svg");
+    }
+
+    &.SERENE {
+      background-image: url("/images/brand-visuals/png/operation-pop-background-light.png");
+    }
+
+    &.AURORA {
+      background-image: url("/images/brand-visuals/svg/gradient-background-light.svg");
+    }
   }
 }
 
@@ -15,10 +26,21 @@ md-theme[darkTheme] {
   color: var(--md-primary-text-color);
 
   &.is-visual-rebrand {
-    background: url("/images/brand-visuals/png/operation-pop-background-dark.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    &.DEFAULT {
+      background-image: url("/images/brand-visuals/svg/simple-background-dark.svg");
+    }
+
+    &.SERENE {
+      background-image: url("/images/brand-visuals/png/operation-pop-background-dark.png");
+    }
+
+    &.AURORA {
+      background-image: url("/images/brand-visuals/svg/gradient-background-dark.svg");
+    }
   }
 }
 

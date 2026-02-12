@@ -23,38 +23,57 @@
  * }
  */
 import { Key } from "@/constants";
-import { internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { LitElement, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
-import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
+import { FocusClass, FocusClassInterface, FocusEventDetail, FocusMixin, FocusMixinReturnType } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
-export abstract class FocusTrapClass extends LitElement {
-  protected deactivateFocusTrap?(): void;
-  protected activateFocusTrap?(): void;
-  protected focusableElements?: HTMLElement[];
-  protected initialFocusComplete?: boolean;
-  protected setFocusableElements?(): void;
-  protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
-  protected setFocusOnTrigger?(triggerEleement?: HTMLElement): void;
-  protected setFocusOnDeepestNestedElement?(element?: HTMLElement): void;
-}
-export interface FocusTrapInterface {
+/**
+ * Interface describing the public properties added by FocusTrapMixin.
+ * Protected methods are intentionally omitted to allow subclasses to override with protected visibility.
+ */
+export interface FocusTrapClassInterface extends FocusClassInterface {
   activeFocusTrap: boolean;
   preventClickOutside: boolean;
   preventScroll: boolean;
   focusTrapIndex: number;
 }
-export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapClass>>(
-  base: T
-): T & AnyConstructor<FocusTrapClass & FocusTrapInterface & FocusClass> => {
+
+/**
+ * Abstract class used internally for super calls within the mixin implementation.
+ * Also used in tests via bracket notation to access protected methods.
+ */
+export abstract class FocusTrapClass extends FocusClass {
+  declare activeFocusTrap: boolean;
+  declare preventClickOutside: boolean;
+  declare preventScroll: boolean;
+  declare focusTrapIndex: number;
+  protected focusableElements?: HTMLElement[];
+  protected initialFocusComplete?: boolean;
+  protected deactivateFocusTrap?(): void;
+  protected activateFocusTrap?(): void;
+  protected setFocusableElements?(): void;
+  protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
+  protected setFocusOnTrigger?(triggerElement?: HTMLElement): void;
+  protected setFocusOnDeepestNestedElement?(element?: HTMLElement): void;
+}
+
+export type FocusTrapMixinReturnType<T extends AnyConstructor<LitElement>> = FocusMixinReturnType<T> &
+  AnyConstructor<FocusTrapClassInterface & FocusTrapClass>;
+
+export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): FocusTrapMixinReturnType<T> => {
   if (wasApplied(FocusTrapMixin, base)) {
-    return base as ReturnType<() => T & AnyConstructor<FocusTrapClass & FocusTrapInterface & FocusClass>>;
+    return base as FocusTrapMixinReturnType<T>;
   }
-  class FocusTrap extends FocusMixin(base) {
-    @internalProperty() protected focusableElements: HTMLElement[] = [];
-    @internalProperty() protected initialFocusComplete = false;
-    @internalProperty() private focusableTimer: any = [];
+  // Cast to include FocusClass methods for internal use
+  const FocusMixedBase = FocusMixin(base) as unknown as AnyConstructor<FocusClass>;
+  class FocusTrap extends FocusMixedBase {
+    @state() protected focusableElements: HTMLElement[] = [];
+    @state() protected initialFocusComplete = false;
+
+    @state() private focusableTimer: ReturnType<typeof setTimeout> | null = null;
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
@@ -502,8 +521,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     updateFocusableElements = () => {
       if (this.focusableTimer) {
         clearTimeout(this.focusableTimer);
-        this.focusableElements = [];
       }
+      this.focusableElements = [];
       this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
       }, 10);
@@ -551,5 +570,5 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
   DedupeMixin(FocusTrapMixin, FocusTrap);
 
-  return FocusTrap;
+  return FocusTrap as unknown as FocusTrapMixinReturnType<T>;
 };

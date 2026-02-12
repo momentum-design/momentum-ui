@@ -1,7 +1,8 @@
-import { html } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { Avatar } from "@/components/avatar/Avatar";
-import { TaskItemStatus, TaskItemMediaType } from "./TaskItem.constants";
+import { AvatarChannelType } from "../avatar/Avatar.constants";
+import { html, nothing, TemplateResult } from "lit";
+import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
+
+type ChannelType = (typeof AvatarChannelType)[number];
 
 export const getTaskTypeTemplate = (
   isRestyle: boolean,
@@ -18,7 +19,7 @@ export const getTaskTypeTemplate = (
 export const getChannelAvatar = (
   selected: boolean,
   status: string | null,
-  type: Avatar.ChannelType,
+  type: ChannelType,
   slot?: TemplateResult
 ) => {
   return html`<md-avatar
@@ -88,6 +89,8 @@ export const renderTaskType = (mediaType: string, selected: boolean, status: str
         "channel-custom",
         html`<img height="20px" width="20px" src="${iconSrc}" />`
       );
+    case TaskItemMediaType.WORKITEM:
+      return getChannelAvatar(selected, status, "channel-work-item");
     default:
       return getChannelAvatar(selected, status, "channel-custom", html`<slot name="task-type"></slot>`);
   }
@@ -198,6 +201,15 @@ export const renderLegacyTaskType = (mediaType: string, selected: boolean, iconS
         <md-badge color="blue" circle>
           <md-icon name="chat-outbound-filled" size="20" iconSet="momentumDesign"></md-icon>
         </md-badge>
+      `;
+    case TaskItemMediaType.WORKITEM:
+      return html`
+        <md-avatar
+          title="Channel Work Item"
+          type="channel-work-item"
+          avatar-style="default"
+          state=${selected ? "active" : "rest"}
+        ></md-avatar>
       `;
     default:
       return html` <slot name="task-type"></slot> `;

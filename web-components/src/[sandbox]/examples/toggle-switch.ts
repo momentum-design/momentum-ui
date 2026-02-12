@@ -1,5 +1,5 @@
 import "@/components/toggle-switch/ToggleSwitch";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const toggleSwitchTemplate = html`
   <md-toggle-switch htmlId="toggleSwitch1"> Default Toggle Switch </md-toggle-switch>

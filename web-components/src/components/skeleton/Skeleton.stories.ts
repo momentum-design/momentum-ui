@@ -37,7 +37,7 @@ const meta = {
   },
   parameters: {
     a11y: {
-      element: "md-skeleton"
+      context: "md-skeleton"
     }
   }
 } satisfies Meta<SkeletonArgs>;

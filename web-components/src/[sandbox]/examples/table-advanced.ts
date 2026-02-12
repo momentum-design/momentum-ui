@@ -1,9 +1,10 @@
-import "@/components/table-advanced/TableAdvanced";
-import { customElement, html, internalProperty, LitElement } from "lit-element";
 import { ComplexTable, ShortkeyTable } from "@/[sandbox]/sandbox.mock";
+import "@/components/table-advanced/TableAdvanced";
+import { html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
 @customElement("default-table-advanced-sandbox")
 export class DefaultTableAdvanced extends LitElement {
-  @internalProperty() litProp = "$";
+  @state() litProp = "$";
 
   render() {
     return html`
@@ -39,10 +40,14 @@ export class DefaultTableAdvanced extends LitElement {
           return content.substring(0, insertIndex) + " hide " + content.substring(insertIndex);
         },
         templateCb: (p) => {
+          // Set the dynamic content for the lit prop placeholder
+          const litPropPlaceholder = p.fragment.querySelector<HTMLElement>(".lit-prop-placeholder")!;
+          litPropPlaceholder.innerText = this.litProp;
+
           const span = p.fragment.querySelector<HTMLElement>(".sp")!;
           span.innerText = `${p.content}[${p.row},${p.col}]`;
 
-          const btn = p.fragment.querySelector<HTMLButtonElement>("button")!;
+          const btn = p.fragment.querySelector<HTMLButtonElement>(".template-btn")!;
           btn.addEventListener("click", () => {
             this.litProp = "will not work";
             this.requestUpdate();
@@ -57,9 +62,9 @@ export class DefaultTableAdvanced extends LitElement {
         <template id="tmp1"> [OK] </template>
 
         <template id="tmp2">
-          ${this.litProp}
+          <span class="lit-prop-placeholder"></span>
           <span class="sp"></span>
-          <button @click=${() => console.log("will not work")}>BTN</button>
+          <button class="template-btn">BTN</button>
         </template>
       </md-table-advanced>
     `;
@@ -76,15 +81,15 @@ export class DefaultTableAdvanced extends LitElement {
     return html`
       <md-table-advanced .config=${conf} .data=${ShortkeyTable.data} isRowFocusable=${isRowFocusable}>
         <template id="tmp1">
-          <md-icon class="warn-icon" name="warning_20" color="blue-50"></md-icon>
+          <md-icon class="warn-icon" name="warning_20" color="var(--md-alert-info-text-color)"></md-icon>
         </template>
 
         <template id="tmp2">
-          <md-icon class="warn-icon" name="warning_20" color="yellow-50"></md-icon>
+          <md-icon class="warn-icon" name="warning_20" color="var(--md-alert-warning-text-color)"></md-icon>
         </template>
 
         <template id="tmp3">
-          <md-icon class="warn-icon" name="error_20" color="red-50"></md-icon>
+          <md-icon class="warn-icon" name="error_20" color="var(--md-alert-error-text-color)"></md-icon>
         </template>
       </md-table-advanced>
     `;

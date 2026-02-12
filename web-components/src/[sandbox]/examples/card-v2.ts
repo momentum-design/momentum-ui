@@ -1,6 +1,7 @@
 import "@/components/badge/Badge";
 import "@/components/card-v2/CardV2";
-import { css, customElement, html, LitElement, property } from "lit-element";
+import { css, html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("card-v2-template-sandbox")
 export class CardV2TemplateSandbox extends LitElement {

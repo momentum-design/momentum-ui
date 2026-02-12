@@ -1,5 +1,5 @@
 import { getElementByIdDeep } from "@/utils/helpers";
-import { type Popover } from "./Popover";
+import type { Popover } from "./Popover";
 
 export class PopoverUtils {
   /** @internal */

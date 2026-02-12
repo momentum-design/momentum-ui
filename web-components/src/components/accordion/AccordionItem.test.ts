@@ -112,14 +112,14 @@ describe("AccordionItem", () => {
   });
 
   test("should handle click event", async () => {
-    const mouseDown = new MouseEvent("mousedown");
+    const clickEvent = new MouseEvent("click");
     const itemClickPromise = oneEvent(accordionItems[1], "accordion-item-click");
-    accordionItems[1].dispatchAccordionClick(mouseDown);
+    accordionItems[1].header.dispatchEvent(clickEvent);
 
     const { detail } = await itemClickPromise;
 
     expect(detail).toBeDefined();
-    expect(detail.srcEvent).toEqual(mouseDown);
+    expect(detail.srcEvent).toEqual(clickEvent);
   });
 
   test("should handle keydown event", async () => {
@@ -134,5 +134,48 @@ describe("AccordionItem", () => {
 
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(keydownEvent);
+  });
+
+  test("should handle double-click when doubleClickToExpand is true", async () => {
+    accordionItems[1].doubleClickToExpand = true;
+    await elementUpdated(accordionItems[1]);
+
+    const dblClickEvent = new MouseEvent("dblclick");
+    const itemClickPromise = oneEvent(accordionItems[1], "accordion-item-click");
+    accordionItems[1].header.dispatchEvent(dblClickEvent);
+
+    const { detail } = await itemClickPromise;
+
+    expect(detail).toBeDefined();
+    expect(detail.srcEvent).toEqual(dblClickEvent);
+  });
+
+  test("should ignore single click when doubleClickToExpand is true", async () => {
+    accordionItems[1].doubleClickToExpand = true;
+    await elementUpdated(accordionItems[1]);
+
+    let eventFired = false;
+    accordionItems[1].addEventListener("accordion-item-click", () => {
+      eventFired = true;
+    });
+
+    const clickEvent = new MouseEvent("click");
+    accordionItems[1].header.dispatchEvent(clickEvent);
+    jest.advanceTimersByTime(100);
+
+    expect(eventFired).toBeFalsy();
+  });
+
+  test("should ignore double-click when doubleClickToExpand is false", async () => {
+    let eventFired = false;
+    accordionItems[1].addEventListener("accordion-item-click", () => {
+      eventFired = true;
+    });
+
+    const dblClickEvent = new MouseEvent("dblclick");
+    accordionItems[1].header.dispatchEvent(dblClickEvent);
+    jest.advanceTimersByTime(100);
+
+    expect(eventFired).toBeFalsy();
   });
 });

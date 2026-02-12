@@ -5,8 +5,8 @@ import mdx from "./Accordion.mdx";
 import "./AccordionItem";
 import { Accordion as AccordionEl } from "./Accordion";
 
-const Template = ({ disabled, expanded, multiple, suppressContainerFocus }: Args) => {
-  return html`<md-accordion ?multiple=${multiple} ?suppress-container-focus=${suppressContainerFocus}>
+const Template = ({ disabled, expanded, multiple, suppressContainerFocus, doubleClickToExpand }: Args) => {
+  return html`<md-accordion ?multiple=${multiple} ?suppress-container-focus=${suppressContainerFocus} ?double-click-to-expand=${doubleClickToExpand}>
     <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
       <div>Panel №1</div>
     </md-accordion-item>
@@ -24,7 +24,8 @@ type Story = StoryObj<AccordionEl.ELEMENT>;
 export const Accordion: Story = {
   args: {
     multiple: false,
-    suppressContainerFocus: true
+    suppressContainerFocus: true,
+    doubleClickToExpand: false
   },
   render: Template
 };
@@ -32,7 +33,17 @@ export const Accordion: Story = {
 export const MultiSelectAccordion: Story = {
   args: {
     multiple: true,
-    suppressContainerFocus: true
+    suppressContainerFocus: true,
+    doubleClickToExpand: false
+  },
+  render: Template
+};
+
+export const DoubleClickToExpand: Story = {
+  args: {
+    multiple: false,
+    suppressContainerFocus: true,
+    doubleClickToExpand: true
   },
   render: Template
 };

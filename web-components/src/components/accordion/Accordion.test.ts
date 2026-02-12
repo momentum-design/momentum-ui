@@ -124,18 +124,18 @@ describe("Accordion", () => {
   });
 
   test("should correct select accordion item by click", async () => {
-    const mouseDown = new MouseEvent("mousedown");
-    accordionItems[1].header.dispatchEvent(mouseDown);
+    const click = new MouseEvent("click");
+    accordionItems[1].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[1].expanded).toBeFalsy();
 
-    accordionItems[3].header.dispatchEvent(mouseDown);
+    accordionItems[3].header.dispatchEvent(new MouseEvent("click"));
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeTruthy();
 
-    accordionItems[4].header.dispatchEvent(mouseDown);
+    accordionItems[4].header.dispatchEvent(new MouseEvent("click"));
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[3].expanded).toBeFalsy();
@@ -144,15 +144,36 @@ describe("Accordion", () => {
     accordion.multiple = true;
     await elementUpdated(accordion);
 
-    accordionItems[0].header.dispatchEvent(mouseDown);
+    accordionItems[0].header.dispatchEvent(new MouseEvent("click"));
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeTruthy();
     expect(accordionItems[4].expanded).toBeTruthy();
 
-    accordionItems[0].header.dispatchEvent(mouseDown);
+    accordionItems[0].header.dispatchEvent(new MouseEvent("click"));
     jest.advanceTimersByTime(100);
 
     expect(accordionItems[0].expanded).toBeFalsy();
+  });
+
+  test("should propagate doubleClickToExpand to accordion items", async () => {
+    accordion.doubleClickToExpand = true;
+    await elementUpdated(accordion);
+    jest.advanceTimersByTime(100);
+
+    // Verify the property is propagated to all items
+    accordionItems.forEach((item) => {
+      expect(item.doubleClickToExpand).toBeTruthy();
+    });
+
+    // Single click should not expand
+    accordionItems[3].header.dispatchEvent(new MouseEvent("click"));
+    jest.advanceTimersByTime(100);
+    expect(accordionItems[3].expanded).toBeFalsy();
+
+    // Double click should expand
+    accordionItems[3].header.dispatchEvent(new MouseEvent("dblclick"));
+    jest.advanceTimersByTime(100);
+    expect(accordionItems[3].expanded).toBeTruthy();
   });
 });

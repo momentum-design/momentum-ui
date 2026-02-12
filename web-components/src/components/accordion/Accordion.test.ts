@@ -157,25 +157,35 @@ describe("Accordion", () => {
   });
 
   test("should propagate doubleClickToExpand to accordion items", async () => {
-    accordion.doubleClickToExpand = true;
-    await elementUpdated(accordion);
-    jest.advanceTimersByTime(100);
+    // Create a new accordion with double-click-to-expand set from the start
+    const dblClickAccordion = await fixture<Accordion.ELEMENT>(html`
+      <md-accordion double-click-to-expand>
+        <md-accordion-item slot="accordion-item" label="Header №1">
+          <div>Panel №1</div>
+        </md-accordion-item>
+        <md-accordion-item slot="accordion-item" label="Header №2">
+          <div>Panel №2</div>
+        </md-accordion-item>
+      </md-accordion>
+    `);
+    jest.runAllTimers();
+    const items = dblClickAccordion.slotted as AccordionItem.ELEMENT[];
 
     // Verify the property is propagated to all items
-    accordionItems.forEach((item) => {
+    items.forEach((item) => {
       expect(item.doubleClickToExpand).toBeTruthy();
     });
 
     // Single click should not expand
     const click = new MouseEvent("click");
-    accordionItems[3].header.dispatchEvent(click);
+    items[0].header.dispatchEvent(click);
     jest.advanceTimersByTime(100);
-    expect(accordionItems[3].expanded).toBeFalsy();
+    expect(items[0].expanded).toBeFalsy();
 
     // Double click should expand
     const dblclick = new MouseEvent("dblclick");
-    accordionItems[3].header.dispatchEvent(dblclick);
+    items[0].header.dispatchEvent(dblclick);
     jest.advanceTimersByTime(100);
-    expect(accordionItems[3].expanded).toBeTruthy();
+    expect(items[0].expanded).toBeTruthy();
   });
 });

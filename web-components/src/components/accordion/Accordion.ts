@@ -165,9 +165,6 @@ export namespace Accordion {
         this.setupFocusAccordionItems();
         this.propagateDoubleClickSetting();
       }
-      if (changedProperties.has("doubleClickToExpand")) {
-        this.propagateDoubleClickSetting();
-      }
     }
 
     connectedCallback() {

@@ -93,29 +93,33 @@ class TimePicker extends React.Component {
     this.setState({ selectedTime: newTime }, () => this.triggerOnChange(dayChange));
   };
 
-  setTime = (hour, minute, pre) => {
+  setTime = (hour, minute, second, pre) => {
     const meridianHour =
       pre === 'PM' && parseInt(hour) < 12
         ? parseInt(hour) + 12
-        : pre === 'AM' && parseInt(hour) === 12 ? 0 : hour;
+        : pre === 'AM' && parseInt(hour) === 12
+        ? 0
+        : hour;
 
-    this.setState({
-      selectedTime: this.state.selectedTime
-        .clone()
-        .hour(meridianHour)
-        .minute(minute)
-    }, () => this.triggerOnChange(0));
+    this.setState(
+      {
+        selectedTime: this.state.selectedTime
+          .clone()
+          .hour(meridianHour)
+          .minute(minute)
+          .second(second),
+      },
+      () => this.triggerOnChange(0)
+    );
   };
 
   onSelectKeyDown = (unit, e) => {
     e.preventDefault();
 
-    const { minuteInterval, militaryTime } = this.props;
-    const hour =
-      !this.hour.value && unit === 'h'
-        ? militaryTime ? 0 : 1
-        : this.hour.value;
+    const { showSeconds, minuteInterval, militaryTime } = this.props;
+    const hour = !this.hour.value && unit === 'h' ? (militaryTime ? 0 : 1) : this.hour.value;
     const minute = !this.minute.value && unit === 'm' ? 0 : this.minute.value;
+    const second = showSeconds && (!this.second.value && unit === 's' ? 0 : this.second.value);
     const pre = !militaryTime && this.pre.value;
 
     if (e.keyCode === 65 && unit === 'pre') {
@@ -137,7 +141,7 @@ class TimePicker extends React.Component {
 
       return this.changeTime(unit, -minuteInterval);
     } else {
-      this.setTime(hour, minute, pre);
+      this.setTime(hour, minute, second, pre);
     }
   };
 
@@ -151,18 +155,19 @@ class TimePicker extends React.Component {
   };
 
   render() {
-    const { militaryTime, minuteInterval } = this.props;
+    const { showSeconds, militaryTime, minuteInterval } = this.props;
     const { anchorNode, inputId, isOpen } = this.state;
 
     // Force the global locale onto our display moment
     let selectedMoment = this.state.selectedTime.locale(moment.locale());
     // Splits the moment string into seperate parts in order to add functionality to the TimePicker
     const timeString = militaryTime
-      ? selectedMoment.format('HH:mm')
-      : selectedMoment.format('LT');
+      ? selectedMoment.format(showSeconds ? 'HH:mm:ss' : 'HH:mm')
+      : selectedMoment.format(showSeconds ? 'LTS' : 'LT');
 
     const hourText = selectedMoment.format(militaryTime ? 'HH' : 'hh');
     const minuteText = selectedMoment.format('mm');
+    const secondText = selectedMoment.format('ss');
     const postText = selectedMoment.format('A');
 
     const text = (
@@ -210,6 +215,18 @@ class TimePicker extends React.Component {
               onUpClick={() => this.changeTime('m', minuteInterval)}
               onDownClick={() => this.changeTime('m', -minuteInterval)}
             />
+            {showSeconds && (
+            <TimeSelector
+              unit="s"
+              min={0}
+              value={secondText}
+              onWheel={this.onSelectWheel}
+              inputRef={ref => (this.second = ref)}
+              onKeyDown={this.onSelectKeyDown}
+              onUpClick={() => this.changeTime('s', 1)}
+              onDownClick={() => this.changeTime('s', -1)}
+            />
+          )}
             {!militaryTime && (
               <TimeSelector
                 unit="pre"
@@ -240,6 +257,8 @@ TimePicker.propTypes = {
   className: PropTypes.string,
   /** @prop Set Input element ID | '' */
   inputId: PropTypes.string,
+  /** @prop Choose to show seconds | false */
+  showSeconds: PropTypes.bool,
   /** @prop Choose to use military time | false */
   militaryTime: PropTypes.bool,
   /** @prop Determine the minute interval | 1 */
@@ -253,6 +272,7 @@ TimePicker.propTypes = {
 TimePicker.defaultProps = {
   className: '',
   inputId: '',
+  showSeconds: false,
   militaryTime: false,
   minuteInterval: 1,
   onChange: null,

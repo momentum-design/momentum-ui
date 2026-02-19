@@ -4,6 +4,7 @@ import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
 import "@/components/list/List";
 import "@/components/list/ListItem";
+import "@/components/modal/Modal";
 import "@/components/popover/Popover";
 import { PopoverController } from "@/components/popover/Popover";
 import "@/components/radio/Radio";
@@ -51,6 +52,9 @@ export class PopoverTemplateSandbox extends LitElement {
 
   @state()
   private isButtonWithTooltipPopoverOpen = false;
+
+  @state()
+  private isEscapeModalOpen = false;
 
   private openFirstCoach() {
     this.firstOpen = true;
@@ -215,6 +219,51 @@ export class PopoverTemplateSandbox extends LitElement {
           </div>
         </md-popover>
       </div>
+
+      <h3>Popover inside modal (Escape handling)</h3>
+      <md-button
+        id="open-modal-popover-escape"
+        variant="secondary"
+        @button-click=${() => {
+          this.isEscapeModalOpen = true;
+        }}
+      >
+        Open modal with popover
+      </md-button>
+
+      <md-modal
+        applicationId="popoverEscapeSandbox"
+        size="dialog"
+        ?show=${this.isEscapeModalOpen}
+        .hideFooter=${true}
+        ?showclosebutton=${true}
+        headerLabel="Popover Escape Test"
+        ariaLabel="Popover Escape Test"
+        @close-modal=${() => {
+          this.isEscapeModalOpen = false;
+        }}
+      >
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span>Esc #1 should close popover. Esc #2 should close modal.</span>
+          <md-button id="modal-popover-trigger" variant="secondary" size="32">Open popover</md-button>
+          <md-popover
+            triggerID="modal-popover-trigger"
+            trigger="click"
+            placement="bottom-start"
+            interactive
+            hide-on-escape
+            hide-on-outside-click
+            focus-trap
+            append-to="modal-popover-slot"
+          >
+            <div style="display: flex; flex-direction: column; gap: 8px; width: 220px; padding: 8px;">
+              <md-button size="28">Option A</md-button>
+              <md-button size="28">Option B</md-button>
+            </div>
+          </md-popover>
+          <div id="modal-popover-slot"></div>
+        </div>
+      </md-modal>
 
       <h3>append to theme for when in a container with hidden overflow and fixed doesn't work</h3>
 

@@ -225,6 +225,27 @@ export class Popover extends FocusTrapMixin(LitElement) {
   hideOnOutsideClick: boolean = DEFAULTS.HIDE_ON_CLICK_OUTSIDE;
 
   /**
+   * Hide on outside pointerdown of the popover.
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "hide-on-outside-pointerdown" })
+  hideOnOutsidePointerDown: boolean = DEFAULTS.HIDE_ON_POINTER_DOWN_OUTSIDE;
+
+  /**
+   * Hide on scroll event outside popover/trigger.
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "hide-on-scroll" })
+  hideOnScroll: boolean = DEFAULTS.HIDE_ON_SCROLL;
+
+  /**
+   * Hide on wheel event outside popover/trigger.
+   * @default false
+   */
+  @property({ type: Boolean, reflect: true, attribute: "hide-on-wheel" })
+  hideOnWheel: boolean = DEFAULTS.HIDE_ON_WHEEL;
+
+  /**
    * The focus back to trigger after the popover hide.
    * @default false
    */
@@ -400,6 +421,13 @@ export class Popover extends FocusTrapMixin(LitElement) {
       this.cleanupAutoUpdate = null;
     }
 
+    document.removeEventListener("click", this.onOutsidePopoverClick);
+    document.removeEventListener("pointerdown", this.onOutsidePopoverPointerDown, true);
+    window.removeEventListener("scroll", this.onOutsidePopoverScrollOrWheel, true);
+    window.removeEventListener("wheel", this.onOutsidePopoverScrollOrWheel, true);
+    window.removeEventListener("keydown", this.onEscapeKeydown, true);
+    this.triggerElement?.removeEventListener("keydown", this.onTriggerKeydown);
+
     this._controller = null;
     this.previousActiveElement = null;
     this.removeEventListeners();
@@ -540,29 +568,50 @@ export class Popover extends FocusTrapMixin(LitElement) {
    * @param event - The mouse event.
    */
   private readonly onOutsidePopoverClick = (event: MouseEvent) => {
-    const path = event.composedPath() as HTMLElement[];
-
-    // First check if the click is on the trigger element
-    if (this.triggerElement && path.includes(this.triggerElement)) {
+    if (this.shouldIgnoreDismissEvent(event)) {
       return;
     }
+    this.hideThisPopover();
+  };
 
-    // Simple check if the popover itself is in the event path
-    const insidePopoverClick = path.includes(this);
-
-    if (insidePopoverClick) {
+  /**
+   * Handles outside pointerdown to close the popover.
+   */
+  private readonly onOutsidePopoverPointerDown = (event: PointerEvent) => {
+    if (this.shouldIgnoreDismissEvent(event)) {
       return;
+    }
+    this.hideThisPopover();
+  };
+
+  /**
+   * Handles outside scroll and wheel to close the popover.
+   */
+  private readonly onOutsidePopoverScrollOrWheel = (event: Event) => {
+    if (this.shouldIgnoreDismissEvent(event)) {
+      return;
+    }
+    this.hideThisPopover();
+  };
+
+  private shouldIgnoreDismissEvent(event: Event): boolean {
+    const path = event.composedPath() as Array<EventTarget>;
+
+    if (this.triggerElement && path.includes(this.triggerElement)) {
+      return true;
+    }
+
+    if (path.includes(this)) {
+      return true;
     }
 
     if (popoverStack.shouldDeferToTopForOutsideClick(this)) {
-      // This popover is part of a nested structure and is not the topmost one.
-      // It should not close based on this outside click.
-      return;
+      // Nested popover that is not top-most should ignore dismiss events.
+      return true;
     }
 
-    // If we reach here, the click was truly outside the popover
-    this.hideThisPopover();
-  };
+    return false;
+  }
 
   private readonly hideThisPopover = () => {
     setTimeout(() => {
@@ -578,12 +627,19 @@ export class Popover extends FocusTrapMixin(LitElement) {
    * @param event - The keyboard event.
    */
   private readonly onEscapeKeydown = (event: KeyboardEvent) => {
-    if (!this.visible || event.code !== "Escape") {
+    const isEscape = event.key === "Escape" || event.code === "Escape";
+    if (!this.visible || !isEscape) {
+      return;
+    }
+
+    const topPopover = popoverStack.peek();
+    if (topPopover && topPopover !== this) {
       return;
     }
 
     event.preventDefault();
-    this.hidePopover();
+    event.stopImmediatePropagation();
+    this.hideThisPopover();
   };
 
   /**
@@ -668,8 +724,20 @@ export class Popover extends FocusTrapMixin(LitElement) {
       if (this.hideOnOutsideClick) {
         document.addEventListener("click", this.onOutsidePopoverClick);
       }
+      if (this.hideOnOutsidePointerDown) {
+        document.addEventListener("pointerdown", this.onOutsidePopoverPointerDown, true);
+      }
+      if (this.hideOnScroll) {
+        window.addEventListener("scroll", this.onOutsidePopoverScrollOrWheel, true);
+      }
+      if (this.hideOnWheel) {
+        window.addEventListener("wheel", this.onOutsidePopoverScrollOrWheel, true);
+      }
       if (this.hideOnEscape) {
-        document.addEventListener("keydown", this.onEscapeKeydown);
+        window.addEventListener("keydown", this.onEscapeKeydown, true);
+      }
+      if (this.focusTrap && this.triggerElement) {
+        this.triggerElement.addEventListener("keydown", this.onTriggerKeydown);
       }
       PopoverEventManager.onShowPopover(this);
     } else {
@@ -699,8 +767,20 @@ export class Popover extends FocusTrapMixin(LitElement) {
       if (this.hideOnOutsideClick) {
         document.removeEventListener("click", this.onOutsidePopoverClick);
       }
+      if (this.hideOnOutsidePointerDown) {
+        document.removeEventListener("pointerdown", this.onOutsidePopoverPointerDown, true);
+      }
+      if (this.hideOnScroll) {
+        window.removeEventListener("scroll", this.onOutsidePopoverScrollOrWheel, true);
+      }
+      if (this.hideOnWheel) {
+        window.removeEventListener("wheel", this.onOutsidePopoverScrollOrWheel, true);
+      }
       if (this.hideOnEscape) {
-        document.removeEventListener("keydown", this.onEscapeKeydown);
+        window.removeEventListener("keydown", this.onEscapeKeydown, true);
+      }
+      if (this.triggerElement) {
+        this.triggerElement.removeEventListener("keydown", this.onTriggerKeydown);
       }
 
       this.deactivateFocusTrap?.();
@@ -821,6 +901,31 @@ export class Popover extends FocusTrapMixin(LitElement) {
     }
 
     this.togglePopoverVisible();
+  };
+
+  /**
+   * Bridges focus-trap keyboard handling when trigger receives Tab/Shift+Tab.
+   * Needed when append-to moves popover outside the trigger's DOM subtree.
+   */
+  private readonly onTriggerKeydown = (event: KeyboardEvent) => {
+    if (!this.visible) {
+      return;
+    }
+
+    if ((event.key === "Escape" || event.code === "Escape") && this.hideOnEscape) {
+      this.onEscapeKeydown(event);
+      return;
+    }
+
+    if (!this.focusTrap || !this.activeFocusTrap || !this.appendTo) {
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    this.handleKeydownFocusTrap(event);
   };
 
   private isRectOverTrigger(x: number, y: number): boolean {

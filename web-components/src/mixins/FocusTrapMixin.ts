@@ -39,6 +39,7 @@ export interface FocusTrapClassInterface extends FocusClassInterface {
   preventClickOutside: boolean;
   preventScroll: boolean;
   focusTrapIndex: number;
+  handleKeydownFocusTrap: (event: KeyboardEvent) => void;
 }
 
 /**
@@ -50,6 +51,7 @@ export abstract class FocusTrapClass extends FocusClass {
   declare preventClickOutside: boolean;
   declare preventScroll: boolean;
   declare focusTrapIndex: number;
+  declare handleKeydownFocusTrap: (event: KeyboardEvent) => void;
   protected focusableElements?: HTMLElement[];
   protected initialFocusComplete?: boolean;
   protected deactivateFocusTrap?(): void;

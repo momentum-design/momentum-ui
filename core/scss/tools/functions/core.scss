@@ -103,7 +103,7 @@ $modules: () !default;
 }
 
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return calc($num / ($num * 0 + 1));
 }
 
 @function text-inputs($types: all, $selector: input) {
@@ -132,7 +132,7 @@ $modules: () !default;
 }
 
 @function convert-to-rem($value, $base-value: $rem-base) {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  $value: calc(strip-unit($value) / strip-unit($base-value) * 1rem);
 
   @if ($value == 0rem) {
     $value: 0;

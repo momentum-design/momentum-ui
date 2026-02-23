@@ -335,6 +335,8 @@ export namespace MenuOverlay {
 
     private create() {
       if (this.triggerElement) {
+        const overlayContent = this.overlayContainer?.querySelector(".overlay-content") as HTMLElement | null;
+
         this.popperInstance = createPopper(this.triggerElement, this.overlayContainer, {
           onFirstUpdate: async () => {
             // We need to find all focusable elements, after Popper finish its positioning calculation
@@ -383,6 +385,44 @@ export namespace MenuOverlay {
               options: {
                 adaptive: true // this will recompute popper position
               }
+            },
+            {
+              name: "constrainToViewport",
+              enabled: true,
+              phase: "afterWrite",
+              requires: ["computeStyles"],
+              fn: ({ state }) => {
+                if (!overlayContent) return;
+
+                const popper = state.elements.popper as HTMLElement;
+                const rect = popper.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                const padding = 16;
+
+                const placement = (state.placement as string) || "";
+                let availableHeight: number;
+
+                if (placement.startsWith("top")) {
+                  availableHeight = rect.bottom - padding;
+                } else {
+                  availableHeight = viewportHeight - rect.top - padding;
+                }
+
+                if (availableHeight > 0 && overlayContent.scrollHeight > availableHeight) {
+                  // Constrain the container so nothing escapes viewport bounds
+                  popper.style.maxHeight = `${availableHeight}px`;
+                  popper.style.overflow = "hidden";
+
+                  // Create scrollable region on the content element
+                  overlayContent.style.maxHeight = `${availableHeight}px`;
+                  overlayContent.style.overflowY = "auto";
+                } else {
+                  popper.style.removeProperty("max-height");
+                  popper.style.removeProperty("overflow");
+                  overlayContent.style.removeProperty("max-height");
+                  overlayContent.style.removeProperty("overflow-y");
+                }
+              }
             }
           ]
         });
@@ -391,6 +431,16 @@ export namespace MenuOverlay {
 
     private destroy() {
       if (this.popperInstance) {
+        // Clean up inline styles set by constrainToViewport modifier
+        if (this.overlayContainer) {
+          this.overlayContainer.style.removeProperty("max-height");
+          this.overlayContainer.style.removeProperty("overflow");
+        }
+        const overlayContent = this.overlayContainer?.querySelector(".overlay-content") as HTMLElement | null;
+        if (overlayContent) {
+          overlayContent.style.removeProperty("max-height");
+          overlayContent.style.removeProperty("overflow-y");
+        }
         this.popperInstance.destroy();
         this.popperInstance = null;
       }

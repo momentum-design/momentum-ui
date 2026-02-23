@@ -395,7 +395,7 @@ describe("MenuOverlay", () => {
     element.isOpen = false;
   });
 
-  test("should test overflow-y property for date picker", async () => {
+  test("should set overflow-y to visible for date picker to prevent content clipping", async () => {
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
     element.isDatePicker = true;
     await elementUpdated(element);
@@ -404,7 +404,7 @@ describe("MenuOverlay", () => {
     element.isOpen = false;
   });
 
-  test("should test default overflow-y property", async () => {
+  test("should set default overflow-y to auto", async () => {
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
     await elementUpdated(element);
     const overflowProperty = element.style.getPropertyValue("--md-menu-overlay-overflow-y");
@@ -695,5 +695,99 @@ describe("MenuOverlay", () => {
 
     expect(triggerElement.getAttribute("aria-expanded")).toBe("false");
     expect(triggerElement.hasAttribute("aria-expanded")).toBeTruthy(); // Still present!
+  });
+
+  test("should constrain overlay max-height when content overflows viewport bottom (constrainToViewport)", async () => {
+    const element = await fixtureFactory(true, true, "bottom", "", "", "large");
+    await elementUpdated(element);
+
+    const overlayContainer = element.renderRoot.querySelector(".overlay-container") as HTMLElement;
+    const overlayContent = element.renderRoot.querySelector(".overlay-content") as HTMLElement;
+
+    const originalInnerHeight = window.innerHeight;
+
+    // Simulate: viewport 600px, overlay at Y=400, content is 400px tall
+    // Content would extend to Y=800 but viewport ends at Y=600
+    Object.defineProperty(window, "innerHeight", { value: 600, writable: true, configurable: true });
+    Object.defineProperty(overlayContainer, "getBoundingClientRect", {
+      value: () => ({ top: 400, left: 0, bottom: 800, right: 300, width: 300, height: 400, x: 0, y: 400 }),
+      configurable: true
+    });
+    Object.defineProperty(overlayContent, "scrollHeight", { value: 400, configurable: true });
+
+    // Trigger Popper update to run the constrainToViewport modifier
+    await element["popperInstance"]?.update();
+
+    // availableHeight = 600 - 400 - 16 = 184
+    // Both container and content should be constrained
+    expect(overlayContainer.style.maxHeight).toBe("184px");
+    expect(overlayContainer.style.overflow).toBe("hidden");
+    expect(overlayContent.style.maxHeight).toBe("184px");
+    expect(overlayContent.style.overflowY).toBe("auto");
+
+    Object.defineProperty(window, "innerHeight", { value: originalInnerHeight, writable: true, configurable: true });
+    element.isOpen = false;
+  });
+
+  test("should not constrain overlay when content fits within viewport (constrainToViewport)", async () => {
+    const element = await fixtureFactory(true, true, "bottom", "", "", "large");
+    await elementUpdated(element);
+
+    const overlayContainer = element.renderRoot.querySelector(".overlay-container") as HTMLElement;
+    const overlayContent = element.renderRoot.querySelector(".overlay-content") as HTMLElement;
+
+    const originalInnerHeight = window.innerHeight;
+
+    // Simulate: viewport 800px, overlay at Y=100, content 300px — fits fine
+    Object.defineProperty(window, "innerHeight", { value: 800, writable: true, configurable: true });
+    Object.defineProperty(overlayContainer, "getBoundingClientRect", {
+      value: () => ({ top: 100, left: 0, bottom: 400, right: 300, width: 300, height: 300, x: 0, y: 100 }),
+      configurable: true
+    });
+    Object.defineProperty(overlayContent, "scrollHeight", { value: 300, configurable: true });
+
+    await element["popperInstance"]?.update();
+
+    // Content fits — no inline constraint should be set
+    expect(overlayContainer.style.maxHeight).toBe("");
+    expect(overlayContainer.style.overflow).toBe("");
+    expect(overlayContent.style.maxHeight).toBe("");
+    expect(overlayContent.style.overflowY).toBe("");
+
+    Object.defineProperty(window, "innerHeight", { value: originalInnerHeight, writable: true, configurable: true });
+    element.isOpen = false;
+  });
+
+  test("should clean up constrainToViewport inline styles when overlay is closed", async () => {
+    const element = await fixtureFactory(true, true, "bottom", "", "", "large");
+    await elementUpdated(element);
+
+    const overlayContainer = element.renderRoot.querySelector(".overlay-container") as HTMLElement;
+    const overlayContent = element.renderRoot.querySelector(".overlay-content") as HTMLElement;
+
+    const originalInnerHeight = window.innerHeight;
+
+    // Apply constraint
+    Object.defineProperty(window, "innerHeight", { value: 600, writable: true, configurable: true });
+    Object.defineProperty(overlayContainer, "getBoundingClientRect", {
+      value: () => ({ top: 400, left: 0, bottom: 800, right: 300, width: 300, height: 400, x: 0, y: 400 }),
+      configurable: true
+    });
+    Object.defineProperty(overlayContent, "scrollHeight", { value: 400, configurable: true });
+
+    await element["popperInstance"]?.update();
+    expect(overlayContent.style.maxHeight).toBe("184px");
+    expect(overlayContainer.style.maxHeight).toBe("184px");
+
+    // Close overlay — destroy() should clean up inline styles on both elements
+    element.isOpen = false;
+    await elementUpdated(element);
+
+    expect(overlayContainer.style.maxHeight).toBe("");
+    expect(overlayContainer.style.overflow).toBe("");
+    expect(overlayContent.style.maxHeight).toBe("");
+    expect(overlayContent.style.overflowY).toBe("");
+
+    Object.defineProperty(window, "innerHeight", { value: originalInnerHeight, writable: true, configurable: true });
   });
 });

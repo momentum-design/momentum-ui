@@ -121,7 +121,7 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "escape-html": "^1.0.3",
-    "eslint": "^6.1.0",
+    "eslint": "^9.26.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "7.12.2",

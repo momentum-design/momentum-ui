@@ -4,8 +4,9 @@
 
     .md-card-v2 {
         @include flex($fd: column, $jc: flex-start, $ai: stretch);
+        box-sizing: border-box;
         min-width: $md-card-v2-width;
-        height: $md-card-v2-height; 
+        height: $md-card-v2-height;
         border-radius: $md-card-v2-border-radius;
         padding: $md-card-v2-padding;
         border: 1px solid transparent;
@@ -18,14 +19,18 @@
 
         &.md-card--active {
             border: $md-card-v2-border-active;
+
+            &:hover {
+                border: $md-card-v2-border-active;
+            }
         }
 
         &.md-card--inactive {
-            border: $md-card-v2-border-inactive; 
+            border: $md-card-v2-border-inactive;
             background: $md-card-v2-background-inactive;
         }
 
-        &-header {            
+        &-header {
             display: flex;
             justify-content: center;
             flex: 1 1 100%;
@@ -82,7 +87,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            
+
             &-content {
                 display: flex;
                 align-items: center;
@@ -129,7 +134,12 @@
 
 :host(md-card-v2[expandable]) {
   .md-card-v2:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: $md-card-v2-border-hover;
+  }
+
+  .md-card-v2.md-card--active,
+  .md-card-v2.md-card--active:hover {
+    border: $md-card-v2-border-active;
   }
 }
 

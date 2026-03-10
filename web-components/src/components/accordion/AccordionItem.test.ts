@@ -166,6 +166,23 @@ describe("AccordionItem", () => {
     expect(eventFired).toBeFalsy();
   });
 
+  test("should handle single click on expander icon when doubleClickToExpand is true", async () => {
+    accordionItems[1].doubleClickToExpand = true;
+    await elementUpdated(accordionItems[1]);
+
+    const icon = accordionItems[1].shadowRoot!.querySelector(".md-accordion-expander-icon");
+    expect(icon).toBeTruthy();
+
+    const clickEvent = new MouseEvent("click", { bubbles: true, composed: true });
+    const itemClickPromise = oneEvent(accordionItems[1], "accordion-item-click");
+    icon!.dispatchEvent(clickEvent);
+
+    const { detail } = await itemClickPromise;
+
+    expect(detail).toBeDefined();
+    expect(detail.srcEvent).toEqual(clickEvent);
+  });
+
   test("should ignore double-click when doubleClickToExpand is false", async () => {
     let eventFired = false;
     accordionItems[1].addEventListener("accordion-item-click", () => {

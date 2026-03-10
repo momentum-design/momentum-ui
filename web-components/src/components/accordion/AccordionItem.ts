@@ -104,11 +104,21 @@ export namespace AccordionItem {
       return [reset, styles];
     }
 
+    private isClickOnExpanderIcon(event: MouseEvent) {
+      const icon = this.shadowRoot?.querySelector(".md-accordion-expander-icon");
+      if (!icon) return false;
+
+      return event.composedPath().includes(icon);
+    }
+
     private handleClickEvent(event: MouseEvent) {
       if (this.disabled) return;
 
       const isDoubleClick = event.type === "dblclick";
-      if (this.doubleClickToExpand === isDoubleClick) {
+      const isSingleClickOnExpanderIcon = event.type === "click" && this.isClickOnExpanderIcon(event);
+      const shouldDispatch = this.doubleClickToExpand ? isDoubleClick || isSingleClickOnExpanderIcon : !isDoubleClick;
+
+      if (shouldDispatch) {
         this.dispatchEvent(
           new CustomEvent<AccordionEvent>("accordion-item-click", {
             detail: {
@@ -157,7 +167,12 @@ export namespace AccordionItem {
               <slot name="header-content">
                 <span class="md-accordion-expander-label">${this.label}</span>
               </slot>
-              <md-icon iconSet=${"momentumDesign"} size="14" name="arrow-down-bold"></md-icon>
+              <md-icon
+                class="md-accordion-expander-icon"
+                iconSet=${"momentumDesign"}
+                size="14"
+                name="arrow-down-bold"
+              ></md-icon>
             </button>
           </div>
           <div

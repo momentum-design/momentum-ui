@@ -119,7 +119,6 @@ export namespace DatePickerCalendar {
           title=${`previous month`}
           ?disabled=${allPrevDaysDisabled}
           @click=${!allPrevDaysDisabled && this.decreaseMonth}
-          tabindex="-1"
         >
           <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
@@ -138,7 +137,6 @@ export namespace DatePickerCalendar {
           title=${`next month`}
           ?disabled=${allNextDaysDisabled}
           @click=${!allNextDaysDisabled && this.increaseMonth}
-          tabindex="-1"
           ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
       `;

@@ -253,8 +253,24 @@ export namespace DatePicker {
     };
 
     handleInputKeyDown = (event: KeyboardEvent) => {
-      if (event.code === Key.ArrowDown) {
-        this.setOpen(true);
+      switch (event.code) {
+        case Key.ArrowDown:
+          event.preventDefault();
+          if (!this.isMenuOverlayOpen) {
+            this.setOpen(true);
+          }
+          break;
+        case Key.Enter:
+        case Key.Space:
+          event.preventDefault();
+          if (this.isMenuOverlayOpen) {
+            this.setOpen(false);
+          } else {
+            this.setOpen(true);
+          }
+          break;
+        default:
+          break;
       }
     };
 

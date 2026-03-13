@@ -148,9 +148,9 @@ export namespace DatePickerDay {
     }
 
     render() {
-      const localisedDateFormat = localizeDate(this.day, this.datePickerProps?.locale || "en").toFormat(
-        "D, dd MMMM yyyy"
-      );
+      const localisedDateFormat = localizeDate(this.day, this.datePickerProps?.locale || "en").toFormat("dd MMMM yyyy");
+      const isSelected = this.selected || this.isStartDate() || this.isEndDate();
+      const ariaLabel = isSelected ? `${localisedDateFormat}, selected` : localisedDateFormat;
       return html`
         <md-button
           circle
@@ -164,8 +164,8 @@ export namespace DatePickerDay {
             }
           }}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          ariaLabel=${`${localisedDateFormat}`}
-          title=${`${localisedDateFormat}`}
+          ariaLabel=${ariaLabel}
+          title=${localisedDateFormat}
           aria-selected=${ifDefined(this.selected)}
           tab-index=${this.focused ? "0" : "-1"}
         >

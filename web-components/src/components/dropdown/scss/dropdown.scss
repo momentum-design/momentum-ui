@@ -316,6 +316,51 @@
       border-radius: $dropdown-new-border-radius;
       background-color: transparent;
       padding-right: $dropdown-new-padding-right;
+      align-items: center;
+    }
+
+    .md-dropdown-list {
+      border: 1px solid var(--dropdown-list-border-color);
+    }
+
+    .md-dropdown-option {
+      &:active {
+        background-color: var(--dropdown-list-item-bg-color-focus);
+      }
+
+      &[selected] {
+        background-color: transparent;
+        box-shadow: none;
+
+        &:hover {
+          background-color: var(--dropdown-list-item-bg-color-hover);
+        }
+
+        &:active {
+          background-color: var(--dropdown-list-item-bg-color-focus);
+        }
+      }
+
+      &[focused] {
+        background-color: transparent;
+        @include remove-focus;
+        @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
+
+        &:hover {
+          background-color: var(--dropdown-list-item-bg-color-hover);
+        }
+
+        &:active {
+          background-color: var(--dropdown-list-item-bg-color-focus);
+        }
+      }
+
+      &--icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
     }
   }
 }
@@ -454,7 +499,7 @@
   :host([focus-visible]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 2px solid Highlight;        
+        border: 2px solid Highlight;
         &--text {
           forced-color-adjust: none;
           background-color: Canvas;
@@ -486,7 +531,6 @@
           color: GrayText;
         }
       }
-      
     }
   }
 
@@ -506,7 +550,7 @@
         &::placeholder {
           color: GrayText;
         }
-      }      
+      }
     }
   }
 }

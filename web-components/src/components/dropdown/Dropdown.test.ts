@@ -506,4 +506,177 @@ describe("Dropdown Component", () => {
       expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).toBeNull();
     });
   });
+
+  describe("Accessibility - Selection State", () => {
+    const createKeyboardEvent = (code: string) => new KeyboardEvent("keydown", { code });
+
+    const toggleExpandCollapseDropdown = async (dropdown: Dropdown.ELEMENT) => {
+      const label = dropdown.shadowRoot!.querySelector("label");
+      label!.dispatchEvent(new MouseEvent("click"));
+      await dropdown.updateComplete;
+    };
+
+    it("should set aria-selected='true' and include 'selected' in aria-label for the selected option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[1]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+      const selectedOption = options[1];
+
+      expect(selectedOption.getAttribute("aria-selected")).toEqual("true");
+      expect(selectedOption.getAttribute("aria-label")).toEqual(`${dropdownStringOptions[1]}, selected`);
+    });
+
+    it("should set aria-selected='false' and plain aria-label for non-selected options", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[1]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+      const nonSelectedOption = options[0];
+
+      expect(nonSelectedOption.getAttribute("aria-selected")).toEqual("false");
+      expect(nonSelectedOption.getAttribute("aria-label")).toEqual(dropdownStringOptions[0]);
+    });
+
+    it("should update aria-selected and aria-label after selecting a new option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
+      await dropdownSelectedPromise;
+      await elementUpdated(dropdown);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+
+      expect(options[2].getAttribute("aria-selected")).toEqual("true");
+      expect(options[2].getAttribute("aria-label")).toContain("selected");
+
+      expect(options[0].getAttribute("aria-selected")).toEqual("false");
+      expect(options[0].getAttribute("aria-label")).not.toContain("selected");
+    });
+
+    it("should update aria-activedescendant on arrow key navigation", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-0");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-1");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-2");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowUp));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-1");
+    });
+
+    it("should clear aria-activedescendant when dropdown collapses", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-0");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Escape));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("");
+    });
+
+    it("should keep focus on combobox label when expanding, not on listbox", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      dropdown.label.focus();
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown["expanded"]).toBeTruthy();
+      expect(dropdown.shadowRoot!.activeElement).toBe(dropdown.label);
+    });
+
+    it("should render check icon only for newMomentum selected option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[0]}"
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const selectedLi = dropdown.shadowRoot!.querySelector("li.md-dropdown-option[selected]");
+      const checkIcon = selectedLi?.querySelector("md-icon.md-dropdown-option--icon");
+
+      expect(checkIcon).not.toBeNull();
+      expect(checkIcon!.getAttribute("name")).toEqual("check-bold");
+      expect(checkIcon!.getAttribute("aria-hidden")).toEqual("true");
+    });
+
+    it("should not render check icon when newMomentum is false", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[0]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const checkIcon = dropdown.shadowRoot!.querySelector("md-icon.md-dropdown-option--icon");
+      expect(checkIcon).toBeNull();
+    });
+  });
 });

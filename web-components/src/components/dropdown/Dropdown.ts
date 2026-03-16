@@ -166,9 +166,11 @@ export namespace Dropdown {
         }
         if (name === "expanded") {
           this.updateListDOM();
+          this.updateActiveDescendant();
         }
         if (name === "focusedIndex") {
           this.updateListDOM();
+          this.updateActiveDescendant();
         }
         if (name === "defaultOption") {
           if (this.defaultOption) {
@@ -253,6 +255,14 @@ export namespace Dropdown {
       }
 
       this.dropdownRenderOptions = renderOptions;
+    }
+
+    private updateActiveDescendant() {
+      const combobox = this.searchable ? this.input : this.label;
+      if (combobox) {
+        const id = this.expanded && this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
+        combobox.setAttribute("aria-activedescendant", id);
+      }
     }
 
     async updateListDOM() {
@@ -441,11 +451,10 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
-      const selectedIndex = this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
       document.dispatchEvent(new CustomEvent("on-widget-update"));
-      this.label.setAttribute("aria-activedescendant", selectedIndex);
-      if (this.optionsList) {
-        (this.optionsList as HTMLElement).focus();
+
+      if (!this.searchable && this.label) {
+        this.label.focus();
       }
 
       if (this.focusedIndex === -1) {
@@ -455,9 +464,6 @@ export namespace Dropdown {
 
     collapse() {
       this.expanded = false;
-      if (!this.searchable) {
-        this.label.setAttribute("aria-activedescendant", "");
-      }
     }
 
     toggle() {
@@ -881,7 +887,7 @@ export namespace Dropdown {
                   class="md-dropdown-option"
                   role="option"
                   tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
-                  aria-label="${o.value}"
+                  aria-label="${o.key === this.selectedKey ? `${o.value}, selected` : o.value}"
                   label="${o.value}"
                   aria-selected="${o.key === this.selectedKey}"
                   part="dropdown-option"
@@ -896,6 +902,15 @@ export namespace Dropdown {
                   <span class="select-label" part="label">
                     <span>${o.value}</span>
                   </span>
+                  ${this.newMomentum && o.key === this.selectedKey
+                    ? html`<md-icon
+                        class="md-dropdown-option--icon"
+                        name="check-bold"
+                        size="16"
+                        iconSet="momentumDesign"
+                        aria-hidden="true"
+                      ></md-icon>`
+                    : nothing}
                 </li>
               `
             )}

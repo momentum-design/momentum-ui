@@ -55,6 +55,20 @@ describe("DatePicker Component with menu-overlay", () => {
     expect(el.menuOverlay.isOpen).toBeTruthy();
   });
 
+  test("should NOT open on pressing Enter on input", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.Enter));
+    expect(el.menuOverlay.isOpen).toBeFalsy();
+  });
+
+  test("should NOT open on pressing Space on input", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.Space));
+    expect(el.menuOverlay.isOpen).toBeFalsy();
+  });
+
   test("should close on pressing cancel button", async () => {
     const el: DatePicker.ELEMENT = await createFixture(html`
       <md-datepicker .controlButtons=${{ cancel: { value: "CANCEL" } }}></md-datepicker>
@@ -377,6 +391,29 @@ describe("DatePicker Component with menu-overlay", () => {
     }
   );
 
+  test("should close on pressing Escape and stop propagation", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+    expect(el.menuOverlay.isOpen).toBeTruthy();
+
+    const escEvent = keyNavEvent("Escape", el.focusedDate);
+    el.handleKeyDown(escEvent);
+    expect(el.menuOverlay.isOpen).toBeFalsy();
+  });
+
+  test("should not update focusedDate when setPreSelection receives an invalid date", async () => {
+    const validDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+    el.focusedDate = validDate;
+    await elementUpdated(el);
+    expect(el.focusedDate.toISODate()).toBe("2025-06-15");
+
+    const invalidDate = DateTime.fromFormat("not-a-date", "yyyy-MM-dd");
+    el.setPreSelection(invalidDate);
+    expect(el.focusedDate.toISODate()).toBe("2025-06-15");
+  });
+
   describe("Localised + ISO format testing", () => {
     test.each([{ useISOFormat: true }, { useISOFormat: false }])(
       "should use ISO format unless useISOFormat ($useISOFormat) is set to false",
@@ -576,6 +613,36 @@ describe("DatePicker Component with popover", () => {
     input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
     await elementUpdated(el.popoverElement);
     expect(el.popoverElement.controller?.isVisible()).toBeTruthy();
+  });
+
+  test("should NOT open on pressing Enter on input", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
+    await elementUpdated(el.popoverElement);
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.Enter));
+    await elementUpdated(el.popoverElement);
+    expect(el.popoverElement.controller?.isVisible()).toBeFalsy();
+  });
+
+  test("should NOT open on pressing Space on input", async () => {
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
+    await elementUpdated(el.popoverElement);
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.Space));
+    await elementUpdated(el.popoverElement);
+    expect(el.popoverElement.controller?.isVisible()).toBeFalsy();
+  });
+
+  test("should not update focusedDate when setPreSelection receives an invalid date", async () => {
+    const validDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
+    el.focusedDate = validDate;
+    await elementUpdated(el);
+    expect(el.focusedDate.toISODate()).toBe("2025-06-15");
+
+    const invalidDate = DateTime.fromFormat("not-a-date", "yyyy-MM-dd");
+    el.setPreSelection(invalidDate);
+    expect(el.focusedDate.toISODate()).toBe("2025-06-15");
   });
 
   test("should close on pressing cancel button", async () => {

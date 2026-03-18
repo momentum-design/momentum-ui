@@ -17,6 +17,7 @@ import {
   getStartOfWeek,
   getWeekdayNameShortInLocale,
   getWeekdayNameVeryShortInLocale,
+  isSameDay,
   localizeDate,
   now,
   shouldNextMonthDisable,
@@ -60,9 +61,26 @@ export namespace DatePickerCalendar {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("datePickerProps")) {
-        if (this.datePickerProps?.selected.invalidReason === null) {
-          this.viewAnchorDate = this.datePickerProps.selected || now();
+        const oldProps = changedProperties.get("datePickerProps") as DatePickerProps | undefined;
+        const newSelected = this.datePickerProps?.selected;
+        const newFocused = this.datePickerProps?.focused;
+
+        if (newSelected?.invalidReason === null) {
+          const selectedChanged = !oldProps?.selected || !isSameDay(oldProps.selected, newSelected);
+          if (selectedChanged) {
+            this.viewAnchorDate = newSelected || now();
+          }
         }
+
+        if (newFocused?.isValid) {
+          const focusedChanged = !oldProps?.focused || !isSameDay(oldProps.focused, newFocused);
+          const focusedInDifferentMonth =
+            newFocused.month !== this.viewAnchorDate.month || newFocused.year !== this.viewAnchorDate.year;
+          if (focusedChanged && focusedInDifferentMonth) {
+            this.viewAnchorDate = newFocused;
+          }
+        }
+
         this.localeMonth = (
           this.datePickerProps?.locale
             ? localizeDate(this.viewAnchorDate, this.datePickerProps?.locale)
@@ -119,7 +137,6 @@ export namespace DatePickerCalendar {
           title=${`previous month`}
           ?disabled=${allPrevDaysDisabled}
           @click=${!allPrevDaysDisabled && this.decreaseMonth}
-          tabindex="-1"
         >
           <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
@@ -138,7 +155,6 @@ export namespace DatePickerCalendar {
           title=${`next month`}
           ?disabled=${allNextDaysDisabled}
           @click=${!allNextDaysDisabled && this.increaseMonth}
-          tabindex="-1"
           ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
       `;

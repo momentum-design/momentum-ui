@@ -897,7 +897,7 @@ describe("Dropdown Component", () => {
     });
 
     describe("Dropdown buttons", () => {
-      it("should hide icons from screen readers in both clear and arrow buttons", async () => {
+      it("should hide clear button icon from screen readers", async () => {
         const dropdown = await fixture<Dropdown.ELEMENT>(html`
           <md-dropdown
             .options="${dropdownStringOptions}"
@@ -910,9 +910,12 @@ describe("Dropdown Component", () => {
 
         const clearIcon = dropdown.shadowRoot!.querySelector(".md-dropdown-button.clear md-icon");
         expect(clearIcon!.getAttribute("aria-hidden")).toEqual("true");
+      });
 
-        dropdown["inputValue"] = "";
-        dropdown["selectedKey"] = "";
+      it("should hide arrow button icon from screen readers", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Test" searchable></md-dropdown>
+        `);
         await elementUpdated(dropdown);
 
         const arrowIcon = dropdown.shadowRoot!.querySelector(".md-dropdown-button.arrow-down md-icon");

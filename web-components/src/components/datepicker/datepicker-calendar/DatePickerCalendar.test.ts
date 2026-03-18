@@ -57,6 +57,44 @@ describe("DatePickerCalendar Component", () => {
     expect(dayNames[6]).toContain("S");
   });
 
+  test("should not reset viewAnchorDate when datePickerProps updates with same selected date", async () => {
+    const selected = DateTime.fromObject({ year: 2025, month: 3, day: 18 });
+    const el: DatePickerCalendar.ELEMENT = await fixture(html`
+      <md-datepicker-calendar
+        .datePickerProps=${{ selected, focused: selected, weekStart: "Sunday", locale: "en-US" }}
+      ></md-datepicker-calendar>
+    `);
+
+    await el.updateComplete;
+    expect(el.viewAnchorDate.month).toBe(3);
+
+    el.increaseMonth(new MouseEvent("click"));
+    await el.updateComplete;
+    expect(el.viewAnchorDate.month).toBe(4);
+
+    el.datePickerProps = { selected, focused: selected, weekStart: "Sunday", locale: "en-US" };
+    await el.updateComplete;
+    expect(el.viewAnchorDate.month).toBe(4);
+  });
+
+  test("should follow focused date when it moves to a different month", async () => {
+    const selected = DateTime.fromObject({ year: 2025, month: 3, day: 18 });
+    const focused = DateTime.fromObject({ year: 2025, month: 3, day: 18 });
+    const el: DatePickerCalendar.ELEMENT = await fixture(html`
+      <md-datepicker-calendar
+        .datePickerProps=${{ selected, focused, weekStart: "Sunday", locale: "en-US" }}
+      ></md-datepicker-calendar>
+    `);
+
+    await el.updateComplete;
+    expect(el.viewAnchorDate.month).toBe(3);
+
+    const newFocused = DateTime.fromObject({ year: 2025, month: 4, day: 1 });
+    el.datePickerProps = { selected, focused: newFocused, weekStart: "Sunday", locale: "en-US" };
+    await el.updateComplete;
+    expect(el.viewAnchorDate.month).toBe(4);
+  });
+
   test("should have correct default values for new properties", async () => {
     const el: DatePickerCalendar.ELEMENT = await fixture(html` <md-datepicker-calendar></md-datepicker-calendar> `);
 

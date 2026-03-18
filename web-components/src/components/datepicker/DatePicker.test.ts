@@ -404,9 +404,9 @@ describe("DatePicker Component with menu-overlay", () => {
 
   test("should not update focusedDate when setPreSelection receives an invalid date", async () => {
     const validDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
-    const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker .focusedDate=${validDate}></md-datepicker>
-    `);
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
+    el.focusedDate = validDate;
+    await elementUpdated(el);
     expect(el.focusedDate.toISODate()).toBe("2025-06-15");
 
     const invalidDate = DateTime.fromFormat("not-a-date", "yyyy-MM-dd");
@@ -635,9 +635,9 @@ describe("DatePicker Component with popover", () => {
 
   test("should not update focusedDate when setPreSelection receives an invalid date", async () => {
     const validDate = DateTime.fromObject({ year: 2025, month: 6, day: 15 });
-    const el: DatePicker.ELEMENT = await createFixture(html`
-      <md-datepicker use-popover .focusedDate=${validDate}></md-datepicker>
-    `);
+    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker use-popover></md-datepicker> `);
+    el.focusedDate = validDate;
+    await elementUpdated(el);
     expect(el.focusedDate.toISODate()).toBe("2025-06-15");
 
     const invalidDate = DateTime.fromFormat("not-a-date", "yyyy-MM-dd");

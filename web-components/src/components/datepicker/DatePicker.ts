@@ -98,6 +98,7 @@ export namespace DatePicker {
     @state() minDateData: DateTime | undefined = undefined;
 
     private popoverController: PopoverController | null = null;
+    private openedViaKeyboard = false;
 
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
     @query("md-popover") popoverElement!: Popover;
@@ -246,15 +247,88 @@ export namespace DatePicker {
     }
 
     setPreSelection = (date: DateTime) => {
+      if (!date?.isValid) return;
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
         this.focusedDate = date;
       }
     };
 
+    private get isCalendarOpen(): boolean {
+      if (this.usePopover) {
+        return this.popoverController?.isVisible() ?? false;
+      }
+      return this.menuOverlay?.isOpen ?? false;
+    }
+
+    private focusDateInput() {
+      requestAnimationFrame(() => {
+        const input = this.shadowRoot?.querySelector(".date-input") as HTMLElement | null;
+        input?.focus();
+      });
+    }
+
+    private focusCalendarDay() {
+      const attemptFocus = (retries: number) => {
+        requestAnimationFrame(() => {
+          const calendar = this.shadowRoot?.querySelector("md-datepicker-calendar");
+          const month = calendar?.shadowRoot?.querySelector("md-datepicker-month");
+          const weeks = month?.shadowRoot?.querySelectorAll("md-datepicker-week");
+          if (!weeks) {
+            if (retries > 0) attemptFocus(retries - 1);
+            return;
+          }
+
+          for (const week of Array.from(weeks)) {
+            const day = week.shadowRoot?.querySelector("md-datepicker-day[focused]");
+            if (day) {
+              const mdButton = day.shadowRoot?.querySelector("md-button");
+              const button = (mdButton as HTMLElement)?.shadowRoot?.querySelector("button") as HTMLButtonElement | null;
+              if (button) {
+                button.focus();
+                return;
+              }
+            }
+          }
+
+          if (retries > 0) attemptFocus(retries - 1);
+        });
+      };
+      attemptFocus(8);
+    }
+
+    private handleOverlayOpened = () => {
+      this.isMenuOverlayOpen = true;
+      if (this.openedViaKeyboard) {
+        this.openedViaKeyboard = false;
+        this.focusCalendarDay();
+      }
+    };
+
+    private handleOverlayClosed = () => {
+      this.isMenuOverlayOpen = false;
+      this.focusDateInput();
+    };
+
     handleInputKeyDown = (event: KeyboardEvent) => {
-      if (event.code === Key.ArrowDown) {
-        this.setOpen(true);
+      switch (event.code) {
+        case Key.ArrowDown:
+          event.preventDefault();
+          if (!this.isCalendarOpen) {
+            this.openedViaKeyboard = true;
+            this.setOpen(true);
+          }
+          break;
+        case Key.Escape:
+          if (this.isCalendarOpen) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.setOpen(false);
+            this.focusDateInput();
+          }
+          break;
+        default:
+          break;
       }
     };
 
@@ -272,6 +346,7 @@ export namespace DatePicker {
 
         case "Escape":
           this.setOpen(false);
+          flag = true;
           break;
         case "ArrowUp":
           this.setPreSelection(subtractWeeks(copy, 1));
@@ -446,6 +521,8 @@ export namespace DatePicker {
           .controller=${this.popoverController}
           ?animation-frame=${this.animationFrame}
           .offset=${DEFAULT_POPOVER_OFFSET}
+          @shown=${this.handleOverlayOpened}
+          @hidden=${this.handleOverlayClosed}
         >
           <div class="date-overlay-content">
             <md-datepicker-calendar
@@ -512,6 +589,8 @@ export namespace DatePicker {
           custom-width="272px"
           ?disabled=${this.disabled}
           positioning-strategy=${ifDefined(this.positioningStrategy)}
+          @menu-overlay-open=${this.handleOverlayOpened}
+          @menu-overlay-close=${this.handleOverlayClosed}
         >
           ${this.customTrigger
             ? html`

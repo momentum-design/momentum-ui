@@ -506,4 +506,439 @@ describe("Dropdown Component", () => {
       expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).toBeNull();
     });
   });
+
+  describe("Accessibility - Selection State", () => {
+    const createKeyboardEvent = (code: string) => new KeyboardEvent("keydown", { code });
+
+    const toggleExpandCollapseDropdown = async (dropdown: Dropdown.ELEMENT) => {
+      const label = dropdown.shadowRoot!.querySelector("label");
+      label!.dispatchEvent(new MouseEvent("click"));
+      await dropdown.updateComplete;
+    };
+
+    it("should set aria-selected='true' and aria-label to option value for the selected option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[1]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+      const selectedOption = options[1];
+
+      expect(selectedOption.getAttribute("aria-selected")).toEqual("true");
+      expect(selectedOption.getAttribute("aria-label")).toEqual(dropdownStringOptions[1]);
+    });
+
+    it("should set aria-selected='false' and aria-label to option value for non-selected options", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[1]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+      const nonSelectedOption = options[0];
+
+      expect(nonSelectedOption.getAttribute("aria-selected")).toEqual("false");
+      expect(nonSelectedOption.getAttribute("aria-label")).toEqual(dropdownStringOptions[0]);
+    });
+
+    it("should update aria-selected after selecting a new option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      const dropdownSelectedPromise = oneEvent(dropdown, "dropdown-selected");
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Enter));
+      await dropdownSelectedPromise;
+      await elementUpdated(dropdown);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const options = dropdown.shadowRoot!.querySelectorAll("li.md-dropdown-option");
+
+      expect(options[2].getAttribute("aria-selected")).toEqual("true");
+      expect(options[2].getAttribute("aria-label")).toEqual(dropdownStringOptions[2]);
+
+      expect(options[0].getAttribute("aria-selected")).toEqual("false");
+      expect(options[0].getAttribute("aria-label")).toEqual(dropdownStringOptions[0]);
+    });
+
+    it("should update aria-activedescendant on arrow key navigation", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-0");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-1");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-2");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowUp));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-1");
+    });
+
+    it("should clear aria-activedescendant when dropdown collapses", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("combo-0");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Escape));
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label.getAttribute("aria-activedescendant")).toEqual("");
+    });
+
+    it("should keep focus on combobox label when expanding, not on listbox", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
+
+      dropdown.label.focus();
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      await elementUpdated(dropdown);
+
+      expect(dropdown["expanded"]).toBeTruthy();
+      expect(dropdown.shadowRoot!.activeElement).toBe(dropdown.label);
+    });
+
+    it("should render check icon only for newMomentum selected option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[0]}"
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const selectedLi = dropdown.shadowRoot!.querySelector("li.md-dropdown-option[selected]");
+      const checkIcon = selectedLi?.querySelector("md-icon.md-dropdown-option--icon");
+
+      expect(checkIcon).not.toBeNull();
+      expect(checkIcon!.getAttribute("name")).toEqual("check-bold");
+      expect(checkIcon!.getAttribute("aria-hidden")).toEqual("true");
+    });
+
+    it("should not render check icon when newMomentum is false", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[0]}"
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      await elementUpdated(dropdown);
+      await toggleExpandCollapseDropdown(dropdown);
+      await elementUpdated(dropdown);
+
+      const checkIcon = dropdown.shadowRoot!.querySelector("md-icon.md-dropdown-option--icon");
+      expect(checkIcon).toBeNull();
+    });
+  });
+
+  describe("newMomentum", () => {
+    const createKbEvent = (code: string) =>
+      new KeyboardEvent("keydown", { code, bubbles: true, cancelable: true, composed: true });
+
+    const expandDropdown = async (dropdown: Dropdown.ELEMENT) => {
+      dropdown.shadowRoot!.querySelector("label")!.dispatchEvent(new MouseEvent("click"));
+      await dropdown.updateComplete;
+    };
+
+    describe("Disabled State", () => {
+      it("should set tabindex=-1 when disabled with newMomentum, tabindex=0 without", async () => {
+        const withNM = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" disabled newMomentum title="Test"></md-dropdown>
+        `);
+        await elementUpdated(withNM);
+        expect(withNM.shadowRoot!.querySelector("label")!.getAttribute("tabindex")).toEqual("-1");
+
+        const withoutNM = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" disabled title="Test"></md-dropdown>
+        `);
+        await elementUpdated(withoutNM);
+        expect(withoutNM.shadowRoot!.querySelector("label")!.getAttribute("tabindex")).toEqual("0");
+      });
+
+      it.each([Key.Enter, Key.ArrowDown, Key.Space])("should not open dropdown on %s when disabled", async (key) => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" disabled newMomentum title="Test"></md-dropdown>
+        `);
+        dropdown.dispatchEvent(createKbEvent(key));
+        await elementUpdated(dropdown);
+        expect(dropdown["expanded"]).toBeFalsy();
+      });
+    });
+
+    describe("Keyboard Behavior", () => {
+      it.each([Key.ArrowDown, Key.ArrowUp])("should preventDefault on %s when expanded", async (key) => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" newMomentum title="Test"></md-dropdown>
+        `);
+        await expandDropdown(dropdown);
+
+        const event = createKbEvent(key);
+        const spy = jest.spyOn(event, "preventDefault");
+        dropdown.dispatchEvent(event);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it.each([Key.Backspace, Key.Escape])("should close dropdown on %s", async (key) => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" newMomentum title="Test"></md-dropdown>
+        `);
+        await expandDropdown(dropdown);
+        expect(dropdown["expanded"]).toBeTruthy();
+
+        dropdown.dispatchEvent(createKbEvent(key));
+        expect(dropdown["expanded"]).toBeFalsy();
+      });
+    });
+
+    describe("Focus Management", () => {
+      it("should not set tabindex on ul/li when newMomentum is true, but should when false", async () => {
+        const withNM = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" newMomentum title="Test"></md-dropdown>
+        `);
+        await expandDropdown(withNM);
+        await elementUpdated(withNM);
+
+        expect(withNM.shadowRoot!.querySelector("ul.md-dropdown-list")!.hasAttribute("tabindex")).toBeFalsy();
+        withNM.shadowRoot!.querySelectorAll("li.md-dropdown-option").forEach((item) => {
+          expect(item.hasAttribute("tabindex")).toBeFalsy();
+        });
+
+        const withoutNM = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+        `);
+        await expandDropdown(withoutNM);
+        await elementUpdated(withoutNM);
+
+        expect(withoutNM.shadowRoot!.querySelector("ul.md-dropdown-list")!.hasAttribute("tabindex")).toBeTruthy();
+        withoutNM.shadowRoot!.querySelectorAll("li.md-dropdown-option").forEach((item) => {
+          expect(item.hasAttribute("tabindex")).toBeTruthy();
+        });
+      });
+    });
+  });
+
+  describe("VoiceOver / Accessibility", () => {
+    const createKbEvent = (code: string) =>
+      new KeyboardEvent("keydown", { code, bubbles: true, cancelable: true, composed: true });
+
+    describe("Non-searchable label", () => {
+      it("should set aria-label to title when unselected, and to selected value after selection", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Filter"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const label = dropdown.shadowRoot!.querySelector("label")!;
+        expect(label.getAttribute("aria-label")).toEqual("Filter");
+
+        dropdown["defaultOption"] = dropdownStringOptions[1];
+        await elementUpdated(dropdown);
+        expect(label.getAttribute("aria-label")).toEqual(dropdownStringOptions[1]);
+      });
+
+      it("should hide all child spans from screen readers", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const root = dropdown.shadowRoot!;
+        expect(root.querySelector(".md-dropdown-label--text")!.getAttribute("aria-hidden")).toEqual("true");
+        expect(root.querySelector(".md-dropdown-label--icon")!.getAttribute("aria-hidden")).toEqual("true");
+      });
+    });
+
+    describe("Searchable input", () => {
+      it("should sync inputValue and hide aria-label/placeholder after selection", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Select..."
+            placeholder="Choose..."
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown["inputValue"]).toEqual(dropdownStringOptions[0]);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input")!;
+        expect(input.hasAttribute("aria-label")).toBeFalsy();
+        expect(input.getAttribute("placeholder")).toEqual("");
+      });
+
+      it("should show aria-label and placeholder when no value is present", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            title="Select..."
+            placeholder="Choose..."
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input")!;
+        expect(input.getAttribute("aria-label")).toEqual("Select...");
+        expect(input.getAttribute("placeholder")).toEqual("Choose...");
+      });
+    });
+
+    describe("Searchable Tab behavior", () => {
+      it("should close dropdown on Tab without re-stealing focus via debounced handler", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Test"
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input") as HTMLInputElement;
+        input.dispatchEvent(new MouseEvent("click"));
+        await dropdown.updateComplete;
+        expect(dropdown["expanded"]).toBeTruthy();
+
+        dropdown.dispatchEvent(createKbEvent(Key.Tab));
+        expect(dropdown["expanded"]).toBeFalsy();
+
+        jest.advanceTimersByTime(300);
+        await elementUpdated(dropdown);
+
+        expect(dropdown["inputValue"]).toEqual(dropdownStringOptions[0]);
+      });
+    });
+
+    describe("Searchable navigation after selection", () => {
+      it("should not navigate to hidden options via arrow keys", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Test"
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input") as HTMLInputElement;
+        input.dispatchEvent(new MouseEvent("click"));
+        await dropdown.updateComplete;
+
+        expect(dropdown["expanded"]).toBeTruthy();
+        const visibleCount = dropdown["filteredOptions"].length;
+        expect(visibleCount).toBe(1);
+        expect(dropdown["focusedIndex"]).toBe(0);
+
+        dropdown.dispatchEvent(
+          new KeyboardEvent("keydown", { code: Key.ArrowDown, bubbles: true, cancelable: true, composed: true })
+        );
+        await elementUpdated(dropdown);
+        expect(dropdown["focusedIndex"]).toBe(0);
+
+        dropdown.dispatchEvent(
+          new KeyboardEvent("keydown", { code: Key.ArrowUp, bubbles: true, cancelable: true, composed: true })
+        );
+        await elementUpdated(dropdown);
+        expect(dropdown["focusedIndex"]).toBe(0);
+      });
+    });
+
+    describe("Dropdown buttons", () => {
+      it("should hide clear button icon from screen readers", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Test"
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const clearIcon = dropdown.shadowRoot!.querySelector(".md-dropdown-button.clear md-icon");
+        expect(clearIcon!.getAttribute("aria-hidden")).toEqual("true");
+      });
+
+      it("should hide arrow button icon from screen readers", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Test" searchable></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const arrowIcon = dropdown.shadowRoot!.querySelector(".md-dropdown-button.arrow-down md-icon");
+        expect(arrowIcon!.getAttribute("aria-hidden")).toEqual("true");
+      });
+
+      it.each([Key.Space, Key.Enter])("should not open popover when %s is pressed on clear button", async (key) => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Test"
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const clearButton = dropdown.shadowRoot!.querySelector(".md-dropdown-button.clear")!;
+        clearButton.dispatchEvent(createKbEvent(key));
+        await elementUpdated(dropdown);
+
+        expect(dropdown["expanded"]).toBeFalsy();
+      });
+    });
+  });
 });

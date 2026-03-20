@@ -34,11 +34,28 @@ export namespace DateRangePicker {
       super.connectedCallback();
       super.render();
       this.addEventListener("date-pre-selection-change", this.handleDateSelection);
+      this.parseInitialValue();
       this.updateValue();
 
       if (this.maxRangeLength) {
         this.originalFilterDate = this.filterDate;
         this.updateFilterDate();
+      }
+    }
+
+    private parseInitialValue() {
+      if (this.value && !this.startDate && !this.endDate && this.useISOFormat) {
+        const parts = this.value.split(DATE_RANGE_SEPARATOR);
+        if (parts.length === 2) {
+          const start = DateTime.fromISO(parts[0].trim());
+          const end = DateTime.fromISO(parts[1].trim());
+          if (start.isValid && end.isValid) {
+            this.startDate = start.toSQLDate();
+            this.endDate = end.toSQLDate();
+            this.focusedDate = start;
+            this.selectedDate = start;
+          }
+        }
       }
     }
 
@@ -76,7 +93,13 @@ export namespace DateRangePicker {
     }
 
     updated(changedProperties: Map<string | number | symbol, unknown>) {
-      super.updated(changedProperties);
+      if (changedProperties.has("value") && this.value?.includes(DATE_RANGE_SEPARATOR)) {
+        const filtered = new Map(changedProperties);
+        filtered.delete("value");
+        super.updated(filtered);
+      } else {
+        super.updated(changedProperties);
+      }
 
       if (
         (changedProperties.has("startDate") || changedProperties.has("endDate")) &&

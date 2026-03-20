@@ -156,9 +156,12 @@ export namespace Dropdown {
           this.updateRenderOptions();
         }
         if (name === "selectedKey") {
-          const idx = this.dropdownRenderOptions.findIndex((o) => o.key === this.selectedKey);
-          if (idx !== -1) {
-            this.focusToIndex(idx);
+          const exists = this.dropdownRenderOptions.some((o) => o.key === this.selectedKey);
+          if (exists) {
+            const filteredIdx = this.filteredOptions.findIndex((o) => o.key === this.selectedKey);
+            if (filteredIdx !== -1) {
+              this.focusToIndex(filteredIdx);
+            }
             if (this.searchable) {
               this.setInitialValue();
             }
@@ -166,9 +169,11 @@ export namespace Dropdown {
         }
         if (name === "expanded") {
           this.updateListDOM();
+          this.updateActiveDescendant();
         }
         if (name === "focusedIndex") {
           this.updateListDOM();
+          this.updateActiveDescendant();
         }
         if (name === "defaultOption") {
           if (this.defaultOption) {
@@ -203,10 +208,11 @@ export namespace Dropdown {
         const foundOptionMember = this.dropdownRenderOptions.find((o) => o.key === this.selectedKey);
         const option = foundOptionMember?.option;
         if (option) {
-          this.setInputValue(this.getOptionValue(option));
+          const value = this.getOptionValue(option);
+          this.inputValue = value;
+          this.setInputValue(value);
           this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
-          this.notifyInputValueChanged(this.getOptionValue(option));
-          this.requestUpdate();
+          this.notifyInputValueChanged(value);
         }
       }
     }
@@ -255,6 +261,14 @@ export namespace Dropdown {
       this.dropdownRenderOptions = renderOptions;
     }
 
+    private updateActiveDescendant() {
+      const combobox = this.searchable ? this.input : this.label;
+      if (combobox) {
+        const id = this.expanded && this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
+        combobox.setAttribute("aria-activedescendant", id);
+      }
+    }
+
     async updateListDOM() {
       if (!this.expanded) {
         return;
@@ -291,7 +305,7 @@ export namespace Dropdown {
     }
 
     protected handleFocusIn(event: Event) {
-      if (!this.disabled || !this.readOnly) {
+      if (!this.disabled) {
         super.handleFocusIn?.(event);
       }
 
@@ -385,9 +399,8 @@ export namespace Dropdown {
         }
       }
       if (this.expanded) {
-        this.setVisualListbox(false);
+        this.collapse();
       } else {
-        // While open dropdown
         this.dispatchEvent(
           new CustomEvent("combobox-on-expand", {
             composed: true,
@@ -395,7 +408,7 @@ export namespace Dropdown {
           })
         );
         this.notifySearchResultCount();
-        this.setVisualListbox(true);
+        this.expand();
       }
       this.input!.focus();
     }
@@ -441,11 +454,10 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
-      const selectedIndex = this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
       document.dispatchEvent(new CustomEvent("on-widget-update"));
-      this.label.setAttribute("aria-activedescendant", selectedIndex);
-      if (this.optionsList) {
-        (this.optionsList as HTMLElement).focus();
+
+      if (!this.searchable && this.label) {
+        this.label.focus();
       }
 
       if (this.focusedIndex === -1) {
@@ -455,8 +467,14 @@ export namespace Dropdown {
 
     collapse() {
       this.expanded = false;
-      if (!this.searchable) {
-        this.label.setAttribute("aria-activedescendant", "");
+
+      if (this.searchable && this.selectedKey) {
+        const found = this.dropdownRenderOptions.find((o) => o.key === this.selectedKey);
+        if (found?.option) {
+          const value = this.getOptionValue(found.option);
+          this.inputValue = value;
+          this.setInputValue(value);
+        }
       }
     }
 
@@ -470,7 +488,8 @@ export namespace Dropdown {
 
     select() {
       if (this.focusedIndex !== -1) {
-        const renderOption = this.dropdownRenderOptions[this.focusedIndex];
+        const renderOption = this.filteredOptions[this.focusedIndex];
+        if (!renderOption || renderOption.key === "no-result") return;
 
         const nextSelectedKey = renderOption.key;
         const prevSelectedKey = this.selectedKey;
@@ -483,7 +502,7 @@ export namespace Dropdown {
               composed: true,
               bubbles: true,
               detail: {
-                option: renderOption.option ? renderOption.option : renderOption.key
+                option: "option" in renderOption ? renderOption.option || renderOption.key : renderOption.key
               }
             })
           );
@@ -505,6 +524,8 @@ export namespace Dropdown {
     };
 
     onKeyDown = (e: KeyboardEvent) => {
+      if (this.disabled || this.readOnly) return;
+
       switch (e.code) {
         case Key.Tab: {
           if (this.expanded) {
@@ -515,6 +536,11 @@ export namespace Dropdown {
         }
         case Key.Space:
         case Key.Enter: {
+          const origin = e.composedPath()[0] as HTMLElement;
+          if (origin.closest?.(".md-dropdown-button")) {
+            break;
+          }
+          e.preventDefault();
           if (!this.expanded) {
             this.expand();
           } else {
@@ -525,6 +551,7 @@ export namespace Dropdown {
           break;
         }
         case Key.ArrowDown: {
+          e.preventDefault();
           if (!this.expanded) {
             this.expand();
           } else {
@@ -533,15 +560,16 @@ export namespace Dropdown {
           break;
         }
         case Key.ArrowUp: {
+          e.preventDefault();
           if (!this.expanded) {
             this.expand();
           } else {
             this.focusPrev();
           }
-
           break;
         }
         case Key.Home: {
+          e.preventDefault();
           if (!this.expanded) {
             this.expand();
           } else {
@@ -550,6 +578,7 @@ export namespace Dropdown {
           break;
         }
         case Key.End: {
+          e.preventDefault();
           if (!this.expanded) {
             this.expand();
           } else {
@@ -557,8 +586,10 @@ export namespace Dropdown {
           }
           break;
         }
-        case Key.Escape || Key.Backspace: {
+        case Key.Escape:
+        case Key.Backspace: {
           if (this.expanded) {
+            e.preventDefault();
             e.stopPropagation();
             this.collapse();
           }
@@ -569,24 +600,25 @@ export namespace Dropdown {
 
     onLabelClick() {
       this.label.focus();
+      if (this.readOnly) return;
       this.toggle();
     }
 
     focusFirst() {
-      if (this.dropdownRenderOptions.length) {
+      if (this.filteredOptions.length) {
         this.focusedIndex = 0;
       }
     }
 
     focusLast() {
-      if (this.dropdownRenderOptions.length) {
-        this.focusedIndex = this.dropdownRenderOptions.length - 1;
+      if (this.filteredOptions.length) {
+        this.focusedIndex = this.filteredOptions.length - 1;
       }
     }
 
     focusNext() {
-      if (this.dropdownRenderOptions.length) {
-        if (this.focusedIndex !== -1 && this.focusedIndex < this.dropdownRenderOptions.length - 1) {
+      if (this.filteredOptions.length) {
+        if (this.focusedIndex !== -1 && this.focusedIndex < this.filteredOptions.length - 1) {
           this.focusedIndex++;
         } else {
           this.focusFirst();
@@ -595,7 +627,7 @@ export namespace Dropdown {
     }
 
     focusPrev() {
-      if (this.dropdownRenderOptions.length) {
+      if (this.filteredOptions.length) {
         if (this.focusedIndex > 0) {
           this.focusedIndex--;
         } else {
@@ -605,17 +637,17 @@ export namespace Dropdown {
     }
 
     focusToIndex(n: number) {
-      if (this.dropdownRenderOptions.length) {
-        if (n >= 0 && n <= this.dropdownRenderOptions.length - 1) {
+      if (this.filteredOptions.length) {
+        if (n >= 0 && n <= this.filteredOptions.length - 1) {
           this.focusedIndex = n;
         }
       }
     }
 
     focusToIndexWithOption(o: RenderOptionMember) {
-      const n = this.dropdownRenderOptions.findIndex((option) => option.key === o.key);
-      if (this.dropdownRenderOptions.length) {
-        if (n >= 0 && n <= this.dropdownRenderOptions.length - 1) {
+      const n = this.filteredOptions.findIndex((option) => option.key === o.key);
+      if (this.filteredOptions.length) {
+        if (n >= 0 && n <= this.filteredOptions.length - 1) {
           this.focusedIndex = n;
         }
       }
@@ -759,6 +791,7 @@ export namespace Dropdown {
           name="${this.leftIcon}"
           size="16"
           iconSet="momentumDesign"
+          aria-hidden="true"
           @click=${this.toggleVisualListBox}
         ></md-icon>
       `;
@@ -781,6 +814,7 @@ export namespace Dropdown {
             name="cancel-bold"
             size="16"
             iconSet="momentumDesign"
+            aria-hidden="true"
             style="height: ${this.clearIconHeight};"
           ></md-icon>
         </button>
@@ -801,7 +835,7 @@ export namespace Dropdown {
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
-          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
+          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
         </button>
       `;
     }
@@ -814,24 +848,25 @@ export namespace Dropdown {
                 <label
                   class="md-dropdown-label ${classMap({ "md-new-dropdown-label": this.newMomentum })}"
                   aria-expanded="${this.expanded}"
-                  aria-label="${this.title}"
+                  aria-label="${this.labelTitle}"
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
                   ?disabled=${this.disabled}
                   @click=${this.onLabelClick}
                   part="dropdown-header"
                   role="combobox"
-                  tabindex="0"
+                  tabindex="${this.newMomentum && this.disabled ? -1 : 0}"
                 >
                   ${this.leftIcon
-                    ? html`<span class="md-dropdown-label--left-icon">${this.iconTemplate()}</span>`
+                    ? html`<span class="md-dropdown-label--left-icon" aria-hidden="true">${this.iconTemplate()}</span>`
                     : nothing}
                   <span
                     class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
+                    aria-hidden="true"
                   >
                     ${this.labelTitle}</span
                   >
-                  <span class="md-dropdown-label--icon">
+                  <span class="md-dropdown-label--icon" aria-hidden="true">
                     <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </span>
                 </label>
@@ -844,15 +879,14 @@ export namespace Dropdown {
                     type="text"
                     role="combobox"
                     aria-autocomplete="both"
-                    aria-label=${this.title}
+                    aria-label=${ifDefined(this.inputValue ? undefined : this.title)}
                     part="dropdown-input"
                     aria-expanded=${this.expanded}
-                    placeholder=${this.placeholder}
+                    placeholder=${this.inputValue ? "" : this.placeholder}
                     aria-controls="md-dropdown-list"
                     ?readonly=${this.readOnly}
                     ?disabled=${this.disabled}
                     ?autofocus=${this.autofocus}
-                    title=${this.title}
                     tabindex="0"
                     .value=${this.inputValue}
                     @click=${this.toggleVisualListBox}
@@ -872,7 +906,9 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
-            tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
+            tabindex=${ifDefined(
+              this.newMomentum ? undefined : this.customTabIndex === -1 ? undefined : this.customTabIndex
+            )}
           >
             ${this.filteredOptions.map(
               (o, idx) => html`
@@ -880,7 +916,9 @@ export namespace Dropdown {
                   id="combo-${idx}"
                   class="md-dropdown-option"
                   role="option"
-                  tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
+                  tabindex=${ifDefined(
+                    this.newMomentum ? undefined : this.customTabIndex === -1 ? undefined : this.customTabIndex
+                  )}
                   aria-label="${o.value}"
                   label="${o.value}"
                   aria-selected="${o.key === this.selectedKey}"
@@ -896,6 +934,15 @@ export namespace Dropdown {
                   <span class="select-label" part="label">
                     <span>${o.value}</span>
                   </span>
+                  ${this.newMomentum && o.key === this.selectedKey
+                    ? html`<md-icon
+                        class="md-dropdown-option--icon"
+                        name="check-bold"
+                        size="16"
+                        iconSet="momentumDesign"
+                        aria-hidden="true"
+                      ></md-icon>`
+                    : nothing}
                 </li>
               `
             )}

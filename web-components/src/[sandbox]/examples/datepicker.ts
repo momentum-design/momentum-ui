@@ -32,6 +32,7 @@ export class DatePickerSandbox extends LitElement {
       ></md-datepicker-calendar>
       <h3>datepicker with custom trigger</h3>
       <md-datepicker value=${"2025-04-10"}></md-datepicker>
+      <md-datepicker value=${"select date"}></md-datepicker>
       <md-datepicker custom-trigger>
         <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
       </md-datepicker>

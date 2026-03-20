@@ -19,7 +19,14 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { until } from "lit/directives/until.js";
-import { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
+import {
+  AvatarChannelType,
+  AvatarSize,
+  AvatarState,
+  AvatarStyle,
+  AvatarType,
+  PresenceLabelMap
+} from "./Avatar.constants";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
@@ -93,6 +100,23 @@ export namespace Avatar {
 
     private isPresenceType(value: string): value is PresenceState {
       return (PresenceType as readonly string[]).includes(value);
+    }
+
+    private get presenceLabel(): string {
+      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
+      return PresenceLabelMap[presenceValue] || "";
+    }
+
+    private get computedAriaLabel(): string | undefined {
+      const name = this.label || this.title;
+      const presence = this.presenceLabel;
+      if (name && presence) {
+        return `${name}, ${presence}`;
+      }
+      if (presence) {
+        return presence;
+      }
+      return name || undefined;
     }
 
     firstUpdated() {
@@ -392,6 +416,7 @@ export namespace Avatar {
               .failurePresence=${this.failurePresence}
               .newMomentum=${this.newMomentum}
               .avatarLinked=${true}
+              aria-hidden="true"
             >
             </md-presence>
           `
@@ -436,7 +461,7 @@ export namespace Avatar {
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           tabindex=${ifDefined(this.tabIndex || undefined)}
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.computedAriaLabel)}
         >
           ${this.type === "self"
             ? html`

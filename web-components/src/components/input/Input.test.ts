@@ -522,3 +522,25 @@ test("should update role attribute when ariaRole changes", async () => {
   inputElement = element.shadowRoot!.querySelector("input");
   expect(inputElement?.getAttribute("role")).toBe("searchbox");
 });
+
+describe("aria-label", () => {
+  test("should use label as aria-label when ariaLabel is not set", async () => {
+    const element = await fixture<Input.ELEMENT>(html`<md-input label="First Name"></md-input>`);
+    const input = element.shadowRoot!.querySelector("input");
+    expect(input?.getAttribute("aria-label")).toBe("First Name");
+  });
+
+  test("should prefer explicit ariaLabel over label", async () => {
+    const element = await fixture<Input.ELEMENT>(
+      html`<md-input label="First Name" ariaLabel="Custom Label"></md-input>`
+    );
+    const input = element.shadowRoot!.querySelector("input");
+    expect(input?.getAttribute("aria-label")).toBe("Custom Label");
+  });
+
+  test("should not render aria-label when neither ariaLabel nor label is set", async () => {
+    const element = await fixture<Input.ELEMENT>(html`<md-input placeholder="First Name"></md-input>`);
+    const input = element.shadowRoot!.querySelector("input");
+    expect(input?.hasAttribute("aria-label")).toBe(false);
+  });
+});

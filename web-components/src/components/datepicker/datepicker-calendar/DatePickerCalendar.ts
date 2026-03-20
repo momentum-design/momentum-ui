@@ -138,7 +138,7 @@ export namespace DatePickerCalendar {
           ?disabled=${allPrevDaysDisabled}
           @click=${!allPrevDaysDisabled && this.decreaseMonth}
         >
-          <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
+          <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
         </md-button>
       `;
     };
@@ -155,7 +155,7 @@ export namespace DatePickerCalendar {
           title=${`next month`}
           ?disabled=${allNextDaysDisabled}
           @click=${!allNextDaysDisabled && this.increaseMonth}
-          ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
+          ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
         </md-button>
       `;
     };

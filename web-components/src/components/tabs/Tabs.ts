@@ -352,8 +352,7 @@ export namespace Tabs {
 
         this.updateIsMoreTabMenuSelected();
 
-        const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find((t) => !t.disabled);
-        this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
+        this.updateHiddenIdPositiveTabIndex(this.getHiddenTabFocusTarget());
       }
     }
 
@@ -408,6 +407,17 @@ export namespace Tabs {
           }
         });
       }
+    }
+
+    private getHiddenTabFocusTarget(preferredHiddenTab?: Tab.ELEMENT) {
+      if (preferredHiddenTab && !preferredHiddenTab.disabled && this.isTabInMoreMenu(preferredHiddenTab)) {
+        return preferredHiddenTab;
+      }
+
+      return (
+        this.tabsFilteredAsHiddenList.find((tab) => tab.selected && !tab.disabled) ||
+        this.tabsFilteredAsHiddenList.find((tab) => !tab.disabled)
+      );
     }
 
     private updateHiddenIdPositiveTabIndex(hiddenTab?: Tab.ELEMENT) {
@@ -660,7 +670,7 @@ export namespace Tabs {
           if (tabCopy && setFocus) {
             this.makeTabCopyFocus(tabCopy);
           }
-          this.updateHiddenIdPositiveTabIndex(tab);
+          this.updateHiddenIdPositiveTabIndex(this.getHiddenTabFocusTarget(tab));
         }
       }
     }
@@ -818,11 +828,10 @@ export namespace Tabs {
           if (setFocus) {
             this.moveFocusToTab(selectedHiddenTab);
           }
-          const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
-          if (!newHiddenTab?.disabled) {
-            this.updateHiddenIdPositiveTabIndex(newHiddenTab);
-          }
         }
+        const hiddenTabIdx = newSelectedTabIdx - this.tabsFilteredAsVisibleList.length;
+        const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
+        this.updateHiddenIdPositiveTabIndex(this.getHiddenTabFocusTarget(newHiddenTab));
       });
       this.updateIsMoreTabMenuSelected();
       this.storeSelectedTabIndex(newSelectedTabIdx);
@@ -969,10 +978,6 @@ export namespace Tabs {
       const lastVisibleTabIdx = this.isMoreTabMenuVisible
         ? this.tabsFilteredAsVisibleList.length - 1
         : this.tabs.length - 1;
-      const firstHiddenTabIdx = this.isMoreTabMenuVisible ? this.tabsFilteredAsVisibleList.length : -1;
-      const lastHiddenTabIdx = this.isMoreTabMenuVisible
-        ? this.tabsFilteredAsVisibleList.length + this.tabsFilteredAsHiddenList.length - 1
-        : -1;
 
       switch (key) {
         case Key.Tab: {
@@ -1039,10 +1044,15 @@ export namespace Tabs {
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
             this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
-          } else if (isHiddenTab) {
+          } else if (isHiddenTab && tab) {
             event.preventDefault();
-            const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
-            this.changeSelectedTabIdx(idx);
+            event.stopPropagation();
+            const currentHiddenIdx = this.tabsHiddenIdxHash[tab.id];
+            const totalHidden = this.tabsFilteredAsHiddenList.length;
+            const nextHiddenIdx = (currentHiddenIdx - 1 + totalHidden) % totalHidden;
+            const nextTab = this.tabsFilteredAsHiddenList[nextHiddenIdx];
+            this.updateHiddenIdPositiveTabIndex(nextTab);
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[nextHiddenIdx]);
           }
           break;
         }
@@ -1052,10 +1062,15 @@ export namespace Tabs {
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
             this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
-          } else if (isHiddenTab) {
+          } else if (isHiddenTab && tab) {
             event.preventDefault();
-            const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
-            this.changeSelectedTabIdx(idx);
+            event.stopPropagation();
+            const currentHiddenIdx = this.tabsHiddenIdxHash[tab.id];
+            const totalHidden = this.tabsFilteredAsHiddenList.length;
+            const nextHiddenIdx = (currentHiddenIdx + 1) % totalHidden;
+            const nextTab = this.tabsFilteredAsHiddenList[nextHiddenIdx];
+            this.updateHiddenIdPositiveTabIndex(nextTab);
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[nextHiddenIdx]);
           }
           break;
         }
@@ -1063,22 +1078,15 @@ export namespace Tabs {
         case Key.NumpadEnter:
         case Key.Space: {
           if (isMoreTriggerTab) {
-            const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter((t) => !t.disabled);
-            const t = tabsFilteredAsHiddenNonDisabledList.length
-              ? tabsFilteredAsHiddenNonDisabledList.find((t) => t.selected) || tabsFilteredAsHiddenNonDisabledList[0]
-              : undefined;
-            this.updateHiddenIdPositiveTabIndex(t);
-            if (t) {
-              const idx = this.tabsIdxHash[this.getNormalizedTabId(t.id)];
-              if (idx !== -1) {
-                this.updateSelectedTab(idx);
-              }
-            }
+            this.updateHiddenIdPositiveTabIndex(this.getHiddenTabFocusTarget());
           } else if (tab && !tab.disabled) {
             const idx = this.tabsIdxHash[this.getNormalizedTabId(tab.id)];
             if (idx !== -1) {
               event.preventDefault();
               this.updateSelectedTab(idx);
+              if (isHiddenTab) {
+                this.handleOverlayClose();
+              }
             }
           }
           break;
@@ -1328,6 +1336,10 @@ export namespace Tabs {
 
       if (changedProperties.has("scrollArrow")) {
         this.onDirectionChanged();
+      }
+
+      if (this.isMoreTabMenuVisible && this.moreTabMenuElement) {
+        this.moreTabMenuElement.tabIndex = 0;
       }
 
       // Update ariaControlsElements for shadow DOM tab copies.

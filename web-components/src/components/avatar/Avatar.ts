@@ -61,6 +61,7 @@ export namespace Avatar {
     @property({ type: Boolean }) failurePresence = false;
     @property({ type: String }) type: Type = "";
     @property({ type: String, attribute: "presence-type" }) presenceType?: PresenceState;
+    @property({ type: String, attribute: "presence-aria-label" }) presenceAriaLabel = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
@@ -103,6 +104,9 @@ export namespace Avatar {
     }
 
     private get presenceLabel(): string {
+      if (this.presenceAriaLabel) {
+        return this.presenceAriaLabel;
+      }
       const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       return PresenceLabelMap[presenceValue] || "";
     }

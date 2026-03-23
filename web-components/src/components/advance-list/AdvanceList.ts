@@ -104,6 +104,11 @@ export namespace AdvanceList {
           this.notifySelectedChange();
         }
       }
+      if (changedProperties.has("activeId") && this.isUserNavigated) {
+        // When the user navigates via keyboard, ensure the active item gets
+        // focus after lit-virtualizer has rendered its items.
+        requestAnimationFrame(() => this.updateSelectedState());
+      }
     }
 
     setCheckboxAttributes(isSelected: boolean, wrapper: HTMLElement) {
@@ -149,7 +154,9 @@ export namespace AdvanceList {
         //active item should be focusable
         if (wrapper.id === `${prefixId}${this.activeId}`) {
           wrapper.setAttribute("tabindex", "0");
-          (wrapper as any).focus();
+          if (this.isUserNavigated) {
+            (wrapper as any).focus();
+          }
         } else {
           wrapper.setAttribute("tabindex", "-1");
         }

@@ -478,14 +478,14 @@ describe("Tabs", () => {
   });
 
   test("should keep a hidden focus target after selecting a visible tab", async () => {
-    tabs["tabsFilteredAsVisibleList"] = [tab[0]];
-    tabs["tabsFilteredAsHiddenList"] = [tab[1], tab[2]];
+    tabs["tabsFilteredAsVisibleList"] = [tab[1]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
     tabs["isMoreTabMenuVisible"] = true;
 
-    tabs.handleNewSelectedTab(tab[0].id, false);
+    tabs.handleNewSelectedTab(tab[1].id, false);
     await elementUpdated(tabs);
 
-    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(tab[1].id);
+    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(tab[2].id);
   });
 
   test("should handle click event and select appropriate tab", async () => {

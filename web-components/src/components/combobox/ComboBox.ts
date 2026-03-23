@@ -1078,7 +1078,6 @@ export namespace ComboBox {
           {
             this.setFocusOnHost(true);
             if (this.expanded) {
-              const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
               if (this.allowCustomValue && this.input && this.input.value.length) {
                 const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
                 if (isOptionAlreadyExist) {
@@ -1086,10 +1085,11 @@ export namespace ComboBox {
                   return;
                 }
               }
-              if (option && !this.showSelectedCount && !this.isMulti) {
-                this.inputValue = this.getOptionValue(option);
-              }
               this.updateOnNextFrame(() => {
+                const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
+                if (option && !this.showSelectedCount && !this.isMulti) {
+                  this.inputValue = this.getOptionValue(option);
+                }
                 if (option) {
                   this.setSelectedAttribute(option);
                   this.setSelectedOption(option);

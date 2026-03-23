@@ -763,6 +763,20 @@ describe("Dropdown Component", () => {
           expect(item.hasAttribute("tabindex")).toBeTruthy();
         });
       });
+
+      it("should focus on selected option when reopening dropdown", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" .defaultOption="${dropdownStringOptions[2]}"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown["selectedKey"]).toEqual(dropdownStringOptions[2]);
+
+        await expandDropdown(dropdown);
+        await elementUpdated(dropdown);
+
+        expect(dropdown["focusedIndex"]).toEqual(2);
+      });
     });
   });
 

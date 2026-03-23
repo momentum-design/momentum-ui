@@ -1,5 +1,6 @@
 import "../button/Button";
 import "../icon/Icon";
+import { Key } from "@/constants";
 import { FocusMixin, SlottedMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -29,6 +30,7 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
+    @property({ type: String, attribute: "move-aria-label" }) moveAriaLabel = "Move Modal";
     @property({ type: Boolean, reflect: true }) maximizable = true;
     @property({ type: Boolean, reflect: true }) resizable = true;
     @property({ type: Boolean, reflect: true }) private minimize = false;
@@ -56,6 +58,7 @@ export namespace FloatingModal {
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
     private containerTransform = "";
+    private previouslyFocusedElement: HTMLElement | null = null;
 
     private applyInitialPosition = true;
 
@@ -67,17 +70,81 @@ export namespace FloatingModal {
       super.updated(changedProperties);
       if (changedProperties.has("show")) {
         if (this.container && this.show) {
+          this.capturePreviouslyFocusedElement();
           this.applyInitialPosition = true;
           this.setContainerRect();
           this.setInteractInstance();
+          this.focusModalOnOpen();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
+          this.restoreFocusAfterClose();
         }
       }
       if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
         this.setInitialTargetPosition();
       }
+
+      if (
+        changedProperties.has("minimize") &&
+        changedProperties.get("minimize") === true &&
+        this.minimize === false &&
+        this.show
+      ) {
+        this.focusModalOnOpen();
+      }
+    }
+
+    private getDeepActiveElementFromDocument(): HTMLElement | null {
+      let activeElement = document.activeElement as HTMLElement | null;
+      while (activeElement?.shadowRoot?.activeElement) {
+        activeElement = activeElement.shadowRoot.activeElement as HTMLElement | null;
+      }
+      return activeElement;
+    }
+
+    private capturePreviouslyFocusedElement() {
+      const activeElement = this.getDeepActiveElementFromDocument();
+      if (!activeElement || activeElement === document.body) {
+        this.previouslyFocusedElement = null;
+        return;
+      }
+
+      if (this.shadowRoot?.contains(activeElement) || this.contains(activeElement)) {
+        return;
+      }
+
+      this.previouslyFocusedElement = activeElement;
+    }
+
+    private focusModalOnOpen() {
+      requestAnimationFrame(() => {
+        if (!this.show || !this.container) return;
+
+        const firstHeaderButton = this.shadowRoot?.querySelector(
+          ".md-floating__header md-button.md-floating__header-button"
+        ) as HTMLElement | null;
+
+        if (firstHeaderButton) {
+          firstHeaderButton.focus();
+          return;
+        }
+
+        this.container.setAttribute("tabindex", "-1");
+        this.container.focus();
+      });
+    }
+
+    private restoreFocusAfterClose() {
+      const elementToFocus = this.previouslyFocusedElement;
+      this.previouslyFocusedElement = null;
+      if (!elementToFocus || !elementToFocus.isConnected) return;
+
+      requestAnimationFrame(() => {
+        if (elementToFocus.isConnected) {
+          elementToFocus.focus();
+        }
+      });
     }
 
     private isNewPositionNotSame() {
@@ -171,7 +238,7 @@ export namespace FloatingModal {
       });
     }
 
-    handleClose(event: MouseEvent) {
+    handleClose(event: Event) {
       this.show = false;
       this.full = false;
 
@@ -185,6 +252,14 @@ export namespace FloatingModal {
         })
       );
     }
+
+    private handleModalKeyDown = (event: KeyboardEvent) => {
+      if (!this.show || event.code !== Key.Escape) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      this.handleClose(event);
+    };
 
     handleMinimize() {
       if (this.minimizable) {
@@ -217,7 +292,6 @@ export namespace FloatingModal {
       const { initialX, initialY } = this.getInitialPosition();
       x += event.deltaRect!.left + initialX;
       y += event.deltaRect!.top + initialY;
-
       this.setTargetPosition(target, x, y);
       this.applyInitialPosition = false;
     };
@@ -259,6 +333,51 @@ export namespace FloatingModal {
       target.setAttribute("data-y", `${y}`);
     }
 
+    private readonly MOVE_STEP = 10;
+
+    private handleMoveKeyDown = (event: KeyboardEvent) => {
+      if (!this.container) return;
+
+      const { code } = event;
+      let dx = 0;
+      let dy = 0;
+
+      switch (code) {
+        case "ArrowUp":
+          dy = -this.MOVE_STEP;
+          break;
+        case "ArrowDown":
+          dy = this.MOVE_STEP;
+          break;
+        case "ArrowLeft":
+          dx = -this.MOVE_STEP;
+          break;
+        case "ArrowRight":
+          dx = this.MOVE_STEP;
+          break;
+        default:
+          return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const x = parseFloat(this.container.getAttribute("data-x") || "0") + dx;
+      const y = parseFloat(this.container.getAttribute("data-y") || "0") + dy;
+      this.setTargetPosition(this.container, x, y);
+      this.containerTransform = `translate(${x}px, ${y}px)`;
+
+      this.dispatchEvent(
+        new CustomEvent("floating-modal-location", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            transform: { x: `${x}`, y: `${y}` }
+          }
+        })
+      );
+    };
+
     private destroyInteractInstance() {
       if (this.container && interact.isSet(this.container)) {
         interact(this.container).unset();
@@ -284,6 +403,7 @@ export namespace FloatingModal {
                 role="dialog"
                 aria-label=${ifDefined(this.label || undefined)}
                 aria-modal="true"
+                @keydown=${this.handleModalKeyDown}
                 style=${ifDefined(
                   this.containerRect
                     ? this.centered
@@ -313,6 +433,18 @@ export namespace FloatingModal {
                           <slot name="header"></slot>
                         `}
                   </div>
+                  ${!this.full
+                    ? html` <md-button
+                        color="color-none"
+                        size="20"
+                        class="md-floating__move md-floating__header-button"
+                        ariaLabel="${this.moveAriaLabel}"
+                        circle
+                        @keydown=${this.handleMoveKeyDown}
+                      >
+                        <md-icon name="drag-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
+                      </md-button>`
+                    : nothing}
                   ${this.minimizable
                     ? html` <md-button
                         color="color-none"

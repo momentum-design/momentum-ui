@@ -975,7 +975,9 @@ export namespace ComboBox {
         if (option) {
           this.setSelectedOption(option);
           if (!this.isMulti) {
-            this.setInputValue(this.getOptionValue(option));
+            const value = this.getOptionValue(option);
+            this.inputValue = value;
+            this.setInputValue(value);
             this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
           } else if (this.isMulti && this.allowSelectAll) {
             this.isSelectAllChecked = this.isSelectAllSelected();
@@ -1063,6 +1065,8 @@ export namespace ComboBox {
     }
 
     handleInputKeyDown(event: KeyboardEvent) {
+      if (this.readOnly) return;
+
       switch (event.code) {
         case Key.Backspace:
           {
@@ -1074,14 +1078,17 @@ export namespace ComboBox {
           {
             this.setFocusOnHost(true);
             if (this.expanded) {
+              if (this.allowCustomValue && this.input && this.input.value.length) {
+                const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
+                if (isOptionAlreadyExist) {
+                  this.setCustomValue();
+                  return;
+                }
+              }
               this.updateOnNextFrame(() => {
                 const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
-                if (this.allowCustomValue && this.input && this.input.value.length) {
-                  const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
-                  if (isOptionAlreadyExist) {
-                    this.setCustomValue();
-                    return;
-                  }
+                if (option && !this.showSelectedCount && !this.isMulti) {
+                  this.inputValue = this.getOptionValue(option);
                 }
                 if (option) {
                   this.setSelectedAttribute(option);
@@ -1456,6 +1463,7 @@ export namespace ComboBox {
           class=${iconClass}
           size="16"
           iconSet="momentumDesign"
+          aria-hidden="true"
           @click=${this.toggleVisualListBox}
         ></md-icon>
       `;
@@ -1470,6 +1478,7 @@ export namespace ComboBox {
             name="cancel-bold"
             size=${this.newMomentum ? "16" : "8"}
             iconSet="momentumDesign"
+            aria-hidden="true"
             @click=${() => this.removeSelected(selectedOption)}
           ></md-icon>
         </div>
@@ -1493,6 +1502,7 @@ export namespace ComboBox {
             name="cancel-bold"
             size="14"
             iconSet="momentumDesign"
+            aria-hidden="true"
             style="height: ${this.clearIconHeight};"
           ></md-icon>
         </button>
@@ -1514,7 +1524,7 @@ export namespace ComboBox {
           ?readonly=${this.readOnly}
           @click=${this.toggleVisualListBox}
         >
-          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
+          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
         </button>
       `;
     }
@@ -1535,7 +1545,7 @@ export namespace ComboBox {
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >
           <span>
-            <md-icon name=${iconName} size="12" iconSet="momentumDesign"></md-icon>
+            <md-icon name=${iconName} size="12" iconSet="momentumDesign" aria-hidden="true"></md-icon>
           </span>
         </button>
       `;
@@ -1752,7 +1762,7 @@ export namespace ComboBox {
     }
 
     get renderTrailingInputControls(): TemplateResult {
-      const showClearButton = this.shouldChangeButton();
+      const showClearButton = !this.readOnly && this.shouldChangeButton();
 
       if (this.newMomentum) {
         if (showClearButton && this.isDropdownArrow) {
@@ -1799,17 +1809,21 @@ export namespace ComboBox {
                 type="text"
                 role="combobox"
                 aria-autocomplete="both"
-                aria-label=${this.ariaLabelForComboBox}
+                aria-label=${ifDefined(
+                  this.inputValue && this.selectedOptions.length > 0 ? undefined : this.ariaLabelForComboBox
+                )}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
-                placeholder=${this.isMulti && this.showSelectedCount && this.selectedOptions.length !== 0
+                placeholder=${this.inputValue && this.selectedOptions.length > 0
                   ? ""
-                  : this.placeholder}
+                  : this.isMulti && this.showSelectedCount && this.selectedOptions.length !== 0
+                    ? ""
+                    : this.placeholder}
                 aria-controls="md-combobox-listbox"
                 ?readonly=${this.allowSelectAll || this.readOnly}
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
-                title=${ifDefined(this.inputTitle())}
+                title=${ifDefined(this.inputValue && this.selectedOptions.length > 0 ? undefined : this.inputTitle())}
                 .value=${this.inputValue}
                 @click=${this.toggleVisualListBox}
                 @input=${this.handleInput}

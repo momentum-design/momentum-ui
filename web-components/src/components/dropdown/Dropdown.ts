@@ -461,7 +461,16 @@ export namespace Dropdown {
       }
 
       if (this.focusedIndex === -1) {
-        this.focusNext();
+        if (this.selectedKey) {
+          const selectedIdx = this.filteredOptions.findIndex((o) => o.key === this.selectedKey);
+          if (selectedIdx !== -1) {
+            this.focusedIndex = selectedIdx;
+          } else {
+            this.focusNext();
+          }
+        } else {
+          this.focusNext();
+        }
       }
     }
 

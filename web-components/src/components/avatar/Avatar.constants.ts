@@ -36,4 +36,26 @@ const AvatarType = ["bot", "group", "self", "typing", ""] as const;
 
 const AvatarSize = [16, 18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124];
 
-export { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType };
+const PresenceLabelMap: Record<string, string> = {
+  active: "Available",
+  meeting: "In a meeting",
+  schedule: "Scheduled",
+  call: "On a call",
+  dnd: "Do not disturb",
+  presenting: "Presenting",
+  "quiet-hours": "Quiet hours",
+  away: "Away",
+  idle: "Idle",
+  inactive: "Inactive",
+  "away-calling": "Away",
+  ooo: "Out of office",
+  busy: "Busy",
+  "on-mobile": "On mobile",
+  "on-device": "On device",
+  "on-hold": "On hold",
+  engaged: "Engaged",
+  rona: "Unavailable",
+  wrapup: "Wrap up"
+};
+
+export { AvatarChannelType, AvatarSize, AvatarState, AvatarStyle, AvatarType, PresenceLabelMap };

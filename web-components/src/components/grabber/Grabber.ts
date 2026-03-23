@@ -170,6 +170,10 @@ export namespace Grabber {
       );
     }
 
+    get currentLabel() {
+      return this.checked ? this.checkedLabel : this.label;
+    }
+
     get collapsed() {
       return !this.checked;
     }
@@ -224,12 +228,11 @@ export namespace Grabber {
           <button
             class="md-grabber ${classMap(this.grabberClassMap)}"
             part="grabber"
-            aria-pressed=${this.checked}
+            aria-expanded=${this.checked}
             ?disabled=${this.disabled}
             tabindex="0"
-            aria-label=${ifDefined(this.label.length ? this.label : undefined)}
+            aria-label=${ifDefined(this.currentLabel.length ? this.currentLabel : undefined)}
             type="button"
-            role="button"
             @click=${this.handleMouseDown}
             @keydown=${this.handleKeyDown}
             @mouseenter=${this.handleMouseEnter}
@@ -237,7 +240,12 @@ export namespace Grabber {
             @focus=${this.handleFocus}
             @blur=${this.handleBlur}
           >
-            <md-icon name="${this.iconName}" size="${this.iconSize}" iconSet="momentumDesign"></md-icon>
+            <md-icon
+              name="${this.iconName}"
+              size="${this.iconSize}"
+              iconSet="momentumDesign"
+              aria-hidden="true"
+            ></md-icon>
           </button>
         </div>
       `;

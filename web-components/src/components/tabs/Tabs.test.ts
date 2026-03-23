@@ -441,7 +441,7 @@ describe("Tabs", () => {
     expect(tabs.selected).toBe(0);
   });
 
-  test("should handle Enter Press keydown event with More Button and focus appropriate tab", async () => {
+  test("should handle Enter Press keydown event with More Button and set hidden focus target", async () => {
     tabs["tabsFilteredAsVisibleList"] = [tab[0]];
     tabs["tabsFilteredAsHiddenList"] = [tab[1], tab[2]];
     tabs["updateIsMoreTabMenuSelected"]();
@@ -468,13 +468,24 @@ describe("Tabs", () => {
     tab[2].selected = false;
     tabs.handleTabKeydown(createKeyboardEvent("tab-more", Key.Enter));
     await elementUpdated(tabs);
-    expect(tabs.selected).toBe(1);
+    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(tab[1].id);
 
     tab[1].selected = false;
     tab[2].selected = true;
     tabs.handleTabKeydown(createKeyboardEvent("tab-more", Key.Enter));
     await elementUpdated(tabs);
-    expect(tabs.selected).toBe(2);
+    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(tab[2].id);
+  });
+
+  test("should keep a hidden focus target after selecting a visible tab", async () => {
+    tabs["tabsFilteredAsVisibleList"] = [tab[1]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+    tabs["isMoreTabMenuVisible"] = true;
+
+    tabs.handleNewSelectedTab(tab[1].id, false);
+    await elementUpdated(tabs);
+
+    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(tab[2].id);
   });
 
   test("should handle click event and select appropriate tab", async () => {
@@ -659,7 +670,8 @@ describe("Tabs", () => {
     expect(getLeftArrow()).toBeNull();
     expect(getRightArrow()).not.toBeNull();
 
-    (tabsList as any).scrollBy = jest.fn();
+    const scrollableTabsList = tabsList as HTMLElement & { scrollBy: jest.Mock };
+    scrollableTabsList.scrollBy = jest.fn();
     getRightArrow()?.dispatchEvent(new Event("click"));
     Object.defineProperty(tabsList, "scrollLeft", {
       configurable: true,

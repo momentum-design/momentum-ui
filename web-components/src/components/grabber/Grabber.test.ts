@@ -77,13 +77,15 @@ describe("Grabber component", () => {
     const component = await fixtureFactory();
 
     let button = screen.getByShadowRole("button");
-    expect(button.getAttribute("aria-pressed")).toBe("false");
+    expect(button.getAttribute("aria-expanded")).toBe("false");
+    expect(button.getAttribute("aria-label")).toBe("Expand");
 
     button.click();
     await elementUpdated(component);
 
     button = screen.getByShadowRole("button");
-    expect(button.getAttribute("aria-pressed")).toBe("true");
+    expect(button.getAttribute("aria-expanded")).toBe("true");
+    expect(button.getAttribute("aria-label")).toBe("Collapse");
   });
 
   test("should handle mouse enter", async () => {

@@ -174,7 +174,7 @@ export namespace Input {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) ariaDescribedBy = "";
     @property({ type: String, reflect: true }) ariaInvalid: Input.AriaInvalidType = "false";
-    @property({ type: String }) ariaLabel = "input";
+    @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, reflect: true }) autofocus = false;
     @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
     @property({ type: Boolean }) clear = false;
@@ -466,6 +466,10 @@ export namespace Input {
       return this.hasRightSlotContent;
     }
 
+    private get effectiveAriaLabel(): string | undefined {
+      return this.ariaLabel || this.label || undefined;
+    }
+
     inputTemplate() {
       return this.multiline
         ? html`
@@ -482,7 +486,7 @@ export namespace Input {
               aria-describedby=${this.ariaDescribedBy}
               ?required=${this.required}
               ?autofocus=${this.autofocus}
-              aria-label=${this.ariaLabel}
+              aria-label=${ifDefined(this.effectiveAriaLabel)}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage="${this.htmlId}-message"
               aria-disabled=${ifDefined(this.disabled || undefined)}
@@ -510,7 +514,7 @@ export namespace Input {
               aria-describedby=${this.ariaDescribedBy}
               aria-controls=${this.ariaControls}
               aria-expanded=${ifDefined(this.ariaExpandedValue ?? undefined)}
-              aria-label=${this.ariaLabel}
+              aria-label=${ifDefined(this.effectiveAriaLabel)}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}
               aria-disabled=${ifDefined(this.disabled || undefined)}

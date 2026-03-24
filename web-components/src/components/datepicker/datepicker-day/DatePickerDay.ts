@@ -165,7 +165,6 @@ export namespace DatePickerDay {
           }}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           ariaLabel=${ariaLabel}
-          title=${localisedDateFormat}
           aria-selected=${ifDefined(this.selected)}
           tab-index=${this.focused ? "0" : "-1"}
         >

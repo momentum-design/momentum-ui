@@ -250,7 +250,7 @@ export namespace FloatingMinimizedModal {
                 role="dialog"
                 tabindex="-1"
                 part="floating-minimized"
-                aria-label=${ifDefined(this.label || undefined)}
+                aria-label=${ifDefined(this.heading || this.label || undefined)}
                 aria-modal="true"
                 style=${ifDefined(
                   this.minPosition
@@ -258,8 +258,8 @@ export namespace FloatingMinimizedModal {
                     : `transform: ${this.containerTransform} !important`
                 )}
               >
-                <div tabindex="-1" class="md-floating__header ${this.minimize ? "md-floating__header-minimize" : ""}">
-                  <div class="md-floating__header-text">
+                <div class="md-floating__header ${this.minimize ? "md-floating__header-minimize" : ""}">
+                  <div class="md-floating__header-text" aria-hidden="true">
                     ${this.heading ? html` ${this.heading} ` : html` <slot></slot> `}
                   </div>
                   <md-button

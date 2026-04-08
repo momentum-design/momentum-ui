@@ -401,7 +401,7 @@ export namespace FloatingModal {
                 class="md-floating ${this.fixed ? "fixed" : ""} ${this.minimize ? "hide" : ""}"
                 part="floating"
                 role="dialog"
-                aria-label=${ifDefined(this.label || undefined)}
+                aria-label=${ifDefined(this.heading || this.label || undefined)}
                 aria-modal="true"
                 @keydown=${this.handleModalKeyDown}
                 style=${ifDefined(
@@ -425,7 +425,7 @@ export namespace FloatingModal {
                 )}
               >
                 <div class="md-floating__header">
-                  <div class="md-floating__header-text">
+                  <div class="md-floating__header-text" aria-hidden="true">
                     ${this.heading
                       ? html` ${this.heading} `
                       : html`
@@ -490,7 +490,7 @@ export namespace FloatingModal {
                 </div>
               </div>
               ${this.minimizable
-                ? html` <div class="md-floating-min-parent" part="minimize-floating" tabindex="-1">
+                ? html` <div class="md-floating-min-parent" part="minimize-floating">
                     <md-floating-modal-minimized
                       class="float-modal-min"
                       part="floating-minimized"

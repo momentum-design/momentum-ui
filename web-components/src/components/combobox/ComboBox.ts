@@ -1688,7 +1688,7 @@ export namespace ComboBox {
           class="md-combobox-option"
           aria-posinset=${count}
           aria-setsize=${total}
-          role=${this.isMulti ? "checkbox" : "listitem"}
+          role=${this.isMulti ? "checkbox" : "option"}
           aria-label="${this.isCustomContent
             ? this.getOptionId(option)
             : this.getOptionValue(option)}${ariaLabelForCount}"
@@ -1854,7 +1854,7 @@ export namespace ComboBox {
                   part="combobox-options"
                   aria-label=${this.ariaLabel || this.label}
                   style=${this.addStyle()}
-                  role=${ifDefined(this.checkForVirtualScroll() ? undefined : "list")}
+                  role=${ifDefined(this.checkForVirtualScroll() ? undefined : "listbox")}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()

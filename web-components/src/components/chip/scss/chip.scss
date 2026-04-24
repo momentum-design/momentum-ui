@@ -1,3 +1,12 @@
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+md-tooltip::part(tooltip_reference) {
+  display: flex;
+}
+
 :focus {
   outline: none;
 }
@@ -372,6 +381,17 @@
     );
   }
 
+  &--informational {
+    @include chip-sentiment-style(
+      var(--badge-confidence-cobalt-bg-color),
+      var(--badge-confidence-cobalt-text-color),
+      var(--badge-confidence-cobalt-border-color),
+      var(--badge-confidence-cobalt-border-color),
+      var(--badge-confidence-cobalt-hover-bg-color),
+      var(--badge-confidence-cobalt-active-bg-color)
+    );
+  }
+
   &--status-negative {
     @include chip-status-style(
       var(--badge-status-negative-bg-color),
@@ -528,7 +548,7 @@
 }
 
 ::slotted(*) {
-  line-height: normal;
+  line-height: 1;
 }
 
 @media (forced-colors: active) {

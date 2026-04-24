@@ -1,0 +1,153 @@
+:host(md-card-alert) {
+  display: block;
+
+  .md-card-alert {
+    @include flex($fd: column, $jc: flex-start, $ai: stretch);
+    background: $md-card-alert-bg;
+    border: $md-card-alert-border;
+    border-radius: $md-card-alert-border-radius;
+    box-shadow: $md-card-alert-shadow;
+    gap: $md-card-alert-gap;
+    padding: $md-card-alert-padding;
+    width: $md-card-alert-width;
+
+    &:focus {
+      outline: none;
+    }
+
+    // ─── Header ──────────────────────────────────────────────────────────
+    &-header {
+      @include flex($jc: space-between, $ai: center);
+      flex-wrap: nowrap;
+    }
+
+    &-chips {
+      @include flex($jc: flex-start, $ai: center);
+      gap: rem-calc(6);
+    }
+
+    &-timestamp {
+      color: $md-card-alert-timestamp-color;
+      font-size: rem-calc(14);
+      font-weight: 400;
+      flex-shrink: 0;
+    }
+
+    &-live {
+      @include flex($jc: flex-start, $ai: center);
+      color: $md-card-alert-timestamp-color;
+      font-size: rem-calc(14);
+      font-weight: 400;
+      gap: rem-calc(4);
+      flex-shrink: 0;
+    }
+
+    &-live-icon {
+      color: $md-card-alert-live-icon-color;
+      animation: live-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes live-pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    // ─── Title section ───────────────────────────────────────────────────
+    &-title-section {
+      @include flex($fd: column, $jc: flex-start, $ai: flex-start);
+      gap: rem-calc(2);
+    }
+
+    &-title {
+      color: $md-card-alert-title-color;
+      font-size: rem-calc(16);
+      font-weight: $md-card-alert-font-weight-bold;
+      margin: 0;
+      line-height: rem-calc(24);
+    }
+
+    &-subtitle {
+      @include flex($jc: flex-start, $ai: center);
+      color: $md-card-alert-subtitle-color;
+      font-size: rem-calc(14);
+      gap: rem-calc(4);
+      margin: 0;
+    }
+
+    &-subtitle-icon {
+      flex-shrink: 0;
+      --md-icon-size: #{rem-calc(16)};
+    }
+
+    // ─── Details block ───────────────────────────────────────────────────
+    &-details {
+      @include flex($fd: column, $jc: flex-start, $ai: stretch);
+      background: $md-card-alert-details-bg-color;
+      border-radius: $md-card-alert-details-border-radius;
+      gap: rem-calc(3);
+      padding: $md-card-alert-details-padding;
+    }
+
+    &-details-heading {
+      color: $md-card-alert-subtitle-color;
+      font-size: rem-calc(14);
+      margin-bottom: rem-calc(2);
+    }
+
+    &-detail-row {
+      @include flex($jc: space-between, $ai: center);
+    }
+
+    &-detail-label {
+        color: $md-card-alert-title-color;
+        font-size: rem-calc(14);
+        font-weight: $md-card-alert-font-weight-bold;
+        margin-bottom: rem-calc(2);
+    }
+
+    &-detail-value {
+      color: $md-card-alert-details-value-color;
+      font-size: rem-calc(14);
+      text-align: right;
+      margin-bottom: rem-calc(2);
+
+      &--highlighted {
+        color: $md-card-alert-details-highlighted-color;
+      }
+    }
+
+    // ─── Insight block ───────────────────────────────────────────────────
+    &-insight {
+      @include flex($jc: flex-start, $ai: flex-start);
+      background: $md-card-alert-insight-bg-color;
+      border-radius: $md-card-alert-insight-border-radius;
+      border: 1px solid $md-card-alert-insight-border-color;
+      color: $md-card-alert-insight-color;
+      gap: rem-calc(8);
+      padding: $md-card-alert-insight-padding;
+    }
+
+    &-insight-icon {
+      color: $md-card-alert-insight-icon-color;
+      flex-shrink: 0;
+      margin-top: rem-calc(1);
+      --md-icon-size: #{rem-calc(16)};
+    }
+
+    &-insight-text {
+      font-size: rem-calc(14);
+      line-height: rem-calc(20);
+    }
+
+    // ─── Actions ─────────────────────────────────────────────────────────
+    &-actions {
+      @include flex($jc: flex-start, $ai: center);
+      gap: $md-card-alert-actions-gap;
+    }
+  }
+}

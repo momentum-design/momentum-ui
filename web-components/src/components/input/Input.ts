@@ -122,6 +122,7 @@ export namespace Input {
   export type shape = typeof inputShape;
   export type AriaInvalidType = (typeof ariaInvalidType)[number];
   export type Autocomplete = "on" | "off";
+  export type AriaAutocomplete = "inline" | "list" | "both" | "none";
 
   export class MessageController {
     determineMessageType(array: Input.Message[]) {
@@ -191,6 +192,7 @@ export namespace Input {
     @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
     @property({ type: String }) htmlId = "";
     @property({ type: String }) ariaRole: string | undefined = undefined;
+    @property({ type: String }) ariaAutocomplete: Input.AriaAutocomplete | undefined = undefined;
     @property({ type: Array }) messageArr: Input.Message[] = [];
     @property({ type: Number, reflect: true }) min: number | undefined = undefined;
     @property({ type: Number, reflect: true }) max: number | undefined = undefined;
@@ -447,7 +449,19 @@ export namespace Input {
     }
 
     get ariaExpandedValue() {
-      return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : undefined;
+      if (this.ariaExpanded === "true" || this.ariaExpanded === "false") {
+        return this.ariaExpanded;
+      }
+
+      return this.showDropdown ? `${this.dropdownExpanded}` : undefined;
+    }
+
+    get effectiveAriaAutocomplete() {
+      return this.ariaAutocomplete || (this.showDropdown ? "both" : undefined);
+    }
+
+    get effectiveAriaRole() {
+      return this.ariaRole || (this.showDropdown ? "combobox" : undefined);
     }
 
     get hasRightIcon() {
@@ -512,14 +526,15 @@ export namespace Input {
               type=${this.type}
               .value=${this.value}
               aria-describedby=${this.ariaDescribedBy}
-              aria-controls=${this.ariaControls}
+              aria-controls=${ifDefined(this.ariaControls || undefined)}
+              aria-autocomplete=${ifDefined(this.effectiveAriaAutocomplete)}
               aria-expanded=${ifDefined(this.ariaExpandedValue ?? undefined)}
               aria-label=${ifDefined(this.effectiveAriaLabel)}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}
               aria-disabled=${ifDefined(this.disabled || undefined)}
               id=${this.htmlId}
-              role=${ifDefined(this.ariaRole)}
+              role=${ifDefined(this.effectiveAriaRole)}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly || this.disabled || this.disableUserTextInput}
               min=${ifDefined(this.min)}

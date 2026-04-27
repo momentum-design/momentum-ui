@@ -19,6 +19,7 @@ import {
   buttonGroupTemplate,
   buttonTemplate,
   cardAiTemplate,
+  cardAlertTemplate,
   cardTemplate,
   cardV2Template,
   chatMessageTemplate,
@@ -390,6 +391,12 @@ export class Sandbox extends MobxLitElement {
           ${this.getTabTemplate("Card", "md-card", "card", cardTemplate)}
           ${this.getTabTemplate("Card - v2", "md-card-v2", "card-v2", cardV2Template)}
           ${this.getTabTemplate("Card - AI", "md-card-ai", "card-ai", cardAiTemplate)}
+          ${this.getTabTemplate(
+            "Card - Alert",
+            "md-card-alert",
+            "card-alert",
+            cardAlertTemplate
+          )}
           ${this.getTabTemplate("Chat Message", "md-chat-message", "chat-message", chatMessageTemplate)}
           ${this.getTabTemplate("Checkbox", "md-checkbox", "checkbox", checkboxTemplate)}
           ${this.getTabTemplate("Chip", "md-chip", "chip", chipTemplate)}

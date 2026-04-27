@@ -22,6 +22,7 @@ export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
 export { CardAi } from "./components/card-ai/CardAi";
+export { CardAlert } from "./components/card-alert/CardAlert";
 export { CardV2 } from "./components/card-v2/CardV2";
 export { Card } from "./components/card/Card";
 export { ChatMessage } from "./components/chat-message/ChatMessage";

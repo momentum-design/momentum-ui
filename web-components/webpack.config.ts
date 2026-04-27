@@ -146,6 +146,7 @@ const distEntry = {
   "comp/md-card-entry": "./src/components/card/Card",
   "comp/md-card-ai-entry": "./src/components/card-ai/CardAi",
   "comp/md-card-v2-entry": "./src/components/card-v2/CardV2",
+  "comp/md-card-alert-entry": "./src/components/card-alert/CardAlert",
   "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
   "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
   "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",

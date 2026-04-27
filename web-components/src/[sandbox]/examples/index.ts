@@ -10,6 +10,7 @@ export { buttonTemplate } from "./button";
 export { buttonGroupTemplate } from "./button-group";
 export { cardTemplate } from "./card";
 export { cardAiTemplate } from "./card-ai";
+export { cardAlertTemplate } from "./card-alert";
 export { cardV2Template } from "./card-v2";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";

@@ -1,0 +1,30 @@
+$md-card-alert-width: rem-calc(367);
+$md-card-alert-border-radius: rem-calc(12);
+$md-card-alert-padding: rem-calc(12);
+$md-card-alert-gap: rem-calc(12);
+
+$md-card-alert-bg: var(--md-secondary-bg-color);
+$md-card-alert-border: 1px solid var(--md-quaternary-bg-color);
+$md-card-alert-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+$md-card-alert-title-color: var(--md-primary-text-color);
+$md-card-alert-subtitle-color: var(--md-secondary-text-color);
+$md-card-alert-timestamp-color: var(--md-secondary-text-color);
+
+$md-card-alert-details-bg-color: var(--md-background-tertiary, #f3f4f6);
+$md-card-alert-details-border-radius: rem-calc(8);
+$md-card-alert-details-padding: rem-calc(12);
+$md-card-alert-details-value-color: var(--md-primary-text-color);
+$md-card-alert-details-highlighted-color: var(--md-alert-error-text-color, #dc2626);
+
+$md-card-alert-insight-bg-color: var(--card-ai-blue-bg-color, #eff6ff);
+$md-card-alert-insight-border-color: var(--badge-confidence-cobalt-border-color, #dbeafe);
+$md-card-alert-insight-border-radius: rem-calc(8);
+$md-card-alert-insight-padding: rem-calc(10) rem-calc(12);
+$md-card-alert-insight-color: var(--md-primary-text-color);
+$md-card-alert-insight-icon-color: var(--badge-status-accent-text-color, #0284c7);
+
+$md-card-alert-actions-gap: rem-calc(8);
+$md-card-alert-font-weight-bold: 700;
+
+$md-card-alert-live-icon-color: var(--md-presence-active, #16a34a);

@@ -523,6 +523,62 @@ test("should update role attribute when ariaRole changes", async () => {
   expect(inputElement?.getAttribute("role")).toBe("searchbox");
 });
 
+test("should set combobox aria attributes when dropdown is shown", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input
+      label="Your team"
+      value="Applause-Agent Based"
+      showDropdown
+      ariaControls="team-listbox"
+    ></md-input>`
+  );
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("aria-label")).toBe("Your team");
+  expect(inputElement?.value).toBe("Applause-Agent Based");
+  expect(inputElement?.getAttribute("role")).toBe("combobox");
+  expect(inputElement?.getAttribute("aria-autocomplete")).toBe("both");
+  expect(inputElement?.getAttribute("aria-expanded")).toBe("false");
+  expect(inputElement?.getAttribute("aria-controls")).toBe("team-listbox");
+});
+
+test("should update combobox aria-expanded when dropdown is toggled", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input label="Your team" showDropdown ariaControls="team-listbox"></md-input>`
+  );
+
+  const dropdownButton = element.shadowRoot!.querySelector(".md-input__dropdown-button") as HTMLButtonElement;
+  dropdownButton.click();
+  await elementUpdated(element);
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("aria-expanded")).toBe("true");
+});
+
+test("should allow explicit combobox aria values to override dropdown defaults", async () => {
+  const element = await fixture<Input.ELEMENT>(
+    html`<md-input
+      label="Your team"
+      showDropdown
+      ariaRole="searchbox"
+      ariaAutocomplete="list"
+      ariaExpanded="true"
+    ></md-input>`
+  );
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.getAttribute("role")).toBe("searchbox");
+  expect(inputElement?.getAttribute("aria-autocomplete")).toBe("list");
+  expect(inputElement?.getAttribute("aria-expanded")).toBe("true");
+});
+
+test("should not render empty aria-controls", async () => {
+  const element = await fixture<Input.ELEMENT>(html`<md-input label="Without Controls"></md-input>`);
+
+  const inputElement = element.shadowRoot!.querySelector("input");
+  expect(inputElement?.hasAttribute("aria-controls")).toBe(false);
+});
+
 describe("aria-label", () => {
   test("should use label as aria-label when ariaLabel is not set", async () => {
     const element = await fixture<Input.ELEMENT>(html`<md-input label="First Name"></md-input>`);

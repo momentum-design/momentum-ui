@@ -1,4 +1,6 @@
 $md-card-alert-width: rem-calc(367);
+$md-card-alert-no-insight-height: 329px;
+$md-card-alert-title-height: rem-calc(48);
 $md-card-alert-border-radius: rem-calc(12);
 $md-card-alert-padding: rem-calc(12);
 $md-card-alert-gap: rem-calc(12);
@@ -26,5 +28,3 @@ $md-card-alert-insight-icon-color: var(--badge-status-accent-text-color, #0284c7
 
 $md-card-alert-actions-gap: rem-calc(8);
 $md-card-alert-font-weight-bold: 700;
-
-$md-card-alert-live-icon-color: var(--md-presence-active, #16a34a);

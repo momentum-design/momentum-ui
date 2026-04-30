@@ -1,4 +1,4 @@
-import "@/components/card-alert/CardAlert";
+import { CardAlertSeverity } from "@/components/card-alert/CardAlert";
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 
@@ -9,7 +9,7 @@ export class CardAlertTemplateSandbox extends LitElement {
   static readonly styles = css`
     .card-alert-container {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 24px;
       padding: 16px;
     }
@@ -33,11 +33,10 @@ export class CardAlertTemplateSandbox extends LitElement {
 
   render() {
     return html`
+      <p class="event-log">Last event: ${this.lastEvent || "—"}</p>
       <div class="card-alert-container">
-        <p class="event-log">Last event: ${this.lastEvent || "—"}</p>
-
         <md-card-alert
-          severity="Critical"
+          severity=${CardAlertSeverity.CRITICAL}
           category="Deficit"
           timestamp=${new Date(Date.now() - 3 * 60000).toISOString()}
           title="Service level below target due to AHT increase"
@@ -53,15 +52,32 @@ export class CardAlertTemplateSandbox extends LitElement {
           primaryActionDropdown
           .showDismiss=${true}
           @primary-action-clicked=${this.handlePrimaryAction}
-          @dismiss-clicked=${this.handleDismiss}
         ></md-card-alert>
 
         <md-card-alert
-          severity="Warning"
-          category="Adherence"
-          ?live=${true}
+          severity=${CardAlertSeverity.MEDIUM}
+          category="Surplus"
+          timestamp=${new Date(Date.now() - 12 * 60000).toISOString()}
           title="Sarah exceeded break duration threshold"
           queueName="Sales (Calls)"
+          detailsHeading="9-9:15 AM actual vs plan"
+          .details=${[
+            { label: "Agent", value: "Alice Chen" },
+            { label: "Break time", value: "12:00 PM" },
+            { label: "Missed by", value: "12 mins", highlighted: true }
+          ]}
+          insight=""
+          primaryActionLabel="Take action"
+          .showDismiss=${true}
+          @primary-action-clicked=${this.handlePrimaryAction}
+        ></md-card-alert>
+
+        <md-card-alert
+          category="Surplus"
+          timestamp=${new Date(Date.now() - 12 * 60000).toISOString()}
+          title="This is a card without a severity and an extremely long title to test that the truncation works correctly and doesn't break the layout of the card alert component"
+          queueName="Sales (Calls)"
+          detailsHeading="9-9:15 AM actual vs plan"
           .details=${[
             { label: "Agent", value: "Alice Chen" },
             { label: "Break time", value: "12:00 PM" },

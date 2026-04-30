@@ -6,10 +6,17 @@
     background: $md-card-alert-bg;
     border: $md-card-alert-border;
     border-radius: $md-card-alert-border-radius;
+    box-sizing: border-box;
     box-shadow: $md-card-alert-shadow;
     gap: $md-card-alert-gap;
     padding: $md-card-alert-padding;
     width: $md-card-alert-width;
+
+    &--no-insight {
+      height: $md-card-alert-no-insight-height;
+      max-height: $md-card-alert-no-insight-height;
+      min-height: $md-card-alert-no-insight-height;
+    }
 
     &:focus {
       outline: none;
@@ -33,42 +40,30 @@
       flex-shrink: 0;
     }
 
-    &-live {
-      @include flex($jc: flex-start, $ai: center);
-      color: $md-card-alert-timestamp-color;
-      font-size: rem-calc(14);
-      font-weight: 400;
-      gap: rem-calc(4);
-      flex-shrink: 0;
-    }
-
-    &-live-icon {
-      color: $md-card-alert-live-icon-color;
-      animation: live-pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes live-pulse {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.3;
-      }
-    }
-
     // ─── Title section ───────────────────────────────────────────────────
     &-title-section {
       @include flex($fd: column, $jc: flex-start, $ai: flex-start);
       gap: rem-calc(2);
+      min-width: 0;
+      width: 100%;
     }
 
     &-title {
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
       color: $md-card-alert-title-color;
+      display: -webkit-box;
       font-size: rem-calc(16);
       font-weight: $md-card-alert-font-weight-bold;
-      margin: 0;
+      height: $md-card-alert-title-height;
       line-height: rem-calc(24);
+      margin: 0;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      width: 100%;
     }
 
     &-subtitle {

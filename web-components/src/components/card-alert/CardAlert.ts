@@ -16,13 +16,17 @@ import { property, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
-const SEVERITY_MAP: Record<string, { icon: string; color: string }> = {
-  critical: { icon: "flag-filled", color: "negative" },
-  warning: { icon: "warning-filled", color: "warning" }
+export enum CardAlertSeverity {
+  CRITICAL = "critical",
+  MEDIUM = "medium"
+}
+
+const SEVERITY_MAP: Record<CardAlertSeverity, { icon: string; color: string }> = {
+  [CardAlertSeverity.CRITICAL]: { icon: "flag-filled", color: "negative" },
+  [CardAlertSeverity.MEDIUM]: { icon: "warning-filled", color: "warning" },
 };
 
 export interface CardAlertLocale {
-  live: string;
   dismiss: string;
   justNow: string;
   minutesAgo: (n: number) => string;
@@ -31,7 +35,6 @@ export interface CardAlertLocale {
 }
 
 const DEFAULT_LOCALE: CardAlertLocale = {
-  live: "Live",
   dismiss: "Dismiss",
   justNow: "Just now",
   minutesAgo: (n) => `${n} ${n === 1 ? "min" : "mins"} ago`,
@@ -50,10 +53,9 @@ export namespace CardAlert {
   export class ELEMENT extends LitElement {
     static readonly locale: CardAlertLocale = { ...DEFAULT_LOCALE };
 
-    @property({ type: String }) severity = "";
+    @property({ type: String }) severity: CardAlertSeverity | "" = "";
     @property({ type: String }) category = "";
     @property({ type: String }) timestamp = "";
-    @property({ type: Boolean }) live = false;
     @property({ type: String }) title = "";
     @property({ type: String }) queueName = "";
     @property({ type: Array }) details: DetailRow[] = [];
@@ -61,7 +63,7 @@ export namespace CardAlert {
     @property({ type: String }) primaryActionLabel = "Click";
     @property({ type: Boolean }) primaryActionDropdown = false;
     @property({ type: String }) detailsHeading = "";
-    @property({ type: Boolean }) showDismiss = true;
+    @property({ type: Boolean }) showDismiss = false;
     @property({ type: Boolean }) expanded = false;
 
     @state() private relativeTime = "";
@@ -71,23 +73,36 @@ export namespace CardAlert {
       return [reset, styles];
     }
 
+    private get normalizedSeverity(): CardAlertSeverity | undefined {
+      const severity = (this.severity ?? "").toLowerCase() as CardAlertSeverity;
+      return Object.values(CardAlertSeverity).includes(severity) ? severity : undefined;
+    }
+
     private get severityIcon(): string {
-      return SEVERITY_MAP[this.severity.toLowerCase()]?.icon ?? "info-circle-filled";
+      return this.normalizedSeverity ? SEVERITY_MAP[this.normalizedSeverity].icon : "info-circle-filled";
     }
 
     private get severityColor(): string {
-      return SEVERITY_MAP[this.severity.toLowerCase()]?.color ?? "neutral";
+      return this.normalizedSeverity ? SEVERITY_MAP[this.normalizedSeverity].color : "neutral";
+    }
+
+    private get hasInsight(): boolean {
+      return (this.insight ?? "").trim().length > 0;
+    }
+
+    private get detailRows(): DetailRow[] {
+      return Array.isArray(this.details) ? this.details : [];
     }
 
     private updateRelativeTime() {
-      if (this.timestamp && !this.live) {
+      if (this.timestamp) {
         this.relativeTime = this.formatRelativeTime(this.timestamp);
       }
     }
 
     private startTimer() {
       this.stopTimer();
-      if (this.timestamp && !this.live) {
+      if (this.timestamp) {
         this.updateRelativeTime();
         this.timerInterval = setInterval(() => this.updateRelativeTime(), 60000);
       }
@@ -101,7 +116,7 @@ export namespace CardAlert {
     }
 
     protected willUpdate(changedProperties: PropertyValues) {
-      if (changedProperties.has("timestamp") || changedProperties.has("live")) {
+      if (changedProperties.has("timestamp")) {
         this.startTimer();
       }
     }
@@ -136,18 +151,6 @@ export namespace CardAlert {
     }
 
     private renderTimestamp() {
-      const loc = (this.constructor as typeof ELEMENT).locale;
-      if (this.live) {
-        return html`<span class="md-card-alert-live"
-          ><md-icon
-            name="active-presence-small-filled"
-            size="10"
-            iconSet="momentumDesign"
-            class="md-card-alert-live-icon"
-          ></md-icon
-          >${loc.live}</span
-        >`;
-      }
       if (this.relativeTime) {
         return html`<span class="md-card-alert-timestamp">${this.relativeTime}</span>`;
       }
@@ -155,13 +158,13 @@ export namespace CardAlert {
     }
 
     private renderHeader() {
-      if (!this.severity && !this.category && !this.timestamp && !this.live) return nothing;
+      if (!this.severity && !this.category && !this.timestamp) return nothing;
       return html`
         <div class="md-card-alert-header">
           <div class="md-card-alert-chips">
             ${this.severity
               ? html`
-                  <md-chip value=${this.severity} color=${this.severityColor} small>
+                  <md-chip color=${this.severityColor} small>
                     <md-icon
                       name=${this.severityIcon}
                       size="14"
@@ -201,11 +204,11 @@ export namespace CardAlert {
     }
 
     private renderDetails() {
-      if (!this.details || this.details.length === 0) return nothing;
+      if (this.detailRows.length === 0) return nothing;
       return html`
         <div class="md-card-alert-details">
           <span class="md-card-alert-details-heading">${this.detailsHeading}</span>
-          ${this.details.map(
+          ${this.detailRows.map(
             (row) => html`
               <div class="md-card-alert-detail-row">
                 <span class="md-card-alert-detail-label">${row.label}</span>
@@ -224,7 +227,7 @@ export namespace CardAlert {
     }
 
     private renderInsight() {
-      if (!this.insight) return nothing;
+      if (!this.hasInsight) return nothing;
       return html`
         <div class="md-card-alert-insight">
           <md-icon name="sparkle-filled" iconSet="momentumDesign" class="md-card-alert-insight-icon"></md-icon>
@@ -272,7 +275,14 @@ export namespace CardAlert {
 
     render() {
       return html`
-        <div class="md-card-alert" part="card" tabindex="0">
+        <div
+          class=${classMap({
+            "md-card-alert": true,
+            "md-card-alert--no-insight": !this.hasInsight
+          })}
+          part="card"
+          tabindex="0"
+        >
           ${this.renderHeader()} ${this.renderTitleSection()} ${this.renderDetails()} ${this.renderInsight()}
           ${this.renderActions()}
         </div>

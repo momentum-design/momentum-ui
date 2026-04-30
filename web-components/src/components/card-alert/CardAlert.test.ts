@@ -1,6 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./CardAlert";
-import { type CardAlert } from "./CardAlert";
+import { CardAlertSeverity, type CardAlert } from "./CardAlert";
 
 globalThis.fetch = jest.fn(() =>
   Promise.resolve({
@@ -17,10 +17,9 @@ const defaultDetails: CardAlert.DetailRow[] = [
 
 const fixtureFactory = async (
   overrides: Partial<{
-    severity: string;
+    severity: CardAlertSeverity | "";
     category: string;
     timestamp: string;
-    live: boolean;
     title: string;
     queueName: string;
     details: CardAlert.DetailRow[];
@@ -33,10 +32,9 @@ const fixtureFactory = async (
   }> = {}
 ): Promise<CardAlert.ELEMENT> => {
   const props = {
-    severity: "Critical",
+    severity: CardAlertSeverity.CRITICAL,
     category: "Adherence",
     timestamp: new Date(Date.now() - 3 * 60000).toISOString(),
-    live: false,
     title: "Bob has not signed in for his scheduled shift",
     queueName: "Customer Support · 9:00–17:00",
     details: defaultDetails,
@@ -54,7 +52,6 @@ const fixtureFactory = async (
       severity=${props.severity}
       category=${props.category}
       timestamp=${props.timestamp}
-      ?live=${props.live}
       title=${props.title}
       queueName=${props.queueName}
       .details=${props.details}
@@ -85,18 +82,25 @@ describe("CardAlert component", () => {
   // ─── Header ────────────────────────────────────────────────────────
 
   test("should render severity chip with correct color", async () => {
-    const element = await fixtureFactory({ severity: "Critical" });
+    const element = await fixtureFactory({ severity: CardAlertSeverity.CRITICAL });
     const chips = element.shadowRoot!.querySelectorAll("md-chip") as NodeListOf<any>;
     const severityChip = chips[0];
     expect(severityChip).toBeDefined();
-    expect(severityChip.value).toBe("Critical");
     expect(severityChip.color).toBe("negative");
   });
 
-  test("should render warning severity chip", async () => {
-    const element = await fixtureFactory({ severity: "Warning" });
+  test("should render medium severity chip", async () => {
+    const element = await fixtureFactory({ severity: CardAlertSeverity.MEDIUM });
     const chip = element.shadowRoot!.querySelector("md-chip") as any;
     expect(chip!.color).toBe("warning");
+  });
+
+  test("should render fallback severity styles for unsupported severity", async () => {
+    const element = await fixtureFactory({ severity: "unsupported" as CardAlertSeverity });
+    const chip = element.shadowRoot!.querySelector("md-chip") as any;
+    const icon = chip!.querySelector("md-icon") as any;
+    expect(chip!.color).toBe("neutral");
+    expect(icon.name).toBe("info-circle-filled");
   });
 
   test("should render category chip", async () => {
@@ -108,14 +112,30 @@ describe("CardAlert component", () => {
     expect(categoryChip.color).toBe("neutral");
   });
 
-  test("should not render header when severity, category, timestamp, and live are all empty/false", async () => {
-    const element = await fixtureFactory({ severity: "", category: "", timestamp: "", live: false });
+  test("should render header with category only", async () => {
+    const element = await fixtureFactory({ severity: "", category: "Surplus", timestamp: "" });
+    const chips = element.shadowRoot!.querySelectorAll("md-chip") as NodeListOf<any>;
+    const timestamp = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
+    expect(chips.length).toBe(1);
+    expect(chips[0].value).toBe("Surplus");
+    expect(timestamp).toBeNull();
+  });
+
+  test("should render header with severity only", async () => {
+    const element = await fixtureFactory({ category: "", timestamp: "" });
+    const chips = element.shadowRoot!.querySelectorAll("md-chip") as NodeListOf<any>;
+    expect(chips.length).toBe(1);
+    expect(chips[0].color).toBe("negative");
+  });
+
+  test("should not render header when severity, category, and timestamp are all empty", async () => {
+    const element = await fixtureFactory({ severity: "", category: "", timestamp: "" });
     await elementUpdated(element);
     const header = element.shadowRoot!.querySelector(".md-card-alert-header");
     expect(header).toBeNull();
   });
 
-  // ─── Timestamp / Live ──────────────────────────────────────────────
+  // ─── Timestamp ────────────────────────────────────────────────────
 
   test("should render relative timestamp", async () => {
     const element = await fixtureFactory({ timestamp: new Date(Date.now() - 5 * 60000).toISOString() });
@@ -130,23 +150,24 @@ describe("CardAlert component", () => {
     expect(ts!.textContent!.trim()).toBe("Just now");
   });
 
-  test("should render live indicator when live is true", async () => {
-    const element = await fixtureFactory({ live: true });
-    const liveEl = element.shadowRoot!.querySelector(".md-card-alert-live");
-    expect(liveEl).not.toBeNull();
-    expect(liveEl!.textContent!.trim()).toBe("Live");
-  });
-
-  test("should render live icon", async () => {
-    const element = await fixtureFactory({ live: true });
-    const icon = element.shadowRoot!.querySelector(".md-card-alert-live-icon");
-    expect(icon).not.toBeNull();
-  });
-
-  test("should not render timestamp when live is true", async () => {
-    const element = await fixtureFactory({ live: true, timestamp: new Date().toISOString() });
+  test("should not render timestamp for invalid timestamp", async () => {
+    const element = await fixtureFactory({ timestamp: "not-a-date" });
     const ts = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
     expect(ts).toBeNull();
+  });
+
+  test("should format singular, future, hour, day, invalid, and numeric timestamps", async () => {
+    const element = await fixtureFactory();
+    const now = new Date("2026-01-01T12:00:00.000Z").getTime();
+    const nowSpy = jest.spyOn(Date, "now").mockReturnValue(now);
+
+    expect((element as any).formatRelativeTime(now - 60000)).toBe("1 min ago");
+    expect((element as any).formatRelativeTime(new Date(now + 60000).toISOString())).toBe("Just now");
+    expect((element as any).formatRelativeTime(new Date(now - 60 * 60000).toISOString())).toBe("1 hour ago");
+    expect((element as any).formatRelativeTime(new Date(now - 24 * 60 * 60000).toISOString())).toBe("1 day ago");
+    expect((element as any).formatRelativeTime("not-a-date")).toBe("");
+
+    nowSpy.mockRestore();
   });
 
   // ─── Title section ─────────────────────────────────────────────────
@@ -155,6 +176,28 @@ describe("CardAlert component", () => {
     const element = await fixtureFactory({ title: "Test Title" });
     const title = element.shadowRoot!.querySelector(".md-card-alert-title");
     expect(title!.textContent!.trim()).toBe("Test Title");
+  });
+
+  test("should render title without queueName", async () => {
+    const element = await fixtureFactory({ title: "Title only", queueName: "" });
+    const title = element.shadowRoot!.querySelector(".md-card-alert-title");
+    const subtitle = element.shadowRoot!.querySelector(".md-card-alert-subtitle");
+    expect(title!.textContent!.trim()).toBe("Title only");
+    expect(subtitle).toBeNull();
+  });
+
+  test("should render queueName without title", async () => {
+    const element = await fixtureFactory({ title: "", queueName: "Sales (Calls)" });
+    const title = element.shadowRoot!.querySelector(".md-card-alert-title");
+    const subtitle = element.shadowRoot!.querySelector(".md-card-alert-subtitle");
+    expect(title).toBeNull();
+    expect(subtitle!.textContent!.trim()).toBe("Sales (Calls)");
+  });
+
+  test("should not render title section when title and queueName are empty", async () => {
+    const element = await fixtureFactory({ title: "", queueName: "" });
+    const titleSection = element.shadowRoot!.querySelector(".md-card-alert-title-section");
+    expect(titleSection).toBeNull();
   });
 
   test("should render queueName with icon", async () => {
@@ -193,6 +236,12 @@ describe("CardAlert component", () => {
     expect(details).toBeNull();
   });
 
+  test("should not render details when details is undefined", async () => {
+    const element = await fixtureFactory({ details: undefined as any });
+    const details = element.shadowRoot!.querySelector(".md-card-alert-details");
+    expect(details).toBeNull();
+  });
+
   // ─── Insight ───────────────────────────────────────────────────────
 
   test("should render insight text", async () => {
@@ -205,6 +254,20 @@ describe("CardAlert component", () => {
     const element = await fixtureFactory({ insight: "" });
     const insight = element.shadowRoot!.querySelector(".md-card-alert-insight");
     expect(insight).toBeNull();
+  });
+
+  test("should not render insight when insight is null", async () => {
+    const element = await fixtureFactory();
+    (element as any).insight = null;
+    await elementUpdated(element);
+    const insight = element.shadowRoot!.querySelector(".md-card-alert-insight");
+    expect(insight).toBeNull();
+  });
+
+  test("should apply no-insight class when insight is empty", async () => {
+    const element = await fixtureFactory({ insight: "" });
+    const card = element.shadowRoot!.querySelector(".md-card-alert");
+    expect(card!.classList.contains("md-card-alert--no-insight")).toBe(true);
   });
 
   // ─── Actions ───────────────────────────────────────────────────────

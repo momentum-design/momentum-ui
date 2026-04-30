@@ -9,21 +9,35 @@
 import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { CardAlert } from "./CardAlert";
+import { CardAlert as CardAlertComponent, CardAlertSeverity } from "./CardAlert";
 
-const defaultDetails: CardAlert.DetailRow[] = [
+const defaultDetails: CardAlertComponent.DetailRow[] = [
   { label: "Agent", value: "Bob Flynn" },
   { label: "Scheduled start", value: "9:00 AM" },
   { label: "Current delay", value: "18 mins", highlighted: true }
 ];
 
-const render = (args: Args) => {
+const defaultArgs: Args = {
+  severity: CardAlertSeverity.CRITICAL,
+  category: "Adherence",
+  timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
+  title: "Bob has not signed in for his scheduled shift",
+  queueName: "Customer Support · 9:00–17:00",
+  details: defaultDetails,
+  insight: "Repeated late sign-ins over the past 2 weeks (4 occurrences)",
+  detailsHeading: "Shift details",
+  primaryActionLabel: "Take action",
+  primaryActionDropdown: true,
+  expanded: false,
+  showDismiss: false
+};
+
+const renderCard = (args: Args) => {
   return html`
     <md-card-alert
       severity=${args.severity}
       category=${args.category}
       timestamp=${args.timestamp}
-      ?live=${args.live}
       title=${args.title}
       queueName=${args.queueName}
       .details=${args.details}
@@ -40,54 +54,14 @@ const render = (args: Args) => {
   `;
 };
 
-export const CardAlertDefault: StoryObj = {
-  args: {
-    severity: "Critical",
-    category: "Adherence",
-    timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
-    live: false,
-    title: "Bob has not signed in for his scheduled shift",
-    queueName: "Customer Support · 9:00–17:00",
-    details: defaultDetails,
-    insight: "Repeated late sign-ins over the past 2 weeks (4 occurrences)",
-    detailsHeading: "Shift details",
-    primaryActionLabel: "Take action",
-    primaryActionDropdown: true,
-    expanded: false,
-    showDismiss: true
-  },
-  render
+const render = (args: Args) => {
+  return html`
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">${renderCard(args)}</div>
+  `;
 };
 
-export const CardAlertNoInsight: StoryObj = {
-  args: {
-    ...CardAlertDefault.args,
-    insight: ""
-  },
-  render
-};
-
-export const CardAlertNoDismiss: StoryObj = {
-  args: {
-    ...CardAlertDefault.args,
-    showDismiss: false
-  },
-  render
-};
-
-export const CardAlertLive: StoryObj = {
-  args: {
-    ...CardAlertDefault.args,
-    live: true
-  },
-  render
-};
-
-export const CardAlertStandardButton: StoryObj = {
-  args: {
-    ...CardAlertDefault.args,
-    primaryActionDropdown: false
-  },
+export const CardAlert: StoryObj = {
+  args: defaultArgs,
   render
 };
 
@@ -95,10 +69,9 @@ const meta: Meta = {
   title: "Components/Card Alert",
   component: "md-card-alert",
   argTypes: {
-    severity: { control: "text" },
+    severity: { control: "select", options: Object.values(CardAlertSeverity) },
     category: { control: "text" },
     timestamp: { control: "text" },
-    live: { control: "boolean" },
     title: { control: "text" },
     queueName: { control: "text" },
     detailsHeading: { control: "text" },

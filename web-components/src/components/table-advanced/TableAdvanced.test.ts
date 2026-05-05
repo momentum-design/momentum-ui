@@ -125,16 +125,14 @@ describe("Table Advanced component", () => {
       list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"]]
     };
     const elem = await fixture<TableAdvanced.ELEMENT>(html`
-      <md-table-advanced .config=${ShortkeyTable.config} .data=${badData}> </md-table-advanced>
+      <md-table-advanced .config=${ComplexTable.config} .data=${badData}> </md-table-advanced>
     `);
 
     expect(elem["error"]).toContain(errorText);
     expect(elem.shadowRoot!.textContent).toContain(errorText);
     expect(elem.shadowRoot!.querySelector("table")).toBeNull();
 
-    elem.data = {
-      list2d: ShortkeyTable.data.list2d.map((row) => [...row])
-    };
+    elem.data = ComplexTable.data;
     await elementUpdated(elem);
     await elementUpdated(elem);
 

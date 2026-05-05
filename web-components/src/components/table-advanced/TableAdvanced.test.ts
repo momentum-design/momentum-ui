@@ -118,6 +118,31 @@ describe("Table Advanced component", () => {
     expect(elem["error"]).toContain("DATA ERROR: Total number of cols");
   });
 
+  test("should clear stale data error and render table when data updates", async () => {
+    const errorText = "DATA ERROR: Data length mismatch";
+    const badData = {
+      ...ShortkeyTable.data,
+      list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"]]
+    };
+    const elem = await fixture<TableAdvanced.ELEMENT>(html`
+      <md-table-advanced .config=${ShortkeyTable.config} .data=${badData}> </md-table-advanced>
+    `);
+
+    expect(elem["error"]).toContain(errorText);
+    expect(elem.shadowRoot!.textContent).toContain(errorText);
+    expect(elem.shadowRoot!.querySelector("table")).toBeNull();
+
+    elem.data = {
+      list2d: ShortkeyTable.data.list2d.map((row) => [...row])
+    };
+    await elementUpdated(elem);
+    await elementUpdated(elem);
+
+    expect(elem["error"]).toBe("");
+    expect(elem.shadowRoot!.textContent).not.toContain(errorText);
+    expect(elem.shadowRoot!.querySelector("table")).not.toBeNull();
+  });
+
   test("data parse", async () => {
     const elemCsv = await fixture<TableAdvanced.ELEMENT>(html`
       <md-table-advanced .config=${SimpleTable.config} .data=${SimpleTable.dataCsv}> </md-table-advanced>

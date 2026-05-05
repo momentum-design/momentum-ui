@@ -80,6 +80,7 @@ export namespace TableAdvanced {
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
       if (changedProperties.has("data")) {
+        this.error = "";
         this.updateTableData();
         this.updateDataInTable();
       }

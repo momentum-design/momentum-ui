@@ -1,6 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./CardAlert";
-import { CardAlertSeverity, type CardAlert } from "./CardAlert";
+import { CardAlertSeverity, type CardAlert, type CardAlertLocale } from "./CardAlert";
 
 globalThis.fetch = jest.fn(() =>
   Promise.resolve({
@@ -19,6 +19,7 @@ const fixtureFactory = async (
   overrides: Partial<{
     severity: CardAlertSeverity | "";
     category: string;
+    secondaryChip: string;
     timestamp: string;
     title: string;
     queueName: string;
@@ -34,6 +35,7 @@ const fixtureFactory = async (
   const props = {
     severity: CardAlertSeverity.CRITICAL,
     category: "Adherence",
+    secondaryChip: "",
     timestamp: new Date(Date.now() - 3 * 60000).toISOString(),
     title: "Bob has not signed in for his scheduled shift",
     queueName: "Customer Support · 9:00–17:00",
@@ -55,6 +57,7 @@ const fixtureFactory = async (
       title=${props.title}
       queueName=${props.queueName}
       .details=${props.details}
+      secondaryChip=${props.secondaryChip}
       insight=${props.insight}
       primaryActionLabel=${props.primaryActionLabel}
       ?primaryActionDropdown=${props.primaryActionDropdown}
@@ -100,16 +103,28 @@ describe("CardAlert component", () => {
     const chip = element.shadowRoot!.querySelector("md-chip") as any;
     const icon = chip!.querySelector("md-icon") as any;
     expect(chip!.color).toBe("neutral");
-    expect(icon.name).toBe("info-circle-filled");
+    expect(icon.name).toBe("plus-circle-filled");
   });
 
-  test("should render category chip", async () => {
+  test("should render category value on severity chip", async () => {
     const element = await fixtureFactory({ category: "Adherence" });
+    const chip = element.shadowRoot!.querySelector("md-chip") as any;
+    expect(chip).not.toBeNull();
+    expect(chip.value).toBe("Adherence");
+  });
+
+  test("should render secondary chip when secondaryChip is set", async () => {
+    const element = await fixtureFactory({ secondaryChip: "Service level below target" });
     const chips = element.shadowRoot!.querySelectorAll("md-chip") as NodeListOf<any>;
-    const categoryChip = chips[1];
-    expect(categoryChip).toBeDefined();
-    expect(categoryChip.value).toBe("Adherence");
-    expect(categoryChip.color).toBe("neutral");
+    expect(chips.length).toBe(2);
+    expect(chips[1].value).toBe("Service level below target");
+    expect(chips[1].color).toBe("confidence-cobalt");
+  });
+
+  test("should not render secondary chip when secondaryChip is empty", async () => {
+    const element = await fixtureFactory({ secondaryChip: "" });
+    const chips = element.shadowRoot!.querySelectorAll("md-chip") as NodeListOf<any>;
+    expect(chips.length).toBe(1);
   });
 
   test("should render header with category only", async () => {
@@ -270,6 +285,18 @@ describe("CardAlert component", () => {
     expect(card!.classList.contains("md-card-alert--no-insight")).toBe(true);
   });
 
+  test("should apply expanded class when expanded is true", async () => {
+    const element = await fixtureFactory({ expanded: true });
+    const card = element.shadowRoot!.querySelector(".md-card-alert");
+    expect(card!.classList.contains("md-card-alert--expanded")).toBe(true);
+  });
+
+  test("should not apply expanded class when expanded is false", async () => {
+    const element = await fixtureFactory({ expanded: false });
+    const card = element.shadowRoot!.querySelector(".md-card-alert");
+    expect(card!.classList.contains("md-card-alert--expanded")).toBe(false);
+  });
+
   // ─── Actions ───────────────────────────────────────────────────────
 
   test("should render primary action button with label", async () => {
@@ -305,6 +332,29 @@ describe("CardAlert component", () => {
     const element = await fixtureFactory({ showDismiss: true });
     const dismiss = element.shadowRoot!.querySelector(".md-card-alert-dismiss");
     expect(dismiss).not.toBeNull();
+  });
+
+  test("should use default dismiss label when locale dismiss is omitted", async () => {
+    const cardAlertElement = customElements.get("md-card-alert") as typeof CardAlert.ELEMENT;
+    const originalLocale = { ...cardAlertElement.locale };
+    const localeWithoutDismiss: CardAlertLocale = {
+      justNow: originalLocale.justNow,
+      minutesAgo: originalLocale.minutesAgo,
+      hoursAgo: originalLocale.hoursAgo,
+      daysAgo: originalLocale.daysAgo
+    };
+
+    try {
+      Object.assign(cardAlertElement.locale, localeWithoutDismiss);
+      delete cardAlertElement.locale.dismiss;
+
+      const element = await fixtureFactory({ showDismiss: true });
+      const dismiss = element.shadowRoot!.querySelector(".md-card-alert-dismiss");
+
+      expect(dismiss!.textContent!.trim()).toBe("Dismiss");
+    } finally {
+      Object.assign(cardAlertElement.locale, originalLocale);
+    }
   });
 
   test("should not render dismiss button when showDismiss is false", async () => {

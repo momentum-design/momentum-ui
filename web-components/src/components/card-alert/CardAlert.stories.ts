@@ -20,6 +20,7 @@ const defaultDetails: CardAlertComponent.DetailRow[] = [
 const defaultArgs: Args = {
   severity: CardAlertSeverity.CRITICAL,
   category: "Adherence",
+  secondaryChip: "Reforecast",
   timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
   title: "Bob has not signed in for his scheduled shift",
   queueName: "Customer Support · 9:00–17:00",
@@ -37,6 +38,7 @@ const renderCard = (args: Args) => {
     <md-card-alert
       severity=${args.severity}
       category=${args.category}
+      secondaryChip=${args.secondaryChip}
       timestamp=${args.timestamp}
       title=${args.title}
       queueName=${args.queueName}
@@ -71,6 +73,7 @@ const meta: Meta = {
   argTypes: {
     severity: { control: "select", options: Object.values(CardAlertSeverity) },
     category: { control: "text" },
+    secondaryChip: { control: "text" },
     timestamp: { control: "text" },
     title: { control: "text" },
     queueName: { control: "text" },

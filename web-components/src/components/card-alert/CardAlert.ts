@@ -23,24 +23,32 @@ export enum CardAlertSeverity {
 
 const SEVERITY_MAP: Record<CardAlertSeverity, { icon: string; color: string }> = {
   [CardAlertSeverity.CRITICAL]: { icon: "flag-filled", color: "negative" },
-  [CardAlertSeverity.MEDIUM]: { icon: "warning-filled", color: "warning" },
+  [CardAlertSeverity.MEDIUM]: { icon: "warning-filled", color: "warning" }
 };
 
 export interface CardAlertLocale {
-  dismiss: string;
+  dismiss?: string;
   justNow: string;
   minutesAgo: (n: number) => string;
   hoursAgo: (n: number) => string;
   daysAgo: (n: number) => string;
 }
 
-const DEFAULT_LOCALE: CardAlertLocale = {
+type ResolvedCardAlertLocale = Required<CardAlertLocale>;
+
+const DEFAULT_LOCALE: ResolvedCardAlertLocale = {
   dismiss: "Dismiss",
   justNow: "Just now",
   minutesAgo: (n) => `${n} ${n === 1 ? "min" : "mins"} ago`,
   hoursAgo: (n) => `${n} ${n === 1 ? "hour" : "hours"} ago`,
   daysAgo: (n) => `${n} ${n === 1 ? "day" : "days"} ago`
 };
+
+const resolveLocale = (locale?: CardAlertLocale): ResolvedCardAlertLocale => ({
+  ...DEFAULT_LOCALE,
+  ...locale,
+  dismiss: locale?.dismiss ?? DEFAULT_LOCALE.dismiss
+});
 
 export namespace CardAlert {
   export interface DetailRow {
@@ -55,6 +63,7 @@ export namespace CardAlert {
 
     @property({ type: String }) severity: CardAlertSeverity | "" = "";
     @property({ type: String }) category = "";
+    @property({ type: String }) secondaryChip = "";
     @property({ type: String }) timestamp = "";
     @property({ type: String }) title = "";
     @property({ type: String }) queueName = "";
@@ -79,7 +88,7 @@ export namespace CardAlert {
     }
 
     private get severityIcon(): string {
-      return this.normalizedSeverity ? SEVERITY_MAP[this.normalizedSeverity].icon : "info-circle-filled";
+      return this.normalizedSeverity ? SEVERITY_MAP[this.normalizedSeverity].icon : "plus-circle-filled";
     }
 
     private get severityColor(): string {
@@ -92,6 +101,10 @@ export namespace CardAlert {
 
     private get detailRows(): DetailRow[] {
       return Array.isArray(this.details) ? this.details : [];
+    }
+
+    private get resolvedLocale(): ResolvedCardAlertLocale {
+      return resolveLocale((this.constructor as typeof ELEMENT).locale);
     }
 
     private updateRelativeTime() {
@@ -127,7 +140,7 @@ export namespace CardAlert {
     }
 
     private formatRelativeTime(timestamp: string | number): string {
-      const loc = (this.constructor as typeof ELEMENT).locale;
+      const loc = this.resolvedLocale;
       const now = Date.now();
       const then = typeof timestamp === "number" ? timestamp : new Date(timestamp).getTime();
       if (isNaN(then)) return "";
@@ -162,19 +175,17 @@ export namespace CardAlert {
       return html`
         <div class="md-card-alert-header">
           <div class="md-card-alert-chips">
-            ${this.severity
-              ? html`
-                  <md-chip color=${this.severityColor} small>
-                    <md-icon
-                      name=${this.severityIcon}
-                      size="14"
-                      iconSet="momentumDesign"
-                      slot="custom-left-content"
-                    ></md-icon>
-                  </md-chip>
-                `
+            <md-chip color=${this.severityColor} value=${this.category} small>
+              <md-icon
+                name=${this.severityIcon}
+                size="14"
+                iconSet="momentumDesign"
+                slot="custom-left-content"
+              ></md-icon>
+            </md-chip>
+            ${this.secondaryChip
+              ? html`<md-chip color="confidence-cobalt" value=${this.secondaryChip} small></md-chip>`
               : nothing}
-            ${this.category ? html`<md-chip value=${this.category} color="neutral" small></md-chip>` : nothing}
           </div>
           ${this.renderTimestamp()}
         </div>
@@ -237,11 +248,13 @@ export namespace CardAlert {
     }
 
     private renderActions() {
+      const dismissLabel = this.resolvedLocale.dismiss;
+
       return html`
         <div class="md-card-alert-actions">
           <md-button
             size="32"
-            variant="primary"
+            variant="secondary"
             class="md-card-alert-primary-action"
             ariaLabel=${this.primaryActionLabel}
             @click=${this.handlePrimaryAction}
@@ -260,12 +273,11 @@ export namespace CardAlert {
                 <md-button
                   size="32"
                   variant="secondary"
-                  outline
                   class="md-card-alert-dismiss"
-                  ariaLabel=${(this.constructor as typeof ELEMENT).locale.dismiss}
+                  ariaLabel=${dismissLabel}
                   @click=${this.handleDismiss}
                 >
-                  <span slot="text">${(this.constructor as typeof ELEMENT).locale.dismiss}</span>
+                  <span slot="text">${dismissLabel}</span>
                 </md-button>
               `
             : nothing}
@@ -278,7 +290,8 @@ export namespace CardAlert {
         <div
           class=${classMap({
             "md-card-alert": true,
-            "md-card-alert--no-insight": !this.hasInsight
+            "md-card-alert--no-insight": !this.hasInsight,
+            "md-card-alert--expanded": this.expanded
           })}
           part="card"
           tabindex="0"

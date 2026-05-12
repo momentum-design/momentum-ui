@@ -56,9 +56,10 @@ export class CardAlertTemplateSandbox extends LitElement {
 
         <md-card-alert
           severity=${CardAlertSeverity.MEDIUM}
-          category="Surplus"
+          category="Deficit"
+          secondaryChip="Reforecast"
           timestamp=${new Date(Date.now() - 12 * 60000).toISOString()}
-          title="Sarah exceeded break duration threshold"
+          title="Sarah exceeded break duration"
           queueName="Sales (Calls)"
           detailsHeading="9-9:15 AM actual vs plan"
           .details=${[

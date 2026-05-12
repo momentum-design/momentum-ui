@@ -1,11 +1,11 @@
-$md-card-alert-width: rem-calc(367);
+$md-card-alert-width: rem-calc(313);
 $md-card-alert-no-insight-height: 329px;
 $md-card-alert-title-height: rem-calc(48);
 $md-card-alert-border-radius: rem-calc(12);
 $md-card-alert-padding: rem-calc(12);
 $md-card-alert-gap: rem-calc(12);
 
-$md-card-alert-bg: var(--md-secondary-bg-color);
+$md-card-alert-bg: var(--md-glass-overlay-bg-color);
 $md-card-alert-border: 1px solid var(--md-quaternary-bg-color);
 $md-card-alert-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -13,7 +13,7 @@ $md-card-alert-title-color: var(--md-primary-text-color);
 $md-card-alert-subtitle-color: var(--md-secondary-text-color);
 $md-card-alert-timestamp-color: var(--md-secondary-text-color);
 
-$md-card-alert-details-bg-color: var(--md-background-tertiary, #f3f4f6);
+$md-card-alert-details-bg-color: var(--md-subtle-bg-color, #f3f4f6);
 $md-card-alert-details-border-radius: rem-calc(8);
 $md-card-alert-details-padding: rem-calc(12);
 $md-card-alert-details-value-color: var(--md-primary-text-color);
@@ -28,3 +28,7 @@ $md-card-alert-insight-icon-color: var(--badge-status-accent-text-color, #0284c7
 
 $md-card-alert-actions-gap: rem-calc(8);
 $md-card-alert-font-weight-bold: 700;
+
+$md-card-alert-bg-hover: var(--md-card-v2-background-hover, var(--md-glass-overlay-bg-color));
+$md-card-alert-border-hover: 1px solid var(--card-v2-border-hover, var(--md-quaternary-bg-color));
+$md-card-alert-border-active: 1px solid var(--md-primary-text-color);

@@ -18,6 +18,15 @@
       min-height: $md-card-alert-no-insight-height;
     }
 
+    &:hover {
+      background: $md-card-alert-bg-hover;
+      border: $md-card-alert-border-hover;
+    }
+
+    &--expanded {
+      border: $md-card-alert-border-active;
+    }
+
     &:focus {
       outline: none;
     }
@@ -31,6 +40,8 @@
     &-chips {
       @include flex($jc: flex-start, $ai: center);
       gap: rem-calc(6);
+      min-width: 0;
+      overflow: hidden;
     }
 
     &-timestamp {
@@ -56,7 +67,7 @@
       display: -webkit-box;
       font-size: rem-calc(16);
       font-weight: $md-card-alert-font-weight-bold;
-      height: $md-card-alert-title-height;
+      max-height: $md-card-alert-title-height;
       line-height: rem-calc(24);
       margin: 0;
       min-width: 0;
@@ -82,6 +93,7 @@
     // ─── Details block ───────────────────────────────────────────────────
     &-details {
       @include flex($fd: column, $jc: flex-start, $ai: stretch);
+      margin-top: auto;
       background: $md-card-alert-details-bg-color;
       border-radius: $md-card-alert-details-border-radius;
       gap: rem-calc(3);

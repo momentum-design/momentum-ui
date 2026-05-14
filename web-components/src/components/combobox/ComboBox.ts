@@ -12,6 +12,7 @@ import { ATTRIBUTES, Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { LitVirtualizer } from "@lit-labs/virtualizer";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
@@ -125,6 +126,12 @@ export namespace ComboBox {
     @property({ type: String }) helpText = "";
     @property({ type: Array }) messageArr: ComboBox.Message[] = [];
     @property({ type: String }) htmlId = "";
+
+    private readonly _fallbackId = generateSimpleUniqueId("md-combobox");
+
+    private get messageId(): string {
+      return `${this.htmlId || this._fallbackId}-message`;
+    }
     @property({ type: Boolean, reflect: true }) readOnly = false;
 
     private readonly messageController = new MessageController();
@@ -1735,7 +1742,7 @@ export namespace ComboBox {
     messagesTemplate() {
       return this.messages && !!this.messages.length
         ? html`
-            <div id="${this.htmlId}-message" part="message" class="md-combobox__messages">
+            <div id="${this.messageId}" part="message" class="md-combobox__messages">
               ${repeat(this.messages, (message, id) => {
                 return html`
                   <md-help-text
@@ -1812,6 +1819,8 @@ export namespace ComboBox {
                 aria-label=${ifDefined(
                   this.inputValue && this.selectedOptions.length > 0 ? undefined : this.ariaLabelForComboBox
                 )}
+                aria-describedby=${ifDefined(this.messages && this.messages.length ? this.messageId : undefined)}
+                aria-invalid=${ifDefined(this.messageType === "error" ? "true" : undefined)}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
                 placeholder=${this.inputValue && this.selectedOptions.length > 0

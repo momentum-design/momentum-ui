@@ -182,7 +182,6 @@ thead {
       text-overflow: ellipsis;
       white-space: nowrap;
       width: auto;
-      // <button> UA styles reset spacing; inherit so WCAG 1.4.12 overrides apply.
       letter-spacing: inherit;
       line-height: inherit;
       word-spacing: inherit;

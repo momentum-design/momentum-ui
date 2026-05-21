@@ -1005,6 +1005,47 @@ describe("Combobox Component", () => {
     expect(el.shadowRoot!.querySelector("md-help-text")!.message).toEqual("Error Message from Combobox");
   });
 
+  test("should associate error message with combobox input via aria-describedby and set aria-invalid", async () => {
+    const errorMessage: ComboBox.Message = { type: "error", message: "Dial number is invalid." };
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} .htmlId=${"dial-number"} .messageArr=${[errorMessage]}></md-combobox>
+    `);
+    await elementUpdated(el);
+
+    const input = el.shadowRoot!.querySelector('input[role="combobox"]') as HTMLInputElement;
+    const messageContainer = el.shadowRoot!.querySelector(".md-combobox__messages") as HTMLElement;
+
+    expect(input).not.toBeNull();
+    expect(messageContainer).not.toBeNull();
+    expect(messageContainer.id).toEqual("dial-number-message");
+    expect(input.getAttribute("aria-describedby")).toEqual("dial-number-message");
+    expect(input.getAttribute("aria-invalid")).toEqual("true");
+  });
+
+  test("should fall back to a generated id for the message container when html-id is not provided", async () => {
+    const errorMessage: ComboBox.Message = { type: "error", message: "Dial number is invalid." };
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} .messageArr=${[errorMessage]}></md-combobox>
+    `);
+    await elementUpdated(el);
+
+    const input = el.shadowRoot!.querySelector('input[role="combobox"]') as HTMLInputElement;
+    const messageContainer = el.shadowRoot!.querySelector(".md-combobox__messages") as HTMLElement;
+
+    expect(messageContainer.id).toMatch(/^md-combobox-\d+-message$/);
+    expect(input.getAttribute("aria-describedby")).toEqual(messageContainer.id);
+  });
+
+  test("should not set aria-describedby or aria-invalid when there are no messages", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
+    await elementUpdated(el);
+
+    const input = el.shadowRoot!.querySelector('input[role="combobox"]') as HTMLInputElement;
+    expect(input.hasAttribute("aria-describedby")).toBe(false);
+    expect(input.hasAttribute("aria-invalid")).toBe(false);
+    expect(el.shadowRoot!.querySelector(".md-combobox__messages")).toBeNull();
+  });
+
   test("should render with Slect All option", async () => {
     const el = await fixture<ComboBox.ELEMENT>(html`
       <md-combobox .options=${comboBoxOptions} is-multi allow-select-all> </md-combobox>

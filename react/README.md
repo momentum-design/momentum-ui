@@ -4,12 +4,14 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/react.svg)
 [![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/main/react/LICENSE)
 
+⚠️ **Deprecation Notice:**  
+This library is deprecated and will no longer receive new features or updates.  
+Please migrate to [Momentum Design Components](https://www.npmjs.com/package/@momentum-design/components) for ongoing support and future development.
+
 **`Momentum UI React`** is a resuable, component based, flexible React library available as
-npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
+npm module. It provides set of UI components and utilities.
 
 The git repo can be cloned from the [momentum-ui monorepo](https://github.com/momentum-design/momentum-ui) and found at [https://github.com/momentum-design/momentum-ui/tree/main/react](https://github.com/momentum-design/momentum-ui/tree/main/react).
-
-Checkout the [documentation](https://momentum.design) for documentation and live examples.
 
 ## Goals
 * **Independent** — pick and use only the components you need.

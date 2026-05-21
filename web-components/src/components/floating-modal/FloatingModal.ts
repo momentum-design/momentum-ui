@@ -1,5 +1,6 @@
 import "../button/Button";
 import "../icon/Icon";
+import "../tooltip/Tooltip";
 import { Key } from "@/constants";
 import { FocusMixin, SlottedMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -31,6 +32,7 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
     @property({ type: String, attribute: "move-aria-label" }) moveAriaLabel = "Move Modal";
+    @property({ type: Boolean, attribute: "hide-move-button" }) hideMoveButton = false;
     @property({ type: Boolean, reflect: true }) maximizable = true;
     @property({ type: Boolean, reflect: true }) resizable = true;
     @property({ type: Boolean, reflect: true }) private minimize = false;
@@ -61,6 +63,34 @@ export namespace FloatingModal {
     private previouslyFocusedElement: HTMLElement | null = null;
 
     private applyInitialPosition = true;
+    private readonly DRAG_HANDLE_SELECTOR =
+      ".md-floating__header, .md-floating__header *, [slot='header'], [slot='header'] *";
+    private readonly DRAG_IGNORE_SELECTOR = [
+      "md-button:not(.md-floating__move)",
+      "md-tooltip:not(.md-floating__move-tooltip)",
+      "button",
+      "a[href]",
+      "input",
+      "select",
+      "textarea",
+      "[contenteditable='true']",
+      "[role='button']",
+      "[data-floating-modal-ignore-drag]",
+      "[data-floating-modal-ignore-drag] *"
+    ].join(", ");
+    private readonly RESIZE_IGNORE_SELECTOR = [
+      "md-button",
+      "md-tooltip",
+      "button",
+      "a[href]",
+      "input",
+      "select",
+      "textarea",
+      "[contenteditable='true']",
+      "[role='button']",
+      "[data-floating-modal-ignore-resize]",
+      "[data-floating-modal-ignore-resize] *"
+    ].join(", ");
 
     static get styles() {
       return [reset, styles];
@@ -187,6 +217,7 @@ export namespace FloatingModal {
     private setContainerRect() {
       requestAnimationFrame(async () => {
         await this.updateComplete;
+        if (!this.show || !this.container) return;
 
         this.containerRect = this.container!.getBoundingClientRect();
         this.dispatchEvent(
@@ -203,37 +234,64 @@ export namespace FloatingModal {
       });
     }
 
+    private getResizeMinimumRect = (): Interact.Rect => {
+      const style = this.container ? getComputedStyle(this.container) : null;
+      const width = Number.parseFloat(style?.minWidth ?? "") || 0;
+      const height = Number.parseFloat(style?.minHeight ?? "") || 0;
+
+      // interact restrictSize accepts a static size, but its dynamic callback must return a rect.
+      return {
+        top: 0,
+        left: 0,
+        right: width,
+        bottom: height,
+        width,
+        height
+      };
+    };
+
+    private getResizeModifiers() {
+      const minSizeModifier = interact.modifiers.restrictSize({ min: this.getResizeMinimumRect });
+
+      if (!this.aspectRatio) {
+        return [minSizeModifier];
+      }
+
+      return [
+        interact.modifiers.aspectRatio({
+          ratio: "preserve",
+          equalDelta: true,
+          modifiers: [minSizeModifier, interact.modifiers.restrictSize({ max: "parent" })]
+        })
+      ];
+    }
+
     private setInteractInstance() {
       requestAnimationFrame(() => {
-        if (this.container) {
-          interact(this.container).draggable({
-            autoScroll: true,
-            allowFrom: this.header,
-            ignoreFrom: this.body,
-            listeners: {
-              move: this.dragMoveListener,
-              end: this.dragEndListener
-            }
-          });
+        if (!this.show || !this.container) return;
 
-          if (this.resizable) {
-            interact(this.container).resizable({
+        interact(this).draggable({
+          autoScroll: true,
+          allowFrom: this.DRAG_HANDLE_SELECTOR,
+          ignoreFrom: this.DRAG_IGNORE_SELECTOR,
+          listeners: {
+            move: this.dragMoveListener,
+            end: this.dragEndListener
+          }
+        });
+
+        if (this.resizable) {
+          interact(this.container)
+            .resizable({
               edges: { left: true, right: true, bottom: true, top: true },
+              ignoreFrom: this.RESIZE_IGNORE_SELECTOR,
               listeners: {
                 end: this.resizeEndListener,
                 move: this.resizeMoveListener
               },
-              modifiers: this.aspectRatio
-                ? [
-                    interact.modifiers.aspectRatio({
-                      ratio: "preserve",
-                      equalDelta: true,
-                      modifiers: [interact.modifiers.restrictSize({ max: "parent" })]
-                    })
-                  ]
-                : undefined
-            });
-          }
+              modifiers: this.getResizeModifiers()
+            })
+            .preventDefault("always");
         }
       });
     }
@@ -307,8 +365,8 @@ export namespace FloatingModal {
       return { initialX: 0, initialY: 0 };
     };
 
-    private getTransformValues(event: Interact.InteractEvent) {
-      const { target, dx, dy } = event;
+    private getTransformValues(event: Interact.InteractEvent, target: Interact.Element) {
+      const { dx, dy } = event;
       const { initialX, initialY } = this.getInitialPosition();
       const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
       const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
@@ -316,8 +374,8 @@ export namespace FloatingModal {
     }
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
-      const { target } = event;
-      const { x, y } = this.getTransformValues(event);
+      const target = this.container ?? event.target;
+      const { x, y } = this.getTransformValues(event, target);
       this.setTargetPosition(target, x, y);
       this.applyInitialPosition = false;
     };
@@ -378,7 +436,16 @@ export namespace FloatingModal {
       );
     };
 
+    private handleHeaderMoveKeyDown = (event: KeyboardEvent) => {
+      if (!this.hideMoveButton || event.target !== this.header) return;
+
+      this.handleMoveKeyDown(event);
+    };
+
     private destroyInteractInstance() {
+      if (interact.isSet(this)) {
+        interact(this).unset();
+      }
       if (this.container && interact.isSet(this.container)) {
         interact(this.container).unset();
       }
@@ -424,7 +491,15 @@ export namespace FloatingModal {
                     : undefined
                 )}
               >
-                <div class="md-floating__header">
+                <div
+                  class="md-floating__header ${this.hideMoveButton && !this.full
+                    ? "md-floating__header--move-handle"
+                    : ""}"
+                  tabindex=${ifDefined(this.hideMoveButton && !this.full ? "0" : undefined)}
+                  role=${ifDefined(this.hideMoveButton && !this.full ? "group" : undefined)}
+                  aria-label=${ifDefined(this.hideMoveButton && !this.full ? this.moveAriaLabel : undefined)}
+                  @keydown=${this.handleHeaderMoveKeyDown}
+                >
                   <div class="md-floating__header-text" aria-hidden="true">
                     ${this.heading
                       ? html` ${this.heading} `
@@ -433,57 +508,78 @@ export namespace FloatingModal {
                           <slot name="header"></slot>
                         `}
                   </div>
-                  ${!this.full
-                    ? html` <md-button
-                        color="color-none"
-                        size="20"
-                        class="md-floating__move md-floating__header-button"
-                        ariaLabel="${this.moveAriaLabel}"
-                        circle
-                        @keydown=${this.handleMoveKeyDown}
+                  ${!this.full && !this.hideMoveButton
+                    ? html` <md-tooltip
+                        class="md-floating__move-tooltip"
+                        message=${this.moveAriaLabel}
+                        placement="bottom"
+                        ?disabled=${!this.moveAriaLabel}
                       >
-                        <md-icon name="drag-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
-                      </md-button>`
+                        <md-button
+                          color="color-none"
+                          size="20"
+                          class="md-floating__move md-floating__header-button"
+                          ariaLabel="${this.moveAriaLabel}"
+                          circle
+                          @keydown=${this.handleMoveKeyDown}
+                        >
+                          <md-icon name="drag-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
+                        </md-button>
+                      </md-tooltip>`
                     : nothing}
                   ${this.minimizable
-                    ? html` <md-button
-                        color="color-none"
-                        size="20"
-                        class="md-floating__minimize md-floating__header-button"
-                        ariaLabel="${this.minimizeAriaLabel}"
-                        circle
-                        @click=${this.handleMinimize}
+                    ? html` <md-tooltip
+                        message=${this.minimizeAriaLabel}
+                        placement="bottom"
+                        ?disabled=${!this.minimizeAriaLabel}
                       >
-                        <md-icon name="minus-bold" size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
-                      </md-button>`
+                        <md-button
+                          color="color-none"
+                          size="20"
+                          class="md-floating__minimize md-floating__header-button"
+                          ariaLabel="${this.minimizeAriaLabel}"
+                          circle
+                          @click=${this.handleMinimize}
+                        >
+                          <md-icon name="minus-bold" size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
+                        </md-button>
+                      </md-tooltip>`
                     : nothing}
                   ${!this.minimize && this.maximizable
-                    ? html` <md-button
-                        color="color-none"
-                        size="20"
-                        class="md-floating__resize md-floating__header-button"
-                        ariaLabel="${this.full ? this.resizeAriaLabel : this.maximizeScreenLabel}"
-                        circle
-                        @click=${this.handleToggleExpandCollapse}
+                    ? html` <md-tooltip
+                        message=${this.full ? this.resizeAriaLabel : this.maximizeScreenLabel}
+                        placement="bottom"
+                        ?disabled=${!(this.full ? this.resizeAriaLabel : this.maximizeScreenLabel)}
                       >
-                        <md-icon
-                          name=${this.full ? "minimize-bold" : "maximize-bold"}
-                          size="16"
-                          iconSet="momentumDesign"
-                        ></md-icon>
-                      </md-button>`
+                        <md-button
+                          color="color-none"
+                          size="20"
+                          class="md-floating__resize md-floating__header-button"
+                          ariaLabel="${this.full ? this.resizeAriaLabel : this.maximizeScreenLabel}"
+                          circle
+                          @click=${this.handleToggleExpandCollapse}
+                        >
+                          <md-icon
+                            name=${this.full ? "minimize-bold" : "maximize-bold"}
+                            size="16"
+                            iconSet="momentumDesign"
+                          ></md-icon>
+                        </md-button>
+                      </md-tooltip>`
                     : ""}
 
-                  <md-button
-                    color="color-none"
-                    size="20"
-                    class="md-floating__close md-floating__header-button"
-                    ariaLabel="${this.closeAriaLabel}"
-                    circle
-                    @click=${this.handleClose}
-                  >
-                    <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
-                  </md-button>
+                  <md-tooltip message=${this.closeAriaLabel} placement="bottom" ?disabled=${!this.closeAriaLabel}>
+                    <md-button
+                      color="color-none"
+                      size="20"
+                      class="md-floating__close md-floating__header-button"
+                      ariaLabel="${this.closeAriaLabel}"
+                      circle
+                      @click=${this.handleClose}
+                    >
+                      <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+                    </md-button>
+                  </md-tooltip>
                 </div>
                 <div class="md-floating__body" part="floating-body">
                   <slot></slot>

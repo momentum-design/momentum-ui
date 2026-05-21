@@ -34,6 +34,7 @@ export default {
     maximizable: { control: "boolean", defaultValue: false },
     resizable: { control: "boolean", defaultValue: false },
     minimizable: { control: "boolean", defaultValue: false },
+    hideMoveButton: { control: "boolean", defaultValue: false },
     centered: { control: "boolean", defaultValue: false }
   },
   tags: ["autodocs"],
@@ -61,6 +62,7 @@ export const FloatingModal = (args: Args) => {
       ?maximizable=${args.maximizable}
       ?resizable=${args.resizable}
       ?minimizable=${args.minimizable}
+      .hideMoveButton=${args.hideMoveButton}
       ?centered=${args.centered}
     >
       <md-radiogroup group-label="group_process">

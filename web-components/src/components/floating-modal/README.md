@@ -8,6 +8,7 @@ Floating Modal provides a movable and scalable modal for more dynamic UI.
 - `aspect-ratio` : Boolean - Preserves width/height ratio of modal on resize
 - `fixed-strategy` : Boolean - Allows user to enable `fixed` position style for the modal element.
 - `full-screen` : Boolean - Toggles full screen modal mode
+- `hide-move-button` : Boolean - Hides the move icon button while keeping header pointer drag and keyboard movement enabled.
 
 ### Styling
 The wrapping container of the modal can be reached via CSS by using the `::part()` selector. For example, in your application's stylesheet you can say:

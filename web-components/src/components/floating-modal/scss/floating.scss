@@ -52,6 +52,11 @@
     width: 100%;
     gap: 0.5rem;
 
+    &--move-handle:focus {
+      box-shadow: 0 0 0 $focus-ring-size $md-blue-70;
+      outline: none;
+    }
+
     &-text {
       flex: 2 1 auto;
       font-family: $brand-font-bold;

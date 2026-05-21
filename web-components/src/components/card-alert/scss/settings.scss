@@ -17,7 +17,8 @@ $md-card-alert-details-bg-color: var(--md-subtle-bg-color, #f3f4f6);
 $md-card-alert-details-border-radius: rem-calc(8);
 $md-card-alert-details-padding: rem-calc(12);
 $md-card-alert-details-value-color: var(--md-primary-text-color);
-$md-card-alert-details-highlighted-color: var(--md-alert-error-text-color, #dc2626);
+$md-card-alert-details-positive-color: var(--md-alert-success-text-color, #16a34a);
+$md-card-alert-details-negative-color: var(--md-alert-error-text-color, #dc2626);
 
 $md-card-alert-insight-bg-color: var(--card-ai-blue-bg-color, #eff6ff);
 $md-card-alert-insight-border-color: var(--badge-confidence-cobalt-border-color, #dbeafe);
@@ -32,3 +33,4 @@ $md-card-alert-font-weight-bold: 700;
 $md-card-alert-bg-hover: var(--md-card-v2-background-hover, var(--md-glass-overlay-bg-color));
 $md-card-alert-border-hover: 1px solid var(--card-v2-border-hover, var(--md-quaternary-bg-color));
 $md-card-alert-border-active: 1px solid var(--md-primary-text-color);
+$md-card-alert-bg-active: var(--md-secondary-bg-color);

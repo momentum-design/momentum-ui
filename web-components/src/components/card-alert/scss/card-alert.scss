@@ -18,13 +18,14 @@
       min-height: $md-card-alert-no-insight-height;
     }
 
-    &:hover {
+    &:not(&--expanded):hover {
       background: $md-card-alert-bg-hover;
       border: $md-card-alert-border-hover;
     }
 
     &--expanded {
       border: $md-card-alert-border-active;
+      background: $md-card-alert-bg-active;
     }
 
     &:focus {
@@ -102,8 +103,12 @@
 
     &-details-heading {
       color: $md-card-alert-subtitle-color;
+      display: block;
       font-size: rem-calc(14);
       margin-bottom: rem-calc(2);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &-detail-row {
@@ -123,8 +128,12 @@
       text-align: right;
       margin-bottom: rem-calc(2);
 
-      &--highlighted {
-        color: $md-card-alert-details-highlighted-color;
+      &--positive {
+        color: $md-card-alert-details-positive-color;
+      }
+
+      &--negative {
+        color: $md-card-alert-details-negative-color;
       }
     }
 

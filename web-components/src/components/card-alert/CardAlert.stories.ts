@@ -9,12 +9,12 @@
 import { action } from "storybook/actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { CardAlert as CardAlertComponent, CardAlertSeverity } from "./CardAlert";
+import { CardAlert as CardAlertComponent, CardAlertDetailImpact, CardAlertSeverity } from "./CardAlert";
 
 const defaultDetails: CardAlertComponent.DetailRow[] = [
   { label: "Agent", value: "Bob Flynn" },
   { label: "Scheduled start", value: "9:00 AM" },
-  { label: "Current delay", value: "18 mins", highlighted: true }
+  { label: "Current delay", value: "18 mins", impact: CardAlertDetailImpact.NEGATIVE }
 ];
 
 const defaultArgs: Args = {

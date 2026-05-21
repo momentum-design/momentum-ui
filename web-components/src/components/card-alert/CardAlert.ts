@@ -50,11 +50,17 @@ const resolveLocale = (locale?: CardAlertLocale): ResolvedCardAlertLocale => ({
   dismiss: locale?.dismiss ?? DEFAULT_LOCALE.dismiss
 });
 
+export enum CardAlertDetailImpact {
+  POSITIVE = "positive",
+  NEGATIVE = "negative",
+  NEUTRAL = "neutral"
+}
+
 export namespace CardAlert {
   export interface DetailRow {
     label: string;
     value: string;
-    highlighted?: boolean;
+    impact?: CardAlertDetailImpact;
   }
 
   @customElementWithCheck("md-card-alert")
@@ -219,14 +225,15 @@ export namespace CardAlert {
       return html`
         <div class="md-card-alert-details">
           <span class="md-card-alert-details-heading">${this.detailsHeading}</span>
-          ${this.detailRows.map(
+          ${this.detailRows.slice(0, 3).map(
             (row) => html`
               <div class="md-card-alert-detail-row">
                 <span class="md-card-alert-detail-label">${row.label}</span>
                 <span
                   class=${classMap({
                     "md-card-alert-detail-value": true,
-                    "md-card-alert-detail-value--highlighted": !!row.highlighted
+                    "md-card-alert-detail-value--positive": row.impact === CardAlertDetailImpact.POSITIVE,
+                    "md-card-alert-detail-value--negative": row.impact === CardAlertDetailImpact.NEGATIVE
                   })}
                   >${row.value}</span
                 >

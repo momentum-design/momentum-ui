@@ -1,4 +1,4 @@
-import { CardAlertSeverity } from "@/components/card-alert/CardAlert";
+import { CardAlertSeverity, CardAlertDetailImpact } from "@/components/card-alert/CardAlert";
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 
@@ -43,9 +43,9 @@ export class CardAlertTemplateSandbox extends LitElement {
           queueName="Sales (Calls)"
           detailsHeading="9-9:15 AM actual vs plan"
           .details=${[
-            { label: "Service level:", value: " -12% vs target", highlighted: true },
-            { label: "AHT", value: "+24% vs baseline", highlighted: true },
-            { label: "Volume", value: "Normal" }
+            { label: "Service level:", value: " -12%", impact: CardAlertDetailImpact.NEGATIVE },
+            { label: "AHT", value: "+2 min 3 sec", impact: CardAlertDetailImpact.POSITIVE },
+            { label: "Volume", value: "Normal", impact: CardAlertDetailImpact.NEUTRAL }
           ]}
           insight="Negative sentiment and repeat contacts increased, with impact concentrated in billing."
           primaryActionLabel="Take action"
@@ -65,7 +65,7 @@ export class CardAlertTemplateSandbox extends LitElement {
           .details=${[
             { label: "Agent", value: "Alice Chen" },
             { label: "Break time", value: "12:00 PM" },
-            { label: "Missed by", value: "12 mins", highlighted: true }
+            { label: "Missed by", value: "12 mins", impact: CardAlertDetailImpact.NEGATIVE }
           ]}
           insight=""
           primaryActionLabel="Take action"
@@ -82,7 +82,7 @@ export class CardAlertTemplateSandbox extends LitElement {
           .details=${[
             { label: "Agent", value: "Alice Chen" },
             { label: "Break time", value: "12:00 PM" },
-            { label: "Missed by", value: "12 mins", highlighted: true }
+            { label: "Missed by", value: "12 mins", impact: CardAlertDetailImpact.NEGATIVE }
           ]}
           insight=""
           primaryActionLabel="Take action"

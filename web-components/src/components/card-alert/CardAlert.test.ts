@@ -1,6 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./CardAlert";
-import { CardAlertSeverity, type CardAlert, type CardAlertLocale } from "./CardAlert";
+import { CardAlertDetailImpact, CardAlertSeverity, type CardAlert, type CardAlertLocale } from "./CardAlert";
 
 globalThis.fetch = jest.fn(() =>
   Promise.resolve({
@@ -12,7 +12,7 @@ globalThis.fetch = jest.fn(() =>
 const defaultDetails: CardAlert.DetailRow[] = [
   { label: "Agent", value: "Bob Flynn" },
   { label: "Scheduled start", value: "9:00 AM" },
-  { label: "Current delay", value: "18 mins", highlighted: true }
+  { label: "Current delay", value: "18 mins", impact: CardAlertDetailImpact.NEGATIVE }
 ];
 
 const fixtureFactory = async (
@@ -238,11 +238,11 @@ describe("CardAlert component", () => {
     expect(heading!.textContent!.trim()).toBe("Shift details");
   });
 
-  test("should apply highlighted class to highlighted detail value", async () => {
+  test("should apply negative class to detail value with negative impact", async () => {
     const element = await fixtureFactory({ details: defaultDetails });
-    const highlighted = element.shadowRoot!.querySelector(".md-card-alert-detail-value--highlighted");
-    expect(highlighted).not.toBeNull();
-    expect(highlighted!.textContent!.trim()).toBe("18 mins");
+    const negative = element.shadowRoot!.querySelector(".md-card-alert-detail-value--negative");
+    expect(negative).not.toBeNull();
+    expect(negative!.textContent!.trim()).toBe("18 mins");
   });
 
   test("should not render details when details array is empty", async () => {

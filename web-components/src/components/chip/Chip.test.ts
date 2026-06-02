@@ -88,6 +88,25 @@ describe("Chip component", () => {
     expect(component.disabled).toBeTruthy();
   });
 
+  test("should allow slotted controls to remain tabbable when chip is not focusable", async () => {
+    const component: Chip.ELEMENT = await fixture(html`
+      <md-chip .focusable=${false} value="Non-focusable chip">
+        <md-icon
+          name="cancel-bold"
+          iconSet="momentumDesign"
+          tabIndex="0"
+          role="button"
+          slot="custom-right-content"
+        ></md-icon>
+      </md-chip>
+    `);
+    const chip = component.shadowRoot?.querySelector(".md-chip") as HTMLElement;
+    const icon = component.querySelector("md-icon") as HTMLElement;
+
+    expect(chip.hasAttribute("tabindex")).toBeFalsy();
+    expect(icon.tabIndex).toEqual(0);
+  });
+
   test("should handleClear", async () => {
     const component = await fixtureFactory();
     const spyKeyDown = jest.spyOn(component, "handleClear");

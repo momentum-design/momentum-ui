@@ -46,6 +46,7 @@ export namespace Chip {
     @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
     @property({ type: Boolean }) decorative = false;
     @property({ type: Boolean }) shouldTruncateValue = true;
+    @property({ type: Boolean }) focusable = true;
 
     @property({
       type: String,
@@ -319,7 +320,7 @@ export namespace Chip {
         >
           <span
             role=${ifDefined(!this.decorative ? "button" : undefined)}
-            tabindex="0"
+            tabindex=${ifDefined(this.focusable ? "0" : undefined)}
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
             aria-pressed=${ifDefined(ariaPressed)}

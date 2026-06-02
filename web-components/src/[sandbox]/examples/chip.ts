@@ -16,6 +16,19 @@ export const chipTemplate = html`
   <md-chip value="Cobalt" color="cobalt"> </md-chip>
   <h3 class="sandbox-header">Read Only Default Chip</h3>
   <md-chip value="developer@cisco.ninja" readonly> </md-chip>
+  <h3 class="sandbox-header">Focusable Chip</h3>
+  <md-chip value="Focusable chip"> </md-chip>
+  <md-chip .focusable=${false} value="Non-focusable chip">
+    <md-icon
+      name="cancel-bold"
+      iconSet="momentumDesign"
+      tabIndex="0"
+      role="button"
+      aria-label="Remove non-focusable chip"
+      slot="custom-right-content"
+    >
+    </md-icon>
+  </md-chip>
   <h3 class="sandbox-header">Selected Chip</h3>
   <md-chip
     icon="file-pdf-bold"

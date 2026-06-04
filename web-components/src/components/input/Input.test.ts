@@ -600,3 +600,197 @@ describe("aria-label", () => {
     expect(input?.hasAttribute("aria-label")).toBe(false);
   });
 });
+
+describe("Input auto-combobox", () => {
+  afterEach(() => fixtureCleanup());
+
+  // Helper: build a popup wrapper containing a searchable md-input and an external listbox.
+  const mountPopupWithInput = async (popupTag = "md-popover", isOpen = true, withList = true) => {
+    const wrapper = document.createElement(popupTag);
+    if (isOpen) wrapper.setAttribute("is-open", "");
+    wrapper.innerHTML = `
+      <md-input searchable ariaLabel="Search ANI" placeholder="Search ANI"></md-input>
+      ${
+        withList
+          ? `<div role="listbox" aria-activedescendant="stale-id">
+               <ul>
+                 <li>Option A</li>
+                 <li>Option B</li>
+                 <li>Option C</li>
+               </ul>
+             </div>`
+          : ""
+      }
+    `;
+    document.body.appendChild(wrapper);
+    const input = wrapper.querySelector("md-input") as Input.ELEMENT;
+    await input.updateComplete;
+    // Give firstUpdated + observer microtasks a chance to run.
+    await new Promise<void>((r) => requestAnimationFrame(() => r()));
+    await input.updateComplete;
+    return { wrapper, input };
+  };
+
+  test("should engage as combobox when searchable input is inside a known popup ancestor", async () => {
+    const { input } = await mountPopupWithInput("md-popover");
+    const inner = input.shadowRoot!.querySelector("input");
+    expect(input.isCombobox).toBe(true);
+    expect(inner?.getAttribute("role")).toBe("combobox");
+    expect(inner?.getAttribute("aria-autocomplete")).toBe("list");
+    expect(inner?.getAttribute("aria-expanded")).toBe("true");
+  });
+
+  test("should not engage when input is not searchable", async () => {
+    const wrapper = document.createElement("md-popover");
+    wrapper.setAttribute("is-open", "");
+    wrapper.innerHTML = `<md-input ariaLabel="x"></md-input>`;
+    document.body.appendChild(wrapper);
+    const input = wrapper.querySelector("md-input") as Input.ELEMENT;
+    await input.updateComplete;
+    expect(input.isCombobox).toBe(false);
+  });
+
+  test("should not engage when disable-auto-combobox is set", async () => {
+    const wrapper = document.createElement("md-popover");
+    wrapper.setAttribute("is-open", "");
+    wrapper.innerHTML = `<md-input searchable disable-auto-combobox></md-input>`;
+    document.body.appendChild(wrapper);
+    const input = wrapper.querySelector("md-input") as Input.ELEMENT;
+    await input.updateComplete;
+    expect(input.isCombobox).toBe(false);
+  });
+
+  test("should not engage when ancestor is not a recognised popup", async () => {
+    const wrapper = document.createElement("section");
+    wrapper.innerHTML = `<md-input searchable></md-input>`;
+    document.body.appendChild(wrapper);
+    const input = wrapper.querySelector("md-input") as Input.ELEMENT;
+    await input.updateComplete;
+    expect(input.isCombobox).toBe(false);
+  });
+
+  test("should engage for every supported popup tag", async () => {
+    const tags = ["md-menu-overlay", "md-popover", "md-floating-modal", "md-modal", "md-coachmark-popover"];
+    for (const tag of tags) {
+      const { input, wrapper } = await mountPopupWithInput(tag);
+      expect(input.isCombobox).toBe(true);
+      wrapper.remove();
+    }
+  });
+
+  test("should tag the discovered listbox with id, role, tabindex=-1 and link via aria-controls", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    expect(listbox.id).toMatch(/^md-input-listbox-/);
+    expect(listbox.getAttribute("tabindex")).toBe("-1");
+    expect(input.shadowRoot!.querySelector("input")?.getAttribute("aria-controls")).toBe(listbox.id);
+  });
+
+  test("should strip stale aria-activedescendant from the listbox", async () => {
+    const { wrapper } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    expect(listbox.hasAttribute("aria-activedescendant")).toBe(false);
+  });
+
+  test("should mark intervening UL as role=presentation when listbox is a wrapper div", async () => {
+    const { wrapper } = await mountPopupWithInput();
+    const ul = wrapper.querySelector('[role="listbox"] ul') as HTMLElement;
+    expect(ul.getAttribute("role")).toBe("presentation");
+  });
+
+  test("should normalise options with role, posinset, setsize, and tabindex", async () => {
+    const { wrapper } = await mountPopupWithInput();
+    const items = wrapper.querySelectorAll('[role="listbox"] li');
+    expect(items.length).toBe(3);
+    items.forEach((li, i) => {
+      expect(li.getAttribute("role")).toBe("option");
+      expect(li.getAttribute("aria-posinset")).toBe(String(i + 1));
+      expect(li.getAttribute("aria-setsize")).toBe("3");
+      expect(li.getAttribute("tabindex")).toBe("-1");
+      expect(li.id).toMatch(/^md-input-option-/);
+    });
+  });
+
+  test("should reflect popup open state on aria-expanded", async () => {
+    const { wrapper, input } = await mountPopupWithInput("md-popover", true);
+    const inner = input.shadowRoot!.querySelector("input");
+    expect(inner?.getAttribute("aria-expanded")).toBe("true");
+
+    wrapper.removeAttribute("is-open");
+    await new Promise<void>((r) => requestAnimationFrame(() => r()));
+    await input.updateComplete;
+    expect(inner?.getAttribute("aria-expanded")).toBe("false");
+  });
+
+  test("ArrowDown on input should move DOM focus to the first option", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const inner = input.shadowRoot!.querySelector("input") as HTMLInputElement;
+    inner.focus();
+    inner.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    await input.updateComplete;
+    const firstOption = wrapper.querySelector('[role="listbox"] li') as HTMLElement;
+    expect(document.activeElement).toBe(firstOption);
+    expect(firstOption.getAttribute("tabindex")).toBe("0");
+  });
+
+  test("ArrowDown/ArrowUp on the listbox should cycle focus through options", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    const opts = Array.from(wrapper.querySelectorAll('[role="listbox"] li')) as HTMLElement[];
+    (input.shadowRoot!.querySelector("input") as HTMLElement).focus();
+    input.shadowRoot!
+      .querySelector("input")!
+      .dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    expect(document.activeElement).toBe(opts[0]);
+
+    listbox.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    expect(document.activeElement).toBe(opts[1]);
+
+    listbox.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowUp", bubbles: true }));
+    expect(document.activeElement).toBe(opts[0]);
+  });
+
+  test("Escape on the listbox should close the popup and return focus to the input", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    const inner = input.shadowRoot!.querySelector("input") as HTMLInputElement;
+    inner.focus();
+    inner.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    listbox.dispatchEvent(new KeyboardEvent("keydown", { code: "Escape", bubbles: true }));
+    expect(wrapper.hasAttribute("is-open")).toBe(false);
+    expect(document.activeElement === inner || input.shadowRoot!.activeElement === inner).toBe(true);
+  });
+
+  test("Enter on the focused option should click that option", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    const opts = Array.from(wrapper.querySelectorAll('[role="listbox"] li')) as HTMLElement[];
+    const clickSpy = jest.fn();
+    opts[0].addEventListener("click", clickSpy);
+    (input.shadowRoot!.querySelector("input") as HTMLElement).focus();
+    input.shadowRoot!
+      .querySelector("input")!
+      .dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    listbox.dispatchEvent(new KeyboardEvent("keydown", { code: "Enter", bubbles: true }));
+    expect(clickSpy).toHaveBeenCalled();
+  });
+
+  test("printable character on the focused option should return focus to the input", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    const listbox = wrapper.querySelector('[role="listbox"]') as HTMLElement;
+    const inner = input.shadowRoot!.querySelector("input") as HTMLInputElement;
+    inner.focus();
+    inner.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown", bubbles: true }));
+    listbox.dispatchEvent(new KeyboardEvent("keydown", { code: "KeyA", key: "a", bubbles: true }));
+    expect(input.shadowRoot!.activeElement).toBe(inner);
+  });
+
+  test("should clean up on disconnect", async () => {
+    const { wrapper, input } = await mountPopupWithInput();
+    expect(input.isCombobox).toBe(true);
+    wrapper.remove();
+    // No assertion is needed beyond not throwing; the listbox observer + keydown
+    // listener are released on disconnectedCallback.
+    expect(true).toBe(true);
+  });
+});

@@ -490,4 +490,27 @@ describe("AdvanceList Component test seperate render", () => {
       expect(itemElement.textContent?.trim()).toBe(`Item ${index + 1} - ${index}`);
     });
   });
+
+  test("should fall back to items.length for aria-setsize when totalRecords is 0", async () => {
+    const items = Array.from({ length: 4 }, (_, i) => ({
+      name: `Item ${i + 1}`,
+      id: `${i + 1}`,
+      template: (item: any) => html`<span>${item.name}</span>`
+    }));
+    const list = await fixture<AdvanceList.ELEMENT>(html`
+      <md-advance-list .items=${items} .totalRecords=${0} ariaRoleList="listbox"></md-advance-list>
+    `);
+    await elementUpdated(list);
+
+    const wrapper = list.shadowRoot?.querySelector(".md-advance-list-wrapper");
+    items.forEach((item, index) => {
+      const fragment = document.createDocumentFragment();
+      render(list.renderItem(item, index), fragment);
+      wrapper?.appendChild(fragment.firstElementChild as HTMLElement);
+    });
+
+    const rendered = list.shadowRoot?.querySelectorAll(".default-wrapper");
+    expect(rendered?.length).toBe(4);
+    rendered?.forEach((el) => expect(el.getAttribute("aria-setsize")).toBe("4"));
+  });
 });

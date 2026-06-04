@@ -15,7 +15,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { LitElement, html, nothing } from "lit";
+import { LitElement, PropertyValues, html, nothing } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
@@ -212,6 +212,7 @@ export namespace Input {
     @property({ type: String, reflect: true }) value = "";
     @property({ type: String }) ariaControls = "";
     @property({ type: String }) ariaExpanded = "";
+    @property({ type: Boolean, attribute: "is-combobox" }) isCombobox = false;
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Object }) control?: FormControl<unknown>;
     @property({ type: Boolean }) disableUserTextInput = false;
@@ -234,6 +235,13 @@ export namespace Input {
 
     private readonly messageController = new MessageController();
 
+    // Auto-combobox: makes a `searchable` input inside a popup behave as an ARIA combobox.
+    private autoComboOverlay: HTMLElement | null = null;
+    private autoComboListbox: HTMLElement | null = null;
+    private autoComboOverlayObserver: MutationObserver | null = null;
+    private autoComboListObserver: MutationObserver | null = null;
+    private autoComboListKeydownBound: ((e: KeyboardEvent) => void) | null = null;
+
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("click", this.handleOutsideClick);
@@ -242,6 +250,193 @@ export namespace Input {
     disconnectedCallback() {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideClick);
+      this.teardownAutoCombobox();
+    }
+
+    protected firstUpdated(_changedProperties: PropertyValues) {
+      super.firstUpdated?.(_changedProperties);
+      if (this.searchable && !this.hasAttribute("disable-auto-combobox")) {
+        this.setupAutoCombobox();
+      }
+    }
+
+    private static readonly AUTO_COMBO_POPUP_TAGS = new Set([
+      "md-menu-overlay",
+      "md-popover",
+      "md-floating-modal",
+      "md-modal",
+      "md-coachmark-popover"
+    ]);
+
+    private setupAutoCombobox() {
+      // Walk up shadow-piercing parents to find any known popup ancestor.
+      let node: Node | null = this.parentNode || (this.getRootNode() as ShadowRoot).host || null;
+      while (node) {
+        if (node instanceof HTMLElement && Input.ELEMENT.AUTO_COMBO_POPUP_TAGS.has(node.tagName.toLowerCase())) {
+          this.autoComboOverlay = node;
+          break;
+        }
+        node = node.parentNode || (node as unknown as ShadowRoot).host || null;
+      }
+      if (!this.autoComboOverlay) return;
+
+      this.isCombobox = true;
+      this.ariaAutocomplete = this.ariaAutocomplete || "list";
+
+      const sync = () => {
+        const open = this.autoComboOverlay!.hasAttribute("is-open");
+        this.ariaExpanded = open ? "true" : "false";
+        if (open) {
+          requestAnimationFrame(() => this.discoverAutoComboList());
+        } else {
+          this.cleanupAutoComboListbox();
+        }
+      };
+      this.autoComboOverlayObserver = new MutationObserver(sync);
+      this.autoComboOverlayObserver.observe(this.autoComboOverlay, {
+        attributes: true,
+        attributeFilter: ["is-open"],
+        childList: true,
+        subtree: true
+      });
+      sync();
+    }
+
+    private discoverAutoComboList() {
+      const overlay = this.autoComboOverlay;
+      if (!overlay) return;
+      const listbox =
+        overlay.querySelector<HTMLElement>('[role="listbox"]') ||
+        overlay.querySelector<HTMLElement>("ul") ||
+        overlay.querySelector<HTMLElement>("ol");
+      if (!listbox || listbox === this.autoComboListbox) {
+        if (listbox) this.normalizeAutoComboOptions();
+        return;
+      }
+      this.cleanupAutoComboListbox();
+      this.autoComboListbox = listbox;
+
+      if (!listbox.id) listbox.id = `md-input-listbox-${Math.random().toString(36).slice(2, 9)}`;
+      if (!listbox.getAttribute("role")) listbox.setAttribute("role", "listbox");
+      listbox.setAttribute("tabindex", "-1");
+      // Drop any consumer-set aria-activedescendant: we use managed DOM focus on options.
+      listbox.removeAttribute("aria-activedescendant");
+      if (!listbox.hasAttribute("aria-label") && this.ariaLabel) {
+        listbox.setAttribute("aria-label", `${this.ariaLabel} options`);
+      }
+      this.ariaControls = listbox.id;
+
+      this.normalizeAutoComboOptions();
+      this.autoComboListObserver = new MutationObserver(() => this.normalizeAutoComboOptions());
+      this.autoComboListObserver.observe(listbox, { childList: true, subtree: true });
+
+      this.autoComboListKeydownBound = (e: KeyboardEvent) => this.handleAutoComboListKeydown(e);
+      listbox.addEventListener("keydown", this.autoComboListKeydownBound);
+    }
+
+    private getAutoComboOptions(): HTMLElement[] {
+      const lb = this.autoComboListbox;
+      if (!lb) return [];
+      const explicit = Array.from(lb.querySelectorAll<HTMLElement>('[role="option"]'));
+      if (explicit.length) return explicit;
+      return Array.from(lb.querySelectorAll<HTMLElement>("li"));
+    }
+
+    private normalizeAutoComboOptions() {
+      const lb = this.autoComboListbox;
+      if (lb && lb.tagName !== "UL" && lb.tagName !== "OL") {
+        // Strip implicit list semantics so role="option" chains directly to role="listbox".
+        lb.querySelectorAll<HTMLElement>("ul, ol").forEach((el) => {
+          if (!el.hasAttribute("role")) el.setAttribute("role", "presentation");
+        });
+      }
+      const opts = this.getAutoComboOptions();
+      const total = opts.length;
+      opts.forEach((opt, i) => {
+        if (!opt.id) opt.id = `md-input-option-${Math.random().toString(36).slice(2, 9)}-${i}`;
+        if (!opt.getAttribute("role")) opt.setAttribute("role", "option");
+        opt.setAttribute("aria-posinset", String(i + 1));
+        opt.setAttribute("aria-setsize", String(total));
+        if (opt.getAttribute("tabindex") !== "0") opt.setAttribute("tabindex", "-1");
+      });
+    }
+
+    private focusAutoComboOption(index: number) {
+      const opts = this.getAutoComboOptions();
+      if (!opts.length) return;
+      const target = Math.max(0, Math.min(index, opts.length - 1));
+      opts.forEach((o, i) => o.setAttribute("tabindex", i === target ? "0" : "-1"));
+      const el = opts[target];
+      el.focus();
+      el.scrollIntoView?.({ block: "nearest" });
+    }
+
+    private handleAutoComboListKeydown(e: KeyboardEvent) {
+      const opts = this.getAutoComboOptions();
+      if (!opts.length) return;
+      const current = opts.findIndex((o) => o === document.activeElement);
+      switch (e.code) {
+        case "ArrowDown":
+          e.preventDefault();
+          this.focusAutoComboOption(current < opts.length - 1 ? current + 1 : 0);
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          if (current <= 0) {
+            opts.forEach((o) => o.setAttribute("tabindex", "-1"));
+            this.input?.focus();
+          } else {
+            this.focusAutoComboOption(current - 1);
+          }
+          break;
+        case "Home":
+          e.preventDefault();
+          this.focusAutoComboOption(0);
+          break;
+        case "End":
+          e.preventDefault();
+          this.focusAutoComboOption(opts.length - 1);
+          break;
+        case "Enter":
+        case "Space":
+          if (current >= 0) {
+            e.preventDefault();
+            opts[current].click();
+          }
+          break;
+        case "Escape":
+          e.preventDefault();
+          this.input?.focus();
+          this.autoComboOverlay?.removeAttribute("is-open");
+          break;
+        case "Tab":
+          // Let Tab leave naturally; just clear tabindex on options
+          opts.forEach((o) => o.setAttribute("tabindex", "-1"));
+          break;
+        default:
+          // Printable character: hand control back to input so user can keep typing
+          if (e.key.length === 1) {
+            this.input?.focus();
+          }
+      }
+    }
+
+    private cleanupAutoComboListbox() {
+      this.autoComboListObserver?.disconnect();
+      this.autoComboListObserver = null;
+      if (this.autoComboListbox && this.autoComboListKeydownBound) {
+        this.autoComboListbox.removeEventListener("keydown", this.autoComboListKeydownBound);
+      }
+      this.autoComboListKeydownBound = null;
+      this.autoComboListbox = null;
+      this.ariaControls = "";
+    }
+
+    private teardownAutoCombobox() {
+      this.autoComboOverlayObserver?.disconnect();
+      this.autoComboOverlayObserver = null;
+      this.cleanupAutoComboListbox();
+      this.autoComboOverlay = null;
     }
 
     public select() {
@@ -265,6 +460,17 @@ export namespace Input {
     }
 
     handleKeyDown(event: KeyboardEvent) {
+      // Auto-combobox: ArrowDown/Up moves focus into the popup listbox; Escape closes it.
+      if (this.autoComboListbox && (event.code === "ArrowDown" || event.code === "ArrowUp")) {
+        const opts = this.getAutoComboOptions();
+        if (opts.length) {
+          event.preventDefault();
+          this.focusAutoComboOption(event.code === "ArrowDown" ? 0 : opts.length - 1);
+        }
+      } else if (this.autoComboOverlay && event.code === "Escape" && this.autoComboOverlay.hasAttribute("is-open")) {
+        event.preventDefault();
+        this.autoComboOverlay.removeAttribute("is-open");
+      }
       this.dispatchEvent(
         new CustomEvent("input-keydown", {
           bubbles: true,
@@ -461,7 +667,7 @@ export namespace Input {
     }
 
     get effectiveAriaRole() {
-      return this.ariaRole || (this.showDropdown ? "combobox" : undefined);
+      return this.ariaRole || (this.showDropdown || this.isCombobox ? "combobox" : undefined);
     }
 
     get hasRightIcon() {

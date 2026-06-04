@@ -342,7 +342,7 @@ export namespace AdvanceList {
           <div
             class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
             part="advance-list-item-wrapper"
-            aria-setsize="${this.totalRecords}"
+            aria-setsize="${this.totalRecords || this.items.length}"
             aria-posinset="${index + 1}"
             role="${this.ariaRoleListItem as any}"
             aria-label=${item.name || "Unknown item"}

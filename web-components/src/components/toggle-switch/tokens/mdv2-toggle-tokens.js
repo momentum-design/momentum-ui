@@ -4,7 +4,7 @@ const toggleSwitch = {
   prefix: "mdv2",
   component: "toggle-switch",
   "bg-color": {
-    common: "$mds-color-theme-background-secondary-hover"
+    common: "$mds-color-theme-control-inactive-normal"
   },
   "border-color": {
     common: "$mds-color-theme-outline-input-normal"
@@ -35,13 +35,13 @@ const toggleSwitch = {
       common: "$mds-color-theme-common-text-primary-normal"
     },
     "color--checked": {
-      common: "$mds-color-theme-common-text-primary-normal"
+      common: "$mds-color-theme-inverted-text-primary-normal"
     },
     "color-disabled": {
       common: "$mds-color-theme-common-text-primary-disabled"
     },
     "color-disabled--checked": {
-      common: "$mds-color-theme-common-text-primary-disabled"
+      common: "$mds-color-theme-inverted-text-primary-disabled"
     }
   },
   focus: {

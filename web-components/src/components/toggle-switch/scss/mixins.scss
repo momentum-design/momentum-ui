@@ -14,6 +14,11 @@
   $border-focus: var(--toggle-switch-focus)
 ) {
   .md-toggle-switch__input {
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
     + .md-toggle-switch__label {
       .md-toggle-switch__label__container {
         background-color: $background-color;
@@ -35,11 +40,12 @@
       }
     }
 
-    &:focus,
+    &:focus-visible,
     &.focus {
       + .md-toggle-switch__label {
         .md-toggle-switch__label__container {
-          outline: 2px solid var(--md-focus-border-color);
+          outline: none;
+          @include focus-ring();
         }
       }
     }

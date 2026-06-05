@@ -1,7 +1,11 @@
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { readFileSync } from "fs";
 import { html } from "lit";
+import { join } from "path";
 import "./ToggleSwitch";
 import { type ToggleSwitch } from "./ToggleSwitch";
+
+const toggleSwitchMixinsPath = join(__dirname, "scss", "mixins.scss");
 
 describe("Toggle Switch Component", () => {
   let element: ToggleSwitch.ELEMENT;
@@ -77,6 +81,32 @@ describe("Toggle Switch Component", () => {
     const span = div.querySelector("span") as HTMLSpanElement;
 
     expect(span.classList.contains("md-toggle-switch__label__container__left")).toBeFalsy();
+  });
+
+  test("should render switch input with role=switch adjacent to the visual track label", () => {
+    const input = element.shadowRoot!.querySelector(".md-toggle-switch__input") as HTMLInputElement;
+    const label = element.shadowRoot!.querySelector(".md-toggle-switch__label");
+    const track = element.shadowRoot!.querySelector(".md-toggle-switch__label__container");
+
+    expect(input.getAttribute("role")).toBe("switch");
+    expect(input.type).toBe("checkbox");
+    expect(label).not.toBeNull();
+    expect(track).not.toBeNull();
+    expect(input.nextElementSibling).toBe(label);
+  });
+
+  test("should define accessible focus styles that suppress native input outline and use focus-ring", () => {
+    const mixins = readFileSync(toggleSwitchMixinsPath, "utf8");
+
+    expect(mixins).toMatch(/\.md-toggle-switch__input\s*\{[\s\S]*&:focus,\s*\n\s*&:focus-visible\s*\{[\s\S]*outline:\s*none/);
+    expect(mixins).toMatch(/&:focus-visible,\s*\n\s*&\.focus\s*\{[\s\S]*@include focus-ring\(\)/);
+    expect(mixins).toMatch(/outline:\s*none;\s*\n\s*@include focus-ring\(\)/);
+  });
+
+  test("should import focus mixin in module styles", () => {
+    const moduleScss = readFileSync(join(__dirname, "scss", "module.scss"), "utf8");
+
+    expect(moduleScss).toContain('@import "@/wc_scss/tools/mixins/focus"');
   });
 
   test("should have correct accessible description", async () => {

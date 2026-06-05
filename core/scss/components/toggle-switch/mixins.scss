@@ -7,6 +7,11 @@
   $label-color: $form-control__label
 ) {
   .#{$toggle-switch__class}__input {
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
     + .#{$toggle-switch__class}__label {
       .#{$toggle-switch__class}__label__container {
         background-color: $background-color;
@@ -24,11 +29,13 @@
       }
     }
 
-    &:focus,
+    &:focus-visible,
     &.focus {
       + .#{$toggle-switch__class}__label {
         > .#{$toggle-switch__class}__label__container {
-          @include focus-styles;
+          box-shadow: none;
+          outline: 2px solid $border-color;
+          outline-offset: 2px;
         }
       }
     }

@@ -253,6 +253,8 @@ export namespace Input {
       this.teardownAutoCombobox();
     }
 
+    // Auto-combobox entry point: opts a `searchable` input into ARIA combobox semantics
+    // when it lives inside a known popup wrapper (skippable via `disable-auto-combobox`).
     protected firstUpdated(_changedProperties: PropertyValues) {
       super.firstUpdated?.(_changedProperties);
       if (this.searchable && !this.hasAttribute("disable-auto-combobox")) {
@@ -260,6 +262,8 @@ export namespace Input {
       }
     }
 
+    // Popup wrappers that trigger auto-combobox engagement; covers every overlay used by
+    // the design system today (md-popover, md-menu-overlay, etc.).
     private static readonly AUTO_COMBO_POPUP_TAGS = new Set([
       "md-menu-overlay",
       "md-popover",
@@ -268,6 +272,8 @@ export namespace Input {
       "md-coachmark-popover"
     ]);
 
+    // Engage combobox semantics: find the popup ancestor, mirror its open state to
+    // aria-expanded, and re-discover the listbox each time the popup mutates.
     private setupAutoCombobox() {
       // Walk up shadow-piercing parents to find any known popup ancestor.
       let node: Node | null = this.parentNode || (this.getRootNode() as ShadowRoot).host || null;
@@ -302,6 +308,8 @@ export namespace Input {
       sync();
     }
 
+    // Tag the popup's listbox with id/role/tabindex so aria-controls resolves, then wire
+    // option normalization and keyboard handling. Re-runs when the popup contents change.
     private discoverAutoComboList() {
       const overlay = this.autoComboOverlay;
       if (!overlay) return;
@@ -334,6 +342,8 @@ export namespace Input {
       listbox.addEventListener("keydown", this.autoComboListKeydownBound);
     }
 
+    // Returns the current option elements; prefers explicit role="option" and falls back
+    // to <li> so we work with both fully-tagged and virtualized consumer lists.
     private getAutoComboOptions(): HTMLElement[] {
       const lb = this.autoComboListbox;
       if (!lb) return [];
@@ -342,6 +352,8 @@ export namespace Input {
       return Array.from(lb.querySelectorAll<HTMLElement>("li"));
     }
 
+    // Re-apply role/posinset/setsize/tabindex on every option (consumer renders or the
+    // virtualizer can wipe these); also fixes the listbox->option ARIA ownership chain.
     private normalizeAutoComboOptions() {
       const lb = this.autoComboListbox;
       if (lb && lb.tagName !== "UL" && lb.tagName !== "OL") {
@@ -361,6 +373,8 @@ export namespace Input {
       });
     }
 
+    // Move DOM focus to the option at `index` and keep the roving-tabindex invariant
+    // (single tab stop), so screen readers announce position on each arrow keypress.
     private focusAutoComboOption(index: number) {
       const opts = this.getAutoComboOptions();
       if (!opts.length) return;
@@ -371,6 +385,8 @@ export namespace Input {
       el.scrollIntoView?.({ block: "nearest" });
     }
 
+    // Implements the APG combobox keyboard contract while focus is on an option:
+    // arrows/Home/End navigate, Enter/Space select, Escape closes, typing returns to input.
     private handleAutoComboListKeydown(e: KeyboardEvent) {
       const opts = this.getAutoComboOptions();
       if (!opts.length) return;
@@ -421,6 +437,8 @@ export namespace Input {
       }
     }
 
+    // Detach observers/listeners on the current listbox (called whenever the popup closes
+    // or the listbox is replaced) so we don't leak handlers or keep stale references.
     private cleanupAutoComboListbox() {
       this.autoComboListObserver?.disconnect();
       this.autoComboListObserver = null;
@@ -432,6 +450,8 @@ export namespace Input {
       this.ariaControls = "";
     }
 
+    // Full teardown on disconnectedCallback: releases the overlay observer in addition
+    // to listbox-scoped resources, preventing memory leaks when the input is removed.
     private teardownAutoCombobox() {
       this.autoComboOverlayObserver?.disconnect();
       this.autoComboOverlayObserver = null;

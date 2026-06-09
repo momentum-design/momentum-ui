@@ -574,7 +574,7 @@ export namespace TableAdvanced {
               return html` <col /> `;
             }
           })}
-          <tr tabindex="0">
+          <tr>
             ${this.COLS.map((col) => {
               if (col.group) {
                 if (gName != col.group.name) {
@@ -597,7 +597,7 @@ export namespace TableAdvanced {
       }
 
       const heads = html`
-        <tr tabindex="0">
+        <tr>
           ${this.COLS.map((col) => {
             if (hasGroup) {
               if (col.group) {

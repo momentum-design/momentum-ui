@@ -165,6 +165,20 @@ describe("Table Advanced component", () => {
     expect(row?.getAttribute("part")).toEqual("first-row");
   });
 
+  test("should not make header rows tab focusable for sortable column navigation", async () => {
+    const elem = await fixture<TableAdvanced.ELEMENT>(html`
+      <md-table-advanced .config=${ShortkeyTable.config} .data=${ShortkeyTable.data}> </md-table-advanced>
+    `);
+
+    const headerRows = elem.shadowRoot!.querySelectorAll("thead tr");
+    headerRows.forEach((row) => {
+      expect(row.hasAttribute("tabindex")).toBe(false);
+    });
+
+    const sortButtons = elem.shadowRoot!.querySelectorAll("thead button.sortable");
+    expect(sortButtons.length).toBeGreaterThan(0);
+  });
+
   test("should set selected row", async () => {
     const elem = await ELEM();
     const row = elem.shadowRoot?.querySelector("table tbody tr") as HTMLElement;

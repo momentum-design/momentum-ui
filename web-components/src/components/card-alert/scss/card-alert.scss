@@ -18,7 +18,7 @@
       min-height: $md-card-alert-no-insight-height;
     }
 
-    &:not(&--expanded):hover {
+    &:not(.md-card-alert--expanded):hover {
       background: $md-card-alert-bg-hover;
       border: $md-card-alert-border-hover;
     }

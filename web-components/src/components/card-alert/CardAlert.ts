@@ -75,7 +75,7 @@ export namespace CardAlert {
     @property({ type: String }) queueName = "";
     @property({ type: Array }) details: DetailRow[] = [];
     @property({ type: String }) insight = "";
-    @property({ type: String }) primaryActionLabel = "Click";
+    @property({ type: String }) primaryActionLabel = "";
     @property({ type: Boolean }) primaryActionDropdown = false;
     @property({ type: String }) detailsHeading = "";
     @property({ type: Boolean }) showDismiss = false;
@@ -259,22 +259,26 @@ export namespace CardAlert {
 
       return html`
         <div class="md-card-alert-actions">
-          <md-button
-            size="32"
-            variant="secondary"
-            class="md-card-alert-primary-action"
-            ariaLabel=${this.primaryActionLabel}
-            @click=${this.handlePrimaryAction}
-          >
-            <span slot="text">${this.primaryActionLabel}</span>
-            ${this.primaryActionDropdown
-              ? html`<md-icon
-                  name=${this.expanded ? "arrow-up-bold" : "arrow-down-bold"}
-                  size="12"
-                  iconSet="momentumDesign"
-                ></md-icon>`
-              : nothing}
-          </md-button>
+          ${this.primaryActionLabel
+            ? html`
+                <md-button
+                  size="32"
+                  variant="secondary"
+                  class="md-card-alert-primary-action"
+                  ariaLabel=${this.primaryActionLabel}
+                  @click=${this.handlePrimaryAction}
+                >
+                  <span slot="text">${this.primaryActionLabel}</span>
+                  ${this.primaryActionDropdown
+                    ? html`<md-icon
+                        name=${this.expanded ? "arrow-up-bold" : "arrow-down-bold"}
+                        size="12"
+                        iconSet="momentumDesign"
+                      ></md-icon>`
+                    : nothing}
+                </md-button>
+              `
+            : nothing}
           ${this.showDismiss
             ? html`
                 <md-button

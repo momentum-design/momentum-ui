@@ -70,6 +70,7 @@ export class CardAlertTemplateSandbox extends LitElement {
           insight=""
           primaryActionLabel="Take action"
           .showDismiss=${true}
+          expanded
           @primary-action-clicked=${this.handlePrimaryAction}
         ></md-card-alert>
 

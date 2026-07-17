@@ -99,6 +99,7 @@ export namespace Dropdown {
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
+    @property({ type: String, attribute: "aria-labelledby" }) ariaLabelledBy = "";
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
 
     @state()
@@ -730,6 +731,43 @@ export namespace Dropdown {
       return this.title;
     }
 
+    get comboboxId() {
+      return this.htmlId ? `${this.htmlId}-combobox` : "md-dropdown-combobox";
+    }
+
+    private getComboboxAriaLabel() {
+      if (this.ariaLabelledBy) {
+        return undefined;
+      }
+      if (this.ariaLabel) {
+        return this.ariaLabel;
+      }
+      return this.labelTitle;
+    }
+
+    private getSearchableComboboxAriaLabel() {
+      if (this.ariaLabelledBy) {
+        return undefined;
+      }
+      if (this.inputValue && !this.ariaLabel) {
+        return undefined;
+      }
+      return this.ariaLabel || this.title;
+    }
+
+    private getListboxAccessibleName() {
+      if (this.ariaLabelledBy) {
+        return { ariaLabelledBy: this.ariaLabelledBy, ariaLabel: undefined };
+      }
+      if (this.ariaLabel) {
+        return { ariaLabelledBy: undefined, ariaLabel: this.ariaLabel };
+      }
+      if (this.searchable && this.expanded && this.ariaLabelForDropdown) {
+        return { ariaLabelledBy: undefined, ariaLabel: this.ariaLabelForDropdown };
+      }
+      return { ariaLabelledBy: undefined, ariaLabel: this.title };
+    }
+
     get dropDownClassMap() {
       return {
         "md-dropdown__expanded": this.expanded,
@@ -850,14 +888,18 @@ export namespace Dropdown {
     }
 
     render() {
+      const listboxAccessibleName = this.getListboxAccessibleName();
+
       return html`
         <div class="md-dropdown ${classMap(this.dropDownClassMap)}" part="dropdown">
           ${!this.searchable
             ? html`
                 <label
+                  id=${this.comboboxId}
                   class="md-dropdown-label ${classMap({ "md-new-dropdown-label": this.newMomentum })}"
                   aria-expanded="${this.expanded}"
-                  aria-label="${this.labelTitle}"
+                  aria-label=${ifDefined(this.getComboboxAriaLabel())}
+                  aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
                   ?disabled=${this.disabled}
@@ -884,11 +926,13 @@ export namespace Dropdown {
                 <div part="group" class="group" ?readonly=${this.readOnly}>
                   ${this.leftIcon ? this.iconTemplate() : nothing}
                   <input
+                    id=${this.comboboxId}
                     class="md-dropdown-input"
                     type="text"
                     role="combobox"
                     aria-autocomplete="both"
-                    aria-label=${ifDefined(this.inputValue ? undefined : this.title)}
+                    aria-label=${ifDefined(this.getSearchableComboboxAriaLabel())}
+                    aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
                     part="dropdown-input"
                     aria-expanded=${this.expanded}
                     placeholder=${this.inputValue ? "" : this.placeholder}
@@ -912,7 +956,8 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.labelTitle}"
+            aria-label=${ifDefined(listboxAccessibleName.ariaLabel)}
+            aria-labelledby=${ifDefined(listboxAccessibleName.ariaLabelledBy)}
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(

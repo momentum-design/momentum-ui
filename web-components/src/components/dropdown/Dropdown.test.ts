@@ -811,6 +811,79 @@ describe("Dropdown Component", () => {
       });
     });
 
+    describe("Listbox accessible name", () => {
+      it("should use title for listbox aria-label when a value is selected", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[1]}"
+            title="Your role"
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown.optionsList!.getAttribute("aria-label")).toEqual("Your role");
+        expect(dropdown.optionsList!.getAttribute("aria-label")).not.toEqual(dropdownStringOptions[1]);
+      });
+
+      it("should use ariaLabel for listbox and combobox when provided", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[1]}"
+            .ariaLabel=${"Your role"}
+            title="Select..."
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown.optionsList!.getAttribute("aria-label")).toEqual("Your role");
+        expect(dropdown.label.getAttribute("aria-label")).toEqual("Your role");
+      });
+
+      it("should use aria-labelledby for listbox and combobox when provided", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[1]}"
+            aria-labelledby="your-role-label"
+            title="Select..."
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown.optionsList!.getAttribute("aria-labelledby")).toEqual("your-role-label");
+        expect(dropdown.optionsList!.hasAttribute("aria-label")).toBeFalsy();
+        expect(dropdown.label.getAttribute("aria-labelledby")).toEqual("your-role-label");
+        expect(dropdown.label.hasAttribute("aria-label")).toBeFalsy();
+      });
+
+      it("should set combobox id from htmlId", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" htmlId="role-dropdown" title="Test"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown.label.getAttribute("id")).toEqual("role-dropdown-combobox");
+      });
+
+      it("should use ariaLabel on searchable input when a value is selected", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            .ariaLabel=${"Your role"}
+            title="Select..."
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input")!;
+        expect(input.getAttribute("aria-label")).toEqual("Your role");
+      });
+    });
+
     describe("Searchable input", () => {
       it("should sync inputValue and hide aria-label/placeholder after selection", async () => {
         const dropdown = await fixture<Dropdown.ELEMENT>(html`

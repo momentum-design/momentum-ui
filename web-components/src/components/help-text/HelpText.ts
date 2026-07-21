@@ -56,7 +56,12 @@ export namespace HelpText {
           role="alert"
         >
           ${this.messageType
-            ? html`<md-icon name="${this.getIconName()}" size="14" iconSet="momentumDesign"></md-icon>`
+            ? html`<md-icon
+                name="${this.getIconName()}"
+                size="14"
+                iconSet="momentumDesign"
+                ariaHidden="true"
+              ></md-icon>`
             : nothing}
           <slot>${this.message}</slot>
         </div>

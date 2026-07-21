@@ -876,6 +876,66 @@ describe("Combobox Component", () => {
       expect(el.selectedOptions.length).toEqual(1);
       expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
     });
+
+    test("should announce selected state on the selected single-select option via aria-selected", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
+      el.expanded = true;
+      await elementUpdated(el);
+
+      // Single-select options expose aria-selected so screen readers announce state.
+      expect(el.lists![0].getAttribute("role")).toEqual("option");
+
+      // No option should be marked selected before a selection is made.
+      [...el.lists!].forEach((option) => {
+        expect(option.getAttribute("aria-selected")).toEqual("false");
+      });
+
+      el.selectedOptions = [comboBoxOptions[0]];
+      await elementUpdated(el);
+
+      // The chosen option is announced as selected, others are not.
+      expect(el.lists![0].getAttribute("aria-selected")).toEqual("true");
+      expect(el.lists![1].getAttribute("aria-selected")).toEqual("false");
+    });
+
+    test("should announce selected state for custom-content (slotted) single-select option", async () => {
+      // Mirrors the country-code-picker: single-select combobox with slotted custom content.
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox with-custom-content>
+          ${repeat(
+            comboBoxComplexObjectOption,
+            (country) => country.countryNameEn,
+            (country: { countryNameEn: string; countryCallingCode: string }, index) => html`
+              <div
+                slot=${index}
+                display-value=${country.countryNameEn}
+                aria-label="+${country.countryCallingCode}${country.countryNameEn}"
+              >
+                <span>${country.countryNameEn}</span>
+                <span>+${country.countryCallingCode}</span>
+              </div>
+            `
+          )}
+        </md-combobox>
+      `);
+
+      el.expanded = true;
+      await elementUpdated(el);
+
+      // Each slotted option is a listbox option with an explicit (false) selected state.
+      expect(el.lists![0].getAttribute("role")).toEqual("option");
+      [...el.lists!].forEach((option) => {
+        expect(option.getAttribute("aria-selected")).toEqual("false");
+      });
+
+      el.selectedOptions = [el.options[0]];
+      await elementUpdated(el);
+
+      // The active/selected slotted option announces its selected state.
+      expect(el.lists![0].getAttribute("role")).toEqual("option");
+      expect(el.lists![0].getAttribute("aria-selected")).toEqual("true");
+      expect(el.lists![1].getAttribute("aria-selected")).toEqual("false");
+    });
   });
 
   test("should set initial value", async () => {

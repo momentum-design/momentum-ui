@@ -119,4 +119,61 @@ describe("Chat Message Component", () => {
     expect(timestampDiv).not.toBeNull();
     expect(timestampLink).toBeNull();
   });
+
+  test("should render an icon avatar when iconName is set and src is empty", async () => {
+    element.src = "";
+    element.iconName = "icon-bot-customer-assistant_16";
+    await elementUpdated(element);
+
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar")!;
+    expect(avatar.iconName).toEqual("icon-bot-customer-assistant_16");
+
+    await avatar.updateComplete;
+    const icon = avatar.shadowRoot!.querySelector("md-icon");
+    expect(icon).not.toBeNull();
+    expect(icon!.name).toEqual("icon-bot-customer-assistant_16");
+    expect(avatar.shadowRoot!.querySelector(".md-avatar__icon")).not.toBeNull();
+  });
+
+  test("should keep forwarding src when both src and iconName are set so the image still wins", async () => {
+    element.iconName = "icon-bot-customer-assistant_16";
+    await elementUpdated(element);
+
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar")!;
+    expect(avatar.src).toEqual(
+      "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
+    );
+    expect(avatar.iconName).toEqual("icon-bot-customer-assistant_16");
+  });
+
+  test("should ignore iconName for a self message", async () => {
+    element.self = true;
+    element.iconName = "icon-bot-customer-assistant_16";
+    await elementUpdated(element);
+
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar")!;
+    expect(avatar.iconName).toBeFalsy();
+    expect(avatar.type).toEqual("self");
+
+    await avatar.updateComplete;
+    expect(avatar.shadowRoot!.querySelector(".md-avatar__self")).not.toBeNull();
+  });
+
+  test("should forward newMomentum to toggle the avatar icon set", async () => {
+    element.src = "";
+    element.iconName = "icon-bot-customer-assistant_16";
+    element.newMomentum = true;
+    await elementUpdated(element);
+
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar")!;
+    expect(avatar.newMomentum).toBe(true);
+    await avatar.updateComplete;
+    expect(avatar.shadowRoot!.querySelector("md-icon")!.iconSet).toEqual("momentumDesign");
+
+    element.newMomentum = false;
+    await elementUpdated(element);
+    await avatar.updateComplete;
+    expect(avatar.newMomentum).toBe(false);
+    expect(avatar.shadowRoot!.querySelector("md-icon")!.iconSet).toEqual("momentumUI");
+  });
 });

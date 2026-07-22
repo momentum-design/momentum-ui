@@ -306,6 +306,10 @@ describe("Input Component", () => {
     const inputMessageElement = querySelectorAllDeep("md-help-text");
     expect(messagesSpy).toHaveReturnedWith(["This is where the error message would be."]);
     expect(inputMessageElement.length).toBeGreaterThan(0);
+
+    const errorIcon = querySelectorDeep("md-help-text md-icon") as HTMLElement & { ariaHidden?: string };
+    expect(errorIcon).not.toBeNull();
+    expect(errorIcon.ariaHidden).toEqual("true");
   });
 
   test("should render multiline", async () => {

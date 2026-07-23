@@ -98,7 +98,7 @@ export namespace Dropdown {
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
 
-    @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
 
     @state()
@@ -730,6 +730,10 @@ export namespace Dropdown {
       return this.title;
     }
 
+    get comboboxAriaLabel() {
+      return this.ariaLabel ? `${this.ariaLabel}, ${this.labelTitle}` : this.labelTitle;
+    }
+
     get dropDownClassMap() {
       return {
         "md-dropdown__expanded": this.expanded,
@@ -857,7 +861,7 @@ export namespace Dropdown {
                 <label
                   class="md-dropdown-label ${classMap({ "md-new-dropdown-label": this.newMomentum })}"
                   aria-expanded="${this.expanded}"
-                  aria-label="${this.labelTitle}"
+                  aria-label="${this.comboboxAriaLabel}"
                   aria-controls="md-dropdown-list"
                   aria-haspopup="listbox"
                   ?disabled=${this.disabled}
@@ -888,7 +892,7 @@ export namespace Dropdown {
                     type="text"
                     role="combobox"
                     aria-autocomplete="both"
-                    aria-label=${ifDefined(this.inputValue ? undefined : this.title)}
+                    aria-label=${ifDefined(this.ariaLabel ? this.ariaLabel : this.inputValue ? undefined : this.title)}
                     part="dropdown-input"
                     aria-expanded=${this.expanded}
                     placeholder=${this.inputValue ? "" : this.placeholder}
@@ -912,7 +916,7 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.ariaLabel || this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(

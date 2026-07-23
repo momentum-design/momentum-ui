@@ -81,7 +81,7 @@ export const IconAvatar: StoryObj = {
     message: "Hi! I'm your virtual agent. How can I help you today?",
     status: "Sent",
     iconName: "icon-bot-customer-assistant_16",
-    newMomentum: true,
+    newMomentum: false,
     avatarSize: "32"
   },
 

@@ -535,10 +535,4 @@ md-input::part(md-input-container) {
       left: -0.125rem;
     }
   }
-
-  .md-datepicker__day--start-date::part(button):focus,
-  .md-datepicker__day--end-date::part(button):focus {
-    // Endpoints already provide an offset focus ring through ::after.
-    outline: none;
-  }
 }

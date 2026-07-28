@@ -35,6 +35,12 @@ export namespace ChatMessage {
     @property({ type: Number, reflect: true, attribute: "avatar-size" })
     avatarSize?: Avatar.Size;
 
+    @property({ type: String, attribute: "icon-name" })
+    iconName = "";
+
+    @property({ type: Boolean })
+    newMomentum = false;
+
     private get computedAvatarType(): Avatar.Type | undefined {
       if (this.avatarType !== undefined) {
         return this.avatarType;
@@ -75,6 +81,8 @@ export namespace ChatMessage {
               title=${this.self ? "self" : this.title}
               label="${this.label}"
               src=${ifDefined(this.self ? undefined : this.src)}
+              icon-name=${ifDefined(this.self ? undefined : this.iconName)}
+              ?newMomentum=${this.newMomentum}
               color=${ifDefined(this.avatarColor)}
               size=${ifDefined(this.avatarSize)}
             ></md-avatar>

@@ -809,6 +809,29 @@ describe("Dropdown Component", () => {
         expect(root.querySelector(".md-dropdown-label--text")!.getAttribute("aria-hidden")).toEqual("true");
         expect(root.querySelector(".md-dropdown-label--icon")!.getAttribute("aria-hidden")).toEqual("true");
       });
+
+      it("should announce the purpose label together with the value when aria-label is provided", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Select..." aria-label="Operator"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const label = dropdown.shadowRoot!.querySelector("label")!;
+        expect(label.getAttribute("aria-label")).toEqual("Operator, Select...");
+
+        dropdown["defaultOption"] = dropdownStringOptions[1];
+        await elementUpdated(dropdown);
+        expect(label.getAttribute("aria-label")).toEqual(`Operator, ${dropdownStringOptions[1]}`);
+      });
+
+      it("should label the listbox with the purpose label when aria-label is provided", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Select..." aria-label="Operator"></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        expect(dropdown.optionsList!.getAttribute("aria-label")).toEqual("Operator");
+      });
     });
 
     describe("Searchable input", () => {
@@ -845,6 +868,22 @@ describe("Dropdown Component", () => {
         const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input")!;
         expect(input.getAttribute("aria-label")).toEqual("Select...");
         expect(input.getAttribute("placeholder")).toEqual("Choose...");
+      });
+
+      it("should keep the purpose label as the accessible name even after a value is selected", async () => {
+        const dropdown = await fixture<Dropdown.ELEMENT>(html`
+          <md-dropdown
+            .options="${dropdownStringOptions}"
+            .defaultOption="${dropdownStringOptions[0]}"
+            title="Select..."
+            aria-label="Country"
+            searchable
+          ></md-dropdown>
+        `);
+        await elementUpdated(dropdown);
+
+        const input = dropdown.shadowRoot!.querySelector(".md-dropdown-input")!;
+        expect(input.getAttribute("aria-label")).toEqual("Country");
       });
     });
 

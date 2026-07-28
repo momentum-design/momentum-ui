@@ -22,6 +22,7 @@ export default {
   component: "md-dropdown",
   argTypes: {
     title: { control: "text", defaultValue: "Select..." },
+    ariaLabel: { control: "text" },
     disabled: { control: "boolean" },
     newMomentum: { control: "boolean" },
     searchable: { control: "boolean" },
@@ -44,6 +45,7 @@ const renderSimpleLong = (args: Args) => {
       .options="${dropdownStringLongOptions}"
       .defaultOption="${dropdownStringLongOptions[29]}"
       .title="${args.title}"
+      .ariaLabel="${args.ariaLabel}"
       ?disabled="${args.disabled}"
       ?newMomentum="${args.newMomentum}"
       ?searchable="${args.searchable}"
@@ -58,6 +60,7 @@ const renderSimpleKeyValue = (args: Args) => {
     <md-dropdown
       .options="${dropdownObjectKeyValueOptions}"
       .title="${args.title}"
+      .ariaLabel="${args.ariaLabel}"
       ?disabled="${args.disabled}"
       ?newMomentum="${args.newMomentum}"
       ?searchable="${args.searchable}"
@@ -74,6 +77,7 @@ const renderMultiKeyValue = (args: Args) => {
       option-id="id"
       option-value="country"
       .title="${args.title}"
+      .ariaLabel="${args.ariaLabel}"
       ?disabled="${args.disabled}"
       ?newMomentum="${args.newMomentum}"
       ?searchable="${args.searchable}"
@@ -88,6 +92,7 @@ const renderDropdownStringValues = (args: Args) => {
     <md-dropdown
       .options="${dropdownStringOptions}"
       .title="${args.title}"
+      .ariaLabel="${args.ariaLabel}"
       ?disabled="${args.disabled}"
       ?newMomentum="${args.newMomentum}"
       ?searchable="${args.searchable}"

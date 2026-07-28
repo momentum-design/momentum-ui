@@ -98,7 +98,7 @@ export namespace Dropdown {
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
 
-    @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
     @property({ type: String, attribute: "aria-labelledby" }) ariaLabelledBy = "";
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
 
@@ -735,24 +735,28 @@ export namespace Dropdown {
       return this.htmlId ? `${this.htmlId}-combobox` : "md-dropdown-combobox";
     }
 
+    get comboboxAriaLabel() {
+      return this.ariaLabel ? `${this.ariaLabel}, ${this.labelTitle}` : this.labelTitle;
+    }
+
     private getComboboxAriaLabel() {
       if (this.ariaLabelledBy) {
         return undefined;
       }
-      if (this.ariaLabel) {
-        return this.ariaLabel;
-      }
-      return this.labelTitle;
+      return this.comboboxAriaLabel;
     }
 
     private getSearchableComboboxAriaLabel() {
       if (this.ariaLabelledBy) {
         return undefined;
       }
-      if (this.inputValue && !this.ariaLabel) {
+      if (this.ariaLabel) {
+        return this.ariaLabel;
+      }
+      if (this.inputValue) {
         return undefined;
       }
-      return this.ariaLabel || this.title;
+      return this.title;
     }
 
     private getListboxAccessibleName() {

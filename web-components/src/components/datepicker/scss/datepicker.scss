@@ -489,3 +489,50 @@
 md-input::part(md-input-container) {
   margin-bottom: 0.5rem;
 }
+
+@media (forced-colors: active) {
+  .md-datepicker__day--selected::part(button),
+  .md-datepicker__day--in-range::part(button) {
+    --datepicker-selected-bg-color: SelectedItem;
+    --datepicker-selected-hover-bg-color: SelectedItem;
+    --datepicker-selected-pressed-bg-color: SelectedItem;
+    --datepicker-selected-text-color: SelectedItemText;
+    --datepicker-selected-today-border: 1px solid currentColor;
+    --datepicker-range-bg-color: Highlight;
+    --datepicker-range-edge-bg-color: SelectedItem;
+    --datepicker-range-hover-bg-color: Highlight;
+    --datepicker-range-text-color: HighlightText;
+    --datepicker-pressed-text-color: HighlightText;
+    --button-focus-ring-color: Highlight;
+
+    forced-color-adjust: none;
+  }
+
+  .md-datepicker__day--in-range:not(.md-datepicker__day--start-date):not(.md-datepicker__day--end-date) {
+    &::part(button)::before {
+      // The centered range pseudo-elements normally overlap by 1px.
+      // Match the 32px button plus 4px column gap exactly in forced-colors mode.
+      width: calc(#{$day-button-height} + 0.25rem);
+    }
+
+    // The general forced-colors rule overrides the normal first-column width.
+    // Restore the half-gap extension so it meets the next range segment and no gap is shown in background
+    &.md-datepicker__day--week-first::part(button)::before {
+      width: calc(#{$day-button-height} + 0.125rem);
+    }
+
+    // Extend the last cell in the row halfway into the preceding gap so it meets the
+    // previous range segment without using the normal overlapping geometry.
+    &.md-datepicker__day--week-last::part(button)::before {
+      left: -0.125rem;
+      width: calc(#{$day-button-height} + 0.125rem);
+    }
+  }
+
+  .md-datepicker__day--end-date:not(.md-datepicker__day--start-date):not(.md-datepicker__day--week-first) {
+    &::part(button)::before {
+      // Meet the preceding connector halfway across the column gap.
+      left: -0.125rem;
+    }
+  }
+}

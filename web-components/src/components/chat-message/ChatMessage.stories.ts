@@ -26,11 +26,14 @@ export default {
     avatarType: { control: { type: "select" }, options: AvatarType },
     avatarColor: { control: { type: "select" }, options: avatarColorOptions },
     avatarSize: { control: { type: "select" }, options: AvatarSize },
+    iconName: { control: "text" },
+    newMomentum: { control: "boolean" },
     isSelected: { control: "boolean" },
     // Disable auto-inferred color control for avatar-color attribute
     "avatar-color": { control: { type: "select" }, options: avatarColorOptions },
     "avatar-size": { control: { type: "select" }, options: AvatarSize },
     "avatar-type": { control: { type: "select" }, options: AvatarType },
+    "icon-name": { control: "text" },
     "self-label": { control: "text" }
   },
   parameters: { a11y: { context: "md-chat-message" } }
@@ -56,6 +59,8 @@ export const ChatMessage: StoryObj = {
         avatar-type=${ifDefined(args.avatarType)}
         avatar-color=${ifDefined(args.avatarColor)}
         avatar-size=${ifDefined(args.avatarSize)}
+        icon-name=${ifDefined(args.iconName)}
+        ?newMomentum=${args.newMomentum}
         self-label=${ifDefined(args.selfLabel)}
         ?isSelected=${args.isSelected}
       >
@@ -64,6 +69,32 @@ export const ChatMessage: StoryObj = {
             <md-icon name="icon-priority_12"></md-icon>
           </md-tooltip>
         </span>
+        <p slot="message">${args.message}</p>
+      </md-chat-message>
+    `;
+  }
+};
+
+export const IconAvatar: StoryObj = {
+  args: {
+    title: "Virtual Agent",
+    message: "Hi! I'm your virtual agent. How can I help you today?",
+    status: "Sent",
+    iconName: "icon-bot-customer-assistant_16",
+    newMomentum: false,
+    avatarSize: "32"
+  },
+
+  render: (args: Args) => {
+    return html`
+      <md-chat-message
+        title=${args.title}
+        time="11:27AM"
+        status=${args.status}
+        icon-name=${ifDefined(args.iconName)}
+        ?newMomentum=${args.newMomentum}
+        avatar-size=${ifDefined(args.avatarSize)}
+      >
         <p slot="message">${args.message}</p>
       </md-chat-message>
     `;

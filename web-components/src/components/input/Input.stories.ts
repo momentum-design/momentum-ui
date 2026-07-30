@@ -251,6 +251,78 @@ export const NewMomentumMessages: StoryObj = {
   }
 };
 
+export const DropdownEndControlSpacing: StoryObj = {
+  render: () => html`
+    <style>
+      .dropdown-spacing-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(176.5px, max-content));
+      }
+
+      .dropdown-spacing-case {
+        width: 176.5px;
+      }
+
+      .dropdown-spacing-case p {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        margin: 0 0 0.5rem;
+      }
+    </style>
+
+    <div class="dropdown-spacing-grid">
+      <div class="dropdown-spacing-case">
+        <p>Empty searchable dropdown</p>
+        <md-input newMomentum searchable clear showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Dirty clear and dropdown</p>
+        <md-input newMomentum clear showDropdown value="Selected resource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Empty compact dropdown</p>
+        <md-input newMomentum compact showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Empty disabled dropdown</p>
+        <md-input newMomentum disabled showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Empty read-only dropdown</p>
+        <md-input newMomentum readOnly showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Empty multiline dropdown</p>
+        <md-input newMomentum multiline showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case" dir="rtl">
+        <p>Empty RTL dropdown</p>
+        <md-input newMomentum searchable showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+
+      <div class="dropdown-spacing-case">
+        <p>Empty legacy dropdown</p>
+        <md-input searchable showDropdown placeholder="Sélectionner une ressource"></md-input>
+      </div>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: "Fixed-width visual regression cases for the inline-end space reserved by a rendered dropdown control."
+      }
+    }
+  }
+};
+
 const meta: Meta = {
   title: "Components/Input",
   component: "md-input",

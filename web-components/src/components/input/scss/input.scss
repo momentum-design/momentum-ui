@@ -518,6 +518,10 @@
     transition: box-shadow ease-out 0.15s;
     width: 100%;
 
+    &:not(.md-input--multiline):has(~ .md-input__after > .md-input__dropdown-button) {
+      padding-inline-end: $input__padding-side--icon;
+    }
+
     &.md-dirty {
       padding-inline-end: rem-calc(8);
     }

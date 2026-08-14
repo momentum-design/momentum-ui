@@ -45,6 +45,11 @@
   color: var(--list-active-text-color);
 }
 
+// Bold the selected row label as a non-color cue (skip non-selectable rows).
+.default-wrapper.selected:not(.non-selectable) {
+  font-weight: var(--list-selected-font-weight, bold);
+}
+
 .default-wrapper.focused {
   outline: 2px solid var(--md-default-focus-outline-color);
   outline-offset: -2px;

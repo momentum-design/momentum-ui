@@ -45,6 +45,13 @@
   }
 }
 
+// Add a bold label as a non-color cue for the persistently selected option.
+:host([selected]:not([disabled])) {
+  .md-list-item {
+    font-weight: var(--list-selected-font-weight, bold);
+  }
+}
+
 :host([focus-visible]) {
   .md-list-item {
     box-shadow: $list-item__focus-shadow;

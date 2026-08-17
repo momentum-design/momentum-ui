@@ -45,8 +45,13 @@
   }
 }
 
-// Add a bold label as a non-color cue for the persistently selected option.
+// The selected background alone fails WCAG 2.1 SC 1.4.11 (non-text contrast, 3:1),
+// so add a bold label as a non-color cue. Applied on :host so a raw slotted
+// text-node label (whose light-DOM parent is the host) inherits the weight; the
+// inner rule also covers content rendered inside the shadow wrapper.
 :host([selected]:not([disabled])) {
+  font-weight: var(--list-selected-font-weight, bold);
+
   .md-list-item {
     font-weight: var(--list-selected-font-weight, bold);
   }

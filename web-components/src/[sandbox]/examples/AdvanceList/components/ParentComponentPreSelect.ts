@@ -41,7 +41,9 @@ export namespace ParentComponentPreSelect {
         this.totalRecords = 60000;
         this.page += 1;
         this.isLoading = false;
-        this.value.push(this.items[1].id);
+        // Assign a new array reference (not push) so Lit's dirty-check detects the
+        // change and md-advance-list applies the preselected state.
+        this.value = [this.items[1].id];
       } catch (_err) {
         this.isLoading = false;
         this.isError = true;

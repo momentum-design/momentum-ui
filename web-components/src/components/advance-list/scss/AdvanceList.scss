@@ -45,8 +45,13 @@
   color: var(--list-active-text-color);
 }
 
-// Bold the selected row label as a non-color cue (skip non-selectable rows).
-.default-wrapper.selected:not(.non-selectable) {
+// The selected background alone fails WCAG 2.1 SC 1.4.11 (non-text contrast,
+// 3:1), so bold the selected row label as a non-color cue (skip non-selectable
+// rows). The label is rendered inside this shadow tree (not slotted), so the
+// reset stylesheet pins its font-weight and breaks inheritance from the wrapper
+// — target the descendants explicitly so the actual label text goes bold.
+.default-wrapper.selected:not(.non-selectable),
+.default-wrapper.selected:not(.non-selectable) * {
   font-weight: var(--list-selected-font-weight, bold);
 }
 

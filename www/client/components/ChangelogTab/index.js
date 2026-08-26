@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import marked from 'marked';
+import { marked, Renderer } from 'marked';
 
 class ChangelogTab extends React.PureComponent {
   render() {
     const { content } = this.props;
 
-    let renderer = new marked.Renderer();
+    let renderer = new Renderer();
 
     renderer.heading = (text, level) => {
       if (level <= 2) {
@@ -56,7 +56,7 @@ class ChangelogTab extends React.PureComponent {
       }
     };
 
-    const html = marked(content, { renderer: renderer });
+    const html = marked.parse(content, { renderer: renderer });
 
     return (
       /* eslint-disable react/no-danger */

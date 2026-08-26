@@ -1,17 +1,17 @@
 const path = require('path');
 const { readFileSync } = require('fs');
-const markdown = require('remark-parse');
-const unified = require('unified');
-const gitUrlParse = require('git-url-parse');
-const { default: fetch } = require('node-fetch');
 const cwd = process.cwd();
 const packageFile = path.resolve(cwd, 'package.json');
 const { name, repository } = require(packageFile);
-const { full_name } = gitUrlParse(repository.url);
-const releasesApi = `https://api.github.com/repos/${full_name}/releases`;
-const releasesUrl = `https://github.com/${full_name}/releases`;
+const repositoryUrl = typeof repository === 'string' ? repository : repository.url;
+const repositoryMatch = repositoryUrl.match(/github\.com[/:]([^/]+)\/([^/#]+?)(?:\.git)?$/);
+if (!repositoryMatch) {
+  throw new Error(`Unsupported GitHub repository URL: ${repositoryUrl}`);
+}
+const fullName = `${repositoryMatch[1]}/${repositoryMatch[2]}`;
+const releasesApi = `https://api.github.com/repos/${fullName}/releases`;
+const releasesUrl = `https://github.com/${fullName}/releases`;
 const GH_TOKEN = process.env.GITHUB_API_TOKEN;
-const webexTeams = require('webex');
 
 const date = new Date();
 const year = date.getFullYear();
@@ -31,15 +31,20 @@ async function postPublish() {
 
 function getReleaseFromChangelog(changelog) {
   const changelogLines = changelog.split('\n');
-  const processor = unified().use(markdown, { commonmark: true });
-  const mdAST = processor.parse(changelog).children;
-  return mdAST
-    .filter(heading => heading.type === 'heading' && (heading.children[0].type === 'link' || /[0-9]*\.[0-9]*\.[0-9]*/.test(heading.children[0].value)))
-    .map(({ children }) => (children[0].children ? children[0].children[0] : children[0]))
-    .map((heading, index, array) => ({
-      version: `${name}@${heading.value.split(' ')[0]}`,
-      content: changelogLines.slice(heading.position.start.line, index + 1 < array.length ? array[index + 1].position.start.line - 2 : undefined),
-    }))[0];
+  const releaseHeadings = changelogLines
+    .map((line, index) => ({ index, match: line.match(/^# \[?(\d+\.\d+\.\d+(?:-[^\]\s]+)?)/) }))
+    .filter(({ match }) => match);
+
+  if (!releaseHeadings.length) {
+    throw new Error(`No release heading found in ${path.resolve(cwd, 'CHANGELOG.md')}`);
+  }
+
+  const current = releaseHeadings[0];
+  const next = releaseHeadings[1];
+  return {
+    version: `${name}@${current.match[1]}`,
+    content: changelogLines.slice(current.index + 1, next ? next.index : undefined),
+  };
 }
 
 async function getUnpublishedRelease(release) {
@@ -58,27 +63,27 @@ async function sendMessageToTeams(release) {
   const spaceId = process.env.WEBEXTEAMS_SPACE_ID;
   const wtToken = process.env.WEBEXTEAMS_ACCESS_TOKEN;
 
-  const teams = webexTeams.init({
-    credentials: {
-      authorization: {
-        access_token: wtToken,
-      },
-    },
-  });
-
   const { content, version } = release;
   const messageVersion = version.replace(`${name}@`, 'v');
   const encodedVersion = encodeURIComponent(version);
   const teamsMessage = `# ${name} \n` + `## [${messageVersion}](${releasesUrl}/tags/${encodedVersion}) (${releaseDate}) \n` + `${content.join('\n')}`;
 
-  return teams.messages.create({
-    markdown: teamsMessage,
-    roomId: spaceId,
+  const response = await fetch('https://webexapis.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${wtToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ markdown: teamsMessage, roomId: spaceId }),
   });
+  if (!response.ok) {
+    throw new Error(`Webex message failed (${response.status}): ${await response.text()}`);
+  }
+  return response.json();
 }
 
 async function publishReleaseToGithub(release) {
-  return fetch(releasesApi, {
+  const response = await fetch(releasesApi, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${GH_TOKEN}`,
@@ -89,6 +94,13 @@ async function publishReleaseToGithub(release) {
       body: release.content.join('\n'),
     }),
   });
+  if (!response.ok) {
+    throw new Error(`GitHub release failed (${response.status}): ${await response.text()}`);
+  }
+  return response.json();
 }
 
-postPublish();
+postPublish().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

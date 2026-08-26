@@ -38,8 +38,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "cpy-cli": "3.1.1",
-    "fast-glob": "^2.2.6",
+    "cpy-cli": "7.0.0",
     "jsonfile": "^5.0.0"
   },
   "publishConfig": {

@@ -1,4 +1,4 @@
-const processExec = require('child-process-promise').exec;
+const { exec: runCommand } = require('child_process');
 const { chalkWarning, chalkProcessing } = require('../config/chalkConfig');
 
 let executionOptions = {
@@ -18,29 +18,29 @@ function logWithPrefix(prefix, message) {
   );
 }
 
-exports.exec = (command, options = {}) =>  {
-  let proc = processExec(command, options);
-
-  if (!executionOptions.verbose) {
-    return proc;
-  }
-
-  let title = options.title || command;
-  let output = (data, type) => logWithPrefix(`[${title}] ${type}:`, data);
-
-  return proc
-    .progress(({ stdout, stderr }) => {
-      stdout.on('data', data => output(data, 'stdout'));
-      stderr.on('data', data => output(data, 'stderr'));
-    })
-    .then(result => {
+exports.exec = (command, options = {}) => new Promise((resolve, reject) => {
+  const title = options.title || command;
+  const child = runCommand(command, options, (error, stdout, stderr) => {
+    if (error) {
+      error.stdout = stdout;
+      error.stderr = stderr;
+      reject(error);
+      return;
+    }
+    if (executionOptions.verbose) {
       logWithPrefix(`[${title}]`, chalkProcessing('Complete'));
-      return result;
-    });
-}
+    }
+    resolve({ stdout, stderr });
+  });
+
+  if (executionOptions.verbose) {
+    child.stdout.on('data', data => logWithPrefix(`[${title}] stdout:`, data));
+    child.stderr.on('data', data => logWithPrefix(`[${title}] stderr:`, data));
+  }
+});
 
 exports.safeExec = (command, options = {}) => {
-  let title = options.title || command;
+  const title = options.title || command;
 
   if (executionOptions.dryRun) {
     logWithPrefix(
@@ -50,9 +50,9 @@ exports.safeExec = (command, options = {}) => {
     return Promise.resolve();
   }
 
-  return exec(command, options);
-}
+  return exports.exec(command, options);
+};
 
 exports.setExecOptions = (options) => {
   executionOptions = { ...executionOptions, ...options };
-}
+};

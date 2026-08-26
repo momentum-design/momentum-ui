@@ -1,6 +1,5 @@
 import express from 'express';
 import Component from '../models/component';
-import fetch from 'node-fetch';
 import addOrUpdateComponent from '../tools/addOrUpdateComponent';
 import combineComponentData from '../tools/combineComponentData';
 import config from '../config';

@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 fetch('http://54.244.26.136/wp-json/wp/v2/pages?per_page=100')
   .then(res => res.json())
   .then(json => {

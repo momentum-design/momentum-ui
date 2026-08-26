@@ -1,5 +1,4 @@
 import express from 'express';
-import fetch from 'node-fetch';
 import config from '../config';
 import Component from '../models/component';
 import combineComponentData from '../tools/combineComponentData';

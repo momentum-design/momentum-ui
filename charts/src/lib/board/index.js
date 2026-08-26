@@ -141,8 +141,8 @@ class Board {
     scale = scale || [0.1, 2];
     let zoom = d3.zoom();
     zoom.scaleExtent(scale);
-    zoom.on('zoom', () => {
-      this._handleZoom(d3.event.transform);
+    zoom.on('zoom', event => {
+      this._handleZoom(event.transform);
     });
     this.Svg.call(zoom);
     return zoom;

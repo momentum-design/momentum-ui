@@ -2,7 +2,7 @@ import "../button/Button";
 import "../icon/Icon";
 import "../tooltip/Tooltip";
 import { Key } from "@/constants";
-import { FocusMixin, SlottedMixin } from "@/mixins";
+import { FocusTrapMixin, SlottedMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import "@interactjs/actions/drag";
@@ -19,7 +19,7 @@ import styles from "./scss/module.scss";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
-  export class ELEMENT extends FocusMixin(SlottedMixin(LitElement)) {
+  export class ELEMENT extends FocusTrapMixin(SlottedMixin(LitElement)) {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
@@ -92,6 +92,13 @@ export namespace FloatingModal {
       "[data-floating-modal-ignore-resize] *"
     ].join(", ");
 
+    constructor() {
+      super();
+      // The floating modal has no backdrop and never auto-closes on an outside click, so once the
+      // focus trap is active (full-screen), an outside click shouldn't be able to silently turn it off.
+      this.preventClickOutside = true;
+    }
+
     static get styles() {
       return [reset, styles];
     }
@@ -123,6 +130,33 @@ export namespace FloatingModal {
       ) {
         this.focusModalOnOpen();
       }
+
+      if (changedProperties.has("show") || changedProperties.has("full")) {
+        this.syncFocusTrap();
+      }
+
+      if (changedProperties.has("show") || (changedProperties.has("minimize") && this.show)) {
+        this.refreshFocusableElements();
+      }
+    }
+
+    // Only trap Tab while full-screen: that's the only state where the modal visually covers
+    // the host page, so it's the only state where escaping focus is a real problem. Floating
+    // (non-full-screen) mode is meant to coexist with the rest of the page.
+    private syncFocusTrap() {
+      if (this.show && this.full) {
+        this.activateFocusTrap!();
+      } else {
+        this.deactivateFocusTrap!();
+      }
+    }
+
+    private refreshFocusableElements() {
+      requestAnimationFrame(() => {
+        if (this.show) {
+          this.setFocusableElements!();
+        }
+      });
     }
 
     private getDeepActiveElementFromDocument(): HTMLElement | null {
@@ -270,15 +304,23 @@ export namespace FloatingModal {
       requestAnimationFrame(() => {
         if (!this.show || !this.container) return;
 
-        interact(this).draggable({
-          autoScroll: true,
-          allowFrom: this.DRAG_HANDLE_SELECTOR,
-          ignoreFrom: this.DRAG_IGNORE_SELECTOR,
-          listeners: {
-            move: this.dragMoveListener,
-            end: this.dragEndListener
-          }
-        });
+        interact(this)
+          .draggable({
+            autoScroll: true,
+            allowFrom: this.DRAG_HANDLE_SELECTOR,
+            ignoreFrom: this.DRAG_IGNORE_SELECTOR,
+            listeners: {
+              move: this.dragMoveListener,
+              end: this.dragEndListener
+            },
+            modifiers: [
+              interact.modifiers.restrictRect({
+                restriction: document.body.getBoundingClientRect(),
+                endOnly: true
+              })
+            ]
+          })
+          .rectChecker(() => this.container!.getBoundingClientRect());
 
         if (this.resizable) {
           interact(this.container)

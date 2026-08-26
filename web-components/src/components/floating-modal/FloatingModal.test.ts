@@ -468,8 +468,9 @@ describe("Floating Modal Component", () => {
     expect(activeElementInShadow).toBe(firstHeaderButton);
   });
 
-  test("should wrap focus from the last header button back to the first on Tab", async () => {
+  test("should wrap focus from the last header button back to the first on Tab when full-screen", async () => {
     element.show = true;
+    element.full = true;
     jest.advanceTimersByTime(600);
     await elementUpdated(element);
     jest.runAllTimers();
@@ -491,8 +492,9 @@ describe("Floating Modal Component", () => {
     expect(element.shadowRoot?.activeElement).toBe(firstHeaderButton);
   });
 
-  test("should wrap focus from the first header button back to the last on Shift+Tab", async () => {
+  test("should wrap focus from the first header button back to the last on Shift+Tab when full-screen", async () => {
     element.show = true;
+    element.full = true;
     jest.advanceTimersByTime(600);
     await elementUpdated(element);
     jest.runAllTimers();
@@ -516,11 +518,61 @@ describe("Floating Modal Component", () => {
     expect(element.shadowRoot?.activeElement).toBe(lastHeaderButton);
   });
 
-  test("should not trap focus once the modal is closed", async () => {
+  test("should not trap focus while floating (not full-screen)", async () => {
     element.show = true;
     jest.advanceTimersByTime(600);
     await elementUpdated(element);
     jest.runAllTimers();
+    // Let the open sequence's own focus bookkeeping (unrelated to the trap) fully settle
+    // before asserting, so it can't be mistaken for the trap having intervened.
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeFalsy();
+
+    const headerButtons = element.shadowRoot!.querySelectorAll(
+      ".md-floating__header md-button.md-floating__header-button"
+    );
+    const lastHeaderButton = headerButtons[headerButtons.length - 1] as HTMLElement;
+
+    lastHeaderButton.focus();
+    lastHeaderButton.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Tab, bubbles: true, composed: true }));
+    jest.runAllTimers();
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    // jsdom doesn't implement native Tab-key focus advancement, so the meaningful assertion
+    // here is that the (inactive) trap didn't intervene and wrap focus back to the first button.
+    expect(element.shadowRoot?.activeElement).toBe(lastHeaderButton);
+  });
+
+  test("should activate the trap on entering full-screen and release it on leaving full-screen", async () => {
+    element.show = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeFalsy();
+
+    element.full = true;
+    await elementUpdated(element);
+    jest.runAllTimers();
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeTruthy();
+
+    element.full = false;
+    await elementUpdated(element);
+    jest.runAllTimers();
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeFalsy();
+  });
+
+  test("should not trap focus once the modal is closed", async () => {
+    element.show = true;
+    element.full = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeTruthy();
 
     const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");

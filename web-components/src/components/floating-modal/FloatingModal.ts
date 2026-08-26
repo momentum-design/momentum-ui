@@ -94,8 +94,8 @@ export namespace FloatingModal {
 
     constructor() {
       super();
-      // The floating modal has no backdrop and never auto-closes on an outside click,
-      // so its Tab focus trap must stay active for as long as it's open too.
+      // The floating modal has no backdrop and never auto-closes on an outside click, so once the
+      // focus trap is active (full-screen), an outside click shouldn't be able to silently turn it off.
       this.preventClickOutside = true;
     }
 
@@ -112,12 +112,10 @@ export namespace FloatingModal {
           this.setContainerRect();
           this.setInteractInstance();
           this.focusModalOnOpen();
-          this.activateFocusTrap!();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
           this.restoreFocusAfterClose();
-          this.deactivateFocusTrap!();
         }
       }
       if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
@@ -133,8 +131,23 @@ export namespace FloatingModal {
         this.focusModalOnOpen();
       }
 
+      if (changedProperties.has("show") || changedProperties.has("full")) {
+        this.syncFocusTrap();
+      }
+
       if (changedProperties.has("show") || (changedProperties.has("minimize") && this.show)) {
         this.refreshFocusableElements();
+      }
+    }
+
+    // Only trap Tab while full-screen: that's the only state where the modal visually covers
+    // the host page, so it's the only state where escaping focus is a real problem. Floating
+    // (non-full-screen) mode is meant to coexist with the rest of the page.
+    private syncFocusTrap() {
+      if (this.show && this.full) {
+        this.activateFocusTrap!();
+      } else {
+        this.deactivateFocusTrap!();
       }
     }
 

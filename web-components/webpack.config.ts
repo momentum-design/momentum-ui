@@ -94,7 +94,16 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
     test: /\.scss$/,
     use: [
       { loader: "lit-scss-loader", options: { minify: !isDev } },
-      { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
+      {
+        loader: "string-replace-loader",
+        options: {
+          multiple: [
+            // css-loader stripped Sass's leading BOM before the stylesheet was passed to Lit.
+            { search: /^\uFEFF/, replace: "" },
+            { search: /\\/g, replace: "\\\\" }
+          ]
+        }
+      },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
         loader: "sass-loader",

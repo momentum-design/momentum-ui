@@ -529,12 +529,7 @@ test("should update role attribute when ariaRole changes", async () => {
 
 test("should set combobox aria attributes when dropdown is shown", async () => {
   const element = await fixture<Input.ELEMENT>(
-    html`<md-input
-      label="Your team"
-      value="Applause-Agent Based"
-      showDropdown
-      ariaControls="team-listbox"
-    ></md-input>`
+    html`<md-input label="Your team" value="Applause-Agent Based" showDropdown ariaControls="team-listbox"></md-input>`
   );
 
   const inputElement = element.shadowRoot!.querySelector("input");

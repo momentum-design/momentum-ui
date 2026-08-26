@@ -1,0 +1,30 @@
+{
+  "id": 1563,
+  "name": "avatar",
+  "displayName": "Avatars",
+  "description": "Avatars identify people and spaces.",
+  "style": [],
+  "usage": [],
+  "code": {
+    "id": 1563,
+    "name": "avatar",
+    "props": {
+      "react": []
+    },
+    "sections": [
+      {
+        "name": "default",
+        "displayName": "Default",
+        "description": "",
+        "variations": {
+          "core": {
+            "example": "<div class=\"md-avatar md-avatar--44\" title=\"Tom Smith\"><span class=\"md-avatar__letter\">TS</span></div>"
+          },
+          "react": {
+            "example": "import React from 'react';\nimport { Avatar } from '@momentum-ui/react';\nexport default () => <Avatar title=\"Tom Smith\" />;"
+          }
+        }
+      }
+    ]
+  }
+}

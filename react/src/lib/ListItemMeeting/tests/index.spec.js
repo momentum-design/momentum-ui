@@ -235,7 +235,7 @@ describe('tests for <ListItemMeeting />', () => {
     );
 
     container.find('ListItemMeeting').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('EventOverlay').props().showArrow).toEqual(false);

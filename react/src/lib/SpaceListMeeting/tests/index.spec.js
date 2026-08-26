@@ -48,7 +48,7 @@ describe('tests for <SpaceListMeeting />', () => {
     expect(container.find('ListItem').length).toEqual(1);
 
     container.find('.md-list-item--space-meeting--attendees').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('ListItem').length).toEqual(5);
   });
@@ -66,7 +66,7 @@ describe('tests for <SpaceListMeeting />', () => {
     expect(container.find('.md-event-overlay__children').children().find('.internalNode').length).toEqual(0);
 
     container.find('.md-list-item--space-meeting--attendees').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay__children').children().find('.internalNode').length).toEqual(1);
   });

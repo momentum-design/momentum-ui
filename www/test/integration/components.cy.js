@@ -1,7 +1,16 @@
 describe('Components pages', function() {
+  beforeEach(() => {
+    cy.intercept('GET', 'https://api.momentum-ui.com/components', {
+      fixture: 'components.json',
+    });
+    cy.intercept('GET', 'https://api.momentum-ui.com/components/1563', {
+      fixture: 'avatar.json',
+    });
+  });
+
   describe('Test the components overview page', () => {
     it('Search filter should filter the Avatar card', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/components`)
+      cy.visit(`/components`)
         .get('#filterSearchInput')
         .type('avatar');
       cy.get('.site-component-item--info__title')
@@ -13,7 +22,7 @@ describe('Components pages', function() {
   });
   describe('Test the Code tab', () => {
     beforeEach(() => {
-      cy.visit(`${Cypress.env('BASE_URL')}/components/avatar`);
+      cy.visit(`/components/avatar`);
     });
     it('Code tab should be active by default', () => {
       cy.get('[data-cy=code]').should('have.class', 'active');
@@ -56,7 +65,7 @@ describe('Components pages', function() {
   });
   describe('Test the Usage and Style tabs', () => {
     beforeEach(() => {
-      cy.visit(`${Cypress.env('BASE_URL')}/components/avatar`);
+      cy.visit(`/components/avatar`);
     });
     it('Should navigate to the usage tab', () => {
       cy.get('[data-cy=usage]')

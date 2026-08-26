@@ -1,8 +1,8 @@
 import { prefix } from '../../utils/index';
 
 describe('@momentum-ui/react', () => {
-  before(() => {
-    cy.visit(`${Cypress.env('BASE_URL')}/tooltip`);
+  beforeEach(() => {
+    cy.visit(`/tooltip`);
   });
 
   afterEach(() => {

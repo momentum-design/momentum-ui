@@ -31,7 +31,7 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(0);
   });
@@ -48,7 +48,7 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
   });
@@ -65,7 +65,7 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
   });
@@ -82,7 +82,7 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-coachmark__header').length).toEqual(1);
   });
@@ -99,7 +99,7 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-coachmark__subheader').length).toEqual(1);
   });
@@ -119,11 +119,11 @@ describe('tests for <Coachmark />', () => {
       </Coachmark>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-button').length).toEqual(1);
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(onClick).toHaveBeenCalled();
   });
@@ -162,7 +162,7 @@ describe('tests for <Coachmark />', () => {
 
     container.setState({ coachmarkOpen: true });
 
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
 
@@ -171,7 +171,7 @@ describe('tests for <Coachmark />', () => {
     evt.initEvent("click", false, true);
     document.dispatchEvent(evt);
 
-    jest.runTimersToTime(200);
+    global.advanceTimersByTime(200);
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(0);
   });
@@ -208,7 +208,7 @@ describe('tests for <Coachmark />', () => {
     const container = mount(<ContainerDefault/>);
     container.setState({ coachmarkOpen: true });
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
 
@@ -217,7 +217,7 @@ describe('tests for <Coachmark />', () => {
      evt.initEvent("click", false, true);
      document.dispatchEvent(evt);
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.coachmark-content').length).toEqual(1);
   });

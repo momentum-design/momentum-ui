@@ -30,7 +30,7 @@ describe('tests for <Tooltip />', () => {
 
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-tooltip__text').text()).toEqual('test');
@@ -45,7 +45,7 @@ describe('tests for <Tooltip />', () => {
 
     const button = container.find('button');
     button.simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-tooltip__text').text()).toEqual('test');
@@ -60,7 +60,7 @@ describe('tests for <Tooltip />', () => {
 
     const button = container.find('button');
     button.simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-tooltip__text').text()).toEqual('test');
@@ -74,7 +74,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--top').length).toEqual(1);
@@ -88,7 +88,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--top').length).toEqual(1);
@@ -102,7 +102,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--top').length).toEqual(1);
@@ -116,7 +116,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
@@ -131,7 +131,7 @@ describe('tests for <Tooltip />', () => {
 
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
   });
@@ -145,7 +145,7 @@ describe('tests for <Tooltip />', () => {
 
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
   });
@@ -158,7 +158,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--left').length).toEqual(1);
@@ -172,7 +172,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay--right').length).toEqual(1);
@@ -186,7 +186,7 @@ describe('tests for <Tooltip />', () => {
     );
     const button = container.find('button');
     button.simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-tooltip__text').prop('style').width).toEqual(

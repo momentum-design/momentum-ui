@@ -54,6 +54,7 @@ class Modal extends React.Component {
       className,
       escapeExits,
       focusDialog,
+      focusTrapOptions,
       htmlId,
       renderTo,
       show,
@@ -95,6 +96,10 @@ class Modal extends React.Component {
           underlayClickExits={backdropClickExit}
           escapeExits={escapeExits}
           focusDialog={focusDialog}
+          focusTrapOptions={{
+            fallbackFocus: '#react-aria-modal-dialog',
+            ...focusTrapOptions,
+          }}
           {...props}
         >
           {modalContent}
@@ -122,6 +127,8 @@ Modal.propTypes = {
   escapeExits: PropTypes.bool,
   /** @prop To set focus to the entire modal rather than elements within modal | true */
   focusDialog: PropTypes.bool,
+  /** @prop Options passed through to focus-trap */
+  focusTrapOptions: PropTypes.object,
   /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
   htmlId: PropTypes.string.isRequired,
   /** @prop Icon node to be rendered for Dialog | null */
@@ -143,6 +150,7 @@ Modal.defaultProps = {
   className: '',
   escapeExits: true,
   focusDialog: true,
+  focusTrapOptions: {},
   icon: null,
   renderTo: null,
   show: false,

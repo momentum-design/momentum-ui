@@ -16,7 +16,8 @@ src/wc_scss/themes/vars
 src/tokens/vars
 src/tokens/vars/*
 
-yarn.lock
+# This package is also installable in isolation; keep its lockfile committed.
+!yarn.lock
 yarn-error.log
 package-lock.json
 

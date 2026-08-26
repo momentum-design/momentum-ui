@@ -48,7 +48,7 @@ You can request a new feature by requesting it in our [Toolkit Q&A Webex Teams s
 
 ## <a name="requirements"></a> Requirements
 
-To contribute to @momentum-ui, you need to have [>=Node 8.10.0](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) installed globally on your machine.
+To contribute to @momentum-ui, use Node.js `24.18.0` and Yarn Classic `1.22.22`.
 
 ## <a name="environment"></a> Setting Up Your Local Development Environment
 
@@ -60,9 +60,10 @@ To contribute to @momentum-ui, you need to have [>=Node 8.10.0](https://nodejs.o
 
 ### <a name="installing"></a> Installing the project
 
-*   install node.js version &gt;=v 8.0.0: [http://nodejs.org/download/](http://nodejs.org/download/)
-*   install [Yarn](https://yarnpkg.com/en/) globally if you do not already have it on your machine: `npm install yarn -g`
-*   Run package managers in the cloned project to pull dependencies: `yarn install && yarn bootstrap`
+*   Install Node.js `24.18.0` (or run `nvm use` with the repository's `.nvmrc`).
+*   Install Yarn Classic: `npm install --global yarn@1.22.22`.
+*   Install the root workspaces with `yarn install --frozen-lockfile`.
+*   Install the isolated web-components package with `yarn --cwd web-components install --frozen-lockfile` (or run `yarn bootstrap` for both).
 
 ### <a name="libraries"></a> Contibuing to the Libraries
 
@@ -246,5 +247,4 @@ from the main (upstream) repository:
 ## License
 
 By contributing your code to the `@momentum-ui` GitHub repository, you agree to license your contribution under the MIT license.
-
 

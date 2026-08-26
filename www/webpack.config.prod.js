@@ -1,172 +1,50 @@
-import path from 'path';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// For info about this file refer to webpack and webpack-hot-middleware documentation
-// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
-import webpack from 'webpack';
-import WebpackMd5Hash from 'webpack-md5-hash';
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const {
+  MiniCssExtractPlugin,
+  assetRules,
+  javascriptRule,
+  resolveConfig,
+  styleRule,
+} = require('../tools/webpack/shared');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false,
-};
-
-export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
-    alias: {
-      react: path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom'),
-      images: path.resolve('./node_modules/@momentum-ui/core/images/'),
-    },
-  },
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  entry: ['babel-polyfill', 'whatwg-fetch', path.resolve(__dirname, 'client/index')],
-  target: 'web',
+module.exports = {
   mode: 'production',
+  target: 'web',
+  devtool: 'source-map',
+  entry: path.resolve(__dirname, 'client/index.js'),
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].[contenthash].js',
+    clean: true,
   },
-  plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
-
-    // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new webpack.DefinePlugin(GLOBALS),
-
-    // Generate an external css file with a hash in the filename
-    new MiniCssExtractPlugin({ filename: '[name].[md5:contenthash:hex:20].css' }),
-
-    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
-    new HtmlWebpackPlugin({
-      template: 'client/index.ejs',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-      inject: true,
-      // Note that you can add custom options here if you need to handle other custom logic in index.html
-      // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: 'client/favicon/**/*',
-        to: path.resolve(__dirname, 'dist'),
-        flatten: true,
-      },
-    ]),
-  ],
+  resolve: resolveConfig({
+    'react$': require.resolve('react'),
+    'react-dom$': require.resolve('react-dom'),
+    images: path.resolve(__dirname, '../core/images'),
+  }),
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, 'client'),
-          path.resolve(__dirname, 'node_modules/@momentum-ui/react/examples'),
-        ],
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff',
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/octet-stream',
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'image/svg+xml',
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpe?g|png|gif|ico)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /(\.css|\.scss|\.sass)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              minimize: true,
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')],
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [path.resolve(__dirname, 'client', 'scss')],
-              sourceMap: true,
-            },
-          },
-        ],
-      },
+      javascriptRule([
+        path.resolve(__dirname, 'client'),
+        path.resolve(__dirname, '../react/examples'),
+      ]),
+      ...assetRules(),
+      styleRule({ extract: true, includePaths: [path.resolve(__dirname, 'client/scss')] }),
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __DEV__: JSON.stringify(false),
+    }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'client/index.ejs') }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.resolve(__dirname, 'client/favicon'), to: '.' }],
+    }),
+  ],
 };

@@ -1,133 +1,44 @@
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const {
+  assetRules,
+  devServer,
+  javascriptRule,
+  resolveConfig,
+  styleRule,
+} = require('../tools/webpack/shared');
 
-export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
-    alias: {
-      'react': path.resolve('./node_modules/react'),
-      'react-dom': '@hot-loader/react-dom',
-      'images': path.resolve('./node_modules/@momentum-ui/core/images/'),
-    },
-    symlinks: false,
-  },
-  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
-  entry: [
-    // must be first entry to properly set public path
-    './client/webpack-public-path',
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'client/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
-  ],
-  target: 'web',
+module.exports = {
   mode: 'development',
-  output: {
-    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  plugins: [
-    new HardSourceWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
-      template: 'client/index.ejs',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true
-      },
-      inject: true
-    })
+  target: 'web',
+  devtool: 'eval-source-map',
+  entry: [
+    path.resolve(__dirname, 'client/webpack-public-path.js'),
+    path.resolve(__dirname, 'client/index.js'),
   ],
+  output: { path: path.resolve(__dirname, 'dist'), publicPath: '/', filename: 'bundle.js' },
+  resolve: resolveConfig({
+    'react$': require.resolve('react'),
+    'react-dom$': require.resolve('react-dom'),
+    images: path.resolve(__dirname, '../core/images'),
+  }),
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, "client"),
-          path.resolve(__dirname, "node_modules/@momentum-ui/react/examples")
-        ],
-        use: ['babel-loader']
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: ['file-loader']
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/octet-stream'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'image/svg+xml'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(jpe?g|png|gif|ico)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /(\.css|\.scss|\.sass)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer')
-              ],
-              sourceMap: true
-            }
-          }, {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [path.resolve(__dirname, 'client', 'scss')],
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  }
+      javascriptRule([
+        path.resolve(__dirname, 'client'),
+        path.resolve(__dirname, '../react/examples'),
+      ]),
+      ...assetRules(),
+      styleRule({ includePaths: [path.resolve(__dirname, 'client/scss')] }),
+    ],
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      __DEV__: JSON.stringify(true),
+    }),
+    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'client/index.ejs') }),
+  ],
+  devServer: devServer(path.resolve(__dirname, 'client'), 3000),
 };

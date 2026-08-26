@@ -10,7 +10,7 @@ const ModifyApplyProperty = {
 
 const core = {
   create: function (tag) {
-    if (process && process.env && process.env.NODE_ENV === 'test') {
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test') {
       return document.createElement(tag);
     } else {
       return document.createElementNS("http://www.w3.org/2000/svg", tag);

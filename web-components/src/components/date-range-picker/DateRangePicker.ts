@@ -28,6 +28,8 @@ export namespace DateRangePicker {
     @property({ type: Number, attribute: "max-range-length" })
     maxRangeLength: number | undefined = undefined;
 
+    // Keep the callback type aligned with DatePicker.filterDate.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     private originalFilterDate: Function | undefined = undefined;
 
     connectedCallback() {

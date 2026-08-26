@@ -1,54 +1,30 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-
-const { baseConfig } = require('./base.config');
+const { devServer } = require('../../tools/webpack/shared');
+const { createBaseConfig } = require('./base.config');
 const { repoRoot } = require('./constants');
 
-baseConfig.resolve.alias['react-dom'] = '@hot-loader/react-dom';
-
-baseConfig.plugins.push(
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
-    __DEV__: true,
-  }),
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
-  new HtmlWebpackPlugin({
-    // Create HTML file that includes references to bundled CSS and JS.
-    template: 'app/index.ejs',
-    minify: {
-      removeComments: true,
-      collapseWhitespace: true,
-    },
-    inject: true,
-  }),
-  new webpack.LoaderOptionsPlugin({
-    minimize: false,
-    debug: true,
-    noInfo: true, // set to false to see a list of every file being bundled.
-  }),
-);
-
-exports.config = {
-  ...baseConfig,
-
-  devtool: 'eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
-
+module.exports = {
+  ...createBaseConfig(),
+  mode: 'development',
+  devtool: 'eval-source-map',
   entry: [
-    // must be first entry to properly set public path
-    './app/webpack-public-path',
-    'babel-polyfill',
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
-    path.resolve(repoRoot, 'app/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
+    path.resolve(repoRoot, 'app/webpack-public-path.js'),
+    path.resolve(repoRoot, 'app/index.js'),
   ],
-
-  target: 'web',
-
   output: {
-    path: path.resolve(repoRoot, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
+    path: path.resolve(repoRoot, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
+  plugins: [
+    ...createBaseConfig().plugins,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      __DEV__: JSON.stringify(true),
+    }),
+    new HtmlWebpackPlugin({ template: path.resolve(repoRoot, 'app/index.ejs') }),
+  ],
+  devServer: devServer(path.resolve(repoRoot, 'app'), 4000),
 };

@@ -32,12 +32,12 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -56,10 +56,10 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(onClose).toHaveBeenCalled();
@@ -79,7 +79,7 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
     expect(onClick).toHaveBeenCalled();
@@ -99,7 +99,7 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('button').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
     expect(onFocus).toHaveBeenCalled();
@@ -119,7 +119,7 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('button').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
     expect(onMouseEnter).toHaveBeenCalled();
@@ -140,22 +140,22 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay__children').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('blur');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -175,22 +175,22 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay__children').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('blur');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -210,12 +210,12 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -234,12 +234,12 @@ describe('tests for <Popover />', () => {
       </Popover>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -259,12 +259,12 @@ describe('tests for <Popover />', () => {
       </Popover>
     );
 
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
   });
@@ -284,17 +284,17 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
 
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -319,12 +319,12 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(1000);
+    global.advanceTimersByTime(1000);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -344,16 +344,16 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(200);
+    global.advanceTimersByTime(200);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(99);
+    global.advanceTimersByTime(99);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
-    jest.runTimersToTime(1000);
+    global.advanceTimersByTime(1000);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -376,17 +376,17 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(200);
+    global.advanceTimersByTime(200);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.md-event-overlay__children').simulate('mouseenter');
-    jest.runTimersToTime(1000);
+    global.advanceTimersByTime(1000);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
   });
@@ -409,12 +409,12 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(600);
+    global.advanceTimersByTime(600);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -438,12 +438,12 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(100);
+    global.advanceTimersByTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });
@@ -466,22 +466,22 @@ describe('tests for <Popover />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runTimersToTime(300);
+    global.advanceTimersByTime(300);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.anchor').simulate('mouseleave');
-    jest.runTimersToTime(200);
+    global.advanceTimersByTime(200);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.md-event-overlay__children').simulate('mouseenter');
-    jest.runTimersToTime(100);
+    global.advanceTimersByTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(1);
 
     container.find('.md-event-overlay__children').simulate('mouseleave');
-    jest.runTimersToTime(100);
+    global.advanceTimersByTime(100);
     container.update();
     expect(container.find('.popover-content').length).toEqual(0);
   });

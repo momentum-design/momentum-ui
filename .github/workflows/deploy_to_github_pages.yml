@@ -17,17 +17,20 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24.18.0'
+
+      - name: Install Yarn Classic
+        run: npm install --global yarn@1.22.22
 
       # github workflows only run from root directory
       # the wc-dist build command is run from root but accesses the web-components directory 
       # so we need to ensure dependencies are installed - hence two separate yarn install commands
       - name: Install Dependencies
-        run: cd ./web-components && yarn install
+        run: yarn --cwd web-components install --frozen-lockfile
 
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          install_command: yarn install
+          install_command: yarn install --frozen-lockfile
           build_command: STORYBOOK_BASE=/momentum-ui/ yarn storybook:wc-dist
           path: ./web-components/.out
           checkout: false

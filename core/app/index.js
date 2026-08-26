@@ -1,31 +1,13 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { AppContainer } from 'react-hot-loader';
 
 import App from './App';
 
 import './styles.scss';
 
-render(
-  <AppContainer>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-  </AppContainer>,
-  document.getElementById('app')
+createRoot(document.getElementById('app')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
-
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NewApp = require('./App').default;
-    render(
-      <AppContainer>
-        <BrowserRouter>
-            <NewApp />
-        </BrowserRouter>
-      </AppContainer>,
-      document.getElementById('app')
-    );
-  });
-}

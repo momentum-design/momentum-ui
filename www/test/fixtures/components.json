@@ -1,0 +1,11 @@
+{
+  "children": [
+    {
+      "id": 1563,
+      "name": "avatar",
+      "displayName": "Avatars",
+      "path": "/components/avatar",
+      "thumbnailImage": false
+    }
+  ]
+}

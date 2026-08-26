@@ -2,7 +2,7 @@ import { prefix } from '../../utils/index';
 
 describe('@momentum-ui/react', () => {
   before(() => {
-    cy.visit(`${Cypress.env('BASE_URL')}/coachmark`);
+    cy.visit(`/coachmark`);
     cy.viewport(1001, 661);
   });
 

@@ -2,7 +2,7 @@
 
 // describe('@momentum-ui/react', () => {
 //   before(() => {
-//     cy.visit(`${Cypress.env('BASE_URL')}/event-overlay`);
+//     cy.visit(`/event-overlay`);
 //     cy.viewport(1001, 661);
 //   });
 

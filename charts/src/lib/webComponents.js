@@ -17,7 +17,7 @@ let components = [
 ];
 
 const registorWebComponent = () => {
-  if ((process && process.env && process.env.NODE_ENV === 'test')) {
+  if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test') {
     // currently do not support webcomponent test
   } else {
     const customElements = window.customElements;

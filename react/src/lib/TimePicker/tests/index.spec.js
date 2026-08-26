@@ -261,10 +261,14 @@ describe('tests for <TimePicker />', () => {
       .children()
       .childAt(1);
 
-    hourInput.props().onChange({ currentTarget: { value: '08' } });
-    hourInput.simulate('keyup', {
-      keyCode: 27,
-      target: hourInput.simulate('blur'),
+    global.flushAct(() => {
+      hourInput.props().onChange({ currentTarget: { value: '08' } });
+    });
+    global.flushAct(() => {
+      hourInput.simulate('keyup', {
+        keyCode: 27,
+        target: hourInput.simulate('blur'),
+      });
     });
 
     expect(container.state().selectedTime.format('HH')).toEqual('20');

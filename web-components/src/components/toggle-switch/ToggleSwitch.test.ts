@@ -98,7 +98,9 @@ describe("Toggle Switch Component", () => {
   test("should define accessible focus styles that suppress native input outline and use focus-ring", () => {
     const mixins = readFileSync(toggleSwitchMixinsPath, "utf8");
 
-    expect(mixins).toMatch(/\.md-toggle-switch__input\s*\{[\s\S]*&:focus,\s*\n\s*&:focus-visible\s*\{[\s\S]*outline:\s*none/);
+    expect(mixins).toMatch(
+      /\.md-toggle-switch__input\s*\{[\s\S]*&:focus,\s*\n\s*&:focus-visible\s*\{[\s\S]*outline:\s*none/
+    );
     expect(mixins).toMatch(/&:focus-visible,\s*\n\s*&\.focus\s*\{[\s\S]*@include focus-ring\(\)/);
     expect(mixins).toMatch(/outline:\s*none;\s*\n\s*@include focus-ring\(\)/);
   });

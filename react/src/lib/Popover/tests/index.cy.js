@@ -2,8 +2,8 @@ import { prefix } from '../../utils/index';
 import { forEach } from 'lodash';
 
 describe('@momentum-ui/react', () => {
-  before(() => {
-    cy.visit(`${Cypress.env('BASE_URL')}/popover`);
+  beforeEach(() => {
+    cy.visit(`/popover`);
   });
 
   afterEach(() => {

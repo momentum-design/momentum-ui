@@ -60,15 +60,15 @@ The individual libraries are distributed through [npm](https://www.npmjs.com/sea
 
 ## Requirements
 
-To contribute to @momentum-ui, you need to have [>=Node 8.10.0](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) installed globally on your machine.
+Development uses Node.js `24.18.0` and Yarn Classic `1.22.22`. Run `nvm use` to select the repository version, then install Yarn with `npm install --global yarn@1.22.22` if needed.
 
 ## Development
 
 Setting up your development environment:
 
 1. Clone this repo using a git client (e.g. `git clone https://github.com/momentum-design/momentum-ui.git`)
-1. Run `yarn install` from the root of the repo.
-1. Run `yarn bootstrap` from the root of the repo.
+1. Run `yarn install --frozen-lockfile` from the root of the repo.
+1. Run `yarn --cwd web-components install --frozen-lockfile` for the separately locked web-components package (or run `yarn bootstrap` to perform both installs).
 1. Run `yarn start:all` to start the playground app for all libraries or `yarn start:<library>` to only start the library the you are working in.
 
 NOTE: Install watchman with `brew install watchman` if you are having the following or similar error after an initial `yarn start`:

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader';
 import Header from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import SideNav from './containers/SideNav';
@@ -77,4 +76,4 @@ App.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export default hot(module)(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);

@@ -45,6 +45,7 @@ const buildScss = async (output, outputStyle, ifPlus) => {
     }
   } catch (error) {
     console.error('Failed to compile SCSS with dart-sass:', error);
+    throw error;
   }
 
   if (ifPlus) {

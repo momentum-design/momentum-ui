@@ -12,7 +12,6 @@
     "utils",
     "www"
   ],
-  "useWorkspaces": true,
   "version": "independent",
   "command": {
     "publish": {

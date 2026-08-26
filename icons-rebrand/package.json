@@ -18,7 +18,7 @@
     "build": "yarn build:lib",
     "build:lib": "node ../tools/icons/icons-build.js momentum-ui-icons-rebrand",
     "ci:postpublish": "node ../tools/postpublish.js",
-    "ci:publishCDN": "run-s replaceFontURLs pushToS3",
+    "ci:publishCDN": "node ../tools/runRootTool.js run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=icons-rebrand",
     "replaceFontURLs": "node ../tools/icons/replaceURLs.js icons-rebrand",
     "updateIconDatabase": "node ../tools/icons/update-icon-database.js icons-rebrand",
@@ -53,23 +53,17 @@
   "devDependencies": {
     "@momentum-ui/utils": "^6.2.15",
     "@momentum-ui/webfonts-generator": "^2.3.0",
-    "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",
-    "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "handlebars": "^4.1.0",
     "lodash": "^4.17.11",
     "multi-glob": "^1.0.1",
-    "sass": "^1.77.8",
     "node-watch": "^0.5.7",
-    "npm-run-all": "^4.1.5",
     "npm-watch": "^0.3.0",
     "object-assign": "4.1.1",
     "promise": "8.0.1",
     "raf": "3.4.0",
-    "rimraf": "^2.6.3",
-    "svgson": "^3.1.0",
-    "yarn": "^1.12.1"
+    "svgson": "^3.1.0"
   },
   "publishConfig": {
     "access": "public"

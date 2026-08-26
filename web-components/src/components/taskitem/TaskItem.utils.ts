@@ -213,7 +213,7 @@ export const renderLegacyTaskType = (mediaType: string, selected: boolean, iconS
           state=${selected ? "active" : "rest"}
         ></md-avatar>
       `;
-       case TaskItemMediaType.CUSTOM_MESSAGING:
+    case TaskItemMediaType.CUSTOM_MESSAGING:
       return html`
         <md-avatar
           title="Channel Custom Messaging"

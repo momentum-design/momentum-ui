@@ -1,21 +1,6 @@
+const commonjs = process.env.BABEL_ENV !== 'esm';
+
 module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        loose: true,
-        targets: {
-          browsers: [
-            '>0.25%',
-            'ie >= 11',
-            'not op_mini all' // opera mini doesn't support client side
-          ]
-        },
-        modules: false,
-      }
-    ],
-  ],
-  plugins: [
-    '@babel/plugin-proposal-object-rest-spread'
-  ].filter(Boolean)
+  presets: [['@babel/preset-env', { loose: true, modules: commonjs ? 'commonjs' : false }]],
+  plugins: [['@babel/plugin-transform-runtime', { helpers: true, regenerator: true }]],
 };

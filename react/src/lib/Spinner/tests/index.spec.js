@@ -64,7 +64,7 @@ describe('tests for <Spinner />', () => {
   });
 
   it('should warn with showProgress but size set to anything but 36', () => {
-    global.console = {warn: jest.fn()};
+    global.console = {...console, warn: jest.fn()};
     const wrapper = mount(<Spinner percentage={55} color="blue" size={16} showPercentage/>);
     wrapper.update();
 

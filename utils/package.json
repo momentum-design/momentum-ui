@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "yarn build:lib",
-    "build:lib": "rimraf lib && babel src --out-dir lib",
+    "build:lib": "node ../tools/runRootTool.js rimraf lib && node ../tools/runRootTool.js babel src --out-dir lib",
     "ci:postpublish": "node ../tools/postpublish.js",
     "ci:publishCDN": "yarn pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=utils",
@@ -25,9 +25,9 @@
     "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "dependencies": {
+    "@babel/runtime": "^7.28.6",
     "@gfx/zopfli": "^1.0.11",
     "@momentum-ui/tokens": "^1.7.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "fast-glob": "^3.2.12",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
@@ -35,11 +35,7 @@
     "jsonfile": "^5.0.0",
     "lodash": "^4.17.11"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.2"
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }

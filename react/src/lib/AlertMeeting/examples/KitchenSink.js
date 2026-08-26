@@ -21,7 +21,7 @@ export default class AlertMeetingKitchenSink extends React.Component {
                 onSnooze={this.handleOnSnooze}
                 attendees={[
                   {title: 'J $'},
-                  ...type === 'multiple' && {title: 'Jefe Guadelupe'} || []
+                  ...(type === 'multiple' ? [{title: 'Jefe Guadelupe'}] : [])
                 ]}
                 show
               />

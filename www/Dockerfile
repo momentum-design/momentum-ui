@@ -1,16 +1,27 @@
-FROM node:12.10.0
+FROM node:24.18.0
 
-# install dependencies
-WORKDIR /usr/src
-COPY package.json yarn.lock* ./
-RUN yarn cache clean && yarn
+RUN test "$(yarn --version)" = "1.22.22"
 
-# copy app source to image _after_ npm install so that
-# application code changes don't bust the docker cache of npm install step
-COPY ./server /usr/src/server
+WORKDIR /usr/src/app
 
-# set application PORT and expose docker PORT, 80 is what Elastic Beanstalk expects
-ENV PORT 80
+COPY package.json yarn.lock lerna.json ./
+COPY animations/package.json ./animations/package.json
+COPY charts/package.json ./charts/package.json
+COPY core/package.json ./core/package.json
+COPY icons/package.json ./icons/package.json
+COPY icons-rebrand/package.json ./icons-rebrand/package.json
+COPY illustrations/package.json ./illustrations/package.json
+COPY react/package.json ./react/package.json
+COPY tokens/package.json ./tokens/package.json
+COPY utils/package.json ./utils/package.json
+COPY www/package.json ./www/package.json
+
+RUN CYPRESS_INSTALL_BINARY=0 yarn install --frozen-lockfile --non-interactive
+
+COPY www/server ./www/server
+
+WORKDIR /usr/src/app/www
+ENV PORT=80
 EXPOSE 80
 
-CMD [ "yarn", "start:server" ]
+CMD ["yarn", "start:server"]

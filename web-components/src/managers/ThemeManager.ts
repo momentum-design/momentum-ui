@@ -160,6 +160,8 @@ declare global {
     MomentumUIThemeManager?: ThemeManager;
   }
 
+  // Global ambient declarations require `var` so the name is available at runtime.
+  // eslint-disable-next-line no-var
   var MomentumUIThemeManager: ThemeManager | undefined;
 }
 

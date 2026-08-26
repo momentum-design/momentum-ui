@@ -1,36 +1,41 @@
 describe('Home page', function() {
+  const visitHome = () => {
+    cy.visit('/');
+    cy.get('.docs-home-pop-content-close').click();
+  };
+
   describe('Test the top nav', () => {
     it('System should navigate to system', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/`)
-        .get('[data-cy=topbar-system]')
+      visitHome();
+      cy.get('[data-cy=topbar-system]')
         .click()
         .url()
         .should('include', 'system');
     });
     it('Tokens should navigate to tokens', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/`)
-        .get('[data-cy=topbar-tokens]')
+      visitHome();
+      cy.get('[data-cy=topbar-tokens]')
         .click()
         .url()
         .should('include', 'tokens');
     });
     it('Components should navigate to components', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/`)
-        .get('[data-cy=topbar-components]')
+      visitHome();
+      cy.get('[data-cy=topbar-components]')
         .click()
         .url()
         .should('include', 'components');
     });
     it('Icons should navigate to icons', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/`)
-        .get('[data-cy=topbar-icons]')
+      visitHome();
+      cy.get('[data-cy=topbar-icons]')
         .click()
         .url()
         .should('include', 'icons');
     });
     it('Personality should navigate to personality', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/`)
-        .get('[data-cy=topbar-personality]')
+      visitHome();
+      cy.get('[data-cy=topbar-personality]')
         .click()
         .url()
         .should('include', 'personality');

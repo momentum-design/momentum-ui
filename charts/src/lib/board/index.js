@@ -13,7 +13,7 @@ class Board {
     if (typeof query !== 'string') {
       this.Con._parents = [document.documentElement];
     }
-    if (process && process.env && process.env.NODE_ENV === 'test') {
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test') {
       this.Svg = this.Con.append('svg');
     } else {
       this.Svg = this.Con.append(function () {

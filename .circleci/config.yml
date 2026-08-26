@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:14.5.1
+      - image: cypress/base:24.18.0
         environment:
           TERM: xterm
 
@@ -12,7 +12,6 @@ jobs:
     <<: *image_defaults
     steps:
       - checkout
-      - run: yarn global add @percy/agent lerna@4.0.0
       - run: yarn bootstrap
       - run: yarn cypress:verify
       - persist_to_workspace:
@@ -173,7 +172,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
+          command: yarn install --frozen-lockfile --non-interactive
       - run: yarn bootstrap
       - run: yarn cypress:verify
       - run:
@@ -231,7 +230,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
+          command: yarn install --frozen-lockfile --non-interactive
       - run: yarn bootstrap
       - run:
           name: Pre build website

@@ -40,7 +40,7 @@ var camelCase = function(string) {
   };
 
 (function() {
-  var div, a;
+  var div, a, style;
   div = document.createElement('div');
   div.innerHTML = "  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>";
   a = div.getElementsByTagName('a')[0];
@@ -853,4 +853,3 @@ Ash.loadIRD(IRDDELEGATE);
 //attr
 
 module.exports = Ash;
-

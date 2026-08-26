@@ -13,20 +13,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
     - name: Check out files
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+    - name: Use Node.js 24.18.0
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '24.18.0'
+
+    - name: Install Yarn Classic
+      run: npm install --global yarn@1.22.22
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
     
     - name: Find changed icon SVGs
       run: |
@@ -49,9 +51,8 @@ jobs:
         done
         
         if $any_changes ; then
+          node icons/tools/icons-build.js
           cd icons
-          npm install
-          node tools/icons-build.js
           git add -u .
           git config user.email "icons@example.com"
           git config user.name "Icon build bot"

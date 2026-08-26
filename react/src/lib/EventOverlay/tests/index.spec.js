@@ -45,7 +45,7 @@ describe('tests for <EventOverlay />', () => {
       );
 
       container.find('.anchor').simulate('mouseenter');
-      jest.runAllTimers();
+      global.runAllTimers();
       container.update();
       expect(container.find('.md-event-overlay--top').length).toEqual(1);
       expect(container.find('.md-event-overlay--arrow').length).toEqual(1);
@@ -64,7 +64,7 @@ describe('tests for <EventOverlay />', () => {
       );
 
       container.find('.anchor').simulate('mouseenter');
-      jest.runAllTimers();
+      global.runAllTimers();
       container.update();
       expect(container.find('.md-event-overlay--bottom').length).toEqual(1);
     });
@@ -82,7 +82,7 @@ describe('tests for <EventOverlay />', () => {
       );
 
       container.find('.anchor').simulate('mouseenter');
-      jest.runAllTimers();
+      global.runAllTimers();
       container.update();
       expect(container.find('.md-event-overlay--left').length).toEqual(1);
     });
@@ -100,7 +100,7 @@ describe('tests for <EventOverlay />', () => {
       );
 
       container.find('.anchor').simulate('mouseenter');
-      jest.runAllTimers();
+      global.runAllTimers();
       container.update();
       expect(container.find('.md-event-overlay--right').length).toEqual(1);
     });
@@ -126,13 +126,15 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay--top').length).toEqual(1);
 
     // making a click outside
-    container.childAt(0).childAt(1).instance().handleAllowClickAway({});
-    jest.runAllTimers();
+    global.flushAct(() =>
+      container.childAt(0).childAt(1).instance().handleAllowClickAway({})
+    );
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay--top').length).toEqual(0);
   });
@@ -157,7 +159,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('.anchor').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
     expect(container.find('.md-event-overlay--top').length).toEqual(1);
 
@@ -182,7 +184,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('Button').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     // when tabbed out of the Overlay
@@ -206,7 +208,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('Button').simulate('focus');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     // when tabbed out of the Overlay
@@ -230,7 +232,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('Button').simulate('click');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     // when tabbed out of the Overlay
@@ -256,7 +258,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay__children').get(0).props.style).toHaveProperty('maxHeight', '300px');
@@ -280,7 +282,7 @@ describe('tests for <EventOverlay />', () => {
     );
 
     container.find('.anchor').simulate('mouseenter');
-    jest.runAllTimers();
+    global.runAllTimers();
     container.update();
 
     expect(container.find('.md-event-overlay__children').get(0).props.style).toHaveProperty('maxWidth', '300px');

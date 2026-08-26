@@ -45,6 +45,14 @@
   }
 }
 
+:host([selected]:not([disabled])) {
+  font-weight: var(--list-selected-font-weight, bold);
+
+  .md-list-item {
+    font-weight: var(--list-selected-font-weight, bold);
+  }
+}
+
 :host([focus-visible]) {
   .md-list-item {
     box-shadow: $list-item__focus-shadow;

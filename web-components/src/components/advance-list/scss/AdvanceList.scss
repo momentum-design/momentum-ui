@@ -45,6 +45,11 @@
   color: var(--list-active-text-color);
 }
 
+.default-wrapper.selected:not(.non-selectable),
+.default-wrapper.selected:not(.non-selectable) * {
+  font-weight: var(--list-selected-font-weight, bold);
+}
+
 .default-wrapper.focused {
   outline: 2px solid var(--md-default-focus-outline-color);
   outline-offset: -2px;

@@ -523,6 +523,11 @@ div#md-combobox-listbox {
     .select-option {
       border: 1px solid #fff;
     }
+
+    // convey the selected state with a non-color cue by bolding the label
+    .select-label {
+      font-weight: $font-weight-bold;
+    }
   }
 }
 

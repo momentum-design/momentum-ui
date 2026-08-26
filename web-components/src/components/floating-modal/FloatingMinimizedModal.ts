@@ -41,6 +41,21 @@ export namespace FloatingMinimizedModal {
     @state() private containerTransform = "";
 
     private applyInitialPosition = true;
+    private readonly DRAG_HANDLE_SELECTOR =
+      ".md-floating__header, .md-floating__header *, [slot='header'], [slot='header'] *";
+    private readonly DRAG_IGNORE_SELECTOR = [
+      "md-button",
+      "md-tooltip",
+      "button",
+      "a[href]",
+      "input",
+      "select",
+      "textarea",
+      "[contenteditable='true']",
+      "[role='button']",
+      "[data-floating-modal-ignore-drag]",
+      "[data-floating-modal-ignore-drag] *"
+    ].join(", ");
 
     static get styles() {
       return [reset, styles];
@@ -138,7 +153,8 @@ export namespace FloatingMinimizedModal {
         if (this.container) {
           interact(this.container).draggable({
             autoScroll: true,
-            allowFrom: this.header,
+            allowFrom: this.DRAG_HANDLE_SELECTOR,
+            ignoreFrom: this.DRAG_IGNORE_SELECTOR,
             listeners: {
               move: this.dragMoveListener,
               end: this.dragEndListener

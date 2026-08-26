@@ -2,7 +2,7 @@ import "../button/Button";
 import "../icon/Icon";
 import "../tooltip/Tooltip";
 import { Key } from "@/constants";
-import { FocusMixin, SlottedMixin } from "@/mixins";
+import { FocusTrapMixin, SlottedMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import "@interactjs/actions/drag";
@@ -19,7 +19,7 @@ import styles from "./scss/module.scss";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
-  export class ELEMENT extends FocusMixin(SlottedMixin(LitElement)) {
+  export class ELEMENT extends FocusTrapMixin(SlottedMixin(LitElement)) {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
@@ -92,6 +92,13 @@ export namespace FloatingModal {
       "[data-floating-modal-ignore-resize] *"
     ].join(", ");
 
+    constructor() {
+      super();
+      // The floating modal has no backdrop and never auto-closes on an outside click,
+      // so its Tab focus trap must stay active for as long as it's open too.
+      this.preventClickOutside = true;
+    }
+
     static get styles() {
       return [reset, styles];
     }
@@ -105,10 +112,12 @@ export namespace FloatingModal {
           this.setContainerRect();
           this.setInteractInstance();
           this.focusModalOnOpen();
+          this.activateFocusTrap!();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
           this.restoreFocusAfterClose();
+          this.deactivateFocusTrap!();
         }
       }
       if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
@@ -123,6 +132,18 @@ export namespace FloatingModal {
       ) {
         this.focusModalOnOpen();
       }
+
+      if (changedProperties.has("show") || (changedProperties.has("minimize") && this.show)) {
+        this.refreshFocusableElements();
+      }
+    }
+
+    private refreshFocusableElements() {
+      requestAnimationFrame(() => {
+        if (this.show) {
+          this.setFocusableElements!();
+        }
+      });
     }
 
     private getDeepActiveElementFromDocument(): HTMLElement | null {

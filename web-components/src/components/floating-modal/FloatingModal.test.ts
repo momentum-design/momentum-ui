@@ -15,6 +15,18 @@ Object.defineProperties(Element.prototype, {
       bottom: 0,
       right: 0
     })
+  },
+  getClientRects: {
+    value: jest.fn().mockReturnValue(["1", "2"])
+  }
+});
+
+Object.defineProperties(HTMLElement.prototype, {
+  offsetWidth: {
+    value: jest.fn().mockReturnValue(10)
+  },
+  offsetHeight: {
+    value: jest.fn().mockReturnValue(10)
   }
 });
 
@@ -454,5 +466,69 @@ describe("Floating Modal Component", () => {
     ) as Button.ELEMENT;
     const activeElementInShadow = element.shadowRoot?.activeElement as HTMLElement | null;
     expect(activeElementInShadow).toBe(firstHeaderButton);
+  });
+
+  test("should wrap focus from the last header button back to the first on Tab", async () => {
+    element.show = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    const headerButtons = element.shadowRoot!.querySelectorAll(
+      ".md-floating__header md-button.md-floating__header-button"
+    );
+    const firstHeaderButton = headerButtons[0] as HTMLElement;
+    const lastHeaderButton = headerButtons[headerButtons.length - 1] as HTMLElement;
+
+    lastHeaderButton.focus();
+    expect(element.shadowRoot?.activeElement).toBe(lastHeaderButton);
+
+    lastHeaderButton.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Tab, bubbles: true, composed: true }));
+    jest.runAllTimers();
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(element.shadowRoot?.activeElement).toBe(firstHeaderButton);
+  });
+
+  test("should wrap focus from the first header button back to the last on Shift+Tab", async () => {
+    element.show = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    const headerButtons = element.shadowRoot!.querySelectorAll(
+      ".md-floating__header md-button.md-floating__header-button"
+    );
+    const firstHeaderButton = headerButtons[0] as HTMLElement;
+    const lastHeaderButton = headerButtons[headerButtons.length - 1] as HTMLElement;
+
+    firstHeaderButton.focus();
+    expect(element.shadowRoot?.activeElement).toBe(firstHeaderButton);
+
+    firstHeaderButton.dispatchEvent(
+      new KeyboardEvent("keydown", { code: Key.Tab, shiftKey: true, bubbles: true, composed: true })
+    );
+    jest.runAllTimers();
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(element.shadowRoot?.activeElement).toBe(lastHeaderButton);
+  });
+
+  test("should not trap focus once the modal is closed", async () => {
+    element.show = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
+    const button = mdButton.shadowRoot!.querySelector("button");
+    button!.click();
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(element.show).toBeFalsy();
+    expect((element as unknown as { activeFocusTrap: boolean }).activeFocusTrap).toBeFalsy();
   });
 });

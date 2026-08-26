@@ -276,6 +276,25 @@ describe("Floating Modal Component", () => {
     expect(hostInteractable.testIgnoreAllow(dragOptions, element, slottedAction)).toBeFalsy();
   });
 
+  test("should restrict dragging to the viewport using the visible panel's rect, not the host element's", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html` <md-floating-modal .show=${true}></md-floating-modal> `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+    const containerRect = { top: 10, left: 20, right: 420, bottom: 320, width: 400, height: 300 };
+    jest.spyOn(container, "getBoundingClientRect").mockReturnValue(containerRect as DOMRect);
+
+    const hostInteractable = interact(element);
+    const [restrictModifier] = hostInteractable.options.drag.modifiers as Array<{
+      options: { enabled: boolean; restriction: unknown; endOnly: boolean };
+    }>;
+
+    expect(restrictModifier.options.enabled).toBeTruthy();
+    expect(restrictModifier.options.endOnly).toBeTruthy();
+    expect(hostInteractable.getRect(element)).toEqual(containerRect);
+  });
+
   test("should prevent browser text selection while resizing", async () => {
     const element = await fixture<FloatingModal.ELEMENT>(html`
       <md-floating-modal .show=${true} .resizable=${true}></md-floating-modal>

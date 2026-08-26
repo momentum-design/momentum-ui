@@ -270,15 +270,23 @@ export namespace FloatingModal {
       requestAnimationFrame(() => {
         if (!this.show || !this.container) return;
 
-        interact(this).draggable({
-          autoScroll: true,
-          allowFrom: this.DRAG_HANDLE_SELECTOR,
-          ignoreFrom: this.DRAG_IGNORE_SELECTOR,
-          listeners: {
-            move: this.dragMoveListener,
-            end: this.dragEndListener
-          }
-        });
+        interact(this)
+          .draggable({
+            autoScroll: true,
+            allowFrom: this.DRAG_HANDLE_SELECTOR,
+            ignoreFrom: this.DRAG_IGNORE_SELECTOR,
+            listeners: {
+              move: this.dragMoveListener,
+              end: this.dragEndListener
+            },
+            modifiers: [
+              interact.modifiers.restrictRect({
+                restriction: document.body.getBoundingClientRect(),
+                endOnly: true
+              })
+            ]
+          })
+          .rectChecker(() => this.container!.getBoundingClientRect());
 
         if (this.resizable) {
           interact(this.container)

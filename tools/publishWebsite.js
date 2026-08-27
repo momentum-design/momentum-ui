@@ -1,4 +1,10 @@
-const AWS = require('aws-sdk');
+const {
+  DeleteObjectsCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client,
+} = require('@aws-sdk/client-s3');
+const { CloudFrontClient, CreateInvalidationCommand } = require('@aws-sdk/client-cloudfront');
 const path = require('path');
 const mime = require('mime');
 const fs = require('fs');
@@ -11,21 +17,31 @@ const timeStamp = Math.round(date.getTime() / 1000);
 
 const distPath = path.resolve(__dirname, '../www/dist');
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+const credentials = process.env.AWS_ACCESS_KEY && process.env.AWS_SECRET_ACCESS_KEY
+  ? {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    }
+  : undefined;
+
+const s3 = new S3Client({
+  credentials,
   region: 'us-west-2',
 });
+const cloudFront = new CloudFrontClient({ credentials, region: 'us-west-2' });
 
 const getListOfFiles = async () => {
-  const params = {
-    Bucket: process.env.AWS_PRODUCTION_BUCKET,
-  };
   try {
-    const data = await s3.listObjectsV2(params).promise();
-    const fileList = data.Contents.map(file => {
-      return { Key: file.Key };
-    });
+    const fileList = [];
+    let continuationToken;
+    do {
+      const data = await s3.send(new ListObjectsV2Command({
+        Bucket: process.env.AWS_PRODUCTION_BUCKET,
+        ContinuationToken: continuationToken,
+      }));
+      fileList.push(...(data.Contents || []).map(file => ({ Key: file.Key })));
+      continuationToken = data.IsTruncated ? data.NextContinuationToken : undefined;
+    } while (continuationToken);
     return fileList;
   } catch (err) {
     return console.error(err, err.stack);
@@ -36,14 +52,15 @@ const deleteFiles = async () => {
   try {
     const fileList = await getListOfFiles();
     if (!fileList.length) return;
-    const params = {
-      Bucket: process.env.AWS_PRODUCTION_BUCKET,
-      Delete: {
-        Objects: fileList,
-        Quiet: false,
-      },
-    };
-    return s3.deleteObjects(params).promise();
+    for (let index = 0; index < fileList.length; index += 1000) {
+      await s3.send(new DeleteObjectsCommand({
+        Bucket: process.env.AWS_PRODUCTION_BUCKET,
+        Delete: {
+          Objects: fileList.slice(index, index + 1000),
+          Quiet: false,
+        },
+      }));
+    }
   } catch (err) {
     return console.error(err, err.stack);
   }
@@ -51,7 +68,7 @@ const deleteFiles = async () => {
 
 const copyFilesToS3 = async (bucket, directory) => {
   try {
-    fs.readdirSync(distPath).forEach(fileName => {
+    await Promise.all(fs.readdirSync(distPath).map(fileName => {
       const filePath = path.join(distPath, fileName);
       const fileType = mime.getType(filePath);
       const fileBody = fs.readFileSync(filePath);
@@ -62,8 +79,8 @@ const copyFilesToS3 = async (bucket, directory) => {
         Bucket: bucket,
         Key: directory ? `${directory}/${fileName}` : fileName,
       };
-      return s3.putObject(params).promise();
-    });
+      return s3.send(new PutObjectCommand(params));
+    }));
   } catch (err) {
     return console.error(err, err.stack);
   }
@@ -81,12 +98,7 @@ const invalidateS3Cache = async () => {
         },
       },
     };
-    new AWS.CloudFront({
-      accessKeyId: process.env.AWS_ACCESS_KEY,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    })
-      .createInvalidation(cfParams)
-      .promise();
+    await cloudFront.send(new CreateInvalidationCommand(cfParams));
   } catch (err) {
     return console.error(err, err.stack);
   }

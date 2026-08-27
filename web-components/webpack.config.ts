@@ -1,9 +1,7 @@
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
-import RemovePlugin from "remove-files-webpack-plugin";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
@@ -20,6 +18,29 @@ const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 const brandVisualLogos = path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg");
 const momentumDesignIcons = path.resolve("node_modules/@momentum-design/icons/dist/svg");
+
+class CleanGeneratedTypesPlugin {
+  apply(compiler: webpack.Compiler) {
+    compiler.hooks.afterEmit.tap("CleanGeneratedTypesPlugin", () => {
+      const typesPath = path.resolve(pDist, "types");
+      fs.rmSync(path.join(typesPath, "[sandbox]"), { recursive: true, force: true });
+      this.removeGeneratedTypes(typesPath);
+    });
+  }
+
+  private removeGeneratedTypes(directory: string) {
+    if (!fs.existsSync(directory)) return;
+
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        this.removeGeneratedTypes(entryPath);
+      } else if (/\.(test|stories)\.d\.ts(\.map)?$/.test(entry.name)) {
+        fs.rmSync(entryPath, { force: true });
+      }
+    }
+  }
+}
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
@@ -38,7 +59,7 @@ if (!pMomentum) {
 }
 
 const common: webpack.Configuration = {
-  output: { publicPath: "/" },
+  output: { publicPath: "/", clean: true },
   resolve: {
     extensions: [".ts", ".js", ".scss"],
     alias: { ...commonAlias },
@@ -50,7 +71,8 @@ const common: webpack.Configuration = {
     rules: [
       {
         test: /\.(png|svg|jpe?g)$/,
-        use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
+        type: "asset/resource",
+        generator: { filename: "images/[name].[contenthash:8][ext]" },
         include: pSrc
       }
     ]
@@ -72,9 +94,16 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
     test: /\.scss$/,
     use: [
       { loader: "lit-scss-loader", options: { minify: !isDev } },
-      { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
-      { loader: "extract-loader" },
-      { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2, url: false } },
+      {
+        loader: "string-replace-loader",
+        options: {
+          multiple: [
+            // css-loader stripped Sass's leading BOM before the stylesheet was passed to Lit.
+            { search: /^\uFEFF/, replace: "" },
+            { search: /\\/g, replace: "\\\\" }
+          ]
+        }
+      },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
         loader: "sass-loader",
@@ -85,8 +114,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
             outputStyle: "compressed"
           }
         }
-      },
-      { loader: "alias-resolve-loader", options: { alias: { "@css": pCss, "@img": pImg } } }
+      }
     ],
     include: pSrc
   };
@@ -123,7 +151,7 @@ export const commonDev = merge(common, {
   ]
 });
 
-const dev = merge(commonDev, { plugins: [new CleanWebpackPlugin()] });
+const dev = commonDev;
 
 // DIST
 // ----------
@@ -222,7 +250,6 @@ const commonDist = merge(common, {
   },
   externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
-    new CleanWebpackPlugin(),
     new WebpackLoadChunksPlugin({ trimNameEnd: 6 }),
     new CopyWebpackPlugin({
       patterns: [
@@ -237,16 +264,7 @@ const commonDist = merge(common, {
         { from: toPosixPath(pCss, "*.css"), to: "assets/styles/[name][ext]" }
       ]
     }),
-    new RemovePlugin({
-      after: {
-        log: false,
-        include: ["./dist/types/[sandbox]"],
-        test: [
-          { folder: "./dist/types", method: (p) => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p), recursive: true },
-          { folder: "./dist/types", method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p), recursive: true }
-        ]
-      }
-    }) as unknown as webpack.WebpackPluginInstance
+    new CleanGeneratedTypesPlugin()
   ]
 });
 

@@ -1,6 +1,6 @@
 'use strict';
 /* eslint-disable */
-const marked = require('marked');
+const { marked, Renderer } = require('marked');
 const efs = require('fs-extra');
 const fs = require("fs");
 const path = require('path');
@@ -11,7 +11,7 @@ marked.setOptions({
   xhtml: true
 });
 
-const renderer = new marked.Renderer();
+const renderer = new Renderer();
 renderer.code = function(code, infostring, escaped) {
   return '<CodeBlock>{`'+code+'`}</CodeBlock>';
   // return '<pre><code>{`'+code+'`}</code></pre>';

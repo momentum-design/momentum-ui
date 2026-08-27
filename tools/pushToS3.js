@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk');
+const { PutObjectCommand, S3Client } = require('@aws-sdk/client-s3');
 const path = require('path');
 const mime = require('mime');
 const fs = require('fs-extra');
@@ -11,9 +11,15 @@ const objectsList = config.CDN_OBJECTS;
 const libraryDir = path.resolve(__dirname, `../${library}`);
 const version = packageJSON.version;
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+const credentials = process.env.AWS_ACCESS_KEY && process.env.AWS_SECRET_ACCESS_KEY
+  ? {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    }
+  : undefined;
+
+const s3 = new S3Client({
+  credentials,
   region: 'us-west-2',
 });
 
@@ -24,9 +30,8 @@ const copyFilesToS3 = async (bucket, version) => {
     for (let file of files) {
       if (!file.relPath.includes('.DS_Store')) promises.push(putObjectToS3(file, bucket, version));
     }
-    Promise.all(promises).then(() =>
-      console.log(`${library} ${version ? version + ' ' : ''}files copied to S3 successfully!`)
-    );
+    await Promise.all(promises);
+    console.log(`${library} ${version ? version + ' ' : ''}files copied to S3 successfully!`);
   } catch (err) {
     return console.error(err, err.stack);
   }
@@ -78,7 +83,7 @@ const putObjectToS3 = async (file, bucket, version) => {
       ? `@momentum-ui/${library}/${version}/${file.relPath}`
       : `@momentum-ui/${library}/${file.relPath}`,
   };
-  return s3.putObject(params).promise();
+  return s3.send(new PutObjectCommand(params));
 };
 
 const pushToS3 = async () => {

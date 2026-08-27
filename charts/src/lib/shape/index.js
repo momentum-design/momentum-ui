@@ -30,8 +30,10 @@ class Shape {
     let needBind = this.DomEvents.Events[key] === undefined;
     this.DomEvents.bind(key, func);
     if (needBind) {
-      this.Selection.on(key, (d, i) => {
-        this.DomEvents.emit(key, [d, i], this);
+      const shape = this;
+      this.Selection.on(key, function(event, datum) {
+        const index = shape.Selection.nodes().indexOf(this);
+        shape.DomEvents.emit(key, [datum, index, event], shape);
       });
     }
   }
@@ -45,8 +47,10 @@ class Shape {
   bindNewDom(selection) {
     let list = this.DomEvents.Events;
     for (let key in list) {
-      selection.on(key, (d, i) => {
-        this.DomEvents.emit(key, [d, i], this);
+      const shape = this;
+      selection.on(key, function(event, datum) {
+        const index = selection.nodes().indexOf(this);
+        shape.DomEvents.emit(key, [datum, index, event], shape);
       });
     }
   }

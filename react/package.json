@@ -57,7 +57,7 @@
     "test": "node ../tools/runRootTool.js jest --watchman=false",
     "test:CI": "node ../tools/runRootTool.js jest --runInBand --bail --watchman=false",
     "test:cover": "yarn test --coverage ",
-    "test:cover:CI": "yarn test:CI --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:cover:CI": "yarn test:CI --coverage && cat ./coverage/lcov.info | node_modules/coveralls-next/bin/coveralls.js",
     "test:watch": "yarn test --watch",
     "test:CI:cypress": "node ../tools/runRootTool.js wait-on http://127.0.0.1:4300 && yarn run:cypress",
     "test:CI:percy": "node ../tools/runRootTool.js wait-on http://127.0.0.1:4300 && yarn run:percy",
@@ -79,7 +79,7 @@
     "@momentum-ui/utils": "^6.2.15",
     "@restart/context": "^2.1.4",
     "dom-helpers": "^3.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.18.0",
     "moment": "^2.24.0",
     "object-assign": "4.1.1",
     "prop-types": "15.8.1",
@@ -89,16 +89,14 @@
   },
   "devDependencies": {
     "@momentum-ui/tokens": "^1.7.1",
-    "child-process-promise": "^2.2.1",
-    "coveralls": "^3.0.1",
+    "coveralls-next": "^6.0.2",
     "moment-timezone": "^0.5.14",
-    "npm-watch": "^0.3.0",
+    "npm-watch": "^0.13.0",
     "react-redux": "^7.2.9",
     "react-router-dom": "^5.3.4",
     "react-virtualized": "^9.21.0",
     "react-virtualized-auto-sizer": "^1.0.2",
-    "react-window": "^1.8.1",
-    "replace": "0.3.0"
+    "react-window": "^1.8.1"
   },
   "jest": {
     "testEnvironment": "jsdom",

@@ -59,7 +59,7 @@ board.line('d2', {
     }
   }
 });
-```	
+```
 
 ## Add dot
 

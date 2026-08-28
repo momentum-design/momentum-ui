@@ -253,6 +253,32 @@ describe("Combobox Component", () => {
       expect(el.expanded).toBeFalsy();
     });
 
+    test("should show all options when reopening after a search", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} searchable></md-combobox>
+      `);
+
+      el.input!.dispatchEvent(new MouseEvent("click"));
+      el.input!.value = "Albania";
+      el.input!.dispatchEvent(new Event("input"));
+      await elementUpdated(el);
+
+      expect(el.filteredOptions).toEqual(["Albania"]);
+
+      el.lists![0].dispatchEvent(new MouseEvent("click"));
+      await elementUpdated(el);
+
+      expect(el.selectedOptions).toEqual(["Albania"]);
+      expect(el.expanded).toBeFalsy();
+
+      el.input!.dispatchEvent(new MouseEvent("click"));
+      await elementUpdated(el);
+
+      expect(el.input!.value).toEqual("Albania");
+      expect(el.filteredOptions).toEqual(comboBoxOptions);
+      expect(el.lists).toHaveLength(comboBoxOptions.length);
+    });
+
     test("should set placeholder if property exist", async () => {
       const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox .options=${comboBoxOptions} placeholder="Placeholder Input"></md-combobox>

@@ -59,6 +59,7 @@ export namespace ComboBox {
   export class ELEMENT extends FocusMixin(LitElement) {
     private _focusedIndex = -1;
     private _focusedGroupIndex = -1;
+    private isUserFiltering = true;
 
     @property({ type: String }) label = "Options";
     @property({ type: Array }) options: (string | OptionMember)[] = [];
@@ -463,7 +464,10 @@ export namespace ComboBox {
       this.removeEventListener("selected-changed", this.selectedChange as EventListener);
     }
 
-    private setVisualListbox(value: boolean) {
+    private setVisualListbox(value: boolean, bypassFilterOnOpen = false) {
+      if (value && !this.expanded && bypassFilterOnOpen) {
+        this.isUserFiltering = false;
+      }
       this.expanded = value;
     }
 
@@ -930,6 +934,7 @@ export namespace ComboBox {
 
     handleInput(event: Event) {
       const inputValue = (event.target as HTMLInputElement).value;
+      this.isUserFiltering = true;
       this.inputValue = inputValue.trim();
       this.notifyInputValueChanged(inputValue.trim());
     }
@@ -1050,7 +1055,7 @@ export namespace ComboBox {
     handleGroupFocus() {
       this.setFocusOnHost(false);
       if (!this.expanded) {
-        this.setVisualListbox(true);
+        this.setVisualListbox(true, true);
       }
       if (this.filteredGroupOptions.length > 0 && this.focusedGroupIndex === -1) {
         this.focusedGroupIndex = this.filteredGroupOptions.findIndex((item) => {
@@ -1124,7 +1129,7 @@ export namespace ComboBox {
             }
             this.setFocusOnHost(false);
             if (!this.expanded) {
-              this.setVisualListbox(true);
+              this.setVisualListbox(true, true);
             }
             this.updateOnNextFrame(() => {
               if (
@@ -1154,7 +1159,7 @@ export namespace ComboBox {
             }
             this.setFocusOnHost(false);
             if (!this.expanded) {
-              this.setVisualListbox(true);
+              this.setVisualListbox(true, true);
             }
             this.updateOnNextFrame(() => {
               if (this.focusedIndex <= 0) {
@@ -1223,7 +1228,7 @@ export namespace ComboBox {
               this.handleSelectAll();
             }
           }
-          this.expanded = true;
+          this.setVisualListbox(true, true);
           break;
         }
         default: {
@@ -1325,7 +1330,7 @@ export namespace ComboBox {
           }
           break;
         default: {
-          this.setVisualListbox(true);
+          this.setVisualListbox(true, true);
           break;
         }
       }
@@ -1356,8 +1361,8 @@ export namespace ComboBox {
             bubbles: true
           })
         );
+        this.setVisualListbox(true, true);
         this.notifySearchResultCount();
-        this.setVisualListbox(true);
       }
       this.input!.focus();
       this.setGroupList("");
@@ -1414,32 +1419,35 @@ export namespace ComboBox {
       };
     }
 
+    private get filterValue() {
+      if (this.expanded && !this.isUserFiltering) {
+        return "";
+      }
+      return this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue;
+    }
+
     get filteredOptions() {
-      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
-        (options: string | OptionMember) => {
-          if (this.isOptGroup) {
-            if (typeof options !== "string" && this.groupExpandedList.includes(this.getOptionGroupName(options))) {
-              return options.isLabel === "false";
-            }
-          } else {
-            return true;
+      return this.filterOptions(this.filterValue).filter((options: string | OptionMember) => {
+        if (this.isOptGroup) {
+          if (typeof options !== "string" && this.groupExpandedList.includes(this.getOptionGroupName(options))) {
+            return options.isLabel === "false";
           }
+        } else {
+          return true;
         }
-      );
+      });
     }
 
     get filteredGroupOptions() {
-      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
-        (options: string | OptionMember) => {
-          if (this.isOptGroup) {
-            if (typeof options !== "string") {
-              return options.isLabel === "true";
-            }
-          } else {
-            return true;
+      return this.filterOptions(this.filterValue).filter((options: string | OptionMember) => {
+        if (this.isOptGroup) {
+          if (typeof options !== "string") {
+            return options.isLabel === "true";
           }
+        } else {
+          return true;
         }
-      );
+      });
     }
 
     get comboBoxTemplateClassMap() {
@@ -1641,7 +1649,7 @@ export namespace ComboBox {
 
     renderWithoutVirtualScroll() {
       return repeat(
-        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
+        this.filterOptions(this.filterValue),
         (option: string | OptionMember) => this.getOptionId(option),
         (option: string | OptionMember, optionIndex) => {
           if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
@@ -1654,10 +1662,7 @@ export namespace ComboBox {
     }
 
     highlightingSearchedText(option: OptionMember | string) {
-      return findHighlight(
-        this.getOptionValue(option),
-        this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-      ).map(({ text, matching }) =>
+      return findHighlight(this.getOptionValue(option), this.filterValue).map(({ text, matching }) =>
         matching
           ? html` <span class="highlight-text" part="select-label">${text}</span> `
           : html` <span class="selected-label-text" part="select-label">${text}</span> `
@@ -1792,7 +1797,7 @@ export namespace ComboBox {
       return html`
         <div class="virtual-scroll" @rangeChanged=${this.rangeChanged}>
           <lit-virtualizer
-            .items=${this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)}
+            .items=${this.filterOptions(this.filterValue)}
             .renderItem=${(item: string | OptionMember, index: number) => this.renderItem(item, index)}
           ></lit-virtualizer>
         </div>
@@ -1868,9 +1873,7 @@ export namespace ComboBox {
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()
                     ? this.renderWithoutVirtualScroll()
-                    : this.options.length !== 0 &&
-                        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
-                          .length > 0
+                    : this.options.length !== 0 && this.filterOptions(this.filterValue).length > 0
                       ? this.renderVirtualScroll
                       : nothing}
                   ${this.options.length &&

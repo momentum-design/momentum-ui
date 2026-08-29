@@ -123,7 +123,8 @@
     display: flex;
     padding: $combobox-input-padding;
     padding-inline-end: $combobox-input-padding-right;
-    height: rem-calc(34);
+    min-height: rem-calc(34);
+    height: auto;
 
     md-icon {
       color: var(--md-secondary-text-color, $md-gray-70);
@@ -180,7 +181,8 @@
     align-items: center;
     border-radius: 8px;
     background: transparent;
-    height: $combobox-new-height;
+    min-height: $combobox-new-height;
+    height: auto;
     max-width: 100%;
     min-width: 3rem;
     flex-grow: 1;
@@ -208,6 +210,9 @@
       white-space: nowrap;
       display: inline-block;
       width: 100%;
+      letter-spacing: inherit;
+      line-height: inherit;
+      word-spacing: inherit;
     }
 
     &.compact {
@@ -460,7 +465,9 @@ div#md-combobox-listbox {
     @include text-dots;
     cursor: default;
     display: block;
-    letter-spacing: normal;
+    letter-spacing: inherit;
+    line-height: inherit;
+    word-spacing: inherit;
     width: calc(100% - #{$combobox-select-size});
 
     span {
@@ -554,13 +561,16 @@ div#md-combobox-listbox {
     display: flex;
     font-size: $font-size-small;
     margin-right: $combobox-main-indent;
-    max-height: $combobox-selected-height;
+    min-height: $combobox-selected-height;
     padding: $combobox-input-padding;
 
     span {
       @include text-dots;
       display: inline-block;
-      max-width: calc(#{$combobox-select-size} * 4);
+      max-width: 100%;
+      letter-spacing: inherit;
+      line-height: inherit;
+      word-spacing: inherit;
     }
 
     .remove-item {
@@ -583,15 +593,21 @@ div#md-combobox-listbox {
     color: var(--md-secondary-text-color, $lm-combobox-text-color-light);
     display: inline-block;
     flex: 1 1 auto;
-    height: $combobox-min-height;
+    min-height: $combobox-min-height;
     outline: none;
     min-width: 3rem;
+    letter-spacing: inherit;
+    line-height: inherit;
+    word-spacing: inherit;
   }
 
   ::input-placeholder {
     @include text-dots;
     display: inline-block;
     width: calc(100%);
+    letter-spacing: inherit;
+    line-height: inherit;
+    word-spacing: inherit;
   }
 
   .remove-item {

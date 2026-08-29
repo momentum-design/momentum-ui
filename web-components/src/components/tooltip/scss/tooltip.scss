@@ -47,6 +47,14 @@
     width: max-content;
     word-break: break-word;
     z-index: 9999;
+    pointer-events: auto;
+
+    .tooltip-hover-bridge {
+      position: absolute;
+      transform: translateX(-50%);
+      background: transparent;
+      pointer-events: auto;
+    }
 
     .md-tooltip__arrow {
       height: $tooltip-arrow__size;

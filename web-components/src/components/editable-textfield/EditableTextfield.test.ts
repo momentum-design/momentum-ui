@@ -254,4 +254,29 @@ describe("Editable Textfield component", () => {
     expect(editComponent?.getAttribute("aria-label")).toBeNull();
     expect(editComponent?.getAttribute("aria-describedby")).toBeNull();
   });
+  test("should sync content property and editableField.innerText without duplication", async () => {
+    const initialText = "initial";
+    const component: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field content="${initialText}"></md-editable-field>
+    `);
+
+    component.isEditing = true;
+    await elementUpdated(component);
+
+    const editableDiv = component.shadowRoot?.querySelector<HTMLElement>(".md-editable-textfield");
+    editableDiv!.innerText = "user input";
+    component.handleBlur();
+    await elementUpdated(component);
+
+    // After blur, content property should match user input
+    expect(component.content).toBe("user input");
+
+    // Simulate focus again, editableField.innerText should match content property
+    component.handleFocus();
+    await elementUpdated(component);
+    expect(editableDiv!.innerText).toBe(component.content);
+
+    // No duplication should occur
+    expect(editableDiv!.innerText).toBe("user input");
+  });
 });

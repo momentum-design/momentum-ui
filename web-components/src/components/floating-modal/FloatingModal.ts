@@ -399,7 +399,7 @@ export namespace FloatingModal {
     private resizeEndListener = () => {
       this.setContainerRect();
     };
-    
+
     private getMinimizedContainer(): HTMLElement | undefined {
       return this.shadowRoot
         ?.querySelector("md-floating-modal-minimized")

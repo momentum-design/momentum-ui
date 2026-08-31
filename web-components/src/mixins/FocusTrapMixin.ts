@@ -524,7 +524,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): F
       if (this.focusableTimer) {
         clearTimeout(this.focusableTimer);
       }
-      this.focusableElements = [];
+
       this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
       }, 10);

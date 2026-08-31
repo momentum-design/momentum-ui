@@ -531,6 +531,9 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["initialFocusComplete"] = true;
     focusTrap!.focusTrapIndex = 0;
 
+    await nextFrame();
+    await elementUpdated(el);
+
     if (focusableChild) {
       focusableChild[focusableChild.length - 1].autofocus = true;
       focusableChild[focusableChild.length - 1].focus();

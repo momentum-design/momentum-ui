@@ -151,21 +151,23 @@ export namespace FloatingMinimizedModal {
     private setInteractInstance() {
       requestAnimationFrame(() => {
         if (this.container) {
-          interact(this.container).draggable({
-            autoScroll: true,
-            allowFrom: this.DRAG_HANDLE_SELECTOR,
-            ignoreFrom: this.DRAG_IGNORE_SELECTOR,
-            listeners: {
-              move: this.dragMoveListener,
-              end: this.dragEndListener
-            },
-            modifiers: [
-              interact.modifiers.restrictRect({
-                restriction: document.body.getBoundingClientRect(),
-                endOnly: true
-              })
-            ]
-          });
+          interact(this)
+            .draggable({
+              autoScroll: true,
+              allowFrom: this.DRAG_HANDLE_SELECTOR,
+              ignoreFrom: this.DRAG_IGNORE_SELECTOR,
+              listeners: {
+                move: this.dragMoveListener,
+                end: this.dragEndListener
+              },
+              modifiers: [
+                interact.modifiers.restrictRect({
+                  restriction: document.body.getBoundingClientRect(),
+                  endOnly: true
+                })
+              ]
+            })
+            .rectChecker(() => this.container!.getBoundingClientRect());
         }
       });
     }
@@ -214,8 +216,8 @@ export namespace FloatingMinimizedModal {
       this.dragOccured = false;
     }
 
-    private getTransformValues(event: Interact.InteractEvent) {
-      const { target, dx, dy } = event;
+    private getTransformValues(event: Interact.InteractEvent, target: Interact.Element) {
+      const { dx, dy } = event;
       const { initialX, initialY } = this.getInitialPosition();
       const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
       const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
@@ -223,8 +225,8 @@ export namespace FloatingMinimizedModal {
     }
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
-      const { target } = event;
-      const { x, y } = this.getTransformValues(event);
+      const target = this.container ?? event.target;
+      const { x, y } = this.getTransformValues(event, target);
       this.setTargetPosition(target, x, y);
       this.applyInitialPosition = false;
     };
@@ -241,8 +243,8 @@ export namespace FloatingMinimizedModal {
     }
 
     private destroyInteractInstance() {
-      if (this.container && interact.isSet(this.container)) {
-        interact(this.container).unset();
+      if (interact.isSet(this)) {
+        interact(this).unset();
       }
     }
 

@@ -117,9 +117,8 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
-    const containerInteractable = interact(container);
-    const dragOptions = containerInteractable.options.drag;
+    const hostInteractable = interact(element);
+    const dragOptions = hostInteractable.options.drag;
     const title = element.querySelector(".slotted-header-title") as HTMLElement;
     const slottedTooltip = element.querySelector(".slotted-header-tooltip") as HTMLElement;
     const slottedAction = element.querySelector(".slotted-header-action") as HTMLElement;
@@ -127,10 +126,10 @@ describe("Floating Modal Component", () => {
     const closeButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
 
     expect(dragOptions.enabled).toBeTruthy();
-    expect(containerInteractable.testIgnoreAllow(dragOptions, container, title)).toBeTruthy();
-    expect(containerInteractable.testIgnoreAllow(dragOptions, container, slottedTooltip)).toBeFalsy();
-    expect(containerInteractable.testIgnoreAllow(dragOptions, container, slottedAction)).toBeFalsy();
-    expect(containerInteractable.testIgnoreAllow(dragOptions, container, maximizeButton)).toBeFalsy();
-    expect(containerInteractable.testIgnoreAllow(dragOptions, container, closeButton)).toBeFalsy();
+    expect(hostInteractable.testIgnoreAllow(dragOptions, element, title)).toBeTruthy();
+    expect(hostInteractable.testIgnoreAllow(dragOptions, element, slottedTooltip)).toBeFalsy();
+    expect(hostInteractable.testIgnoreAllow(dragOptions, element, slottedAction)).toBeFalsy();
+    expect(hostInteractable.testIgnoreAllow(dragOptions, element, maximizeButton)).toBeFalsy();
+    expect(hostInteractable.testIgnoreAllow(dragOptions, element, closeButton)).toBeFalsy();
   });
 });

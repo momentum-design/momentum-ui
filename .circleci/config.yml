@@ -49,6 +49,18 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  build_legacy_packages:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build changed legacy packages
+          command: bash tools/buildChangedPackages.sh
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   test_icons:
     executor: default
     steps:
@@ -256,6 +268,9 @@ workflows:
       - build_tokens:
           requires:
             - lint
+      - build_legacy_packages:
+          requires:
+            - build_tokens
       - test_web_components:
           requires:
             - build_tokens
@@ -274,21 +289,9 @@ workflows:
       - lint_test_release:
           filters:
             branches:
-              only:
-                - main
+              ignore: /.*/
             tags:
-              only: /^.force-deploy/
-
-  daily_release:
-    triggers:
-      - schedule:
-          cron: '30 5 * * *'
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - lint_test_release
+              only: /^force-deploy.*$/
 
   manual_publish_www:
     jobs:

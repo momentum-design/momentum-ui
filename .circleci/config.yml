@@ -1,15 +1,16 @@
-definitions:
-  image_defaults: &image_defaults
+version: 2.1
+
+executors:
+  default:
     working_directory: ~/repo
     docker:
       - image: cypress/base:24.18.0
         environment:
           TERM: xterm
 
-version: 2
 jobs:
   checkout_install:
-    <<: *image_defaults
+    executor: default
     steps:
       - checkout
       - run: yarn bootstrap
@@ -22,7 +23,7 @@ jobs:
             - .yarn
 
   lint:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -31,7 +32,7 @@ jobs:
           command: yarn lint:all
 
   build_tokens:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -49,7 +50,7 @@ jobs:
           command: git checkout -- .
 
   test_icons:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -61,7 +62,7 @@ jobs:
           command: git checkout -- .
 
   test_icons_rebrand:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -73,7 +74,7 @@ jobs:
           command: git checkout -- .
 
   test_core_percy:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -90,7 +91,7 @@ jobs:
           command: git checkout -- .
 
   test_react:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -106,7 +107,7 @@ jobs:
           command: git checkout -- .
 
   test_web_components:
-    <<: *image_defaults
+    executor: default
     resource_class: large
     steps:
       - attach_workspace:
@@ -126,7 +127,7 @@ jobs:
           command: git checkout -- .
 
   static_analysis:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -154,7 +155,7 @@ jobs:
       - run: PERCY_TOKEN=$PERCY_TOKEN percy finalize --all
 
   test_www:
-    <<: *image_defaults
+    executor: default
     steps:
       - attach_workspace:
           at: ~/
@@ -167,7 +168,7 @@ jobs:
           command: git checkout -- .
 
   lint_test_release:
-    <<: *image_defaults
+    executor: default
     steps:
       - checkout
       - run:
@@ -178,10 +179,13 @@ jobs:
       - run:
           name: Lint all Libraries
           command: yarn lint:all
-      - run: yarn build:react
       - run:
           name: Build tokens library
           command: yarn build:tokens
+      - run:
+          name: Build utils library
+          command: yarn build:utils
+      - run: yarn build:react
       - run:
           name: Test icons library
           command: yarn ci:test:icons
@@ -224,7 +228,7 @@ jobs:
           command: yarn publish:icons
 
   publish_www:
-    <<: *image_defaults
+    executor: default
     resource_class: large
     steps:
       - checkout
@@ -243,8 +247,6 @@ jobs:
           command: yarn publish:www
 
 workflows:
-  version: 2
-
   lint_test:
     jobs:
       - checkout_install

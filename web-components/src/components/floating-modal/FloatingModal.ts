@@ -135,7 +135,11 @@ export namespace FloatingModal {
         this.syncFocusTrap();
       }
 
-      if (changedProperties.has("show") || (changedProperties.has("minimize") && this.show)) {
+      if (
+        changedProperties.has("show") ||
+        changedProperties.has("full") ||
+        (changedProperties.has("minimize") && this.show)
+      ) {
         this.refreshFocusableElements();
       }
     }

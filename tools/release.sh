@@ -20,8 +20,7 @@ else
     cd $directory
     echo $directory
 
-    yarn prepublishOnly
-    npx publish
+    npm publish --access public
   done
 
   commitMessage=""

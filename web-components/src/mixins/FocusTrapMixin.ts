@@ -444,7 +444,13 @@ export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): F
         return;
       }
 
-      if (!this.activeFocusTrap || !this.focusableElements.length) {
+      if (!this.activeFocusTrap) {
+        return;
+      }
+
+      this.setFocusableElements();
+
+      if (!this.focusableElements.length) {
         return;
       }
 

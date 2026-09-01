@@ -561,4 +561,60 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!.focusTrapIndex).toEqual(0);
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(focusTrap!["focusableElements"]![0]);
   });
+
+  test("should not focus a removed control that's still in the cached list when Tab is pressed mid-debounce", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
+
+    focusTrap["activateFocusTrap"]!();
+    focusTrap["setFocusableElements"]!();
+    focusTrap["initialFocusComplete"] = true;
+
+    const divEl = focusTrap.querySelector('div[tabindex="0"]') as HTMLElement;
+    const slottedButton = focusTrap.querySelector("div > button") as HTMLButtonElement;
+    const startIndex = focusTrap["focusableElements"]!.indexOf(divEl);
+    const removedIndex = focusTrap["focusableElements"]!.indexOf(slottedButton);
+    expect(startIndex).toBeGreaterThanOrEqual(0);
+    expect(removedIndex).toBeGreaterThan(startIndex);
+
+    focusTrap.focusTrapIndex = startIndex;
+
+    // Let this initial tryFocus() settle so we start from a stable, known state before
+    // simulating the removal below.
+    await nextFrame();
+    await elementUpdated(el);
+
+    // Simulate a control disappearing (e.g. a summary card being removed) right after the
+    // trap was told content changed, but before its debounced recompute has run.
+    slottedButton.remove();
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+
+    // Sanity check that we're genuinely inside the debounce window right now:
+    // updateFocusableElements() only *schedules* a recompute (10ms later), it doesn't run
+    // one synchronously, so the cache is still the stale, pre-removal snapshot.
+    expect(focusTrap["focusableElements"]).toContain(slottedButton);
+
+    // Dispatch Tab and assert in the SAME synchronous tick, with no await in between. JS
+    // never runs a setTimeout callback until the current synchronous code finishes, so this
+    // proves the result below cannot be coming from the 10ms debounce recompute landing -
+    // only handleKeydownFocusTrap's own synchronous recompute could have produced it.
+    const tabKeyEvent = new KeyboardEvent("keydown", { code: Key.Tab });
+    focusTrap.dispatchEvent(tabKeyEvent);
+
+    expect(focusTrap["focusableElements"]).not.toContain(slottedButton);
+    // Note: the removed element's old numeric index can legitimately be reused by whatever
+    // shifted into that slot after the array shrank - what matters is the actual element,
+    // not the index number, hence checking identity/connectivity below instead.
+    const nextTarget = focusTrap["focusableElements"]![focusTrap.focusTrapIndex];
+    expect(nextTarget).toBeDefined();
+    expect(nextTarget).not.toEqual(slottedButton);
+    expect(nextTarget?.isConnected).toBe(true);
+
+    // Now let the actual focus() (deferred via requestAnimationFrame) and the debounce's
+    // own recompute both land, and confirm the end-to-end result still holds.
+    await nextFrame();
+    await elementUpdated(el);
+
+    const activeElement = focusTrap["getDeepActiveElement"]!() as HTMLElement | null;
+    expect(activeElement).toEqual(nextTarget);
+  });
 });

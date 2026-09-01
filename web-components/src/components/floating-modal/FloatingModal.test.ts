@@ -630,6 +630,35 @@ describe("Floating Modal Component", () => {
     expect(element.shadowRoot?.activeElement).toBe(firstHeaderButton);
   });
 
+  test("should reach content added to the panel after opening, with no external refresh signal", async () => {
+    element.show = true;
+    element.full = true;
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    const headerButtons = element.shadowRoot!.querySelectorAll(
+      ".md-floating__header md-button.md-floating__header-button"
+    );
+    const lastHeaderButton = headerButtons[headerButtons.length - 1] as HTMLElement;
+
+    // Mirrors AssistantPanel: content (e.g. a Wellness break card) renders into the panel
+    // asynchronously, after the modal already opened, behind a loading spinner - and nothing
+    // tells the trap content changed (no on-widget-update dispatch).
+    const lateButton = document.createElement("button");
+    lateButton.textContent = "Wellness break";
+    element.appendChild(lateButton);
+    await elementUpdated(element);
+
+    lastHeaderButton.focus();
+    lastHeaderButton.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Tab, bubbles: true, composed: true }));
+    jest.runAllTimers();
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(document.activeElement).toBe(lateButton);
+  });
+
   test("should wrap focus from the first header button back to the last on Shift+Tab when full-screen", async () => {
     element.show = true;
     element.full = true;

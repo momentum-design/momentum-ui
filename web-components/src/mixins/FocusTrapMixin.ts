@@ -332,21 +332,25 @@ export const FocusTrapMixin = <T extends AnyConstructor<LitElement>>(base: T): F
       const activeElement = this.getDeepActiveElement!() as HTMLElement;
       const activeIndex = this.findElement(activeElement);
 
+      let nextIndex: number;
       if (direction) {
-        if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
-          this.focusTrapIndex--;
-        } else {
-          this.focusTrapIndex = this.calculateNextFocusIndex(activeIndex, direction);
-        }
+        nextIndex =
+          activeIndex === -1 && this.focusTrapIndex - 1 > 0
+            ? this.focusTrapIndex - 1
+            : this.calculateNextFocusIndex(activeIndex, direction);
       } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
-        this.focusTrapIndex++;
-      } else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
-        const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
-        if (nextEleToFocus) {
-          this.tryFocus(nextEleToFocus);
+        nextIndex = this.focusTrapIndex + 1;
+      } else {
+        nextIndex = this.calculateNextFocusIndex(activeIndex, direction);
+      }
+
+      const nextElement = this.focusableElements[nextIndex];
+      if (nextIndex === this.focusTrapIndex) {
+        if (nextElement && nextElement !== activeElement) {
+          this.tryFocus(nextElement);
         }
       } else {
-        this.focusTrapIndex = this.calculateNextFocusIndex(activeIndex, direction);
+        this.focusTrapIndex = nextIndex;
       }
     }
 

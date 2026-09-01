@@ -617,4 +617,38 @@ describe("FocusTrap Mixin", () => {
     const activeElement = focusTrap["getDeepActiveElement"]!() as HTMLElement | null;
     expect(activeElement).toEqual(nextTarget);
   });
+
+  test("should advance Tab to the following control when an earlier control is removed, even when the target index number is unchanged", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
+
+    focusTrap["activateFocusTrap"]!();
+    focusTrap["setFocusableElements"]!();
+    focusTrap["initialFocusComplete"] = true;
+
+    const controlBefore = focusTrap.querySelector('div[tabindex="0"]') as HTMLElement;
+    const focusedControl = focusTrap.querySelector("div > button") as HTMLButtonElement;
+    const focusedIndex = focusTrap["focusableElements"]!.indexOf(focusedControl);
+    const expectedNext = focusTrap["focusableElements"]![focusedIndex + 1];
+    expect(focusTrap["focusableElements"]!.indexOf(controlBefore)).toBeLessThan(focusedIndex);
+    expect(expectedNext).toBeDefined();
+    expect(expectedNext).not.toEqual(focusedControl);
+
+    focusTrap.focusTrapIndex = focusedIndex;
+    await nextFrame();
+    await elementUpdated(el);
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusedControl);
+
+    controlBefore.remove();
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+
+    const tabKeyEvent = new KeyboardEvent("keydown", { code: Key.Tab });
+    focusTrap.dispatchEvent(tabKeyEvent);
+
+    expect(focusTrap["focusableElements"]!.indexOf(expectedNext)).toEqual(focusedIndex);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(expectedNext);
+  });
 });

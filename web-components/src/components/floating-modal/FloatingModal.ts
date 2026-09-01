@@ -320,7 +320,7 @@ export namespace FloatingModal {
               })
             ]
           })
-          .rectChecker(() => this.container!.getBoundingClientRect());
+          .rectChecker(() => (this.getActiveDragTarget() ?? this.container!).getBoundingClientRect());
 
         if (this.resizable) {
           interact(this.container)
@@ -400,7 +400,20 @@ export namespace FloatingModal {
       this.setContainerRect();
     };
 
+    private getMinimizedContainer(): HTMLElement | undefined {
+      return this.shadowRoot
+        ?.querySelector("md-floating-modal-minimized")
+        ?.shadowRoot?.querySelector(".md-floating") as HTMLElement | undefined;
+    }
+
+    private getActiveDragTarget(): HTMLElement | undefined {
+      return this.minimize ? this.getMinimizedContainer() : this.container;
+    }
+
     private getInitialPosition = () => {
+      if (this.minimize) {
+        return { initialX: 0, initialY: 0 };
+      }
       if (this.applyInitialPosition && this.position) {
         return { initialX: Number(this.position?.x), initialY: Number(this.position?.y) };
       }
@@ -416,16 +429,41 @@ export namespace FloatingModal {
     }
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
-      const target = this.container ?? event.target;
+      const target = this.getActiveDragTarget();
+      if (!target) return;
+
       const { x, y } = this.getTransformValues(event, target);
       this.setTargetPosition(target, x, y);
-      this.applyInitialPosition = false;
+      if (!this.minimize) {
+        this.applyInitialPosition = false;
+      }
     };
 
     private dragEndListener = () => {
       this.dragOccured = true;
-      this.setContainerRect();
+      if (this.minimize) {
+        this.dispatchMinimizedLocation();
+      } else {
+        this.setContainerRect();
+      }
     };
+
+    private dispatchMinimizedLocation() {
+      const target = this.getMinimizedContainer();
+      const dataX = target?.getAttribute("data-x");
+      const dataY = target?.getAttribute("data-y");
+      if (!dataX || !dataY) return;
+
+      this.dispatchEvent(
+        new CustomEvent("floating-modal-minimize-location", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            transform: { x: dataX, y: dataY }
+          }
+        })
+      );
+    }
 
     private setTargetPosition(target: Interact.Element, x: number, y: number) {
       target.style.transform = `translate(${x}px, ${y}px)`;

@@ -357,6 +357,56 @@ describe("Floating Modal Component", () => {
     expect(container.getAttribute("data-y")).toEqual("105");
   });
 
+  test("should not double-count minPosition when the minimized chip's own listener fires before the parent's redirected one", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .minimizable=${true} .minPosition=${{ x: 600, y: 400 }}>
+        <div slot="header" class="slotted-header"><span class="slotted-header-title">Title</span></div>
+      </md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const minimizeButton = element.shadowRoot!.querySelector(".md-floating__minimize") as Button.ELEMENT;
+    minimizeButton.shadowRoot!.querySelector("button")!.click();
+    await elementUpdated(element);
+
+    const minModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as any;
+    const minContainer = minModal.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+
+    minModal.dragMoveListener({ dx: 20, dy: 15 } as Interact.InteractEvent);
+    expect(minContainer.getAttribute("data-x")).toEqual("620");
+    expect(minContainer.getAttribute("data-y")).toEqual("415");
+
+    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    expect(minContainer.getAttribute("data-x")).toEqual("630");
+    expect(minContainer.getAttribute("data-y")).toEqual("420");
+  });
+
+  test("should not double-count minPosition when the parent's redirected listener fires before the minimized chip's own one", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .minimizable=${true} .minPosition=${{ x: 600, y: 400 }}>
+        <div slot="header" class="slotted-header"><span class="slotted-header-title">Title</span></div>
+      </md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const minimizeButton = element.shadowRoot!.querySelector(".md-floating__minimize") as Button.ELEMENT;
+    minimizeButton.shadowRoot!.querySelector("button")!.click();
+    await elementUpdated(element);
+
+    const minModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as any;
+    const minContainer = minModal.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+
+    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    expect(minContainer.getAttribute("data-x")).toEqual("610");
+    expect(minContainer.getAttribute("data-y")).toEqual("405");
+
+    minModal.dragMoveListener({ dx: 20, dy: 15 } as Interact.InteractEvent);
+    expect(minContainer.getAttribute("data-x")).toEqual("630");
+    expect(minContainer.getAttribute("data-y")).toEqual("420");
+  });
+
   test("should restrict dragging to the viewport using the visible panel's rect, not the host element's", async () => {
     const element = await fixture<FloatingModal.ELEMENT>(html` <md-floating-modal .show=${true}></md-floating-modal> `);
     jest.advanceTimersByTime(600);

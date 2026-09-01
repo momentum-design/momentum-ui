@@ -40,7 +40,6 @@ export namespace FloatingMinimizedModal {
     @state() private dragOccured: boolean | false = false;
     @state() private containerTransform = "";
 
-    private applyInitialPosition = true;
     private readonly DRAG_HANDLE_SELECTOR =
       ".md-floating__header, .md-floating__header *, [slot='header'], [slot='header'] *";
     private readonly DRAG_IGNORE_SELECTOR = [
@@ -73,7 +72,7 @@ export namespace FloatingMinimizedModal {
       super.updated(changedProperties);
       if (changedProperties.has("show")) {
         if (this.container && this.show) {
-          this.applyInitialPosition = true;
+          this.setInitialTargetPosition();
           this.setContainerRect();
           this.setInteractInstance();
           this.setFocusOnContainer();
@@ -90,25 +89,19 @@ export namespace FloatingMinimizedModal {
       }
     }
 
-    private getInitialPosition = () => {
-      if (this.applyInitialPosition && this.minPosition) {
-        return { initialX: Number(this.minPosition?.x), initialY: Number(this.minPosition?.y) };
-      }
-      return { initialX: 0, initialY: 0 };
-    };
-
     private isNewPositionNotSame() {
-      if (this.container) {
+      if (this.container && this.minPosition) {
         return (
-          Number(this.container?.getAttribute("data-x")) !== this.minPosition?.x ||
-          Number(this.container?.getAttribute("data-y")) !== this.minPosition?.y
+          Number(this.container.getAttribute("data-x")) !== this.minPosition.x ||
+          Number(this.container.getAttribute("data-y")) !== this.minPosition.y
         );
       }
+      return false;
     }
 
     private setInitialTargetPosition() {
-      if (this.container && this.isNewPositionNotSame()) {
-        this.setTargetPosition(this.container, Number(this.minPosition?.x), Number(this.minPosition?.y));
+      if (this.container && this.minPosition && this.isNewPositionNotSame()) {
+        this.setTargetPosition(this.container, Number(this.minPosition.x), Number(this.minPosition.y));
       }
     }
 
@@ -218,9 +211,8 @@ export namespace FloatingMinimizedModal {
 
     private getTransformValues(event: Interact.InteractEvent, target: Interact.Element) {
       const { dx, dy } = event;
-      const { initialX, initialY } = this.getInitialPosition();
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx;
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy;
       return { x, y };
     }
 
@@ -228,7 +220,6 @@ export namespace FloatingMinimizedModal {
       const target = this.container ?? event.target;
       const { x, y } = this.getTransformValues(event, target);
       this.setTargetPosition(target, x, y);
-      this.applyInitialPosition = false;
     };
 
     private dragEndListener = () => {

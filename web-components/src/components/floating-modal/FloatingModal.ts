@@ -63,7 +63,6 @@ export namespace FloatingModal {
     private previouslyFocusedElement: HTMLElement | null = null;
 
     private applyInitialPosition = true;
-    private applyInitialMinPosition = true;
     private readonly DRAG_HANDLE_SELECTOR =
       ".md-floating__header, .md-floating__header *, [slot='header'], [slot='header'] *";
     private readonly DRAG_IGNORE_SELECTOR = [
@@ -110,7 +109,6 @@ export namespace FloatingModal {
         if (this.container && this.show) {
           this.capturePreviouslyFocusedElement();
           this.applyInitialPosition = true;
-          this.applyInitialMinPosition = true;
           this.setContainerRect();
           this.setInteractInstance();
           this.focusModalOnOpen();
@@ -413,10 +411,11 @@ export namespace FloatingModal {
     }
 
     private getInitialPosition = () => {
-      const position = this.minimize ? this.minPosition : this.position;
-      const applyInitial = this.minimize ? this.applyInitialMinPosition : this.applyInitialPosition;
-      if (applyInitial && position) {
-        return { initialX: Number(position?.x), initialY: Number(position?.y) };
+      if (this.minimize) {
+        return { initialX: 0, initialY: 0 };
+      }
+      if (this.applyInitialPosition && this.position) {
+        return { initialX: Number(this.position?.x), initialY: Number(this.position?.y) };
       }
       return { initialX: 0, initialY: 0 };
     };
@@ -435,9 +434,7 @@ export namespace FloatingModal {
 
       const { x, y } = this.getTransformValues(event, target);
       this.setTargetPosition(target, x, y);
-      if (this.minimize) {
-        this.applyInitialMinPosition = false;
-      } else {
+      if (!this.minimize) {
         this.applyInitialPosition = false;
       }
     };

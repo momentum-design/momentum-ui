@@ -1707,6 +1707,7 @@ export namespace ComboBox {
           tabindex="-1"
           @click=${(event: MouseEvent) => this.handleListClick(event)}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
+          aria-selected=${ifDefined(this.isMulti ? undefined : this.isOptionChecked.call(this, option))}
         >
           ${this.isMulti
             ? html`

@@ -4,12 +4,15 @@
     --md-card-v2-border-radius: #{$md-card-v2-border-radius};
     --md-card-v2-padding: #{$md-card-v2-padding};
     --md-card-v2-content-gap: 8px;
+    --md-card-v2-content-font-size: #{$md-card-v2-content-font-size};
+    --md-card-v2-gap: 0;
 
     display: inline-block;
 
     .md-card-v2 {
         @include flex($fd: column, $jc: flex-start, $ai: stretch);
         box-sizing: border-box;
+        gap: var(--md-card-v2-gap);
         min-width: var(--md-card-v2-min-width);
         height: var(--md-card-v2-height);
         border-radius: var(--md-card-v2-border-radius);
@@ -71,7 +74,7 @@
             user-select: none;
 
             h2 {
-                font-size: $md-card-v2-content-font-size;
+                font-size: var(--md-card-v2-content-font-size);
                 font-weight: $md-card-v2-content-font-weight;
                 line-height: $md-card-v2-content-line-height;
                 color: $md-card-v2-content-color;

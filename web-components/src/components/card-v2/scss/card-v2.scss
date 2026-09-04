@@ -5,10 +5,10 @@
     .md-card-v2 {
         @include flex($fd: column, $jc: flex-start, $ai: stretch);
         box-sizing: border-box;
-        min-width: $md-card-v2-width;
-        height: $md-card-v2-height;
-        border-radius: $md-card-v2-border-radius;
-        padding: $md-card-v2-padding;
+        min-width: var(--md-card-v2-min-width, $md-card-v2-width);
+        height: var(--md-card-v2-height, $md-card-v2-height);
+        border-radius: var(--md-card-v2-border-radius, $md-card-v2-border-radius);
+        padding: var(--md-card-v2-padding, $md-card-v2-padding);
         border: 1px solid transparent;
         background: var(--md-card-v2-background, $md-card-v2-background);
         font-family: $brand-font-medium;
@@ -62,7 +62,7 @@
             display: flex;
             flex-direction: column;
             flex: 1;
-            gap: 8px;
+            gap: var(--md-card-v2-content-gap, 8px);
             user-select: none;
 
             h2 {
@@ -112,14 +112,14 @@
 
 :host(md-card-v2[has-extra-info]) {
     .md-card-v2 {
-        height: $md-card-v2-height-with-extra-info;
-        gap: 8px;
+        height: var(--md-card-v2-height-with-extra-info, $md-card-v2-height-with-extra-info);
+        gap: var(--md-card-v2-gap, 8px);
         &-content {
             display: flex;
             flex-direction: column;
             flex: 1;
             user-select: none;
-            gap: 6px;
+            gap: var(--md-card-v2-extra-info-gap, 6px);
 
             &-extra-info {
                 display: inline-flex;

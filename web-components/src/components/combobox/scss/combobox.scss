@@ -88,14 +88,6 @@
   }
 }
 
-:host([expanded]) {
-  .md-combobox-button {
-    &.arrow-down {
-      transform: rotate(180deg);
-    }
-  }
-}
-
 :host([invalid]) {
   .group,
   .group:hover,
@@ -326,7 +318,6 @@
 }
 
 .md-combobox-button {
-  @include arrow-transition;
   align-self: center;
   align-items: center;
   justify-content: center;

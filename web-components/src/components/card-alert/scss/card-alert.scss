@@ -52,6 +52,15 @@
       flex-shrink: 0;
     }
 
+    &-resolved {
+      @include flex($jc: flex-start, $ai: center);
+      color: $md-card-alert-resolved-color;
+      font-size: rem-calc(14);
+      font-weight: 400;
+      flex-shrink: 0;
+      gap: rem-calc(4);
+    }
+
     // ─── Title section ───────────────────────────────────────────────────
     &-title-section {
       @include flex($fd: column, $jc: flex-start, $ai: flex-start);

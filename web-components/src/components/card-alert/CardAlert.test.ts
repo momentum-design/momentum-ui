@@ -21,6 +21,7 @@ const fixtureFactory = async (
     category: string;
     secondaryChip: string;
     timestamp: string;
+    resolved: boolean;
     title: string;
     queueName: string;
     details: CardAlert.DetailRow[];
@@ -37,6 +38,7 @@ const fixtureFactory = async (
     category: "Adherence",
     secondaryChip: "",
     timestamp: new Date(Date.now() - 3 * 60000).toISOString(),
+    resolved: false,
     title: "Bob has not signed in for his scheduled shift",
     queueName: "Customer Support · 9:00–17:00",
     details: defaultDetails,
@@ -54,6 +56,7 @@ const fixtureFactory = async (
       severity=${props.severity}
       category=${props.category}
       timestamp=${props.timestamp}
+      ?resolved=${props.resolved}
       title=${props.title}
       queueName=${props.queueName}
       .details=${props.details}
@@ -169,6 +172,56 @@ describe("CardAlert component", () => {
     const element = await fixtureFactory({ timestamp: "not-a-date" });
     const ts = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
     expect(ts).toBeNull();
+  });
+
+  test("should render resolution text instead of timestamp when resolved", async () => {
+    const element = await fixtureFactory({ resolved: true });
+    const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+    const resolvedIcon = resolvedLabel!.querySelector("md-icon");
+    const timestamp = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
+
+    expect(resolvedLabel!.textContent!.trim()).toBe("Resolved");
+    expect(resolvedIcon!.getAttribute("name")).toBe("check-circle-badge-filled");
+    expect(timestamp).toBeNull();
+  });
+
+  test("should use localized resolution text", async () => {
+    const cardAlertElement = customElements.get("md-card-alert") as typeof CardAlert.ELEMENT;
+    const originalLocale = { ...cardAlertElement.locale };
+
+    try {
+      Object.assign(cardAlertElement.locale, { resolved: "Completed" });
+
+      const element = await fixtureFactory({ resolved: true });
+      const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+
+      expect(resolvedLabel!.textContent!.trim()).toBe("Completed");
+    } finally {
+      Object.assign(cardAlertElement.locale, originalLocale);
+    }
+  });
+
+  test("should render timestamp when resolved is false", async () => {
+    const element = await fixtureFactory({ resolved: false });
+    const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+    const timestamp = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
+
+    expect(resolvedLabel).toBeNull();
+    expect(timestamp).not.toBeNull();
+  });
+
+  test("should update between timestamp and resolution text when resolved changes", async () => {
+    const element = await fixtureFactory();
+
+    element.resolved = true;
+    await elementUpdated(element);
+    expect(element.shadowRoot!.querySelector(".md-card-alert-resolved")!.textContent!.trim()).toBe("Resolved");
+    expect(element.shadowRoot!.querySelector(".md-card-alert-timestamp")).toBeNull();
+
+    element.resolved = false;
+    await elementUpdated(element);
+    expect(element.shadowRoot!.querySelector(".md-card-alert-resolved")).toBeNull();
+    expect(element.shadowRoot!.querySelector(".md-card-alert-timestamp")).not.toBeNull();
   });
 
   test("should format singular, future, hour, day, invalid, and numeric timestamps", async () => {
@@ -303,6 +356,20 @@ describe("CardAlert component", () => {
     const element = await fixtureFactory({ primaryActionLabel: "Do something" });
     const btn = element.shadowRoot!.querySelector(".md-card-alert-primary-action");
     expect(btn).not.toBeNull();
+  });
+
+  test("should disable primary action button when resolved", async () => {
+    const element = await fixtureFactory({ resolved: true });
+    const btn = element.shadowRoot!.querySelector(".md-card-alert-primary-action") as HTMLButtonElement;
+
+    expect(btn.disabled).toBe(true);
+  });
+
+  test("should enable primary action button when not resolved", async () => {
+    const element = await fixtureFactory({ resolved: false });
+    const btn = element.shadowRoot!.querySelector(".md-card-alert-primary-action") as HTMLButtonElement;
+
+    expect(btn.disabled).toBe(false);
   });
 
   test("should render dropdown arrow when primaryActionDropdown is true", async () => {

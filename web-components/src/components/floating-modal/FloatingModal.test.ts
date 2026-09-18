@@ -31,6 +31,10 @@ Object.defineProperties(HTMLElement.prototype, {
   }
 });
 
+const dragModal = (element: FloatingModal.ELEMENT, event: Interact.InteractEvent): void => {
+  (element as unknown as { dragMoveListener: (dragEvent: Interact.InteractEvent) => void }).dragMoveListener(event);
+};
+
 describe("Floating Modal Component", () => {
   let element: FloatingModal.ELEMENT;
 
@@ -305,7 +309,7 @@ describe("Floating Modal Component", () => {
 
     const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
 
-    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
     expect(container.getAttribute("data-x")).toEqual("210");
     expect(container.getAttribute("data-y")).toEqual("105");
 
@@ -316,7 +320,7 @@ describe("Floating Modal Component", () => {
     const minModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as HTMLElement;
     const minContainer = minModal.shadowRoot!.querySelector(".md-floating") as HTMLElement;
 
-    (element as any).dragMoveListener({ dx: 20, dy: 15 } as Interact.InteractEvent);
+    dragModal(element, { dx: 20, dy: 15 } as Interact.InteractEvent);
 
     expect(minContainer.getAttribute("data-x")).toEqual("620");
     expect(minContainer.getAttribute("data-y")).toEqual("415");
@@ -341,7 +345,7 @@ describe("Floating Modal Component", () => {
     const minModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as HTMLElement;
     const minContainer = minModal.shadowRoot!.querySelector(".md-floating") as HTMLElement;
 
-    (element as any).dragMoveListener({ dx: 20, dy: 15 } as Interact.InteractEvent);
+    dragModal(element, { dx: 20, dy: 15 } as Interact.InteractEvent);
     expect(minContainer.getAttribute("data-x")).toEqual("620");
     expect(minContainer.getAttribute("data-y")).toEqual("415");
 
@@ -351,7 +355,7 @@ describe("Floating Modal Component", () => {
 
     const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
 
-    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
 
     expect(container.getAttribute("data-x")).toEqual("210");
     expect(container.getAttribute("data-y")).toEqual("105");
@@ -377,7 +381,7 @@ describe("Floating Modal Component", () => {
     expect(minContainer.getAttribute("data-x")).toEqual("620");
     expect(minContainer.getAttribute("data-y")).toEqual("415");
 
-    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
     expect(minContainer.getAttribute("data-x")).toEqual("630");
     expect(minContainer.getAttribute("data-y")).toEqual("420");
   });
@@ -398,7 +402,7 @@ describe("Floating Modal Component", () => {
     const minModal = element.shadowRoot!.querySelector("md-floating-modal-minimized") as any;
     const minContainer = minModal.shadowRoot!.querySelector(".md-floating") as HTMLElement;
 
-    (element as any).dragMoveListener({ dx: 10, dy: 5 } as Interact.InteractEvent);
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
     expect(minContainer.getAttribute("data-x")).toEqual("610");
     expect(minContainer.getAttribute("data-y")).toEqual("405");
 
@@ -519,6 +523,65 @@ describe("Floating Modal Component", () => {
     expect(container).not.toBeNull();
     const computedTransform = container.style.transform.trim().replace(/\s+/g, " ");
     expect(computedTransform).toContain("translate(-50%, -50%)");
+  });
+
+  test("should preserve centering when moved with the keyboard", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .centered=${true}></md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const moveButton = element.shadowRoot!.querySelector(".md-floating__move") as Button.ELEMENT;
+    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+
+    moveButton.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowRight", bubbles: true, composed: true }));
+
+    expect(container.getAttribute("data-x")).toEqual("10");
+    expect(container.getAttribute("data-y")).toEqual("0");
+    expect(container.style.transform.trim().replace(/\s+/g, " ")).toEqual("translate(-50%, -50%) translate(10px, 0px)");
+  });
+
+  test("should preserve centering on the first drag", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .centered=${true}></md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
+
+    expect(container.getAttribute("data-x")).toEqual("10");
+    expect(container.getAttribute("data-y")).toEqual("5");
+    expect(container.style.transform.trim().replace(/\s+/g, " ")).toEqual("translate(-50%, -50%) translate(10px, 5px)");
+  });
+
+  test("should restore a centered position without double-counting it on the next move", async () => {
+    const element = await fixture<FloatingModal.ELEMENT>(html`
+      <md-floating-modal .show=${true} .centered=${true} .position=${{ x: 200, y: 100 }}></md-floating-modal>
+    `);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(element);
+
+    const container = element.shadowRoot!.querySelector(".md-floating") as HTMLElement;
+    expect(container.style.transform.trim().replace(/\s+/g, " ")).toEqual(
+      "translate(-50%, -50%) translate(200px, 100px)"
+    );
+
+    const moveButton = element.shadowRoot!.querySelector(".md-floating__move") as Button.ELEMENT;
+    moveButton.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowRight", bubbles: true, composed: true }));
+
+    expect(container.getAttribute("data-x")).toEqual("210");
+    expect(container.getAttribute("data-y")).toEqual("100");
+
+    dragModal(element, { dx: 10, dy: 5 } as Interact.InteractEvent);
+
+    expect(container.getAttribute("data-x")).toEqual("220");
+    expect(container.getAttribute("data-y")).toEqual("105");
+    expect(container.style.transform.trim().replace(/\s+/g, " ")).toEqual(
+      "translate(-50%, -50%) translate(220px, 105px)"
+    );
   });
 
   test("should move focus to first header button when opened", async () => {

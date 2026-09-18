@@ -22,6 +22,7 @@ const defaultArgs: Args = {
   category: "Adherence",
   secondaryChip: "Reforecast",
   timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
+  resolved: false,
   title: "Bob has not signed in for his scheduled shift",
   queueName: "Customer Support · 9:00–17:00",
   details: defaultDetails,
@@ -40,6 +41,7 @@ const renderCard = (args: Args) => {
       category=${args.category}
       secondaryChip=${args.secondaryChip}
       timestamp=${args.timestamp}
+      ?resolved=${args.resolved}
       title=${args.title}
       queueName=${args.queueName}
       .details=${args.details}
@@ -75,6 +77,7 @@ const meta: Meta = {
     category: { control: "text" },
     secondaryChip: { control: "text" },
     timestamp: { control: "text" },
+    resolved: { control: "boolean" },
     title: { control: "text" },
     queueName: { control: "text" },
     detailsHeading: { control: "text" },

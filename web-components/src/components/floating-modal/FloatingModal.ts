@@ -216,18 +216,24 @@ export namespace FloatingModal {
     }
 
     private isNewPositionNotSame() {
-      if (this.container) {
-        return (
-          Number(this.container?.getAttribute("data-x")) !== this.position?.x ||
-          Number(this.container?.getAttribute("data-y")) !== this.position?.y
-        );
-      }
+      if (!this.container || !this.position) return false;
+
+      return (
+        Number(this.container.getAttribute("data-x")) !== Number(this.position.x) ||
+        Number(this.container.getAttribute("data-y")) !== Number(this.position.y)
+      );
     }
 
     private setInitialTargetPosition() {
-      if (this.container && this.isNewPositionNotSame()) {
-        this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
+      if (this.container && this.position && this.isNewPositionNotSame()) {
+        this.setTargetPosition(this.container, Number(this.position.x), Number(this.position.y));
+        this.applyInitialPosition = false;
       }
+    }
+
+    private getContainerPositionTransform(x: number, y: number) {
+      const offsetTransform = `translate(${x}px, ${y}px)`;
+      return this.centered ? `translate(-50%, -50%) ${offsetTransform}` : offsetTransform;
     }
 
     private cleanContainerStyles() {
@@ -247,7 +253,7 @@ export namespace FloatingModal {
             }
           })
         );
-        return `translate(${dataX}px, ${dataY}px)`;
+        return this.getContainerPositionTransform(Number(dataX), Number(dataY));
       }
       return this.container!.style.transform;
     }
@@ -470,7 +476,8 @@ export namespace FloatingModal {
     }
 
     private setTargetPosition(target: Interact.Element, x: number, y: number) {
-      target.style.transform = `translate(${x}px, ${y}px)`;
+      target.style.transform =
+        target === this.container ? this.getContainerPositionTransform(x, y) : `translate(${x}px, ${y}px)`;
       target.setAttribute("data-x", `${x}`);
       target.setAttribute("data-y", `${y}`);
     }
@@ -504,10 +511,12 @@ export namespace FloatingModal {
       event.preventDefault();
       event.stopPropagation();
 
-      const x = parseFloat(this.container.getAttribute("data-x") || "0") + dx;
-      const y = parseFloat(this.container.getAttribute("data-y") || "0") + dy;
+      const { initialX, initialY } = this.getInitialPosition();
+      const x = parseFloat(this.container.getAttribute("data-x") || "0") + dx + initialX;
+      const y = parseFloat(this.container.getAttribute("data-y") || "0") + dy + initialY;
       this.setTargetPosition(this.container, x, y);
-      this.containerTransform = `translate(${x}px, ${y}px)`;
+      this.containerTransform = this.getContainerPositionTransform(x, y);
+      this.applyInitialPosition = false;
 
       this.dispatchEvent(
         new CustomEvent("floating-modal-location", {
@@ -541,7 +550,9 @@ export namespace FloatingModal {
     }
 
     renderedCallback() {
-      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)` : "";
+      this.containerTransform = this.position
+        ? this.getContainerPositionTransform(Number(this.position.x), Number(this.position.y))
+        : "";
     }
 
     render() {
@@ -561,7 +572,13 @@ export namespace FloatingModal {
                       ? `
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -50%);
+                    transform: ${
+                      this.full
+                        ? this.getContainerPositionTransform(0, 0)
+                        : this.position
+                          ? this.getContainerPositionTransform(Number(this.position.x), Number(this.position.y))
+                          : this.containerTransform || this.getContainerPositionTransform(0, 0)
+                    };
                     ${this.full ? "width: 100% !important; height: 100% !important;" : ""}
                   `
                       : `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
@@ -571,7 +588,7 @@ export namespace FloatingModal {
                   bottom: ${this.full ? "0 !important" : ""};
                   right: ${this.full ? "0 !important" : ""};
                   ${this.full ? "transform: none !important" : ""};
-                  ${!this.full ? `transform: ${this.position ? `translate(${this.position.x}px, ${this.position.y}px)` : this.containerTransform} !important` : ""};`
+                  ${!this.full ? `transform: ${this.position ? this.getContainerPositionTransform(Number(this.position.x), Number(this.position.y)) : this.containerTransform} !important` : ""};`
                     : undefined
                 )}
               >

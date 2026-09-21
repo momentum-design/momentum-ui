@@ -28,6 +28,7 @@ const SEVERITY_MAP: Record<CardAlertSeverity, { icon: string; color: string }> =
 
 export interface CardAlertLocale {
   dismiss?: string;
+  resolved?: string;
   justNow: string;
   minutesAgo: (n: number) => string;
   hoursAgo: (n: number) => string;
@@ -38,6 +39,7 @@ type ResolvedCardAlertLocale = Required<CardAlertLocale>;
 
 const DEFAULT_LOCALE: ResolvedCardAlertLocale = {
   dismiss: "Dismiss",
+  resolved: "Resolved",
   justNow: "Just now",
   minutesAgo: (n) => `${n} ${n === 1 ? "min" : "mins"} ago`,
   hoursAgo: (n) => `${n} ${n === 1 ? "hour" : "hours"} ago`,
@@ -47,7 +49,8 @@ const DEFAULT_LOCALE: ResolvedCardAlertLocale = {
 const resolveLocale = (locale?: CardAlertLocale): ResolvedCardAlertLocale => ({
   ...DEFAULT_LOCALE,
   ...locale,
-  dismiss: locale?.dismiss ?? DEFAULT_LOCALE.dismiss
+  dismiss: locale?.dismiss ?? DEFAULT_LOCALE.dismiss,
+  resolved: locale?.resolved ?? DEFAULT_LOCALE.resolved
 });
 
 export enum CardAlertDetailImpact {
@@ -71,6 +74,7 @@ export namespace CardAlert {
     @property({ type: String }) category = "";
     @property({ type: String }) secondaryChip = "";
     @property({ type: String }) timestamp = "";
+    @property({ type: Boolean }) resolved = false;
     @property({ type: String }) title = "";
     @property({ type: String }) queueName = "";
     @property({ type: Array }) details: DetailRow[] = [];
@@ -135,8 +139,12 @@ export namespace CardAlert {
     }
 
     protected willUpdate(changedProperties: PropertyValues) {
-      if (changedProperties.has("timestamp")) {
-        this.startTimer();
+      if (changedProperties.has("timestamp") || changedProperties.has("resolved")) {
+        if (this.resolved) {
+          this.stopTimer();
+        } else {
+          this.startTimer();
+        }
       }
     }
 
@@ -170,6 +178,15 @@ export namespace CardAlert {
     }
 
     private renderTimestamp() {
+      if (this.resolved) {
+        return html`
+          <span class="md-card-alert-resolved">
+            <md-icon name="check-circle-badge-filled" size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
+            ${this.resolvedLocale.resolved}
+          </span>
+        `;
+      }
+
       if (this.relativeTime) {
         return html`<span class="md-card-alert-timestamp">${this.relativeTime}</span>`;
       }
@@ -177,7 +194,8 @@ export namespace CardAlert {
     }
 
     private renderHeader() {
-      if (!this.severity && !this.category && !this.timestamp) return nothing;
+      const statusText = this.resolved ? this.resolvedLocale.resolved : this.timestamp;
+      if (!this.severity && !this.category && !statusText) return nothing;
       return html`
         <div class="md-card-alert-header">
           <div class="md-card-alert-chips">
@@ -266,6 +284,7 @@ export namespace CardAlert {
                   variant="secondary"
                   class="md-card-alert-primary-action"
                   ariaLabel=${this.primaryActionLabel}
+                  ?disabled=${this.resolved}
                   @click=${this.handlePrimaryAction}
                 >
                   <span slot="text">${this.primaryActionLabel}</span>

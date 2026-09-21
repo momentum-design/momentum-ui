@@ -1525,6 +1525,7 @@ export namespace ComboBox {
     }
 
     arrowButtonTemplate() {
+      const iconName = this.expanded ? "arrow-up-bold" : "arrow-down-bold";
       return html`
         <button
           type="button"
@@ -1539,7 +1540,7 @@ export namespace ComboBox {
           ?readonly=${this.readOnly}
           @click=${this.toggleVisualListBox}
         >
-          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
+          <md-icon name=${iconName} size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
         </button>
       `;
     }

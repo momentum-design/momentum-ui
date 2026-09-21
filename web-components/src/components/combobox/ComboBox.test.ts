@@ -29,12 +29,18 @@ describe("Combobox Component", () => {
     test("should open/close dropdown if arrow icon clicked", async () => {
       const button = el.shadowRoot!.querySelector("button[class='md-combobox-button arrow-down']");
       const event = new MouseEvent("click");
+
+      expect(button!.querySelector("md-icon")!.getAttribute("name")).toBe("arrow-down-bold");
+
       button!.dispatchEvent(event);
       await el.updateComplete;
       expect(el.expanded).toBeTruthy();
+      expect(button!.querySelector("md-icon")!.getAttribute("name")).toBe("arrow-up-bold");
+
       button!.dispatchEvent(event);
       await el.updateComplete;
       expect(el.expanded).toBeFalsy();
+      expect(button!.querySelector("md-icon")!.getAttribute("name")).toBe("arrow-down-bold");
     });
 
     test("should dispatch events", async () => {

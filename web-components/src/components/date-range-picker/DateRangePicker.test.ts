@@ -85,6 +85,40 @@ describe("DatePicker Component", () => {
     }
   );
 
+  test("should restore the applied range when a new range selection is cancelled", async () => {
+    const el: DateRangePicker.ELEMENT = await fixture(html`
+      <md-date-range-picker
+        .controlButtons=${{ apply: { value: "APPLY" }, cancel: { value: "CANCEL" } }}
+        .startDate=${"1970-01-01"}
+        .endDate=${"1970-01-02"}
+      ></md-date-range-picker>
+    `);
+
+    el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE1 } }));
+    el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE2 } }));
+    el.shadowRoot!.querySelector<HTMLElement>("md-button.apply-button")?.dispatchEvent(new MouseEvent("button-click"));
+    await el.updateComplete;
+
+    expect(el.value).toEqual("2025-04-15 - 2025-04-25");
+
+    el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE3 } }));
+    el.handleDateSelection(new CustomEvent("date-pre-selection-change", { detail: { data: DATE4 } }));
+    await el.updateComplete;
+
+    expect(el.startDate).toEqual(DATE3.toSQLDate());
+    expect(el.endDate).toEqual(DATE4.toSQLDate());
+    expect(el.value).toEqual("2025-04-15 - 2025-04-25");
+
+    el.shadowRoot!.querySelector<HTMLElement>("md-button.cancel-button")?.dispatchEvent(new MouseEvent("button-click"));
+    el.setOpen(true);
+    await el.updateComplete;
+
+    expect(el.isMenuOverlayOpen).toBe(true);
+    expect(el.startDate).toEqual(DATE1.toSQLDate());
+    expect(el.endDate).toEqual(DATE2.toSQLDate());
+    expect(el.value).toEqual("2025-04-15 - 2025-04-25");
+  });
+
   test.each([
     { controlButtons: { apply: "APPLY" }, shouldUpdate: true },
     { controlButtons: { apply: "APPLY", cancel: "CANCEL" }, shouldUpdate: true },

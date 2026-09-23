@@ -428,7 +428,7 @@ export namespace DatePicker {
       }
     }
 
-    private onCancelClick() {
+    protected onCancelClick() {
       this.setOpen(false);
     }
 

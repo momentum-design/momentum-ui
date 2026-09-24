@@ -156,6 +156,10 @@ describe("advanceList Component", () => {
       const items = Array.from(el.shadowRoot?.querySelectorAll<HTMLElement>(".default-wrapper") || []);
       expect(items).not.toBeNull();
       el.isMulti = true;
+      // renderItem marks index 10 as disabled, so its click is ignored; tell the component the
+      // same thing, otherwise that row is still counted as selectable and can never be selected.
+      el.disabledItems = [el.items[10].id];
+      await el.updateComplete;
       items.forEach(async (item) => {
         if (item) {
           item.click();
@@ -329,6 +333,79 @@ describe("advanceList Component", () => {
       el.items.forEach((item) => {
         const selectedItem = el.shadowRoot?.querySelector(`#item-${item.id}`) as HTMLElement;
         expect(selectedItem?.classList.contains("selected")).toBe(true);
+      });
+    });
+
+    /**
+     * `selectedItemsIds` may legitimately hold ids this list is not rendering: a consumer that
+     * filters `items` (a search box, a paged list) keeps the selections made outside the current
+     * result set. Those ids must not be mistaken for selected rows, and must not be discarded.
+     */
+    describe("when the selection contains ids that are not rendered", () => {
+      const renderedIds = () => el.items.map((item: { id: string }) => item.id);
+
+      /** Re-render the list with `items` narrowed to a subset, as a search result would. */
+      const showOnly = async (subset: { id: string }[]) => {
+        el.items = subset;
+        el.requestUpdate();
+        await el.updateComplete;
+        jest.advanceTimersByTime(100);
+
+        const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
+        wrapper?.replaceChildren();
+        if (wrapper) {
+          appendItemsToShadowDom(subset, wrapper, mockRender);
+        }
+      };
+
+      const clickRow = async (id: string) => {
+        (el.shadowRoot?.querySelector(`#item-${id}`) as HTMLElement | null)?.click();
+        await el.updateComplete;
+        jest.advanceTimersByTime(100);
+      };
+
+      beforeEach(async () => {
+        el.isMulti = true;
+        el.disabledItems = [];
+        // Selected before the list was narrowed, and no longer rendered.
+        el.value = ["d-99"];
+        await el.updateComplete;
+        await showOnly(createItems(1, 3));
+      });
+
+      test("should not flag select all when an unrendered id completes the count", async () => {
+        await clickRow("d-2");
+        await clickRow("d-3");
+
+        expect(el.selectAllItems).toBe(false);
+        expect(el.selectedItemsIds).not.toContain("d-1");
+        expect(el.selectedItemsIds.sort()).toEqual(["d-2", "d-3", "d-99"]);
+      });
+
+      test("should flag select all only once every rendered item is selected", async () => {
+        await clickRow("d-1");
+        await clickRow("d-2");
+        expect(el.selectAllItems).toBe(false);
+
+        await clickRow("d-3");
+        expect(el.selectAllItems).toBe(true);
+      });
+
+      test("should keep the unrendered selection when every rendered item is selected", async () => {
+        await clickRow("d-1");
+        await clickRow("d-2");
+        await clickRow("d-3");
+
+        expect(el.selectedItemsIds).toContain("d-99");
+        expect(renderedIds().every((id: string) => el.selectedItemsIds.includes(id))).toBe(true);
+      });
+
+      test("should keep the unrendered selection when select all is set by the consumer", async () => {
+        el.selectAllItems = true;
+        await el.updateComplete;
+
+        expect(el.selectedItemsIds).toContain("d-99");
+        expect(el.selectedItemsIds.sort()).toEqual(["d-1", "d-2", "d-3", "d-99"]);
       });
     });
 

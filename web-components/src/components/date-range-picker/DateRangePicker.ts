@@ -31,6 +31,9 @@ export namespace DateRangePicker {
     // Keep the callback type aligned with DatePicker.filterDate.
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     private originalFilterDate: Function | undefined = undefined;
+    private committedStartDate: string | undefined | null = undefined;
+    private committedEndDate: string | undefined | null = undefined;
+    private isRangeSelectionUpdate = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -38,6 +41,7 @@ export namespace DateRangePicker {
       this.addEventListener("date-pre-selection-change", this.handleDateSelection);
       this.parseInitialValue();
       this.updateValue();
+      this.saveCommittedRange();
 
       if (this.maxRangeLength) {
         this.originalFilterDate = this.filterDate;
@@ -103,12 +107,12 @@ export namespace DateRangePicker {
         super.updated(changedProperties);
       }
 
-      if (
-        (changedProperties.has("startDate") || changedProperties.has("endDate")) &&
-        !changedProperties.has("focusedDate")
-      ) {
+      if ((changedProperties.has("startDate") || changedProperties.has("endDate")) && !this.isRangeSelectionUpdate) {
         this.updateValue();
+        this.saveCommittedRange();
       }
+
+      this.isRangeSelectionUpdate = false;
     }
 
     updateValue = () => {
@@ -158,10 +162,37 @@ export namespace DateRangePicker {
     onApplyClick() {
       this.emitDateRange();
       this.updateValue();
+      if (this.startDate && this.endDate) {
+        this.saveCommittedRange();
+      }
 
       if (this.shouldCloseOnSelect) {
         this.setOpen(false);
       }
+    }
+
+    protected onCancelClick() {
+      if (!this.controlButtons?.apply) {
+        super.onCancelClick();
+        return;
+      }
+
+      this.startDate = this.committedStartDate;
+      this.endDate = this.committedEndDate;
+
+      if (this.committedStartDate) {
+        const committedStartDate = DateTime.fromISO(this.committedStartDate);
+        this.selectedDate = committedStartDate;
+        this.focusedDate = committedStartDate;
+      }
+
+      this.updateFilterDate();
+      super.onCancelClick();
+    }
+
+    private saveCommittedRange() {
+      this.committedStartDate = this.startDate;
+      this.committedEndDate = this.endDate;
     }
 
     // overload
@@ -182,6 +213,7 @@ export namespace DateRangePicker {
         return;
       }
 
+      this.isRangeSelectionUpdate = true;
       this.selectedDate = selection;
       this.focusedDate = selection;
 
@@ -207,6 +239,7 @@ export namespace DateRangePicker {
 
       this.emitDateRange();
       this.updateValue();
+      this.saveCommittedRange();
     }
 
     emitDateRange() {

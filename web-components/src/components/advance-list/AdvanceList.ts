@@ -80,9 +80,12 @@ export namespace AdvanceList {
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
-          this.selectedItemsIds = this.items
-            .filter((item) => item && item.id && !this.disabledItems.includes(item.id))
-            .map((item) => item.id);
+          // Keep any selected id this list is not rendering: a consumer that filters `items`
+          // (e.g. a search) still owns selections made outside the current result set, and
+          // "select all" must not silently discard them.
+          const renderedIds = new Set(this.items.filter((item) => item && item.id).map((item) => item.id));
+          const selectionOutsideList = this.selectedItemsIds.filter((id) => !renderedIds.has(id));
+          this.selectedItemsIds = [...selectionOutsideList, ...this.getSelectableItemIds()];
         }
       }
       if (changedProperties.has("focusReset")) {
@@ -257,11 +260,30 @@ export namespace AdvanceList {
       }
     };
 
+    /** Ids of the items this list renders that the user is allowed to select. */
+    private getSelectableItemIds(): string[] {
+      return this.items
+        .filter((item) => item && item.id && !this.disabledItems.includes(item.id))
+        .map((item) => item.id);
+    }
+
+    private areAllItemsSelected(): boolean {
+      const selectableIds = this.getSelectableItemIds();
+      if (selectableIds.length === 0) {
+        return false;
+      }
+      const selectedIds = new Set(this.selectedItemsIds);
+      return selectableIds.every((id) => selectedIds.has(id));
+    }
+
     updateItemForMultiSelect(activeId: string) {
       const index = this.selectedItemsIds.indexOf(activeId);
       if (index === -1) {
         this.selectedItemsIds.push(this.activeId);
-        if (this.selectedItemsIds.length === this.items.length - this.disabledItems.length) {
+        // Compare which items are selected, not how many. `selectedItemsIds` may hold ids this
+        // list is not rendering (a consumer that filters `items` keeps selections made outside
+        // the current result set), and those would otherwise pad the count into a false match.
+        if (this.areAllItemsSelected()) {
           this.selectAllItems = true;
         }
       } else {

@@ -1,3 +1,4 @@
+import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { type Theme } from "@/components/theme/Theme";
@@ -117,5 +118,83 @@ describe("Tooltip", () => {
     await elementUpdated(tooltip);
     expect(tooltip.disabled).toBeTruthy();
     expect(tooltip.shadowRoot!.querySelector(".md-tooltip--disabled")).not.toBeNull();
+  });
+
+  test("should delay closing tooltip when pointer leaves the reference", async () => {
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseenter"));
+    await elementUpdated(tooltip);
+    expect(tooltip.opened).toBeTruthy();
+
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+    await elementUpdated(tooltip);
+    expect(tooltip.opened).toBeTruthy();
+
+    jest.advanceTimersByTime(300);
+    await elementUpdated(tooltip);
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should keep tooltip open when pointer enters virtual popper before close delay expires", async () => {
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseenter"));
+    await elementUpdated(tooltip);
+    await elementUpdated(theme);
+
+    const virtualPopper = theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]") as HTMLElement;
+    expect(virtualPopper).not.toBeNull();
+    expect(virtualPopper.querySelector(".tooltip-hover-bridge")).not.toBeNull();
+
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(100);
+
+    virtualPopper.dispatchEvent(new MouseEvent("mouseenter", { bubbles: true }));
+    jest.advanceTimersByTime(300);
+    await elementUpdated(tooltip);
+
+    expect(tooltip.opened).toBeTruthy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")).not.toBeNull();
+  });
+
+  test("should keep active virtual tooltip visible when stale destroy is received after switching triggers", async () => {
+    fixtureCleanup();
+
+    theme = await fixture<Theme.ELEMENT>(html`
+      <md-theme>
+        <md-tooltip message="Home" placement="right">
+          <md-button>Home</md-button>
+        </md-tooltip>
+        <md-tooltip message="Interactions" placement="right">
+          <md-button>Interactions</md-button>
+        </md-tooltip>
+      </md-theme>
+    `);
+
+    jest.runAllTimers();
+
+    const homeTooltip = theme.querySelector("md-tooltip") as Tooltip.ELEMENT;
+    const interactionsTooltip = theme.querySelectorAll("md-tooltip")[1] as Tooltip.ELEMENT;
+
+    homeTooltip.reference.dispatchEvent(new MouseEvent("mouseenter"));
+    await elementUpdated(theme);
+
+    interactionsTooltip.reference.dispatchEvent(new MouseEvent("mouseenter"));
+    await elementUpdated(theme);
+
+    expect(interactionsTooltip.opened).toBeTruthy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__content")?.textContent).toContain("Interactions");
+
+    theme.dispatchEvent(
+      new CustomEvent("tooltip-destroy", {
+        detail: {
+          placement: "right",
+          reference: homeTooltip.reference,
+          popper: homeTooltip.popper
+        }
+      })
+    );
+
+    await elementUpdated(theme);
+
+    expect(interactionsTooltip.opened).toBeTruthy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")).not.toBeNull();
   });
 });

@@ -154,10 +154,10 @@
     "@percy/cli/**/fast-xml-parser": "5.7.0",
     "@percy/cli/**/snyk-nodejs-lockfile-parser": "2.10.4",
     "cheerio": "1.0.0-rc.12",
-    "lerna/js-yaml": "4.3.1",
+    "lerna/js-yaml": "4.3.2",
     "lerna/nx/brace-expansion": "5.0.9",
     "svg2ttf": "6.1.0",
-    "**/coveralls-next/js-yaml": "4.3.1"
+    "**/coveralls-next/js-yaml": "4.3.2"
   },
   "workspaces": {
     "packages": [

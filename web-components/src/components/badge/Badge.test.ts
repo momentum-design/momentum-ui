@@ -144,6 +144,7 @@ describe("Notification Badge component", () => {
     expect(icon).not.toBeNull();
     expect(icon?.name).toBe("check-circle-badge-filled");
     expect(icon?.classList.contains("md-notification-badge-icon__success")).toBe(true);
+    expect(icon?.getAttribute("aria-hidden")).toEqual("true");
   });
 
   test("should render a warning badge", async () => {

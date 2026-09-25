@@ -143,7 +143,7 @@ export namespace Alert {
     legacyRender(): TemplateResult {
       return html`
         <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
-          <div class="md-alert__icon aria-hidden=true">${this.renderIconTemplate()}</div>
+          <div class="md-alert__icon" aria-hidden="true">${this.renderIconTemplate()}</div>
           <div part="content" class="md-alert__content">
             ${this.title && this.title !== ""
               ? html` <div class="md-alert__title" role="heading" aria-level="1">${this.title}</div> `
@@ -163,7 +163,7 @@ export namespace Alert {
                     circle
                     @click=${() => this.close()}
                   >
-                    <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
+                    <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign" aria-hidden="true"></md-icon>
                   </md-button>
                 </div>
               `
@@ -231,7 +231,7 @@ export namespace Alert {
       return html`
         <div role="alert" aria-live="polite" part="alert" class="md-new-alert ${classMap(this.alertClassMap)}">
           <div class="md-new-alert__body">
-            <div class="md-new-alert__icon aria-hidden=true">${this.renderIconTemplate()}</div>
+            <div class="md-new-alert__icon" aria-hidden="true">${this.renderIconTemplate()}</div>
             <div part="content" class="md-new-alert__content">
               ${this.title && this.title !== ""
                 ? html` <div class="md-new-alert__title" role="heading" aria-level="1">${this.title}</div> `
@@ -252,7 +252,7 @@ export namespace Alert {
                       circle
                       @click=${() => this.close()}
                     >
-                      <md-icon slot="icon" name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+                      <md-icon slot="icon" name="cancel-bold" size="16" iconSet="momentumDesign" aria-hidden="true"></md-icon>
                     </md-button>
                   </div>
                 `

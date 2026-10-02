@@ -73,6 +73,7 @@ describe("Alert", () => {
 
     const iconTypeElement = element.shadowRoot!.querySelector(".md-alert__icon");
     expect(iconTypeElement).not.toBeNull();
+    expect(iconTypeElement?.getAttribute("aria-hidden")).toEqual("true");
   });
 
   test("should render success Alert", async () => {
@@ -148,6 +149,7 @@ describe("Alert", () => {
 
     const iconElement = await element.shadowRoot!.querySelector(".md-alert__button md-button md-icon");
     expect(iconElement?.getAttribute("name")).toEqual("cancel-bold");
+    expect(iconElement?.getAttribute("aria-hidden")).toEqual("true");
   });
 
   test("should handle Click event", async () => {
@@ -188,6 +190,7 @@ describe("New Alert", () => {
     const type = element.shadowRoot?.querySelector(".md-new-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("chat-bold");
     expect(type?.getAttribute("color")).toEqual("var(--alert-title-text-color)");
+    expect(element.shadowRoot?.querySelector(".md-new-alert__icon")?.getAttribute("aria-hidden")).toEqual("true");
   });
 
   test("should render loading Alert", async () => {
@@ -210,6 +213,7 @@ describe("New Alert", () => {
 
     const iconElement = await element.shadowRoot!.querySelector(".md-new-alert__button md-button md-icon");
     expect(iconElement?.getAttribute("name")).toEqual("cancel-bold");
+    expect(iconElement?.getAttribute("aria-hidden")).toEqual("true");
   });
 
   test("should handle close button Click event", async () => {

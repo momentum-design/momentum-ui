@@ -103,16 +103,17 @@ export namespace Icon {
      * It can accept the following values:
      * - "true": Hides the icon from assistive technologies.
      * - "false": Makes the icon visible to assistive technologies.
-     * - null: Removes the `aria-hidden` attribute.
+     * - null: When no accessible name is provided (no ariaLabel, title, or description),
+     *   the icon is treated as decorative and hidden from assistive technologies by default.
      *
      * Example usage:
      * ```html
-     * <md-icon ariaHidden="true"></md-icon> <!-- Hides the icon from assistive technologies -->
-     * <md-icon ariaHidden="false"></md-icon> <!-- Makes the icon visible to assistive technologies -->
-     * <md-icon ariaHidden=null></md-icon> <!-- Removes the aria-hidden attribute -->
+     * <md-icon aria-hidden="true"></md-icon> <!-- Hides the icon from assistive technologies -->
+     * <md-icon aria-hidden="false"></md-icon> <!-- Makes the icon visible to assistive technologies -->
+     * <md-icon></md-icon> <!-- Decorative: hidden from assistive technologies by default -->
      * ```
      */
-    @property({ type: String }) ariaHidden: "true" | "false" | null = null;
+    @property({ type: String, attribute: "aria-hidden" }) ariaHidden: "true" | "false" | null = null;
 
     @property({ type: String }) type = "";
 
@@ -307,6 +308,20 @@ export namespace Icon {
     _ariaLabel = "";
     @property({ type: String })
     get ariaLabel() {
+      return this.accessibleName ?? "";
+    }
+
+    set ariaLabel(value) {
+      const oldValue = this._ariaLabel;
+      this._ariaLabel = value;
+      this.requestUpdate("ariaLabel", oldValue);
+    }
+
+    private get hasAccessibleName(): boolean {
+      return Boolean(this._ariaLabel || this.title || this.description);
+    }
+
+    private get accessibleName(): string | undefined {
       if (this._ariaLabel) {
         return this._ariaLabel;
       }
@@ -319,13 +334,18 @@ export namespace Icon {
       if (this.description) {
         return this.description;
       }
-      return "icon";
+      return undefined;
     }
 
-    set ariaLabel(value) {
-      const oldValue = this._ariaLabel;
-      this._ariaLabel = value;
-      this.requestUpdate("ariaLabel", oldValue);
+    private get computedAriaHidden(): "true" | "false" | undefined {
+      if (this.ariaHidden === "true" || this.ariaHidden === "false") {
+        return this.ariaHidden;
+      }
+      return this.hasAccessibleName ? undefined : "true";
+    }
+
+    private get iconRole(): "img" | undefined {
+      return this.hasAccessibleName && this.computedAriaHidden !== "true" ? "img" : undefined;
     }
 
     get buttonClassMap() {
@@ -465,10 +485,10 @@ export namespace Icon {
           id=${this.id}
           class="md-icon icon ${classMap(this.iconClassMap)}"
           style=${styleMap(this.iconStyleMap)}
-          role="img"
-          aria-label=${this.ariaLabel}
-          title=${this.title}
-          aria-hidden=${ifDefined(this.ariaHidden ?? undefined)}
+          role=${ifDefined(this.iconRole)}
+          aria-label=${ifDefined(this.accessibleName)}
+          title=${ifDefined(this.title || undefined)}
+          aria-hidden=${ifDefined(this.computedAriaHidden)}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>
@@ -480,10 +500,10 @@ export namespace Icon {
         <div
           class="svg-icon-container"
           id=${this.id}
-          role="img"
-          aria-label=${this.ariaLabel}
-          title=${this.title}
-          aria-hidden=${ifDefined(this.ariaHidden ?? undefined)}
+          role=${ifDefined(this.iconRole)}
+          aria-label=${ifDefined(this.accessibleName)}
+          title=${ifDefined(this.title || undefined)}
+          aria-hidden=${ifDefined(this.computedAriaHidden)}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
           ${this.svgIcon ? this.svgIcon : nothing}

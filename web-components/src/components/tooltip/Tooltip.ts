@@ -43,6 +43,10 @@ export namespace Tooltip {
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
+    private hoverTimer: number | null = null;
+
+    /** Grace period before closing when pointer leaves trigger, allowing hover onto tooltip content (WCAG 1.4.13). */
+    private readonly closeDelayMs = 300;
 
     private readonly _keyDownListener = (e: KeyboardEvent) => {
       this.handleKeyDown(e);
@@ -73,6 +77,7 @@ export namespace Tooltip {
     }
 
     disconnectedCallback(): void {
+      this.cancelCloseDelay();
       this.notifyTooltipDisconnected();
 
       super.disconnectedCallback();
@@ -179,8 +184,39 @@ export namespace Tooltip {
     }
 
     notifyTooltipDestroy() {
+      this.cancelCloseDelay();
       if (!this.disabled) {
         this.opened = false;
+      }
+    }
+
+    /** Cancels a pending close so the tooltip stays open while the pointer moves to its content. */
+    cancelCloseDelay() {
+      if (this.hoverTimer) {
+        clearTimeout(this.hoverTimer);
+        this.hoverTimer = null;
+      }
+    }
+
+    /** Starts a delayed close after the pointer leaves the trigger or tooltip. */
+    startCloseDelay() {
+      this.cancelCloseDelay();
+      this.hoverTimer = window.setTimeout(() => {
+        this.hoverTimer = null;
+        if (!this.disabled) {
+          this.opened = false;
+        }
+      }, this.closeDelayMs);
+    }
+
+    private handleReferenceMouseEnter() {
+      this.cancelCloseDelay();
+      this.notifyTooltipCreate();
+    }
+
+    private handleReferenceMouseLeave() {
+      if (this.opened) {
+        this.startCloseDelay();
       }
     }
 
@@ -260,8 +296,8 @@ export namespace Tooltip {
           <div
             class="md-tooltip__reference"
             part="tooltip_reference"
-            @mouseenter=${() => this.notifyTooltipCreate()}
-            @mouseleave=${() => this.notifyTooltipDestroy()}
+            @mouseenter=${() => this.handleReferenceMouseEnter()}
+            @mouseleave=${() => this.handleReferenceMouseLeave()}
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}

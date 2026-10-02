@@ -72,6 +72,9 @@
     ::input-placeholder {
       color: inherit;
       opacity: 0.6;
+      letter-spacing: inherit;
+      line-height: inherit;
+      word-spacing: inherit;
     }
 
     ::-webkit-file-upload-button {
@@ -513,10 +516,13 @@
     border-radius: var(--input-border-radius, $input__border-radius);
     font-family: $input__font-family;
     font-size: 1rem;
-    height: $input__height;
+    min-height: $input__height;
     padding: $input__padding;
     transition: box-shadow ease-out 0.15s;
     width: 100%;
+    letter-spacing: inherit;
+    line-height: inherit;
+    word-spacing: inherit;
 
     &:not(.md-input--multiline):has(~ .md-input__after > .md-input__dropdown-button) {
       padding-inline-end: $input__padding-side--icon;

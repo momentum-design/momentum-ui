@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "3.2.34",
+  "version": "3.2.35",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -86,6 +86,7 @@
     "@adobe/lit-mobx": "^2.2.2",
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
+    "@babel/preset-typescript": "^8.0.1",
     "@eslint/js": "9.39.5",
     "@interactjs/types": "1.10.3",
     "@lit-labs/virtualizer": "2.1.1",

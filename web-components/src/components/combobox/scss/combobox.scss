@@ -77,6 +77,9 @@
     .md-combobox__multiwrap {
       input {
         color: var(--md-disabled-text-color);
+        line-height: inherit;
+        letter-spacing: inherit;
+        word-spacing: inherit;
       }
 
       input::placeholder,

@@ -276,6 +276,9 @@
       .md-input {
         border-radius: 8px;
         height: $input__height--momentum;
+        line-height: inherit;
+        letter-spacing: inherit;
+        word-spacing: inherit;
 
         &:focus {
           outline: 2px solid var(--input-default-outline-color);

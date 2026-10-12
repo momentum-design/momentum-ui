@@ -73,6 +73,32 @@ describe("CountryCodePicker Component", () => {
     expect(element.countryCallingCode).toEqual("");
   });
 
+  test("should mark the selected country option with aria-selected so screen readers announce it", async () => {
+    const element = await fixture<CountryCodePicker.ELEMENT>(html`
+      <md-country-code-picker .countryCallingCode=${"+376, Andorra, AD"}></md-country-code-picker>
+    `);
+    await elementUpdated(element);
+    const combobox = element.shadowRoot!.querySelector("md-combobox") as HTMLElement & {
+      expanded: boolean;
+    };
+    combobox.expanded = true;
+    await elementUpdated(combobox);
+    jest.advanceTimersByTime(600);
+    await elementUpdated(combobox);
+
+    const options = [...combobox.shadowRoot!.querySelectorAll(".md-combobox-option")];
+    const selected = combobox.shadowRoot!.querySelector('.md-combobox-option[aria-selected="true"]');
+
+    expect(selected).not.toBeNull();
+    expect(selected!.getAttribute("role")).toEqual("option");
+    expect(selected!.id).toEqual("+376, Andorra, AD");
+    // Every option exposes an explicit selected state; only the chosen one is true.
+    options.forEach((option) => {
+      expect(option.getAttribute("role")).toEqual("option");
+      expect(option.getAttribute("aria-selected")).toEqual(option === selected ? "true" : "false");
+    });
+  });
+
   test("Should render a flag image when show-flags is true", async () => {
     const element = await fixture<CountryCodePicker.ELEMENT>(
       html`<md-country-code-picker show-flags></md-country-code-picker>`

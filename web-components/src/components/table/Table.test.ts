@@ -44,6 +44,9 @@ describe("Table component", () => {
     await elementUpdated(el);
     expect(el.getAttribute("class")).toMatch("sortedAbc");
 
+    const sortIcon = element.shadowRoot?.querySelector(".md-table__header md-icon");
+    expect(sortIcon?.getAttribute("aria-hidden")).toEqual("true");
+
     el.click();
     await elementUpdated(el);
     expect(el.getAttribute("class")).toMatch("sortedZyx");

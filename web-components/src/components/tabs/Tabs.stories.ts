@@ -174,8 +174,8 @@ export const Example: StoryObj = {
     alignment: "horizontal",
     type: "line",
     variant: "ghost",
-    leftArrowAriaLabel: "Backward Button",
-    rightArrowAriaLabel: "Forward Button"
+    leftArrowAriaLabel: "Scroll to previous tabs, button",
+    rightArrowAriaLabel: "Scroll to next tabs, button"
   },
   render: (args: Args) => {
     return html` ${args.more ? moreTabs(args) : tabs(args)} `;

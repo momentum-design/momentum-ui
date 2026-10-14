@@ -92,8 +92,9 @@ export namespace Tabs {
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: String }) variant: TabVariant = "ghost";
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
-    @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Scroll to previous tabs, button";
-    @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Scroll to next tabs, button";
+    @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Scroll to next tabs, button";
+    @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel =
+      "Scroll to next tabs, button";
     @property({ type: Number }) size: TabSize = 28;
 
     @state() private isMoreTabMenuVisible = false;

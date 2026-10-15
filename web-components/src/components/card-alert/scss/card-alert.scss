@@ -93,6 +93,17 @@
       font-size: rem-calc(14);
       gap: rem-calc(4);
       margin: 0;
+      min-width: 0;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    &-subtitle-text {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &-subtitle-icon {
@@ -125,17 +136,26 @@
     }
 
     &-detail-label {
-        color: $md-card-alert-title-color;
-        font-size: rem-calc(14);
-        font-weight: $md-card-alert-font-weight-bold;
-        margin-bottom: rem-calc(2);
+      color: $md-card-alert-title-color;
+      flex: 1;
+      font-size: rem-calc(14);
+      font-weight: $md-card-alert-font-weight-bold;
+      margin-bottom: rem-calc(2);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &-detail-value {
       color: $md-card-alert-details-value-color;
       font-size: rem-calc(14);
+      min-width: 0;
+      overflow: hidden;
       text-align: right;
+      text-overflow: ellipsis;
       margin-bottom: rem-calc(2);
+      white-space: nowrap;
 
       &--positive {
         color: $md-card-alert-details-positive-color;
@@ -155,6 +175,7 @@
       color: $md-card-alert-insight-color;
       gap: rem-calc(8);
       padding: $md-card-alert-insight-padding;
+      min-width: 0;
     }
 
     &-insight-icon {
@@ -165,14 +186,30 @@
     }
 
     &-insight-text {
+      display: -webkit-box;
+      flex: 1;
       font-size: rem-calc(14);
       line-height: rem-calc(20);
+      min-width: 0;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
     }
 
     // ─── Actions ─────────────────────────────────────────────────────────
     &-actions {
       @include flex($jc: flex-start, $ai: center);
       gap: $md-card-alert-actions-gap;
+      min-width: 0;
+      width: 100%;
+    }
+
+    &-primary-action {
+      max-width: 100%;
+      min-width: 0;
     }
   }
 }

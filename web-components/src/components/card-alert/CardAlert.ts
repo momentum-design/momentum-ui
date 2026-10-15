@@ -230,7 +230,7 @@ export namespace CardAlert {
                     iconSet="momentumDesign"
                     class="md-card-alert-subtitle-icon"
                   ></md-icon>
-                  ${this.queueName}
+                  <span class="md-card-alert-subtitle-text">${this.queueName}</span>
                 </p>
               `
             : nothing}
@@ -283,6 +283,7 @@ export namespace CardAlert {
                   size="32"
                   variant="secondary"
                   class="md-card-alert-primary-action"
+                  .maxWidth=${"100%"}
                   ariaLabel=${this.primaryActionLabel}
                   ?disabled=${this.resolved}
                   @click=${this.handlePrimaryAction}

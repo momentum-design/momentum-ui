@@ -138,7 +138,7 @@
     "lit-scss-loader": "^2.0.1",
     "mobx": "^6.13.7",
     "postcss": "8.5.26",
-    "postcss-selector-parser": "^6.1.2",
+    "postcss-selector-parser": "^7.1.6",
     "prettier": "3.8.1",
     "properties-reader": "^2.3.0",
     "query-selector-shadow-dom": "^1.0.1",

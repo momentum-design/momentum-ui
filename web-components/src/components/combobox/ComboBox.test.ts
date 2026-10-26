@@ -128,6 +128,25 @@ describe("Combobox Component", () => {
       expect(el.selected!.length).toEqual(0);
     });
 
+    test("exposes selected state on active single-select options", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
+
+      el.value = ["Afghanistan"];
+      await elementUpdated(el);
+
+      el.expanded = true;
+      await elementUpdated(el);
+
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>(".md-combobox-listbox");
+      const activeOptionId = input?.getAttribute("aria-activedescendant");
+      const activeOption = activeOptionId ? el.shadowRoot!.getElementById(activeOptionId) : null;
+      const unselectedOption = el.shadowRoot!.querySelector<HTMLElement>('[role="option"][title="Aland Islands"]');
+
+      expect(activeOption?.getAttribute("title")).toBe("Afghanistan");
+      expect(activeOption?.getAttribute("aria-selected")).toBe("true");
+      expect(unselectedOption?.getAttribute("aria-selected")).toBe("false");
+    });
+
     test("should render slotted content", async () => {
       const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox with-custom-content is-multi>

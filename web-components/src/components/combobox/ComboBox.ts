@@ -1705,6 +1705,7 @@ export namespace ComboBox {
           aria-label="${this.isCustomContent
             ? this.getOptionId(option)
             : this.getOptionValue(option)}${ariaLabelForCount}"
+          aria-selected=${ifDefined(this.isMulti ? undefined : this.isOptionChecked.call(this, option))}
           tabindex="-1"
           @click=${(event: MouseEvent) => this.handleListClick(event)}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}

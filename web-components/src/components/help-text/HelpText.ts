@@ -60,7 +60,7 @@ export namespace HelpText {
                 name="${this.getIconName()}"
                 size="14"
                 iconSet="momentumDesign"
-                ariaHidden="true"
+                aria-hidden="true"
               ></md-icon>`
             : nothing}
           <slot>${this.message}</slot>

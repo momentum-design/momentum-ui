@@ -129,6 +129,85 @@ describe("Momentum Icon Component", () => {
     expect(element.shadowRoot!.querySelector("div")!.getAttribute("aria-label")).toEqual(`${title} ${description}`);
   });
 
+  describe("accessibility", () => {
+    test("should hide decorative font icons from assistive technologies by default", async () => {
+      const element = await fixture(
+        `<md-icon iconSet="momentumUI" name="accessibility_16"></md-icon>`
+      );
+      const icon = element.shadowRoot!.querySelector("i")!;
+
+      expect(icon.getAttribute("aria-hidden")).toEqual("true");
+      expect(icon.getAttribute("role")).toBeNull();
+      expect(icon.getAttribute("aria-label")).toBeNull();
+    });
+
+    test("should hide decorative SVG icons from assistive technologies by default", async () => {
+      const element = await fixture<Icon.ELEMENT>(
+        `<md-icon iconSet="momentumDesign" name="search-bold"></md-icon>`
+      );
+      await elementUpdated(element);
+      const icon = element.shadowRoot!.querySelector(".svg-icon-container")!;
+
+      expect(icon.getAttribute("aria-hidden")).toEqual("true");
+      expect(icon.getAttribute("role")).toBeNull();
+      expect(icon.getAttribute("aria-label")).toBeNull();
+    });
+
+    test("should expose meaningful font icons to assistive technologies", async () => {
+      const element = await fixture(
+        `<md-icon title="Search" iconSet="momentumUI" name="accessibility_16"></md-icon>`
+      );
+      const icon = element.shadowRoot!.querySelector("i")!;
+
+      expect(icon.getAttribute("role")).toEqual("img");
+      expect(icon.getAttribute("aria-label")).toEqual("Search");
+      expect(icon.getAttribute("aria-hidden")).toBeNull();
+    });
+
+    test("should expose meaningful SVG icons to assistive technologies", async () => {
+      const element = await fixture<Icon.ELEMENT>(
+        `<md-icon title="Search" iconSet="momentumDesign" name="search-bold"></md-icon>`
+      );
+      await elementUpdated(element);
+      const icon = element.shadowRoot!.querySelector(".svg-icon-container")!;
+
+      expect(icon.getAttribute("role")).toEqual("img");
+      expect(icon.getAttribute("aria-label")).toEqual("Search");
+      expect(icon.getAttribute("aria-hidden")).toBeNull();
+    });
+
+    test("should set aria-label from ariaLabel prop", async () => {
+      const element = await fixture(html`
+        <md-icon .ariaLabel=${"Settings"} iconSet="momentumUI" name="accessibility_16"></md-icon>
+      `);
+      const icon = element.shadowRoot!.querySelector("i")!;
+
+      expect(icon.getAttribute("role")).toEqual("img");
+      expect(icon.getAttribute("aria-label")).toEqual("Settings");
+    });
+
+    test("should honor explicit aria-hidden on decorative icons", async () => {
+      const element = await fixture(
+        `<md-icon aria-hidden="false" iconSet="momentumUI" name="accessibility_16"></md-icon>`
+      );
+      const icon = element.shadowRoot!.querySelector("i")!;
+
+      expect(icon.getAttribute("aria-hidden")).toEqual("false");
+      expect(icon.getAttribute("role")).toBeNull();
+      expect(icon.getAttribute("aria-label")).toBeNull();
+    });
+
+    test("should honor explicit aria-hidden on meaningful icons", async () => {
+      const element = await fixture(
+        `<md-icon title="Search" aria-hidden="true" iconSet="momentumUI" name="accessibility_16"></md-icon>`
+      );
+      const icon = element.shadowRoot!.querySelector("i")!;
+
+      expect(icon.getAttribute("aria-hidden")).toEqual("true");
+      expect(icon.getAttribute("role")).toBeNull();
+    });
+  });
+
   test("should set font-size from icon name", async () => {
     const element = await fixture(`<md-icon name="accessories_24" iconSet="momentumUI"></md-icon>`);
     expect(element.shadowRoot!.querySelector("i")!.style.fontSize).toEqual("24px");

@@ -218,7 +218,7 @@
       .md-combobox__multiwrap {
         display: flex;
         align-items: center;
-        width: 50%;
+        width: 50%;        
         max-height: $combobox-new-height-compact;
 
         input {
@@ -254,9 +254,6 @@
     min-width: 2rem;
     input {
       color: var(--md-primary-text-color);
-      line-height: inherit;
-      letter-spacing: inherit;
-      word-spacing: inherit;
     }
     .md-combobox-selected-item {
       border-radius: 4px;
@@ -353,7 +350,7 @@
 .md-combobox-button.clear {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  
 }
 
 .md-combobox-right-arrow {
@@ -361,7 +358,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: rem-calc(32);
+  width: rem-calc(32);  
   border-inline-start: $combobox-border;
 
   .md-combobox-right-arrow {
@@ -598,7 +595,7 @@ div#md-combobox-listbox {
 
 .md-combobox-has-leading-icon {
   .md-combobox__multiwrap {
-    margin-inline-start: calc(#{$combobox-main-indent} * 1.5);
+    margin-inline-start: calc(#{ $combobox-main-indent} * 1.5);
   }
 }
 input::placeholder,

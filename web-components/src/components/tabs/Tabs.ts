@@ -92,6 +92,7 @@ export namespace Tabs {
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: String }) variant: TabVariant = "ghost";
     @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow = false;
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
     @property({ type: String, attribute: "left-arrow-aria-label" }) leftArrowAriaLabel = "Backward Button";
     @property({ type: String, attribute: "right-arrow-aria-label" }) rightArrowAriaLabel = "Forward Button";
     @property({ type: Number }) size: TabSize = 28;
@@ -1537,6 +1538,7 @@ export namespace Tabs {
             })}"
             size="${ifDefined(this.newMomentum ? this.size : undefined)}"
             role="tablist"
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
           >
             ${this.renderTabSlot}
             ${this.direction === "horizontal" && !this.scrollArrow ? this.renderTabsWithMoreMenu : nothing}

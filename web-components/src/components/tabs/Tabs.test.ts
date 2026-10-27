@@ -3,6 +3,7 @@ import "@/components/input/Input";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit";
+import { getByShadowRole } from "shadow-dom-testing-library";
 import Sortable from "sortablejs";
 import "./Tab";
 import { type Tab } from "./Tab";
@@ -58,6 +59,61 @@ describe("Tabs", () => {
   });
 
   afterEach(fixtureCleanup);
+
+  describe("accessible tablist names", () => {
+    test("keeps the existing unnamed tablist when no label is supplied", () => {
+      const tablist = getByShadowRole(tabs, "tablist");
+      expect(tablist).not.toHaveAttribute("aria-label");
+      expect(tablist).toHaveAccessibleName("");
+    });
+
+    test("names the tablist from an aria-label supplied on initial render", async () => {
+      const labeledTabs = await fixture<Tabs.ELEMENT>(html`
+        <md-tabs aria-label="Queue performance details">
+          <md-tab slot="tab">Agents</md-tab>
+          <md-tab-panel slot="panel">Agents content</md-tab-panel>
+          <md-tab slot="tab">Queue data</md-tab>
+          <md-tab-panel slot="panel">Queue data content</md-tab-panel>
+        </md-tabs>
+      `);
+
+      expect(getByShadowRole(labeledTabs, "tablist")).toHaveAccessibleName("Queue performance details");
+    });
+
+    test("updates the tablist name when the aria-label attribute changes", async () => {
+      tabs.setAttribute("aria-label", "Interactions");
+      await elementUpdated(tabs);
+      expect(getByShadowRole(tabs, "tablist")).toHaveAccessibleName("Interactions");
+
+      tabs.setAttribute("aria-label", "Column menu");
+      await elementUpdated(tabs);
+      expect(getByShadowRole(tabs, "tablist")).toHaveAccessibleName("Column menu");
+    });
+
+    test("names the tablist when the ariaLabel property is assigned", async () => {
+      tabs.ariaLabel = "Interactions";
+      await elementUpdated(tabs);
+
+      expect(getByShadowRole(tabs, "tablist")).toHaveAccessibleName("Interactions");
+    });
+
+    test.each(["empty", "removed"])("clears the tablist name when aria-label is %s", async (labelState) => {
+      tabs.setAttribute("aria-label", "Interactions");
+      await elementUpdated(tabs);
+      expect(getByShadowRole(tabs, "tablist")).toHaveAccessibleName("Interactions");
+
+      if (labelState === "removed") {
+        tabs.removeAttribute("aria-label");
+      } else {
+        tabs.setAttribute("aria-label", "");
+      }
+      await elementUpdated(tabs);
+
+      const tablist = getByShadowRole(tabs, "tablist");
+      expect(tablist).not.toHaveAttribute("aria-label");
+      expect(tablist).toHaveAccessibleName("");
+    });
+  });
 
   test("should setup panels and tabs", () => {
     expect(tabs.tabSlotElement).toBeDefined();

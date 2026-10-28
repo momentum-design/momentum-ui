@@ -147,6 +147,32 @@ describe("Combobox Component", () => {
       expect(unselectedOption?.getAttribute("aria-selected")).toBe("false");
     });
 
+    test("updates aria-selected when the selection changes with virtual scroll", async () => {
+      const options = ["Afghanistan", "Aland Islands"];
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${options} use-virtual-scroll></md-combobox>
+      `);
+
+      el.expanded = true;
+      await elementUpdated(el);
+
+      const getOption = (title: string) =>
+        el.shadowRoot!.querySelector<HTMLElement>(`.md-combobox-option[title="${title}"]`);
+
+      // Use the component's selection handler to change selection and trigger a Lit update.
+      el["setSelectedOption"]("Afghanistan");
+      await elementUpdated(el);
+
+      expect(getOption("Afghanistan")?.getAttribute("aria-selected")).toBe("true");
+      expect(getOption("Aland Islands")?.getAttribute("aria-selected")).toBe("false");
+
+      el["setSelectedOption"]("Aland Islands");
+      await elementUpdated(el);
+
+      expect(getOption("Afghanistan")?.getAttribute("aria-selected")).toBe("false");
+      expect(getOption("Aland Islands")?.getAttribute("aria-selected")).toBe("true");
+    });
+
     test("should render slotted content", async () => {
       const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox with-custom-content is-multi>

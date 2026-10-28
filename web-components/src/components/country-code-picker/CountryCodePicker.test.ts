@@ -42,6 +42,26 @@ describe("CountryCodePicker Component", () => {
     expect(element.shadowRoot!.querySelector("md-combobox")?.shape).toEqual("pill");
   });
 
+  test("exposes the selected state for the active country option", async () => {
+    const picker = await fixture<CountryCodePicker.ELEMENT>(html`
+      <md-country-code-picker country-calling-code="+93, Afghanistan, AF"></md-country-code-picker>
+    `);
+    await elementUpdated(picker);
+
+    const combobox = picker.shadowRoot!.querySelector("md-combobox")!;
+    combobox.expanded = true;
+    await elementUpdated(combobox);
+
+    const input = combobox.shadowRoot!.querySelector<HTMLInputElement>(".md-combobox-listbox");
+    const activeOptionId = input?.getAttribute("aria-activedescendant");
+    const activeOption = activeOptionId ? combobox.shadowRoot!.getElementById(activeOptionId) : null;
+
+    expect(activeOption).not.toBeNull();
+    expect(activeOption?.getAttribute("role")).toBe("option");
+    expect(activeOption?.getAttribute("aria-label")).toBe("+93, Afghanistan, AF");
+    expect(activeOption?.getAttribute("aria-selected")).toBe("true");
+  });
+
   test("should trigger a Country Change", async () => {
     const element = await fixture<CountryCodePicker.ELEMENT>(html`<md-country-code-picker></md-country-code-picker>`);
     const event: CustomEvent = new CustomEvent("change-selected", {

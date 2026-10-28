@@ -516,7 +516,6 @@ export namespace ComboBox {
             if (this.isMulti) {
               list?.setAttribute("aria-checked", "true");
             }
-            list?.setAttribute("aria-selected", "true");
           } else if (this.isMulti) {
             list?.setAttribute("aria-checked", "false");
           }
@@ -1693,6 +1692,7 @@ export namespace ComboBox {
       const count = this.allowSelectAll ? index + 2 : index + 1;
       const total = this.allowSelectAll ? this.options.length + 1 : this.options.length;
       const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : "";
+
       return html`
         <div
           id=${this.getOptionId(option)}
@@ -1702,6 +1702,7 @@ export namespace ComboBox {
           aria-posinset=${count}
           aria-setsize=${total}
           role=${this.isMulti ? "checkbox" : "option"}
+          aria-selected=${ifDefined(!this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
           aria-label="${this.isCustomContent
             ? this.getOptionId(option)
             : this.getOptionValue(option)}${ariaLabelForCount}"

@@ -163,6 +163,7 @@ export namespace TaskItem {
           tabindex=${this.sanitizedTabIndexForContainer}
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          role="group"
           aria-label=${this.getAriaLabel()}
           aria-disabled=${ifDefined(this.disabled || undefined)}
         >

@@ -1,5 +1,6 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { screen } from "shadow-dom-testing-library";
 import "./TaskItem";
 import { type TaskItem } from "./TaskItem";
 import { TaskItemMediaType, TaskItemStatus } from "./TaskItem.constants";
@@ -43,6 +44,28 @@ const fixtureFactory = async (
 
 describe("TaskItem", () => {
   afterEach(fixtureCleanup);
+
+  test("exposes incoming interaction details as a named group", async () => {
+    await fixture(html`
+      <md-task-item mediaType="telephony" item-title="+12069900078" queue="Inbound Voice" .tabIndexForContainer=${"-1"}>
+      </md-task-item>
+    `);
+
+    const group = screen.getByShadowRole("group", { name: "telephony +12069900078 Inbound Voice" });
+    expect(group).toBeInTheDocument();
+    expect(group).toHaveAttribute("tabindex", "-1");
+  });
+
+  test("preserves a custom group name and access to its action buttons", async () => {
+    await fixture(html`
+      <md-task-item mediaType="chat" .customAriaLabel=${"Incoming chat from Alice"}>
+        <button>Accept</button>
+      </md-task-item>
+    `);
+
+    expect(screen.getByShadowRole("group", { name: "Incoming chat from Alice" })).toBeInTheDocument();
+    expect(screen.getByShadowRole("button", { name: "Accept" })).toBeEnabled();
+  });
 
   test("should render TaskItem Component", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(

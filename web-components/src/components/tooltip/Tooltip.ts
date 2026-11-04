@@ -46,6 +46,8 @@ export namespace Tooltip {
     private referenceHovered = false;
     private tooltipHovered = false;
     private referenceFocused = false;
+    private tooltipSurface: HTMLElement | null = null;
+    private awaitingPointerMoveAfterZoom = false;
     private hideTimeout?: ReturnType<typeof setTimeout>;
 
     private readonly _tooltipSurfaceEnterListener = () => {
@@ -58,13 +60,39 @@ export namespace Tooltip {
       this.scheduleTooltipDestroy();
     };
 
+    private readonly _tooltipSurfaceUpdateListener = (event: Event) => {
+      this.tooltipSurface = (event as CustomEvent<HTMLElement>).detail;
+    };
+
     private readonly _keyDownListener = (e: KeyboardEvent) => {
       this.handleKeyDown(e);
     };
 
-    private readonly _wheelListener = (_e: Event) => {
-      if (this.opened) {
+    private readonly _wheelListener = (event: WheelEvent) => {
+      if (!this.opened) return;
+      if (event.ctrlKey) {
+        this._zoomListener();
+      } else {
         this.notifyTooltipDestroy();
+      }
+    };
+
+    private readonly _afterZoomMouseMoveListener = (event: MouseEvent) => {
+      const path = event.composedPath();
+      this.referenceHovered = path.includes(this.reference);
+      this.tooltipHovered = !!this.tooltipSurface && path.includes(this.tooltipSurface);
+      this.awaitingPointerMoveAfterZoom = false;
+      this.scheduleTooltipDestroy();
+    };
+
+    private readonly _zoomListener = () => {
+      if (
+        this.opened &&
+        (this.referenceHovered || this.tooltipHovered || this.referenceFocused || this.awaitingPointerMoveAfterZoom)
+      ) {
+        this.awaitingPointerMoveAfterZoom = true;
+        this.clearHideTimeout();
+        window.addEventListener("mousemove", this._afterZoomMouseMoveListener, { passive: true, capture: true });
       }
     };
 
@@ -84,8 +112,11 @@ export namespace Tooltip {
       super.connectedCallback();
       document.addEventListener("keydown", this._keyDownListener);
       window.addEventListener("wheel", this._wheelListener, { passive: true });
+      window.addEventListener("gesturestart", this._zoomListener, { passive: true });
+      window.visualViewport?.addEventListener("resize", this._zoomListener, { passive: true });
       this.addEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
       this.addEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
+      this.addEventListener("tooltip-surface-update", this._tooltipSurfaceUpdateListener);
     }
 
     disconnectedCallback(): void {
@@ -94,8 +125,11 @@ export namespace Tooltip {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
       window.removeEventListener("wheel", this._wheelListener);
+      window.removeEventListener("gesturestart", this._zoomListener);
+      window.visualViewport?.removeEventListener("resize", this._zoomListener);
       this.removeEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
       this.removeEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
+      this.removeEventListener("tooltip-surface-update", this._tooltipSurfaceUpdateListener);
       this.clearInteractionState();
     }
 
@@ -141,11 +175,14 @@ export namespace Tooltip {
       this.referenceHovered = false;
       this.tooltipHovered = false;
       this.referenceFocused = false;
+      this.tooltipSurface = null;
+      this.awaitingPointerMoveAfterZoom = false;
+      window.removeEventListener("mousemove", this._afterZoomMouseMoveListener, true);
     }
 
     private scheduleTooltipDestroy() {
       this.clearHideTimeout();
-      if (this.referenceHovered || this.tooltipHovered || this.referenceFocused) {
+      if (this.referenceHovered || this.tooltipHovered || this.referenceFocused || this.awaitingPointerMoveAfterZoom) {
         return;
       }
       this.hideTimeout = setTimeout(() => {

@@ -47,14 +47,7 @@ export namespace Theme {
     mdTheme: boolean;
   };
 
-  /**
-   * Popper.js can't position overlay content correct in
-   * case when element inside container with overflow: hidden.
-   * https://github.com/popperjs/popper-core/issues/112.
-   * To make possible to position such element correctly, we need
-   * move creating popper instance in parent container that guarantee
-   * will not contain overflow property with hidden value;
-   */
+  /** Tooltip surfaces live in the theme container to avoid clipping by a trigger's ancestors. */
 
   @customElementWithCheck("md-theme")
   export class ELEMENT extends LitElement {
@@ -65,7 +58,6 @@ export namespace Theme {
     @state() private activeTheme = lumosLight;
 
     @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
-    @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
@@ -115,43 +107,7 @@ export namespace Theme {
       this.virtualTooltipHoverBridge = null;
     }
 
-    private setInitStyleToVirtualReference() {
-      const { style } = this.virtualReference;
-
-      style.top = "0";
-      style.bottom = "0";
-      style.left = "0";
-      style.right = "0";
-      style.width = "0";
-      style.height = "0";
-      style.zIndex = "-1";
-    }
-
-    private setStyleToVirtualReference(triggerRect: DOMRect) {
-      const { style } = this.virtualReference;
-      const { top, bottom, left, right, width, height } = triggerRect;
-
-      style.position = "fixed";
-      style.top = `${top}px`;
-      style.bottom = `${bottom}px`;
-      style.left = `${left}px`;
-      style.right = `${right}px`;
-      style.width = `${width}px`;
-      style.height = `${height}px`;
-      style.zIndex = "-1";
-    }
-
-    private setVirtualReferencePosition(trigger: HTMLElement) {
-      const triggerRect = trigger.getBoundingClientRect();
-
-      this.setStyleToVirtualReference(triggerRect);
-    }
-
-    private initVirtualElements(
-      popper: HTMLElement,
-      reference: HTMLElement,
-      slotContent: Element[] | null | undefined
-    ) {
+    private initVirtualElements(popper: HTMLElement, slotContent: Element[] | null | undefined) {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
 
       if (this.virtualWrapper.hasChildNodes()) {
@@ -178,12 +134,13 @@ export namespace Theme {
       });
       this.virtualTooltipHoverBridge = hoverBridge;
       popperClone.append(hoverBridge);
+      this.activeTooltipHost?.dispatchEvent(
+        new CustomEvent<HTMLElement>("tooltip-surface-update", { detail: popperClone })
+      );
 
       if (slotContent) {
         this.setVirtualSlotContent(slotContent);
       }
-
-      this.setVirtualReferencePosition(reference);
     }
 
     private setVirtualSlotContent(slotContent: Element[]) {
@@ -234,7 +191,7 @@ export namespace Theme {
       const root = reference.getRootNode() as ShadowRoot;
       this.activeTooltipHost = root.host?.localName === "md-tooltip" ? (root.host as Tooltip.ELEMENT) : null;
       this.placement = placement;
-      this.initVirtualElements(popper, reference, slotContent);
+      this.initVirtualElements(popper, slotContent);
       this.startContinuousPositionTracking(reference);
       this.showVirtualTooltip();
     }
@@ -297,7 +254,6 @@ export namespace Theme {
 
       const trackPosition = () => {
         if (this.activeTooltipTrigger === trigger && this.popperInstance) {
-          this.setVirtualReferencePosition(trigger);
           this.popperInstance.update();
           this.positionTrackingId = requestAnimationFrame(trackPosition);
         }
@@ -367,11 +323,11 @@ export namespace Theme {
     }
 
     private createPopperInstance(placement: Tooltip.Placement) {
-      if (this.virtualPopper) {
+      if (this.virtualPopper && this.activeTooltipTrigger) {
         const halfArrowSize = 8;
         const additionalPadding = 4;
 
-        this.popperInstance = createPopper(this.virtualReference, this.virtualPopper, {
+        this.popperInstance = createPopper(this.activeTooltipTrigger, this.virtualPopper, {
           placement,
           modifiers: [
             ...defaultModifiers,
@@ -444,7 +400,6 @@ export namespace Theme {
         }
         this.destroyPopperInstance();
         this.stopContinuousPositionTracking();
-        this.setInitStyleToVirtualReference();
       }
     }
 
@@ -492,7 +447,6 @@ export namespace Theme {
           </style>
           <slot></slot>
           <div class="md-tooltip" data-virtual-global-popper></div>
-          <div data-virtual-global-reference></div>
         </div>
       `;
     }

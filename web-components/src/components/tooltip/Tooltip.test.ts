@@ -64,6 +64,7 @@ describe("Tooltip", () => {
     expect(tooltipCreate).toBeDefined();
     expect(tooltip.opened).toBeTruthy();
     expect(tooltipCreate.reference).toEqual(tooltip.reference);
+    expect(theme["popperInstance"]?.state.elements.reference).toBe(tooltip.reference);
 
     tooltip.notifyTooltipDestroy();
 
@@ -155,6 +156,112 @@ describe("Tooltip", () => {
 
     expect(tooltip.opened).toBeFalsy();
     expect(popper.hasAttribute("data-show")).toBeFalsy();
+  });
+
+  test("should keep tooltip open during Safari pinch zoom until the pointer moves away", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+
+    window.dispatchEvent(new Event("gesturestart"));
+    popper.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    window.dispatchEvent(new Event("gestureend"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    window.dispatchEvent(new MouseEvent("mousemove"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should distinguish a zoom wheel event from ordinary scrolling", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+
+    window.dispatchEvent(new WheelEvent("wheel", { ctrlKey: true }));
+    popper.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    window.dispatchEvent(new WheelEvent("wheel"));
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should close after zoom even if the surface never received mouseleave", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+    window.dispatchEvent(new Event("gesturestart"));
+    window.dispatchEvent(new Event("gestureend"));
+
+    document.body.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, composed: true }));
+    jest.advanceTimersByTime(0);
+
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should keep checking pointer movement after moving inside the surface following zoom", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+    window.dispatchEvent(new Event("gesturestart"));
+    window.dispatchEvent(new Event("gestureend"));
+
+    popper.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, composed: true }));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    document.body.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, composed: true }));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should close on pointer movement outside even if gestureend is missing", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+    window.dispatchEvent(new Event("gesturestart"));
+
+    document.body.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, composed: true }));
+    jest.advanceTimersByTime(0);
+
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should preserve keyboard focus when checking the pointer after zoom", async () => {
+    tooltip.reference.dispatchEvent(new FocusEvent("focusin"));
+    await oneEvent(tooltip, "tooltip-create");
+    window.dispatchEvent(new Event("gesturestart"));
+    window.dispatchEvent(new Event("gestureend"));
+
+    document.body.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, composed: true }));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    tooltip.reference.dispatchEvent(new FocusEvent("focusout"));
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should still dismiss on Escape during a pinch gesture", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    window.dispatchEvent(new Event("gesturestart"));
+    document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
+
+    expect(tooltip.opened).toBeFalsy();
+    window.dispatchEvent(new Event("gestureend"));
+    window.dispatchEvent(new MouseEvent("mousemove"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeFalsy();
   });
 
   test("should hide the portaled surface when disabled", async () => {

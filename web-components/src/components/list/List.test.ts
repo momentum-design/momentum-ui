@@ -2,6 +2,8 @@ import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit";
 import { List } from "./List";
+import "../link/Link";
+import { type Link } from "../link/Link";
 import "./ListItem";
 import { type ListItem } from "./ListItem";
 
@@ -257,5 +259,63 @@ describe("List", () => {
     await elementUpdated(element);
 
     expect(element.hasAttribute("aria-label")).toBeFalsy();
+  });
+
+  test("should focus nested links with one tab stop when focus-selector is set", async () => {
+    const list = await fixture<List.ELEMENT>(html`
+      <md-list role="list">
+        <md-list-item slot="list-item" role="listitem" focus-selector="md-link">
+          <md-link href="#first">First</md-link>
+        </md-list-item>
+        <md-list-item slot="list-item" role="listitem" focus-selector="md-link">
+          <md-link href="#second">Second</md-link>
+        </md-list-item>
+      </md-list>
+    `);
+    const items = Array.from(list.querySelectorAll<ListItem.ELEMENT>("md-list-item"));
+    const links = Array.from(list.querySelectorAll<Link.ELEMENT>("md-link"));
+    const settle = async () => {
+      await elementUpdated(list);
+      await Promise.all(items.map((item) => elementUpdated(item)));
+      await Promise.all(links.map((link) => elementUpdated(link)));
+    };
+    await settle();
+    items[0].focus();
+    expect(links[0].shadowRoot?.activeElement).toBe(links[0].linkRef);
+    expect(links.map((link) => link.linkRef.tabIndex)).toEqual([0, -1]);
+
+    links[0].linkRef.dispatchEvent(
+      new KeyboardEvent("keydown", { code: Key.ArrowDown, bubbles: true, composed: true })
+    );
+    await settle();
+    expect(items.every((item) => !item.hasAttribute("tabindex"))).toBe(true);
+    expect(links.map((link) => link.linkRef.tabIndex)).toEqual([-1, 0]);
+    expect(links[1].shadowRoot?.activeElement).toBe(links[1].linkRef);
+
+    const changed = jest.fn();
+    list.addEventListener("list-item-change", changed);
+    links[1].linkRef.addEventListener("click", (event) => event.preventDefault());
+    links[1].linkRef.click();
+    await settle();
+    expect(items[1].selected).toBe(true);
+    expect(changed).toHaveBeenCalledTimes(1);
+  });
+
+  test("should leave nested links unchanged without focus-selector", async () => {
+    const list = await fixture<List.ELEMENT>(html`
+      <md-list>
+        <md-list-item slot="list-item"><md-link href="#first">First</md-link></md-list-item>
+        <md-list-item slot="list-item"><md-link href="#second">Second</md-link></md-list-item>
+      </md-list>
+    `);
+    const items = Array.from(list.querySelectorAll<ListItem.ELEMENT>("md-list-item"));
+    const links = Array.from(list.querySelectorAll<Link.ELEMENT>("md-link"));
+    await Promise.all(items.map((item) => elementUpdated(item)));
+    await Promise.all(links.map((link) => elementUpdated(link)));
+    list.dispatchEvent(keyEvent(Key.ArrowDown));
+    await elementUpdated(list);
+    expect(items.map((item) => item.tabIndex)).toEqual([-1, 0]);
+    expect(links.map((link) => link.linkRef.tabIndex)).toEqual([0, 0]);
+    expect(document.activeElement).toBe(items[1]);
   });
 });

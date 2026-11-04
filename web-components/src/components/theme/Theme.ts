@@ -47,7 +47,14 @@ export namespace Theme {
     mdTheme: boolean;
   };
 
-  /** Tooltip surfaces live in the theme container to avoid clipping by a trigger's ancestors. */
+  /**
+   * Popper.js can't position overlay content correct in
+   * case when element inside container with overflow: hidden.
+   * https://github.com/popperjs/popper-core/issues/112.
+   * To make possible to position such element correctly, we need
+   * move creating popper instance in parent container that guarantee
+   * will not contain overflow property with hidden value;
+   */
 
   @customElementWithCheck("md-theme")
   export class ELEMENT extends LitElement {

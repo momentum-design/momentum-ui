@@ -43,6 +43,20 @@ export namespace Tooltip {
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
+    private referenceHovered = false;
+    private tooltipHovered = false;
+    private referenceFocused = false;
+    private hideTimeout?: ReturnType<typeof setTimeout>;
+
+    private readonly _tooltipSurfaceEnterListener = () => {
+      this.tooltipHovered = true;
+      this.clearHideTimeout();
+    };
+
+    private readonly _tooltipSurfaceLeaveListener = () => {
+      this.tooltipHovered = false;
+      this.scheduleTooltipDestroy();
+    };
 
     private readonly _keyDownListener = (e: KeyboardEvent) => {
       this.handleKeyDown(e);
@@ -70,6 +84,8 @@ export namespace Tooltip {
       super.connectedCallback();
       document.addEventListener("keydown", this._keyDownListener);
       window.addEventListener("wheel", this._wheelListener, { passive: true });
+      this.addEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
+      this.addEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
     }
 
     disconnectedCallback(): void {
@@ -78,6 +94,9 @@ export namespace Tooltip {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
       window.removeEventListener("wheel", this._wheelListener);
+      this.removeEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
+      this.removeEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
+      this.clearInteractionState();
     }
 
     protected handleResize(contentRect: DOMRect) {
@@ -94,6 +113,8 @@ export namespace Tooltip {
       if (super.handleFocusIn) {
         super.handleFocusIn(event);
       }
+      this.referenceFocused = true;
+      this.clearHideTimeout();
       this.notifyTooltipCreate();
     }
 
@@ -101,7 +122,49 @@ export namespace Tooltip {
       if (super.handleFocusOut) {
         super.handleFocusOut(event);
       }
-      this.notifyTooltipDestroy();
+      const nextTarget = (event as FocusEvent).relatedTarget as Node | null;
+      this.referenceFocused = !!nextTarget && this.reference.contains(nextTarget);
+      if (!this.referenceFocused && !this.referenceHovered && !this.tooltipHovered) {
+        this.notifyTooltipDestroy();
+      }
+    }
+
+    private clearHideTimeout() {
+      if (this.hideTimeout !== undefined) {
+        clearTimeout(this.hideTimeout);
+        this.hideTimeout = undefined;
+      }
+    }
+
+    private clearInteractionState() {
+      this.clearHideTimeout();
+      this.referenceHovered = false;
+      this.tooltipHovered = false;
+      this.referenceFocused = false;
+    }
+
+    private scheduleTooltipDestroy() {
+      this.clearHideTimeout();
+      if (this.referenceHovered || this.tooltipHovered || this.referenceFocused) {
+        return;
+      }
+      this.hideTimeout = setTimeout(() => {
+        this.hideTimeout = undefined;
+        if (!this.referenceHovered && !this.tooltipHovered && !this.referenceFocused) {
+          this.notifyTooltipDestroy();
+        }
+      }, 0);
+    }
+
+    private handleReferenceMouseEnter() {
+      this.referenceHovered = true;
+      this.clearHideTimeout();
+      this.notifyTooltipCreate();
+    }
+
+    private handleReferenceMouseLeave() {
+      this.referenceHovered = false;
+      this.scheduleTooltipDestroy();
     }
 
     private openTooltip() {
@@ -124,7 +187,7 @@ export namespace Tooltip {
         new CustomEvent("tooltip-disconnected", {
           bubbles: true,
           composed: true,
-          detail: {}
+          detail: { reference: this.reference }
         })
       );
     }
@@ -179,6 +242,7 @@ export namespace Tooltip {
     }
 
     notifyTooltipDestroy() {
+      this.clearInteractionState();
       if (!this.disabled) {
         this.opened = false;
       }
@@ -209,6 +273,7 @@ export namespace Tooltip {
         if (this.opened) {
           this.openTooltip();
         } else {
+          this.clearInteractionState();
           this.closeTooltip();
         }
       }
@@ -260,8 +325,8 @@ export namespace Tooltip {
           <div
             class="md-tooltip__reference"
             part="tooltip_reference"
-            @mouseenter=${() => this.notifyTooltipCreate()}
-            @mouseleave=${() => this.notifyTooltipDestroy()}
+            @mouseenter=${() => this.handleReferenceMouseEnter()}
+            @mouseleave=${() => this.handleReferenceMouseLeave()}
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}

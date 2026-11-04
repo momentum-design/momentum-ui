@@ -74,6 +74,120 @@ describe("Tooltip", () => {
     expect(tooltipDestroy.reference).toEqual(tooltip.reference);
   });
 
+  test("should keep tooltip open while pointer moves through the hover bridge", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    const hoverBridge = popper.querySelector(".md-tooltip__hover-bridge");
+    expect(hoverBridge).not.toBeNull();
+
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    popper.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should not hide the active tooltip when an earlier tooltip closes", async () => {
+    const other = document.createElement("md-tooltip");
+    other.message = "Other tooltip";
+    theme.append(other);
+    await elementUpdated(other);
+
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+
+    other.notifyTooltipCreate();
+    await oneEvent(other, "tooltip-create");
+    jest.advanceTimersByTime(0);
+    await elementUpdated(tooltip);
+
+    expect(tooltip.opened).toBeFalsy();
+    expect(other.opened).toBeTruthy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")?.textContent).toContain("Other tooltip");
+  });
+
+  test("should not hide the active tooltip when an unrelated tooltip is removed", async () => {
+    const other = document.createElement("md-tooltip");
+    theme.append(other);
+    await elementUpdated(other);
+
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    other.remove();
+
+    expect(tooltip.opened).toBeTruthy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")).not.toBeNull();
+  });
+
+  test("should hide the portaled surface when its tooltip is removed", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    tooltip.remove();
+
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")).toBeNull();
+    expect((theme.shadowRoot!.querySelector(".md-tooltip__hover-bridge") as HTMLElement).style.display).toBe("none");
+  });
+
+  test("should preserve keyboard focus while the pointer leaves and close on blur", async () => {
+    tooltip.reference.dispatchEvent(new FocusEvent("focusin"));
+    await oneEvent(tooltip, "tooltip-create");
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(0);
+    expect(tooltip.opened).toBeTruthy();
+
+    tooltip.reference.dispatchEvent(new FocusEvent("focusout"));
+    expect(tooltip.opened).toBeFalsy();
+  });
+
+  test("should close on wheel while hovering the portaled surface", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+    window.dispatchEvent(new WheelEvent("wheel"));
+    await elementUpdated(tooltip);
+
+    expect(tooltip.opened).toBeFalsy();
+    expect(popper.hasAttribute("data-show")).toBeFalsy();
+  });
+
+  test("should hide the portaled surface when disabled", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    tooltip.disabled = true;
+    await elementUpdated(tooltip);
+    await elementUpdated(tooltip);
+
+    expect(tooltip.opened).toBeFalsy();
+    expect(theme.shadowRoot!.querySelector(".md-tooltip__popper[data-show]")).toBeNull();
+  });
+
+  test("should clear surface hover state when disabled and enabled again", async () => {
+    tooltip.notifyTooltipCreate();
+    await oneEvent(tooltip, "tooltip-create");
+    const popper = theme.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+    popper.dispatchEvent(new MouseEvent("mouseenter"));
+
+    tooltip.disabled = true;
+    await elementUpdated(tooltip);
+    await elementUpdated(tooltip);
+    tooltip.disabled = false;
+    await elementUpdated(tooltip);
+
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseenter"));
+    await oneEvent(tooltip, "tooltip-create");
+    tooltip.reference.dispatchEvent(new MouseEvent("mouseleave"));
+    jest.advanceTimersByTime(0);
+
+    expect(tooltip.opened).toBeFalsy();
+  });
+
   test("should close tooltip on pressing escape anywhere when tooltip is open", async () => {
     tooltip.notifyTooltipCreate();
 

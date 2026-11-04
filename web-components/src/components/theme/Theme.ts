@@ -70,6 +70,8 @@ export namespace Theme {
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
     private activeTooltipTrigger: HTMLElement | null = null;
+    private activeTooltipHost: Tooltip.ELEMENT | null = null;
+    private virtualTooltipHoverBridge: HTMLDivElement | null = null;
     private positionTrackingId: number | undefined;
 
     private setTheme() {
@@ -110,6 +112,7 @@ export namespace Theme {
       while (this.virtualWrapper.firstElementChild) {
         this.virtualWrapper.firstElementChild.remove();
       }
+      this.virtualTooltipHoverBridge = null;
     }
 
     private setInitStyleToVirtualReference() {
@@ -156,6 +159,25 @@ export namespace Theme {
       }
 
       this.virtualWrapper.append(popperClone);
+
+      popperClone.addEventListener("mouseenter", () => {
+        this.dispatchTooltipSurfaceEvent("tooltip-surface-enter");
+      });
+      popperClone.addEventListener("mouseleave", () => {
+        this.dispatchTooltipSurfaceEvent("tooltip-surface-leave");
+      });
+
+      const hoverBridge = document.createElement("div");
+      hoverBridge.className = "md-tooltip__hover-bridge";
+      hoverBridge.setAttribute("aria-hidden", "true");
+      Object.assign(hoverBridge.style, {
+        position: "absolute",
+        display: "none",
+        pointerEvents: "auto",
+        background: "transparent"
+      });
+      this.virtualTooltipHoverBridge = hoverBridge;
+      popperClone.append(hoverBridge);
 
       if (slotContent) {
         this.setVirtualSlotContent(slotContent);
@@ -204,11 +226,70 @@ export namespace Theme {
 
       const { popper, placement, reference, slotContent } = event.detail;
 
+      if (this.activeTooltipTrigger !== reference) {
+        this.activeTooltipHost?.notifyTooltipDestroy();
+      }
+      this.destroyPopperInstance();
       this.activeTooltipTrigger = reference;
+      const root = reference.getRootNode() as ShadowRoot;
+      this.activeTooltipHost = root.host?.localName === "md-tooltip" ? (root.host as Tooltip.ELEMENT) : null;
       this.placement = placement;
       this.initVirtualElements(popper, reference, slotContent);
       this.startContinuousPositionTracking(reference);
       this.showVirtualTooltip();
+    }
+
+    private dispatchTooltipSurfaceEvent(type: "tooltip-surface-enter" | "tooltip-surface-leave") {
+      this.activeTooltipHost?.dispatchEvent(new CustomEvent(type));
+    }
+
+    private updateTooltipHoverBridge() {
+      const bridge = this.virtualTooltipHoverBridge;
+      const trigger = this.activeTooltipTrigger;
+      const popper = this.virtualPopper;
+
+      if (!bridge || !trigger || !popper || !popper.hasAttribute("data-show")) {
+        if (bridge) {
+          bridge.style.display = "none";
+        }
+        return;
+      }
+
+      const triggerRect = trigger.getBoundingClientRect();
+      const popperRect = popper.getBoundingClientRect();
+      const side = (popper.getAttribute("data-popper-placement") || this.placement).split("-")[0];
+      const scaleX = popper.offsetWidth ? popperRect.width / popper.offsetWidth || 1 : 1;
+      const scaleY = popper.offsetHeight ? popperRect.height / popper.offsetHeight || 1 : 1;
+      // Keep the bridge inside the popper so positioning, stacking and transforms are shared.
+      // One pixel of overlap at each end avoids a gap caused by fractional positioning.
+      Object.assign(bridge.style, {
+        display: "block",
+        left: "",
+        right: "",
+        top: "",
+        bottom: "",
+        width: "",
+        height: ""
+      });
+      if (side === "top" || side === "bottom") {
+        const gap =
+          Math.max(0, side === "top" ? triggerRect.top - popperRect.bottom : popperRect.top - triggerRect.bottom) /
+          scaleY;
+        bridge.style.left = "-1px";
+        bridge.style.width = "calc(100% + 2px)";
+        bridge.style.height = `${gap + 2}px`;
+        bridge.style[side === "top" ? "bottom" : "top"] = `${-gap - 1}px`;
+      } else if (side === "left" || side === "right") {
+        const gap =
+          Math.max(0, side === "left" ? triggerRect.left - popperRect.right : popperRect.left - triggerRect.right) /
+          scaleX;
+        bridge.style.top = "-1px";
+        bridge.style.height = "calc(100% + 2px)";
+        bridge.style.width = `${gap + 2}px`;
+        bridge.style[side === "left" ? "right" : "left"] = `${-gap - 1}px`;
+      } else {
+        bridge.style.display = "none";
+      }
     }
 
     private startContinuousPositionTracking(trigger: HTMLElement): void {
@@ -234,10 +315,10 @@ export namespace Theme {
 
     handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
       event.stopPropagation();
-      this.hideVirtualTooltip();
-
       if (this.activeTooltipTrigger === event.detail.reference) {
+        this.hideVirtualTooltip();
         this.activeTooltipTrigger = null;
+        this.activeTooltipHost = null;
       }
     }
 
@@ -269,9 +350,13 @@ export namespace Theme {
       }
     }
 
-    handleTooltipRemoved = () => {
+    handleTooltipRemoved = (event: Event) => {
+      if ((event as CustomEvent<TooltipEvent>).detail.reference !== this.activeTooltipTrigger) {
+        return;
+      }
       this.hideVirtualTooltip();
       this.activeTooltipTrigger = null;
+      this.activeTooltipHost = null;
     };
 
     private destroyPopperInstance() {
@@ -293,6 +378,12 @@ export namespace Theme {
             flip,
             offset,
             arrow,
+            {
+              name: "tooltipHoverBridge",
+              enabled: true,
+              phase: "afterWrite",
+              fn: () => this.updateTooltipHoverBridge()
+            },
             {
               name: "offset",
               options: {
@@ -348,6 +439,9 @@ export namespace Theme {
     private hideVirtualTooltip() {
       if (this.virtualPopper) {
         this.virtualPopper.toggleAttribute("data-show", false);
+        if (this.virtualTooltipHoverBridge) {
+          this.virtualTooltipHoverBridge.style.display = "none";
+        }
         this.destroyPopperInstance();
         this.stopContinuousPositionTracking();
         this.setInitStyleToVirtualReference();

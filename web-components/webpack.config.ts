@@ -301,6 +301,8 @@ const commonDistEsm = merge(common, {
     outputModule: true
   },
   optimization: {
+    // Use one runtime for shared ESM entries so Webpack can generate their exports.
+    runtimeChunk: "single",
     splitChunks: { chunks: "all", maxInitialRequests: Infinity, maxAsyncRequests: Infinity, minSize: 0 }
   },
   externals: [nodeExternals({ modulesFromFile: true, importType: "module" })],

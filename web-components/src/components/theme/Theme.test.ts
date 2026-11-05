@@ -90,18 +90,12 @@ describe("Theme", () => {
 
   test("handleVirtualTooltipChangeMessage should not update virtual tooltip content if reference does not match", async () => {
     const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
-    const reference = document.createElement("div");
     const differentReference = document.createElement("div");
     const popper = document.createElement("div");
     const content = document.createElement("div");
     content.classList.add("md-tooltip__content");
     content.textContent = "New Tooltip Message";
     popper.appendChild(content);
-
-    Object.defineProperty(element, "virtualReference", {
-      value: reference,
-      configurable: true
-    });
 
     const event = new CustomEvent("tooltip-message", {
       detail: { popper, reference: differentReference },

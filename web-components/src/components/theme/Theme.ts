@@ -13,6 +13,7 @@ import { html, LitElement, PropertyValues } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import styles from "../tooltip/scss/module.scss";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip";
+import { TooltipInteraction } from "../tooltip/TooltipInteraction";
 import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
@@ -70,6 +71,7 @@ export namespace Theme {
     private popperInstance: Instance | null = null;
     private activeTooltipTrigger: HTMLElement | null = null;
     private activeTooltipHost: Tooltip.ELEMENT | null = null;
+    private customTooltipInteraction: TooltipInteraction | null = null;
     private virtualTooltipHoverBridge: HTMLDivElement | null = null;
     private positionTrackingId: number | undefined;
 
@@ -123,13 +125,6 @@ export namespace Theme {
 
       this.virtualWrapper.append(popperClone);
 
-      popperClone.addEventListener("mouseenter", () => {
-        this.dispatchTooltipSurfaceEvent("tooltip-surface-enter");
-      });
-      popperClone.addEventListener("mouseleave", () => {
-        this.dispatchTooltipSurfaceEvent("tooltip-surface-leave");
-      });
-
       const hoverBridge = document.createElement("div");
       hoverBridge.className = "md-tooltip__hover-bridge";
       hoverBridge.setAttribute("aria-hidden", "true");
@@ -141,9 +136,11 @@ export namespace Theme {
       });
       this.virtualTooltipHoverBridge = hoverBridge;
       popperClone.append(hoverBridge);
-      this.activeTooltipHost?.dispatchEvent(
-        new CustomEvent<HTMLElement>("tooltip-surface-update", { detail: popperClone })
-      );
+      if (this.customTooltipInteraction) {
+        this.customTooltipInteraction.setSurface(popperClone);
+      } else {
+        this.activeTooltipHost?.setTooltipSurface(popperClone);
+      }
 
       if (slotContent) {
         this.setVirtualSlotContent(slotContent);
@@ -193,18 +190,26 @@ export namespace Theme {
       if (this.activeTooltipTrigger !== reference) {
         this.activeTooltipHost?.notifyTooltipDestroy();
       }
+      this.customTooltipInteraction?.disconnect();
+      this.customTooltipInteraction = null;
       this.destroyPopperInstance();
       this.activeTooltipTrigger = reference;
       const root = reference.getRootNode() as ShadowRoot;
-      this.activeTooltipHost = root.host?.localName === "md-tooltip" ? (root.host as Tooltip.ELEMENT) : null;
+      const host = root.host?.localName === "md-tooltip" ? (root.host as Tooltip.ELEMENT) : null;
+      this.activeTooltipHost = host?.opened ? host : null;
+      if (!this.activeTooltipHost) {
+        this.customTooltipInteraction = new TooltipInteraction({
+          reference: () => reference,
+          isOpen: () => this.activeTooltipTrigger === reference,
+          open: () => undefined,
+          close: () => this.closeActiveTooltip()
+        });
+        this.customTooltipInteraction.connect(reference);
+      }
       this.placement = placement;
       this.initVirtualElements(popper, slotContent);
       this.startContinuousPositionTracking(reference);
       this.showVirtualTooltip();
-    }
-
-    private dispatchTooltipSurfaceEvent(type: "tooltip-surface-enter" | "tooltip-surface-leave") {
-      this.activeTooltipHost?.dispatchEvent(new CustomEvent(type));
     }
 
     private updateTooltipHoverBridge() {
@@ -261,6 +266,10 @@ export namespace Theme {
 
       const trackPosition = () => {
         if (this.activeTooltipTrigger === trigger && this.popperInstance) {
+          if (!trigger.isConnected) {
+            this.closeActiveTooltip();
+            return;
+          }
           this.popperInstance.update();
           this.positionTrackingId = requestAnimationFrame(trackPosition);
         }
@@ -276,13 +285,29 @@ export namespace Theme {
       }
     }
 
-    handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
+    handleVirtualTooltipDestroy(event: CustomEvent<Partial<TooltipEvent>>) {
       event.stopPropagation();
-      if (this.activeTooltipTrigger === event.detail.reference) {
-        this.hideVirtualTooltip();
-        this.activeTooltipTrigger = null;
-        this.activeTooltipHost = null;
+      const reference = event.detail?.reference;
+      // Legacy custom callers dispatch on md-theme with no detail; that closes its current tooltip.
+      // Callers supplying a reference retain protection against stale close events.
+      if (reference && reference !== this.activeTooltipTrigger) {
+        return;
       }
+      if (this.customTooltipInteraction) {
+        this.customTooltipInteraction.requestClose();
+      } else {
+        this.closeActiveTooltip();
+      }
+    }
+
+    private closeActiveTooltip() {
+      const host = this.activeTooltipHost;
+      this.customTooltipInteraction?.disconnect();
+      this.customTooltipInteraction = null;
+      this.hideVirtualTooltip();
+      this.activeTooltipTrigger = null;
+      this.activeTooltipHost = null;
+      host?.notifyTooltipDestroy();
     }
 
     handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
@@ -306,20 +331,19 @@ export namespace Theme {
     }
 
     handleVirtualTooltipSlotChange(event: CustomEvent<TooltipEvent>) {
-      const { slotContent } = event.detail;
+      const { slotContent, reference } = event.detail;
 
-      if (slotContent) {
+      if (reference === this.activeTooltipTrigger && slotContent) {
         this.setVirtualSlotContent(slotContent);
       }
     }
 
     handleTooltipRemoved = (event: Event) => {
-      if ((event as CustomEvent<TooltipEvent>).detail.reference !== this.activeTooltipTrigger) {
+      const reference = (event as CustomEvent<Partial<TooltipEvent>>).detail?.reference;
+      if (reference !== this.activeTooltipTrigger) {
         return;
       }
-      this.hideVirtualTooltip();
-      this.activeTooltipTrigger = null;
-      this.activeTooltipHost = null;
+      this.closeActiveTooltip();
     };
 
     private destroyPopperInstance() {
@@ -381,7 +405,7 @@ export namespace Theme {
     }
 
     private get virtualPopper() {
-      return this.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+      return this.shadowRoot?.querySelector<HTMLElement>(".md-tooltip__popper") ?? null;
     }
 
     private get virtualArrow() {
@@ -400,14 +424,12 @@ export namespace Theme {
     }
 
     private hideVirtualTooltip() {
-      if (this.virtualPopper) {
-        this.virtualPopper.toggleAttribute("data-show", false);
-        if (this.virtualTooltipHoverBridge) {
-          this.virtualTooltipHoverBridge.style.display = "none";
-        }
-        this.destroyPopperInstance();
-        this.stopContinuousPositionTracking();
+      this.virtualPopper?.toggleAttribute("data-show", false);
+      if (this.virtualTooltipHoverBridge) {
+        this.virtualTooltipHoverBridge.style.display = "none";
       }
+      this.destroyPopperInstance();
+      this.stopContinuousPositionTracking();
     }
 
     private setupEvents() {
@@ -430,7 +452,7 @@ export namespace Theme {
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.stopContinuousPositionTracking();
+      this.closeActiveTooltip();
       this.teardownEvents();
     }
 

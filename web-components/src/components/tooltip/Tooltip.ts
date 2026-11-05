@@ -7,7 +7,6 @@
  */
 
 import { Placement, PlacementType, StrategyType } from "../popover/Popover.types";
-import { Key } from "@/constants";
 import { FocusMixin, ResizeMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce } from "@/utils/helpers";
@@ -16,6 +15,7 @@ import { html, LitElement, PropertyValues } from "lit";
 import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
+import { TooltipInteraction } from "./TooltipInteraction";
 
 export const tooltipPlacement = Placement;
 
@@ -43,58 +43,17 @@ export namespace Tooltip {
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
-    private referenceHovered = false;
-    private tooltipHovered = false;
-    private referenceFocused = false;
-    private tooltipSurface: HTMLElement | null = null;
-    private awaitingPointerMoveAfterZoom = false;
-    private hideTimeout?: ReturnType<typeof setTimeout>;
+    private readonly interaction = new TooltipInteraction({
+      reference: () => this.reference,
+      isOpen: () => this.opened,
+      open: () => this.notifyTooltipCreate(),
+      close: () => this.notifyTooltipDestroy()
+    });
 
-    private readonly _tooltipSurfaceEnterListener = () => {
-      this.tooltipHovered = true;
-      this.clearHideTimeout();
-    };
-
-    private readonly _tooltipSurfaceLeaveListener = () => {
-      this.tooltipHovered = false;
-      this.scheduleTooltipDestroy();
-    };
-
-    private readonly _tooltipSurfaceUpdateListener = (event: Event) => {
-      this.tooltipSurface = (event as CustomEvent<HTMLElement>).detail;
-    };
-
-    private readonly _keyDownListener = (e: KeyboardEvent) => {
-      this.handleKeyDown(e);
-    };
-
-    private readonly _wheelListener = (event: WheelEvent) => {
-      if (!this.opened) return;
-      if (event.ctrlKey) {
-        this._zoomListener();
-      } else {
-        this.notifyTooltipDestroy();
-      }
-    };
-
-    private readonly _afterZoomMouseMoveListener = (event: MouseEvent) => {
-      const path = event.composedPath();
-      this.referenceHovered = path.includes(this.reference);
-      this.tooltipHovered = !!this.tooltipSurface && path.includes(this.tooltipSurface);
-      this.awaitingPointerMoveAfterZoom = false;
-      this.scheduleTooltipDestroy();
-    };
-
-    private readonly _zoomListener = () => {
-      if (
-        this.opened &&
-        (this.referenceHovered || this.tooltipHovered || this.referenceFocused || this.awaitingPointerMoveAfterZoom)
-      ) {
-        this.awaitingPointerMoveAfterZoom = true;
-        this.clearHideTimeout();
-        window.addEventListener("mousemove", this._afterZoomMouseMoveListener, { passive: true, capture: true });
-      }
-    };
+    /** @internal The theme owns the portaled surface; interaction stays with the tooltip. */
+    setTooltipSurface(surface: HTMLElement) {
+      this.interaction.setSurface(surface);
+    }
 
     private hasMessage() {
       return this.message && this.message.trim().length > 0;
@@ -110,27 +69,14 @@ export namespace Tooltip {
 
     connectedCallback() {
       super.connectedCallback();
-      document.addEventListener("keydown", this._keyDownListener);
-      window.addEventListener("wheel", this._wheelListener, { passive: true });
-      window.addEventListener("gesturestart", this._zoomListener, { passive: true });
-      window.visualViewport?.addEventListener("resize", this._zoomListener, { passive: true });
-      this.addEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
-      this.addEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
-      this.addEventListener("tooltip-surface-update", this._tooltipSurfaceUpdateListener);
+      this.interaction.connect();
     }
 
     disconnectedCallback(): void {
       this.notifyTooltipDisconnected();
 
       super.disconnectedCallback();
-      document.removeEventListener("keydown", this._keyDownListener);
-      window.removeEventListener("wheel", this._wheelListener);
-      window.removeEventListener("gesturestart", this._zoomListener);
-      window.visualViewport?.removeEventListener("resize", this._zoomListener);
-      this.removeEventListener("tooltip-surface-enter", this._tooltipSurfaceEnterListener);
-      this.removeEventListener("tooltip-surface-leave", this._tooltipSurfaceLeaveListener);
-      this.removeEventListener("tooltip-surface-update", this._tooltipSurfaceUpdateListener);
-      this.clearInteractionState();
+      this.interaction.disconnect();
     }
 
     protected handleResize(contentRect: DOMRect) {
@@ -147,61 +93,14 @@ export namespace Tooltip {
       if (super.handleFocusIn) {
         super.handleFocusIn(event);
       }
-      this.referenceFocused = true;
-      this.clearHideTimeout();
-      this.notifyTooltipCreate();
+      this.interaction.handleFocusIn();
     }
 
     protected handleFocusOut(event: Event) {
       if (super.handleFocusOut) {
         super.handleFocusOut(event);
       }
-      const nextTarget = (event as FocusEvent).relatedTarget as Node | null;
-      this.referenceFocused = !!nextTarget && this.reference.contains(nextTarget);
-      if (!this.referenceFocused && !this.referenceHovered && !this.tooltipHovered) {
-        this.notifyTooltipDestroy();
-      }
-    }
-
-    private clearHideTimeout() {
-      if (this.hideTimeout !== undefined) {
-        clearTimeout(this.hideTimeout);
-        this.hideTimeout = undefined;
-      }
-    }
-
-    private clearInteractionState() {
-      this.clearHideTimeout();
-      this.referenceHovered = false;
-      this.tooltipHovered = false;
-      this.referenceFocused = false;
-      this.tooltipSurface = null;
-      this.awaitingPointerMoveAfterZoom = false;
-      window.removeEventListener("mousemove", this._afterZoomMouseMoveListener, true);
-    }
-
-    private scheduleTooltipDestroy() {
-      this.clearHideTimeout();
-      if (this.referenceHovered || this.tooltipHovered || this.referenceFocused || this.awaitingPointerMoveAfterZoom) {
-        return;
-      }
-      this.hideTimeout = setTimeout(() => {
-        this.hideTimeout = undefined;
-        if (!this.referenceHovered && !this.tooltipHovered && !this.referenceFocused) {
-          this.notifyTooltipDestroy();
-        }
-      }, 0);
-    }
-
-    private handleReferenceMouseEnter() {
-      this.referenceHovered = true;
-      this.clearHideTimeout();
-      this.notifyTooltipCreate();
-    }
-
-    private handleReferenceMouseLeave() {
-      this.referenceHovered = false;
-      this.scheduleTooltipDestroy();
+      this.interaction.handleFocusOut(event);
     }
 
     private openTooltip() {
@@ -279,16 +178,14 @@ export namespace Tooltip {
     }
 
     notifyTooltipDestroy() {
-      this.clearInteractionState();
+      this.interaction.reset();
       if (!this.disabled) {
         this.opened = false;
       }
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      if (event.code === Key.Escape) {
-        this.notifyTooltipDestroy();
-      }
+      this.interaction.handleKeyDown(event);
     }
 
     handleSlotContentChange(event: Event) {
@@ -310,7 +207,7 @@ export namespace Tooltip {
         if (this.opened) {
           this.openTooltip();
         } else {
-          this.clearInteractionState();
+          this.interaction.reset();
           this.closeTooltip();
         }
       }
@@ -362,8 +259,8 @@ export namespace Tooltip {
           <div
             class="md-tooltip__reference"
             part="tooltip_reference"
-            @mouseenter=${() => this.handleReferenceMouseEnter()}
-            @mouseleave=${() => this.handleReferenceMouseLeave()}
+            @mouseenter=${this.interaction.handleReferenceEnter}
+            @mouseleave=${this.interaction.handleReferenceLeave}
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}

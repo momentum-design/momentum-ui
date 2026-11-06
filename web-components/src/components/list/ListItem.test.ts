@@ -101,6 +101,40 @@ describe("ListItem", () => {
     expect(blurred).toHaveBeenCalledTimes(1);
   });
 
+  test("should delegate focus to a link inside a wrapper", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <div><md-link href="#task">Task</md-link></div>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(link.linkRef.tabIndex).toBe(0);
+    item.focus();
+    expect(link.shadowRoot?.activeElement).toBe(link.linkRef);
+  });
+
+  test("should keep the host out of the tab order when its tabindex attribute is set to the existing value", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <md-link href="#task">Task</md-link>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+
+    item.setAttribute("tabindex", "0");
+    await elementUpdated(item);
+    await elementUpdated(link);
+
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(item.tabIndex).toBe(0);
+    expect(link.linkRef.tabIndex).toBe(0);
+  });
+
   test("should restore tab stops when delegation is disabled and handle a replacement link", async () => {
     const item = await fixture<ListItem.ELEMENT>(html`
       <md-list-item focus-selector="md-link" tabindex="0">

@@ -29,12 +29,15 @@ export namespace ListItem {
     attributeChangedCallback(name: string, oldValue: string | null, value: string | null) {
       if (!this.reflectingTabIndex || name !== "tabindex") {
         super.attributeChangedCallback(name, oldValue, value);
+        if (name === "tabindex" && this.focusTarget) {
+          this.updateFocusTarget();
+        }
       }
     }
 
     private updateFocusTarget() {
       const target = this.focusSelector
-        ? (Array.from(this.children).find((child) => child.matches(this.focusSelector)) as HTMLElement | undefined)
+        ? (this.querySelector<HTMLElement>(this.focusSelector) ?? undefined)
         : undefined;
 
       if (target !== this.focusTarget) {

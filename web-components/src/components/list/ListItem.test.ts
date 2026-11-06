@@ -1,5 +1,7 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues } from "lit";
+import { html, PropertyValues } from "lit";
+import "../link/Link";
+import { type Link } from "../link/Link";
 import "./ListItem";
 import { ListItem } from "./ListItem";
 
@@ -34,13 +36,14 @@ describe("ListItem", () => {
       class extends ListItem.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
+          this.dispatchEvent(new CustomEvent("first-updated", { detail: this.getAttribute("tabindex") }));
         }
       }
     );
     const element = fixtureSync(`<${tag}></${tag}>`);
     const event = await oneEvent(element, "first-updated");
     expect(event).toBeDefined();
+    expect(event.detail).toBe("-1");
   });
 
   test("should reflect shape property changes to the class attribute", async () => {
@@ -73,5 +76,59 @@ describe("ListItem", () => {
     );
     expect(menuItemElement.getAttribute("role")).toEqual("menuitem");
     expect(menuItemElement.hasAttribute("aria-selected")).toBe(false);
+  });
+
+  test("should delegate programmatic focus and preserve focus indicator events", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item role="listitem" focus-selector="md-link" tabindex="0">
+        <md-link href="#task">Task</md-link>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+    const focused = jest.fn();
+    const blurred = jest.fn();
+    item.addEventListener("focus-visible", focused);
+    item.addEventListener("focus-not-visible", blurred);
+    item.focus();
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(link.linkRef.tabIndex).toBe(0);
+    expect(link.shadowRoot?.activeElement).toBe(link.linkRef);
+    expect(item.hasAttribute("focus-visible")).toBe(true);
+    expect(focused).toHaveBeenCalledTimes(1);
+    item.blur();
+    expect(item.hasAttribute("focus-visible")).toBe(false);
+    expect(blurred).toHaveBeenCalledTimes(1);
+  });
+
+  test("should restore tab stops when delegation is disabled and handle a replacement link", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <md-link href="#first" tab-index="-1">First</md-link>
+      </md-list-item>
+    `);
+    const original = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(original);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(original.tabIndex).toBe(0);
+
+    item.removeAttribute("focus-selector");
+    await elementUpdated(item);
+    await elementUpdated(original);
+    expect(item.tabIndex).toBe(0);
+    expect(original.tabIndex).toBe(-1);
+
+    item.setAttribute("focus-selector", "md-link");
+    await elementUpdated(item);
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    item.replaceChildren(replacement);
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+    expect(original.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(replacement.linkRef.tabIndex).toBe(0);
+    item.focus();
+    expect(replacement.shadowRoot?.activeElement).toBe(replacement.linkRef);
   });
 });

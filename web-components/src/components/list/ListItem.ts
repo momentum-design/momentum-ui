@@ -25,6 +25,19 @@ export namespace ListItem {
     private focusTarget?: HTMLElement;
     private originalTargetTabIndex = -1;
     private reflectingTabIndex = false;
+    private focusObserver?: MutationObserver;
+
+    connectedCallback() {
+      super.connectedCallback();
+      if (this.focusSelector) {
+        this.requestUpdate();
+      }
+    }
+
+    disconnectedCallback() {
+      this.focusObserver?.disconnect();
+      super.disconnectedCallback();
+    }
 
     attributeChangedCallback(name: string, oldValue: string | null, value: string | null) {
       if (!this.reflectingTabIndex || name !== "tabindex") {
@@ -71,6 +84,11 @@ export namespace ListItem {
 
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
+      this.focusObserver?.disconnect();
+      if (this.focusSelector && this.isConnected) {
+        this.focusObserver ??= new MutationObserver(() => this.updateFocusTarget());
+        this.focusObserver.observe(this, { childList: true, subtree: true });
+      }
       if (this.focusSelector || this.focusTarget) {
         this.updateFocusTarget();
       }

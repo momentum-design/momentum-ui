@@ -135,6 +135,51 @@ describe("ListItem", () => {
     expect(link.linkRef.tabIndex).toBe(0);
   });
 
+  test.each(["add", "replace"])("should resynchronize when a wrapped link changes: %s", async (operation) => {
+    const initialContent = operation === "replace" ? html`<md-link href="#original">Original</md-link>` : html``;
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="-1">
+        <div>${initialContent}</div>
+      </md-list-item>
+    `);
+    const wrapper = item.querySelector("div")!;
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    if (operation === "add") {
+      wrapper.append(replacement);
+    } else {
+      wrapper.replaceChildren(replacement);
+    }
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+
+    expect(replacement.linkRef.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    item.focus();
+    expect(replacement.shadowRoot?.activeElement).toBe(replacement.linkRef);
+  });
+
+  test("should resynchronize wrapped content after reconnecting", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="-1">
+        <div><md-link href="#original">Original</md-link></div>
+      </md-list-item>
+    `);
+    const parent = item.parentElement!;
+    item.remove();
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    item.querySelector("div")!.replaceChildren(replacement);
+    await elementUpdated(item);
+    expect(replacement.tabIndex).toBe(0);
+
+    parent.append(item);
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+    expect(replacement.linkRef.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+  });
+
   test("should restore tab stops when delegation is disabled and handle a replacement link", async () => {
     const item = await fixture<ListItem.ELEMENT>(html`
       <md-list-item focus-selector="md-link" tabindex="0">

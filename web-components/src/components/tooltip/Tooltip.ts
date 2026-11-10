@@ -7,7 +7,6 @@
  */
 
 import { Placement, PlacementType, StrategyType } from "../popover/Popover.types";
-import { Key } from "@/constants";
 import { FocusMixin, ResizeMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce } from "@/utils/helpers";
@@ -16,6 +15,7 @@ import { html, LitElement, PropertyValues } from "lit";
 import { property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
+import { TooltipInteraction } from "./TooltipInteraction";
 
 export const tooltipPlacement = Placement;
 
@@ -43,16 +43,17 @@ export namespace Tooltip {
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
+    private readonly interaction = new TooltipInteraction({
+      reference: () => this.reference,
+      isOpen: () => this.opened,
+      open: () => this.notifyTooltipCreate(),
+      close: () => this.notifyTooltipDestroy()
+    });
 
-    private readonly _keyDownListener = (e: KeyboardEvent) => {
-      this.handleKeyDown(e);
-    };
-
-    private readonly _wheelListener = (_e: Event) => {
-      if (this.opened) {
-        this.notifyTooltipDestroy();
-      }
-    };
+    /** @internal The theme owns the portaled surface; interaction stays with the tooltip. */
+    setTooltipSurface(surface: HTMLElement) {
+      this.interaction.setSurface(surface);
+    }
 
     private hasMessage() {
       return this.message && this.message.trim().length > 0;
@@ -68,16 +69,14 @@ export namespace Tooltip {
 
     connectedCallback() {
       super.connectedCallback();
-      document.addEventListener("keydown", this._keyDownListener);
-      window.addEventListener("wheel", this._wheelListener, { passive: true });
+      this.interaction.connect();
     }
 
     disconnectedCallback(): void {
       this.notifyTooltipDisconnected();
 
       super.disconnectedCallback();
-      document.removeEventListener("keydown", this._keyDownListener);
-      window.removeEventListener("wheel", this._wheelListener);
+      this.interaction.disconnect();
     }
 
     protected handleResize(contentRect: DOMRect) {
@@ -94,14 +93,14 @@ export namespace Tooltip {
       if (super.handleFocusIn) {
         super.handleFocusIn(event);
       }
-      this.notifyTooltipCreate();
+      this.interaction.handleFocusIn();
     }
 
     protected handleFocusOut(event: Event) {
       if (super.handleFocusOut) {
         super.handleFocusOut(event);
       }
-      this.notifyTooltipDestroy();
+      this.interaction.handleFocusOut(event);
     }
 
     private openTooltip() {
@@ -124,7 +123,7 @@ export namespace Tooltip {
         new CustomEvent("tooltip-disconnected", {
           bubbles: true,
           composed: true,
-          detail: {}
+          detail: { reference: this.reference }
         })
       );
     }
@@ -179,15 +178,14 @@ export namespace Tooltip {
     }
 
     notifyTooltipDestroy() {
+      this.interaction.reset();
       if (!this.disabled) {
         this.opened = false;
       }
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      if (event.code === Key.Escape) {
-        this.notifyTooltipDestroy();
-      }
+      this.interaction.handleKeyDown(event);
     }
 
     handleSlotContentChange(event: Event) {
@@ -209,6 +207,7 @@ export namespace Tooltip {
         if (this.opened) {
           this.openTooltip();
         } else {
+          this.interaction.reset();
           this.closeTooltip();
         }
       }
@@ -260,8 +259,8 @@ export namespace Tooltip {
           <div
             class="md-tooltip__reference"
             part="tooltip_reference"
-            @mouseenter=${() => this.notifyTooltipCreate()}
-            @mouseleave=${() => this.notifyTooltipDestroy()}
+            @mouseenter=${this.interaction.handleReferenceEnter}
+            @mouseleave=${this.interaction.handleReferenceLeave}
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}

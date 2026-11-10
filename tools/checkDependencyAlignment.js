@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
-const expectedWebpack = '5.104.1';
+const expectedWebpack = '5.112.2';
 const forbiddenPackages = new Set([
   '@babel/polyfill',
   '@hot-loader/react-dom',

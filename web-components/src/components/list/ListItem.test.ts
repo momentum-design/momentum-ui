@@ -1,5 +1,7 @@
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues } from "lit";
+import { html, PropertyValues } from "lit";
+import "../link/Link";
+import { type Link } from "../link/Link";
 import "./ListItem";
 import { ListItem } from "./ListItem";
 
@@ -34,13 +36,14 @@ describe("ListItem", () => {
       class extends ListItem.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
+          this.dispatchEvent(new CustomEvent("first-updated", { detail: this.getAttribute("tabindex") }));
         }
       }
     );
     const element = fixtureSync(`<${tag}></${tag}>`);
     const event = await oneEvent(element, "first-updated");
     expect(event).toBeDefined();
+    expect(event.detail).toBe("-1");
   });
 
   test("should reflect shape property changes to the class attribute", async () => {
@@ -73,5 +76,138 @@ describe("ListItem", () => {
     );
     expect(menuItemElement.getAttribute("role")).toEqual("menuitem");
     expect(menuItemElement.hasAttribute("aria-selected")).toBe(false);
+  });
+
+  test("should delegate programmatic focus and preserve focus indicator events", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item role="listitem" focus-selector="md-link" tabindex="0">
+        <md-link href="#task">Task</md-link>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+    const focused = jest.fn();
+    const blurred = jest.fn();
+    item.addEventListener("focus-visible", focused);
+    item.addEventListener("focus-not-visible", blurred);
+    item.focus();
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(link.linkRef.tabIndex).toBe(0);
+    expect(link.shadowRoot?.activeElement).toBe(link.linkRef);
+    expect(item.hasAttribute("focus-visible")).toBe(true);
+    expect(focused).toHaveBeenCalledTimes(1);
+    item.blur();
+    expect(item.hasAttribute("focus-visible")).toBe(false);
+    expect(blurred).toHaveBeenCalledTimes(1);
+  });
+
+  test("should delegate focus to a link inside a wrapper", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <div><md-link href="#task">Task</md-link></div>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(link.linkRef.tabIndex).toBe(0);
+    item.focus();
+    expect(link.shadowRoot?.activeElement).toBe(link.linkRef);
+  });
+
+  test("should keep the host out of the tab order when its tabindex attribute is set to the existing value", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <md-link href="#task">Task</md-link>
+      </md-list-item>
+    `);
+    const link = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(link);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+
+    item.setAttribute("tabindex", "0");
+    await elementUpdated(item);
+    await elementUpdated(link);
+
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(item.tabIndex).toBe(0);
+    expect(link.linkRef.tabIndex).toBe(0);
+  });
+
+  test.each(["add", "replace"])("should resynchronize when a wrapped link changes: %s", async (operation) => {
+    const initialContent = operation === "replace" ? html`<md-link href="#original">Original</md-link>` : html``;
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="-1">
+        <div>${initialContent}</div>
+      </md-list-item>
+    `);
+    const wrapper = item.querySelector("div")!;
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    if (operation === "add") {
+      wrapper.append(replacement);
+    } else {
+      wrapper.replaceChildren(replacement);
+    }
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+
+    expect(replacement.linkRef.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    item.focus();
+    expect(replacement.shadowRoot?.activeElement).toBe(replacement.linkRef);
+  });
+
+  test("should resynchronize wrapped content after reconnecting", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="-1">
+        <div><md-link href="#original">Original</md-link></div>
+      </md-list-item>
+    `);
+    const parent = item.parentElement!;
+    item.remove();
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    item.querySelector("div")!.replaceChildren(replacement);
+    await elementUpdated(item);
+    expect(replacement.tabIndex).toBe(0);
+
+    parent.append(item);
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+    expect(replacement.linkRef.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+  });
+
+  test("should restore tab stops when delegation is disabled and handle a replacement link", async () => {
+    const item = await fixture<ListItem.ELEMENT>(html`
+      <md-list-item focus-selector="md-link" tabindex="0">
+        <md-link href="#first" tab-index="-1">First</md-link>
+      </md-list-item>
+    `);
+    const original = item.querySelector<Link.ELEMENT>("md-link")!;
+    await elementUpdated(original);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(original.tabIndex).toBe(0);
+
+    item.removeAttribute("focus-selector");
+    await elementUpdated(item);
+    await elementUpdated(original);
+    expect(item.tabIndex).toBe(0);
+    expect(original.tabIndex).toBe(-1);
+
+    item.setAttribute("focus-selector", "md-link");
+    await elementUpdated(item);
+    const replacement = document.createElement("md-link");
+    replacement.href = "#replacement";
+    item.replaceChildren(replacement);
+    await elementUpdated(item);
+    await elementUpdated(replacement);
+    expect(original.tabIndex).toBe(-1);
+    expect(item.hasAttribute("tabindex")).toBe(false);
+    expect(replacement.linkRef.tabIndex).toBe(0);
+    item.focus();
+    expect(replacement.shadowRoot?.activeElement).toBe(replacement.linkRef);
   });
 });

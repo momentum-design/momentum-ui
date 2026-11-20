@@ -21,6 +21,28 @@ export enum CardAlertSeverity {
   MEDIUM = "medium"
 }
 
+export enum CardAlertStatus {
+  DEFAULT = "default",
+  CONFIGURED = "configured",
+  PROCESSING = "processing",
+  SCHEDULED = "scheduled",
+  NEEDS_ATTENTION = "needs-attention",
+  APPLIED = "applied",
+  RESOLVED = "resolved"
+}
+
+const STATUS_MAP: Record<
+  Exclude<CardAlertStatus, CardAlertStatus.DEFAULT>,
+  { localeKey: "configured" | "processing" | "scheduled" | "needsAttention" | "applied" | "resolved"; icon: string }
+> = {
+  [CardAlertStatus.CONFIGURED]: { localeKey: "configured", icon: "info-badge-filled" },
+  [CardAlertStatus.PROCESSING]: { localeKey: "processing", icon: "info-badge-filled" },
+  [CardAlertStatus.SCHEDULED]: { localeKey: "scheduled", icon: "info-badge-filled" },
+  [CardAlertStatus.NEEDS_ATTENTION]: { localeKey: "needsAttention", icon: "info-badge-filled" },
+  [CardAlertStatus.APPLIED]: { localeKey: "applied", icon: "info-badge-filled" },
+  [CardAlertStatus.RESOLVED]: { localeKey: "resolved", icon: "check-circle-badge-filled" }
+};
+
 const SEVERITY_MAP: Record<CardAlertSeverity, { icon: string; color: string }> = {
   [CardAlertSeverity.CRITICAL]: { icon: "flag-filled", color: "negative" },
   [CardAlertSeverity.MEDIUM]: { icon: "warning-filled", color: "warning" }
@@ -28,6 +50,11 @@ const SEVERITY_MAP: Record<CardAlertSeverity, { icon: string; color: string }> =
 
 export interface CardAlertLocale {
   dismiss?: string;
+  configured?: string;
+  processing?: string;
+  scheduled?: string;
+  needsAttention?: string;
+  applied?: string;
   resolved?: string;
   justNow: string;
   minutesAgo: (n: number) => string;
@@ -39,6 +66,11 @@ type ResolvedCardAlertLocale = Required<CardAlertLocale>;
 
 const DEFAULT_LOCALE: ResolvedCardAlertLocale = {
   dismiss: "Dismiss",
+  configured: "Configured",
+  processing: "Processing",
+  scheduled: "Scheduled",
+  needsAttention: "Needs attention",
+  applied: "Applied",
   resolved: "Resolved",
   justNow: "Just now",
   minutesAgo: (n) => `${n} ${n === 1 ? "min" : "mins"} ago`,
@@ -50,6 +82,11 @@ const resolveLocale = (locale?: CardAlertLocale): ResolvedCardAlertLocale => ({
   ...DEFAULT_LOCALE,
   ...locale,
   dismiss: locale?.dismiss ?? DEFAULT_LOCALE.dismiss,
+  configured: locale?.configured ?? DEFAULT_LOCALE.configured,
+  processing: locale?.processing ?? DEFAULT_LOCALE.processing,
+  scheduled: locale?.scheduled ?? DEFAULT_LOCALE.scheduled,
+  needsAttention: locale?.needsAttention ?? DEFAULT_LOCALE.needsAttention,
+  applied: locale?.applied ?? DEFAULT_LOCALE.applied,
   resolved: locale?.resolved ?? DEFAULT_LOCALE.resolved
 });
 
@@ -63,6 +100,7 @@ export namespace CardAlert {
   export interface DetailRow {
     label: string;
     value: string;
+    subvalue?: string;
     impact?: CardAlertDetailImpact;
   }
 
@@ -74,7 +112,7 @@ export namespace CardAlert {
     @property({ type: String }) category = "";
     @property({ type: String }) secondaryChip = "";
     @property({ type: String }) timestamp = "";
-    @property({ type: Boolean }) resolved = false;
+    @property({ type: String }) status: CardAlertStatus = CardAlertStatus.DEFAULT;
     @property({ type: String }) title = "";
     @property({ type: String }) queueName = "";
     @property({ type: Array }) details: DetailRow[] = [];
@@ -82,7 +120,6 @@ export namespace CardAlert {
     @property({ type: String }) primaryActionLabel = "";
     @property({ type: Boolean }) primaryActionDropdown = false;
     @property({ type: String }) detailsHeading = "";
-    @property({ type: Boolean }) showDismiss = false;
     @property({ type: Boolean }) expanded = false;
 
     @state() private relativeTime = "";
@@ -117,16 +154,18 @@ export namespace CardAlert {
       return resolveLocale((this.constructor as typeof ELEMENT).locale);
     }
 
+    private get normalizedStatus(): CardAlertStatus {
+      return Object.values(CardAlertStatus).includes(this.status) ? this.status : CardAlertStatus.DEFAULT;
+    }
+
     private updateRelativeTime() {
-      if (this.timestamp) {
-        this.relativeTime = this.formatRelativeTime(this.timestamp);
-      }
+      this.relativeTime = this.timestamp ? this.formatRelativeTime(this.timestamp) : "";
     }
 
     private startTimer() {
       this.stopTimer();
+      this.updateRelativeTime();
       if (this.timestamp) {
-        this.updateRelativeTime();
         this.timerInterval = setInterval(() => this.updateRelativeTime(), 60000);
       }
     }
@@ -139,11 +178,11 @@ export namespace CardAlert {
     }
 
     protected willUpdate(changedProperties: PropertyValues) {
-      if (changedProperties.has("timestamp") || changedProperties.has("resolved")) {
-        if (this.resolved) {
-          this.stopTimer();
-        } else {
+      if (changedProperties.has("timestamp") || changedProperties.has("status")) {
+        if (this.normalizedStatus === CardAlertStatus.DEFAULT) {
           this.startTimer();
+        } else {
+          this.stopTimer();
         }
       }
     }
@@ -177,12 +216,13 @@ export namespace CardAlert {
       this.dispatchEvent(new CustomEvent("dismiss-clicked", { bubbles: true, composed: true }));
     }
 
-    private renderTimestamp() {
-      if (this.resolved) {
+    private renderStatusOrTimestamp(status: CardAlertStatus) {
+      if (status !== CardAlertStatus.DEFAULT) {
+        const { icon, localeKey } = STATUS_MAP[status];
         return html`
-          <span class="md-card-alert-resolved">
-            <md-icon name="check-circle-badge-filled" size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
-            ${this.resolvedLocale.resolved}
+          <span class="md-card-alert-status md-card-alert-status--${status}">
+            <md-icon name=${icon} size="16" iconSet="momentumDesign" ariaHidden="true"></md-icon>
+            ${this.resolvedLocale[localeKey]}
           </span>
         `;
       }
@@ -194,8 +234,8 @@ export namespace CardAlert {
     }
 
     private renderHeader() {
-      const statusText = this.resolved ? this.resolvedLocale.resolved : this.timestamp;
-      if (!this.severity && !this.category && !statusText) return nothing;
+      const status = this.normalizedStatus;
+      if (!this.severity && !this.category && !this.timestamp && status === CardAlertStatus.DEFAULT) return nothing;
       return html`
         <div class="md-card-alert-header">
           <div class="md-card-alert-chips">
@@ -211,7 +251,7 @@ export namespace CardAlert {
               ? html`<md-chip color="confidence-cobalt" value=${this.secondaryChip} small></md-chip>`
               : nothing}
           </div>
-          ${this.renderTimestamp()}
+          ${this.renderStatusOrTimestamp(status)}
         </div>
       `;
     }
@@ -253,8 +293,10 @@ export namespace CardAlert {
                     "md-card-alert-detail-value--positive": row.impact === CardAlertDetailImpact.POSITIVE,
                     "md-card-alert-detail-value--negative": row.impact === CardAlertDetailImpact.NEGATIVE
                   })}
-                  >${row.value}</span
                 >
+                  ${row.value}
+                  ${row.subvalue ? html`<span class="md-card-alert-detail-subvalue">${row.subvalue}</span>` : nothing}
+                </span>
               </div>
             `
           )}
@@ -273,6 +315,9 @@ export namespace CardAlert {
     }
 
     private renderActions() {
+      const status = this.normalizedStatus;
+      const isResolved = status === CardAlertStatus.RESOLVED;
+      const showDismiss = status !== CardAlertStatus.DEFAULT && !isResolved;
       const dismissLabel = this.resolvedLocale.dismiss;
 
       return html`
@@ -281,11 +326,11 @@ export namespace CardAlert {
             ? html`
                 <md-button
                   size="32"
-                  variant="secondary"
+                  variant="primary"
                   class="md-card-alert-primary-action"
                   .maxWidth=${"100%"}
                   ariaLabel=${this.primaryActionLabel}
-                  ?disabled=${this.resolved}
+                  ?disabled=${isResolved}
                   @click=${this.handlePrimaryAction}
                 >
                   <span slot="text">${this.primaryActionLabel}</span>
@@ -299,7 +344,7 @@ export namespace CardAlert {
                 </md-button>
               `
             : nothing}
-          ${this.showDismiss
+          ${showDismiss
             ? html`
                 <md-button
                   size="32"

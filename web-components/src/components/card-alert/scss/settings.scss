@@ -13,11 +13,17 @@ $md-card-alert-title-color: var(--md-primary-text-color);
 $md-card-alert-subtitle-color: var(--md-secondary-text-color);
 $md-card-alert-timestamp-color: var(--md-secondary-text-color);
 $md-card-alert-resolved-color: var(--md-alert-success-text-color, #16a34a);
+$md-card-alert-status-configured-color: var(--md-secondary-text-color);
+$md-card-alert-status-processing-color: var(--md-alert-warning-text-color, #8a4b00);
+$md-card-alert-status-scheduled-color: var(--md-alert-warning-text-color, #8a4b00);
+$md-card-alert-status-needs-attention-color: var(--md-alert-warning-text-color, #8a4b00);
+$md-card-alert-status-applied-color: var(--md-alert-success-text-color, #08745b);
 
 $md-card-alert-details-bg-color: var(--md-subtle-bg-color, #f3f4f6);
 $md-card-alert-details-border-radius: rem-calc(8);
 $md-card-alert-details-padding: rem-calc(12);
 $md-card-alert-details-value-color: var(--md-primary-text-color);
+$md-card-alert-details-subvalue-color: var(--md-secondary-text-color);
 $md-card-alert-details-positive-color: var(--md-alert-success-text-color, #16a34a);
 $md-card-alert-details-negative-color: var(--md-alert-error-text-color, #dc2626);
 

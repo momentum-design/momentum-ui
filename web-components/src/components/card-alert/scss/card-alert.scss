@@ -52,13 +52,30 @@
       flex-shrink: 0;
     }
 
-    &-resolved {
+    &-status {
       @include flex($jc: flex-start, $ai: center);
-      color: $md-card-alert-resolved-color;
       font-size: rem-calc(14);
       font-weight: 400;
       flex-shrink: 0;
       gap: rem-calc(4);
+
+      &--configured {
+        color: $md-card-alert-status-configured-color;
+      }
+
+      &--processing,
+      &--scheduled,
+      &--needs-attention {
+        color: $md-card-alert-status-processing-color;
+      }
+
+      &--applied {
+        color: $md-card-alert-status-applied-color;
+      }
+
+      &--resolved {
+        color: $md-card-alert-resolved-color;
+      }
     }
 
     // ─── Title section ───────────────────────────────────────────────────
@@ -164,6 +181,11 @@
       &--negative {
         color: $md-card-alert-details-negative-color;
       }
+    }
+
+    &-detail-subvalue {
+      color: $md-card-alert-details-subvalue-color;
+      font-size: rem-calc(12);
     }
 
     // ─── Insight block ───────────────────────────────────────────────────

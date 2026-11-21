@@ -1,6 +1,12 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "./CardAlert";
-import { CardAlertDetailImpact, CardAlertSeverity, type CardAlert, type CardAlertLocale } from "./CardAlert";
+import { ifDefined } from "lit/directives/if-defined.js";
+import {
+  CardAlertDetailImpact,
+  CardAlertSeverity,
+  CardAlertStatus,
+  type CardAlert,
+  type CardAlertLocale
+} from "./CardAlert";
 
 globalThis.fetch = jest.fn(() =>
   Promise.resolve({
@@ -21,7 +27,7 @@ const fixtureFactory = async (
     category: string;
     secondaryChip: string;
     timestamp: string;
-    resolved: boolean;
+    status: CardAlertStatus;
     title: string;
     queueName: string;
     details: CardAlert.DetailRow[];
@@ -30,7 +36,6 @@ const fixtureFactory = async (
     primaryActionDropdown: boolean;
     expanded: boolean;
     detailsHeading: string;
-    showDismiss: boolean;
   }> = {}
 ): Promise<CardAlert.ELEMENT> => {
   const props = {
@@ -38,7 +43,7 @@ const fixtureFactory = async (
     category: "Adherence",
     secondaryChip: "",
     timestamp: new Date(Date.now() - 3 * 60000).toISOString(),
-    resolved: false,
+    status: undefined,
     title: "Bob has not signed in for his scheduled shift",
     queueName: "Customer Support · 9:00–17:00",
     details: defaultDetails,
@@ -47,7 +52,6 @@ const fixtureFactory = async (
     primaryActionDropdown: false,
     expanded: false,
     detailsHeading: "Shift details",
-    showDismiss: true,
     ...overrides
   };
 
@@ -56,7 +60,7 @@ const fixtureFactory = async (
       severity=${props.severity}
       category=${props.category}
       timestamp=${props.timestamp}
-      ?resolved=${props.resolved}
+      status=${ifDefined(props.status)}
       title=${props.title}
       queueName=${props.queueName}
       .details=${props.details}
@@ -66,7 +70,6 @@ const fixtureFactory = async (
       ?primaryActionDropdown=${props.primaryActionDropdown}
       ?expanded=${props.expanded}
       detailsHeading=${props.detailsHeading}
-      .showDismiss=${props.showDismiss}
     >
     </md-card-alert>
   `);
@@ -175,8 +178,8 @@ describe("CardAlert component", () => {
   });
 
   test("should render resolution text instead of timestamp when resolved", async () => {
-    const element = await fixtureFactory({ resolved: true });
-    const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+    const element = await fixtureFactory({ status: CardAlertStatus.RESOLVED });
+    const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-status--resolved");
     const resolvedIcon = resolvedLabel!.querySelector("md-icon");
     const timestamp = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
 
@@ -192,8 +195,8 @@ describe("CardAlert component", () => {
     try {
       Object.assign(cardAlertElement.locale, { resolved: "Completed" });
 
-      const element = await fixtureFactory({ resolved: true });
-      const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+      const element = await fixtureFactory({ status: CardAlertStatus.RESOLVED });
+      const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-status--resolved");
 
       expect(resolvedLabel!.textContent!.trim()).toBe("Completed");
     } finally {
@@ -201,26 +204,26 @@ describe("CardAlert component", () => {
     }
   });
 
-  test("should render timestamp when resolved is false", async () => {
-    const element = await fixtureFactory({ resolved: false });
-    const resolvedLabel = element.shadowRoot!.querySelector(".md-card-alert-resolved");
+  test("should render timestamp when status is omitted", async () => {
+    const element = await fixtureFactory();
+    const statusLabel = element.shadowRoot!.querySelector(".md-card-alert-status");
     const timestamp = element.shadowRoot!.querySelector(".md-card-alert-timestamp");
 
-    expect(resolvedLabel).toBeNull();
+    expect(statusLabel).toBeNull();
     expect(timestamp).not.toBeNull();
   });
 
-  test("should update between timestamp and resolution text when resolved changes", async () => {
+  test("should update between timestamp and resolution text when status changes", async () => {
     const element = await fixtureFactory();
 
-    element.resolved = true;
+    element.status = CardAlertStatus.RESOLVED;
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector(".md-card-alert-resolved")!.textContent!.trim()).toBe("Resolved");
+    expect(element.shadowRoot!.querySelector(".md-card-alert-status--resolved")!.textContent!.trim()).toBe("Resolved");
     expect(element.shadowRoot!.querySelector(".md-card-alert-timestamp")).toBeNull();
 
-    element.resolved = false;
+    element.status = CardAlertStatus.DEFAULT;
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector(".md-card-alert-resolved")).toBeNull();
+    expect(element.shadowRoot!.querySelector(".md-card-alert-status")).toBeNull();
     expect(element.shadowRoot!.querySelector(".md-card-alert-timestamp")).not.toBeNull();
   });
 
@@ -359,14 +362,14 @@ describe("CardAlert component", () => {
   });
 
   test("should disable primary action button when resolved", async () => {
-    const element = await fixtureFactory({ resolved: true });
+    const element = await fixtureFactory({ status: CardAlertStatus.RESOLVED });
     const btn = element.shadowRoot!.querySelector(".md-card-alert-primary-action") as HTMLButtonElement;
 
     expect(btn.disabled).toBe(true);
   });
 
-  test("should enable primary action button when not resolved", async () => {
-    const element = await fixtureFactory({ resolved: false });
+  test("should enable primary action button in the default status", async () => {
+    const element = await fixtureFactory();
     const btn = element.shadowRoot!.querySelector(".md-card-alert-primary-action") as HTMLButtonElement;
 
     expect(btn.disabled).toBe(false);
@@ -395,8 +398,8 @@ describe("CardAlert component", () => {
     expect(arrowUp).toBeNull();
   });
 
-  test("should render dismiss button when showDismiss is true", async () => {
-    const element = await fixtureFactory({ showDismiss: true });
+  test("should render dismiss button in the configured status", async () => {
+    const element = await fixtureFactory({ status: CardAlertStatus.CONFIGURED });
     const dismiss = element.shadowRoot!.querySelector(".md-card-alert-dismiss");
     expect(dismiss).not.toBeNull();
   });
@@ -415,7 +418,7 @@ describe("CardAlert component", () => {
       Object.assign(cardAlertElement.locale, localeWithoutDismiss);
       delete cardAlertElement.locale.dismiss;
 
-      const element = await fixtureFactory({ showDismiss: true });
+      const element = await fixtureFactory({ status: CardAlertStatus.CONFIGURED });
       const dismiss = element.shadowRoot!.querySelector(".md-card-alert-dismiss");
 
       expect(dismiss!.textContent!.trim()).toBe("Dismiss");
@@ -424,11 +427,13 @@ describe("CardAlert component", () => {
     }
   });
 
-  test("should not render dismiss button when showDismiss is false", async () => {
-    const element = await fixtureFactory({ showDismiss: false });
+  test("should hide dismiss button in the default and resolved statuses", async () => {
+    const element = await fixtureFactory();
+    expect(element.shadowRoot!.querySelector(".md-card-alert-dismiss")).toBeNull();
+
+    element.status = CardAlertStatus.RESOLVED;
     await elementUpdated(element);
-    const dismiss = element.shadowRoot!.querySelector(".md-card-alert-dismiss");
-    expect(dismiss).toBeNull();
+    expect(element.shadowRoot!.querySelector(".md-card-alert-dismiss")).toBeNull();
   });
 
   // ─── Events ────────────────────────────────────────────────────────
@@ -444,7 +449,7 @@ describe("CardAlert component", () => {
   });
 
   test("should dispatch dismiss-clicked event on dismiss button click", async () => {
-    const element = await fixtureFactory({ showDismiss: true });
+    const element = await fixtureFactory({ status: CardAlertStatus.CONFIGURED });
     const dismissBtn = element.shadowRoot!.querySelector(".md-card-alert-dismiss") as HTMLElement;
     const handler = jest.fn();
     element.addEventListener("dismiss-clicked", handler);

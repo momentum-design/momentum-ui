@@ -17,7 +17,6 @@ describe('@momentum-ui/react', () => {
       .click({force: true})
       .get(`.${prefix}-timepicker-container`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -26,7 +25,6 @@ describe('@momentum-ui/react', () => {
       .click({force: true})
       .get(`.${prefix}-timepicker-container`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -35,7 +33,6 @@ describe('@momentum-ui/react', () => {
       .click({force: true})
       .get(`.${prefix}-timepicker-container`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 });

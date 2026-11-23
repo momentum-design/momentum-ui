@@ -17,7 +17,6 @@ describe('@momentum-ui/react', () => {
         .click()
         .get(`.${prefix}-menu`)
         .should('exist')
-        .percySnapshot()
         .end();
   });
 
@@ -26,7 +25,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-menu`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -35,10 +33,8 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-menu`)
       .should('exist')
-      .percySnapshot()
       .get(`.${prefix}-menu`)
       .click()
-      .percySnapshot()
       .end();
   });
 });

@@ -16,9 +16,6 @@
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node ../tools/runRootTool.js rimraf lib && node ../tools/runRootTool.js babel src --out-dir lib",
-    "ci:postpublish": "node ../tools/postpublish.js",
-    "ci:publishCDN": "yarn pushToS3",
-    "pushToS3": "node ../tools/pushToS3.js --library=utils",
     "prepublishOnly": "yarn build"
   },
   "bugs": {

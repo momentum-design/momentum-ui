@@ -4,7 +4,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of list-item-header', () => {
     cy.visit(`/list-item-header`)
       .get(`.${prefix}-list-item-header`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

@@ -17,7 +17,6 @@ describe('@momentum-ui/react', () => {
         .click()
         .get(`.${prefix}-tooltip`)
         .should('exist')
-        .percySnapshot()
         .end();
   });
 
@@ -26,7 +25,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-tooltip`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -35,7 +33,6 @@ describe('@momentum-ui/react', () => {
       .focus()
       .get(`.${prefix}-tooltip`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -44,7 +41,6 @@ describe('@momentum-ui/react', () => {
       .focus()
       .get(`.${prefix}-tooltip`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -53,7 +49,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-tooltip`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -62,7 +57,6 @@ describe('@momentum-ui/react', () => {
         .click()
         .get(`.${prefix}-tooltip`)
         .should('exist')
-        .percySnapshot()
         .end();
   });
 });

@@ -70,6 +70,5 @@ yarn*
 /tools
 /fonts/momentum-ui-icons-rebrand.html
 .babelrc.js
-.percy.yml
 cypress.json
 .env

@@ -4,7 +4,6 @@ describe('@momentum-ui/core', function() {
     cy
       .visit(`/sidebar`)
       .get('.md-sidebar')
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

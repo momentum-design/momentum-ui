@@ -4,7 +4,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of label', () => {
     cy.visit(`/label`)
       .get(`.${prefix}-label`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

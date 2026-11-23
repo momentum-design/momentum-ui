@@ -3,7 +3,6 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/main.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)](https://conventionalcommits.org)
 [![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/main/LICENSE)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 ## **DEPRECATION NOTICE**
 
@@ -49,7 +48,7 @@ Momentum UI is a collection of UI libraries for implementing [Momentum Design](h
 
 ## Background
 
-These libraries allow web developers to quickly and easily create Momentum Design web apps and sites. We provide libraries built on HTML/CSS and many of the modern JavaScript frameworks, including [ReactJS](https://reactjs.org/), [Angular](https://angular.io/) and [AngularJS](https://angularjs.org/). We use a [Lerna](http://lernajs.io) monorepo to manage all of the libraries in one repository.
+These libraries allow web developers to quickly and easily create Momentum Design web apps and sites. We provide libraries built on HTML/CSS and many of the modern JavaScript frameworks, including [ReactJS](https://reactjs.org/), [Angular](https://angular.io/) and [AngularJS](https://angularjs.org/). Yarn workspaces manage the libraries in this repository.
 
 ## Usage
 

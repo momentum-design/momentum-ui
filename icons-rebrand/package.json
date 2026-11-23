@@ -17,9 +17,6 @@
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node ../tools/icons/icons-build.js momentum-ui-icons-rebrand",
-    "ci:postpublish": "node ../tools/postpublish.js",
-    "ci:publishCDN": "node ../tools/runRootTool.js run-s replaceFontURLs pushToS3",
-    "pushToS3": "node ../tools/pushToS3.js --library=icons-rebrand",
     "replaceFontURLs": "node ../tools/icons/replaceURLs.js icons-rebrand",
     "updateIconDatabase": "node ../tools/icons/update-icon-database.js icons-rebrand",
     "lint": "echo \"Success: lint\" && exit 0",

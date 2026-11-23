@@ -37,9 +37,6 @@
     "build:react": "cd ../react && yarn build:lib",
     "build:settings": "node ./tools/generateSettingsScss.js",
     "build:settingsNg": "node ./tools/generateSettingsNgScss.js",
-    "ci:postpublish": "node ../tools/postpublish.js",
-    "ci:publishCDN": "node ../tools/runRootTool.js run-s replaceFontURLs pushToS3",
-    "pushToS3": "node ../tools/pushToS3.js --library=core",
     "replaceFontURLs": "node ./tools/replaceURLs.js",
     "css:build": "node ./tools/compileCSSMomentum.js",
     "css:build:components": "node ./tools/compileCSSModules.js",
@@ -53,13 +50,10 @@
     "open:src": "node ../tools/runRootTool.js webpack serve --config ./tools/webpack.config.dev.js",
     "prepublishOnly": "yarn build:lib",
     "run:cypress": "node ../tools/runRootTool.js cypress run",
-    "run:percy": "node ../tools/runRootTool.js percy exec -t 350 -- cypress run",
     "start": "node ../tools/runRootTool.js run-s build:settings build:data build:react open:src",
     "start:app": "node ../tools/runRootTool.js run-s build:app open:dist",
     "test:CI:cypress": "node ../tools/runRootTool.js wait-on http://127.0.0.1:4200 && yarn run:cypress",
-    "test:CI:percy": "node ../tools/runRootTool.js wait-on http://127.0.0.1:4200 && yarn run:percy",
-    "test": "node ../tools/runRootTool.js run-p --race start:app test:CI:cypress",
-    "test:percy": "node ../tools/runRootTool.js run-p --race start:app test:CI:percy"
+    "test": "node ../tools/runRootTool.js run-p --race start:app test:CI:cypress"
   },
   "dependencies": {
     "@momentum-ui/icons": "^8.32.0"

@@ -18,7 +18,6 @@ describe('@momentum-ui/react', () => {
     examples.forEach((selector, index) => {
       cy.get(selector).click();
       cy.get(modalSelector).should('be.visible');
-      cy.percySnapshot();
       if (index < examples.length - 1) {
         cy.get(modalSelector)
           .trigger('keydown', { which: 27, code: 'Escape', key: 'Escape' });

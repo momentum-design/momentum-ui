@@ -16,10 +16,7 @@
   "scripts": {
     "build": "yarn build:lib",
     "build:lib": "node tools/tokens-build.js",
-    "ci:postpublish": "node ../tools/postpublish.js",
-    "ci:publishCDN": "yarn pushToS3",
     "copy:legacyColors": "cpy src/legacyColors.json dist",
-    "pushToS3": "node ../tools/pushToS3.js --library=tokens",
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "node ../tools/runRootTool.js run-p copy:legacyColors build:lib",
     "start": "yarn build:lib",

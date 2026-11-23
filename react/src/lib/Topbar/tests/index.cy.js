@@ -8,7 +8,6 @@ describe('@momentum-ui/react', () => {
 
   it('snapshot of topbar', () => {
     cy.get(`.${prefix}-top-bar`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

@@ -36,8 +36,12 @@ function baseRevision() {
 }
 
 const base = baseRevision();
+// CircleCI uses a blobless checkout. Detecting renames can fetch historical blobs.
 const changedPaths = base
-  ? execFileSync('git', ['diff', '--name-only', '-z', base, 'HEAD', '--'], { cwd: root, encoding: 'utf8' }).split('\0')
+  ? execFileSync('git', ['diff', '--no-renames', '--name-only', '-z', base, 'HEAD', '--'], {
+    cwd: root,
+    encoding: 'utf8',
+  }).split('\0')
   : [];
 const sharedInputs = new Set(['.nvmrc', 'package.json', 'yarn.lock']);
 const buildAll = !base || changedPaths.some(file => (

@@ -11,7 +11,6 @@ describe('@momentum-ui/react', () => {
     cy.get('#default-1')
       .click()
       .get(`.${prefix}-datepicker-container`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

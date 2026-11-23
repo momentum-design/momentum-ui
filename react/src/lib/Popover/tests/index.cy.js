@@ -18,7 +18,6 @@ describe('@momentum-ui/react', () => {
         .focus()
         .get(`.${prefix}-event-overlay`)
         .should('exist')
-        .percySnapshot()
         .end();
   });
 
@@ -27,7 +26,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-event-overlay`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -36,7 +34,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-event-overlay`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -45,7 +42,6 @@ describe('@momentum-ui/react', () => {
       .focus()
       .get(`.${prefix}-event-overlay`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -54,7 +50,6 @@ describe('@momentum-ui/react', () => {
       .focus()
       .get(`.${prefix}-event-overlay`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 
@@ -69,7 +64,6 @@ describe('@momentum-ui/react', () => {
           .focus()
           .get(`.${prefix}-event-overlay`)
           .should('exist')
-          .percySnapshot()
           .end();
       });
     });
@@ -80,7 +74,6 @@ describe('@momentum-ui/react', () => {
         .focus()
         .get(`.${prefix}-event-overlay`)
         .should('exist')
-        .percySnapshot()
         .end();
   });
 
@@ -89,7 +82,6 @@ describe('@momentum-ui/react', () => {
       .click()
       .get(`.${prefix}-event-overlay`)
       .should('exist')
-      .percySnapshot()
       .end();
   });
 });

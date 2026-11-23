@@ -9,7 +9,6 @@
 //   it('snapshot of event-overlay', () => {
 //     cy.get(`.${prefix}-event-overlay__children`)
 //       .scrollIntoView()
-//       .should('be.visible')
-//       .percySnapshot();
+//       .should('be.visible');
 //   });
 // });

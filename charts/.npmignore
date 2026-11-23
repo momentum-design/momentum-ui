@@ -55,7 +55,6 @@ coverage/
 tools/
 examples/
 .babelrc.js
-.percy.yml
 cypress.json
 cypress
 .env

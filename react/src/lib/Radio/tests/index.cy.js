@@ -4,7 +4,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of radio', () => {
     cy.visit(`/radio`)
       .get(`.${prefix}-radio`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

@@ -9,7 +9,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of coachmark', () => {
     cy
     .get(`.${prefix}-coachmark__container`)
-    .should('be.visible')
-    .percySnapshot();
+    .should('be.visible');
   });
 });

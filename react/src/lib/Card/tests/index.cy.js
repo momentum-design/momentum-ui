@@ -4,7 +4,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of card', () => {
     cy.visit(`/card`)
       .get(`.${prefix}-card`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

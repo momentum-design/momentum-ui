@@ -6,14 +6,12 @@ describe('@momentum-ui/react', () => {
       .get('#default-1')
       .click()
       .get(`.${prefix}-modal--dialog`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
     cy.get(`.${prefix}-modal--dialog`)
       .trigger('keydown', { which: 27, code: 'Escape', key: 'Escape' });
     cy.get('#default-2')
       .click()
       .get(`.${prefix}-modal--dialog`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

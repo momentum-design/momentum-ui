@@ -87,7 +87,6 @@ e2e/
 /templates
 /test
 .babelrc.js
-.percy.yml
 cypress.json
 .angular-cli.json
 .stylelintrc.yml

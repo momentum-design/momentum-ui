@@ -4,7 +4,7 @@ RUN test "$(yarn --version)" = "1.22.22"
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock lerna.json ./
+COPY package.json yarn.lock ./
 COPY animations/package.json ./animations/package.json
 COPY charts/package.json ./charts/package.json
 COPY core/package.json ./core/package.json

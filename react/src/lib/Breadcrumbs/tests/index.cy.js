@@ -4,7 +4,6 @@ describe('@momentum-ui/react', () => {
   it('snapshot of breadcrumbs', () => {
     cy.visit(`/breadcrumbs`)
       .get(`.${prefix}-breadcrumbs`)
-      .should('be.visible')
-      .percySnapshot();
+      .should('be.visible');
   });
 });

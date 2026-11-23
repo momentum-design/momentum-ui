@@ -69,6 +69,5 @@ yarn*
 /fonts/spark-ui-icons.html
 /fonts/momentum-ui-icons.html
 .babelrc.js
-.percy.yml
 cypress.json
 .env

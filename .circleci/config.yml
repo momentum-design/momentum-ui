@@ -234,33 +234,6 @@ jobs:
       - run:
           name: Integration testing for www with Cypress.io
           command: yarn ci:test:www
-      - run:
-          name: Publish website
-          command: yarn publish:www
-      - run:
-          name: Publish icons
-          command: yarn publish:icons
-
-  publish_www:
-    <<: *image_defaults
-    resource_class: large
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap
-      - run: npm rebuild node-sass
-      - run:
-          name: Pre build website
-          command: yarn build:www
-      - run:
-          name: Build website
-          command: yarn build:www-dist
-      - run:
-          name: Publish website
-          command: yarn publish:www
-
 workflows:
   version: 2
 
@@ -320,11 +293,3 @@ workflows:
                 - master
     jobs:
       - lint_test_release
-
-  manual_publish_www:
-    jobs:
-      - publish_www:
-          filters:
-            branches:
-              only:
-                - website_publish

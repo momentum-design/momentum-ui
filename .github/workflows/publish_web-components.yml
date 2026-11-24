@@ -7,6 +7,7 @@ jobs:
   publish:
     permissions:
       contents: write
+      id-token: write
 
     runs-on: ubuntu-latest
 
@@ -37,5 +38,3 @@ jobs:
       - name: Publish to npm
         run: yarn npm:publish:bot
         working-directory: ./web-components
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

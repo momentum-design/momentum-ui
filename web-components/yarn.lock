@@ -2062,20 +2062,20 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@momentum-design/brand-visuals@0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@momentum-design/brand-visuals/-/brand-visuals-0.41.0.tgz#81b5cb4d3173af7052e22423f776d9f3ed6c834f"
-  integrity sha512-7Ab95XM6RYr7DIV/C6AoJQUvkj2Qaz6qC/ikBpZsytI+j9nMG/kplMVwc3Wq/bDlr0CKEFtJo7odlYEPzqEg2g==
+"@momentum-design/brand-visuals@0.42.1":
+  version "0.42.1"
+  resolved "https://registry.yarnpkg.com/@momentum-design/brand-visuals/-/brand-visuals-0.42.1.tgz#107dc69ee6c734eb55381702817c6ef1f8b5eaae"
+  integrity sha512-dFPs1rrcmq1cZhGWMaZE3aTKEXzPxn4WC3bVjBdQmMacRNg+x6VSsdejpTfHjCXNTqt1x8vbBinnWq7O/MCPGA==
 
-"@momentum-design/icons@0.65.0":
-  version "0.65.0"
-  resolved "https://registry.yarnpkg.com/@momentum-design/icons/-/icons-0.65.0.tgz#4ceb2ae0bf6bb74e0009223e38cb863583453166"
-  integrity sha512-LbFr8/uYzyDEixeiZVjeZg9i64XhP1L/vXieGPx6f6soHxZQU8x52Xkm5/qhnyGKRD1PPBG3KPLCS8UrHbSsMQ==
+"@momentum-design/icons@0.66.0":
+  version "0.66.0"
+  resolved "https://registry.yarnpkg.com/@momentum-design/icons/-/icons-0.66.0.tgz#63469dd24f317db0f8d59fa53f4390dbe219d629"
+  integrity sha512-X8JIhuuidOpoltXpfQDXsLAc5lubGZJy/xwlFbdA2e5OqSV6oPTHuuzAIAYMb6nsO9Zy289z/VyINPEjvoNKuw==
 
-"@momentum-design/tokens@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@momentum-design/tokens/-/tokens-0.18.0.tgz#41580a73d4c7798c301be694cb181c635dabbb40"
-  integrity sha512-KYiqNYkqqzpChie4r6V7OxcxeRK3HSP71eoOQHzGm2Bly3ZpN+UAHz5wK3MSpV+VcGyhyuWfh5nHc0ehSy2dUA==
+"@momentum-design/tokens@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@momentum-design/tokens/-/tokens-0.19.0.tgz#979c8993950516eb0158ed0f288a4c1ebbb04d4a"
+  integrity sha512-bVcLRqm3wwnwb0kxgGgxbVhjYr4R+TBTsi5NiVssMKqxP7lRoRkhqiieEdCnexQ6nECy7YxhDWbI5a1LENcv/Q==
 
 "@momentum-ui/core@19.16.0":
   version "19.16.0"

@@ -102,6 +102,9 @@ export namespace EditableTextfield {
         return;
       } else {
         this.isEditing = true;
+        if (this.editableField) {
+          this.editableField.innerText = this.content;
+        }
         this.setRange();
       }
     };

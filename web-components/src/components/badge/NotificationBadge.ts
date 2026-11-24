@@ -130,6 +130,7 @@ export class NotificationBadge extends LitElement {
         iconSet="momentumDesign"
         name="${ifDefined(iconName)}"
         size="${DEFAULTS.ICON_SIZE}"
+        aria-hidden="true"
       ></md-icon>
     `;
   }

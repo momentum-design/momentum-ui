@@ -76,7 +76,7 @@ export namespace Table {
                 c.classList.add("warning");
                 c.insertAdjacentHTML(
                   "beforeend",
-                  '<md-icon name="warning-regular" size="24" iconSet="momentumDesign" color="var(--md-alert-warning-text-color)"></md-icon>'
+                  '<md-icon name="warning-regular" size="24" iconSet="momentumDesign" color="var(--md-alert-warning-text-color)" aria-hidden="true"></md-icon>'
                 );
               }
             });
@@ -90,7 +90,7 @@ export namespace Table {
                 c.classList.add("error");
                 c.insertAdjacentHTML(
                   "beforeend",
-                  '<md-icon name="clear-bold" size="24" iconSet="momentumDesign" color="var(--md-alert-error-text-color)"></md-icon>'
+                  '<md-icon name="clear-bold" size="24" iconSet="momentumDesign" color="var(--md-alert-error-text-color)" aria-hidden="true"></md-icon>'
                 );
               }
             });
@@ -173,6 +173,7 @@ export namespace Table {
           name=${this.sort.sortting ? "sort-descending-bold" : "sort-ascending-bold"}
           iconSet="momentumDesign"
           size="16"
+          aria-hidden="true"
         ></md-icon>
       `;
     }
